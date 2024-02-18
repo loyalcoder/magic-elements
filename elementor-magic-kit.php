@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-require_once __DIR__ . '/autoloader.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 /**
  * Main plugin class
@@ -80,9 +80,9 @@ final class Elementor_Magic_Kit
      */
     public function activate()
     {
-        // $installer = new Pkun\Installer();
+        $installer = new Pkun\Installer();
 
-        // $installer->run();
+        $installer->run();
     }
 
     /**
@@ -92,16 +92,16 @@ final class Elementor_Magic_Kit
      */
     public function init_plugin()
     {
-        // new Pkun\Assets();
-        // new Pkun\EM_KIT_Ajax();
-        // new Pkun\Load_Elementor();
-        // new Pkun\Generator();
-        // new Pkun\Customizer();
-        // if (is_admin()) {
-        //     new Pkun\Admin();
-        // } else {
-        //     new Pkun\Frontend();
-        // }
+        new Pkun\Assets();
+        new Pkun\EM_KIT_Ajax();
+        new Pkun\Load_Elementor();
+        new Pkun\Generator();
+        new Pkun\Customizer();
+        if (is_admin()) {
+            new Pkun\Admin();
+        } else {
+            new Pkun\Frontend();
+        }
     }
 }
 
