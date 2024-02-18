@@ -32,7 +32,7 @@ class Header_Settings
         Kirki::add_section('chawkbazar_header_section', [
             'title'       => esc_html__('Header', 'pkun'),
             'description' => esc_html__('Global settings for header located here', 'pkun'),
-            'panel'       => 'pkun_config_panel',
+            'panel'       => 'EM_KIT_config_panel',
             'priority'    => 160,
         ]);
     }
@@ -45,9 +45,9 @@ class Header_Settings
     public function HeaderSettings()
     { // section choosing key : chawkbazar_header_section
 
-        Kirki::add_field('pkun_config', [
+        Kirki::add_field('EM_KIT_config', [
             'type'        => 'image',
-            'settings'    => 'pkun_header_logo',
+            'settings'    => 'EM_KIT_header_logo',
             'label'       => esc_html__('Main Logo', 'pkun'),
             'section'     => 'chawkbazar_header_section',
             'default'     => '',

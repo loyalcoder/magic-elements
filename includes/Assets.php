@@ -24,13 +24,13 @@ class Assets
     {
         return [
             'pkun-script' => [
-                'src'     => PKUN_ASSETS . '/js/frontend.js',
-                'version' => filemtime(PKUN_PATH . '/assets/js/frontend.js'),
+                'src'     => EM_KIT_ASSETS . '/js/frontend.js',
+                'version' => filemtime(EM_KIT_PATH . '/assets/js/frontend.js'),
                 'deps'    => ['jquery']
             ],
             'pkun-enquiry-script' => [
-                'src'     => PKUN_ASSETS . '/js/enquiry.js',
-                'version' => filemtime(PKUN_PATH . '/assets/js/enquiry.js'),
+                'src'     => EM_KIT_ASSETS . '/js/enquiry.js',
+                'version' => filemtime(EM_KIT_PATH . '/assets/js/enquiry.js'),
                 'deps'    => ['jquery']
             ]
         ];
@@ -45,8 +45,8 @@ class Assets
     {
         return [
             'pkun-style' => [
-                'src'     => PKUN_ASSETS . '/css/frontend.css',
-                'version' => filemtime(PKUN_PATH . '/assets/css/frontend.css'),
+                'src'     => EM_KIT_ASSETS . '/css/frontend.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/css/frontend.css'),
             ]
         ];
     }
@@ -61,19 +61,19 @@ class Assets
 
         foreach ($scripts as $handle => $script) {
             $deps = isset($script['deps']) ? $script['deps'] : false;
-            $version = isset($script['version']) ? $script['version'] : PKUN_VERSION;
+            $version = isset($script['version']) ? $script['version'] : EM_KIT_VERSION;
 
             wp_register_script($handle, $script['src'], $deps, $version, true);
         }
 
-        wp_localize_script('pkun-enquiry-script', 'pkun_data', [
+        wp_localize_script('pkun-enquiry-script', 'EM_KIT_data', [
             'ajax_url' => admin_url('admin-ajax.php'),
             'message' => __('Message from enquiry form', 'pkun'),
         ]);
 
         foreach ($styles as $handle => $style) {
             $deps = isset($style['deps']) ? $style['deps'] : false;
-            $version = isset($style['version']) ? $style['version'] : PKUN_VERSION;
+            $version = isset($style['version']) ? $style['version'] : EM_KIT_VERSION;
 
             wp_register_style($handle, $style['src'], $deps, $version);
         }

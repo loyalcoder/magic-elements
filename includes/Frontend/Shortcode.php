@@ -12,8 +12,8 @@ class Shortcode
      */
     public function __construct()
     {
-        add_shortcode('pkun_shortcode', [$this, 'pkun_shortcode']);
-        add_shortcode('pkun_enquiry', [$this, 'pkun_enquiry']);
+        add_shortcode('EM_KIT_shortcode', [$this, 'EM_KIT_shortcode']);
+        add_shortcode('EM_KIT_enquiry', [$this, 'EM_KIT_enquiry']);
     }
 
     /**
@@ -23,7 +23,7 @@ class Shortcode
      * @param string $content
      * @return string
      */
-    public function pkun_shortcode($atts, $content = null)
+    public function EM_KIT_shortcode($atts, $content = null)
     {
         wp_enqueue_script('pkun-script');
         wp_enqueue_style('pkun-style');
@@ -42,12 +42,12 @@ class Shortcode
      * @param string $content
      * @return string
      */
-    public function pkun_enquiry($atts, $content = null)
+    public function EM_KIT_enquiry($atts, $content = null)
     {
         wp_enqueue_script('pkun-enquiry-script');
         wp_enqueue_style('pkun-style');
 
-        // wp_localize_script('pkun-enquiry-script', 'pkun_data', [
+        // wp_localize_script('pkun-enquiry-script', 'EM_KIT_data', [
         //     'ajax_url' => admin_url('admin-ajax.php'),
         //     'message' => __('Message from enquiry form', 'pkun'),
         // ]);

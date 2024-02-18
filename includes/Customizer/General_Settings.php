@@ -32,7 +32,7 @@ class General_Settings
         Kirki::add_section('chawkbazar_general_section', [
             'title'       => esc_html__('General', 'pkun'),
             'description' => esc_html__('General theme settings', 'pkun'),
-            'panel'       => 'pkun_config_panel',
+            'panel'       => 'EM_KIT_config_panel',
             'priority'    => 160,
         ]);
     }
@@ -45,7 +45,7 @@ class General_Settings
     public function general_settings()
     {
         // section choosing key : chawkbazar_general_section
-        Kirki::add_field('pkun_config', [
+        Kirki::add_field('EM_KIT_config', [
             'type'        => 'select',
             'settings'    => 'site_loader',
             'label'       => esc_html__('Site loader', 'pkun'),

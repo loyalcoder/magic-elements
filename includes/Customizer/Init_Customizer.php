@@ -22,12 +22,12 @@ class Init_Customizer
      */
     public function initPanel()
     {
-        Kirki::add_config('pkun_config', [
+        Kirki::add_config('EM_KIT_config', [
             'capability'  => 'edit_theme_options',
             'option_type' => 'theme_mod',
         ]);
 
-        Kirki::add_panel('pkun_config_panel', [
+        Kirki::add_panel('EM_KIT_config_panel', [
             'priority'    => 10,
             'title'       => esc_html__('Pkun Options', 'pkun'),
             'description' => esc_html__('Pkun Options description', 'pkun'),

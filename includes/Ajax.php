@@ -5,15 +5,15 @@ namespace Pkun;
 /**
  * Ajax class
  */
-class Pkun_Ajax
+class EM_KIT_Ajax
 {
     /**
      * Initialize ajax class
      */
     public function __construct()
     {
-        add_action('wp_ajax_pkun_enquiry', [$this, 'pkun_enquiry']);
-        add_action('wp_ajax_nopriv_pkun_enquiry', [$this, 'pkun_enquiry']);
+        add_action('wp_ajax_EM_KIT_enquiry', [$this, 'EM_KIT_enquiry']);
+        add_action('wp_ajax_nopriv_EM_KIT_enquiry', [$this, 'EM_KIT_enquiry']);
     }
 
     /**
@@ -21,7 +21,7 @@ class Pkun_Ajax
      *
      * @return array
      */
-    public function pkun_enquiry()
+    public function EM_KIT_enquiry()
     {
         if (!wp_verify_nonce($_REQUEST['_wpnonce'], 'pkun-enquiry-form')) {
             wp_send_json_error([

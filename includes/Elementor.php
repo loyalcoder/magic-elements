@@ -38,7 +38,7 @@ class Load_Elementor
 
         foreach ($scripts as $handle => $script) {
             $deps    = isset($script['deps']) ? $script['deps'] : false;
-            $version = isset($script['version']) ? $script['version'] : PKUN_VERSION;
+            $version = isset($script['version']) ? $script['version'] : EM_KIT_VERSION;
             wp_register_script($handle, $script['src'], $deps, $version, true);
             wp_enqueue_script($handle);
         }
@@ -98,8 +98,8 @@ class Load_Elementor
     {
         return [
             'pkun' => [
-                'src'     => PKUN_ASSETS . '/js/pkun.js',
-                'version' => filemtime(PKUN_PATH . '/assets/js/pkun.js'),
+                'src'     => EM_KIT_ASSETS . '/js/pkun.js',
+                'version' => filemtime(EM_KIT_PATH . '/assets/js/pkun.js'),
                 'deps'    => ['jquery']
             ],
         ];
@@ -116,8 +116,8 @@ class Load_Elementor
         return [
 
             'pkun' => [
-                'src'     => PKUN_ASSETS . '/css/pkun.css',
-                'version' => filemtime(PKUN_PATH . '/assets/css/pkun.css'),
+                'src'     => EM_KIT_ASSETS . '/css/pkun.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/css/pkun.css'),
             ]
         ];
     }
@@ -152,7 +152,7 @@ class Load_Elementor
         }
 
         foreach ($widget_list as $handle => $widget) {
-            $file = PKUN_ELEMENTOR . $widget . '.php';
+            $file = EM_KIT_ELEMENTOR . $widget . '.php';
             if (file_exists($file)) {
                 continue;
             }
@@ -161,14 +161,14 @@ class Load_Elementor
 
         foreach ($scripts as $handle => $script) {
             $deps    = isset($script['deps']) ? $script['deps'] : false;
-            $version = isset($script['version']) ? $script['version'] : PKUN_VERSION;
+            $version = isset($script['version']) ? $script['version'] : EM_KIT_VERSION;
             wp_register_script($handle, $script['src'], $deps, $version, true);
             // wp_enqueue_script($handle);
         }
 
         foreach ($styles as $handle => $style) {
             $deps = isset($style['deps']) ? $style['deps'] : false;
-            $version = isset($style['version']) ? $style['version'] : PKUN_VERSION;
+            $version = isset($style['version']) ? $style['version'] : EM_KIT_VERSION;
             wp_register_style($handle, $style['src'], $deps, $version);
             // wp_enqueue_style($handle);
         }

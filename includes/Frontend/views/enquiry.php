@@ -24,7 +24,7 @@
 
             <?php wp_nonce_field('pkun-enquiry-form'); ?>
 
-            <input type="hidden" class="hidden" name="action" value="pkun_enquiry" />
+            <input type="hidden" class="hidden" name="action" value="EM_KIT_enquiry" />
             <input type="submit" class="submit-enquiry" name="send_enquiry" value="<?php esc_attr_e('Send Enquiry', 'pkun'); ?>" />
         </div>
 

@@ -36,7 +36,7 @@ class Hello_World extends Widget_Base
      */
     public function get_name()
     {
-        return 'pkun_hello_world';
+        return 'EM_KIT_hello_world';
     }
 
     /**

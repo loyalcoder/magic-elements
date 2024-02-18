@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name:       Pkun - Boilerplate for WordPress Plugin
+ * Plugin Name:       Elementor Magic kit
  * Plugin URI:        https://marlink-checkout.com
  * Description:       Boilerplate for WordPress Plugin
  * Version:           1.0.0
@@ -9,19 +9,19 @@
  * Author URI:        https://wildrain.net
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       pkun
+ * Text Domain:       elementor-magic-kit
  */
 
 if (!defined('ABSPATH')) {
     exit;
 }
 
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/autoloader.php';
 
 /**
  * Main plugin class
  */
-final class Pkun
+final class Elementor_Magic_Kit
 {
     /**
      * Plugin version
@@ -44,7 +44,7 @@ final class Pkun
     /**
      * Initialize singleton instance
      *
-     * @return \Pkun
+     * @return \Elementor_Magic_Kit
      */
     public static function init()
     {
@@ -64,13 +64,13 @@ final class Pkun
      */
     public function define_constants()
     {
-        define('PKUN_VERSION', self::version);
-        define('PKUN_FILE', __FILE__);
-        define('PKUN_PATH', __DIR__);
-        define('PKUN_URL', plugins_url('', PKUN_FILE));
-        define('PKUN_ASSETS', PKUN_URL . '/assets');
-        define('PKUN_DIR_PATH', plugin_dir_path(__FILE__));
-        define('PKUN_ELEMENTOR', PKUN_DIR_PATH . 'includes/Elementor/');
+        define('EM_KIT_VERSION', self::version);
+        define('EM_KIT_FILE', __FILE__);
+        define('EM_KIT_PATH', __DIR__);
+        define('EM_KIT_URL', plugins_url('', EM_KIT_FILE));
+        define('EM_KIT_ASSETS', EM_KIT_URL . '/assets');
+        define('EM_KIT_DIR_PATH', plugin_dir_path(__FILE__));
+        define('EM_KIT_ELEMENTOR', EM_KIT_DIR_PATH . 'includes/Elementor/');
     }
 
     /**
@@ -80,9 +80,9 @@ final class Pkun
      */
     public function activate()
     {
-        $installer = new Pkun\Installer();
+        // $installer = new Pkun\Installer();
 
-        $installer->run();
+        // $installer->run();
     }
 
     /**
@@ -92,27 +92,27 @@ final class Pkun
      */
     public function init_plugin()
     {
-        new Pkun\Assets();
-        new Pkun\Pkun_Ajax();
-        new Pkun\Load_Elementor();
-        new Pkun\Generator();
-        new Pkun\Customizer();
-        if (is_admin()) {
-            new Pkun\Admin();
-        } else {
-            new Pkun\Frontend();
-        }
+        // new Pkun\Assets();
+        // new Pkun\EM_KIT_Ajax();
+        // new Pkun\Load_Elementor();
+        // new Pkun\Generator();
+        // new Pkun\Customizer();
+        // if (is_admin()) {
+        //     new Pkun\Admin();
+        // } else {
+        //     new Pkun\Frontend();
+        // }
     }
 }
 
 /**
  * Initialize main plugin
  *
- * @return \Pkun
+ * @return \Elementor_Magic_Kit
  */
-function pkun()
+function elementor_magic_kit()
 {
-    return Pkun::init();
+    return Elementor_Magic_Kit::init();
 }
 
-pkun();
+elementor_magic_kit();
