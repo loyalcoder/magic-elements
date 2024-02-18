@@ -1,6 +1,6 @@
 <?php
 
-namespace Pkun\Admin;
+namespace Elementor_Magic_Kit\Admin;
 
 class Handler
 {

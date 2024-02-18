@@ -80,7 +80,7 @@ final class Elementor_Magic_Kit
      */
     public function activate()
     {
-        $installer = new Pkun\Installer();
+        $installer = new Elementor_Magic_Kit\Installer();
 
         $installer->run();
     }
@@ -92,15 +92,12 @@ final class Elementor_Magic_Kit
      */
     public function init_plugin()
     {
-        new Pkun\Assets();
-        new Pkun\EM_KIT_Ajax();
-        new Pkun\Load_Elementor();
-        new Pkun\Generator();
-        new Pkun\Customizer();
+        new Elementor_Magic_Kit\Assets();
+        new Elementor_Magic_Kit\EM_KIT_Ajax();
+        new Elementor_Magic_Kit\Load_Elementor();
+        new Elementor_Magic_Kit\Generator();
         if (is_admin()) {
-            new Pkun\Admin();
-        } else {
-            new Pkun\Frontend();
+            new Elementor_Magic_Kit\Admin();
         }
     }
 }

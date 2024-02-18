@@ -1,6 +1,6 @@
 <?php
 
-namespace Pkun;
+namespace Elementor_Magic_Kit;
 
 /**
  * Assets class handler

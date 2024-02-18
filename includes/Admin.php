@@ -1,6 +1,6 @@
 <?php
 
-namespace Pkun;
+namespace Elementor_Magic_Kit;
 
 class Admin
 {
@@ -11,13 +11,5 @@ class Admin
     {
         new Admin\Menu();
         new Admin\Handler();
-        new Admin\CMB2();
-
-        // CMB2 example and custom fields
-        // new Admin\CMB2_Sample();
-        // new Library\CMB2\CMB2_Switch_Button();
-        // new Library\CMB2\PW_CMB2_Field_Select2();
-        //End CMB2 example and custom fields
-
     }
 }

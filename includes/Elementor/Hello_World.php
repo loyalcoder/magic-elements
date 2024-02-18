@@ -7,7 +7,7 @@
  */
 
 
-namespace Pkun\Elementor;
+namespace Elementor_Magic_Kit\Elementor;
 
 use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
