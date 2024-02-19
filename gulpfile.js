@@ -42,23 +42,68 @@
 import gulp from 'gulp';
 import sourcemaps from 'gulp-sourcemaps';
 import autoprefixer from 'gulp-autoprefixer';
-import dartSass from 'sass';
+import * as dartSass from 'sass';
 import gulpSass from 'gulp-sass';
-const sass = gulpSass( dartSass );
+import { fileURLToPath } from 'url';
+import path from 'path';
+import cleanCSS from 'gulp-clean-css';
+import rename from 'gulp-rename';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
+const sass = gulpSass(dartSass);
 
 const paths = {
     styles: {
-        src : ['assets/src/scss/admin/admin.scss'],
+        src: [
+            'assets/src/scss/admin/admin.scss',
+            'assets/src/scss/elementor/widges-1.scss'
+        ],
         dest: 'assets/css'
     },
 };
-export default () => (
-	gulp.src(paths.styles.src)
-		.pipe(sourcemaps.init())
-		.pipe(autoprefixer())
+
+// Define a task to compile SCSS to CSS
+export const styles = () => (
+    gulp.src(paths.styles.src)
+        .pipe(sourcemaps.init())
+        .pipe(autoprefixer())
         .pipe(sass().on('error', sass.logError)) // Compile SCSS to CSS
-		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(paths.styles.dest))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest((file) => {
+            // Get the directory name of the source file
+            const dirname = path.dirname(file.path);
+            // Get the relative path from the source directory to the file
+            const relativeDir = path.relative(path.join(__dirname, 'assets/src/scss'), dirname);
+            // Concatenate the destination directory with the source file's relative directory
+            return path.join(__dirname, 'assets/css', relativeDir);
+        }))
 );
+export const minifyStyles = () => (
+    gulp.src(paths.styles.src)
+        .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer())
+        .pipe(sourcemaps.init()) // Initialize sourcemaps
+        .pipe(cleanCSS({ compatibility: 'ie8' })) // Minify CSS
+        .pipe(sourcemaps.write()) // Write sourcemaps
+        .pipe(rename({ suffix: '.min' })) // Add .min suffix to filename
+        .pipe(gulp.dest((file) => {
+            // Get the directory name of the source file
+            const dirname = path.dirname(file.path);
+            // Get the relative path from the source directory to the file
+            const relativeDir = path.relative(path.join(__dirname, 'assets/src/scss'), dirname);
+            // Concatenate the destination directory with the source file's relative directory
+            return path.join(__dirname, 'assets/css', relativeDir);
+        }))
+);
+
+// Define a task to watch for changes in SCSS files
+export const watch = () => {
+    gulp.watch('assets/src/scss/**/*.scss', styles); // Watch for changes in SCSS files and trigger the styles task
+};
+// Task to build for production (minified CSS)
+export const build = gulp.series(minifyStyles);
+
+// Create a default task that runs the watch task by default
+export default watch;
