@@ -1,0 +1,35 @@
+{
+  "name": "elementor-magic-kit",
+  "version": "1.0.0",
+  "description": "**Contributors:**      [Nayeem Farid](https://github.com/wildrain)   **Thanks to:**      [johnbillion](https://github.com/johnbillion/extended-cpts), [CMB2](https://github.com/CMB2/CMB2)",
+  "main": "index.js",
+  "scripts": {
+    "dev_script": "webpack --mode=development --watch",
+    "build_script": "webpack --mode=production"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.17",
+    "css-loader": "^6.10.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^9.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "postcss-loader": "^8.1.0",
+    "sass": "^1.71.0",
+    "sass-loader": "^14.1.0",
+    "style-loader": "^3.3.4",
+    "webpack": "^5.90.2",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-if": "^3.0.0",
+    "yargs": "^17.7.2"
+  },
+  "type": "module"
+}
