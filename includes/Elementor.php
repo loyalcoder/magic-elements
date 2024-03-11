@@ -61,6 +61,13 @@ class Load_Elementor
                 'icon'  => 'eicon-font',
             ]
         );
+        $elementor->add_category(
+            'emk-widgets',
+            [
+                'title' =>  __('Elementor Magic Kit', 'elementor-magic-kit'),
+                'icon'  => 'eicon-font',
+            ]
+        );
 
         return $elementor;
     }

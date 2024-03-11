@@ -1,1 +1,1 @@
-{"version":3,"sources":["widges-1.scss"],"names":[],"mappings":"AAAA;EACI;EACA;;;AAEJ;EACI","file":"widges-1.css","sourcesContent":["p{\n    font-weight: 500;\n    font-size: large;\n}\nbody{\n    background-color: rebeccapurple;\n    }"]}
+{"version":3,"sources":["widges-1.scss"],"names":[],"mappings":"AAAA;EACI;EACA;;;AAEJ;EACI","file":"widges-1.css","sourcesContent":["p{\r\n    font-weight: 500;\r\n    font-size: large;\r\n}\r\nbody{\r\n    background-color: rebeccapurple;\r\n    }"]}

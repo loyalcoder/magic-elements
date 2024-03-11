@@ -3,7 +3,7 @@
 /**
  * Elementor Classes.
  *
- * @package Header Footer Elementor
+ * @package Button Elementor Magic Kit
  */
 
 
@@ -17,9 +17,9 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * Elementor test
+ * Magic Kit for Elementor Extension
  *
- * Elementor widget for test.
+ * Elementor widget for Button.
  *
  * @since 1.0.0
  */
@@ -36,7 +36,7 @@ class Button extends Widget_Base
      */
     public function get_name()
     {
-        return 'EM_KIT_button';
+        return 'em_kit_button';
     }
 
     /**
@@ -64,7 +64,7 @@ class Button extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-search-results';
+        return 'eicon-button';
     }
 
     /**
@@ -83,12 +83,12 @@ class Button extends Widget_Base
      */
     public function get_categories()
     {
-        return ['pkun-widgets'];
+        return ['emk-widgets'];
     }
 
-    public function get_script_depends()
+    public function get_style_depends()
     {
-        return [];
+        return ['emk-button'];
     }
 
     /**
@@ -99,7 +99,7 @@ class Button extends Widget_Base
      */
     protected function register_controls()
     {
-        $this->register_hello_world_controls();
+        $this->register_button_controls();
     }
 
     /**
@@ -108,95 +108,236 @@ class Button extends Widget_Base
      * @since 1.0.0
      * @access protected
      */
-    protected function register_hello_world_controls()
+    protected function register_button_controls()
     {
         $this->start_controls_section(
-            'section_title',
+            'section_button',
             [
-                'label' => __('Hello World Settings', 'pkun'),
+                'label' => esc_html__('Button', 'pkun'),
             ]
         );
 
         $this->add_control(
-            'title',
+			'button_type',
+			[
+				'label' => esc_html__( 'Type', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => '',
+				'options' => [
+					'' => esc_html__( 'Default', 'textdomain' ),
+					'info' => esc_html__( 'Info', 'textdomain' ),
+					'success'  => esc_html__( 'Success', 'textdomain' ),
+					'warning' => esc_html__( 'Warning', 'textdomain' ),
+					'danger' => esc_html__( 'Danger', 'textdomain' ),
+				],
+				'selectors' => [
+					'{{WRAPPER}} .your-class' => 'button-style: {{VALUE}};',
+				],
+			]
+		);
+
+        $this->add_control(
+            'text',
             [
-                'label'       => __('Title', 'pkun'),
+                'label'       => esc_html__('Text', 'pkun'),
                 'type'        => Controls_Manager::TEXT,
-                'label_block' => true,
-                'default'     => __('Hello World', 'pkun'),
+                'label_block' => false,
+                'default'     => esc_html__('Click here', 'pkun'),
                 'dynamic'     => [
                     'active' => true,
                 ],
             ]
         );
 
-        
+        $this->add_control(
+			'link',
+			[
+				'label' => esc_html__( 'Link', 'elementor' ),
+				'type' => Controls_Manager::URL,
+				'dynamic' => [
+					'active' => true,
+				],
+				'default' => [
+					'url' => '#',
+				],
+				'label_block' => true,
+			]
+		);
+
+        $this->add_control(
+			'align',
+			[
+				'label' => esc_html__( 'Alignment', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'textdomain' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'textdomain' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'textdomain' ),
+						'icon' => 'eicon-text-align-right',
+					],
+                    'justify' => [
+						'title' => esc_html__( 'Justified', 'elementor' ),
+						'icon' => 'eicon-text-align-justify',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .your-class' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+
+        $this->add_control(
+			'size',
+			[
+				'label' => esc_html__( 'Size', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'sm',
+				'options' => [
+					'xs' => esc_html__( 'Extra Small', 'elementor' ),
+                    'sm' => esc_html__( 'Small', 'elementor' ),
+                    'md' => esc_html__( 'Medium', 'elementor' ),
+                    'lg' => esc_html__( 'Large', 'elementor' ),
+                    'xl' => esc_html__( 'Extra Large', 'elementor' ),
+				],
+				'selectors' => [
+					'{{WRAPPER}} .your-class' => 'border-style: {{VALUE}};',
+				],
+			]
+		);
+
+        $this->add_control(
+			'icon',
+			[
+				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-circle',
+					'library' => 'fa-solid',
+				],
+			]
+		);
+
+        $this->add_control(
+			'icon_align',
+			[
+				'label' => esc_html__( 'Icon Position', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'left',
+				'options' => [
+					'left' => esc_html__( 'Before', 'elementor' ),
+					'right' => esc_html__( 'After', 'elementor' ),
+				],
+				'selectors' => [
+					'{{WRAPPER}} .your-class' => 'icon-style: {{VALUE}};',
+				],
+			]
+		);
+
+        $this->add_control(
+			'icon_indent',
+			[
+				'label' => esc_html__( 'Icon Spacing', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'max' => 50,
+					],
+					'em' => [
+						'max' => 5,
+					],
+					'rem' => [
+						'max' => 5,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .your-class' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .your-class' => 'margin-right: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
 
         $this->end_controls_section();
 
         // Style section
         // --- Container section
         $this->start_controls_section(
-            $this->get_name() . 'container_style_section',
+            $this->get_name() . 'button_style_section',
             [
-                'label' => __('Container', 'pkun'),
+                'label' => esc_html__('Button', 'pkun'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
 
-        $this->add_responsive_control(
-            $this->get_name() . 'banner_container_height',
-            [
-                'label' => __('Min Height', 'pkun'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px'],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 1000,
-                        'step' => 1,
-                    ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .banner__slider__wraper' => 'min-height: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'typography',
+				'selector' => '{{WRAPPER}} .your-class',
+			]
+		);
 
-        $this->add_responsive_control(
-            $this->get_name() . 'bg__color',
-            [
-                'label' => __('Background Color', 'pkun'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .banner__slider__wraper' => 'background-color: {{VALUE}}',
-                ],
-            ]
-        );
+        $this->add_group_control(
+			\Elementor\Group_Control_Text_Shadow::get_type(),
+			[
+				'name' => 'text_shadow',
+				'selector' => '{{WRAPPER}} .your-class',
+			]
+		);
 
-        $this->add_responsive_control(
-            $this->get_name() . 'banner_container_spacing',
-            [
-                'label' => __('Padding', 'pkun'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em'],
-                'selectors' => [
-                    '{{WRAPPER}} .banner__slider__wraper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
+        $this->start_controls_tabs(
+			'style_tabs'
+		);
 
-        $this->add_responsive_control(
-            $this->get_name() . 'bg_overlay_color',
-            [
-                'label' => __('Overlay Color', 'pkun'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                // 'devices'   => ['mobile', 'tablet'],
-                'selectors' => [
-                    '{{WRAPPER}} .banner__slider__wraper:before' => 'background-color: {{VALUE}}',
-                ],
-            ]
-        );
+		$this->start_controls_tab(
+			'style_normal_tab',
+			[
+				'label' => esc_html__( 'Normal', 'textdomain' ),
+			]
+		);
+
+        $this->add_control(
+			'button_text_color',
+			[
+				'label' => esc_html__( 'Text Color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .your-class' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .your-class',
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'style_hover_tab',
+			[
+				'label' => esc_html__( 'Hover', 'textdomain' ),
+			]
+		);
+
+		
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
 
         $this->end_controls_section();
     }
@@ -212,7 +353,7 @@ class Button extends Widget_Base
     protected function render()
     {
         $settings    = $this->get_settings_for_display();
-        include __DIR__ . '/layouts/hello-world.php';
+        include __DIR__ . '/layouts/button/button.php';
     }
 
     /**
