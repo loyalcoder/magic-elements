@@ -113,36 +113,34 @@ class Button extends Widget_Base
         $this->start_controls_section(
             'section_button',
             [
-                'label' => esc_html__('Button', 'pkun'),
+                'label' => esc_html__('Button', 'elementor-magic-kit'),
             ]
         );
 
         $this->add_control(
 			'button_type',
 			[
-				'label' => esc_html__( 'Type', 'textdomain' ),
+				'label' => esc_html__( 'Type', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'default' => '',
 				'options' => [
-					'' => esc_html__( 'Default', 'textdomain' ),
-					'info' => esc_html__( 'Info', 'textdomain' ),
-					'success'  => esc_html__( 'Success', 'textdomain' ),
-					'warning' => esc_html__( 'Warning', 'textdomain' ),
-					'danger' => esc_html__( 'Danger', 'textdomain' ),
+					'' => esc_html__( 'Default', 'elementor-magic-kit' ),
+					'info' => esc_html__( 'Info', 'elementor-magic-kit' ),
+					'success'  => esc_html__( 'Success', 'elementor-magic-kit' ),
+					'warning' => esc_html__( 'Warning', 'elementor-magic-kit' ),
+					'danger' => esc_html__( 'Danger', 'elementor-magic-kit' ),
 				],
-				'selectors' => [
-					'{{WRAPPER}} .your-class' => 'button-style: {{VALUE}};',
-				],
+				'prefix_class' => 'emk-button-',
 			]
 		);
 
         $this->add_control(
             'text',
             [
-                'label'       => esc_html__('Text', 'pkun'),
+                'label'       => esc_html__('Text', 'elementor-magic-kit'),
                 'type'        => Controls_Manager::TEXT,
                 'label_block' => false,
-                'default'     => esc_html__('Click here', 'pkun'),
+                'default'     => esc_html__('Click here', 'elementor-magic-kit'),
                 'dynamic'     => [
                     'active' => true,
                 ],
@@ -152,7 +150,7 @@ class Button extends Widget_Base
         $this->add_control(
 			'link',
 			[
-				'label' => esc_html__( 'Link', 'elementor' ),
+				'label' => esc_html__( 'Link', 'elementor-magic-kit' ),
 				'type' => Controls_Manager::URL,
 				'dynamic' => [
 					'active' => true,
@@ -167,19 +165,19 @@ class Button extends Widget_Base
         $this->add_control(
 			'align',
 			[
-				'label' => esc_html__( 'Alignment', 'textdomain' ),
+				'label' => esc_html__( 'Alignment', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'textdomain' ),
+						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'textdomain' ),
+						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'textdomain' ),
+						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
 						'icon' => 'eicon-text-align-right',
 					],
                     'justify' => [
@@ -190,7 +188,7 @@ class Button extends Widget_Base
 				'default' => 'center',
 				'toggle' => true,
 				'selectors' => [
-					'{{WRAPPER}} .your-class' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .emk-button-wrapper' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
@@ -198,18 +196,18 @@ class Button extends Widget_Base
         $this->add_control(
 			'size',
 			[
-				'label' => esc_html__( 'Size', 'textdomain' ),
+				'label' => esc_html__( 'Size', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'default' => 'sm',
 				'options' => [
-					'xs' => esc_html__( 'Extra Small', 'elementor' ),
-                    'sm' => esc_html__( 'Small', 'elementor' ),
-                    'md' => esc_html__( 'Medium', 'elementor' ),
-                    'lg' => esc_html__( 'Large', 'elementor' ),
-                    'xl' => esc_html__( 'Extra Large', 'elementor' ),
+					'xs' => esc_html__( 'Extra Small', 'elementor-magic-kit' ),
+                    'sm' => esc_html__( 'Small', 'elementor-magic-kit' ),
+                    'md' => esc_html__( 'Medium', 'elementor-magic-kit' ),
+                    'lg' => esc_html__( 'Large', 'elementor-magic-kit' ),
+                    'xl' => esc_html__( 'Extra Large', 'elementor-magic-kit' ),
 				],
 				'selectors' => [
-					'{{WRAPPER}} .your-class' => 'border-style: {{VALUE}};',
+					'{{WRAPPER}} .btn a' => 'border-style: {{VALUE}};',
 				],
 			]
 		);
@@ -217,7 +215,7 @@ class Button extends Widget_Base
         $this->add_control(
 			'icon',
 			[
-				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
 				'default' => [
 					'value' => 'fas fa-circle',
@@ -229,12 +227,12 @@ class Button extends Widget_Base
         $this->add_control(
 			'icon_align',
 			[
-				'label' => esc_html__( 'Icon Position', 'textdomain' ),
+				'label' => esc_html__( 'Icon Position', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'default' => 'left',
 				'options' => [
-					'left' => esc_html__( 'Before', 'elementor' ),
-					'right' => esc_html__( 'After', 'elementor' ),
+					'left' => esc_html__( 'Before', 'elementor-magic-kit' ),
+					'right' => esc_html__( 'After', 'elementor-magic-kit' ),
 				],
 				'selectors' => [
 					'{{WRAPPER}} .your-class' => 'icon-style: {{VALUE}};',
@@ -245,7 +243,7 @@ class Button extends Widget_Base
         $this->add_control(
 			'icon_indent',
 			[
-				'label' => esc_html__( 'Icon Spacing', 'textdomain' ),
+				'label' => esc_html__( 'Icon Spacing', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -260,7 +258,7 @@ class Button extends Widget_Base
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .your-class' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .emk-button-icon' => 'margin-left: {{SIZE}}{{UNIT}};',
 					'{{WRAPPER}} .your-class' => 'margin-right: {{SIZE}}{{UNIT}};',
 				],
 			]
@@ -273,7 +271,7 @@ class Button extends Widget_Base
         $this->start_controls_section(
             $this->get_name() . 'button_style_section',
             [
-                'label' => esc_html__('Button', 'pkun'),
+                'label' => esc_html__('Button', 'elementor-magic-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -282,7 +280,7 @@ class Button extends Widget_Base
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'typography',
-				'selector' => '{{WRAPPER}} .your-class',
+				'selector' => '{{WRAPPER}} .emk-button',
 			]
 		);
 
@@ -290,7 +288,7 @@ class Button extends Widget_Base
 			\Elementor\Group_Control_Text_Shadow::get_type(),
 			[
 				'name' => 'text_shadow',
-				'selector' => '{{WRAPPER}} .your-class',
+				'selector' => '{{WRAPPER}} .emk-button-text',
 			]
 		);
 
@@ -301,17 +299,17 @@ class Button extends Widget_Base
 		$this->start_controls_tab(
 			'style_normal_tab',
 			[
-				'label' => esc_html__( 'Normal', 'textdomain' ),
+				'label' => esc_html__( 'Normal', 'elementor-magic-kit' ),
 			]
 		);
 
         $this->add_control(
 			'button_text_color',
 			[
-				'label' => esc_html__( 'Text Color', 'textdomain' ),
+				'label' => esc_html__( 'Text Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .your-class' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .emk-button-text' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -321,7 +319,8 @@ class Button extends Widget_Base
 			[
 				'name' => 'background',
 				'types' => [ 'classic', 'gradient', 'video' ],
-				'selector' => '{{WRAPPER}} .your-class',
+                'exclude' => [ 'image' ],
+				'selector' => '{{WRAPPER}} .emk-button',
 			]
 		);
 
@@ -330,7 +329,47 @@ class Button extends Widget_Base
 		$this->start_controls_tab(
 			'style_hover_tab',
 			[
-				'label' => esc_html__( 'Hover', 'textdomain' ),
+				'label' => esc_html__( 'Hover', 'elementor-magic-kit' ),
+			]
+		);
+
+        $this->add_control(
+			'hover_color',
+			[
+				'label' => esc_html__( 'Text Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .emk-button-text:hover' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'button_background_hover',
+				'types' => [ 'classic', 'gradient', 'video' ],
+                'exclude' => [ 'image' ],
+				'selector' => '{{WRAPPER}} .emk-button:hover',
+			]
+		);
+
+        $this->add_control(
+			'button_hover_border_color',
+			[
+				'label' => esc_html__( 'Border Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .emk-button-text:hover, {{WRAPPER}} .emk-button-text:focus' => 'border-color: {{VALUE}};',
+				],
+			]
+		);
+
+        $this->add_control(
+			'hover_animation',
+			[
+				'label' => esc_html__( 'Hover Animation', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::HOVER_ANIMATION,
 			]
 		);
 
@@ -338,6 +377,38 @@ class Button extends Widget_Base
 		$this->end_controls_tab();
 
 		$this->end_controls_tabs();
+
+        $this->add_responsive_control(
+			'border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .emk-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+        $this->add_group_control(
+			\Elementor\Group_Control_Text_Shadow::get_type(),
+			[
+				'name' => 'button_box_shadow',
+				'selector' => '{{WRAPPER}} .emk-button-text',
+			]
+		);
+
+        $this->add_responsive_control(
+			'text_padding',
+			[
+				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'vw', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .emk-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 
         $this->end_controls_section();
     }
