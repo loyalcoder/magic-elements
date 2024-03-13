@@ -76,6 +76,7 @@ class Load_Elementor
         $this->includeWidgetsFiles();
 
         Plugin::instance()->widgets_manager->register(new Elementor\Hello_World());
+        Plugin::instance()->widgets_manager->register(new Elementor\Image());
     }
 
     /**
@@ -132,6 +133,7 @@ class Load_Elementor
     {
         return [
             'Hello_World',
+            'Image'
         ];
     }
 
