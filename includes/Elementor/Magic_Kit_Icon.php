@@ -50,7 +50,7 @@ class Magic_Kit_Icon extends Widget_Base
      */
     public function get_title()
     {
-        return __('Icon Box', 'pkun');
+        return __('Icon Box', 'elementor-magic-kit');
     }
 
     /**
@@ -83,7 +83,7 @@ class Magic_Kit_Icon extends Widget_Base
      */
     public function get_categories()
     {
-        return ['pkun-widgets'];
+        return ['elementor-magic-kit-widgets'];
     }
 
     public function get_script_depends()
@@ -113,13 +113,13 @@ class Magic_Kit_Icon extends Widget_Base
         $this->start_controls_section(
             'section_title',
             [
-                'label' => __('Icon Box Settings', 'pkun'),
+                'label' => __('Icon Box Settings', 'elementor-magic-kit'),
             ]
         );
         $this->add_control(
 			'icon',
 			[
-				'label' => esc_html__( 'Icon', 'pkun' ),
+				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
 				'default' => [
 					'value' => 'fas fa-star',
@@ -130,10 +130,20 @@ class Magic_Kit_Icon extends Widget_Base
         $this->add_control(
 			'icon_box_title',
 			[
-				'label' => esc_html__( 'Title', 'pkun' ),
+				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Default title', 'pkun' ),
-				'placeholder' => esc_html__( 'Type your title here', 'pkun' ),
+				'default' => esc_html__( 'Default title', 'elementor-magic-kit' ),
+				'placeholder' => esc_html__( 'Type your title here', 'elementor-magic-kit' ),
+			]
+		);
+        $this->add_control(
+			'icon_box_description',
+			[
+				'label' => esc_html__( 'Description', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'rows' => 7,
+				'default' => esc_html__( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ', 'elementor-magic-kit' ),
+				'placeholder' => esc_html__( 'Type your description here', 'elementor-magic-kit' ),
 			]
 		);
 
@@ -142,13 +152,123 @@ class Magic_Kit_Icon extends Widget_Base
         // Style section
         // --- Container section
         $this->start_controls_section(
-            $this->get_name() . 'container_style_section',
+            $this->get_name() . 'icon_box_style_section',
             [
-                'label' => __('Container', 'pkun'),
+                'label' => __('Box', 'elementor-magic-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
+        $this->add_control(
+			'icon_position',
+			[
+				'label' => esc_html__( 'Icon Position', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'icon' => 'eicon-h-align-left',
+					],
+					'top' => [
+						'title' => esc_html__( 'Top', 'elementor-magic-kit' ),
+						'icon' => 'eicon-v-align-top',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'icon' => 'eicon-h-align-right',
+					],
+				],
+				'default' => 'top',
+				'mobile_default' => 'top',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .icon-wrapper' => 'display: {{VALUE}};',
+				],
+			]
+		);
 
+        $this->end_controls_section();
+
+        // Icon control ====================================
+        $this->start_controls_section(
+            $this->get_name() . 'icon_style_section',
+            [
+                'label' => __('Icon', 'elementor-magic-kit'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_control(
+			'icon_color',
+			[
+				'label' => esc_html__( 'Icon Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .icon-wrapper .magic-kit-icon svg path' => 'fill: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'icon_size',
+			[
+				'label' => esc_html__( 'Size', 'elementor-magic-kit' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'vw', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 6,
+						'max' => 300,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .magic-kit-icon' => 'font-size: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+        $this->end_controls_section();
+
+        // content ==================================
+        $this->start_controls_section(
+            $this->get_name() . 'icon_content_section',
+            [
+                'label' => __('Content', 'elementor-magic-kit'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_control(
+			'heading_title',
+			[
+				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+        $this->add_control(
+			'title_color',
+			[
+				'label' => esc_html__( 'Title Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .icon-box-content .magic-kit-icon-title h2.title' => 'color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_control(
+			'heading_description',
+			[
+				'label' => esc_html__( 'Description', 'elementor-magic-kit' ),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+        $this->add_control(
+			'description_color',
+			[
+				'label' => esc_html__( 'Description Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .icon-box-content .magic-kit-icon-description p.description' => 'color: {{VALUE}}',
+				],
+			]
+		);
         $this->end_controls_section();
     }
 

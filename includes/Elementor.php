@@ -55,9 +55,9 @@ class Load_Elementor
     public function register_category($elementor)
     {
         $elementor->add_category(
-            'pkun-widgets',
+            'elementor-magic-kit-widgets',
             [
-                'title' =>  __('Pkun Widgets', 'pkun'),
+                'title' =>  __('Magic Kit Widgets', 'elementor-magic-kit'),
                 'icon'  => 'eicon-font',
             ]
         );
