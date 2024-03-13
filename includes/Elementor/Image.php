@@ -173,7 +173,6 @@ class Image extends Widget_Base
         $this->end_controls_section();
 
         // Style section
-        // --- Style section
         $this->start_controls_section(
             $this->get_name() .'style_section',
 			[
