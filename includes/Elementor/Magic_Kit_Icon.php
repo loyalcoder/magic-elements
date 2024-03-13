@@ -50,7 +50,7 @@ class Magic_Kit_Icon extends Widget_Base
      */
     public function get_title()
     {
-        return __('Hello World', 'pkun');
+        return __('Icon Box', 'pkun');
     }
 
     /**
@@ -64,7 +64,7 @@ class Magic_Kit_Icon extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-search-results';
+        return 'eicon-social-icons';
     }
 
     /**
@@ -113,24 +113,29 @@ class Magic_Kit_Icon extends Widget_Base
         $this->start_controls_section(
             'section_title',
             [
-                'label' => __('Hello World Settings', 'pkun'),
+                'label' => __('Icon Box Settings', 'pkun'),
             ]
         );
-
         $this->add_control(
-            'title',
-            [
-                'label'       => __('Title', 'pkun'),
-                'type'        => Controls_Manager::TEXT,
-                'label_block' => true,
-                'default'     => __('Hello World', 'pkun'),
-                'dynamic'     => [
-                    'active' => true,
-                ],
-            ]
-        );
-
-        
+			'icon',
+			[
+				'label' => esc_html__( 'Icon', 'pkun' ),
+				'type' => \Elementor\Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-star',
+					'library' => 'fa-solid',
+				],
+			]
+		);
+        $this->add_control(
+			'icon_box_title',
+			[
+				'label' => esc_html__( 'Title', 'pkun' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Default title', 'pkun' ),
+				'placeholder' => esc_html__( 'Type your title here', 'pkun' ),
+			]
+		);
 
         $this->end_controls_section();
 
@@ -141,60 +146,6 @@ class Magic_Kit_Icon extends Widget_Base
             [
                 'label' => __('Container', 'pkun'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_responsive_control(
-            $this->get_name() . 'banner_container_height',
-            [
-                'label' => __('Min Height', 'pkun'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px'],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 1000,
-                        'step' => 1,
-                    ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .banner__slider__wraper' => 'min-height: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            $this->get_name() . 'bg__color',
-            [
-                'label' => __('Background Color', 'pkun'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .banner__slider__wraper' => 'background-color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            $this->get_name() . 'banner_container_spacing',
-            [
-                'label' => __('Padding', 'pkun'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em'],
-                'selectors' => [
-                    '{{WRAPPER}} .banner__slider__wraper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            $this->get_name() . 'bg_overlay_color',
-            [
-                'label' => __('Overlay Color', 'pkun'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                // 'devices'   => ['mobile', 'tablet'],
-                'selectors' => [
-                    '{{WRAPPER}} .banner__slider__wraper:before' => 'background-color: {{VALUE}}',
-                ],
             ]
         );
 
