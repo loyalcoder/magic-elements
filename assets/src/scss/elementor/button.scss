@@ -1,7 +1,22 @@
+.emk-button-default{
+    background-color: green;
+}
+.emk-color-info{
+    background-color: yellow;
+}
+.emk-color-success{
+    background-color: tomato;
+}
+.emk-color-warning{
+    background-color: gray;
+}
+.emk-color-danger{
+    background-color: aqua;
+}
+
 .emk-button {
     display: inline-block;
     line-height: 1;
-    background-color: #69727d;
     font-size: 15px;
     padding: 12px 24px;
     border-radius: 3px;
@@ -63,6 +78,7 @@
     padding: 25px 50px;
     border-radius: 6px
 }
+
 
 .emk-button .emk-align-icon-right {
     margin-left: 5px;

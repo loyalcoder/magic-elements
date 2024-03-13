@@ -122,15 +122,15 @@ class Button extends Widget_Base
 			[
 				'label' => esc_html__( 'Type', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
-				'default' => '',
+				'default' => 'default',
 				'options' => [
-					'' => esc_html__( 'Default', 'elementor-magic-kit' ),
+					'default' => esc_html__( 'Default', 'elementor-magic-kit' ),
 					'info' => esc_html__( 'Info', 'elementor-magic-kit' ),
 					'success'  => esc_html__( 'Success', 'elementor-magic-kit' ),
 					'warning' => esc_html__( 'Warning', 'elementor-magic-kit' ),
 					'danger' => esc_html__( 'Danger', 'elementor-magic-kit' ),
 				],
-				'prefix_class' => 'emk-button-',
+				// 'prefix_class' => 'emk-button-',
 			]
 		);
 
@@ -138,7 +138,7 @@ class Button extends Widget_Base
             'text',
             [
                 'label'       => esc_html__('Text', 'elementor-magic-kit'),
-                'type'        => Controls_Manager::TEXT,
+                'type'        =>  \Elementor\Controls_Manager::TEXT,
                 'label_block' => false,
                 'default'     => esc_html__('Click here', 'elementor-magic-kit'),
                 'dynamic'     => [
@@ -151,7 +151,7 @@ class Button extends Widget_Base
 			'link',
 			[
 				'label' => esc_html__( 'Link', 'elementor-magic-kit' ),
-				'type' => Controls_Manager::URL,
+				'type' =>  \Elementor\Controls_Manager::URL,
 				'dynamic' => [
 					'active' => true,
 				],
@@ -206,21 +206,20 @@ class Button extends Widget_Base
                     'lg' => esc_html__( 'Large', 'elementor-magic-kit' ),
                     'xl' => esc_html__( 'Extra Large', 'elementor-magic-kit' ),
 				],
-				'selectors' => [
-					'{{WRAPPER}} .btn a' => 'border-style: {{VALUE}};',
-				],
+				// 'selectors' => [
+				// 	'{{WRAPPER}} .emk-button' => 'font-size: {{VALUE}};',
+				// ],
 			]
 		);
 
-        $this->add_control(
-			'icon',
+		$this->add_control(
+			'selected_icon',
 			[
-				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Icon', 'elementor' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
-				'default' => [
-					'value' => 'fas fa-circle',
-					'library' => 'fa-solid',
-				],
+				'fa4compatibility' => 'icon',
+				'skin' => 'inline',
+				'label_block' => false,
 			]
 		);
 
@@ -234,9 +233,9 @@ class Button extends Widget_Base
 					'left' => esc_html__( 'Before', 'elementor-magic-kit' ),
 					'right' => esc_html__( 'After', 'elementor-magic-kit' ),
 				],
-				'selectors' => [
-					'{{WRAPPER}} .your-class' => 'icon-style: {{VALUE}};',
-				],
+				// 'selectors' => [
+				// 	'{{WRAPPER}} .your-class' => 'icon-style: {{VALUE}};',
+				// ],
 			]
 		);
 
@@ -258,8 +257,8 @@ class Button extends Widget_Base
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .emk-button-icon' => 'margin-left: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .your-class' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .emk-align-icon-right' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .emk-align-icon-left' => 'margin-right: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -304,7 +303,7 @@ class Button extends Widget_Base
 		);
 
         $this->add_control(
-			'button_text_color',
+			$this->get_name() . 'button_text_color',
 			[
 				'label' => esc_html__( 'Text Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
@@ -334,7 +333,7 @@ class Button extends Widget_Base
 		);
 
         $this->add_control(
-			'hover_color',
+			$this->get_name() . 'hover_color',
 			[
 				'label' => esc_html__( 'Text Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
@@ -355,7 +354,7 @@ class Button extends Widget_Base
 		);
 
         $this->add_control(
-			'button_hover_border_color',
+			$this->get_name() . 'button_hover_border_color',
 			[
 				'label' => esc_html__( 'Border Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
@@ -366,7 +365,7 @@ class Button extends Widget_Base
 		);
 
         $this->add_control(
-			'hover_animation',
+			$this->get_name() . 'hover_animation',
 			[
 				'label' => esc_html__( 'Hover Animation', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::HOVER_ANIMATION,
@@ -424,6 +423,35 @@ class Button extends Widget_Base
     protected function render()
     {
         $settings    = $this->get_settings_for_display();
+		
+		$this->add_render_attribute( 'wrapper', 'class', 'emk-button-wrapper' );
+
+		$this->add_render_attribute( 'button', 'class', 'emk-button' );
+
+		if ( ! empty( $settings['button_type'] ) ) {
+			$this->add_render_attribute( 'button', 'class', 'emk-color-' . $settings['button_type'] );
+		}
+
+		if ( ! empty( $settings['link']['url'] ) ) {
+			$this->add_link_attributes( 'button', $settings['link'] );
+			$this->add_render_attribute( 'button', 'class', 'ekm-button-link' );
+		}
+
+		if ( ! empty( $settings['size'] ) ) {
+			$this->add_render_attribute( 'button', 'class', 'emk-size-' . $settings['size'] );
+		}
+
+		if ( ! empty( $settings['hover_animation'] ) ) {
+			$this->add_render_attribute( 'button', 'class', 'emk-animation-' . $settings['hover_animation'] );
+		}
+
+		if ( ! empty( $settings['icon_align'] ) ) {
+			$this->add_render_attribute( 'span', 'class', 'emk-align-icon-' . $settings['icon_align'] );
+		}
+        
+		// icon active or none condition
+		// $active_icon = ($settings['selected_icon'] == true) ? 'block' : 'none';
+
         include __DIR__ . '/layouts/button/button.php';
     }
 
