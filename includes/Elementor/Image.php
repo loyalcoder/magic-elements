@@ -201,7 +201,7 @@ class Image extends Widget_Base
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .your-class' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .main_img' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
@@ -305,6 +305,7 @@ class Image extends Widget_Base
 			]
 		);
 // normal-hover-start
+		//normal
         $this->start_controls_tabs(
 			'style_tabs'
 		);
@@ -338,7 +339,7 @@ class Image extends Widget_Base
 			\Elementor\Group_Control_Css_Filter::get_type(),
 			[
 				'name' => 'css_filters',
-				'selector' => '{{WRAPPER}}:hover img',
+				'selector' => '{{WRAPPER}} .main_img',
 			]
 		);
         $this->add_control(
@@ -353,7 +354,7 @@ class Image extends Widget_Base
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name' => 'img_border',
-				'selector' => '{{WRAPPER}} .your-class',
+				'selector' => '{{WRAPPER}} .main_img',
 			]
 		);
         $this->add_responsive_control(
@@ -363,7 +364,7 @@ class Image extends Widget_Base
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
-					'{{WRAPPER}} .img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .main_img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -374,12 +375,12 @@ class Image extends Widget_Base
 				'exclude' => [
 					'box_shadow_position',
 				],
-				'selector' => '{{WRAPPER}} img',
+				'selector' => '{{WRAPPER}} .main_img',
 			]
 		);
 
 		$this->end_controls_tab();
-
+		//hover
 		$this->start_controls_tab(
 			'style_hover_tab',
 			[
@@ -400,7 +401,7 @@ class Image extends Widget_Base
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} img' => 'opacity: {{SIZE}};',
+					'{{WRAPPER}}:hover img' => 'opacity: {{SIZE}};',
 				],
 			]
 		);
@@ -409,7 +410,7 @@ class Image extends Widget_Base
 			\Elementor\Group_Control_Css_Filter::get_type(),
 			[
 				'name' => 'css_filters_hover',
-				'selector' => '{{WRAPPER}}:hover img',
+				'selector' => '{{WRAPPER}}:hover .main_img',
 			]
 		);
 
@@ -451,7 +452,7 @@ class Image extends Widget_Base
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name' => 'img_border_hover',
-				'selector' => '{{WRAPPER}} .your-class',
+				'selector' => '{{WRAPPER}}:hover .main_img',
 			]
 		);
         $this->add_responsive_control(
@@ -461,7 +462,7 @@ class Image extends Widget_Base
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
-					'{{WRAPPER}} .img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}}:hover .main_img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -472,7 +473,7 @@ class Image extends Widget_Base
 				'exclude' => [
 					'box_shadow_position',
 				],
-				'selector' => '{{WRAPPER}} img',
+				'selector' => '{{WRAPPER}}:hover img',
 			]
 		);
 
