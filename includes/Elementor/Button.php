@@ -250,8 +250,8 @@ class Button extends Widget_Base
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .emk-align-icon-right' => 'margin-left: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .emk-align-icon-left' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .emk-button-wrapper .emk-button .emk-button-content-wrapper .emk-align-icon-left' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .emk-button-wrapper .emk-button .emk-button-content-wrapper .emk-align-icon-right' => 'margin-left: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);

@@ -1,24 +1,4 @@
-.emk-color-default {
-  background-color: black;
-}
-
-.emk-color-info {
-  background-color: yellow;
-}
-
-.emk-color-success {
-  background-color: tomato;
-}
-
-.emk-color-warning {
-  background-color: gray;
-}
-
-.emk-color-danger {
-  background-color: aqua;
-}
-
-.emk-button {
+.emk-button-wrapper .emk-button {
   display: inline-block;
   line-height: 1;
   font-size: 15px;
@@ -29,72 +9,68 @@
   text-align: center;
   transition: all 0.3s;
 }
-
-.emk-button:focus, .emk-button:hover, .emk-button:visited {
-  color: #fff;
-}
-
-.emk-button-content-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
-.emk-button-icon {
-  flex-grow: 0;
-  order: 5;
-}
-
-.emk-button-icon svg {
-  width: 1em;
-  height: auto;
-}
-
-.emk-button-icon .e-font-icon-svg {
-  height: 1em;
-}
-
-.emk-button-text {
-  flex-grow: 1;
-  order: 10;
-  display: inline-block;
-}
-
-.emk-button.emk-size-xs {
+.emk-button-wrapper .emk-button.emk-size-xs {
   font-size: 13px;
   padding: 10px 20px;
   border-radius: 2px;
 }
-
-.emk-button.emk-size-md {
+.emk-button-wrapper .emk-button.emk-size-md {
   font-size: 16px;
   padding: 15px 30px;
   border-radius: 4px;
 }
-
-.emk-button.emk-size-lg {
+.emk-button-wrapper .emk-button.emk-size-lg {
   font-size: 18px;
   padding: 20px 40px;
   border-radius: 5px;
 }
-
-.emk-button.emk-size-xl {
+.emk-button-wrapper .emk-button.emk-size-xl {
   font-size: 20px;
   padding: 25px 50px;
   border-radius: 6px;
 }
-
-.emk-button .emk-align-icon-right {
+.emk-button-wrapper .emk-button.emk-color-default {
+  background-color: black;
+}
+.emk-button-wrapper .emk-button.emk-color-info {
+  background-color: yellow;
+}
+.emk-button-wrapper .emk-button.emk-color-success {
+  background-color: tomato;
+}
+.emk-button-wrapper .emk-button.emk-color-warning {
+  background-color: gray;
+}
+.emk-button-wrapper .emk-button.emk-color-danger {
+  background-color: aqua;
+}
+.emk-button-wrapper .emk-button .emk-button-content-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.emk-button-wrapper .emk-button .emk-button-content-wrapper .emk-button-icon {
+  flex-grow: 0;
+  order: 5;
+}
+.emk-button-wrapper .emk-button .emk-button-content-wrapper .emk-button-icon.emk-align-icon-right {
   margin-left: 5px;
   order: 15;
 }
-
-.emk-button .emk-align-icon-left {
+.emk-button-wrapper .emk-button .emk-button-content-wrapper .emk-button-icon.emk-align-icon-left {
   margin-right: 5px;
   order: 5;
 }
-
-.emk-button span {
-  text-decoration: inherit;
+.emk-button-wrapper .emk-button .emk-button-content-wrapper .emk-button-icon svg {
+  width: 1em;
+  height: auto;
+}
+.emk-button-wrapper .emk-button .emk-button-content-wrapper .emk-button-icon .e-font-icon-svg {
+  height: 1em;
+}
+.emk-button-wrapper .emk-button .emk-button-content-wrapper .emk-button-text {
+  flex-grow: 1;
+  order: 10;
+  display: inline-block;
 }
 
 @keyframes bounce {
