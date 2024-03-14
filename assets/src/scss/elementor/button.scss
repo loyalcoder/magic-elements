@@ -30,19 +30,25 @@
             border-radius: 6px;
         }
         &.emk-color-default{
-            background-color: black;
+            background-color: #0D6EFD;
         }
         &.emk-color-info{
-            background-color: yellow;
+            background-color: #0DCAF0;
         }
         &.emk-color-success{
-            background-color: tomato;
+            background-color: #198754;
         }
         &.emk-color-warning{
-            background-color: gray;
+            background-color: #FFC107;
         }
         &.emk-color-danger{
-            background-color: aqua;
+            background-color: #DC3545;
+        }
+        &.emk-color-light {
+            background-color: #F8F9FA;
+        }
+        &.emk-color-dark  {
+            background-color: #212529;
         }
         .emk-button-content-wrapper {
             display: flex;

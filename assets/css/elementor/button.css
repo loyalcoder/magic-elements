@@ -30,19 +30,25 @@
   border-radius: 6px;
 }
 .emk-button-wrapper .emk-button.emk-color-default {
-  background-color: black;
+  background-color: #0D6EFD;
 }
 .emk-button-wrapper .emk-button.emk-color-info {
-  background-color: yellow;
+  background-color: #0DCAF0;
 }
 .emk-button-wrapper .emk-button.emk-color-success {
-  background-color: tomato;
+  background-color: #198754;
 }
 .emk-button-wrapper .emk-button.emk-color-warning {
-  background-color: gray;
+  background-color: #FFC107;
 }
 .emk-button-wrapper .emk-button.emk-color-danger {
-  background-color: aqua;
+  background-color: #DC3545;
+}
+.emk-button-wrapper .emk-button.emk-color-light {
+  background-color: #F8F9FA;
+}
+.emk-button-wrapper .emk-button.emk-color-dark {
+  background-color: #212529;
 }
 .emk-button-wrapper .emk-button .emk-button-content-wrapper {
   display: flex;

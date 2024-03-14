@@ -129,6 +129,8 @@ class Button extends Widget_Base
 					'success'  => esc_html__( 'Success', 'elementor-magic-kit' ),
 					'warning' => esc_html__( 'Warning', 'elementor-magic-kit' ),
 					'danger' => esc_html__( 'Danger', 'elementor-magic-kit' ),
+					'light' => esc_html__( 'Light', 'elementor-magic-kit' ),
+					'dark' => esc_html__( 'Dark', 'elementor-magic-kit' ),
 				],
 			]
 		);
@@ -384,11 +386,19 @@ class Button extends Widget_Base
 
 		$this->end_controls_tabs();
 
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'border',
+				'selector' => '{{WRAPPER}} .emk-button',
+			]
+		);
+
         $this->add_responsive_control(
 			$this->get_name() . 'border_radius',
 			[
 				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
-				'type' => Controls_Manager::DIMENSIONS,
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
 					'{{WRAPPER}} .emk-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -397,10 +407,10 @@ class Button extends Widget_Base
 		);
 
         $this->add_group_control(
-			\Elementor\Group_Control_Text_Shadow::get_type(),
+			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'button_box_shadow',
-				'selector' => '{{WRAPPER}} .emk-button-text',
+				'selector' => '{{WRAPPER}} .emk-button',
 			]
 		);
 
@@ -408,7 +418,7 @@ class Button extends Widget_Base
 			$this->get_name() . 'text_padding',
 			[
 				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
-				'type' => Controls_Manager::DIMENSIONS,
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'vw', 'custom' ],
 				'selectors' => [
 					'{{WRAPPER}} .emk-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
