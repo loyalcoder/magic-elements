@@ -130,7 +130,6 @@ class Button extends Widget_Base
 					'warning' => esc_html__( 'Warning', 'elementor-magic-kit' ),
 					'danger' => esc_html__( 'Danger', 'elementor-magic-kit' ),
 				],
-				// 'prefix_class' => 'emk-button-',
 			]
 		);
 
@@ -206,9 +205,6 @@ class Button extends Widget_Base
                     'lg' => esc_html__( 'Large', 'elementor-magic-kit' ),
                     'xl' => esc_html__( 'Extra Large', 'elementor-magic-kit' ),
 				],
-				// 'selectors' => [
-				// 	'{{WRAPPER}} .emk-button' => 'font-size: {{VALUE}};',
-				// ],
 			]
 		);
 
@@ -233,9 +229,6 @@ class Button extends Widget_Base
 					'left' => esc_html__( 'Before', 'elementor-magic-kit' ),
 					'right' => esc_html__( 'After', 'elementor-magic-kit' ),
 				],
-				// 'selectors' => [
-				// 	'{{WRAPPER}} .your-class' => 'icon-style: {{VALUE}};',
-				// ],
 			]
 		);
 
@@ -365,10 +358,31 @@ class Button extends Widget_Base
 		);
 
         $this->add_control(
-			$this->get_name() . 'hover_animation',
+			'hover_animation',
 			[
-				'label' => esc_html__( 'Hover Animation', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::HOVER_ANIMATION,
+				'label' => esc_html__( 'Hover Animation', 'elementor' ),
+				'type' =>  \Elementor\Controls_Manager::HOVER_ANIMATION,
+				// 'condition' => $args['section_condition'],
+			]
+		);
+
+		$this->add_control(
+			'background_transitions',
+			[
+				'label' => esc_html__( 'Background Transitions', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'default',
+				'options' => [
+					'default' => esc_html__( 'Default', 'textdomain' ),
+					'fade' => esc_html__( 'Fade', 'textdomain' ),
+					'sweep-to-right'  => esc_html__( 'Sweep To Right', 'textdomain' ),
+					// 'dashed' => esc_html__( 'Dashed', 'textdomain' ),
+					// 'dotted' => esc_html__( 'Dotted', 'textdomain' ),
+					// 'double' => esc_html__( 'Double', 'textdomain' ),
+				],
+				// 'selectors' => [
+				// 	'{{WRAPPER}} .your-class' => 'border-style: {{VALUE}};',
+				// ],
 			]
 		);
 
@@ -443,6 +457,10 @@ class Button extends Widget_Base
 
 		if ( ! empty( $settings['hover_animation'] ) ) {
 			$this->add_render_attribute( 'button', 'class', 'emk-animation-' . $settings['hover_animation'] );
+		}
+
+		if ( ! empty( $settings['background_transitions'] ) ) {
+			$this->add_render_attribute( 'button', 'class', 'hvr-' . $settings['background_transitions'] );
 		}
 
 		if ( ! empty( $settings['icon_align'] ) ) {
