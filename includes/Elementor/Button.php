@@ -211,7 +211,7 @@ class Button extends Widget_Base
 		$this->add_control(
 			'selected_icon',
 			[
-				'label' => esc_html__( 'Icon', 'elementor' ),
+				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
 				'fa4compatibility' => 'icon',
 				'skin' => 'inline',
@@ -360,29 +360,22 @@ class Button extends Widget_Base
         $this->add_control(
 			'hover_animation',
 			[
-				'label' => esc_html__( 'Hover Animation', 'elementor' ),
+				'label' => esc_html__( 'Hover Animation', 'elementor-magic-kit' ),
 				'type' =>  \Elementor\Controls_Manager::HOVER_ANIMATION,
-				// 'condition' => $args['section_condition'],
 			]
 		);
 
 		$this->add_control(
 			'background_transitions',
 			[
-				'label' => esc_html__( 'Background Transitions', 'textdomain' ),
+				'label' => esc_html__( 'Background Transitions', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'default' => 'default',
 				'options' => [
-					'default' => esc_html__( 'Default', 'textdomain' ),
-					'fade' => esc_html__( 'Fade', 'textdomain' ),
-					'sweep-to-right'  => esc_html__( 'Sweep To Right', 'textdomain' ),
-					// 'dashed' => esc_html__( 'Dashed', 'textdomain' ),
-					// 'dotted' => esc_html__( 'Dotted', 'textdomain' ),
-					// 'double' => esc_html__( 'Double', 'textdomain' ),
+					'default' => esc_html__( 'Default', 'elementor-magic-kit' ),
+					'fade' => esc_html__( 'Fade', 'elementor-magic-kit' ),
+					'sweep-to-right'  => esc_html__( 'Sweep To Right', 'elementor-magic-kit' ),
 				],
-				// 'selectors' => [
-				// 	'{{WRAPPER}} .your-class' => 'border-style: {{VALUE}};',
-				// ],
 			]
 		);
 
@@ -392,7 +385,7 @@ class Button extends Widget_Base
 		$this->end_controls_tabs();
 
         $this->add_responsive_control(
-			'border_radius',
+			$this->get_name() . 'border_radius',
 			[
 				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
 				'type' => Controls_Manager::DIMENSIONS,
@@ -412,7 +405,7 @@ class Button extends Widget_Base
 		);
 
         $this->add_responsive_control(
-			'text_padding',
+			$this->get_name() . 'text_padding',
 			[
 				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
 				'type' => Controls_Manager::DIMENSIONS,
@@ -437,9 +430,6 @@ class Button extends Widget_Base
     protected function render()
     {
         $settings    = $this->get_settings_for_display();
-		
-		// icon active or none condition
-		// $active_icon = ($settings['selected_icon'] == true) ? 'block' : 'none';
 		
 		$this->add_render_attribute( 'wrapper', 'class', 'emk-button-wrapper' );
 
