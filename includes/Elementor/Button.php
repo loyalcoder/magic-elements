@@ -438,9 +438,18 @@ class Button extends Widget_Base
     {
         $settings    = $this->get_settings_for_display();
 		
+		// icon active or none condition
+		// $active_icon = ($settings['selected_icon'] == true) ? 'block' : 'none';
+		
 		$this->add_render_attribute( 'wrapper', 'class', 'emk-button-wrapper' );
 
 		$this->add_render_attribute( 'button', 'class', 'emk-button' );
+
+		$this->add_render_attribute( 'content', 'class', 'emk-button-content-wrapper' );
+
+		$this->add_render_attribute( 'span', 'class', 'emk-button-icon' );
+
+		$this->add_render_attribute( 'text', 'class', 'emk-button-text' );
 
 		if ( ! empty( $settings['button_type'] ) ) {
 			$this->add_render_attribute( 'button', 'class', 'emk-color-' . $settings['button_type'] );
@@ -467,8 +476,6 @@ class Button extends Widget_Base
 			$this->add_render_attribute( 'span', 'class', 'emk-align-icon-' . $settings['icon_align'] );
 		}
         
-		// icon active or none condition
-		// $active_icon = ($settings['selected_icon'] == true) ? 'block' : 'none';
 
         include __DIR__ . '/layouts/button/button.php';
     }
