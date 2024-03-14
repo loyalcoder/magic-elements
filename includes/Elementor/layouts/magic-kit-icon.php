@@ -1,4 +1,4 @@
-<div class="icon-wrapper">
+<div class="icon-wrapper" style="display: flex;">
 	<div class="magic-kit-icon">
         <?php \Elementor\Icons_Manager::render_icon( $settings['icon'], [ 'aria-hidden' => 'true' ] ); ?>
     </div>

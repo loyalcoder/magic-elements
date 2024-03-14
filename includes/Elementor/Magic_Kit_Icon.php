@@ -99,7 +99,7 @@ class Magic_Kit_Icon extends Widget_Base
      */
     protected function register_controls()
     {
-        $this->register_hello_world_controls();
+        $this->register_magic_kit_icon_controls();
     }
 
     /**
@@ -108,7 +108,7 @@ class Magic_Kit_Icon extends Widget_Base
      * @since 1.0.0
      * @access protected
      */
-    protected function register_hello_world_controls()
+    protected function register_magic_kit_icon_controls()
     {
         $this->start_controls_section(
             'section_title',
@@ -117,16 +117,16 @@ class Magic_Kit_Icon extends Widget_Base
             ]
         );
         $this->add_control(
-			'icon',
-			[
-				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::ICONS,
-				'default' => [
-					'value' => 'fas fa-star',
-					'library' => 'fa-solid',
-				],
-			]
-		);
+            'icon',
+            [
+                'label' => __( 'Icon', 'elementor-magic-kit' ),
+                'type' => \Elementor\Controls_Manager::ICONS,
+                'default' => [
+                    'value' => 'fas fa-star',
+                    'library' => 'fa-solid',
+                ],
+            ]
+        );
         $this->add_control(
 			'icon_box_title',
 			[
@@ -159,20 +159,68 @@ class Magic_Kit_Icon extends Widget_Base
             ]
         );
         $this->add_control(
+			'box_background',
+			[
+				'label' => esc_html__( 'Box Background', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .icon-wrapper' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'box_radius',
+			[
+				'label' => esc_html__( 'Radius', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 0,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+					'unit' => 'em',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .icon-wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'box_padding',
+			[
+				'label' => esc_html__( 'Box Padding', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 0,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+					'unit' => 'em',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .icon-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
 			'icon_position',
 			[
 				'label' => esc_html__( 'Icon Position', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
-					'left' => [
+					'row' => [
 						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
 						'icon' => 'eicon-h-align-left',
 					],
-					'top' => [
+					'column' => [
 						'title' => esc_html__( 'Top', 'elementor-magic-kit' ),
 						'icon' => 'eicon-v-align-top',
 					],
-					'right' => [
+					'row-reverse' => [
 						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
 						'icon' => 'eicon-h-align-right',
 					],
@@ -181,7 +229,34 @@ class Magic_Kit_Icon extends Widget_Base
 				'mobile_default' => 'top',
 				'toggle' => true,
 				'selectors' => [
-					'{{WRAPPER}} .icon-wrapper' => 'display: {{VALUE}};',
+					'{{WRAPPER}} .icon-wrapper' => 'flex-direction: {{VALUE}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'icon_alignment',
+			[
+				'label' => esc_html__( 'Vertical Alignment', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+					'flex-start' => [
+						'title' => esc_html__( 'Top', 'elementor' ),
+						'icon' => 'eicon-v-align-top',
+					],
+					'center' => [
+						'title' => esc_html__( 'Middle', 'elementor' ),
+						'icon' => 'eicon-v-align-middle',
+					],
+					'flex-end' => [
+						'title' => esc_html__( 'Bottom', 'elementor' ),
+						'icon' => 'eicon-v-align-bottom',
+					],
+				],
+				'default' => 'top',
+				'mobile_default' => 'top',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .icon-wrapper' => 'align-items: {{VALUE}};',
 				],
 			]
 		);
@@ -215,17 +290,54 @@ class Magic_Kit_Icon extends Widget_Base
 				'range' => [
 					'px' => [
 						'min' => 6,
-						'max' => 300,
+						'max' => 500,
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .magic-kit-icon' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .magic-kit-icon svg' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_control(
+			'icon_rotate',
+			[
+				'label' => esc_html__( 'Rotate', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'deg', 'grad', 'rad', 'turn', 'custom' ],
+				'range' => [
+					'deg' => [
+						'min' => 0,
+						'max' => 360,
+						'step' => 0,
+					],
+					'grad' => [
+						'min' => 0,
+						'max' => 400,
+						'step' => 0,
+					],
+					'rad' => [
+						'min' => 0,
+						'max' => 6.283,
+						'step' => 0,
+					],
+					'turn' => [
+						'min' => 0.0,
+						'max' => 1,
+						'step' => 0,
+					],
+				],
+				'default' => [
+					'unit' => 'deg',
+					'size' => 0,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .magic-kit-icon svg' => 'rotate: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
         $this->end_controls_section();
 
-        // content ==================================
+        // content control ==================================
         $this->start_controls_section(
             $this->get_name() . 'icon_content_section',
             [
@@ -251,6 +363,46 @@ class Magic_Kit_Icon extends Widget_Base
 				],
 			]
 		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'title_typography',
+				'selector' => '{{WRAPPER}} .icon-box-content .magic-kit-icon-title h2.title',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Text_Stroke::get_type(),
+			[
+				'name' => 'title_stroke',
+				'selector' => '{{WRAPPER}} .icon-box-content .magic-kit-icon-title h2.title',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Text_Shadow::get_type(),
+			[
+				'name' => 'title_shadow',
+				'selector' => '{{WRAPPER}} .icon-box-content .magic-kit-icon-title h2.title',
+			]
+		);
+        $this->add_responsive_control(
+			'title_margin',
+			[
+				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 2,
+					'right' => 0,
+					'bottom' => 2,
+					'left' => 0,
+					'unit' => 'em',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .icon-box-content .magic-kit-icon-title h2.title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
         $this->add_control(
 			'heading_description',
 			[
@@ -266,6 +418,46 @@ class Magic_Kit_Icon extends Widget_Base
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .icon-box-content .magic-kit-icon-description p.description' => 'color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'description_typography',
+				'selector' => '{{WRAPPER}} .icon-box-content .magic-kit-icon-description p.description',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Text_Stroke::get_type(),
+			[
+				'name' => 'description_stroke',
+				'selector' => '{{WRAPPER}} .icon-box-content .magic-kit-icon-description p.description',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Text_Shadow::get_type(),
+			[
+				'name' => 'description_shadow',
+				'selector' => '{{WRAPPER}} .icon-box-content .magic-kit-icon-description p.description',
+			]
+		);
+        $this->add_responsive_control(
+			'description_margin',
+			[
+				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 2,
+					'right' => 0,
+					'bottom' => 2,
+					'left' => 0,
+					'unit' => 'em',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .icon-box-content .icon-box-content .magic-kit-icon-description p.description' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
