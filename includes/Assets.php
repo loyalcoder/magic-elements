@@ -44,10 +44,10 @@ class Assets
     public function get_styles()
     {
         return [
-            'pkun-style' => [
-                'src'     => EM_KIT_ASSETS . '/css/frontend.css',
-                'version' => filemtime(EM_KIT_PATH . '/assets/css/frontend.css'),
-            ]
+            'emk-button' => [
+                'src'     => EM_KIT_ASSETS . '/css/elementor/button.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/css/elementor/button.css'),
+            ],
         ];
     }
 
