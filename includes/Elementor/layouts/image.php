@@ -22,6 +22,7 @@
                 }
             ?>
         </div>
+        
         <?php
              if ( 'custom' !== $settings['link_to'] ) {
 				$this->add_lightbox_data_attributes( 'link', $settings['image']['id'], $settings['open_lightbox'] );
