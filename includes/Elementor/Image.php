@@ -153,6 +153,22 @@ class Image extends Widget_Base
 				],
 			]
 		);
+		$this->add_control(
+			'caption',
+			[
+				'label' => esc_html__( 'Custom Caption', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => '',
+				'placeholder' => esc_html__( 'Enter your image caption', 'elementor-magic-kit' ),
+				'condition' => [
+					'image[url]!' => '',
+					'caption_source' => 'custom',
+				],
+				'dynamic' => [
+					'active' => true,
+				],
+			]
+		);
         $this->add_control(
 			'link_to',
 			[
@@ -166,6 +182,38 @@ class Image extends Widget_Base
 				],
 				'condition' => [
 					'image[url]!' => '',
+				],
+			]
+		);
+		$this->add_control(
+			'link',
+			[
+				'label' => esc_html__( 'Link', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::URL,
+				'dynamic' => [
+					'active' => true,
+				],
+				'condition' => [
+					'image[url]!' => '',
+					'link_to' => 'custom',
+				],
+				'show_label' => false,
+			]
+		);
+		$this->add_control(
+			'open_lightbox',
+			[
+				'label' => esc_html__( 'Lightbox', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'default',
+				'options' => [
+					'default' => esc_html__( 'Default', 'elementor-magic-kit' ),
+					'yes' => esc_html__( 'Yes', 'elementor-magic-kit' ),
+					'no' => esc_html__( 'No', 'elementor-magic-kit' ),
+				],
+				'condition' => [
+					'image[url]!' => '',
+					'link_to' => 'file',
 				],
 			]
 		);
@@ -339,7 +387,7 @@ class Image extends Widget_Base
 			\Elementor\Group_Control_Css_Filter::get_type(),
 			[
 				'name' => 'css_filters',
-				'selector' => '{{WRAPPER}} .main_img',
+				'selector' => '{{WRAPPER}} img',
 			]
 		);
         $this->add_control(
@@ -482,6 +530,86 @@ class Image extends Widget_Base
 // normal-hover-end
 
         $this->end_controls_section();
+		
+		$this->start_controls_section(
+			'caption_style_section',
+			[
+				'label' => esc_html__( 'Caption', 'elementor-magic-kit' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+		$this->add_responsive_control(
+			'caption_text_align',
+			[
+				'label' => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .custom_caption' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_control(
+			'caption_text_color',
+			[
+				'label' => esc_html__( 'Text Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .custom_caption' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'caption_typography',
+				'selector' => '{{WRAPPER}} .custom_caption',
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Text_Shadow::get_type(),
+			[
+				'name' => 'text_shadow',
+				'selector' => '{{WRAPPER}} .custom_caption',
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'caption_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .custom_caption',
+			]
+		);
+		$this->add_responsive_control(
+			'caption_margin',
+			[
+				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .custom_caption' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->end_controls_section();
+
+
     }
 
     /**
