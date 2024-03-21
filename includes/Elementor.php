@@ -105,7 +105,7 @@ class Load_Elementor
     public function get_scripts()
     {
         return [
-            'pkun' => [
+            'Elementor_Magic_Kit' => [
                 'src'     => EM_KIT_ASSETS . '/js/pkun.js',
                 'version' => filemtime(EM_KIT_PATH . '/assets/js/pkun.js'),
                 'deps'    => ['jquery']
@@ -123,9 +123,9 @@ class Load_Elementor
     {
         return [
 
-            'pkun' => [
-                'src'     => EM_KIT_ASSETS . '/css/pkun.css',
-                'version' => filemtime(EM_KIT_PATH . '/assets/css/pkun.css'),
+            'frontend' => [
+                'src'     => EM_KIT_ASSETS . '/css/frontend.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/css/frontend.css'),
             ]
         ];
     }

@@ -91,6 +91,11 @@ class Magic_Kit_Icon extends Widget_Base
         return [];
     }
 
+    public function get_style_depends()
+    {
+        return ['frontend'];
+    }
+
     /**
      * Register Copyright controls.
      *
@@ -166,20 +171,20 @@ class Magic_Kit_Icon extends Widget_Base
 				],
 			]
 		);
-		// $this->add_control(
-		// 	'link',
-		// 	[
-		// 		'label' => esc_html__( 'Link', 'elementor-magic-kit' ),
-		// 		'type' => \Elementor\Controls_Manager::URL,
-		// 		'options' => [ 'url', 'is_external', 'nofollow' ],
-		// 		'default' => [
-		// 			'url' => '',
-		// 			'is_external' => true,
-		// 			'nofollow' => true,
-		// 		],
-		// 		'label_block' => true,
-		// 	]
-		// );
+		$this->add_control(
+			'link',
+			[
+				'label' => esc_html__( 'Link', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::URL,
+				'options' => [ 'url', 'is_external', 'nofollow' ],
+				'default' => [
+					'url' => '',
+					'is_external' => true,
+					'nofollow' => true,
+				],
+				'label_block' => true,
+			]
+		);
 
         $this->end_controls_section();
 
@@ -500,7 +505,7 @@ class Magic_Kit_Icon extends Widget_Base
 				'label' => esc_html__( 'Title Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .icon-box-content .magic-kit-icon-title .title' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .icon-box-content .magic-kit-icon-title .title span' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -644,6 +649,9 @@ class Magic_Kit_Icon extends Widget_Base
     protected function render()
     {
         $settings    = $this->get_settings_for_display();
+		$link = $settings['link']['url'];
+		$addlinkaft = ! empty( $link ) ? "<a " . "href=".$settings['link']['url']."" : "<span";
+		$addlinkpre = ! empty( $link ) ? "</a> "  : "</";
         include __DIR__ . '/layouts/magic-kit-icon.php';
     }
 
