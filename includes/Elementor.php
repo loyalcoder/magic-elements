@@ -61,6 +61,13 @@ class Load_Elementor
                 'icon'  => 'eicon-font',
             ]
         );
+        $elementor->add_category(
+            'emk-widgets',
+            [
+                'title' =>  __('Elementor Magic Kit', 'elementor-magic-kit'),
+                'icon'  => 'eicon-font',
+            ]
+        );
 
         return $elementor;
     }
@@ -77,6 +84,7 @@ class Load_Elementor
 
         Plugin::instance()->widgets_manager->register(new Elementor\Hello_World());
         Plugin::instance()->widgets_manager->register(new Elementor\Magic_Kit_Icon());
+        Plugin::instance()->widgets_manager->register(new Elementor\Button());
     }
 
     /**
@@ -134,6 +142,7 @@ class Load_Elementor
         return [
             'Hello_World',
             'Magic_Kit_Icon',
+            'Button',
         ];
     }
 
