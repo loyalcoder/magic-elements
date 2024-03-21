@@ -111,89 +111,267 @@ class Faq extends Widget_Base
     protected function register_faq_controls()
     {
         $this->start_controls_section(
-            'section_title',
+            'faq_content_section',
             [
-                'label' => __('Hello World Settings', 'pkun'),
+                'label' => esc_html__('FAQ', 'elementor-magic-kit'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+        $repeater = new \Elementor\Repeater();
+        $repeater->add_control(
+            'faq_title',
+            [
+                'label' => esc_html__('FAQ Title', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__( 'How do I create an account on the platform?', 'elementor-magic-kit' ),
+                'label_block' => true,
+            ]
+        );
+        $repeater->add_control(
+            'faq_content',
+            [
+                'label' => esc_html__('Description', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'default' => esc_html__( 'Asked Questions (FAQ) section on your OTTP (online teaching tutoring platform) website can help user information quickly and improve their overall experience.', 'elementor-magic-kit' ),
+                'rows' => 10,
             ]
         );
 
         $this->add_control(
-            'title',
+            'faq_control',
             [
-                'label'       => __('Title', 'pkun'),
-                'type'        => Controls_Manager::TEXT,
-                'label_block' => true,
-                'default'     => __('Hello World', 'pkun'),
-                'dynamic'     => [
-                    'active' => true,
+                'label' => esc_html__('Tab Content', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::REPEATER,
+                'fields' => $repeater->get_controls(),
+                'default' => [
+                    [
+                        'faq_title' => esc_html__('How do I create an account on the platform?', 'elementor-magic-kit'),
+                        'faq_content' => esc_html__('Asked Questions (FAQ) section on your OTTP (online teaching tutoring platform) website can help user information quickly and improve their overall experience. here some suggestions remember to organise your faq’s user-friendly headings concise  you can also include quickly.', 'elementor-magic-kit'),
+                    ],
+                    [
+                        'faq_title' => esc_html__('How can I update my profile information?', 'elementor-magic-kit'),
+                        'faq_content' => esc_html__('Asked Questions (FAQ) section on your OTTP (online teaching tutoring platform) website can help user information quickly and improve their overall experience. here some suggestions remember to organise your faq’s user-friendly headings concise  you can also include quickly.', 'elementor-magic-kit'),
+                    ],
+                    [
+                        'faq_title' => esc_html__('How can I book a tutoring/teaching session?', 'elementor-magic-kit'),
+                        'faq_content' => esc_html__('Asked Questions (FAQ) section on your OTTP (online teaching tutoring platform) website can help user information quickly and improve their overall experience. here some suggestions remember to organise your faq’s user-friendly headings concise  you can also include quickly.', 'elementor-magic-kit'),
+                    ],
+                    [
+                        'faq_title' => esc_html__('How does the payment system work?', 'elementor-magic-kit'),
+                        'faq_content' => esc_html__('Asked Questions (FAQ) section on your OTTP (online teaching tutoring platform) website can help user information quickly and improve their overall experience. here some suggestions remember to organise your faq’s user-friendly headings concise  you can also include quickly.', 'elementor-magic-kit'),
+                    ],
                 ],
+                'title_field' => '{{{ faq_title }}}',
             ]
         );
-
-        
-
         $this->end_controls_section();
 
         // Style section
-        // --- Container section
         $this->start_controls_section(
-            $this->get_name() . 'container_style_section',
-            [
-                'label' => __('Container', 'pkun'),
-                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
-            ]
-        );
-
+			$this->get_name() .'title_style',
+			[
+				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
         $this->add_responsive_control(
-            $this->get_name() . 'banner_container_height',
-            [
-                'label' => __('Min Height', 'pkun'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px'],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 1000,
-                        'step' => 1,
-                    ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .banner__slider__wraper' => 'min-height: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
+			'title_text_align',
+			[
+				'label' => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .faq h2' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
 
+        $this->add_control(
+			$this->get_name() .'text_color',
+			[
+				'label' => esc_html__( 'Text Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .faq h2' => 'color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'title_typography',
+				'selector' => '{{WRAPPER}} .faq h2',
+			]
+		);
         $this->add_responsive_control(
-            $this->get_name() . 'bg__color',
+            $this->get_name() . 'bg_title_color',
             [
-                'label' => __('Background Color', 'pkun'),
+                'label' => __('Background Color', 'elementor-magic-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .banner__slider__wraper' => 'background-color: {{VALUE}}',
+                    '{{WRAPPER}} .faq h2' => 'background-color: {{VALUE}}',
                 ],
             ]
         );
+        $this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'title_border',
+				'selector' => '{{WRAPPER}} .faq h2',
+			]
+		);
+        $this->add_responsive_control(
+            $this->get_name() .'title_rediis',
+			[
+				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .faq h2' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
 
         $this->add_responsive_control(
-            $this->get_name() . 'banner_container_spacing',
+            $this->get_name() . 'title_container_padding',
             [
-                'label' => __('Padding', 'pkun'),
+                'label' => __('Padding', 'elementor-magic-kit'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em'],
                 'selectors' => [
-                    '{{WRAPPER}} .banner__slider__wraper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .faq h2' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            $this->get_name() . 'title_container_margin',
+            [
+                'label' => __('Margin', 'elementor-magic-kit'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .faq h2' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
 
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+			$this->get_name() .'content_style',
+			[
+				'label' => esc_html__( 'Discription', 'elementor-magic-kit' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
         $this->add_responsive_control(
-            $this->get_name() . 'bg_overlay_color',
+			'discription_text_align',
+			[
+				'label' => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .faq p' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+
+        $this->add_control(
+			$this->get_name() .'discription_text_color',
+			[
+				'label' => esc_html__( 'Text Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .faq p' => 'color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'discription_typography',
+				'selector' => '{{WRAPPER}} .faq p',
+			]
+		);
+        $this->add_responsive_control(
+            $this->get_name() . 'bg_discription_color',
             [
-                'label' => __('Overlay Color', 'pkun'),
+                'label' => __('Background Color', 'elementor-magic-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                // 'devices'   => ['mobile', 'tablet'],
                 'selectors' => [
-                    '{{WRAPPER}} .banner__slider__wraper:before' => 'background-color: {{VALUE}}',
+                    '{{WRAPPER}} .faq p' => 'background-color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'discription_border',
+				'selector' => '{{WRAPPER}} .faq p',
+			]
+		);
+        $this->add_responsive_control(
+            $this->get_name() .'discription_rediis',
+			[
+				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .faq p' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+        $this->add_responsive_control(
+            $this->get_name() . 'discription_container_padding',
+            [
+                'label' => __('Padding', 'elementor-magic-kit'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .faq p' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            $this->get_name() . 'discription_container_margin',
+            [
+                'label' => __('Margin', 'elementor-magic-kit'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .faq p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -212,6 +390,7 @@ class Faq extends Widget_Base
     protected function render()
     {
         $settings    = $this->get_settings_for_display();
+        $faq_item_list = $settings['faq_control'];
         include __DIR__ . '/layouts/faq.php';
     }
 
