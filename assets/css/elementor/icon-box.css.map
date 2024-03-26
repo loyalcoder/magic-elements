@@ -1,0 +1,1 @@
+{"version":3,"sources":["icon-box.scss"],"names":[],"mappings":"AACA;EACI;EACA;;AACA;EACI;;AAEJ;EACI","file":"icon-box.css","sourcesContent":["\r\n.magic-kit-icon-shape{\r\n    display: inline-block;\r\n    padding: 30px;\r\n    .magic-kit-icon-framed{\r\n        border: solid 3px;\r\n    }\r\n    .magic-kit-icon-stacked{\r\n        background-color: red;\r\n    }\r\n}\r\n"]}

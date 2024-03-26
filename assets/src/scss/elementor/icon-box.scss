@@ -1,0 +1,11 @@
+
+.magic-kit-icon-shape{
+    display: inline-block;
+    padding: 30px;
+    .magic-kit-icon-framed{
+        border: solid 3px;
+    }
+    .magic-kit-icon-stacked{
+        background-color: red;
+    }
+}

@@ -93,7 +93,7 @@ class Magic_Kit_Icon extends Widget_Base
 
     public function get_style_depends()
     {
-        return ['frontend'];
+        return ['emk-icon-box'];
     }
 
     /**
@@ -132,6 +132,22 @@ class Magic_Kit_Icon extends Widget_Base
                 ],
             ]
         );
+		$this->add_control(
+			'icon_border_style',
+			[
+				'label' => esc_html__( 'Border Style', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'default',
+				'options' => [
+					'default' => esc_html__( 'Default', 'elementor-magic-kit' ),
+					'framed' => esc_html__( 'Framed', 'elementor-magic-kit' ),
+					'stacked' => esc_html__( 'Stacked', 'elementor-magic-kit' ),
+				],
+				'selectors' => [
+					'{{WRAPPER}} .your-class' => 'border-style: {{VALUE}};',
+				],
+			]
+		);
         $this->add_control(
 			'icon_box_title',
 			[
@@ -414,7 +430,7 @@ class Magic_Kit_Icon extends Widget_Base
             ]
         );
         $this->add_control(
-			'icon_color',
+			$this->get_name() . 'icon_color',
 			[
 				'label' => esc_html__( 'Icon Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
@@ -652,6 +668,12 @@ class Magic_Kit_Icon extends Widget_Base
 		$link = $settings['link']['url'];
 		$addlinkaft = ! empty( $link ) ? "<a " . "href=".$settings['link']['url']."" : "<span";
 		$addlinkpre = ! empty( $link ) ? "</a> "  : "</";
+         
+		$this->add_render_attribute(  'icon', 'class', 'magic-kit-icon-shape');
+		 
+		if( ! empty($settings['icon_border_style'])){
+			$this->add_render_attribute(  'icon', 'class', 'magic-kit-icon-'. $settings['icon_border_style'] );
+		}
         include __DIR__ . '/layouts/magic-kit-icon.php';
     }
 
