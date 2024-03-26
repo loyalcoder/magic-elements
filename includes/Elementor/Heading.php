@@ -19,11 +19,11 @@ if (!defined('ABSPATH')) {
 /**
  * Magic Kit for Elementor Extension
  *
- * Elementor widget for test.
+ * Elementor widget for Heading.
  *
  * @since 1.0.0
  */
-class Hello_World extends Widget_Base
+class Heading extends Widget_Base
 {
     /**
      * Retrieve the widget name.
@@ -36,7 +36,7 @@ class Hello_World extends Widget_Base
      */
     public function get_name()
     {
-        return 'EM_KIT_hello_world';
+        return 'em_kit_heading';
     }
 
     /**
@@ -50,7 +50,7 @@ class Hello_World extends Widget_Base
      */
     public function get_title()
     {
-        return __('Hello World', 'pkun');
+        return esc_html__('Heading', 'pkun');
     }
 
     /**
@@ -64,7 +64,8 @@ class Hello_World extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-search-results';
+        return '
+        eicon-heading';
     }
 
     /**
@@ -83,7 +84,7 @@ class Hello_World extends Widget_Base
      */
     public function get_categories()
     {
-        return ['pkun-widgets'];
+        return ['emk-widgets'];
     }
 
     public function get_script_depends()
@@ -99,7 +100,7 @@ class Hello_World extends Widget_Base
      */
     protected function register_controls()
     {
-        $this->register_hello_world_controls();
+        $this->register_heading_controls();
     }
 
     /**
@@ -108,14 +109,25 @@ class Hello_World extends Widget_Base
      * @since 1.0.0
      * @access protected
      */
-    protected function register_hello_world_controls()
+    protected function register_heading_controls()
     {
         $this->start_controls_section(
             'section_title',
             [
-                'label' => __('Hello World Settings', 'pkun'),
+                'label' => __('Title', 'pkun'),
             ]
         );
+
+        $this->add_control(
+			'item_description',
+			[
+				'label' => esc_html__( 'Description', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'rows' => 10,
+				'default' => esc_html__( 'Default description', 'textdomain' ),
+				'placeholder' => esc_html__( 'Type your description here', 'textdomain' ),
+			]
+		);
 
         $this->add_control(
             'title',
