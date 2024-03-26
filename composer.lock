@@ -124,12 +124,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnbillion/extended-cpts.git",
-                "reference": "37fe142158ecd96a16d72c1acae55344b5a64be2"
+                "reference": "b07f51a8b319ae442a1cb957e9e89c19b099dfd2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnbillion/extended-cpts/zipball/37fe142158ecd96a16d72c1acae55344b5a64be2",
-                "reference": "37fe142158ecd96a16d72c1acae55344b5a64be2",
+                "url": "https://api.github.com/repos/johnbillion/extended-cpts/zipball/b07f51a8b319ae442a1cb957e9e89c19b099dfd2",
+                "reference": "b07f51a8b319ae442a1cb957e9e89c19b099dfd2",
                 "shasum": ""
             },
             "require": {
@@ -141,7 +141,7 @@
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
                 "johnbillion/falsey-assertequals-detector": "*",
                 "johnbillion/plugin-infrastructure": "dev-trunk",
-                "lucatume/wp-browser": "^3.0.21",
+                "lucatume/wp-browser": ">=3.0.21 <3.5",
                 "phpcompatibility/phpcompatibility-wp": "^2",
                 "phpstan/phpstan": "^1.0",
                 "phpstan/phpstan-phpunit": "^1.0",
@@ -186,7 +186,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-02-15T22:49:13+00:00"
+            "time": "2024-03-11T16:15:56+00:00"
         }
     ],
     "packages-dev": [],
