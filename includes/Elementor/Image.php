@@ -17,9 +17,9 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * Elementor test
+ * Magic Kit for Elementor Extension
  *
- * Elementor widget for test.
+ * Elementor widget for Image.
  *
  * @since 1.0.0
  */
@@ -36,7 +36,7 @@ class Image extends Widget_Base
      */
     public function get_name()
     {
-        return 'EM_KIT_image';
+        return 'em_kit_image';
     }
 
     /**
@@ -50,7 +50,7 @@ class Image extends Widget_Base
      */
     public function get_title()
     {
-        return __('Image', 'elementor-magic-kit ');
+        return esc_html__('Image', 'elementor-magic-kit ');
     }
 
     /**
@@ -402,7 +402,7 @@ class Image extends Widget_Base
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name' => 'img_border',
-				'selector' => '{{WRAPPER}} .main_img',
+				'selector' => '{{WRAPPER}} .main_img a img',
 			]
 		);
         $this->add_responsive_control(
@@ -500,7 +500,7 @@ class Image extends Widget_Base
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name' => 'img_border_hover',
-				'selector' => '{{WRAPPER}}:hover .main_img',
+				'selector' => '{{WRAPPER}}:hover .main_img a img',
 			]
 		);
         $this->add_responsive_control(

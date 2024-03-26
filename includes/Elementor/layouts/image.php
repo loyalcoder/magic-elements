@@ -18,6 +18,8 @@
                             break;
                         case 'custom':
                             echo wp_kses_post($settings['caption']);
+                            break;
+                        default: echo "";
                     }
                 }
             ?>
