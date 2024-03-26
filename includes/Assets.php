@@ -48,6 +48,10 @@ class Assets
                 'src'     => EM_KIT_ASSETS . '/css/elementor/button.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/css/elementor/button.css'),
             ],
+            'emk-faq' => [
+                'src'     => EM_KIT_ASSETS . '/css/elementor/faq.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/css/elementor/faq.css'),
+            ],
         ];
     }
 
