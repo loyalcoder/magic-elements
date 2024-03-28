@@ -119,30 +119,74 @@ class Heading extends Widget_Base
         );
 
         $this->add_control(
-			'item_description',
+			'title',
 			[
-				'label' => esc_html__( 'Description', 'textdomain' ),
+				'label' => esc_html__( 'Title', 'elementor' ),
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
-				'rows' => 10,
-				'default' => esc_html__( 'Default description', 'textdomain' ),
-				'placeholder' => esc_html__( 'Type your description here', 'textdomain' ),
+				'ai' => [
+					'type' => 'text',
+				],
+				'dynamic' => [
+					'active' => true,
+				],
+				'placeholder' => esc_html__( 'Enter your title', 'elementor' ),
+				'default' => esc_html__( 'Add Your Heading Text Here', 'elementor' ),
 			]
 		);
 
         $this->add_control(
-            'title',
-            [
-                'label'       => __('Title', 'pkun'),
-                'type'        => Controls_Manager::TEXT,
-                'label_block' => true,
-                'default'     => __('Hello World', 'pkun'),
-                'dynamic'     => [
-                    'active' => true,
-                ],
-            ]
-        );
+			'link',
+			[
+				'label' => esc_html__( 'Link', 'elementor' ),
+				'type' => \Elementor\Controls_Manager::URL,
+				'dynamic' => [
+					'active' => true,
+				],
+				'default' => [
+					'url' => '',
+				],
+			]
+		);
 
-        
+		$this->add_control(
+			'size',
+			[
+				'label' => esc_html__( 'Size', 'elementor' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'options' => [
+					'default' => esc_html__( 'Default', 'elementor' ),
+					'small' => esc_html__( 'Small', 'elementor' ),
+					'medium' => esc_html__( 'Medium', 'elementor' ),
+					'large' => esc_html__( 'Large', 'elementor' ),
+					'xl' => esc_html__( 'XL', 'elementor' ),
+					'xxl' => esc_html__( 'XXL', 'elementor' ),
+				],
+				'default' => 'default',
+				'condition' => [
+					'size!' => 'default', // a workaround to hide the control, unless it's in use (not default).
+				],
+			]
+		);
+
+		$this->add_control(
+			'header_size',
+			[
+				'label' => esc_html__( 'HTML Tag', 'elementor' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'options' => [
+					'h1' => 'H1',
+					'h2' => 'H2',
+					'h3' => 'H3',
+					'h4' => 'H4',
+					'h5' => 'H5',
+					'h6' => 'H6',
+					'div' => 'div',
+					'span' => 'span',
+					'p' => 'p',
+				],
+				'default' => 'h2',
+			]
+		);
 
         $this->end_controls_section();
 
@@ -157,59 +201,65 @@ class Heading extends Widget_Base
         );
 
         $this->add_responsive_control(
-            $this->get_name() . 'banner_container_height',
-            [
-                'label' => __('Min Height', 'pkun'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px'],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 1000,
-                        'step' => 1,
-                    ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .banner__slider__wraper' => 'min-height: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
+			'align',
+			[
+				'label' => esc_html__( 'Alignment', 'elementor' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'elementor' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'elementor' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'elementor' ),
+						'icon' => 'eicon-text-align-right',
+					],
+					'justify' => [
+						'title' => esc_html__( 'Justified', 'elementor' ),
+						'icon' => 'eicon-text-align-justify',
+					],
+				],
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}}' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
 
-        $this->add_responsive_control(
-            $this->get_name() . 'bg__color',
-            [
-                'label' => __('Background Color', 'pkun'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .banner__slider__wraper' => 'background-color: {{VALUE}}',
-                ],
-            ]
-        );
+		$this->add_control(
+			'title_color',
+			[
+				'label' => esc_html__( 'Text Color', 'elementor' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .elementor-heading-title' => 'color: {{VALUE}};',
+				],
+			]
+		);
 
-        $this->add_responsive_control(
-            $this->get_name() . 'banner_container_spacing',
-            [
-                'label' => __('Padding', 'pkun'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em'],
-                'selectors' => [
-                    '{{WRAPPER}} .banner__slider__wraper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
+		
 
-        $this->add_responsive_control(
-            $this->get_name() . 'bg_overlay_color',
-            [
-                'label' => __('Overlay Color', 'pkun'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                // 'devices'   => ['mobile', 'tablet'],
-                'selectors' => [
-                    '{{WRAPPER}} .banner__slider__wraper:before' => 'background-color: {{VALUE}}',
-                ],
-            ]
-        );
+		$this->add_group_control(
+			\Elementor\Group_Control_Text_Stroke::get_type(),
+			[
+				'name' => 'text_stroke',
+				'selector' => '{{WRAPPER}} .elementor-heading-title',
+			]
+		);
 
+		$this->add_group_control(
+			\Elementor\Group_Control_Text_Shadow::get_type(),
+			[
+				'name' => 'text_shadow',
+				'selector' => '{{WRAPPER}} .elementor-heading-title',
+			]
+		);
+
+		
         $this->end_controls_section();
     }
 
