@@ -23,7 +23,7 @@ if (!defined('ABSPATH')) {
  *
  * @since 1.0.0
  */
-class Social_Icon extends Widget_Base
+class Social_Icon  extends Widget_Base
 {
     /**
      * Retrieve the widget name.
@@ -89,6 +89,11 @@ class Social_Icon extends Widget_Base
     public function get_script_depends()
     {
         return [];
+    } 
+    
+    public function get_style_depends()
+    {
+        return [];
     }
 
     /**
@@ -111,12 +116,12 @@ class Social_Icon extends Widget_Base
     protected function register_social_icon_controls()
     {
         $this->start_controls_section(
-			'social_section',
-			[
-				'label' => esc_html__( 'Social Icon', 'elementor-magic-kit' ),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-			]
-		);
+            'socil_content_section',
+            [
+                'label' => esc_html__('FAQ', 'elementor-magic-kit'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
         $repeater = new \Elementor\Repeater();
         $repeater->add_control(
 			'social_icon',
@@ -150,96 +155,41 @@ class Social_Icon extends Widget_Base
 				'default' => [
 					'url' => '',
 					'is_external' => true,
-					'nofollow' => true,				],
+					'nofollow' => true,
+				],
 				'label_block' => true,
 			]
 		);
-
         $this->add_control(
-			'social_icon_list',
-			[
-				'label' => esc_html__( 'Icon List', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::REPEATER,
-				'fields' => $repeater->get_controls(),
-				'default' => [
-					[
-						'list_icon' => esc_html__( 'Icon-1', 'elementor-magic-kit' ),
-					],
-					[
-						'list_icon' => esc_html__( 'Icon-2', 'elementor-magic-kit' ),
-					],
-				],
-				'title_field' => '{{{ list_icon }}}',
-			]
-		);
-
-        
-
+            'lists',
+            [
+                'label' => esc_html__('Icon List', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::REPEATER,
+                'fields' => $repeater->get_controls(),
+                'default' => [
+                    [
+                        'icon_list' => esc_html__('Icon-1', 'elementor-magic-kit'),
+                    ],
+                    [
+                        'icon_list' => esc_html__('Icon-2', 'elementor-magic-kit'),
+                    ],
+                    [
+                        'icon_list' => esc_html__('Icon-3', 'elementor-magic-kit'),
+                    ],
+                ],
+                'title_field' => '{{{ icon_list }}}',
+            ]
+        );
         $this->end_controls_section();
 
         // Style section
         $this->start_controls_section(
-            $this->get_name() . 'container_style_section',
-            [
-                'label' => __('Container', 'pkun'),
-                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_responsive_control(
-            $this->get_name() . 'banner_container_height',
-            [
-                'label' => __('Min Height', 'pkun'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px'],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 1000,
-                        'step' => 1,
-                    ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .banner__slider__wraper' => 'min-height: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            $this->get_name() . 'bg__color',
-            [
-                'label' => __('Background Color', 'pkun'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .banner__slider__wraper' => 'background-color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            $this->get_name() . 'banner_container_spacing',
-            [
-                'label' => __('Padding', 'pkun'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em'],
-                'selectors' => [
-                    '{{WRAPPER}} .banner__slider__wraper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            $this->get_name() . 'bg_overlay_color',
-            [
-                'label' => __('Overlay Color', 'pkun'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                // 'devices'   => ['mobile', 'tablet'],
-                'selectors' => [
-                    '{{WRAPPER}} .banner__slider__wraper:before' => 'background-color: {{VALUE}}',
-                ],
-            ]
-        );
-
+			$this->get_name() .'title_style',
+			[
+				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
         $this->end_controls_section();
     }
 
@@ -254,7 +204,7 @@ class Social_Icon extends Widget_Base
     protected function render()
     {
         $settings    = $this->get_settings_for_display();
-        $social_item_list = $settings['social_icon_list'];
+        $social_item_list = $settings['lists'];
         include __DIR__ . '/layouts/Icon/social-icon.php';
     }
 
