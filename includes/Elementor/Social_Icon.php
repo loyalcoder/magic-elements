@@ -161,7 +161,7 @@ class Social_Icon  extends Widget_Base
 			]
 		);
         $this->add_control(
-            'lists',
+            'social_lists',
             [
                 'label' => esc_html__('Icon List', 'elementor-magic-kit'),
                 'type' => \Elementor\Controls_Manager::REPEATER,
@@ -204,7 +204,7 @@ class Social_Icon  extends Widget_Base
     protected function render()
     {
         $settings    = $this->get_settings_for_display();
-        $social_item_list = $settings['lists'];
+        $social_item_list = $settings['social_lists'];
         include __DIR__ . '/layouts/Icon/social-icon.php';
     }
 
