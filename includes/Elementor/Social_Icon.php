@@ -118,15 +118,16 @@ class Social_Icon  extends Widget_Base
         $this->start_controls_section(
             'socil_content_section',
             [
-                'label' => esc_html__('FAQ', 'elementor-magic-kit'),
+                'label' => esc_html__('Social Icon', 'elementor-magic-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
         $repeater = new \Elementor\Repeater();
-        $repeater->add_control(
+
+		$repeater->add_control(
 			'social_icon',
 			[
-				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Icon', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
 				'default' => [
 					'value' => 'fas fa-circle',
@@ -146,40 +147,39 @@ class Social_Icon  extends Widget_Base
 				],
 			]
 		);
-        $repeater->add_control(
-			'icon_link',
+
+		$repeater->add_control(
+			'list_content',
 			[
-				'label' => esc_html__( 'Link', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::URL,
-				'options' => [ 'url', 'is_external', 'nofollow' ],
-				'default' => [
-					'url' => '',
-					'is_external' => true,
-					'nofollow' => true,
-				],
-				'label_block' => true,
+				'label' => esc_html__( 'Content', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::WYSIWYG,
+				'default' => esc_html__( 'List Content' , 'textdomain' ),
+				'show_label' => false,
 			]
 		);
-        $this->add_control(
-            'social_lists',
-            [
-                'label' => esc_html__('Icon List', 'elementor-magic-kit'),
-                'type' => \Elementor\Controls_Manager::REPEATER,
-                'fields' => $repeater->get_controls(),
-                'default' => [
-                    [
-                        'icon_list' => esc_html__('Icon-1', 'elementor-magic-kit'),
-                    ],
-                    [
-                        'icon_list' => esc_html__('Icon-2', 'elementor-magic-kit'),
-                    ],
-                    [
-                        'icon_list' => esc_html__('Icon-3', 'elementor-magic-kit'),
-                    ],
-                ],
-                'title_field' => '{{{ icon_list }}}',
-            ]
-        );
+
+		$repeater->add_control(
+			'list_color',
+			[
+				'label' => esc_html__( 'Color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} {{CURRENT_ITEM}}' => 'color: {{VALUE}}'
+				],
+			]
+		);
+
+		$this->add_control(
+			'social_lists',
+			[
+				'label' => esc_html__( 'Repeater List', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
+				
+			]
+		);
+       
+       
         $this->end_controls_section();
 
         // Style section
@@ -204,8 +204,8 @@ class Social_Icon  extends Widget_Base
     protected function render()
     {
         $settings    = $this->get_settings_for_display();
-        $social_item_list = $settings['social_lists'];
-        include __DIR__ . '/layouts/Icon/social-icon.php';
+        $social_item = $settings['social_lists'];
+        include __DIR__ . '/layouts/icon/social-icon.php';
     }
 
     /**
