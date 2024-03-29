@@ -1,6 +1,6 @@
 <?php if(!empty($social_item)) {?>
      <?php foreach($social_item as $item) { ?>
-        <div>    
+        <div class="social-icon">    
             <?php
                 if ( ! empty( $item['icon_link']['url'] ) ) {
                     $this->add_link_attributes( 'icon_link', $item['icon_link'] );

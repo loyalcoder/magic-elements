@@ -127,17 +127,70 @@ class Social_Icon  extends Widget_Base
 		$repeater->add_control(
 			'social_icon',
 			[
-				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
 				'default' => [
-					'value' => 'fas fa-circle',
+					'value' => 'fab fa-facebook',
 					'library' => 'fa-solid',
 				],
 				'recommended' => [
 					'fa-solid' => [
-						'circle',
-						'dot-circle',
-						'square-full',
+						'android',
+						'apple',
+						'behance',
+						'bitbucket',
+						'codepen',
+						'delicious',
+						'deviantart',
+						'digg',
+						'dribbble',
+						'elementor',
+						'facebook',
+						'flickr',
+						'foursquare',
+						'free-code-camp',
+						'github',
+						'gitlab',
+						'globe',
+						'houzz',
+						'instagram',
+						'jsfiddle',
+						'linkedin',
+						'medium',
+						'meetup',
+						'mix',
+						'mixcloud',
+						'odnoklassniki',
+						'pinterest',
+						'product-hunt',
+						'reddit',
+						'shopping-cart',
+						'skype',
+						'slideshare',
+						'snapchat',
+						'soundcloud',
+						'spotify',
+						'stack-overflow',
+						'steam',
+						'telegram',
+						'thumb-tack',
+						'threads',
+						'tripadvisor',
+						'tumblr',
+						'twitch',
+						'twitter',
+						'viber',
+						'vimeo',
+						'vk',
+						'weibo',
+						'weixin',
+						'whatsapp',
+						'wordpress',
+						'xing',
+						'x-twitter',
+						'yelp',
+						'youtube',
+						'500px',
 					],
 					'fa-regular' => [
 						'circle',
@@ -149,47 +202,329 @@ class Social_Icon  extends Widget_Base
 		);
 
 		$repeater->add_control(
-			'list_content',
+			'icon_link',
 			[
-				'label' => esc_html__( 'Content', 'textdomain' ),
-				'type' => \Elementor\Controls_Manager::WYSIWYG,
-				'default' => esc_html__( 'List Content' , 'textdomain' ),
-				'show_label' => false,
+				'label' => esc_html__( 'Link', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::URL,
+				'options' => [ 'url', 'is_external', 'nofollow' ],
+				'default' => [
+					'url' => '',
+					'is_external' => true,
+					'nofollow' => true,
+				],
+				'label_block' => true,
 			]
 		);
-
-		$repeater->add_control(
-			'list_color',
+		$this->add_control(
+			'social_lists',
 			[
-				'label' => esc_html__( 'Color', 'textdomain' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
+				'label' => esc_html__( 'Icon List', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
+                'default' => [
+					[
+						'social_icon' => [
+							'value' => 'fab fa-facebook',
+							'library' => 'fa-brands',
+						],
+					],
+					[
+						'social_icon' => [
+							'value' => 'fab fa-twitter',
+							'library' => 'fa-brands',
+						],
+					],
+					[
+						'social_icon' => [
+							'value' => 'fab fa-youtube',
+							'library' => 'fa-brands',
+						],
+					],
+				],
+			]
+		);
+        $this->add_control(
+			'shape',
+			[
+				'label' => esc_html__( 'Shape', 'elementor-magic-kit' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'rounded',
+				'options' => [
+					'rounded' => esc_html__( 'Rounded', 'elementor-magic-kit' ),
+					'square' => esc_html__( 'Square', 'elementor-magic-kit' ),
+					'circle' => esc_html__( 'Circle', 'elementor-magic-kit' ),
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'columns',
+			[
+				'label' => esc_html__( 'Columns', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => '0',
+				'options' => [
+					'0' => esc_html__( 'Auto', 'elementor-magic-kit' ),
+					'1' => '1',
+					'2' => '2',
+					'3' => '3',
+					'4' => '4',
+					'5' => '5',
+					'6' => '6',
+				],
 				'selectors' => [
-					'{{WRAPPER}} {{CURRENT_ITEM}}' => 'color: {{VALUE}}'
+					'{{WRAPPER}} .social-icon' => '--grid-template-columns: repeat({{VALUE}}, auto);',
 				],
 			]
 		);
 
-		$this->add_control(
-			'social_lists',
-			[
-				'label' => esc_html__( 'Repeater List', 'textdomain' ),
-				'type' => \Elementor\Controls_Manager::REPEATER,
-				'fields' => $repeater->get_controls(),
-				
-			]
-		);
        
        
         $this->end_controls_section();
 
         // Style section
         $this->start_controls_section(
-			$this->get_name() .'title_style',
+			$this->get_name() .'social_icons_style',
 			[
-				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Social Icon', 'elementor-magic-kit' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
+        $this->add_responsive_control(
+			'align',
+			[
+				'label' => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left'    => [
+						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'center',
+				'selectors' => [
+					'{{WRAPPER}} .social-icon' => 'text-align: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'icon_size',
+			[
+				'label' => esc_html__( 'Size', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 30,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .social-icon a' => 'icon-size: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'icon_padding',
+			[
+				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 30,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .social-icon a' => 'padding: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'icon_spacing',
+			[
+				'label' => esc_html__( 'Spacing', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 30,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .social-icon a' => 'column-gap: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'icon_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .your-class' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        // normal-hover-start
+		//normal
+        $this->start_controls_tabs(
+			'style_tabs'
+		);
+
+		$this->start_controls_tab(
+			'style_normal_tab',
+			[
+				'label' => esc_html__( 'Normal', 'elementor-magic-kit' ),
+			]
+		);
+        $this->add_control(
+			'icon_color',
+			[
+				'label' => esc_html__( 'Icon Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .your-class' => 'color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'icon_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .your-class',
+			]
+		);
+
+        $this->add_control(
+			'opacity',
+			[
+				'label' => esc_html__( 'Opacity', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'max' => 1,
+						'min' => 0.10,
+						'step' => 0.01,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .your-class' => 'opacity: {{SIZE}};',
+				],
+			]
+		);
+
+        $this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'icon_border',
+				'selector' => '{{WRAPPER}} .your-class',
+			]
+		);
+
+
+		$this->end_controls_tab();
+		//hover
+		$this->start_controls_tab(
+			'style_hover_tab',
+			[
+				'label' => esc_html__( 'Hover', 'elementor-magic-kit' ),
+			]
+		);
+
+        $this->add_control(
+			'icon_hover_color',
+			[
+				'label' => esc_html__( 'Icon Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .your-class' => 'color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'icon_hover_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .your-class',
+			]
+		);
+
+        $this->add_control(
+			'icon_hover_opacity',
+			[
+				'label' => esc_html__( 'Opacity', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'max' => 1,
+						'min' => 0.10,
+						'step' => 0.01,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .your-class' => 'opacity: {{SIZE}};',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'icon_border_hover',
+				'selector' => '{{WRAPPER}}:hover .your-class',
+			]
+		);
+   
+        $this->add_control(
+			'icon_hover_animation',
+			[
+				'label' => esc_html__( 'Hover Animation', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::HOVER_ANIMATION,
+			]
+		);
+
+		
+		$this->end_controls_tab();
+// normal-hover-end
         $this->end_controls_section();
     }
 
