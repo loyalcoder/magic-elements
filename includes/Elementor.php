@@ -83,7 +83,7 @@ class Load_Elementor
         $this->includeWidgetsFiles();
 
         Plugin::instance()->widgets_manager->register(new Elementor\Hello_World());
-        Plugin::instance()->widgets_manager->register(new Elementor\Magic_Kit_Icon());
+        Plugin::instance()->widgets_manager->register(new Elementor\Icon_Box());
     }
 
     /**
@@ -140,7 +140,7 @@ class Load_Elementor
     {
         return [
             'Hello_World',
-            'Magic_Kit_Icon',
+            'Icon_Box',
         ];
     }
 

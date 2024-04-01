@@ -3,7 +3,7 @@
 /**
  * Elementor Classes.
  *
- * @package Header Footer Elementor
+ * @package Icon Box Elementor Magic Kit
  */
 
 
@@ -17,13 +17,13 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * Elementor test
+ * Magic Kit For Elementor Extension
  *
- * Elementor widget for test.
+ * Elementor widget for Icon Box.
  *
  * @since 1.0.0
  */
-class Magic_Kit_Icon extends Widget_Base
+class Icon_Box extends Widget_Base
 {
     /**
      * Retrieve the widget name.
@@ -36,7 +36,7 @@ class Magic_Kit_Icon extends Widget_Base
      */
     public function get_name()
     {
-        return 'EM_KIT_Magic_Kit_Icon';
+        return 'em_kit_magic_kit_icon'; 
     }
 
     /**
@@ -50,7 +50,7 @@ class Magic_Kit_Icon extends Widget_Base
      */
     public function get_title()
     {
-        return __('Icon Box', 'elementor-magic-kit');
+        return esc_html('Icon Box', 'elementor-magic-kit');
     }
 
     /**
@@ -64,7 +64,7 @@ class Magic_Kit_Icon extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-icon-wrapper';
+        return 'eicon-kit-details';
     }
 
     /**
@@ -104,7 +104,7 @@ class Magic_Kit_Icon extends Widget_Base
      */
     protected function register_controls()
     {
-        $this->register_magic_kit_icon_controls();
+        $this->register_icon_box_controls();
     }
 
     /**
@@ -113,7 +113,7 @@ class Magic_Kit_Icon extends Widget_Base
      * @since 1.0.0
      * @access protected
      */
-    protected function register_magic_kit_icon_controls()
+    protected function register_icon_box_controls()
     {
         $this->start_controls_section(
             'section_title',
@@ -770,7 +770,7 @@ class Magic_Kit_Icon extends Widget_Base
 		// if( ! empty($settings['icon_border_style'])){
 		// 	$this->add_render_attribute(  'icon', 'class', 'magic-kit-icon-'. $settings['icon_border_style'] );
 		// }
-        include __DIR__ . '/layouts/magic-kit-icon.php';
+        include __DIR__ . '/layouts/icon-box.php';
     }
 
     /**
