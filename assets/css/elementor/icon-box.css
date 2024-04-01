@@ -1,11 +1,23 @@
-.magic-kit-icon-shape {
+.magic-kit-icon .magic-kit-icon-shape {
   display: inline-block;
-  padding: 30px;
+  transition: all 0.3s;
 }
-.magic-kit-icon-shape .magic-kit-icon-framed {
-  border: solid 3px;
+.magic-kit-icon .magic-kit-icon-shape svg path {
+  transition: all 0.3s;
 }
-.magic-kit-icon-shape .magic-kit-icon-stacked {
-  background-color: red;
+.magic-kit-icon .magic-kit-icon-stacked {
+  background-color: rgba(238, 53, 53, 0.986);
+}
+.magic-kit-icon .magic-kit-icon-stacked svg path {
+  fill: white;
+}
+.magic-kit-icon .magic-kit-icon-framed {
+  border: solid 3px rgba(238, 53, 53, 0.986);
+}
+.magic-kit-icon .magic-kit-icon-framed svg path {
+  fill: rgba(238, 53, 53, 0.986);
+}
+.magic-kit-icon .magic-kit-icon-shape-circle {
+  border-radius: 100%;
 }
 /*# sourceMappingURL=icon-box.css.map */

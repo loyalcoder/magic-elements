@@ -133,21 +133,33 @@ class Magic_Kit_Icon extends Widget_Base
             ]
         );
 		$this->add_control(
-			'icon_border_style',
-			[
-				'label' => esc_html__( 'Border Style', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::SELECT,
-				'default' => 'default',
-				'options' => [
-					'default' => esc_html__( 'Default', 'elementor-magic-kit' ),
-					'framed' => esc_html__( 'Framed', 'elementor-magic-kit' ),
-					'stacked' => esc_html__( 'Stacked', 'elementor-magic-kit' ),
-				],
-				'selectors' => [
-					'{{WRAPPER}} .your-class' => 'border-style: {{VALUE}};',
-				],
-			]
-		);
+            'icon_border_style',
+            [
+                'label' => __('View', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'options' => [
+                    'default' => __('Default', 'elementor-magic-kit'),
+                    'framed' => __('Framed', 'elementor-magic-kit'),
+                    'stacked' => __('Stacked', 'elementor-magic-kit'),
+                ],
+                'default' => 'default',
+            ]
+        );
+		$this->add_control(
+            'icon_shape_style',
+            [
+                'label' => __('Shape', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'options' => [
+                    'square' => __('Square', 'elementor-magic-kit'),
+                    'circle' => __('Circle', 'elementor-magic-kit'),
+                ],
+                'default' => 'square',
+				'condition' => [
+            		'icon_border_style!' => 'default',
+        		],
+            ]
+        );
         $this->add_control(
 			'icon_box_title',
 			[
@@ -174,7 +186,6 @@ class Magic_Kit_Icon extends Widget_Base
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'default' => 'h3',
 				'options' => [
-					'' => esc_html__( 'h3', 'elementor-magic-kit' ),
 					'h1' => esc_html__( 'h1', 'elementor-magic-kit' ),
 					'h2'  => esc_html__( 'h2', 'elementor-magic-kit' ),
 					'h3' => esc_html__( 'h3', 'elementor-magic-kit' ),
@@ -233,6 +244,13 @@ class Magic_Kit_Icon extends Widget_Base
 				],
 			]
 		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'box_shadow',
+				'selector' => '{{WRAPPER}} .icon-wrapper',
+			]
+		);
 
 		$this->end_controls_tab();
 
@@ -252,13 +270,20 @@ class Magic_Kit_Icon extends Widget_Base
 				],
 			]
 		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'box_shadow_hover',
+				'selector' => '{{WRAPPER}} .icon-wrapper:hover',
+			]
+		);
 		$this->add_control(
 			'title_hover_color',
 			[
 				'label' => esc_html__( 'Title Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .icon-wrapper:hover .icon-box-content .magic-kit-icon-title .title span' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .icon-wrapper:hover .icon-box-content .magic-kit-icon-title .title span , .icon-wrapper:hover .icon-box-content .magic-kit-icon-title .title a' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -429,17 +454,47 @@ class Magic_Kit_Icon extends Widget_Base
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
-        $this->add_control(
+		$this->start_controls_tabs(
+			'icon_style_tabs'
+		);
+		$this->start_controls_tab(
+			'style_icon_normal_tab',
+			[
+				'label' => esc_html__( 'Normal', 'elementor-magic-kit' ),
+			]
+		);
+
+		$this->add_control(
 			$this->get_name() . 'icon_color',
 			[
-				'label' => esc_html__( 'Icon Color', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Primary Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .icon-wrapper .magic-kit-icon svg path' => 'fill: {{VALUE}}',
 				],
 			]
 		);
-        $this->add_responsive_control(
+		$this->add_control(
+			$this->get_name() . 'icon_color_bg',
+			[
+				'label' => esc_html__( 'Secondary Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .icon-wrapper .magic-kit-icon .magic-kit-icon-stacked' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_control(
+			$this->get_name() . 'icon_border_color',
+			[
+				'label' => esc_html__( 'Icon Border', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .icon-wrapper .magic-kit-icon .magic-kit-icon-shape' => 'border-color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_responsive_control(
 			'icon_size',
 			[
 				'label' => esc_html__( 'Size', 'elementor-magic-kit' ),
@@ -457,6 +512,25 @@ class Magic_Kit_Icon extends Widget_Base
 				],
 				'selectors' => [
 					'{{WRAPPER}} .magic-kit-icon svg' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'icon_paddin',
+			[
+				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 10,
+					'right' => 10,
+					'bottom' => 10,
+					'left' => 10,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .magic-kit-icon .magic-kit-icon-shape' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -497,6 +571,54 @@ class Magic_Kit_Icon extends Widget_Base
 				],
 			]
 		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'style_icon_hover_tab',
+			[
+				'label' => esc_html__( 'Hover', 'elementor-magic-kit' ),
+			]
+		);
+		$this->add_control(
+			$this->get_name() . 'icon_hover_color',
+			[
+				'label' => esc_html__( 'Primary Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .icon-wrapper .magic-kit-icon span:hover svg path' => 'fill: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_control(
+			$this->get_name() . 'icon_hover_bg_color',
+			[
+				'label' => esc_html__( 'Secondary Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .icon-wrapper .magic-kit-icon .magic-kit-icon-stacked:hover' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_control(
+			$this->get_name() . 'icon_border_hover_color',
+			[
+				'label' => esc_html__( 'Icon Border', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .icon-wrapper .magic-kit-icon .magic-kit-icon-shape:hover' => 'border-color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_control(
+			'icon_hover_animation',
+			[
+				'label' => esc_html__( 'Hover Animation', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::HOVER_ANIMATION,
+			]
+		);
+
+		$this->end_controls_tab();
         $this->end_controls_section();
 
         // content control ==================================
@@ -521,7 +643,7 @@ class Magic_Kit_Icon extends Widget_Base
 				'label' => esc_html__( 'Title Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .icon-box-content .magic-kit-icon-title .title span' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .icon-box-content .magic-kit-icon-title .title span, .icon-box-content .magic-kit-icon-title .title a' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -529,21 +651,21 @@ class Magic_Kit_Icon extends Widget_Base
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'title_typography',
-				'selector' => '{{WRAPPER}} .icon-box-content .magic-kit-icon-title .title span',
+				'selector' => '{{WRAPPER}} .icon-box-content .magic-kit-icon-title .title span, .icon-box-content .magic-kit-icon-title .title a',
 			]
 		);
         $this->add_group_control(
 			\Elementor\Group_Control_Text_Stroke::get_type(),
 			[
 				'name' => 'title_stroke',
-				'selector' => '{{WRAPPER}} .icon-box-content .magic-kit-icon-title .title span',
+				'selector' => '{{WRAPPER}} .icon-box-content .magic-kit-icon-title .title span, .icon-box-content .magic-kit-icon-title .title a',
 			]
 		);
         $this->add_group_control(
 			\Elementor\Group_Control_Text_Shadow::get_type(),
 			[
 				'name' => 'title_shadow',
-				'selector' => '{{WRAPPER}} .icon-box-content .magic-kit-icon-title .title span',
+				'selector' => '{{WRAPPER}} .icon-box-content .magic-kit-icon-title .title span, .icon-box-content .magic-kit-icon-title .title a',
 			]
 		);
         $this->add_responsive_control(
@@ -561,7 +683,7 @@ class Magic_Kit_Icon extends Widget_Base
 					'isLinked' => false,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .icon-box-content .magic-kit-icon-title .title span' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .icon-box-content .magic-kit-icon-title .title span, .icon-box-content .magic-kit-icon-title .title a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -625,33 +747,6 @@ class Magic_Kit_Icon extends Widget_Base
 		);
 		
         $this->end_controls_section();
-		// $this->start_controls_section(
-		// 	'style_section',
-		// 	[
-		// 		'label' => esc_html__( 'Style Section', 'elementor-magic-kit' ),
-		// 		'tab' => \Elementor\Controls_Manager::TAB_STYLE,
-		// 	]
-		// );
-		// $this->start_controls_tabs(
-		// 	'style_tabs'
-		// );
-		// $this->start_controls_tab(
-		// 	'style_normal_tab',
-		// 	[
-		// 		'label' => esc_html__( 'Normal', 'elementor-magic-kit' ),
-		// 	]
-		// );
-
-		// $this->end_controls_tab();
-
-		// $this->start_controls_tab(
-		// 	'style_hover_tab',
-		// 	[
-		// 		'label' => esc_html__( 'Hover', 'elementor-magic-kit' ),
-		// 	]
-		// );
-		// $this->end_controls_tab();
-		// $this->end_controls_section();
     }
 
     /**
@@ -668,12 +763,13 @@ class Magic_Kit_Icon extends Widget_Base
 		$link = $settings['link']['url'];
 		$addlinkaft = ! empty( $link ) ? "<a " . "href=".$settings['link']['url']."" : "<span";
 		$addlinkpre = ! empty( $link ) ? "</a> "  : "</";
-         
-		$this->add_render_attribute(  'icon', 'class', 'magic-kit-icon-shape');
+    
+
+		// $this->add_render_attribute(  'icon', 'class', 'magic-kit-icon-shape');
 		 
-		if( ! empty($settings['icon_border_style'])){
-			$this->add_render_attribute(  'icon', 'class', 'magic-kit-icon-'. $settings['icon_border_style'] );
-		}
+		// if( ! empty($settings['icon_border_style'])){
+		// 	$this->add_render_attribute(  'icon', 'class', 'magic-kit-icon-'. $settings['icon_border_style'] );
+		// }
         include __DIR__ . '/layouts/magic-kit-icon.php';
     }
 

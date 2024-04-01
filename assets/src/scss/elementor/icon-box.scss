@@ -1,11 +1,25 @@
 
-.magic-kit-icon-shape{
-    display: inline-block;
-    padding: 30px;
-    .magic-kit-icon-framed{
-        border: solid 3px;
+.magic-kit-icon{
+    .magic-kit-icon-shape {
+        display: inline-block;
+        transition: all 0.3s;
+        svg path{
+            transition: all 0.3s;
+        }
     }
     .magic-kit-icon-stacked{
-        background-color: red;
+        background-color: rgba(238, 53, 53, 0.986);
+        svg path{
+            fill: white;
+        }
+    }
+    .magic-kit-icon-framed{
+        border: solid 3px rgba(238, 53, 53, 0.986);
+        svg path{
+            fill: rgba(238, 53, 53, 0.986);
+        }
+    }
+    .magic-kit-icon-shape-circle{
+        border-radius: 100%;
     }
 }
