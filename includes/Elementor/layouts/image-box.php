@@ -4,13 +4,17 @@
     </div>
     <div class="magic-kit-image-content">
         <div class="image-box-title">
-            <h3>Title Will Display Here</h3>
+            <h3><?php echo $settings['img_box_title']; ?></h3>
         </div>
         <div class="image-box-description">
-            <p>Description Will Display Here</p>
+            <p><?php echo $settings['image_box_description']; ?></p>
         </div>
         <div class="image-box-button">
-            <a href="#">Button Will Display Here</a>
+            <?php 
+                if ( 'yes' === $settings['show_img_btn'] ) {
+			        echo '<a href="#">' . "Button Will Display Here" . '</a>';
+		        } 
+            ?>
         </div>
     </div>
 </div>

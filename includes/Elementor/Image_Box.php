@@ -131,7 +131,37 @@ class Image_Box extends Widget_Base
 				],
 			]
 		);
-		
+		$this->add_control(
+			'img_box_title',
+			[
+				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Image Title', 'elementor-magic-kit' ),
+				'placeholder' => esc_html__( 'Type your title here', 'elementor-magic-kit' ),
+			]
+		);
+        $this->add_control(
+			'image_box_description',
+			[
+				'label' => esc_html__( 'Description', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'rows' => 10,
+				'default' => esc_html__( 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et', 'elementor-magic-kit' ),
+				'placeholder' => esc_html__( 'Type your description here', 'elementor-magic-kit' ),
+			]
+		);
+        $this->add_control(
+			'show_img_btn',
+			[
+				'label' => esc_html__( 'Enable Button', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'elementor-magic-kit' ),
+				'label_off' => esc_html__( 'Hide', 'elementor-magic-kit' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+        
         $this->end_controls_section();
     }
 
