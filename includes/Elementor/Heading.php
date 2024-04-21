@@ -64,8 +64,7 @@ class Heading extends Widget_Base
      */
     public function get_icon()
     {
-        return '
-        eicon-heading';
+        return 'eicon-heading';
     }
 
     /**
@@ -114,7 +113,7 @@ class Heading extends Widget_Base
         $this->start_controls_section(
             'section_title',
             [
-                'label' => __('Title', 'elementor-magic-kit'),
+                'label' => esc_html__('Heading', 'elementor-magic-kit'),
             ]
         );
 
@@ -193,9 +192,9 @@ class Heading extends Widget_Base
         // Style section
         // --- Container section
         $this->start_controls_section(
-            $this->get_name() . 'container_style_section',
+            $this->get_name() . 'section_title_style',
             [
-                'label' => __('Container', 'elementor-magic-kit'),
+                'label' => esc_html__('Heading', 'elementor-magic-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -225,7 +224,7 @@ class Heading extends Widget_Base
 				],
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}}' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .emk-heading-title' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
@@ -236,18 +235,24 @@ class Heading extends Widget_Base
 				'label' => esc_html__( 'Text Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .elementor-magic-kit-heading-title' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .emk-heading-title' => 'color: {{VALUE}};',
 				],
 			]
 		);
 
-		
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'typography',
+				'selector' => '{{WRAPPER}} .emk-heading-title',
+			]
+		);
 
 		$this->add_group_control(
 			\Elementor\Group_Control_Text_Stroke::get_type(),
 			[
 				'name' => 'text_stroke',
-				'selector' => '{{WRAPPER}} .elementor-magic-kit-heading-title',
+				'selector' => '{{WRAPPER}} .emk-heading-title',
 			]
 		);
 
@@ -255,7 +260,7 @@ class Heading extends Widget_Base
 			\Elementor\Group_Control_Text_Shadow::get_type(),
 			[
 				'name' => 'text_shadow',
-				'selector' => '{{WRAPPER}} .elementor-magic-kit-heading-title',
+				'selector' => '{{WRAPPER}} .emk-heading-title',
 			]
 		);
 
@@ -274,6 +279,9 @@ class Heading extends Widget_Base
     protected function render()
     {
         $settings    = $this->get_settings_for_display();
+
+        $heading_tag = isset( $settings['header_size'] ) ? $settings['header_size'] : 'h2';
+
         include __DIR__ . '/layouts/heading/heading.php';
     }
 
