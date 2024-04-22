@@ -121,6 +121,16 @@ class Image_Box extends Widget_Base
                 'label' => __('Image Box Settings', 'elementor-magic-kit'),
             ]
         );
+        // $this->add_control(
+		// 	'image_box_image',
+		// 	[
+		// 		'label' => esc_html__( 'Choose Image', 'elementor-magic-kit' ),
+		// 		'type' => \Elementor\Controls_Manager::MEDIA,
+		// 		'default' => [
+		// 			'url' => \Elementor\Utils::get_placeholder_image_src(),
+		// 		],
+		// 	]
+		// );
         $this->add_control(
 			'image_box_image',
 			[
@@ -129,6 +139,15 @@ class Image_Box extends Widget_Base
 				'default' => [
 					'url' => \Elementor\Utils::get_placeholder_image_src(),
 				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Image_Size::get_type(),
+			[
+				'name' => 'thumbnail', // Usage: `{name}_size` and `{name}_custom_dimension`, in this case `thumbnail_size` and `thumbnail_custom_dimension`.
+				'exclude' => [ 'custom' ],
+				'include' => [],
+				'default' => 'large',
 			]
 		);
 		$this->add_control(
@@ -150,7 +169,15 @@ class Image_Box extends Widget_Base
 				'placeholder' => esc_html__( 'Type your description here', 'elementor-magic-kit' ),
 			]
 		);
-        $this->add_control(
+        $this->end_controls_section();
+        // button ==============
+        $this->start_controls_section(
+            'button_section',
+            [
+                'label' => __('Button Settings', 'elementor-magic-kit'),
+            ]
+        );
+                $this->add_control(
 			'show_img_btn',
 			[
 				'label' => esc_html__( 'Enable Button', 'elementor-magic-kit' ),
@@ -161,7 +188,98 @@ class Image_Box extends Widget_Base
 				'default' => 'yes',
 			]
 		);
-        
+        $this->add_control(
+			'button_text',
+			[
+				'label' => esc_html__( 'Label', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Button', 'elementor-magic-kit' ),
+				'placeholder' => esc_html__( 'Type your title here', 'elementor-magic-kit' ),
+                'condition' => [
+                    'show_img_btn' => 'yes',
+                ]
+			]
+		);
+        $this->add_control(
+			'button_align',
+			[
+				'label' => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .image-box-button' => 'text-align: {{VALUE}};',
+				],
+                'condition' => [
+                    'show_img_btn' => 'yes',
+                ]
+			]
+		);
+        $this->add_control(
+			'img_website_link',
+			[
+				'label' => esc_html__( 'Link', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::URL,
+				'options' => [ 'url', 'is_external', 'nofollow' ],
+				'default' => [
+					'url' => '',
+					'is_external' => true,
+					'nofollow' => true,
+				],
+				'label_block' => true,
+			]
+		);
+        $this->add_control(
+			'show_button_icon',
+			[
+				'label' => esc_html__( 'Add Icon?', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'elementor-magic-kit' ),
+				'label_off' => esc_html__( 'Hide', 'elementor-magic-kit' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
+        $this->add_control(
+			'button_icon',
+			[
+				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-circle',
+					'library' => 'fa-solid',
+				],
+				'recommended' => [
+					'fa-solid' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+					'fa-regular' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+				],
+                'condition' => [
+                    'show_button_icon' => 'yes',
+                ]
+			]
+		);
         $this->end_controls_section();
     }
 
@@ -176,6 +294,9 @@ class Image_Box extends Widget_Base
     protected function render()
     {
         $settings    = $this->get_settings_for_display();
+        if ( ! empty( $settings['img_website_link']['url'] ) ) {
+			$this->add_link_attributes( 'img_website_link', $settings['img_website_link'] );
+		}
         include __DIR__ . '/layouts/image-box.php';
     }
 
