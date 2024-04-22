@@ -60,6 +60,7 @@ const paths = {
             'assets/src/scss/admin/admin.scss',
             // 'assets/src/scss/elementor/style.scss',
             'assets/src/scss/elementor/button.scss',
+            'assets/src/scss/elementor/social.scss',
         ],
         dest: 'assets/css'
     },
