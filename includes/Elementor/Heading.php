@@ -50,7 +50,7 @@ class Heading extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Heading', 'elementor-magic-kit');
+        return esc_html__('Magic Heading', 'elementor-magic-kit');
     }
 
     /**
@@ -130,6 +130,7 @@ class Heading extends Widget_Base
 				],
 				'placeholder' => esc_html__( 'Enter your title', 'elementor-magic-kit' ),
 				'default' => esc_html__( 'Add Your Heading Text Here', 'elementor-magic-kit' ),
+                'description' => esc_html__('to add highlight text use {{I am highlight}}', 'elementor-magic-kit'),
 			]
 		);
 
@@ -229,13 +230,22 @@ class Heading extends Widget_Base
 			]
 		);
 
-		$this->add_control(
-			'title_color',
+        $this->add_control(
+			'emk_title',
 			[
-				'label' => esc_html__( 'Text Color', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'title_color_',
+			[
+				'label' => esc_html__( 'Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .emk-heading-title' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .emk-heading-title a' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -264,6 +274,33 @@ class Heading extends Widget_Base
 			]
 		);
 
+        $this->add_control(
+			'emk_replace_title',
+			[
+				'label' => esc_html__( 'Replace Title', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+        $this->add_control(
+            'emk_replace_color',
+            [
+                'label' => esc_html__('Replace Color', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} span.ornaments' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Text_Stroke::get_type(),
+            [
+                'name' => 'emk_replace_text_stroke',
+                'selector' => '{{WRAPPER}} span.ornaments',
+            ]
+        );
 		
         $this->end_controls_section();
     }
@@ -280,7 +317,19 @@ class Heading extends Widget_Base
     {
         $settings    = $this->get_settings_for_display();
 
-        $heading_tag = isset( $settings['header_size'] ) ? $settings['header_size'] : 'h2';
+        $this->add_render_attribute( 'heading', 'class', 'emk-heading-title' );
+        
+        if(!empty('header_size')){
+            $this->add_render_attribute('heading', 'class', 'emk-heading-size-'. $settings['header_size']);
+        }
+
+        if ( ! empty( $settings['link']['url'] ) ) {
+			$this->add_link_attributes( 'url', $settings['link'] );
+		}
+
+
+        $title = $settings['title'];
+        $newoutput = str_replace(['{{', '}}'], ['<span class="ornaments">', '</span>'], $title);
 
         include __DIR__ . '/layouts/heading/heading.php';
     }
