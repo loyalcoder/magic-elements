@@ -260,7 +260,7 @@ class Image extends Widget_Base
 				'label' => esc_html__( 'Width', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'default' => [
-					'unit' => '%',
+					'unit' => 'px',
 				],
 				'tablet_default' => [
 					'unit' => '%',
@@ -295,7 +295,7 @@ class Image extends Widget_Base
 				'label' => esc_html__( 'Max Width', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'default' => [
-					'unit' => '%',
+					'unit' => 'px',
 				],
 				'tablet_default' => [
 					'unit' => '%',
