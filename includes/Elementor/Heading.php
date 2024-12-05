@@ -134,39 +134,21 @@ class Heading extends Widget_Base
 			]
 		);
 
+          // Link Control
         $this->add_control(
-			'link',
-			[
-				'label' => esc_html__( 'Link', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::URL,
-				'dynamic' => [
-					'active' => true,
-				],
-				'default' => [
-					'url' => '',
-				],
-			]
-		);
-
-		$this->add_control(
-			'size',
-			[
-				'label' => esc_html__( 'Size', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::SELECT,
-				'options' => [
-					'default' => esc_html__( 'Default', 'elementor-magic-kit' ),
-					'small' => esc_html__( 'Small', 'elementor-magic-kit' ),
-					'medium' => esc_html__( 'Medium', 'elementor-magic-kit' ),
-					'large' => esc_html__( 'Large', 'elementor-magic-kit' ),
-					'xl' => esc_html__( 'XL', 'elementor-magic-kit' ),
-					'xxl' => esc_html__( 'XXL', 'elementor-magic-kit' ),
-				],
-				'default' => 'default',
-				'condition' => [
-					'size!' => 'default', // a workaround to hide the control, unless it's in use (not default).
-				],
-			]
-		);
+            'heading_link',
+            [
+                'label'         => esc_html__( 'Heading Link', 'elementor-magic-kit' ),
+                'type'          => Controls_Manager::URL,
+                'placeholder'   => esc_html__( 'https://your-link.com', 'elementor-magic-kit' ),
+                'options'       => [ 'url', 'is_external', 'nofollow' ],
+                'default'       => [
+                    'url'         => '',
+                    'is_external' => false,
+                    'nofollow'    => false,
+                ],
+            ]
+        );
 
 		$this->add_control(
 			'header_size',
@@ -245,7 +227,7 @@ class Heading extends Widget_Base
 				'label' => esc_html__( 'Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .emk-heading-title a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .emk-heading-title, {{WRAPPER}} .emk-heading-title a' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -317,19 +299,9 @@ class Heading extends Widget_Base
     {
         $settings    = $this->get_settings_for_display();
 
-        $this->add_render_attribute( 'heading', 'class', 'emk-heading-title' );
-        
-        if(!empty('header_size')){
-            $this->add_render_attribute('heading', 'class', 'emk-heading-size-'. $settings['header_size']);
-        }
-
-        if ( ! empty( $settings['link']['url'] ) ) {
-			$this->add_link_attributes( 'url', $settings['link'] );
-		}
-
-
         $title = $settings['title'];
         $newoutput = str_replace(['{{', '}}'], ['<span class="ornaments">', '</span>'], $title);
+        $heading_link = !empty( $settings['heading_link']['url'] ) ? $settings['heading_link']['url'] : '';
 
         include __DIR__ . '/layouts/heading/heading.php';
     }
