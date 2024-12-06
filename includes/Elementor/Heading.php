@@ -14,7 +14,7 @@ use Elementor\Widget_Base;
 
 if (!defined('ABSPATH')) {
     exit;
-}
+} 
 
 /**
  * Magic Kit for Elementor Extension
