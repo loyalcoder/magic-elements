@@ -11,5 +11,19 @@
     <h2><?php echo esc_html($settings['team_title']); ?></h2>
     <h6><?php echo esc_html($settings['team_designation']); ?></h6>
     <p><?php echo esc_html($settings['team_description']); ?></p>
+
+    <div class="team-icon">
+        <?php if(!empty($team_icon_list)) {?>
+        <?php foreach($team_icon_list as $list) { ?>
+            <div class="social-icon">
+                <?php if ( ! empty( $list['icon_link']['url'] ) ) {
+			$this->add_link_attributes( 'icon_link', $list['icon_link'] ); ?>
+                <a <?php  $this->print_render_attribute_string( 'icon_link' ); ?> >
+                    <?php \Elementor\Icons_Manager::render_icon( $list['team_social_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                </a>       
+                <?php } ?>     
+            </div>
+        <?php } } ?>
+    </div>
 </div>
 

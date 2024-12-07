@@ -226,6 +226,61 @@ class Team extends Widget_Base
 		);
         $this->end_controls_section();
 
+        $this->start_controls_section(
+			'team_social_media_content_section',
+			[
+				'label' => esc_html__( 'Social Media', 'elementor-magic-kit' ),
+				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+        $repeater = new \Elementor\Repeater();
+        $repeater->add_control(
+			'team_social_icon',
+			[
+				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-circle',
+					'library' => 'fa-solid',
+				],
+				'recommended' => [
+					'fa-solid' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+					'fa-regular' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+				],
+			]
+		);
+        $repeater->add_control(
+			'icon_link',
+			[
+				'label' => esc_html__( 'Link', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::URL,
+				'options' => [ 'url', 'is_external', 'nofollow' ],
+				'default' => [
+					'url' => '',
+					'is_external' => true,
+					'nofollow' => true,
+				],
+				'label_block' => true,
+			]
+		);
+        $this->add_control(
+			'icon_control',
+			[
+				'label' => esc_html__( 'Icon List', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
+			]
+		);
+
+        $this->end_controls_section();
 
         // Style section
  
@@ -564,6 +619,94 @@ class Team extends Widget_Base
 		);
         $this->end_controls_section();
 
+        $this->start_controls_section(
+			'team_social_media_style_section',
+			[
+				'label' => esc_html__( 'Social Media', 'elementor-magic-kit' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+
+		);
+        $this->add_control(
+			'team_social_icon_color',
+			[
+				'label' => esc_html__( 'Icon Color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .your-class' => 'color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'team_social_icon_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .your-class',
+			]
+		);
+        $this->add_responsive_control(
+			'icon_width',
+			[
+				'label' => esc_html__( 'Size', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .your-class' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'icon_padding',
+			[
+				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'selectors' => [
+					'{{WRAPPER}} .your-class' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_control(
+			'team_icon_more_options',
+			[
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'icon_border',
+				'selector' => '{{WRAPPER}} .your-class',
+			]
+		);
+        $this->add_responsive_control(
+			'icon_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .your-class' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+
+        $this->end_controls_section();
+
+
 
     }
 
@@ -578,6 +721,7 @@ class Team extends Widget_Base
     protected function render()
     {
         $settings    = $this->get_settings_for_display();
+        $team_icon_list = $settings['icon_control'];
         include __DIR__ . '/layouts/team.php';
     }
 
