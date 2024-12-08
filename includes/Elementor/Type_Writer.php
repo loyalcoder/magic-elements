@@ -146,6 +146,18 @@ class Type_Writer extends Widget_Base
                 'label' => __( 'Typewriter Texts', 'elementor-magic-kit' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
+                'default' => [
+					[
+						'dynamic_text' => esc_html__( 'Programmer', 'elementor-magic-kit' ),
+					],
+					[
+						'dynamic_text' => esc_html__( 'Developer', 'elementor-magic-kit' ),
+					],
+					[
+						'dynamic_text' => esc_html__( 'Youtuber', 'elementor-magic-kit' ),
+					],
+				],
+
                 'title_field' => '{{{ dynamic_text }}}',
             ]
         );
