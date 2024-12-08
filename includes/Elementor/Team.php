@@ -721,8 +721,10 @@ class Team extends Widget_Base
     protected function render()
     {
         $settings    = $this->get_settings_for_display();
+
         $team_icon_list = $settings['icon_control'];
         include __DIR__ . '/layouts/team.php';
+
     }
 
     /**

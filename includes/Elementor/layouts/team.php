@@ -16,7 +16,16 @@
         <?php if(!empty($team_icon_list)) {?>
         <?php foreach($team_icon_list as $list) { ?>
             <div class="social-icon">
-                <?php \Elementor\Icons_Manager::render_icon( $list['team_social_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                <?php
+                    if ( ! empty( $list['icon_link']['url'] ) ) {
+                        $this->add_link_attributes( 'icon_link', $list['icon_link'] );
+                    }
+                
+                ?>
+                <a <?php $this->print_render_attribute_string( 'icon_link' ); ?>>
+                    <?php \Elementor\Icons_Manager::render_icon( $list['team_social_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                </a>
+               
             </div>
         <?php } } ?>
     </div>
