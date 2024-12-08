@@ -111,180 +111,126 @@ class Type_Writer extends Widget_Base
     protected function register_heading_controls()
     {
         $this->start_controls_section(
-            'section_title',
+            'content_section',
             [
-                'label' => esc_html__('Heading', 'elementor-magic-kit'),
+                'label' => __( 'Content', 'elementor-magic-kit' ),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
 
         $this->add_control(
-			'title',
-			[
-				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::TEXTAREA,
-				'ai' => [
-					'type' => 'text',
-				],
-				'dynamic' => [
-					'active' => true,
-				],
-				'placeholder' => esc_html__( 'Enter your title', 'elementor-magic-kit' ),
-				'default' => esc_html__( 'Add Your Heading Text Here', 'elementor-magic-kit' ),
-                'description' => esc_html__('to add highlight text use {{I am highlight}}', 'elementor-magic-kit'),
-			]
-		);
-
-          // Link Control
-        $this->add_control(
-            'heading_link',
+            'static_text',
             [
-                'label'         => esc_html__( 'Heading Link', 'elementor-magic-kit' ),
-                'type'          => Controls_Manager::URL,
-                'placeholder'   => esc_html__( 'https://your-link.com', 'elementor-magic-kit' ),
-                'options'       => [ 'url', 'is_external', 'nofollow' ],
-                'default'       => [
-                    'url'         => '',
-                    'is_external' => false,
-                    'nofollow'    => false,
-                ],
+                'label' => __( 'Static Text', 'elementor-magic-kit' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => __( 'Welcome to ', 'elementor-magic-kit' ),
             ]
         );
 
-		$this->add_control(
-			'header_size',
-			[
-				'label' => esc_html__( 'HTML Tag', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::SELECT,
-				'options' => [
-					'h1' => 'H1',
-					'h2' => 'H2',
-					'h3' => 'H3',
-					'h4' => 'H4',
-					'h5' => 'H5',
-					'h6' => 'H6',
-					'div' => 'div',
-					'span' => 'span',
-					'p' => 'p',
-				],
-				'default' => 'h2',
-			]
-		);
+        $repeater = new \Elementor\Repeater();
+
+
+        $repeater->add_control(
+            'dynamic_text',
+            [
+                'label' => __( 'Dynamic Text', 'elementor-magic-kit' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => __( 'Typewriter Effect', 'elementor-magic-kit' ),
+                'label_block' => true
+            ]
+        );
+
+        $this->add_control(
+            'typewriter_texts',
+            [
+                'label' => __( 'Typewriter Texts', 'elementor-magic-kit' ),
+                'type' => \Elementor\Controls_Manager::REPEATER,
+                'fields' => $repeater->get_controls(),
+                'title_field' => '{{{ dynamic_text }}}',
+            ]
+        );
 
         $this->end_controls_section();
 
-        // Style section
-        // --- Container section
+        // style section
+
         $this->start_controls_section(
-            $this->get_name() . 'section_title_style',
-            [
-                'label' => esc_html__('Heading', 'elementor-magic-kit'),
-                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_responsive_control(
-			'align',
-			[
-				'label' => esc_html__( 'Alignment', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::CHOOSE,
-				'options' => [
-					'left' => [
-						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
-						'icon' => 'eicon-text-align-left',
-					],
-					'center' => [
-						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
-						'icon' => 'eicon-text-align-center',
-					],
-					'right' => [
-						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
-						'icon' => 'eicon-text-align-right',
-					],
-					'justify' => [
-						'title' => esc_html__( 'Justified', 'elementor-magic-kit' ),
-						'icon' => 'eicon-text-align-justify',
-					],
-				],
-				'default' => '',
-				'selectors' => [
-					'{{WRAPPER}} .emk-heading-title' => 'text-align: {{VALUE}};',
-				],
-			]
-		);
-
-        $this->add_control(
-			'emk_title',
+			'type_writer_title_section',
 			[
 				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::HEADING,
-				'separator' => 'before',
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
 
 		$this->add_control(
-			'title_color_',
+			'type_writer_title_color',
 			[
 				'label' => esc_html__( 'Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .emk-heading-title, {{WRAPPER}} .emk-heading-title a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} #static-text' => 'color: {{VALUE}}',
 				],
 			]
 		);
 
-		$this->add_group_control(
+        $this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
-				'name' => 'typography',
-				'selector' => '{{WRAPPER}} .emk-heading-title',
+				'name' => 'type_writer_title_typography',
+				'selector' => '{{WRAPPER}} #static-text',
 			]
 		);
 
-		$this->add_group_control(
+        $this->add_group_control(
 			\Elementor\Group_Control_Text_Stroke::get_type(),
 			[
-				'name' => 'text_stroke',
-				'selector' => '{{WRAPPER}} .emk-heading-title',
+				'name' => 'type_writer_title_stroke',
+				'selector' => '{{WRAPPER}} #static-text',
 			]
 		);
 
-		$this->add_group_control(
-			\Elementor\Group_Control_Text_Shadow::get_type(),
-			[
-				'name' => 'text_shadow',
-				'selector' => '{{WRAPPER}} .emk-heading-title',
-			]
-		);
+        $this->add_group_control(
+            \Elementor\Group_Control_Text_Shadow::get_type(),
+            [
+                'name' => 'type_writer_title_shadow',
+                'label' => __( 'Text Shadow', 'elementor-magic-kit' ),
+                'selector' => '{{WRAPPER}} #static-text',
+            ]
+        );
 
         $this->add_control(
-			'emk_replace_title',
+			'type-writer_more_options',
 			[
-				'label' => esc_html__( 'Replace Title', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Type Writer', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
 		);
 
-        $this->add_control(
-            'emk_replace_color',
-            [
-                'label' => esc_html__('Replace Color', 'elementor-magic-kit'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} span.ornaments' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
+        
+		$this->add_control(
+			'type_writer_color',
+			[
+				'label' => esc_html__( 'Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} #typewriter-text' => 'color: {{VALUE}}',
+				],
+			]
+		);
 
         $this->add_group_control(
-            \Elementor\Group_Control_Text_Stroke::get_type(),
-            [
-                'name' => 'emk_replace_text_stroke',
-                'selector' => '{{WRAPPER}} span.ornaments',
-            ]
-        );
-		
-        $this->end_controls_section();
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'type_writer_typography',
+				'selector' => '{{WRAPPER}} #typewriter-text',
+			]
+		);
+
+
+		$this->end_controls_section();
+
+
     }
 
     /**
@@ -298,6 +244,20 @@ class Type_Writer extends Widget_Base
     protected function render()
     {
         $settings    = $this->get_settings_for_display();
+
+        $settings = $this->get_settings_for_display();
+        $static_text = $settings['static_text'];
+        $typewriter_texts = $settings['typewriter_texts'];
+
+        $dynamic_texts = [];
+        if ( ! empty( $typewriter_texts ) ) {
+            foreach ( $typewriter_texts as $item ) {
+                $dynamic_texts[] = $item['dynamic_text'];
+            }
+        }
+
+          // Safely encode the dynamic texts array for JavaScript
+          $dynamic_texts_json = wp_json_encode($dynamic_texts);
 
         
         include __DIR__ . '/layouts/typeWriter/type-writer.php';

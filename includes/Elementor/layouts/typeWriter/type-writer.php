@@ -1,50 +1,56 @@
 <style>
-    #typewriter {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 24px;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 2px solid black;
-  display: inline-block;
-}
-
-#text {
-  display: inline;
-  color: #333;
+  #typewriter-widget {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid black;
+    animation: blink 0.7s step-end infinite;
 }
 
 @keyframes blink {
-  50% {
-    border-color: transparent;
-  }
-}
-
-#typewriter {
-  animation: blink 0.7s step-end infinite;
+    50% {
+        border-color: transparent;
+    }
 }
 
 </style>
-<div id="typewriter">
-  <span id="text"></span>
+
+
+<div id="typewriter-widget">
+  <span id="static-text"><?php echo esc_html( $static_text ); ?></span>
+  <span id="typewriter-text"></span>
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-  const textElement = document.getElementById('text');
-  const textToType = "Hello, welcome to the typewriter effect demo!";
-  const typingSpeed = 100; // milliseconds
+        jQuery(document).ready(function ($) {
+            const dynamicTexts = <?php echo $dynamic_texts_json; ?>; // Pass PHP data to JavaScript
+            const $typewriterText = $('#typewriter-text');
+            let index = 0, charIndex = 0;
 
-  let index = 0;
+            function typeWriterEffect() {
+                if (index < dynamicTexts.length) {
+                    if (charIndex < dynamicTexts[index].length) {
+                        $typewriterText.text(function (_, txt) {
+                            return txt + dynamicTexts[index].charAt(charIndex);
+                        });
+                        charIndex++;
+                        setTimeout(typeWriterEffect, 100); // Typing speed
+                    } else {
+                        charIndex = 0;
+                        index++;
+                        setTimeout(() => {
+                            $typewriterText.text(''); // Clear text
+                            typeWriterEffect();
+                        }, 2000); // Pause before next text
+                    }
+                } else {
+                    index = 0; // Loop back to start
+                    typeWriterEffect();
+                }
+            }
 
-  function typeWriter() {
-    if (index < textToType.length) {
-      textElement.textContent += textToType.charAt(index);
-      index++;
-      setTimeout(typeWriter, typingSpeed);
-    }
-  }
-
-  typeWriter();
-});
-
-</script>
+            if (dynamicTexts.length > 0) {
+                typeWriterEffect(); // Start typewriter effect
+            }
+        });
+    </script>
