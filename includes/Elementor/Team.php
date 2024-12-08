@@ -236,10 +236,10 @@ class Team extends Widget_Base
 		$this->add_control(
 			'show_icon',
 			[
-				'label' => esc_html__( 'Social Icon', 'textdomain' ),
+				'label' => esc_html__( 'Social Icon', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'textdomain' ),
-				'label_off' => esc_html__( 'Hide', 'textdomain' ),
+				'label_on' => esc_html__( 'Show', 'elementor-magic-kit' ),
+				'label_off' => esc_html__( 'Hide', 'elementor-magic-kit' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -271,7 +271,7 @@ class Team extends Widget_Base
         $repeater->add_control(
 			'icon_link',
 			[
-				'label' => esc_html__( 'Link', 'textdomain' ),
+				'label' => esc_html__( 'Link', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::URL,
 				'options' => [ 'url', 'is_external', 'nofollow' ],
 				'default' => [
@@ -641,10 +641,10 @@ class Team extends Widget_Base
         $this->add_control(
 			'team_social_icon_color',
 			[
-				'label' => esc_html__( 'Icon Color', 'textdomain' ),
+				'label' => esc_html__( 'Icon Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .your-class' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .team-icon .social-icon a svg', '{{WRAPPER}} .team-icon .social-icon svg' => 'fill: {{VALUE}}',
 				],
 			]
 		);
@@ -653,13 +653,13 @@ class Team extends Widget_Base
 			[
 				'name' => 'team_social_icon_background',
 				'types' => [ 'classic', 'gradient', 'video' ],
-				'selector' => '{{WRAPPER}} .your-class',
+				'selector' => '{{WRAPPER}} .team-icon .social-icon svg',
 			]
 		);
         $this->add_responsive_control(
 			'icon_width',
 			[
-				'label' => esc_html__( 'Size', 'textdomain' ),
+				'label' => esc_html__( 'Size', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -672,19 +672,33 @@ class Team extends Widget_Base
 						'min' => 0,
 						'max' => 100,
 					],
+					'default' => [
+					'unit' => 'px',
+					'size' => 20,
+					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .your-class' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .team-icon .social-icon' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'icon_margin',
+			[
+				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'selectors' => [
+					'{{WRAPPER}} .team-icon .social-icon' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
         $this->add_responsive_control(
 			'icon_padding',
 			[
-				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'selectors' => [
-					'{{WRAPPER}} .your-class' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .team-icon .social-icon svg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -699,17 +713,17 @@ class Team extends Widget_Base
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name' => 'icon_border',
-				'selector' => '{{WRAPPER}} .your-class',
+				'selector' => '{{WRAPPER}} .team-icon .social-icon svg',
 			]
 		);
         $this->add_responsive_control(
 			'icon_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
-					'{{WRAPPER}} .your-class' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .team-icon .social-icon svg' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
