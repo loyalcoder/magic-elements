@@ -233,6 +233,17 @@ class Team extends Widget_Base
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
+		$this->add_control(
+			'show_icon',
+			[
+				'label' => esc_html__( 'Social Icon', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'textdomain' ),
+				'label_off' => esc_html__( 'Hide', 'textdomain' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
         $repeater = new \Elementor\Repeater();
         $repeater->add_control(
 			'team_social_icon',

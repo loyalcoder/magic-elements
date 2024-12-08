@@ -13,22 +13,28 @@
     <p><?php echo esc_html($settings['team_description']); ?></p>
 
     <div class="team-icon">
-        <?php if(!empty($team_icon_list)) {?>
-        <?php foreach($team_icon_list as $list) { 
-            $icon_link = (!empty($list['icon_link']['url']) ? $list['icon_link']['url'] : '' );
+        <?php
+            if ( 'yes' === $settings['show_icon'] ) {   
             ?>
-            <div class="social-icon">
-                <?php if(  $icon_link ) { ?>
-                    <a href="<?php echo esc_url( $icon_link); ?>">
-                        <?php \Elementor\Icons_Manager::render_icon( $list['team_social_icon'], [ 'aria-hidden' => 'true' ] ); ?>
-                    </a>
-               <?php }else{ ?>
-                <div>
-                    <?php \Elementor\Icons_Manager::render_icon( $list['team_social_icon'], [ 'aria-hidden' => 'true' ] ); ?> 
-                </div>
-              <?php } ?>
-            </div>
-        <?php } } ?>
+                <?php if(!empty($team_icon_list)) {?>
+                    <?php foreach($team_icon_list as $list) { 
+                        $icon_link = (!empty($list['icon_link']['url']) ? $list['icon_link']['url'] : '' );
+                        ?>
+                        <div class="social-icon">
+                            <?php if(  $icon_link ) { ?>
+                                <a href="<?php echo esc_url( $icon_link); ?>">
+                                    <?php \Elementor\Icons_Manager::render_icon( $list['team_social_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                                </a>
+                           <?php }else{ ?>
+                            <div>
+                                <?php \Elementor\Icons_Manager::render_icon( $list['team_social_icon'], [ 'aria-hidden' => 'true' ] ); ?> 
+                            </div>
+                          <?php } ?>
+                        </div>
+                    <?php } } ?>
+                <?
+            }
+        ?>
     </div>
 </div>
 
