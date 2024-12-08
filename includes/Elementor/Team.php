@@ -210,20 +210,6 @@ class Team extends Widget_Base
 				'placeholder' => esc_html__( 'Type your description here', 'elementor-magic-kit' ),
 			]
 		);
-        $this->add_control(
-			'team_link',
-			[
-				'label' => esc_html__( 'Link', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::URL,
-				'options' => [ 'url', 'is_external', 'nofollow' ],
-				'default' => [
-					'url' => '',
-					'is_external' => true,
-					'nofollow' => true,
-				],
-				'label_block' => true,
-			]
-		);
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -241,7 +227,7 @@ class Team extends Widget_Base
 				'label_on' => esc_html__( 'Show', 'elementor-magic-kit' ),
 				'label_off' => esc_html__( 'Hide', 'elementor-magic-kit' ),
 				'return_value' => 'yes',
-				'default' => 'yes',
+				'default' => 'no',
 			]
 		);
         $repeater = new \Elementor\Repeater();
