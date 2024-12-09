@@ -196,26 +196,12 @@ class Icon extends Widget_Base
 				],
 			]
 		);
-         // normal-hover-start
-		//normal
-        $this->start_controls_tabs(
-			'icon_style_tabs'
-		);
-
-		$this->start_controls_tab(
-			'style_icon_normal_tab',
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
 			[
-				'label' => esc_html__( 'Normal', 'elementor-magic-kit' ),
-			]
-		);
-        $this->add_control(
-			$this->get_name() .'icon_primary_color',
-			[
-				'label' => esc_html__( 'Primary Color', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .icon a svg' => 'fill: {{VALUE}}',
-				],
+				'name' => 'icon_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .icon a svg',
 			]
 		);
         $this->add_responsive_control(
@@ -244,33 +230,51 @@ class Icon extends Widget_Base
                 ],
             ]
         );
+        
         $this->add_responsive_control(
-            $this->get_name() . 'icon_rotate',
-            [
-                'label' => esc_html__( 'Icon Rotate', 'elementor-magic-kit' ),
-                'type' => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => [ 'px', '%', 'em', 'deg' , 'rem', 'custom' ],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 1000,
-                        'step' => 1,
-                    ],
-                    '%' => [
-                        'min' => 0,
-                        'max' => 100,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'deg',
-                    'size' => 50,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .icon a svg' => 'transform: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
+			'icon_padding',
+			[
+				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .icon a svg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'icon_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .icon a svg' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+         // normal-hover-start
+		//normal
+        $this->start_controls_tabs(
+			'icon_style_tabs'
+		);
 
+		$this->start_controls_tab(
+			'style_icon_normal_tab',
+			[
+				'label' => esc_html__( 'Normal', 'elementor-magic-kit' ),
+			]
+		);
+        $this->add_control(
+			$this->get_name() .'icon_primary_color',
+			[
+				'label' => esc_html__( 'Primary Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .icon a svg' => 'fill: {{VALUE}}',
+				],
+			]
+		);
 		$this->end_controls_tab();
 		//hover
 		$this->start_controls_tab(
@@ -307,9 +311,9 @@ class Icon extends Widget_Base
 			]
 		);
         $this->add_control(
-			$this->get_name() .'hover_animation',
+			'hover_animation',
 			[
-				'label' => esc_html__( 'Hover Animation', 'elementor-magic-ki' ),
+				'label' => esc_html__( 'Hover Animation', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::HOVER_ANIMATION,
 			]
 		);
