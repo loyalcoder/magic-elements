@@ -122,6 +122,19 @@ class Faq extends Widget_Base
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
+        $this->add_control(
+			'layout_type',
+			[
+				'label' => esc_html__( 'Style', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'one',
+				'options' => [
+					'one' => esc_html__( 'One', 'textdomain' ),
+					'two' => esc_html__( 'Two', 'textdomain' ),
+				],
+				
+			]
+		);
         $repeater = new \Elementor\Repeater();
         $repeater->add_control(
             'faq_title',
@@ -396,6 +409,7 @@ class Faq extends Widget_Base
     {
         $settings    = $this->get_settings_for_display();
         $faq_item_list = $settings['faq_control'];
+        $layout = $settings['layout_type'];
         include __DIR__ . '/layouts/faq.php';
     }
 
