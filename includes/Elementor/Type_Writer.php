@@ -284,7 +284,7 @@ class Type_Writer extends Widget_Base
 			return;
 		}
 
-		// $this->add_render_attribute( 'typewriter-attr', 'class', 'wcf--typewriter' );
+		$this->add_render_attribute( 'typewriter-attr', 'class', 'wcf--typewriter' );
 
 
 		$typewriter_text = '';
