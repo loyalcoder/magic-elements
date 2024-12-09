@@ -215,26 +215,6 @@ class Social_Icon  extends Widget_Base
 				'label_block' => true,
 			]
 		);
-		$repeater->add_control(
-			'icon_color',
-			[
-				'label' => esc_html__( 'Color', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} {{CURRENT_ITEM}}' => 'fill: {{VALUE}}',
-				],
-				'default' => '#ffffff'
-			]
-		);
-		$repeater->add_group_control(
-			\Elementor\Group_Control_Background::get_type(),
-			[
-				'label' => esc_html__( 'Background Color', 'elementor-magic-kit' ),
-				'name' => 'icon_background',
-				'types' => [ 'classic', 'gradient', 'video' ],
-				'selector' => '{{WRAPPER}} {{CURRENT_ITEM}}',
-			]
-		);
 		$this->add_control(
 			'social_lists',
 			[
@@ -263,41 +243,6 @@ class Social_Icon  extends Widget_Base
 				],
 			]
 		);
-        // $this->add_control(
-		// 	'shape',
-		// 	[
-		// 		'label' => esc_html__( 'Shape', 'elementor-magic-kit' ),
-		// 		'type' => Controls_Manager::SELECT,
-		// 		'default' => 'rounded',
-		// 		'options' => [
-		// 			'rounded' => esc_html__( 'Rounded', 'elementor-magic-kit' ),
-		// 			'square' => esc_html__( 'Square', 'elementor-magic-kit' ),
-		// 			'circle' => esc_html__( 'Circle', 'elementor-magic-kit' ),
-		// 		],
-		// 	]
-		// );
-        // $this->add_responsive_control(
-		// 	'columns',
-		// 	[
-		// 		'label' => esc_html__( 'Columns', 'elementor-magic-kit' ),
-		// 		'type' => \Elementor\Controls_Manager::SELECT,
-		// 		'default' => '0',
-		// 		'options' => [
-		// 			'0' => esc_html__( 'Auto', 'elementor-magic-kit' ),
-		// 			'1' => '1',
-		// 			'2' => '2',
-		// 			'3' => '3',
-		// 			'4' => '4',
-		// 			'5' => '5',
-		// 			'6' => '6',
-		// 		],
-		// 		'selectors' => [
-		// 			'{{WRAPPER}} .social-icon' => '--grid-template-columns: repeat({{VALUE}}, auto);',
-		// 		],
-		// 	]
-		// );
-
-       
        
         $this->end_controls_section();
 
@@ -328,10 +273,29 @@ class Social_Icon  extends Widget_Base
 						'icon' => 'eicon-text-align-right',
 					],
 				],
-				'default' => 'center',
+				'default' => 'left',
 				'selectors' => [
 					'{{WRAPPER}} .social-main' => 'justify-content: {{VALUE}}',
 				],
+			]
+		);
+		$this->add_control(
+			'social_icon_color',
+			[
+				'label' => esc_html__( 'Icon Color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .social-icon a svg' , '{{WRAPPER}} .social-icon svg' => 'fill: {{VALUE}}',
+				],
+				'default' => '#ffffff'
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'social_icon_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .social-icon',
 			]
 		);
         $this->add_responsive_control(
@@ -366,15 +330,8 @@ class Social_Icon  extends Widget_Base
 				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'default' => [
-					'top' => 0,
-					'right' => 0,
-					'bottom' => 0,
-					'left' => 0,
-					'unit' => 'px',
-				],
 				'selectors' => [
-					'{{WRAPPER}} .social-icon a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .social-icon a svg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
