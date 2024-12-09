@@ -11,7 +11,6 @@
     <h2><?php echo esc_html($settings['team_title']); ?></h2>
     <h6><?php echo esc_html($settings['team_designation']); ?></h6>
     <p><?php echo esc_html($settings['team_description']); ?></p>
-
     <div class="team-icon">
         <?php
             if ( 'yes' === $settings['show_icon'] ) {   
