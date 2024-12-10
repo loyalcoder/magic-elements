@@ -113,12 +113,50 @@ class Flip_Card extends Widget_Base
         $this->start_controls_section(
 			'flip_card_content_section',
 			[
-				'label' => esc_html__( 'Flip Card Font', 'textdomain' ),
+				'label' => esc_html__( 'Flip Card', 'textdomain' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
-        $this->add_control(
-			'flip_card_font_image',
+		//Front
+        $this->start_controls_tabs(
+			'flipcard_content_tabs'
+		);
+
+		$this->start_controls_tab(
+			'flipcard_front_tab',
+			[
+				'label' => esc_html__( 'Front', 'elementor-magic-kit' ),
+			]
+		);
+		
+		$this->add_responsive_control(
+			'flipcard_front_align',
+			[
+				'label' => esc_html__( 'Alignment', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'textdomain' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'textdomain' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'textdomain' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .flip-card-front' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_control(
+			'flip_card_front_image',
 			[
 				'label' => esc_html__( 'Choose Image', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::MEDIA,
@@ -127,9 +165,48 @@ class Flip_Card extends Widget_Base
 				],
 			]
 		);
-        $repeater = new \Elementor\Repeater();
+		$this->add_group_control(
+			\Elementor\Group_Control_Image_Size::get_type(),
+			[
+				'name' => 'thumbnail', 
+				'exclude' => [ 'custom' ],
+				'include' => [],
+				'default' => 'large',
+			]
+		);
+		$this->add_control(
+			'card_front_title',
+			[
+				'label' => esc_html__( 'Title', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Front Title', 'textdomain' ),
+				'placeholder' => esc_html__( 'Type your title here', 'textdomain' ),
+			]
+		);
+		$this->add_control(
+			'card_front_description',
+			[
+				'label' => esc_html__( 'Description', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'rows' => 5,
+				'default' => esc_html__( 'This is front side content', 'textdomain' ),
+				'placeholder' => esc_html__( 'Type your description here', 'textdomain' ),
+			]
+		);
+		$this->add_control(
+			'show_social_icon',
+			[
+				'label' => esc_html__( 'Social Icon', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'textdomain' ),
+				'label_off' => esc_html__( 'Hide', 'textdomain' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+		$repeater = new \Elementor\Repeater();
         $repeater->add_control(
-			'flip_card_font_icon',
+			'flip_card_front_icon',
 			[
 				'label' => esc_html__( 'Icon', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
@@ -161,13 +238,12 @@ class Flip_Card extends Widget_Base
 					'url' => '',
 					'is_external' => true,
 					'nofollow' => true,
-					// 'custom_attributes' => '',
 				],
 				'label_block' => true,
 			]
 		);
         $this->add_control(
-			'font_icon_list',
+			'front_icon_list',
 			[
 				'label' => esc_html__( 'Icon List', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::REPEATER,
@@ -194,31 +270,90 @@ class Flip_Card extends Widget_Base
 				],
 			]
 		);
-
-        $this->end_controls_section();
-
-        $this->start_controls_section(
-			'flip_card_back_content_section',
+       
+		$this->end_controls_tab();
+		//Back
+		$this->start_controls_tab(
+			'flipcard_back_tab',
 			[
-				'label' => esc_html__( 'Flip Card Back', 'textdomain' ),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+				'label' => esc_html__( 'Back', 'elementor-magic-kit' ),
 			]
 		);
-        $this->add_control(
+		$this->add_responsive_control(
+			'flipcard_back_align',
+			[
+				'label' => esc_html__( 'Alignment', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'textdomain' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'textdomain' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'textdomain' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .flip-card-back' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_control(
+			'show_social_back_icon',
+			[
+				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'textdomain' ),
+				'label_off' => esc_html__( 'Hide', 'textdomain' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+		$this->add_control(
+			'flipcard_back_icon',
+			[
+				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-circle',
+					'library' => 'fa-solid',
+				],
+				'recommended' => [
+					'fa-solid' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+					'fa-regular' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+				],
+			]
+		);
+		$this->add_control(
 			'card_back_title',
 			[
 				'label' => esc_html__( 'Title', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Default title', 'textdomain' ),
+				'default' => esc_html__( 'Back title', 'textdomain' ),
 				'placeholder' => esc_html__( 'Type your title here', 'textdomain' ),
 			]
 		);
-        $this->add_control(
+		$this->add_control(
 			'card_back_designation',
 			[
 				'label' => esc_html__( 'Designation', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Default title', 'textdomain' ),
+				'default' => esc_html__( 'Developer', 'textdomain' ),
 				'placeholder' => esc_html__( 'Type your title here', 'textdomain' ),
 			]
 		);
@@ -228,7 +363,7 @@ class Flip_Card extends Widget_Base
 				'label' => esc_html__( 'Description', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'rows' => 5,
-				'default' => esc_html__( 'Default description', 'textdomain' ),
+				'default' => esc_html__( 'This is back side content.', 'textdomain' ),
 				'placeholder' => esc_html__( 'Type your description here', 'textdomain' ),
 			]
 		);
@@ -237,7 +372,7 @@ class Flip_Card extends Widget_Base
 			[
 				'label' => esc_html__( 'Button Text', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Default title', 'textdomain' ),
+				'default' => esc_html__( 'Click here', 'textdomain' ),
 				'placeholder' => esc_html__( 'Type your title here', 'textdomain' ),
 			]
 		);
@@ -256,9 +391,11 @@ class Flip_Card extends Widget_Base
 			]
 		);
 
+     
+		$this->end_controls_tab();
+    // end
+
         $this->end_controls_section();
-
-
         // Style section
 
         $this->start_controls_section(
@@ -286,7 +423,7 @@ class Flip_Card extends Widget_Base
     protected function render()
     {
         $settings    = $this->get_settings_for_display();
-        $flip_card_icon_list = $settings['font_icon_list'];
+        $flip_card_icon_list = $settings['front_icon_list'];
         include __DIR__ . '/layouts/flip-card.php';
     }
 
