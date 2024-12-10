@@ -88,7 +88,12 @@ class Image_Accordion extends Widget_Base
 
     public function get_style_depends()
     {
-        return [];
+        return [''];
+    }
+
+    public function get_script_depends()
+    {
+        return ['script', 'jquery'];
     }
 
     /**
@@ -111,287 +116,121 @@ class Image_Accordion extends Widget_Base
     protected function register_button_controls()
     {
         $this->start_controls_section(
-            'ekit_img_accordion_content_tab',
+            '_section_content',
             [
-                'label' => esc_html__('Content', 'elementskit-lite'),
-                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+                'label' => __('Content', 'kinder-world-manager'),
+                'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
-            $repeater = new \Elementor\Repeater();
 
-            $repeater->add_control(
-                'ekit_img_accordion_active',
-                [
-                    'label'     => esc_html__('Active ? ', 'elementskit-lite'),
-                    'type'      => \Elementor\Controls_Manager::SWITCHER,
-                    'default'   => 'no',
-                    'label_on'  => esc_html__( 'Yes', 'elementskit-lite' ),
-                    'label_off' => esc_html__( 'No', 'elementskit-lite' ),
-                ]
-            );
+        $repeater = new \Elementor\Repeater();
 
-            $repeater->add_control(
-                'ekit_img_accordion_bg',
-                [
-                    'label'     => esc_html__( 'Background Image', 'elementskit-lite' ),
-                    'type'      => \Elementor\Controls_Manager::MEDIA,
-					'dynamic'	=> [
-						'active' => true,
-					],
-                    'default'   => [
-                        'url' => \Elementor\Utils::get_placeholder_image_src(),
-                        'id'    => -1
+        $repeater->add_control(
+            'background_image',
+            [
+                'label' => __('Choose Image', 'kinder-world-manager'),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+                'dynamic' => [
+                    'active' => true,
+                ],
+            ]
+        );
+
+        $repeater->add_control(
+            'title',
+            [
+                'label'   => __('Title', 'kinder-world-manager'),
+                'type'    => \Elementor\Controls_Manager::TEXT,
+                'label_block' => true,
+            ]
+        );
+
+        $repeater->add_control(
+            'description',
+            [
+                'label' => __('Description', 'kinder-world-manager'),
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'description' => ha_get_allowed_html_desc( 'intermediate' ),
+                'default' => __('Image accordion content.', 'kinder-world-manager'),
+                'placeholder' => __('Type your description here', 'kinder-world-manager'),
+                'dynamic' => [
+                    'active' => true,
+                ],
+            ]
+        );
+
+        $repeater->add_control(
+            'link_url',
+            [
+                'label'   => __('Link URL', 'kinder-world-manager'),
+                'type'    => \Elementor\Controls_Manager::URL,
+                'dynamic' => [
+                    'active' => true,
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'accordion_items',
+            [
+                'label'         => __('Items', 'kinder-world-manager'),
+                'type'          => \Elementor\Controls_Manager::REPEATER,
+                'fields'        => $repeater->get_controls(),
+                'prevent_empty' => true,
+                'default'       => [
+                    [
+                        'title'         => __('Image Accordion 1', 'kinder-world-manager'),
+                        'description'         => __('Image accordion content.', 'kinder-world-manager'),
                     ],
-                ]
-            );
-
-            $repeater->add_control(
-                'ekit_img_accordion_title',
-                [
-                    'label'         => esc_html__('Title', 'elementskit-lite'),
-                    'type'          => \Elementor\Controls_Manager::TEXT,
-					'dynamic'		=> [
-						'active' => true,
-					],
-                    'label_block'   => true,
-                    'default'       => esc_html__('Image accordion Title', 'elementskit-lite'),
-                ]
-            );
-
-            $repeater->add_control(
-                'ekit_img_accordion_enable_icon',
-                [
-                    'label'         => esc_html__( 'Enable Icon', 'elementskit-lite' ),
-                    'type'          => \Elementor\Controls_Manager::SWITCHER,
-                    'label_on'      => esc_html__( 'Yes', 'elementskit-lite' ),
-                    'label_off'     => esc_html__( 'No', 'elementskit-lite' ),
-                    'return_value'  => 'yes',
-                    'default'       => '',
-                ]
-            );
-
-            $repeater->add_control(
-                'ekit_img_accordion_title_icons',
-                [
-                    'label'             => esc_html__('Icon for title', 'elementskit-lite'),
-                    'type'              => \Elementor\Controls_Manager::ICONS,
-                    'fa4compatibility'  => 'ekit_img_accordion_title_icon',
-                    'default'           => [
-                        'value' => '',
+                    [
+                        'title'         => __('Image Accordion 2', 'kinder-world-manager'),
+                        'description'         => __('Image accordion content.', 'kinder-world-manager'),
                     ],
-                    'condition'         => [
-                        'ekit_img_accordion_enable_icon' => 'yes',
-                    ]
-                ]
-            );
-
-            $repeater->add_control(
-                'ekit_img_accordion_title_icon_position',
-                [
-                    'label'     => esc_html__( 'Icon Position', 'elementskit-lite' ),
-                    'type'      => \Elementor\Controls_Manager::SELECT,
-                    'default'   => 'left',
-                    'options'   => [
-                        'left'      => esc_html__( 'Before', 'elementskit-lite' ),
-                        'right'     => esc_html__( 'After', 'elementskit-lite' ),
+                    [
+                        'title'         => __('Image Accordion 3', 'kinder-world-manager'),
+                        'description'         => __('Image accordion content.', 'kinder-world-manager'),
                     ],
-                    'condition' => [
-                        'ekit_img_accordion_title_icons!' => '',
-                        'ekit_img_accordion_enable_icon' => 'yes',
+                    [
+                        'title'         => __('Image Accordion 4', 'kinder-world-manager'),
+                        'description'         => __('Image accordion content.', 'kinder-world-manager'),
                     ],
-                ]
-            );
+                ],
+                'title_field'   => '{{{ title }}}',
+            ]
+        );
 
-            $repeater->add_control(
-                'ekit_img_accordion_enable_wrap_link',
-                [
-                    'label'         => esc_html__( 'Enable Wrap Link', 'elementskit-lite' ),
-                    'type'          => \Elementor\Controls_Manager::SWITCHER,
-                    'label_on'      => esc_html__( 'Yes', 'elementskit-lite' ),
-                    'label_off'     => esc_html__( 'No', 'elementskit-lite' ),
-                    'return_value'  => 'yes',
-                    'default'       => 'no',
-                    'separator'     => 'before',
-                ]
-            );
+        $this->add_control(
+            'active_behavior',
+            [
+                'label'         => esc_html__('Active Behavior', 'kinder-world-manager'),
+                'type'          => \Elementor\Controls_Manager::SELECT,
+                'options'       => [
+                    'click' => esc_html__('Click', 'kinder-world-manager'),
+                    'hover' => esc_html__('Hover', 'kinder-world-manager'),
+                ],
+                'default'       => 'click',
+                'prefix_class'  => 'ha-image-accordion-',
+            ]
+        );
 
-            $repeater->add_control(
-                'ekit_img_accordion_wrap_link_url',
-                [
-                    'label'     => esc_html__('Wrap URL', 'elementskit-lite'),
-                    'type'      => \Elementor\Controls_Manager::URL,
-					'dynamic'	=> [
-						'active' => true,
-					],
-                    'condition' => [
-                        'ekit_img_accordion_enable_wrap_link' => 'yes',
-                    ],
-                ]
-            );
+        $this->add_control(
+            'active_behavior_notice',
+            [
+                'raw' => '<strong>' . esc_html__('Please note!', 'kinder-world-manager') . '</strong> ' . esc_html__('Active on load won\'t be working with this active behavior.', 'kinder-world-manager'),
+                'type' => \Elementor\Controls_Manager::RAW_HTML,
+                'content_classes' => 'elementor-panel-alert elementor-panel-alert-warning',
+                'render_type' => 'ui',
+                'condition' => [
+                    'active_behavior' => 'hover',
+                ],
+            ]
+        );
 
-            $repeater->add_control(
-                'ekit_img_accordion_enable_button',
-                [
-                    'label'         => esc_html__( 'Enable Button', 'elementskit-lite' ),
-                    'type'          => \Elementor\Controls_Manager::SWITCHER,
-                    'label_on'      => esc_html__( 'Yes', 'elementskit-lite' ),
-                    'label_off'     => esc_html__( 'No', 'elementskit-lite' ),
-                    'return_value'  => 'yes',
-                    'default'       => 'yes',
-                    'separator'     => 'before',
-                ]
-            );
 
-            $repeater->add_control(
-                'ekit_img_accordion_button_label',
-                [
-                    'label'         => esc_html__('Button Label', 'elementskit-lite'),
-                    'type'          => \Elementor\Controls_Manager::TEXT,
-					'dynamic'		=> [
-						'active' => true,
-					],
-                    'label_block'   => true,
-                    'default'       => esc_html__('Read More','elementskit-lite'),
-                    'condition'     => [
-                        'ekit_img_accordion_enable_button' => 'yes',
-                    ],
-                ]
-            );
-
-            $repeater->add_control(
-                'ekit_img_accordion_button_url',
-                [
-                    'label'     => esc_html__('Button URL', 'elementskit-lite'),
-                    'type'      => \Elementor\Controls_Manager::URL,
-					'dynamic'	=> [
-						'active' => true,
-					],
-                    'condition' => [
-                        'ekit_img_accordion_enable_button' => 'yes',
-                    ],
-                ]
-            );
-
-            $repeater->add_control(
-                'ekit_img_accordion_enable_pupup',
-                [
-                    'label'         => esc_html__( 'Enable Popup', 'elementskit-lite' ),
-                    'type'          => \Elementor\Controls_Manager::SWITCHER,
-                    'label_on'      => esc_html__( 'Yes', 'elementskit-lite' ),
-                    'label_off'     => esc_html__( 'No', 'elementskit-lite' ),
-                    'return_value'  => 'yes',
-                    'default'       => '',
-                    'separator'     => 'before',
-                ]
-            );
-
-            $repeater->add_control(
-                'ekit_img_accordion_pup_up_icons',
-                [
-                    'label'             => esc_html__('Pupup Icon', 'elementskit-lite'),
-                    'type'              => \Elementor\Controls_Manager::ICONS,
-                    'fa4compatibility'  => 'ekit_img_accordion_pup_up_icon',
-                    'default'           => [
-                        'value'     => 'icon icon-plus',
-                        'library'   => 'ekiticons'
-                    ],
-                    'label_block'       => true,
-                    'condition'         => [
-                        'ekit_img_accordion_enable_pupup' => 'yes'
-                    ]
-                ]
-            );
-
-            $repeater->add_control(
-                'ekit_img_accordion_enable_project_link',
-                [
-                    'label'         => esc_html__( 'Enable Project Link', 'elementskit-lite' ),
-                    'type'          => \Elementor\Controls_Manager::SWITCHER,
-                    'label_on'      => esc_html__( 'Yes', 'elementskit-lite' ),
-                    'label_off'     => esc_html__( 'No', 'elementskit-lite' ),
-                    'return_value'  => 'yes',
-                    'separator'     => 'before',
-                ]
-            );
-
-            $repeater->add_control(
-                'ekit_img_accordion_project_link',
-                [
-                    'label'         => esc_html__( 'Project Link', 'elementskit-lite' ),
-                    'type'          => \Elementor\Controls_Manager::URL,
-					'dynamic'		=> [
-						'active' => true,
-					],
-                    'placeholder'   => esc_html__( 'https://wpmet.com', 'elementskit-lite' ),
-                    'condition'     => [
-                        'ekit_img_accordion_enable_project_link' => 'yes'
-                    ],
-                ]
-            );
-
-            $repeater->add_control(
-                'ekit_img_accordion_project_link_icons',
-                [
-                    'label'             => esc_html__('Project Link Icon', 'elementskit-lite'),
-                    'type'              => \Elementor\Controls_Manager::ICONS,
-                    'fa4compatibility'  => 'ekit_img_accordion_project_link_icon',
-                    'default'           => [
-                        'value' => 'icon icon icon-link',
-                        'library'   => 'ekiticons'
-                    ],
-                    'label_block'       => true,
-                    'condition'         => [
-                        'ekit_img_accordion_enable_project_link' => 'yes'
-                    ],
-                ]
-            );
-
-            $this->add_control(
-                'ekit_img_accordion_items',
-                [
-                    'label' => esc_html__('Accordion Items', 'elementskit-lite'),
-                    'type' => \Elementor\Controls_Manager::REPEATER,
-                    'default' => [
-                        [ 'ekit_img_accordion_title' => esc_html__('This is title','elementskit-lite') ],
-                        [ 'ekit_img_accordion_icon' => esc_attr('icon icon-minus') ],
-                        [ 'ekit_img_accordion_link' => esc_url('#') ],
-                        [ 'ekit_img_accordion_button_label' => esc_html__('Read More','elementskit-lite') ],
-                    ],
-                    'fields' => $repeater->get_controls(),
-                    'title_field' => '{{ ekit_img_accordion_title }}',
-                ]
-            );
-
-            $this->add_responsive_control(
-                'items_style',
-                [
-                    'label'         => esc_html__('Style', 'elementskit-lite'),
-                    'type'          => \Elementor\Controls_Manager::SELECT,
-                    'options'       => [
-                        ''              => esc_html__('Default', 'elementskit-lite'),
-                        'horizontal'    => esc_html__('Horizontal', 'elementskit-lite'),
-                        'vertical'      => esc_html__('Vertical', 'elementskit-lite'),
-                    ],
-                    'default'       => 'horizontal',
-                    'prefix_class'  => 'ekit-image-accordion%s-',
-                ]
-            );
-
-            $this->add_control(
-                'active_behavior',
-                [
-                    'label'         => esc_html__('Active Behaivor', 'elementskit-lite'),
-                    'type'          => \Elementor\Controls_Manager::SELECT,
-                    'options'       => [
-                        'click' => esc_html__('Click', 'elementskit-lite'),
-                        'hover' => esc_html__('Hover', 'elementskit-lite'),
-                    ],
-                    'default'       => 'click',
-                    'prefix_class'  => 'ekit-image-accordion-',
-                ]
-            );
-
-            $this->end_controls_section();
+        $this->end_controls_section();
     }
 
     
@@ -406,7 +245,8 @@ class Image_Accordion extends Widget_Base
     protected function render()
     {
         $settings    = $this->get_settings_for_display();
-		
+        $image_accordion = $settings['accordion_items'];
+
 		
         include __DIR__ . '/layouts/image-accordion/image-accordion.php';
     }
