@@ -67,7 +67,7 @@ h1{
 
 /* --- Hover Effects --- */
 
-.tab:hover img{
+/* .tab:hover img{
   opacity: .6;
 }
 
@@ -78,7 +78,7 @@ h1{
 .tab:hover .caption{
   transition: all .5s ease;
   opacity: 1;
-}
+} */
 
  /* --- Click Effects --- */
  .tab.active {
@@ -90,26 +90,27 @@ h1{
         }
 
         .tab.active .caption {
-            opacity: 1;
+          transition: all .5s ease;
+          opacity: 1;
         }
 </style>
 
 
 
 
-<div class="accordion">
+<div class="accordion <?php echo esc_attr($behavior_class) ?>">
     <?php  if(!empty($image_accordion)){
-        foreach ($image_accordion as $index => $item){ 
+        foreach ($image_accordion as $index=> $item){ 
            
             ?>
         <div class="tab">
-            <?php
-             $this->add_render_attribute( 'image', 'src', $item['background_image']['url'] );
-            $this->add_render_attribute( 'image', 'alt', \Elementor\Control_Media::get_image_alt( $item['background_image'] ) );
-            $this->add_render_attribute( 'image', 'title', \Elementor\Control_Media::get_image_title( $item['background_image'] ) );
-            $this->add_render_attribute( 'image', 'class', 'hello' );
-            
-            echo \Elementor\Group_Control_Image_Size::get_attachment_image_html( $item, 'full', 'background_image' ) ?>  
+          <?php
+            $this->add_render_attribute('image', 'src', $item['background_image']['url']);
+            $this->add_render_attribute('image', 'alt', \Elementor\Control_Media::get_image_alt($item['background_image']));
+            $this->add_render_attribute('image', 'title', \Elementor\Control_Media::get_image_title($item['background_image']));
+            $this->add_render_attribute('image', 'class', 'image-class');
+            echo \Elementor\Group_Control_Image_Size::get_attachment_image_html( $item, 'full', 'background_image' ) 
+            ?>
             <div class="caption">
             <h2><?php  echo esc_html( $item['title']); ?>  </h2>
             <p><?php  echo esc_html( $item['description']); ?> </p>

@@ -212,7 +212,7 @@ class Image_Accordion extends Widget_Base
                     'hover' => esc_html__('Hover', 'kinder-world-manager'),
                 ],
                 'default'       => 'click',
-                'prefix_class'  => 'ha-image-accordion-',
+                'prefix_class'  => 'emk-image-accordion-',
             ]
         );
 
@@ -246,6 +246,10 @@ class Image_Accordion extends Widget_Base
     {
         $settings    = $this->get_settings_for_display();
         $image_accordion = $settings['accordion_items'];
+
+        // Determine active behavior class
+        $active_behavior = $settings['active_behavior'];
+        $behavior_class = ($active_behavior === 'hover') ? 'emk-image-accordion-hover' : 'emk-image-accordion-click';
 
 		
         include __DIR__ . '/layouts/image-accordion/image-accordion.php';
