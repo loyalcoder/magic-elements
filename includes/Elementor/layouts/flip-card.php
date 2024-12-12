@@ -1,6 +1,6 @@
 <style>
     .flip-card {
-        width: 300px;
+        /* width: 300px; */
         height: 300px;
         perspective: 1000px;
     }
@@ -18,7 +18,7 @@
     }
     .flip-card-front, .flip-card-back {
         position: absolute;
-        border-radius: 20px;
+        border-radius: 12px;
         width: 100%;
         height: 100%;
         -webkit-backface-visibility: hidden;
@@ -33,6 +33,11 @@
         background-color: green;
         color: white;
         transform: rotateY(180deg);
+    }
+
+    /* Social-icon */
+    .flip-card-front .flip_card_icon{
+        display: flex;
     }
 </style>
 
@@ -83,7 +88,7 @@
             } ?>
             <h2><?php echo esc_html($settings['card_back_title']); ?></h2> 
             <p><?php echo esc_html($settings['card_back_designation']); ?></p> 
-            <p><?php echo esc_html($settings['card_back_description']); ?></p> 
+            <p class="back-content"><?php echo esc_html($settings['card_back_description']); ?></p> 
             <div class="flip_card_button">
                 <?php
                     if ( ! empty( $settings['flip_card_button_link']['url'] ) ) {

@@ -394,6 +394,7 @@ class Flip_Card extends Widget_Base
 
      
 		$this->end_controls_tab();
+		$this->end_controls_tabs();
     // end
         $this->end_controls_section();
 
@@ -420,10 +421,10 @@ class Flip_Card extends Widget_Base
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
-					'top' => 32,
-					'right' => 32,
-					'bottom' => 32,
-					'left' => 32,
+					'top' => 20,
+					'right' => 20,
+					'bottom' => 20,
+					'left' => 20,
 					'unit' => 'px',
 					'isLinked' => false,
 				],
@@ -493,7 +494,7 @@ class Flip_Card extends Widget_Base
 				],
 				'default' => [
 					'unit' => 'px',
-					'size' => 100,
+					'size' => 180,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .flip-card-front img' => 'width: {{SIZE}}{{UNIT}};',
@@ -514,7 +515,7 @@ class Flip_Card extends Widget_Base
 					],
 					'%' => [
 						'min' => 0,
-						'max' => 100,
+						'max' => 180,
 					],
 				],
 				'selectors' => [
@@ -539,6 +540,14 @@ class Flip_Card extends Widget_Base
 				'label' => esc_html__( 'Margin', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 20,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
 				'selectors' => [
 					'{{WRAPPER}} .flip-card-front img' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -631,7 +640,32 @@ class Flip_Card extends Widget_Base
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
-
+		$this->add_responsive_control(
+			'front_icon_alain',
+			[
+				'label' => esc_html__( 'Alignment', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'textdomain' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'textdomain' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'textdomain' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .flip-card-front .flip_card_icon' => 'justify-content: {{VALUE}};',
+				],
+			]
+		);
 		$this->add_control(
 			'front_icon_color',
 			[
@@ -650,6 +684,7 @@ class Flip_Card extends Widget_Base
 				'selector' => '{{WRAPPER}} .flip-card-front .flip_card_icon .social-icon svg',
 			]
 		);
+		
 		$this->add_responsive_control(
 			'front_icon_size',
 			[
@@ -739,15 +774,385 @@ class Flip_Card extends Widget_Base
 				],
 			]
 		);
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'flipcard_back_style',
+			[
+				'label' => esc_html__( 'Back', 'textdomain' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'back_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .flip-card-back',
+			]
+		);
+		$this->add_responsive_control(
+			'flipcard_back_padding',
+			[
+				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 20,
+					'right' => 20,
+					'bottom' => 20,
+					'left' => 20,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .flip-card-back' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_control(
+			'back_more_options',
+			[
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'flipcard_back_border',
+				'selector' => '{{WRAPPER}} .flip-card-back',
+			]
+		);
+		$this->add_responsive_control(
+			'flipcard_back_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .flip-card-back' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'flipcard_back_icon_style',
+			[
+				'label' => esc_html__( 'Back Icon', 'textdomain' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+		$this->add_control(
+			'back_icon_color',
+			[
+				'label' => esc_html__( 'Icon Color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .flip-card-back svg' => 'fill: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'flipcard_back_icon_size',
+			[
+				'label' => esc_html__( 'Size', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 80,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .flip-card-back svg' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'back_icon_margin',
+			[
+				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .flip-card-back svg' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'filpcard_back_title_style',
+			[
+				'label' => esc_html__( 'Back Title', 'textdomain' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+		$this->add_control(
+			'back_title_color',
+			[
+				'label' => esc_html__( 'Text Color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .flip-card-back h2' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'back_title_typography',
+				'selector' => '{{WRAPPER}} .flip-card-back h2',
+			]
+		);
+		$this->add_responsive_control(
+			'back_title_margin',
+			[
+				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .flip-card-back h2' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'filpcard_back_designation_style',
+			[
+				'label' => esc_html__( 'Back Designation', 'textdomain' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+		$this->add_control(
+			'back_designation_color',
+			[
+				'label' => esc_html__( 'Text Color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .flip-card-back p' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'back_designation_typography',
+				'selector' => '{{WRAPPER}} .flip-card-back p',
+			]
+		);
+		$this->add_responsive_control(
+			'back_designation_margin',
+			[
+				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .flip-card-back p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'filpcard_back_description_style',
+			[
+				'label' => esc_html__( 'Back Description', 'textdomain' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+		$this->add_control(
+			'back_description_color',
+			[
+				'label' => esc_html__( 'Text Color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .flip-card-back .back-content' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'back_description_typography',
+				'selector' => '{{WRAPPER}} .flip-card-back .back-content',
+			]
+		);
+		$this->add_responsive_control(
+			'back_description_margin',
+			[
+				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => -25,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .flip-card-back .back-content' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'back_button_style',
+			[
+				'label' => esc_html__( 'Button', 'textdomain' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'back_button_typography',
+				'selector' => '{{WRAPPER}} .flip-card-back a',
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Text_Shadow::get_type(),
+			[
+				'name' => 'back_button_shadow',
+				'selector' => '{{WRAPPER}} .flip-card-back a',
+			]
+		);
+
+		// normal-hover-start
+		$this->start_controls_tabs(
+			'style_tabs'
+		);
+		
+		$this->start_controls_tab(
+			'style_normal_tab',
+			[
+				'label' => esc_html__( 'Normal', 'textdomain' ),
+			]
+		);
+		$this->add_control(
+			'back_button_color',
+			[
+				'label' => esc_html__( 'Text Color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .flip-card-back a' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'back_button_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .flip-card-back a',
+			]
+		);
+		$this->add_control(
+			'button_normal_more_options',
+			[
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'back_button_border',
+				'selector' => '{{WRAPPER}} .flip-card-back a',
+			]
+		);
+		$this->add_responsive_control(
+			'back_button_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .flip-card-back a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'back_button_padding',
+			[
+				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 12,
+					'right' => 24,
+					'bottom' => 12,
+					'left' => 24,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .flip-card-back a' => 'Padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		
+		$this->end_controls_tab();
+		//hover
+		$this->start_controls_tab(
+			'style_hover_tab',
+			[
+				'label' => esc_html__( 'Hover', 'textdomain' ),
+			]
+		);
+		
+		$this->end_controls_tab();
+		
+		$this->end_controls_tabs();
+		
+       //end normal hover
+	   $this->add_control(
+		'button_margin_more_options',
+		[
+			'type' => \Elementor\Controls_Manager::HEADING,
+			'separator' => 'before',
+		]
+	);
+	   $this->add_responsive_control(
+		'back_button_margin',
+		[
+			'label' => esc_html__( 'Margin', 'textdomain' ),
+			'type' => \Elementor\Controls_Manager::DIMENSIONS,
+			'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+			'default' => [
+				'top' => 20,
+				'right' => 0,
+				'bottom' => 0,
+				'left' => 0,
+				'unit' => 'px',
+				'isLinked' => false,
+			],
+			'selectors' => [
+				'{{WRAPPER}} .flip-card-back .flip_card_button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+			],
+		]
+	);
 
 		$this->end_controls_section();
 
-
-
-
-	
-
-
+		
 
         
     }
