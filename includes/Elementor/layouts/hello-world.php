@@ -1,1 +1,1 @@
-<h1>Welcome to hello world</h1>
+<h1 class="flex">Welcome to hello world</h1>
