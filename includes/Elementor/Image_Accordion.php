@@ -153,7 +153,7 @@ class Image_Accordion extends Widget_Base
             [
                 'label' => __('Description', 'kinder-world-manager'),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'description' => ha_get_allowed_html_desc( 'intermediate' ),
+                // 'description' => ha_get_allowed_html_desc( 'intermediate' ),
                 'default' => __('Image accordion content.', 'kinder-world-manager'),
                 'placeholder' => __('Type your description here', 'kinder-world-manager'),
                 'dynamic' => [

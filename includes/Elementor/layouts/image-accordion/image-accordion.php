@@ -4,9 +4,9 @@
   font-family: Montserrat,sans-serif;
 }
 
-body{
+/* body{
   background-color: #343E48;
-}
+} */
 
 h1{
   text-align: center;
