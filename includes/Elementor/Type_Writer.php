@@ -279,27 +279,28 @@ class Type_Writer extends Widget_Base
     {
         $settings    = $this->get_settings_for_display();
 
-        
-		if ( empty( $settings['typewriter_normal_text'] ) && empty( $settings['typewriter_animated_text'] ) ) {
-			return;
-		}
+         // If both static and animated texts are empty, return early.
+    if ( empty( $settings['typewriter_normal_text'] ) && empty( $settings['typewriter_animated_text'] ) ) {
+        return;
+    }
 
-		$this->add_render_attribute( 'typewriter-attr', 'class', 'wcf--typewriter' );
+    // Add a wrapper class for the widget
+    $this->add_render_attribute( 'typewriter-attr', 'class', 'wcf--typewriter' );
 
+    // Start with normal text (non-animated)
+    $typewriter_text = '';
+    if ( ! empty( $settings['typewriter_normal_text'] ) ) {
+        $typewriter_text = $settings['typewriter_normal_text'];
+    }
 
-		$typewriter_text = '';
+    // Initialize the dynamic (animated) text
+    $typewriter_animated_text = '';
+    if ( ! empty( $settings['typewriter_animated_text'] ) ) {
+        foreach ( $settings['typewriter_animated_text'] as $animated_text ) {
+            $typewriter_animated_text .= '<span class="typed-text-item">' . esc_html( $animated_text['list_text'] ) . '</span>';
+        }
+    }
 
-		if ( ! empty( $settings['typewriter_normal_text'] ) ) {
-			$typewriter_text = $settings['typewriter_normal_text'];
-		}
-
-		$typewriter_animated_text = '';
-		if ( ! empty( $settings['typewriter_animated_text'] ) ) {
-			foreach ( $settings['typewriter_animated_text'] as $animated_text ) {
-				$typewriter_animated_text .= ' <span>' . $animated_text['list_text'] . '</span>';
-			}
-		}
-        
         include __DIR__ . '/layouts/typeWriter/type-writer.php';
     }
 

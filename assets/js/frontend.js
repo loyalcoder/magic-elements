@@ -1,6 +1,3 @@
 (function($) {
-  
-
-console.log('hello');
-
+  console.log('Welcome frontend.js file from marlin');
 })(jQuery);
