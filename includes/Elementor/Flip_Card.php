@@ -113,7 +113,7 @@ class Flip_Card extends Widget_Base
         $this->start_controls_section(
 			'flip_card_content_section',
 			[
-				'label' => esc_html__( 'Flip Card', 'textdomain' ),
+				'label' => esc_html__( 'Flip Card', 'elementor-magic-kit' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -132,19 +132,19 @@ class Flip_Card extends Widget_Base
 		$this->add_responsive_control(
 			'flipcard_front_align',
 			[
-				'label' => esc_html__( 'Alignment', 'textdomain' ),
+				'label' => esc_html__( 'Alignment', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'textdomain' ),
+						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'textdomain' ),
+						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'textdomain' ),
+						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
 						'icon' => 'eicon-text-align-right',
 					],
 				],
@@ -158,7 +158,7 @@ class Flip_Card extends Widget_Base
 		$this->add_control(
 			'flip_card_front_image',
 			[
-				'label' => esc_html__( 'Choose Image', 'textdomain' ),
+				'label' => esc_html__( 'Choose Image', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::MEDIA,
 				'media_types' => ['image' , 'svg'],
 				'default' => [
@@ -178,29 +178,29 @@ class Flip_Card extends Widget_Base
 		$this->add_control(
 			'card_front_title',
 			[
-				'label' => esc_html__( 'Title', 'textdomain' ),
+				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Front Title', 'textdomain' ),
-				'placeholder' => esc_html__( 'Type your title here', 'textdomain' ),
+				'default' => esc_html__( 'Front Title', 'elementor-magic-kit' ),
+				'placeholder' => esc_html__( 'Type your title here', 'elementor-magic-kit' ),
 			]
 		);
 		$this->add_control(
 			'card_front_description',
 			[
-				'label' => esc_html__( 'Description', 'textdomain' ),
+				'label' => esc_html__( 'Description', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'rows' => 5,
-				'default' => esc_html__( 'This is front side content', 'textdomain' ),
-				'placeholder' => esc_html__( 'Type your description here', 'textdomain' ),
+				'default' => esc_html__( 'This is front side content', 'elementor-magic-kit' ),
+				'placeholder' => esc_html__( 'Type your description here', 'elementor-magic-kit' ),
 			]
 		);
 		$this->add_control(
 			'show_social_icon',
 			[
-				'label' => esc_html__( 'Social Icon', 'textdomain' ),
+				'label' => esc_html__( 'Social Icon', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'textdomain' ),
-				'label_off' => esc_html__( 'Hide', 'textdomain' ),
+				'label_on' => esc_html__( 'Show', 'elementor-magic-kit' ),
+				'label_off' => esc_html__( 'Hide', 'elementor-magic-kit' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -209,7 +209,7 @@ class Flip_Card extends Widget_Base
         $repeater->add_control(
 			'flip_card_front_icon',
 			[
-				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
 				'default' => [
 					'value' => 'fas fa-circle',
@@ -232,7 +232,7 @@ class Flip_Card extends Widget_Base
         $repeater->add_control(
 			'flip_icon_link',
 			[
-				'label' => esc_html__( 'Link', 'textdomain' ),
+				'label' => esc_html__( 'Link', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::URL,
 				'options' => [ 'url', 'is_external', 'nofollow' ],
 				'default' => [
@@ -246,7 +246,7 @@ class Flip_Card extends Widget_Base
         $this->add_control(
 			'front_icon_list',
 			[
-				'label' => esc_html__( 'Icon List', 'textdomain' ),
+				'label' => esc_html__( 'Icon List', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
@@ -269,6 +269,7 @@ class Flip_Card extends Widget_Base
 						],
 					],
 				],
+
 			]
 		);
        
@@ -283,19 +284,19 @@ class Flip_Card extends Widget_Base
 		$this->add_responsive_control(
 			'flipcard_back_align',
 			[
-				'label' => esc_html__( 'Alignment', 'textdomain' ),
+				'label' => esc_html__( 'Alignment', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'textdomain' ),
+						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'textdomain' ),
+						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'textdomain' ),
+						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
 						'icon' => 'eicon-text-align-right',
 					],
 				],
@@ -309,10 +310,10 @@ class Flip_Card extends Widget_Base
 		$this->add_control(
 			'show_social_back_icon',
 			[
-				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'textdomain' ),
-				'label_off' => esc_html__( 'Hide', 'textdomain' ),
+				'label_on' => esc_html__( 'Show', 'elementor-magic-kit' ),
+				'label_off' => esc_html__( 'Hide', 'elementor-magic-kit' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -320,7 +321,7 @@ class Flip_Card extends Widget_Base
 		$this->add_control(
 			'flipcard_back_icon',
 			[
-				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
 				'default' => [
 					'value' => 'fas fa-circle',
@@ -343,44 +344,44 @@ class Flip_Card extends Widget_Base
 		$this->add_control(
 			'card_back_title',
 			[
-				'label' => esc_html__( 'Title', 'textdomain' ),
+				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Back title', 'textdomain' ),
-				'placeholder' => esc_html__( 'Type your title here', 'textdomain' ),
+				'default' => esc_html__( 'Back title', 'elementor-magic-kit' ),
+				'placeholder' => esc_html__( 'Type your title here', 'elementor-magic-kit' ),
 			]
 		);
 		$this->add_control(
 			'card_back_designation',
 			[
-				'label' => esc_html__( 'Designation', 'textdomain' ),
+				'label' => esc_html__( 'Designation', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Developer', 'textdomain' ),
-				'placeholder' => esc_html__( 'Type your title here', 'textdomain' ),
+				'default' => esc_html__( 'Developer', 'elementor-magic-kit' ),
+				'placeholder' => esc_html__( 'Type your title here', 'elementor-magic-kit' ),
 			]
 		);
         $this->add_control(
 			'card_back_description',
 			[
-				'label' => esc_html__( 'Description', 'textdomain' ),
+				'label' => esc_html__( 'Description', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'rows' => 5,
-				'default' => esc_html__( 'This is back side content.', 'textdomain' ),
-				'placeholder' => esc_html__( 'Type your description here', 'textdomain' ),
+				'default' => esc_html__( 'This is back side content.', 'elementor-magic-kit' ),
+				'placeholder' => esc_html__( 'Type your description here', 'elementor-magic-kit' ),
 			]
 		);
         $this->add_control(
 			'card_back_button',
 			[
-				'label' => esc_html__( 'Button Text', 'textdomain' ),
+				'label' => esc_html__( 'Button Text', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Click here', 'textdomain' ),
-				'placeholder' => esc_html__( 'Type your title here', 'textdomain' ),
+				'default' => esc_html__( 'Click here', 'elementor-magic-kit' ),
+				'placeholder' => esc_html__( 'Type your title here', 'elementor-magic-kit' ),
 			]
 		);
         $this->add_control(
 			'flip_card_button_link',
 			[
-				'label' => esc_html__( 'Link', 'textdomain' ),
+				'label' => esc_html__( 'Link', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::URL,
 				'options' => [ 'url', 'is_external', 'nofollow' ],
 				'default' => [
@@ -402,7 +403,7 @@ class Flip_Card extends Widget_Base
         $this->start_controls_section(
 			'flipcard_front_style',
 			[
-				'label' => esc_html__( 'Front', 'textdomain' ),
+				'label' => esc_html__( 'Front', 'elementor-magic-kit' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -417,7 +418,7 @@ class Flip_Card extends Widget_Base
 		$this->add_responsive_control(
 			'flipcard_front_padding',
 			[
-				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
@@ -450,7 +451,7 @@ class Flip_Card extends Widget_Base
 		$this->add_responsive_control(
 			'flipcard_front_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
@@ -471,14 +472,14 @@ class Flip_Card extends Widget_Base
 		$this->start_controls_section(
 			'front_image_style_section',
 			[
-				'label' => esc_html__( 'Front Image', 'textdomain' ),
+				'label' => esc_html__( 'Front Image', 'elementor-magic-kit' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
 		$this->add_responsive_control(
 			'front_image_size',
 			[
-				'label' => esc_html__( 'Size', 'textdomain' ),
+				'label' => esc_html__( 'Size', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -504,7 +505,7 @@ class Flip_Card extends Widget_Base
 		$this->add_responsive_control(
 			'front_image_height',
 			[
-				'label' => esc_html__( 'Height', 'textdomain' ),
+				'label' => esc_html__( 'Height', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -526,7 +527,7 @@ class Flip_Card extends Widget_Base
 		$this->add_responsive_control(
 			'front_image_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -537,11 +538,11 @@ class Flip_Card extends Widget_Base
 		$this->add_responsive_control(
 			'front_image_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
-					'top' => 20,
+					'top' => 10,
 					'right' => 0,
 					'bottom' => 0,
 					'left' => 0,
@@ -558,7 +559,7 @@ class Flip_Card extends Widget_Base
 		$this->start_controls_section(
 			'front_title_style',
 			[
-				'label' => esc_html__( 'Front Title', 'textdomain' ),
+				'label' => esc_html__( 'Front Title', 'elementor-magic-kit' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -566,7 +567,7 @@ class Flip_Card extends Widget_Base
 		$this->add_control(
 			'front_title_color',
 			[
-				'label' => esc_html__( 'Title Color', 'textdomain' ),
+				'label' => esc_html__( 'Title Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .flip-card-front h3' => 'color: {{VALUE}}',
@@ -583,9 +584,17 @@ class Flip_Card extends Widget_Base
 		$this->add_responsive_control(
 			'front_title_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 10,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
 				'selectors' => [
 					'{{WRAPPER}} .flip-card-front h3' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -597,7 +606,7 @@ class Flip_Card extends Widget_Base
 		$this->start_controls_section(
 			'front_description_style',
 			[
-				'label' => esc_html__( 'Front Description', 'textdomain' ),
+				'label' => esc_html__( 'Front Description', 'elementor-magic-kit' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -605,7 +614,7 @@ class Flip_Card extends Widget_Base
 		$this->add_control(
 			'front_description_color',
 			[
-				'label' => esc_html__( 'Title Color', 'textdomain' ),
+				'label' => esc_html__( 'Title Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .flip-card-front .front-description' => 'color: {{VALUE}}',
@@ -622,7 +631,7 @@ class Flip_Card extends Widget_Base
 		$this->add_responsive_control(
 			'front_description_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -636,26 +645,26 @@ class Flip_Card extends Widget_Base
 		$this->start_controls_section(
 			'front_icon_style',
 			[
-				'label' => esc_html__( 'Front Icon', 'textdomain' ),
+				'label' => esc_html__( 'Front Icon', 'elementor-magic-kit' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
 		$this->add_responsive_control(
 			'front_icon_alain',
 			[
-				'label' => esc_html__( 'Alignment', 'textdomain' ),
+				'label' => esc_html__( 'Alignment', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'textdomain' ),
+						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'textdomain' ),
+						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'textdomain' ),
+						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
 						'icon' => 'eicon-text-align-right',
 					],
 				],
@@ -669,7 +678,7 @@ class Flip_Card extends Widget_Base
 		$this->add_control(
 			'front_icon_color',
 			[
-				'label' => esc_html__( 'Icon Color', 'textdomain' ),
+				'label' => esc_html__( 'Icon Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .flip-card-front .flip_card_icon .social-icon' => 'fill: {{VALUE}}',
@@ -688,7 +697,7 @@ class Flip_Card extends Widget_Base
 		$this->add_responsive_control(
 			'front_icon_size',
 			[
-				'label' => esc_html__( 'Size', 'textdomain' ),
+				'label' => esc_html__( 'Size', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -728,7 +737,7 @@ class Flip_Card extends Widget_Base
 		$this->add_responsive_control(
 			'front_icon_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
@@ -747,7 +756,7 @@ class Flip_Card extends Widget_Base
 		$this->add_responsive_control(
 			'front_icon_padding',
 			[
-				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
@@ -766,7 +775,7 @@ class Flip_Card extends Widget_Base
 		$this->add_responsive_control(
 			'front_icon_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -779,7 +788,7 @@ class Flip_Card extends Widget_Base
 		$this->start_controls_section(
 			'flipcard_back_style',
 			[
-				'label' => esc_html__( 'Back', 'textdomain' ),
+				'label' => esc_html__( 'Back', 'elementor-magic-kit' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -794,7 +803,7 @@ class Flip_Card extends Widget_Base
 		$this->add_responsive_control(
 			'flipcard_back_padding',
 			[
-				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
@@ -827,7 +836,7 @@ class Flip_Card extends Widget_Base
 		$this->add_responsive_control(
 			'flipcard_back_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -840,14 +849,14 @@ class Flip_Card extends Widget_Base
 		$this->start_controls_section(
 			'flipcard_back_icon_style',
 			[
-				'label' => esc_html__( 'Back Icon', 'textdomain' ),
+				'label' => esc_html__( 'Back Icon', 'elementor-magic-kit' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
 		$this->add_control(
 			'back_icon_color',
 			[
-				'label' => esc_html__( 'Icon Color', 'textdomain' ),
+				'label' => esc_html__( 'Icon Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .flip-card-back svg' => 'fill: {{VALUE}}',
@@ -857,7 +866,7 @@ class Flip_Card extends Widget_Base
 		$this->add_responsive_control(
 			'flipcard_back_icon_size',
 			[
-				'label' => esc_html__( 'Size', 'textdomain' ),
+				'label' => esc_html__( 'Size', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -883,7 +892,7 @@ class Flip_Card extends Widget_Base
 		$this->add_responsive_control(
 			'back_icon_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -896,14 +905,14 @@ class Flip_Card extends Widget_Base
 		$this->start_controls_section(
 			'filpcard_back_title_style',
 			[
-				'label' => esc_html__( 'Back Title', 'textdomain' ),
+				'label' => esc_html__( 'Back Title', 'elementor-magic-kit' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
 		$this->add_control(
 			'back_title_color',
 			[
-				'label' => esc_html__( 'Text Color', 'textdomain' ),
+				'label' => esc_html__( 'Text Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .flip-card-back h2' => 'color: {{VALUE}}',
@@ -920,7 +929,7 @@ class Flip_Card extends Widget_Base
 		$this->add_responsive_control(
 			'back_title_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -933,14 +942,14 @@ class Flip_Card extends Widget_Base
 		$this->start_controls_section(
 			'filpcard_back_designation_style',
 			[
-				'label' => esc_html__( 'Back Designation', 'textdomain' ),
+				'label' => esc_html__( 'Back Designation', 'elementor-magic-kit' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
 		$this->add_control(
 			'back_designation_color',
 			[
-				'label' => esc_html__( 'Text Color', 'textdomain' ),
+				'label' => esc_html__( 'Text Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .flip-card-back p' => 'color: {{VALUE}}',
@@ -957,7 +966,7 @@ class Flip_Card extends Widget_Base
 		$this->add_responsive_control(
 			'back_designation_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -970,14 +979,14 @@ class Flip_Card extends Widget_Base
 		$this->start_controls_section(
 			'filpcard_back_description_style',
 			[
-				'label' => esc_html__( 'Back Description', 'textdomain' ),
+				'label' => esc_html__( 'Back Description', 'elementor-magic-kit' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
 		$this->add_control(
 			'back_description_color',
 			[
-				'label' => esc_html__( 'Text Color', 'textdomain' ),
+				'label' => esc_html__( 'Text Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .flip-card-back .back-content' => 'color: {{VALUE}}',
@@ -994,7 +1003,7 @@ class Flip_Card extends Widget_Base
 		$this->add_responsive_control(
 			'back_description_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
@@ -1015,7 +1024,7 @@ class Flip_Card extends Widget_Base
 		$this->start_controls_section(
 			'back_button_style',
 			[
-				'label' => esc_html__( 'Button', 'textdomain' ),
+				'label' => esc_html__( 'Button', 'elementor-magic-kit' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -1042,14 +1051,15 @@ class Flip_Card extends Widget_Base
 		$this->start_controls_tab(
 			'style_normal_tab',
 			[
-				'label' => esc_html__( 'Normal', 'textdomain' ),
+				'label' => esc_html__( 'Normal', 'elementor-magic-kit' ),
 			]
 		);
 		$this->add_control(
 			'back_button_color',
 			[
-				'label' => esc_html__( 'Text Color', 'textdomain' ),
+				'label' => esc_html__( 'Text Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
+				'default' => '#fff',
 				'selectors' => [
 					'{{WRAPPER}} .flip-card-back a' => 'color: {{VALUE}}',
 				],
@@ -1080,7 +1090,7 @@ class Flip_Card extends Widget_Base
 		$this->add_responsive_control(
 			'back_button_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -1091,7 +1101,7 @@ class Flip_Card extends Widget_Base
 		$this->add_responsive_control(
 			'back_button_padding',
 			[
-				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
@@ -1114,7 +1124,7 @@ class Flip_Card extends Widget_Base
 		$this->start_controls_tab(
 			'style_hover_tab',
 			[
-				'label' => esc_html__( 'Hover', 'textdomain' ),
+				'label' => esc_html__( 'Hover', 'elementor-magic-kit' ),
 			]
 		);
 		
@@ -1133,7 +1143,7 @@ class Flip_Card extends Widget_Base
 	   $this->add_responsive_control(
 		'back_button_margin',
 		[
-			'label' => esc_html__( 'Margin', 'textdomain' ),
+			'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
 			'type' => \Elementor\Controls_Manager::DIMENSIONS,
 			'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 			'default' => [
@@ -1149,11 +1159,7 @@ class Flip_Card extends Widget_Base
 			],
 		]
 	);
-
 		$this->end_controls_section();
-
-		
-
         
     }
 
