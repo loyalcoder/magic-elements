@@ -713,7 +713,7 @@ class Flip_Card extends Widget_Base
 				],
 				'default' => [
 					'unit' => 'px',
-					'size' => 24,
+					'size' => 34,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .flip-card-front .flip_card_icon .social-icon' => 'width: {{SIZE}}{{UNIT}};',
@@ -1150,6 +1150,23 @@ class Flip_Card extends Widget_Base
 				'name' => 'back_button_hover_background',
 				'types' => [ 'classic', 'gradient', 'video' ],
 				'selector' => '{{WRAPPER}} .flip-card-back a:hover',
+			]
+		);
+		$this->add_responsive_control(
+			'button_hover_transition',
+			[
+				'label' => esc_html__( 'Transition Duration', 'elementor-magic-kit' ) . ' (s)',
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 3,
+						'step' => 0.1,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .flip-card-back a:hover' => 'transition-duration: {{SIZE}}s',
+				],
 			]
 		);
 		$this->add_control(

@@ -418,6 +418,7 @@
 }
 .flip-card .flip-card-inner .flip-card-front .flip_card_icon {
   display: flex;
+  margin-top: -10px;
 }
 .flip-card .flip-card-inner .flip-card-back {
   position: absolute;

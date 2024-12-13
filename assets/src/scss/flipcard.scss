@@ -28,6 +28,7 @@ $background-color_1: #f2f1f1;
             background-color: $background-color_1;
             .flip_card_icon{
                 display: flex;
+                margin-top: -10px;
             }
         }
         .flip-card-back {
