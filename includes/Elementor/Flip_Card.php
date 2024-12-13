@@ -345,7 +345,7 @@ class Flip_Card extends Widget_Base
 			[
 				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Back title', 'elementor-magic-kit' ),
+				'default' => esc_html__( 'Back Title', 'elementor-magic-kit' ),
 				'placeholder' => esc_html__( 'Type your title here', 'elementor-magic-kit' ),
 			]
 		);
@@ -882,7 +882,7 @@ class Flip_Card extends Widget_Base
 				],
 				'default' => [
 					'unit' => 'px',
-					'size' => 80,
+					'size' => 60,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .flip-card-back svg' => 'width: {{SIZE}}{{UNIT}};',
