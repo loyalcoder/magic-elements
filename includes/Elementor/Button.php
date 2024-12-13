@@ -50,7 +50,7 @@ class Button extends Widget_Base
      */
     public function get_title()
     {   
-        return esc_html__('Button', 'elementor-magic-kit');
+        return esc_html__('Button Magic', 'elementor-magic-kit');
     }
 
     /**
@@ -88,9 +88,12 @@ class Button extends Widget_Base
 
     public function get_style_depends()
     {
-        return ['emk-button'];
+        return ['emk-button', 'emkit-button'];
     }
-
+	public function get_script_depends()
+	{
+		return ['emkit-button'];
+	}
     /**
      * Register Copyright controls.
      *
