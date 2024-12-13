@@ -111,7 +111,7 @@ class Heading extends Widget_Base
     protected function register_heading_controls()
     {
         $this->start_controls_section(
-            'section_title',
+            'emk_heading_section_title',
             [
                 'label' => esc_html__('Heading', 'elementor-magic-kit'),
             ]
@@ -175,7 +175,7 @@ class Heading extends Widget_Base
         // Style section
         // --- Container section
         $this->start_controls_section(
-            $this->get_name() . 'section_title_style',
+            'emk_section_title_style',
             [
                 'label' => esc_html__('Heading', 'elementor-magic-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
