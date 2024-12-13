@@ -6,7 +6,6 @@
  * @package Header Footer Elementor
  */
 
-
 namespace Elementor_Magic_Kit\Elementor;
 
 use Elementor\Controls_Manager;
@@ -87,7 +86,7 @@ class Pricing_Table extends Widget_Base
     }
     public function get_style_depends()
     {
-        return ['emk-pricing-table'];
+        return [];
     }
     public function get_script_depends()
     {
@@ -114,13 +113,450 @@ class Pricing_Table extends Widget_Base
     protected function register_pricing_table_controls()
     {
         $this->start_controls_section(
-            'section_title',
+            'section_style',
             [
-                'label' => __('Hello World Settings', 'elementor-magic-kit'),
+                'label' => __('Table Settings', 'elementor-magic-kit'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+        $this->add_control(
+            'layout_style',
+            [
+                'label' => esc_html__('Pricing Table Style', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'style_one',
+                'options' => [
+                    'style_one' => esc_html__('Style One', 'elementor-magic-kit'),
+                    'style_two' => esc_html__('Style Two', 'elementor-magic-kit'),
+                ],
+            ]
+        );
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'table_header',
+            [
+                'label' => __('Header', 'elementor-magic-kit'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+        $this->add_control(
+			'pricing_table_title',
+			[
+				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Title', 'elementor-magic-kit' ),
+				'placeholder' => esc_html__( 'Type your title here', 'elementor-magic-kit' ),
+			]
+		);
+        $this->add_control(
+			'pricing_table_subtitle',
+			[
+				'label' => esc_html__( 'Sub Title', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Sub Title', 'elementor-magic-kit' ),
+				'placeholder' => esc_html__( 'Type your sub title here', 'elementor-magic-kit' ),
+			]
+		);
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'price_section',
+            [
+                'label' => __('Pricing', 'elementor-magic-kit'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+        $this->add_control(
+            'currency_symbol',
+            [
+                'label'   => esc_html__( 'Currency Symbol', 'elementor-magic-kit' ),
+                'type'    => Controls_Manager::SELECT,
+                'options' => [
+                    ''             => esc_html__( 'None', 'elementor-magic-kit' ),
+                    '&#36;'        => esc_html__( '&#36; dollar', 'elementor-magic-kit' ),
+                    'C&#36;'       => esc_html__( 'C&#36; Canadian dollar', 'elementor-magic-kit' ),
+                    'A&#36;'       => esc_html__( 'A&#36; Australian dollar', 'elementor-magic-kit' ),
+                    '&#128;'       => esc_html__( '&#128; euro', 'elementor-magic-kit' ),
+                    '&#3647;'      => esc_html__( '&#3647; baht', 'elementor-magic-kit' ),
+                    '&#8355;'      => esc_html__( '&#8355; franc', 'elementor-magic-kit' ),
+                    '&fnof;'       => esc_html__( '&fnof; guilder', 'elementor-magic-kit' ),
+                    'kr'           => esc_html__( 'kr krona', 'elementor-magic-kit' ),
+                    '&#8356;'      => esc_html__( '&#8356; lira', 'elementor-magic-kit' ),
+                    '&#8359;'      => esc_html__( '&#8359; peseta', 'elementor-magic-kit' ),
+                    '&#8369;'      => esc_html__( '&#8369; peso', 'elementor-magic-kit' ),
+                    '&#163;'       => esc_html__( '&#163; pound', 'elementor-magic-kit' ),
+                    '&#8381;'      => esc_html__( '&#8381; ruble', 'elementor-magic-kit' ),
+                    'R$'           => esc_html__( 'R$ real', 'elementor-magic-kit' ),
+                    '&#8360;'      => esc_html__( '&#8360; rupee', 'elementor-magic-kit' ),
+                    '&#8377;'      => esc_html__( '&#8377; rupee (Indian)', 'elementor-magic-kit' ),
+                    '&#8362;'      => esc_html__( '&#8362; shekel', 'elementor-magic-kit' ),
+                    '&#165;'       => esc_html__( '&#165; yen/yuan', 'elementor-magic-kit' ),
+                    '&#8361;'      => esc_html__( '&#8361; won', 'elementor-magic-kit' ),
+                    '&#8383;'      => esc_html__( '&#8383; bitcoin', 'elementor-magic-kit' ),
+                ],
+                'default' => '&#36;',
+            ]
+        );
+        $this->add_control(
+			'price',
+			[
+				'label' => esc_html__( 'Price', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( '89.9', 'elementor-magic-kit' ),
+				'placeholder' => esc_html__( 'Type your price', 'elementor-magic-kit' ),
+			]
+		);
+        $this->add_control(
+			'show_sale',
+			[
+				'label' => esc_html__( 'Sale', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'elementor-magic-kit' ),
+				'label_off' => esc_html__( 'Hide', 'elementor-magic-kit' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
+        $this->add_control(
+			'original_price',
+			[
+				'label' => esc_html__( 'Original Price', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( '99.9', 'elementor-magic-kit' ),
+                'condition' => [
+                    'show_sale' => 'yes', // Only show this control when switch is ON
+                ]
+			]
+		);
+        $this->add_control(
+			'period',
+			[
+				'label' => esc_html__( 'Period', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( '/monthly', 'elementor-magic-kit' ),
+				'placeholder' => esc_html__( 'Type your period', 'elementor-magic-kit' ),
+			]
+		);
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'features_section',
+            [
+                'label' => __('Features', 'elementor-magic-kit'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+      
+        $repeater = new \Elementor\Repeater();
+
+        $repeater->add_control(
+            'features_text',
+            [
+                'label' => __( 'Text', 'text-domain' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => __( 'Default Text', 'text-domain' ),
+            ]
+        );
+
+        $repeater->add_control(
+			'features_icon',
+			[
+				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-circle',
+					'library' => 'fa-solid',
+				],
+				'recommended' => [
+					'fa-solid' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+					'fa-regular' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+				],
+			]
+		);
+
+        $this->add_control(
+            'features_items',
+            [
+                'label' => __( 'Repeater Items', 'text-domain' ),
+                'type' => \Elementor\Controls_Manager::REPEATER,
+                'fields' => $repeater->get_controls(),
+                'default' => [
+                    [
+                        'features_text' => __( 'Sample Text 1', 'text-domain' ),
+                        'features_icon' => 'fa fa-heart',
+                    ],
+                    [
+                        'features_text' => __( 'Sample Text 2', 'text-domain' ),
+                        'features_icon' => 'fa fa-cogs',
+                    ],
+                ],
+                'title_field' => '{{{ features_text }}}',
             ]
         );
 
         $this->end_controls_section();
+
+        $this->start_controls_section(
+            'button_section',
+            [
+                'label' => __('Button', 'elementor-magic-kit'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+        $this->add_control(
+			'pricing_btn',
+			[
+				'label' => esc_html__( 'Text', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Button', 'elementor-magic-kit' ),
+				'placeholder' => esc_html__( 'Type your button text', 'elementor-magic-kit' ),
+			]
+		);
+        $this->add_control(
+			'btn_link',
+			[
+				'label' => esc_html__( 'Link', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::URL,
+				'options' => [ 'url', 'is_external', 'nofollow' ],
+				'default' => [
+					'url' => '#',
+					'is_external' => true,
+					'nofollow' => true,
+				],
+				'label_block' => true,
+			]
+		);
+        $this->end_controls_section();
+        /**
+         * style control start ===============================
+         */
+        $this->start_controls_section(
+            'pricing_card_style',
+            [
+                'label' => __('Table Style', 'elementor-magic-kit'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_control(
+			'card_body_bg',
+			[
+				'label' => esc_html__( 'Background Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .pricing-table-container' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_control(
+			'card_body_padding',
+			[
+				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 0,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .pricing-table-container' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'card_border',
+				'selector' => '{{WRAPPER}} .pricing-table-container',
+			]
+		);
+        $this->add_control(
+			'card_body_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 0,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .pricing-table-container' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'card_body_shadow',
+				'selector' => '{{WRAPPER}} .pricing-table-container',
+			]
+		);
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'header_style',
+            [
+                'label' => __('Header', 'elementor-magic-kit'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_control(
+			'title_options',
+			[
+				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'title_typography',
+				'selector' => '{{WRAPPER}} .title',
+			]
+		);
+        $this->add_control(
+			'title_color',
+			[
+				'label' => esc_html__( 'Title Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .title' => 'color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Text_Shadow::get_type(),
+			[
+				'name' => 'title_shadow',
+				'selector' => '{{WRAPPER}} .title',
+			]
+		);
+        $this->add_control(
+			'title_margin',
+			[
+				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 0,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        //sub title ================================
+        $this->add_control(
+			'sub_title_options',
+			[
+				'label' => esc_html__( 'Sub Title', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'sub_title_typography',
+				'selector' => '{{WRAPPER}} .sub-title',
+			]
+		);
+        $this->add_control(
+			'sub_title_color',
+			[
+				'label' => esc_html__( 'Sub Title Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .sub-title' => 'color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Text_Shadow::get_type(),
+			[
+				'name' => 'sub_title_shadow',
+				'selector' => '{{WRAPPER}} .sub-title',
+			]
+		);
+        $this->add_control(
+			'sub_title_margin',
+			[
+				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 0,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .sub-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->end_controls_section();
+        // Features Style ===================================
+        $this->start_controls_section(
+            'features_style',
+            [
+                'label' => __('Features', 'elementor-magic-kit'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_control(
+			'icon_size',
+			[
+				'label' => esc_html__( 'Icon Size', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 15,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .list-icon' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+        $this->end_controls_section();
+
     }
 
     /**
@@ -131,10 +567,28 @@ class Pricing_Table extends Widget_Base
      * @since 1.0.0
      * @access protected
      */
+    
     protected function render()
     {
         $settings    = $this->get_settings_for_display();
-        include __DIR__ . '/layouts/pricing-table/pricing_table_style_one.php';
+
+        $layout_style = $settings['layout_style'];
+        $file_path = __DIR__ . '/layouts/pricing-table/';
+
+        switch ($layout_style) {
+            case 'style_two':
+                $file_path .= 'pricing_table_style_two.php';
+                break;
+
+            case 'style_one':
+            default:
+                $file_path .= 'pricing_table_style_one.php';
+                break;
+        }
+
+        if (file_exists($file_path)) {
+            include $file_path;
+        } 
     }
 
     /**

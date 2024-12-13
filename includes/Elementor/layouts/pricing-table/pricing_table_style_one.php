@@ -1,20 +1,31 @@
 <div class="pricing-table-container">
-    <h2>title</h2>
-    <h3>sub title</h3>
+    <h2 class="title"><?php echo esc_html($settings['pricing_table_title']); ?></h2>
+    <h3 class="sub-title"><?php echo esc_html($settings['pricing_table_subtitle']); ?></h3>
     <div class="price-box">
-        <span>$90</span>
-        <span>/monthly</span>
+        <span>
+            <?php if ( 'yes' === $settings['show_sale'] ) {
+                echo esc_html($settings['currency_symbol'] . $settings['original_price']);
+            } ?>
+        </span>
+        <span><?php echo esc_html($settings['currency_symbol']); ?></span>
+        <span><?php echo esc_html($settings['price']); ?></span>
+        <span><?php echo esc_html($settings['period']); ?></span>
     </div>
     <div class="content">
-        <ul>
-            <li>this is content</li>
-            <li>this is content</li>
-            <li>this is content</li>
-            <li>this is content</li>
-            <li>this is content</li>
-        </ul>
+        <?php 
+        	  if ( ! empty( $settings['features_items'] ) ) {
+                echo '<ul>';
+                foreach ( $settings['features_items'] as $item ) {
+                    echo '<li>';
+                    \Elementor\Icons_Manager::render_icon( $item['features_icon'], [ 'aria-hidden' => 'true', 'class' => 'list-icon' ] ); 
+                    echo esc_html($item['features_text']);
+                    echo '</li>';
+                }
+                echo '</ul>';
+            }
+        ?>
     </div>
     <div class="button">
-        <a href="#">button</a>
+    <a href="<?php echo esc_url( $settings['btn_link']['url'] ); ?>"><?php echo esc_html($settings['pricing_btn']); ?></a>
     </div>
 </div>
