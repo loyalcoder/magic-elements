@@ -895,6 +895,14 @@ class Flip_Card extends Widget_Base
 				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 10,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
 				'selectors' => [
 					'{{WRAPPER}} .flip-card-back svg' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -1124,6 +1132,68 @@ class Flip_Card extends Widget_Base
 			'style_hover_tab',
 			[
 				'label' => esc_html__( 'Hover', 'elementor-magic-kit' ),
+			]
+		);
+		$this->add_control(
+			'back_button_hover_color',
+			[
+				'label' => esc_html__( 'Text Color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .flip-card-back a:hover' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'back_button_hover_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .flip-card-back a:hover',
+			]
+		);
+		$this->add_control(
+			'button_hover_more_options',
+			[
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'back_button_hover_border',
+				'selector' => '{{WRAPPER}} .flip-card-back a:hover',
+			]
+		);
+		$this->add_responsive_control(
+			'back_button_border_hover_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .flip-card-back a:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'back_button_hover_padding',
+			[
+				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 12,
+					'right' => 24,
+					'bottom' => 12,
+					'left' => 24,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .flip-card-back a:hover' => 'Padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
 			]
 		);
 		

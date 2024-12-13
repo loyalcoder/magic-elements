@@ -41,3 +41,9 @@
   color: black;
   transform: rotateY(180deg);
 }
+.flip-card .flip-card-inner .flip-card-back .flip_card_button a {
+  border: 1px solid black;
+}
+.flip-card .flip-card-inner .flip-card-back .flip_card_button:hover a {
+  color: black;
+}

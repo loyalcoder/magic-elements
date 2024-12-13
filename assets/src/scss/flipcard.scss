@@ -40,6 +40,17 @@ $background-color_1: #f2f1f1;
             background-color: $background-color_1;
             color: $color_1;
             transform: rotateY(180deg);
+            .flip_card_button{
+                a{
+                    border: 1px solid black;
+                }
+                &:hover{
+                    a{
+                        color: $color_1;
+                    }
+                }
+            }
+            
         }
     }
 }
