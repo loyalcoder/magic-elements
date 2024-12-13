@@ -1,49 +1,3 @@
-<style>
-    .flip-card {
-        /* width: 300px; */
-        height: 300px;
-        perspective: 1000px;
-    }
-    .flip-card-inner {
-        background: transparent;
-        position: relative;
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        transition: transform 0.9s;
-        transform-style: preserve-3d;
-    }
-    .flip-card:hover .flip-card-inner {
-        transform: rotateY(180deg);
-    }
-    .flip-card-front, .flip-card-back {
-        position: absolute;
-        border-radius: 12px;
-        width: 100%;
-        height: 100%;
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
-    }
-    .flip-card-front {
-        color: black;
-        background-color: red;
-    }
-
-    .flip-card-back {
-        background-color: green;
-        color: white;
-        transform: rotateY(180deg);
-    }
-
-    /* Social-icon */
-    .flip-card-front .flip_card_icon{
-        display: flex;
-    }
-</style>
-
-
-
-
 <div class="flip-card">
     <div class="flip-card-inner">
         <div class="flip-card-front">
@@ -63,7 +17,7 @@
                             <?php foreach($flip_card_icon_list as $list) { 
                                 $icon_link = (!empty($list['flip_icon_link']['url']) ? $list['flip_icon_link']['url'] : '' );
                                 ?>
-                                <div class="social-icon">
+                                <div class="social-icon ">
                                     <?php if(  $icon_link ) { ?>
                                         <a href="<?php echo esc_url( $icon_link); ?>">
                                             <?php \Elementor\Icons_Manager::render_icon( $list['flip_card_front_icon'], [ 'aria-hidden' => 'true' ] ); ?>

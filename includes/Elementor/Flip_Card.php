@@ -85,10 +85,9 @@ class Flip_Card extends Widget_Base
     {
         return ['emk-widgets'];
     }
-
     public function get_style_depends()
     {
-        return [''];
+        return ['emkit-flipcard', 'emkit-style'];
     }
 
     /**
@@ -412,6 +411,7 @@ class Flip_Card extends Widget_Base
 			[
 				'name' => 'front_background',
 				'types' => [ 'classic', 'gradient', 'video' ],
+				'default'=> '##f2f1f1',
 				'selector' => '{{WRAPPER}} .flip-card-front',
 			]
 		);
@@ -1059,7 +1059,6 @@ class Flip_Card extends Widget_Base
 			[
 				'label' => esc_html__( 'Text Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
-				'default' => '#fff',
 				'selectors' => [
 					'{{WRAPPER}} .flip-card-back a' => 'color: {{VALUE}}',
 				],
