@@ -111,8 +111,15 @@ class Button extends Widget_Base
      * @since 1.0.0
      * @access protected
      */
-    protected function register_button_controls()
+    protected function register_button_controls( $args = [])
     {
+		$default_args = [
+			'section_condition' => [],
+			'icon_exclude_inline_options' => [],
+		];
+
+		$args = wp_parse_args( $args, $default_args );
+		
         $this->start_controls_section(
             'section_button',
             [
@@ -185,7 +192,7 @@ class Button extends Widget_Base
 						'icon' => 'eicon-text-align-right',
 					],
                     'justify' => [
-						'title' => esc_html__( 'Justified', 'elementor' ),
+						'title' => esc_html__( 'Justified', 'elementor-magic-kit' ),
 						'icon' => 'eicon-text-align-justify',
 					],
 				],
@@ -221,6 +228,8 @@ class Button extends Widget_Base
 				'fa4compatibility' => 'icon',
 				'skin' => 'inline',
 				'label_block' => false,
+				'condition' => $args['section_condition'],
+				'icon_exclude_inline_options' => $args['icon_exclude_inline_options'],
 			]
 		);
 
@@ -234,6 +243,7 @@ class Button extends Widget_Base
 					'left' => esc_html__( 'Before', 'elementor-magic-kit' ),
 					'right' => esc_html__( 'After', 'elementor-magic-kit' ),
 				],
+				'condition' => array_merge( $args['section_condition'], [ 'selected_icon[value]!' => '' ] ),
 			]
 		);
 
@@ -258,6 +268,7 @@ class Button extends Widget_Base
 					'{{WRAPPER}} .emk-button-wrapper .emk-button .emk-button-content-wrapper .emk-align-icon-left' => 'margin-right: {{SIZE}}{{UNIT}};',
 					'{{WRAPPER}} .emk-button-wrapper .emk-button .emk-button-content-wrapper .emk-align-icon-right' => 'margin-left: {{SIZE}}{{UNIT}};',
 				],
+				'condition' => array_merge( $args['section_condition'], [ 'selected_icon[value]!' => '' ] ),
 			]
 		);
 
@@ -367,20 +378,7 @@ class Button extends Widget_Base
 			[
 				'label' => esc_html__( 'Hover Animation', 'elementor-magic-kit' ),
 				'type' =>  \Elementor\Controls_Manager::HOVER_ANIMATION,
-			]
-		);
-
-		$this->add_control(
-			'background_transitions',
-			[
-				'label' => esc_html__( 'Background Transitions', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::SELECT,
-				'default' => 'default',
-				'options' => [
-					'default' => esc_html__( 'Default', 'elementor-magic-kit' ),
-					'fade' => esc_html__( 'Fade', 'elementor-magic-kit' ),
-					'sweep-to-right'  => esc_html__( 'Sweep To Right', 'elementor-magic-kit' ),
-				],
+				'condition' => $args['section_condition'],
 			]
 		);
 
@@ -470,10 +468,11 @@ class Button extends Widget_Base
 		if ( ! empty( $settings['hover_animation'] ) ) {
 			$this->add_render_attribute( 'button', 'class', 'emk-animation-' . $settings['hover_animation'] );
 		}
+		
 
-		if ( ! empty( $settings['background_transitions'] ) ) {
-			$this->add_render_attribute( 'button', 'class', 'hvr-' . $settings['background_transitions'] );
-		}
+		// if ( ! empty( $settings['background_transitions'] ) ) {
+		// 	$this->add_render_attribute( 'button', 'class', 'hvr-' . $settings['background_transitions'] );
+		// }
 
 		if ( ! empty( $settings['icon_align'] ) ) {
 			$this->add_render_attribute( 'span', 'class', 'emk-align-icon-' . $settings['icon_align'] );
