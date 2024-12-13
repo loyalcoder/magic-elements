@@ -1,3 +1,4 @@
+import "./../scss/button.scss"
 (function ($, elementor) {
     "use strict";
     var $window = $(elementor);
