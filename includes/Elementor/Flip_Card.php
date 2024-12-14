@@ -416,6 +416,32 @@ class Flip_Card extends Widget_Base
 			]
 		);
 		$this->add_responsive_control(
+			'flipcard_height',
+			[
+				'label' => esc_html__( 'Height', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 10000,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+					'default' => [
+					'unit' => 'px',
+					'size' => 300,
+				],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .flip-card' => 'height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
 			'flipcard_front_padding',
 			[
 				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
