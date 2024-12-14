@@ -201,7 +201,7 @@ class Flip_Card extends Widget_Base
 				'label_on' => esc_html__( 'Show', 'elementor-magic-kit' ),
 				'label_off' => esc_html__( 'Hide', 'elementor-magic-kit' ),
 				'return_value' => 'yes',
-				'default' => 'yes',
+				'default' => 'no',
 			]
 		);
 		$repeater = new \Elementor\Repeater();
