@@ -16,7 +16,7 @@
   \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_button_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../scss/button.scss */ \"./assets/src/scss/button.scss\");\n/* harmony import */ var _scss_flipcard_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../scss/flipcard.scss */ \"./assets/src/scss/flipcard.scss\");\n\n\n\n//# sourceURL=webpack://elementor-magic-kit/./assets/src/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_button_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../scss/button.scss */ \"./assets/src/scss/button.scss\");\n/* harmony import */ var _scss_flipcard_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../scss/flipcard.scss */ \"./assets/src/scss/flipcard.scss\");\n/* harmony import */ var _scss_team_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../scss/team.scss */ \"./assets/src/scss/team.scss\");\n\n\n\n\n//# sourceURL=webpack://elementor-magic-kit/./assets/src/js/index.js?");
 
 /***/ }),
 
@@ -37,6 +37,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://elementor-magic-kit/./assets/src/scss/flipcard.scss?");
+
+/***/ }),
+
+/***/ "./assets/src/scss/team.scss":
+/*!***********************************!*\
+  !*** ./assets/src/scss/team.scss ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://elementor-magic-kit/./assets/src/scss/team.scss?");
 
 /***/ })
 

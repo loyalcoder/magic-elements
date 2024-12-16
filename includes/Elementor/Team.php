@@ -88,7 +88,7 @@ class Team extends Widget_Base
 
     public function get_style_depends()
     {
-        return ['emk-button'];
+		return ['emkit-team', 'emkit-style'];
     }
 
     /**
@@ -697,6 +697,32 @@ class Team extends Widget_Base
 			]
 
 		);
+		$this->add_responsive_control(
+			'team_social_icon_align',
+			[
+				'label' => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'left',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .team .team-icon' => 'justify-self: {{VALUE}};',
+				],
+			]
+		);
         $this->add_control(
 			'team_social_icon_color',
 			[
@@ -737,7 +763,7 @@ class Team extends Widget_Base
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .team-icon .social-icon' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .team-icon' => 'width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);

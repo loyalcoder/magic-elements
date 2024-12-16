@@ -6,6 +6,7 @@ module.exports = {
   entry: {
     button: './assets/src/scss/button.scss',
     flipcard: './assets/src/scss/flipcard.scss',
+    team: './assets/src/scss/team.scss',
     style: './assets/src/scss/style.scss',
     // iconbox: './assets/css/iconbox.scss',
     // slider_css: './assets/css/slider.scss',
