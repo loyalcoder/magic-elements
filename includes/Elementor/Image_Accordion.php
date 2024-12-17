@@ -161,17 +161,6 @@ class Image_Accordion extends Widget_Base
             ]
         );
 
-        $repeater->add_control(
-            'link_url',
-            [
-                'label'   => esc_html__('Link URL', 'elementor-magic-kit'),
-                'type'    => \Elementor\Controls_Manager::URL,
-                'dynamic' => [
-                    'active' => true,
-                ],
-            ]
-        );
-
         $this->add_control(
             'accordion_items',
             [
