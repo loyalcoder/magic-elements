@@ -88,12 +88,12 @@ class Image_Accordion extends Widget_Base
 
     public function get_style_depends()
     {
-        return [''];
+        return ['emkit-image-accordion'];
     }
 
     public function get_script_depends()
     {
-        return ['script', 'jquery'];
+        return ['emkit-image-accordion-script', 'jquery'];
     }
 
     /**

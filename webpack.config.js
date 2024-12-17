@@ -6,9 +6,11 @@ module.exports = {
   entry: {
     button: './assets/src/scss/button.scss',
     style: './assets/src/scss/style.scss',
+    image_accordion: './assets/src/scss/image_accordion.scss',
     // iconbox: './assets/css/iconbox.scss',
     // slider_css: './assets/css/slider.scss',
     button: './assets/src/js/button.js',
+    image_accordion: './assets/src/js/image_accordion.js',
   },
   output: {
     path: path.resolve(__dirname, 'assets/dist'),
