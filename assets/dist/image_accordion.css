@@ -1,21 +1,13 @@
 /*!*******************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/image_accordion.scss ***!
   \*******************************************************************************************************************************/
-h1 {
-  text-align: center;
-  color: #FFF;
-}
-
 /* ---- Create Accordion --- */
 .accordion {
-  max-width: 1080px;
-  height: 250px;
   display: flex;
   overflow: hidden;
   margin: 50px auto;
 }
-
-.tab {
+.accordion .tab {
   position: relative;
   width: 20%;
   height: inherit;
@@ -25,8 +17,7 @@ h1 {
   cursor: pointer;
   transition: width 0.5s ease;
 }
-
-.tab img {
+.accordion .tab img {
   position: absolute;
   top: 0;
   left: 0;
@@ -35,37 +26,30 @@ h1 {
   object-fit: cover;
   transition: all 0.5s ease;
 }
-
-.caption {
+.accordion .tab .caption {
   position: absolute;
   z-index: 2;
   white-space: nowrap;
   top: 150px;
   opacity: 0;
 }
-
-.caption h2 {
+.accordion .tab .caption h2 {
   margin-bottom: 2px;
   text-overflow: clip;
   font-size: 24px;
   text-transform: uppercase;
 }
-
-.caption p {
+.accordion .tab .caption p {
   margin: 0;
   font-family: "Open Sans";
   font-size: 0.9rem;
 }
-
-/* --- Click Effects --- */
-.tab.active {
+.accordion .tab.active {
   width: 80%;
 }
-
-.tab.active img {
+.accordion .tab.active img {
   opacity: 0.6;
 }
-
-.tab.active .caption {
+.accordion .tab.active .caption {
   opacity: 1;
 }

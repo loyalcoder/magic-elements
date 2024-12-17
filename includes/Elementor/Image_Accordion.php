@@ -118,7 +118,7 @@ class Image_Accordion extends Widget_Base
         $this->start_controls_section(
             '_section_content',
             [
-                'label' => __('Content', 'kinder-world-manager'),
+                'label' => esc_html__('Content', 'elementor-magic-kit'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -128,7 +128,7 @@ class Image_Accordion extends Widget_Base
         $repeater->add_control(
             'background_image',
             [
-                'label' => __('Choose Image', 'kinder-world-manager'),
+                'label' => esc_html__('Choose Image', 'elementor-magic-kit'),
                 'type' => \Elementor\Controls_Manager::MEDIA,
                 'default' => [
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
@@ -142,7 +142,7 @@ class Image_Accordion extends Widget_Base
         $repeater->add_control(
             'title',
             [
-                'label'   => __('Title', 'kinder-world-manager'),
+                'label'   => esc_html__('Title', 'elementor-magic-kit'),
                 'type'    => \Elementor\Controls_Manager::TEXT,
                 'label_block' => true,
             ]
@@ -151,11 +151,10 @@ class Image_Accordion extends Widget_Base
         $repeater->add_control(
             'description',
             [
-                'label' => __('Description', 'kinder-world-manager'),
+                'label' => esc_html__('Description', 'elementor-magic-kit'),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
-                // 'description' => ha_get_allowed_html_desc( 'intermediate' ),
-                'default' => __('Image accordion content.', 'kinder-world-manager'),
-                'placeholder' => __('Type your description here', 'kinder-world-manager'),
+                'default' => esc_html__('Image accordion content.', 'elementor-magic-kit'),
+                'placeholder' => esc_html__('Type your description here', 'elementor-magic-kit'),
                 'dynamic' => [
                     'active' => true,
                 ],
@@ -165,7 +164,7 @@ class Image_Accordion extends Widget_Base
         $repeater->add_control(
             'link_url',
             [
-                'label'   => __('Link URL', 'kinder-world-manager'),
+                'label'   => esc_html__('Link URL', 'elementor-magic-kit'),
                 'type'    => \Elementor\Controls_Manager::URL,
                 'dynamic' => [
                     'active' => true,
@@ -176,26 +175,26 @@ class Image_Accordion extends Widget_Base
         $this->add_control(
             'accordion_items',
             [
-                'label'         => __('Items', 'kinder-world-manager'),
+                'label'         => esc_html__('Items', 'elementor-magic-kit'),
                 'type'          => \Elementor\Controls_Manager::REPEATER,
                 'fields'        => $repeater->get_controls(),
                 'prevent_empty' => true,
                 'default'       => [
                     [
-                        'title'         => __('Image Accordion 1', 'kinder-world-manager'),
-                        'description'         => __('Image accordion content.', 'kinder-world-manager'),
+                        'title'         => esc_html__('Image Accordion 1', 'elementor-magic-kit'),
+                        'description'         => __('Image accordion content.', 'elementor-magic-kit'),
                     ],
                     [
-                        'title'         => __('Image Accordion 2', 'kinder-world-manager'),
-                        'description'         => __('Image accordion content.', 'kinder-world-manager'),
+                        'title'         => esc_html__('Image Accordion 2', 'elementor-magic-kit'),
+                        'description'         => __('Image accordion content.', 'elementor-magic-kit'),
                     ],
                     [
-                        'title'         => __('Image Accordion 3', 'kinder-world-manager'),
-                        'description'         => __('Image accordion content.', 'kinder-world-manager'),
+                        'title'         => esc_html__('Image Accordion 3', 'elementor-magic-kit'),
+                        'description'         => __('Image accordion content.', 'elementor-magic-kit'),
                     ],
                     [
-                        'title'         => __('Image Accordion 4', 'kinder-world-manager'),
-                        'description'         => __('Image accordion content.', 'kinder-world-manager'),
+                        'title'         => esc_html__('Image Accordion 4', 'elementor-magic-kit'),
+                        'description'         => esc_html__('Image accordion content.', 'elementor-magic-kit'),
                     ],
                 ],
                 'title_field'   => '{{{ title }}}',
@@ -205,11 +204,11 @@ class Image_Accordion extends Widget_Base
         $this->add_control(
             'active_behavior',
             [
-                'label'         => esc_html__('Active Behavior', 'kinder-world-manager'),
+                'label'         => esc_html__('Active Behavior', 'elementor-magic-kit'),
                 'type'          => \Elementor\Controls_Manager::SELECT,
                 'options'       => [
-                    'click' => esc_html__('Click', 'kinder-world-manager'),
-                    'hover' => esc_html__('Hover', 'kinder-world-manager'),
+                    'click' => esc_html__('Click', 'elementor-magic-kit'),
+                    'hover' => esc_html__('Hover', 'elementor-magic-kit'),
                 ],
                 'default'       => 'click',
                 'prefix_class'  => 'emk-image-accordion-',
@@ -219,7 +218,7 @@ class Image_Accordion extends Widget_Base
         $this->add_control(
             'active_behavior_notice',
             [
-                'raw' => '<strong>' . esc_html__('Please note!', 'kinder-world-manager') . '</strong> ' . esc_html__('Active on load won\'t be working with this active behavior.', 'kinder-world-manager'),
+                'raw' => '<strong>' . esc_html__('Please note!', 'elementor-magic-kit') . '</strong> ' . esc_html__('Active on load won\'t be working with this active behavior.', 'elementor-magic-kit'),
                 'type' => \Elementor\Controls_Manager::RAW_HTML,
                 'content_classes' => 'elementor-panel-alert elementor-panel-alert-warning',
                 'render_type' => 'ui',
@@ -235,7 +234,7 @@ class Image_Accordion extends Widget_Base
         $this->start_controls_section(
             'section_style',
             [
-                'label' => esc_html__('Image', 'kinder-world-manager'),
+                'label' => esc_html__('Image', 'elementor-magic-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -243,7 +242,7 @@ class Image_Accordion extends Widget_Base
         $this->add_responsive_control(
             'image_accordion_min_height',
             [
-                'label' => esc_html__('Height', 'kinder-world-manager'),
+                'label' => esc_html__('Height', 'elementor-magic-kit'),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px', 'vh'],
                 'range' => [
@@ -260,59 +259,10 @@ class Image_Accordion extends Widget_Base
                 ],
                 'default' => [
                     'unit' => 'px',
-                    'size' => 400,
+                    'size' => 300,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} accordion' => 'min-height: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'image_accordion_gap',
-            [
-                'label' => esc_html__('Gap', 'kinder-world-manager'),
-                'type' => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => ['px'],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 100,
-                        'step' => 1,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => 10,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .tab' => 'gap: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'image_accordion_content_alignment',
-            [
-                'label' => esc_html__('Content Alignment', 'kinder-world-manager'),
-                'type' => \Elementor\Controls_Manager::CHOOSE,
-                'options' => [
-                    'flex-start' => [
-                        'title' => esc_html__('Top', 'kinder-world-manager'),
-                        'icon' => 'eicon-v-align-top',
-                    ],
-                    'center' => [
-                        'title' => esc_html__('Center', 'kinder-world-manager'),
-                        'icon' => 'eicon-v-align-middle',
-                    ],
-                    'flex-end' => [
-                        'title' => esc_html__('Bottom', 'kinder-world-manager'),
-                        'icon' => 'eicon-v-align-bottom',
-                    ],
-                ],
-                'default' => 'center',
-                'selectors' => [
-                    '{{WRAPPER}} .emk-image-accordion-item-content' => 'justify-content: {{VALUE}};',
+                    '{{WRAPPER}} .accordion' => 'min-height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -320,17 +270,38 @@ class Image_Accordion extends Widget_Base
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'section_title_style',
+            'section_caption_style',
             [
-                'label' => esc_html__('Title', 'kinder-world-manager'),
+                'label' => esc_html__('Content', 'elementor-magic-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
 
         $this->add_control(
+			'content_margin',
+			[
+				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .caption' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+        $this->add_control(
+			'section_title_style',
+			[
+				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+        $this->add_control(
             'title_color',
             [
-                'label' => esc_html__('Color', 'kinder-world-manager'),
+                'label' => esc_html__('Color', 'elementor-magic-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} h2' => 'color: {{VALUE}};',
@@ -349,7 +320,7 @@ class Image_Accordion extends Widget_Base
         $this->add_responsive_control(
             'title_spacing',
             [
-                'label' => esc_html__('Spacing', 'kinder-world-manager'),
+                'label' => esc_html__('Spacing', 'elementor-magic-kit'),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range' => [
@@ -370,21 +341,19 @@ class Image_Accordion extends Widget_Base
             ]
         );
 
-        $this->end_controls_section();
-
-        // Description Style Section
-        $this->start_controls_section(
-            'section_style_description',
-            [
-                'label' => esc_html__('Description', 'kinder-world-manager'),
-                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
-            ]
-        );
+        $this->add_control(
+			'section_description_style',
+			[
+				'label' => esc_html__( 'Description', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
 
         $this->add_control(
             'description_color',
             [
-                'label' => esc_html__('Color', 'kinder-world-manager'),
+                'label' => esc_html__('Color', 'elementor-magic-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} p' => 'color: {{VALUE}};',
@@ -397,30 +366,6 @@ class Image_Accordion extends Widget_Base
             [
                 'name' => 'description_typography',
                 'selector' => '{{WRAPPER}} p',
-            ]
-        );
-
-        $this->add_responsive_control(
-            'description_spacing',
-            [
-                'label' => esc_html__('Spacing', 'kinder-world-manager'),
-                'type' => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => ['px', 'em'],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 100,
-                        'step' => 1,
-                    ],
-                    'em' => [
-                        'min' => 0,
-                        'max' => 10,
-                        'step' => 0.1,
-                    ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} p' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-                ],
             ]
         );
 

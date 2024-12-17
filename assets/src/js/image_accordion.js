@@ -16,25 +16,31 @@ import "./../scss/image_accordion.scss"
       },
 
       EmKitImageAccordion: function ($scope) {
-         let image_accordion = $scope.find('.accordion');
-
-         image_accordion.each(function () {
-          const $accordion = $(this);
-          const behavior = $accordion.hasClass('emk-image-accordion-hover') ? 'hover' : 'click';
-  
-          if (behavior === 'hover') {
-              $accordion.find('.tab').on('mouseenter', function () {
-                  $(this).siblings().removeClass('active');
-                  $(this).addClass('active');
-              });
-          } else {
-              $accordion.find('.tab').on('click', function () {
-                  $(this).siblings().removeClass('active');
-                  $(this).addClass('active');
-              });
-          }
-      });
-      },
+        let image_accordion = $scope.find('.accordion');
+    
+        image_accordion.each(function () {
+            const $accordion = $(this);
+            const behavior = $accordion.hasClass('emk-image-accordion-hover') ? 'hover' : 'click';
+    
+            // সর্বদা একটি ট্যাবকে ডিফল্ট "active" হিসেবে সেট করা
+            if (!$accordion.find('.tab.active').length) {
+                $accordion.find('.tab').first().addClass('active');
+            }
+    
+            if (behavior === 'hover') {
+                $accordion.on('mouseenter', '.tab', function () {
+                    $(this).siblings().removeClass('active');
+                    $(this).addClass('active');
+                });
+            } else {
+                $accordion.on('click', '.tab', function () {
+                    $(this).siblings().removeClass('active');
+                    $(this).addClass('active');
+                });
+            }
+        });
+    },
+    
     };
   
     $window.on("elementor/frontend/init", emkElementor.onInit);
