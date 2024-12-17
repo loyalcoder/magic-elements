@@ -22,7 +22,6 @@ import "./../scss/image_accordion.scss"
             const $accordion = $(this);
             const behavior = $accordion.hasClass('emk-image-accordion-hover') ? 'hover' : 'click';
     
-            // সর্বদা একটি ট্যাবকে ডিফল্ট "active" হিসেবে সেট করা
             if (!$accordion.find('.tab.active').length) {
                 $accordion.find('.tab').first().addClass('active');
             }
