@@ -227,7 +227,7 @@ class Team extends Widget_Base
 				'label_on' => esc_html__( 'Show', 'elementor-magic-kit' ),
 				'label_off' => esc_html__( 'Hide', 'elementor-magic-kit' ),
 				'return_value' => 'yes',
-				'default' => 'no',
+				'default' => 'yes',
 			]
 		);
         $repeater = new \Elementor\Repeater();
@@ -719,7 +719,7 @@ class Team extends Widget_Base
 				'default' => 'left',
 				'toggle' => true,
 				'selectors' => [
-					'{{WRAPPER}} .team .team-icon' => 'justify-self: {{VALUE}};',
+					'{{WRAPPER}} .team .team-icon' => 'justify-content: {{VALUE}};',
 				],
 			]
 		);
@@ -742,9 +742,9 @@ class Team extends Widget_Base
 			]
 		);
         $this->add_responsive_control(
-			'icon_width',
+			'team_icon_size',
 			[
-				'label' => esc_html__( 'Size', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Size', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -757,16 +757,17 @@ class Team extends Widget_Base
 						'min' => 0,
 						'max' => 100,
 					],
-					'default' => [
+				],
+				'default' => [
 					'unit' => 'px',
-					'size' => 20,
-					],
+					'size' => 24,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .team-icon' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .team .team-icon .social-icon' => 'width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
+
 		$this->add_responsive_control(
 			'icon_margin',
 			[
