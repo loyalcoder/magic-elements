@@ -78,6 +78,8 @@ class Load_Elementor
 
         Plugin::instance()->widgets_manager->register(new Elementor\Hello_World());
         Plugin::instance()->widgets_manager->register(new Elementor\Button());
+        Plugin::instance()->widgets_manager->register(new Elementor\Team());
+        Plugin::instance()->widgets_manager->register(new Elementor\Flip_Card());
         Plugin::instance()->widgets_manager->register(new Elementor\Heading());
     }
 
@@ -122,6 +124,14 @@ class Load_Elementor
                 'src'     => EM_KIT_ASSETS . '/dist/button.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/button.css'),
             ],
+            'emkit-flipcard' => [
+                'src'     => EM_KIT_ASSETS . '/dist/flipcard.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/flipcard.css'),
+            ],
+            'emkit-team' => [
+                'src'     => EM_KIT_ASSETS . '/dist/team.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/team.css'),
+            ],
             'emkit-style' => [
                 'src'     => EM_KIT_ASSETS . '/css/style.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/css/style.css'),
@@ -140,6 +150,8 @@ class Load_Elementor
         return [
             'Hello_World',
             'Button',
+            'Team',
+            'Flip_Card',
             'Heading',
         ];
     }
