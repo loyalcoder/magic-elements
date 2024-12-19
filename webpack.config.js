@@ -7,10 +7,12 @@ module.exports = {
     button: './assets/src/scss/button.scss',
     flipcard: './assets/src/scss/flipcard.scss',
     team: './assets/src/scss/team.scss',
+    post_tab: './assets/src/scss/post_tab.scss',
     style: './assets/src/scss/style.scss',
     // iconbox: './assets/css/iconbox.scss',
     // slider_css: './assets/css/slider.scss',
     button: './assets/src/js/button.js',
+    post_tab: './assets/src/js/post_tab.js',
     main: './assets/src/js/index.js',
   },
   output: {

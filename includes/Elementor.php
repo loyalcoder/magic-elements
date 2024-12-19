@@ -81,6 +81,7 @@ class Load_Elementor
         Plugin::instance()->widgets_manager->register(new Elementor\Team());
         Plugin::instance()->widgets_manager->register(new Elementor\Flip_Card());
         Plugin::instance()->widgets_manager->register(new Elementor\Heading());
+        Plugin::instance()->widgets_manager->register(new Elementor\Post_Tab());
     }
 
     /**
@@ -105,6 +106,11 @@ class Load_Elementor
             'emkit-button' => [
                 'src'     => EM_KIT_ASSETS . '/dist/button.js',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/button.js'),
+                'deps'    => ['jquery']
+            ],
+            'emkit-post-tab' => [
+                'src'     => EM_KIT_ASSETS . '/dist/post_tab.js',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/post_tab.js'),
                 'deps'    => ['jquery']
             ],
         ];
@@ -132,6 +138,10 @@ class Load_Elementor
                 'src'     => EM_KIT_ASSETS . '/dist/team.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/team.css'),
             ],
+            'emk-post-tab' => [
+                'src'     => EM_KIT_ASSETS . '/dist/post_tab.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/post_tab.css'),
+            ],
             'emkit-style' => [
                 'src'     => EM_KIT_ASSETS . '/css/style.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/css/style.css'),
@@ -153,6 +163,7 @@ class Load_Elementor
             'Team',
             'Flip_Card',
             'Heading',
+            'Post_Tab',
         ];
     }
 
