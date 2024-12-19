@@ -79,6 +79,7 @@ class Load_Elementor
         Plugin::instance()->widgets_manager->register(new Elementor\Hello_World());
         Plugin::instance()->widgets_manager->register(new Elementor\Button());
         Plugin::instance()->widgets_manager->register(new Elementor\Team());
+        Plugin::instance()->widgets_manager->register(new Elementor\Image());
         Plugin::instance()->widgets_manager->register(new Elementor\Flip_Card());
         Plugin::instance()->widgets_manager->register(new Elementor\Heading());
     }
@@ -149,6 +150,7 @@ class Load_Elementor
     {
         return [
             'Hello_World',
+            'Image',
             'Button',
             'Team',
             'Flip_Card',
