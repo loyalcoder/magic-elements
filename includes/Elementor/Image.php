@@ -277,7 +277,7 @@ class Image extends Widget_Base
 					],
 					'px' => [
 						'min' => 1,
-						'max' => 1000,
+						'max' => 10000,
 					],
 					'vw' => [
 						'min' => 1,
@@ -605,6 +605,17 @@ class Image extends Widget_Base
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
 					'{{WRAPPER}} .custom_caption' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'caption_padding',
+			[
+				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .custom_caption' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
