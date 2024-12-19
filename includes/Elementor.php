@@ -150,7 +150,7 @@ class Load_Elementor
     {
         return [
             'Hello_World',
-            'Image'
+            'Image',
             'Button',
             'Team',
             'Flip_Card',
