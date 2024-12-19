@@ -6,7 +6,20 @@
             }
         ?>
         <a <?php echo $this->get_render_attribute_string( 'link' ); ?>>
-            <?php echo \Elementor\Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail', 'image' );?>
+            <?php  echo wp_kses( \Elementor\Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail', 'image' ), 
+                    array(
+                        'img' => array(
+                            'src'    => true,
+                            'alt'    => true,
+                            'width'  => true,
+                            'height' => true,
+                            'class'  => true,
+                            'srcset' => true,
+                            'sizes'  => true,
+                        ),
+                    )
+                );
+            ?>
 		</a>
     </div>
     <div class="custom_caption">
