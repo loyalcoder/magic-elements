@@ -6,7 +6,7 @@
             }
         ?>
         <a <?php echo $this->get_render_attribute_string( 'link' ); ?>>
-            <?php  echo wp_kses( \Elementor\Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail', 'image' ), 
+            <?php echo wp_kses( \Elementor\Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail', 'image' ), 
                     array(
                         'img' => array(
                             'src'    => true,
@@ -38,7 +38,7 @@
         ?>
     </div>
     <?php
-            if ( 'custom' !== $settings['link_to'] ) {
+        if ( 'custom' !== $settings['link_to'] ) {
             $this->add_lightbox_data_attributes( 'link', $settings['image']['id'], $settings['open_lightbox'] );
         }
     ?> 
