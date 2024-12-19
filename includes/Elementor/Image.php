@@ -334,7 +334,7 @@ class Image extends Widget_Base
 				'range' => [
 					'px' => [
 						'min' => 1,
-						'max' => 500,
+						'max' => 5000,
 					],
 					'vh' => [
 						'min' => 1,
@@ -366,7 +366,7 @@ class Image extends Widget_Base
 			]
 		);
 
-        $this->add_control(
+        $this->add_responsive_control(
 			'opacity',
 			[
 				'label' => esc_html__( 'Opacity', 'elementor-magic-kit' ),
@@ -437,7 +437,7 @@ class Image extends Widget_Base
 			]
 		);
 
-        $this->add_control(
+        $this->add_responsive_control(
 			'hover_opacity',
 			[
 				'label' => esc_html__( 'Opacity', 'elementor-magic-kit' ),
