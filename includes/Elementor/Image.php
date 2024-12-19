@@ -123,6 +123,7 @@ class Image extends Widget_Base
 			[
 				'label' => esc_html__( 'Choose Image', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::MEDIA,
+				'media_types' => ['image' , 'svg'],
 				'default' => [
 					'url' => \Elementor\Utils::get_placeholder_image_src(),
 				],
@@ -131,7 +132,7 @@ class Image extends Widget_Base
         $this->add_group_control(
 			\Elementor\Group_Control_Image_Size::get_type(),
 			[
-				'name' => 'thumbnail', // Usage: `{name}_size` and `{name}_custom_dimension`, in this case `thumbnail_size` and `thumbnail_custom_dimension`.
+				'name' => 'thumbnail', 
 				'exclude' => [ 'custom' ],
 				'include' => [],
 				'default' => 'large',
