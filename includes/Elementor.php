@@ -24,6 +24,7 @@ class Load_Elementor
         add_action('elementor/elements/categories_registered', [$this, 'register_category']);
         add_action('elementor/widgets/widgets_registered', [$this, 'register_widgets']);
         add_action('elementor/editor/after_enqueue_scripts', [$this, 'custom_elementor_scripts']);
+        add_action('wp_enqueue_scripts', [$this, 'ekit_style_register']);
     }
 
 
@@ -55,9 +56,9 @@ class Load_Elementor
     public function register_category($elementor)
     {
         $elementor->add_category(
-            'pkun-widgets',
+            'emk-widgets',
             [
-                'title' =>  __('Pkun Widgets', 'pkun'),
+                'title' =>  esc_html__('Elementor Magic Kit', 'elementor-magic-kit'),
                 'icon'  => 'eicon-font',
             ]
         );
@@ -76,7 +77,11 @@ class Load_Elementor
         $this->includeWidgetsFiles();
 
         Plugin::instance()->widgets_manager->register(new Elementor\Hello_World());
+        Plugin::instance()->widgets_manager->register(new Elementor\Button());
+        Plugin::instance()->widgets_manager->register(new Elementor\Team());
         Plugin::instance()->widgets_manager->register(new Elementor\Image());
+        Plugin::instance()->widgets_manager->register(new Elementor\Flip_Card());
+        Plugin::instance()->widgets_manager->register(new Elementor\Heading());
     }
 
     /**
@@ -98,9 +103,9 @@ class Load_Elementor
     public function get_scripts()
     {
         return [
-            'pkun' => [
-                'src'     => EM_KIT_ASSETS . '/js/pkun.js',
-                'version' => filemtime(EM_KIT_PATH . '/assets/js/pkun.js'),
+            'emkit-button' => [
+                'src'     => EM_KIT_ASSETS . '/dist/button.js',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/button.js'),
                 'deps'    => ['jquery']
             ],
         ];
@@ -116,9 +121,21 @@ class Load_Elementor
     {
         return [
 
-            'pkun' => [
-                'src'     => EM_KIT_ASSETS . '/css/pkun.css',
-                'version' => filemtime(EM_KIT_PATH . '/assets/css/pkun.css'),
+            'emkit-button' => [
+                'src'     => EM_KIT_ASSETS . '/dist/button.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/button.css'),
+            ],
+            'emkit-flipcard' => [
+                'src'     => EM_KIT_ASSETS . '/dist/flipcard.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/flipcard.css'),
+            ],
+            'emkit-team' => [
+                'src'     => EM_KIT_ASSETS . '/dist/team.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/team.css'),
+            ],
+            'emkit-style' => [
+                'src'     => EM_KIT_ASSETS . '/css/style.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/css/style.css'),
             ]
         ];
     }
@@ -134,6 +151,10 @@ class Load_Elementor
         return [
             'Hello_World',
             'Image'
+            'Button',
+            'Team',
+            'Flip_Card',
+            'Heading',
         ];
     }
 
@@ -146,7 +167,6 @@ class Load_Elementor
     public function includeWidgetsFiles()
     {
         $scripts     = $this->get_scripts();
-        $styles      = $this->getStyles();
         $widget_list = $this->getWidgetList();
 
         if (!count($widget_list)) {
@@ -168,11 +188,19 @@ class Load_Elementor
             // wp_enqueue_script($handle);
         }
 
-        foreach ($styles as $handle => $style) {
+        // foreach ($styles as $handle => $style) {
+        //     $deps = isset($style['deps']) ? $style['deps'] : false;
+        //     $version = isset($style['version']) ? $style['version'] : EM_KIT_VERSION;
+        //     wp_register_style($handle, $style['src'], $deps, $version);
+        //     // wp_enqueue_style($handle);
+        // }
+    }
+    public function ekit_style_register () {
+        $styles  = $this->getStyles();
+         foreach ($styles as $handle => $style) {
             $deps = isset($style['deps']) ? $style['deps'] : false;
             $version = isset($style['version']) ? $style['version'] : EM_KIT_VERSION;
             wp_register_style($handle, $style['src'], $deps, $version);
-            // wp_enqueue_style($handle);
         }
     }
 }
