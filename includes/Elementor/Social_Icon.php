@@ -195,7 +195,6 @@ class Social_Icon  extends Widget_Base
 				],
 			]
 		);
-
 		$repeater->add_control(
 			'icon_link',
 			[
@@ -238,9 +237,7 @@ class Social_Icon  extends Widget_Base
 				],
 			]
 		);
-       
         $this->end_controls_section();
-
         // Style section
         $this->start_controls_section(
 			$this->get_name() .'social_icons_style',
