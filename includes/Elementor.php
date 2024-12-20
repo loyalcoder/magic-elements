@@ -134,6 +134,10 @@ class Load_Elementor
                 'src'     => EM_KIT_ASSETS . '/dist/team.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/team.css'),
             ],
+            'emkit-icon' => [
+                'src'     => EM_KIT_ASSETS . '/dist/icon.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/icon.css'),
+            ],
             'emkit-style' => [
                 'src'     => EM_KIT_ASSETS . '/css/style.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/css/style.css'),

@@ -87,11 +87,7 @@ class Icon extends Widget_Base
     }
     public function get_style_depends()
     {
-        return ['emk-icons'];
-    }
-    public function get_script_depends()
-    {
-        return [];
+        return ['emkit-icon' , 'emkit-style'];
     }
 
     /**
@@ -127,7 +123,7 @@ class Icon extends Widget_Base
 				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
 				'default' => [
-					'value' => 'fas fa-circle',
+					'value' => 'fas fa-star',
 					'library' => 'fa-solid',
 				],
 				'recommended' => [
@@ -192,7 +188,7 @@ class Icon extends Widget_Base
 				'default' => 'center',
 				'toggle' => true,
 				'selectors' => [
-					'{{WRAPPER}} .icon a svg' => 'justify-content: {{VALUE}};',
+					'{{WRAPPER}} .icon a' => 'justify-content: {{VALUE}};',
 				],
 			]
 		);
@@ -223,7 +219,7 @@ class Icon extends Widget_Base
                 ],
                 'default' => [
                     'unit' => 'px',
-                    'size' => 100,
+                    'size' => 60,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .icon a svg' => 'width: {{SIZE}}{{UNIT}};',
@@ -270,6 +266,7 @@ class Icon extends Widget_Base
 			[
 				'label' => esc_html__( 'Primary Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
+                'default'=>'#6ec1e4',
 				'selectors' => [
 					'{{WRAPPER}} .icon a svg' => 'fill: {{VALUE}}',
 				],
