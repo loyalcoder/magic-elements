@@ -6,7 +6,6 @@
  * @package Text Editor Elementor Magic Kit
  */
 
-
 namespace Elementor_Magic_Kit\Elementor;
 
 use Elementor\Controls_Manager;
@@ -235,6 +234,7 @@ class Text_Editor extends Widget_Base
 				],
 			]
 		);
+
         $this->add_control(
 			$this->get_name() .'text_editor_color',
 			[
@@ -243,6 +243,14 @@ class Text_Editor extends Widget_Base
 				'selectors' => [
 					'{{WRAPPER}} .text_editor p' => 'color: {{VALUE}}',
 				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'text_editor_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .text_editor p',
 			]
 		);
         $this->add_group_control(
@@ -258,6 +266,28 @@ class Text_Editor extends Widget_Base
                 'label' => esc_html__( 'Text Shadow', 'elementor-magic-kit' ),
 				'name' => 'text_shadow',
 				'selector' => '{{WRAPPER}} .text_editor p',
+			]
+		);
+		$this->add_responsive_control(
+			'text_editor_margin',
+			[
+				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .text_editor p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'text_editor_padding',
+			[
+				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .text_editor p' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
 			]
 		);
         $this->end_controls_section();
