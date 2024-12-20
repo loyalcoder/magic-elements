@@ -86,14 +86,9 @@ class Social_Icon  extends Widget_Base
         return ['emk-widgets'];
     }
 
-    public function get_script_depends()
-    {
-        return [];
-    } 
-    
     public function get_style_depends()
     {
-        return ['emk-social'];
+        return ['emkit-social-icon' , 'emkit-style'];
     }
 
     /**
@@ -279,25 +274,6 @@ class Social_Icon  extends Widget_Base
 				],
 			]
 		);
-		$this->add_control(
-			'social_icon_color',
-			[
-				'label' => esc_html__( 'Icon Color', 'textdomain' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .social-icon a svg' , '{{WRAPPER}} .social-icon svg' => 'fill: {{VALUE}}',
-				],
-				'default' => '#ffffff'
-			]
-		);
-		$this->add_group_control(
-			\Elementor\Group_Control_Background::get_type(),
-			[
-				'name' => 'social_icon_background',
-				'types' => [ 'classic', 'gradient', 'video' ],
-				'selector' => '{{WRAPPER}} .social-icon',
-			]
-		);
         $this->add_responsive_control(
 			$this->get_name() .'social_icons_size',
 			[
@@ -368,7 +344,7 @@ class Social_Icon  extends Widget_Base
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
-					'{{WRAPPER}} .social-icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .social-icon a svg' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -382,6 +358,24 @@ class Social_Icon  extends Widget_Base
 			'style_normal_tab',
 			[
 				'label' => esc_html__( 'Normal', 'elementor-magic-kit' ),
+			]
+		);
+		$this->add_control(
+			'social_icon_color',
+			[
+				'label' => esc_html__( 'Icon Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .social-icon a svg' , '{{WRAPPER}} .social-icon svg' => 'fill: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'social_icon_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .social-icon a svg',
 			]
 		);
         $this->add_control(
@@ -405,7 +399,7 @@ class Social_Icon  extends Widget_Base
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name' => 'icon_border',
-				'selector' => '{{WRAPPER}} .social-icon',
+				'selector' => '{{WRAPPER}} .social-icon a svg',
 			]
 		);
 
@@ -417,12 +411,22 @@ class Social_Icon  extends Widget_Base
 				'label' => esc_html__( 'Hover', 'elementor-magic-kit' ),
 			]
 		);
+		$this->add_control(
+			'social_icon_hover_color',
+			[
+				'label' => esc_html__( 'Icon Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .social-icon a svg:hover' , '{{WRAPPER}} .social-icon svg:hover' => 'fill: {{VALUE}}',
+				],
+			]
+		);
         $this->add_group_control(
 			\Elementor\Group_Control_Background::get_type(),
 			[
 				'name' => 'icon_hover_background',
 				'types' => [ 'classic', 'gradient', 'video' ],
-				'selector' => '{{WRAPPER}} .social-icon:hover',
+				'selector' => '{{WRAPPER}} .social-icon a svg:hover',
 			]
 		);
 		$this->add_responsive_control(
@@ -438,7 +442,7 @@ class Social_Icon  extends Widget_Base
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .social-icon:hover' => 'transition-duration: {{SIZE}}s',
+					'{{WRAPPER}} .social-icon a svg:hover' => 'transition-duration: {{SIZE}}s',
 				],
 			]
 		);
@@ -463,7 +467,7 @@ class Social_Icon  extends Widget_Base
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name' => 'icon_border_hover',
-				'selector' => '{{WRAPPER}}:hover .social-icon:hover',
+				'selector' => '{{WRAPPER}}:hover .social-icon a svg:hover',
 			]
 		);
    
