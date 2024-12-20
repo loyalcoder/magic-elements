@@ -12,7 +12,7 @@ class Assets
      */
     public function __construct()
     {
-        add_action('wp_enqueue_scripts', [$this, 'register_assets']);
+        //add_action('wp_enqueue_scripts', [$this, 'register_assets']);
     }
 
     /**
