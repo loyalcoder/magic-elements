@@ -86,11 +86,11 @@ class Pricing_Table extends Widget_Base
     }
     public function get_style_depends()
     {
-        return [];
+        return ['emk-pricingtable'];
     }
     public function get_script_depends()
     {
-        return [];
+        return ['emkit-pricingtable', 'jquery'];
     }
 
     /**
@@ -122,7 +122,7 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
             'layout_style',
             [
-                'label' => esc_html__('Pricing Table Style', 'elementor-magic-kit'),
+                'label' => esc_html__('Style', 'elementor-magic-kit'),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'style_one',
                 'options' => [
@@ -265,7 +265,7 @@ class Pricing_Table extends Widget_Base
 				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
 				'default' => [
-					'value' => 'fas fa-circle',
+					'value' => 'fas fa-check',
 					'library' => 'fa-solid',
 				],
 				'recommended' => [
@@ -335,6 +335,74 @@ class Pricing_Table extends Widget_Base
 				'label_block' => true,
 			]
 		);
+		$this->add_control(
+			'show_btn_icon',
+			[
+				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'textdomain' ),
+				'label_off' => esc_html__( 'Hide', 'textdomain' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+		$this->add_control(
+			'button_icon',
+			[
+				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-arrow-right',
+					'library' => 'fa-solid',
+				],
+				'recommended' => [
+					'fa-solid' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+					'fa-regular' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+				],
+				'condition' => [
+					'show_btn_icon' => 'yes'
+				]
+			]
+		);
+        $this->end_controls_section();
+        $this->start_controls_section(
+            'ribbon_section',
+            [
+                'label' => __('Ribbon', 'elementor-magic-kit'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+        $this->add_control(
+			'ribbon_control',
+			[
+				'label' => esc_html__( 'Ribbon', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'elementor-magic-kit' ),
+				'label_off' => esc_html__( 'Hide', 'elementor-magic-kit' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+        $this->add_control(
+			'ribbon_text',
+			[
+				'label' => esc_html__( 'Ribbon Text', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Ribbon', 'elementor-magic-kit' ),
+				'placeholder' => esc_html__( 'Type your title here', 'elementor-magic-kit' ),
+                'condition' => [
+                    'ribbon_control' => 'yes', // Only show this control when switch is ON
+                ]
+			]
+		);
         $this->end_controls_section();
         /**
          * style control start ===============================
@@ -344,6 +412,9 @@ class Pricing_Table extends Widget_Base
             [
                 'label' => __('Table Style', 'elementor-magic-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'layout_style' => 'style_one'
+				]
             ]
         );
         $this->add_control(
@@ -356,7 +427,7 @@ class Pricing_Table extends Widget_Base
 				],
 			]
 		);
-        $this->add_control(
+        $this->add_responsive_control(
 			'card_body_padding',
 			[
 				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
@@ -382,7 +453,14 @@ class Pricing_Table extends Widget_Base
 				'selector' => '{{WRAPPER}} .pricing-table-container',
 			]
 		);
-        $this->add_control(
+        $this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'hex_border',
+				'selector' => '{{WRAPPER}} .hex_border',
+			]
+		);
+        $this->add_responsive_control(
 			'card_body_radius',
 			[
 				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
@@ -406,6 +484,221 @@ class Pricing_Table extends Widget_Base
 			[
 				'name' => 'card_body_shadow',
 				'selector' => '{{WRAPPER}} .pricing-table-container',
+			]
+		);
+        $this->end_controls_section();
+		$this->start_controls_section(
+            'pricing_card_style_two',
+            [
+                'label' => __('Table Body', 'elementor-magic-kit'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'layout_style' => 'style_two'
+				]
+            ]
+        );
+		$this->add_control(
+			'table_reverse',
+			[
+				'label' => esc_html__( 'Reverse', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'row' => [
+						'title' => esc_html__( 'Row', 'elementor-magic-kit' ),
+						'icon' => 'eicon-order-start',
+					],
+					'row-reverse' => [
+						'title' => esc_html__( 'Row Reverse', 'elementor-magic-kit' ),
+						'icon' => 'eicon-order-end',
+					],
+				],
+				'default' => 'row',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .pricing-table-container' => 'flex-direction: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_control(
+			'left_options',
+			[
+				'label' => esc_html__( 'Left Part', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+		$this->add_responsive_control(
+			'left_part_width',
+			[
+				'label' => esc_html__( 'Width', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 5,
+					],
+				],
+				'default' => [
+					'unit' => '%',
+					'size' => 50,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .left-part' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_control(
+			'left_bg',
+			[
+				'label' => esc_html__( 'Background', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .left-part' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'left_part_padding',
+			[
+				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 0,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .left-part' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_control(
+			'left_price_align',
+			[
+				'label' => esc_html__( 'Vertical Alignment', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'flex-start' => [
+						'title' => esc_html__( 'Top', 'elementor-magic-kit' ),
+						'icon' => 'eicon-v-align-top',
+					],
+					'center' => [
+						'title' => esc_html__( 'Middle', 'elementor-magic-kit' ),
+						'icon' => 'eicon-v-align-middle',
+					],
+					'flex-end' => [
+						'title' => esc_html__( 'Bottom', 'elementor-magic-kit' ),
+						'icon' => 'eicon-v-align-bottom',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .left-part' => 'align-content: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'left_part_radius',
+			[
+				'label' => esc_html__( 'Radius', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 0,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .left-part' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_control(
+			'right_options',
+			[
+				'label' => esc_html__( 'Right Part', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+		$this->add_responsive_control(
+			'right_part_width',
+			[
+				'label' => esc_html__( 'Width', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 5,
+					],
+				],
+				'default' => [
+					'unit' => '%',
+					'size' => 50,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .right-part' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_control(
+			'right_bg',
+			[
+				'label' => esc_html__( 'Background', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .right-part' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'right_part_padding',
+			[
+				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 0,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .right-part' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'right_part_radius',
+			[
+				'label' => esc_html__( 'Radius', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 0,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .right-part' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
 			]
 		);
         $this->end_controls_section();
@@ -442,6 +735,32 @@ class Pricing_Table extends Widget_Base
 				],
 			]
 		);
+        $this->add_control(
+			'title_text_align',
+			[
+				'label' => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .title' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
         $this->add_group_control(
 			\Elementor\Group_Control_Text_Shadow::get_type(),
 			[
@@ -449,10 +768,10 @@ class Pricing_Table extends Widget_Base
 				'selector' => '{{WRAPPER}} .title',
 			]
 		);
-        $this->add_control(
-			'title_margin',
+        $this->add_responsive_control(
+			'title_padding',
 			[
-				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
@@ -464,7 +783,7 @@ class Pricing_Table extends Widget_Base
 					'isLinked' => false,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -494,6 +813,32 @@ class Pricing_Table extends Widget_Base
 				],
 			]
 		);
+        $this->add_control(
+			'sub-title_text_align',
+			[
+				'label' => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .sub-title' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
         $this->add_group_control(
 			\Elementor\Group_Control_Text_Shadow::get_type(),
 			[
@@ -501,8 +846,62 @@ class Pricing_Table extends Widget_Base
 				'selector' => '{{WRAPPER}} .sub-title',
 			]
 		);
+        $this->add_responsive_control(
+			'sub_title_padding',
+			[
+				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 0,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .sub-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->end_controls_section();
+        // Price Style ===================================
+        $this->start_controls_section(
+            'price_style',
+            [
+                'label' => __('Price', 'elementor-magic-kit'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
         $this->add_control(
-			'sub_title_margin',
+			'price_text_align',
+			[
+				'label' => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .price-box' => 'justify-content: {{VALUE}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'price_margin',
 			[
 				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
@@ -516,7 +915,268 @@ class Pricing_Table extends Widget_Base
 					'isLinked' => false,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .sub-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .price-box' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_control(
+			'price_text_color',
+			[
+				'label' => esc_html__( 'Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .current-price' => 'color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_control(
+			'current_price_options',
+			[
+				'label' => esc_html__( 'Current Price', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'current_price_typography',
+				'selector' => '{{WRAPPER}} .cp',
+			]
+		);
+        $this->add_control(
+			'price_align',
+			[
+				'label' => esc_html__( 'Vertical Alignment', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'flex-start' => [
+						'title' => esc_html__( 'Top', 'elementor-magic-kit' ),
+						'icon' => 'eicon-v-align-top',
+					],
+					'center' => [
+						'title' => esc_html__( 'Middle', 'elementor-magic-kit' ),
+						'icon' => 'eicon-v-align-middle',
+					],
+					'flex-end' => [
+						'title' => esc_html__( 'Bottom', 'elementor-magic-kit' ),
+						'icon' => 'eicon-v-align-bottom',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .cp' => 'align-content: {{VALUE}};',
+				],
+			]
+		);
+        $this->add_control(
+			'currency_symbol_options',
+			[
+				'label' => esc_html__( 'Currency Symbol', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'currency_symbol_typography',
+				'selector' => '{{WRAPPER}} .cp-symble',
+			]
+		);
+        $this->add_control(
+			'currency_symbol_align',
+			[
+				'label' => esc_html__( 'Vertical Alignment', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'flex-start' => [
+						'title' => esc_html__( 'Top', 'elementor-magic-kit' ),
+						'icon' => 'eicon-v-align-top',
+					],
+					'center' => [
+						'title' => esc_html__( 'Middle', 'elementor-magic-kit' ),
+						'icon' => 'eicon-v-align-middle',
+					],
+					'flex-end' => [
+						'title' => esc_html__( 'Bottom', 'elementor-magic-kit' ),
+						'icon' => 'eicon-v-align-bottom',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .cp-symble' => 'align-content: {{VALUE}};',
+				],
+			]
+		);
+        $this->add_control(
+			'original_price_options',
+			[
+				'label' => esc_html__( 'Original Price', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+                'condition' => [
+                    'show_sale' => 'yes',
+                ]
+			]
+		);
+        $this->add_control(
+			'original_price_text_color',
+			[
+				'label' => esc_html__( 'Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .original-price' => 'color: {{VALUE}}',
+				],
+                'condition' => [
+                    'show_sale' => 'yes',
+                ]
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'original_price_typography',
+				'selector' => '{{WRAPPER}} .original-price',
+                'condition' => [
+                    'show_sale' => 'yes',
+                ]
+			]
+		);
+        $this->add_control(
+			'original_price_align',
+			[
+				'label' => esc_html__( 'Vertical Alignment', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'flex-start' => [
+						'title' => esc_html__( 'Top', 'elementor-magic-kit' ),
+						'icon' => 'eicon-v-align-top',
+					],
+					'center' => [
+						'title' => esc_html__( 'Middle', 'elementor-magic-kit' ),
+						'icon' => 'eicon-v-align-middle',
+					],
+					'flex-end' => [
+						'title' => esc_html__( 'Bottom', 'elementor-magic-kit' ),
+						'icon' => 'eicon-v-align-bottom',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .original-price' => 'align-content: {{VALUE}};',
+				],
+                'condition' => [
+                    'show_sale' => 'yes',
+                ]
+			]
+		);
+        $this->add_control(
+			'original_price_gap',
+			[
+				'label' => esc_html__( 'Gap', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 50,
+						'step' => 2,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 2,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .original-price' => 'margin-right: {{SIZE}}{{UNIT}};',
+				],
+                'condition' => [
+                    'show_sale' => 'yes',
+                ]
+			]
+		);
+        $this->add_control(
+			'period_options',
+			[
+				'label' => esc_html__( 'Period', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+        $this->add_control(
+			'period_text_color',
+			[
+				'label' => esc_html__( 'Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .period' => 'color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'period_typography',
+				'selector' => '{{WRAPPER}} .period',
+			]
+		);
+        $this->add_control(
+			'period_align',
+			[
+				'label' => esc_html__( 'Vertical Alignment', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'flex-start' => [
+						'title' => esc_html__( 'Top', 'elementor-magic-kit' ),
+						'icon' => 'eicon-v-align-top',
+					],
+					'center' => [
+						'title' => esc_html__( 'Middle', 'elementor-magic-kit' ),
+						'icon' => 'eicon-v-align-middle',
+					],
+					'flex-end' => [
+						'title' => esc_html__( 'Bottom', 'elementor-magic-kit' ),
+						'icon' => 'eicon-v-align-bottom',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .period' => 'align-content: {{VALUE}};',
+				],
+			]
+		);
+        $this->add_control(
+			'period_gap',
+			[
+				'label' => esc_html__( 'Gap', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 50,
+						'step' => 2,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 2,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .period' => 'margin-left: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -529,6 +1189,129 @@ class Pricing_Table extends Widget_Base
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
+        $this->add_responsive_control(
+			'content_margin',
+			[
+				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 0,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .content' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_control(
+			'features_item_options',
+			[
+				'label' => esc_html__( 'Item', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+        $this->add_control(
+			'features_align',
+			[
+				'label' => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'flex-start' => [
+						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'flex-end' => [
+						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .f-item' => 'justify-content: {{VALUE}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'features_margin',
+			[
+				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 0,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .f-item' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_control(
+			'show_item_border',
+			[
+				'label' => esc_html__( 'Items Border', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'elementor-magic-kit' ),
+				'label_off' => esc_html__( 'Hide', 'elementor-magic-kit' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'border',
+				'selector' => '{{WRAPPER}} .f-item:not(:last-child)',
+                'condition' => [
+                    'show_item_border' => 'yes'
+                ],
+			]
+		);
+        $this->add_responsive_control(
+			'features_padding',
+			[
+				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 0,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .f-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+                'condition' => [
+                    'show_item_border' => 'yes'
+                ],
+			]
+		);
+        $this->add_control(
+			'features_icon_options',
+			[
+				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
         $this->add_control(
 			'icon_size',
 			[
@@ -553,6 +1336,505 @@ class Pricing_Table extends Widget_Base
 				'selectors' => [
 					'{{WRAPPER}} .list-icon' => 'width: {{SIZE}}{{UNIT}};',
 				],
+			]
+		);
+        $this->add_control(
+			'icon_gap',
+			[
+				'label' => esc_html__( 'Icon Gap', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 2,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .list-icon' => 'margin-right: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_control(
+			'f_icon_color',
+			[
+				'label' => esc_html__( 'Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .list-icon path' => 'fill: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_control(
+			'features_content_options',
+			[
+				'label' => esc_html__( 'Content', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'f-item_typography',
+				'selector' => '{{WRAPPER}} .f-item',
+			]
+		);
+        $this->add_control(
+			'f-item_color',
+			[
+				'label' => esc_html__( 'Text Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .f-item' => 'color: {{VALUE}}',
+				],
+			]
+		);
+        $this->end_controls_section();
+        // Button ==============================
+        $this->start_controls_section(
+            'button_style',
+            [
+                'label' => __('Button', 'elementor-magic-kit'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->add_control(
+			'btn_direction',
+			[
+				'label' => esc_html__( 'Direction', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'flex-start' => [
+						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'icon' => 'eicon-h-align-left',
+					],
+					'space-evenly' => [
+						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'icon' => 'eicon-h-align-center',
+					],
+					'flex-end' => [
+						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'icon' => 'eicon-h-align-right',
+					],
+				],
+				'default' => 'space-evenly',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .button' => 'justify-content: {{VALUE}};',
+				],
+				'condition' => [
+					'show_btn_icon' => 'yes'
+				]
+			]
+		);
+		$this->add_responsive_control(
+			'btn_padding',
+			[
+				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 8,
+					'right' => 12,
+					'bottom' => 8,
+					'left' => 12,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .button a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'btn_margin',
+			[
+				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 0,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .button a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_control(
+			'btn_hr',
+			[
+				'type' => \Elementor\Controls_Manager::DIVIDER,
+			]
+		);
+		// tabs control start==========
+		$this->start_controls_tabs(
+			'btn_style_tabs'
+		);
+		
+		$this->start_controls_tab(
+			'style_normal_tab',
+			[
+				'label' => esc_html__( 'Normal', 'textdomain' ),
+			]
+		);
+		$this->add_control(
+			'btn_bg',
+			[
+				'label' => esc_html__( 'Background', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .button a' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_control(
+			'btn_color',
+			[
+				'label' => esc_html__( 'color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .button a' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'btn_border',
+				'selector' => '{{WRAPPER}} .button a',
+			]
+		);
+		$this->add_responsive_control(
+			'btn_radius',
+			[
+				'label' => esc_html__( 'Radius', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 8,
+					'right' => 8,
+					'bottom' => 8,
+					'left' => 8,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .button a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'btn_box_shadow',
+				'selector' => '{{WRAPPER}} .button a',
+			]
+		);
+		$this->add_control(
+			'btn_icon_options',
+			[
+				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+				'condition' => [
+					'show_btn_icon' => 'yes'
+				]
+			]
+		);
+		$this->add_control(
+			'btn_icon_direction',
+			[
+				'label' => esc_html__( 'Icon Direction', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'row-reverse' => [
+						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'icon' => 'eicon-h-align-left',
+					],
+					'row' => [
+						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'icon' => 'eicon-h-align-right',
+					],
+				],
+				'default' => 'row',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .button a' => 'flex-direction: {{VALUE}};',
+				],
+				'condition' => [
+					'show_btn_icon' => 'yes'
+				]
+			]
+		);
+		$this->add_control(
+			'btn_icon_gap',
+			[
+				'label' => esc_html__( 'Gap', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 50,
+						'step' => 2,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 5,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .button a svg' => 'margin-right: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => [
+					'btn_icon_direction' => 'row-reverse',
+					'show_btn_icon' => 'yes'
+				]
+			]
+		);
+		$this->add_control(
+			'btn_icon_gap_reverse',
+			[
+				'label' => esc_html__( 'Gap', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 50,
+						'step' => 2,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 5,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .button a svg' => 'margin-left: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => [
+					'btn_icon_direction' => 'row',
+					'show_btn_icon' => 'yes'
+				]
+			]
+		);
+		$this->add_control(
+			'btn_icon_size',
+			[
+				'label' => esc_html__( 'Size', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+						'step' => 5,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 16,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .btn-icon' => 'width: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => [
+					'show_btn_icon' => 'yes'
+				]
+			]
+		);
+		$this->add_control(
+			'btn_icon_color',
+			[
+				'label' => esc_html__( 'Color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .btn-icon path' => 'fill: {{VALUE}}',
+				],
+				'condition' => [
+					'show_btn_icon' => 'yes'
+				]
+			]
+		);
+
+		$this->end_controls_tab();
+		$this->start_controls_tab(
+			'style_hover_tab',
+			[
+				'label' => esc_html__( 'Hover', 'textdomain' ),
+			]
+		);
+		$this->add_control(
+			'btn_bg_hover',
+			[
+				'label' => esc_html__( 'Background', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .button a:hover' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_control(
+			'btn_color_hover',
+			[
+				'label' => esc_html__( 'color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .button a:hover' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'btn_border_hover',
+				'selector' => '{{WRAPPER}} .button a:hover',
+			]
+		);
+		$this->add_responsive_control(
+			'btn_radius_hover',
+			[
+				'label' => esc_html__( 'Radius', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 8,
+					'right' => 8,
+					'bottom' => 8,
+					'left' => 8,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .button a:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'btn_box_shadow_hover',
+				'selector' => '{{WRAPPER}} .button a:hover',
+			]
+		);
+		$this->add_control(
+			'btn_icon_options_hover',
+			[
+				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+				'condition' => [
+					'show_btn_icon' => 'yes'
+				]
+			]
+		);
+		$this->add_control(
+			'btn_icon_color_hover',
+			[
+				'label' => esc_html__( 'Color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .button a:hover .btn-icon path' => 'fill: {{VALUE}}',
+				],
+				'condition' => [
+					'show_btn_icon' => 'yes'
+				]
+			]
+		);
+		$this->end_controls_tab();
+		
+		$this->end_controls_tabs();
+		// tabs control end==========
+        $this->end_controls_section();
+        // Ribbon ==============================
+        $this->start_controls_section(
+            'ribbon_style',
+            [
+                'label' => __('Ribbon', 'elementor-magic-kit'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'ribbon_control' => 'yes', // Only show this control when switch is ON
+                ]
+            ]
+        );
+        $this->add_control(
+			'ribbon_direction',
+			[
+				'label' => esc_html__( 'Direction', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'icon' => 'eicon-h-align-left',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'icon' => 'eicon-h-align-right',
+					],
+				],
+			]
+		);
+        $this->add_control(
+			'ribbon_bg',
+			[
+				'label' => esc_html__( 'Ribbon Background', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ribbon .ribbon-bar' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_control(
+			'ribbon_ba',
+			[
+				'label' => esc_html__( 'Ribbon Before After', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}}   .pricing-table-container .ribbon::before, .pricing-table-container .ribbon::after ' => 'border-color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'ribon_typography',
+				'selector' => '{{WRAPPER}} .ribbon-bar span',
+			]
+		);
+        $this->add_control(
+			'ribbon_color',
+			[
+				'label' => esc_html__( 'Ribbon Text', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}}   .ribbon-bar span' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Text_Shadow::get_type(),
+			[
+				'name' => 'ribbon_text_shadow',
+				'selector' => '{{WRAPPER}} .ribbon-bar span',
 			]
 		);
         $this->end_controls_section();

@@ -48,10 +48,6 @@ class Assets
                 'src'     => EM_KIT_ASSETS . '/css/elementor/button.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/css/elementor/button.css'),
             ],
-            // 'emk-pricing-table' => [
-            //     'src'     => EM_KIT_ASSETS . '/css/elementor/pricing-table.css',
-            //     'version' => filemtime(EM_KIT_PATH . '/assets/css/elementor/pricing-table.css'),
-            // ],
         ];
     }
 
