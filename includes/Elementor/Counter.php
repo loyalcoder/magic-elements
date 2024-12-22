@@ -103,7 +103,7 @@ class Counter extends Widget_Base
      */
     protected function register_controls()
     {
-        $this->register_image_controls();
+        $this->register_counter_controls();
     }
 
     /**
@@ -112,7 +112,7 @@ class Counter extends Widget_Base
      * @since 1.0.0
      * @access protected
      */
-    protected function register_image_controls()
+    protected function register_counter_controls()
     {
         $this->start_controls_section(
 			'counter_content_section',
