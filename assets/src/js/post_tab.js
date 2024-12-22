@@ -16,31 +16,31 @@ import "./../scss/post_tab.scss";
       },
 
       EmKitPostTab: function ($scope) {
-        jQuery(document).ready(function ($) {
-          // Initially show all posts
-          $('.post-item').show();
-      
-          // Tab click event
-          $('.nav-link').on('click', function () {
-              // Remove active class from all tabs
-              $('.nav-link').removeClass('active');
-              // Add active class to clicked tab
-              $(this).addClass('active');
-      
-              // Get the category ID from the clicked tab
-              const category = $(this).data('category');
-      
-              // Show/hide posts based on category
-              if (category === 'all') {
-                  $('.post-item').show(); // Show all posts
-              } else {
-                  $('.post-item').hide(); // Hide all posts
-                  $('.post-item.category-' + category).show(); // Show posts with selected category
-              }
-          });
-      });
-      
-      },
+        let navLinks = $scope.find('.nav-link');
+        let postItems = $scope.find('.post-item');
+    
+        // Initially show all posts
+        postItems.show();
+    
+        // Tab click event
+        navLinks.on('click', function () {
+            let $clickedTab = $(this);
+            let category = $clickedTab.data('category');
+    
+            // Remove active class from all tabs and add it to the clicked tab
+            navLinks.removeClass('active');
+            $clickedTab.addClass('active');
+    
+            // Show or hide posts based on the category
+            if (category === 'all') {
+                postItems.show(); // Show all posts
+            } else {
+                postItems.hide(); // Hide all posts
+                postItems.filter('.category-' + category).show(); // Show posts with the selected category
+            }
+        });
+    },
+    
     };
   
     $window.on("elementor/frontend/init", emkElementor.onInit);
