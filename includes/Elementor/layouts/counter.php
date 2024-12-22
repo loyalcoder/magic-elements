@@ -1,1 +1,4 @@
-<h1>Hello world</h1>
+<div class="">
+    <h3 class="counter_one" id="counters_1"><span class="counter c_0" data-targetnum="31" data-speed="1000"><?php echo esc_html($settings['counter_number_one']); ?></span><?php echo esc_html($settings['counter_suffix_one']); ?></h3>
+    <p class="counter_text_one"><?php echo esc_html($settings['counter_one_title']); ?></p>
+</div>

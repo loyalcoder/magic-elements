@@ -109,6 +109,11 @@ class Load_Elementor
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/button.js'),
                 'deps'    => ['jquery']
             ],
+            'emkit-counter' => [
+                'src'     => EM_KIT_ASSETS . '/dist/counter.js',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/counter.js'),
+                'deps'    => ['jquery']
+            ],
         ];
     }
 
@@ -133,6 +138,10 @@ class Load_Elementor
             'emkit-team' => [
                 'src'     => EM_KIT_ASSETS . '/dist/team.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/team.css'),
+            ],
+            'emk-counter' => [
+                'src'     => EM_KIT_ASSETS . '/dist/counter.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/counter.css'),
             ],
             'emkit-style' => [
                 'src'     => EM_KIT_ASSETS . '/css/style.css',

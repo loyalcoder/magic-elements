@@ -36,7 +36,7 @@ class Counter extends Widget_Base
      */
     public function get_name()
     {
-        return 'em_kit_image';
+        return 'em_kit_counter';
     }
 
     /**
@@ -83,12 +83,16 @@ class Counter extends Widget_Base
      */
     public function get_categories()
     {
-        return ['pkun-widgets'];
+        return ['emk-widgets'];
+    }
+    public function get_style_depends()
+    {
+        return ['emk-counter', 'emkit-style'];
     }
 
     public function get_script_depends()
     {
-        return [];
+        return ['emkit-counter', 'jquery' ];
     }
 
     /**
@@ -111,14 +115,40 @@ class Counter extends Widget_Base
     protected function register_image_controls()
     {
         $this->start_controls_section(
-			'image_content_section',
+			'counter_content_section',
 			[
-				'label' => esc_html__( 'Image', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Counter', 'elementor-magic-kit' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
-
-
+        $this->add_control(
+			'counter_number_one',
+			[
+				'label' => esc_html__( 'Number One', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::NUMBER,
+				'min' => 5,
+				'max' => 10000,
+				'step' => 1,
+				'default' => 31,
+			]
+		);
+        $this->add_control(
+			'counter_suffix_one',
+			[
+				'label' => esc_html__( 'Number Suffix', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				
+			]
+		);
+        $this->add_control(
+			'counter_one_title',
+			[
+				'label' => esc_html__( 'Title', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'professional Teachers', 'textdomain' ),
+				'placeholder' => esc_html__( 'Type your title here', 'textdomain' ),
+			]
+		);
 
         $this->end_controls_section();
 
@@ -126,7 +156,7 @@ class Counter extends Widget_Base
         $this->start_controls_section(
             $this->get_name() .'style_section',
 			[
-				'label' => esc_html__( 'Image', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Counter', 'elementor-magic-kit' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
