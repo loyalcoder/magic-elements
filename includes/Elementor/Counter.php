@@ -124,7 +124,7 @@ class Counter extends Widget_Base
         $this->add_control(
 			'counter_number_one',
 			[
-				'label' => esc_html__( 'Number One', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Ending Number', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::NUMBER,
 				'min' => 5,
 				'max' => 10000,
