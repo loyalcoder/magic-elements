@@ -124,29 +124,36 @@ class Counter extends Widget_Base
         $this->add_control(
 			'counter_number_one',
 			[
-				'label' => esc_html__( 'Number One', 'textdomain' ),
+				'label' => esc_html__( 'Number One', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::NUMBER,
 				'min' => 5,
 				'max' => 10000,
 				'step' => 1,
-				'default' => 31,
+				'default' => 100,
 			]
 		);
         $this->add_control(
 			'counter_suffix_one',
 			[
-				'label' => esc_html__( 'Number Suffix', 'textdomain' ),
+				'label' => esc_html__( 'Number Suffix', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
 				
 			]
 		);
         $this->add_control(
+			'more_options',
+			[
+				'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+			]
+		);
+        $this->add_control(
 			'counter_one_title',
 			[
-				'label' => esc_html__( 'Title', 'textdomain' ),
+				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'professional Teachers', 'textdomain' ),
-				'placeholder' => esc_html__( 'Type your title here', 'textdomain' ),
+				'default' => esc_html__( 'Magic Number', 'elementor-magic-kit' ),
+				'placeholder' => esc_html__( 'Type your title here', 'elementor-magic-kit' ),
 			]
 		);
 
@@ -154,14 +161,159 @@ class Counter extends Widget_Base
 
         // Style section
         $this->start_controls_section(
-            $this->get_name() .'style_section',
+            $this->get_name() .'number_style_section',
 			[
-				'label' => esc_html__( 'Counter', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Number', 'elementor-magic-kit' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
-
+        $this->add_responsive_control(
+			'number_text_align',
+			[
+				'label' => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .counter h3' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+        $this->add_control(
+			'number_text_color',
+			[
+				'label' => esc_html__( 'Text Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .counter h3' => 'color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'number_content_typography',
+				'selector' => '{{WRAPPER}} .counter h3',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Text_Stroke::get_type(),
+			[
+				'name' => 'number_text_stroke',
+				'selector' => '{{WRAPPER}} .counter h3',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Text_Shadow::get_type(),
+			[
+				'name' => 'number_text_shadow',
+				'selector' => '{{WRAPPER}} .counter h3',
+			]
+		);
+        $this->add_responsive_control(
+			'number_margin',
+			[
+				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .counter h3' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
         $this->end_controls_section();
+
+        $this->start_controls_section(
+			'title_style_section',
+			[
+				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+        $this->add_responsive_control(
+			'title_text_align',
+			[
+				'label' => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .counter p' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+        $this->add_control(
+			'title_text_color',
+			[
+				'label' => esc_html__( 'Text Color', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .counter p' => 'color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'title_content_typography',
+				'selector' => '{{WRAPPER}} .counter p',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Text_Stroke::get_type(),
+			[
+				'name' => 'title_text_stroke',
+				'selector' => '{{WRAPPER}} .counter p',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Text_Shadow::get_type(),
+			[
+				'name' => 'title_text_shadow',
+				'selector' => '{{WRAPPER}} .counter p',
+			]
+		);
+        $this->add_responsive_control(
+			'title_margin',
+			[
+				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .counter p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->end_controls_section();
+
 
 
     }
