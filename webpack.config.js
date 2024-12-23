@@ -5,12 +5,14 @@ module.exports = {
   mode: 'production',
   entry: {
     button: './assets/src/scss/button.scss',
+    chart: './assets/src/scss/chart.scss',
     flipcard: './assets/src/scss/flipcard.scss',
     team: './assets/src/scss/team.scss',
     style: './assets/src/scss/style.scss',
     // iconbox: './assets/css/iconbox.scss',
     // slider_css: './assets/css/slider.scss',
     button: './assets/src/js/button.js',
+    chart: './assets/src/js/chart.js',
     main: './assets/src/js/index.js',
   },
   output: {
