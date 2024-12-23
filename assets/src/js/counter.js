@@ -2,7 +2,7 @@ jQuery(function ($) {
     // CONFIG
     let visibilityIds = ['#counters_1', '#counters_2', '#counters_3', '#counters_4', '#counters_5', '#counters_6', '#counters_7', '#counters_8', '#counters_9', '#counters_10', '#counters_11', '#counters_12', '#counters_13', '#counters_14', '#counters_15',]; //must be an array, could have only one element
     let counterClass = '.counter';
-    let defaultSpeed = 3000; //default value
+    let defaultSpeed = 2000; //default value
 
     // END CONFIG
 
@@ -16,7 +16,7 @@ jQuery(function ($) {
 
     function getVisibilityStatus() {
         elValFromTop = [];
-        var windowHeight = $(window).height(),
+        let windowHeight = $(window).height(),
             windowScrollValFromTop = $(this).scrollTop();
 
         visibilityIds.forEach(function (item, index) { //Call each class

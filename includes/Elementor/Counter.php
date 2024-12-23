@@ -121,8 +121,19 @@ class Counter extends Widget_Base
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
+		$this->add_control(
+			'counter_start_number',
+			[
+				'label' => esc_html__( 'Starting Number', 'elementor-magic-kit' ),
+				'type' => \Elementor\Controls_Manager::NUMBER,
+				'min' => 5,
+				'max' => 10000,
+				'step' => 1,
+				'default' => 0,
+			]
+		);
         $this->add_control(
-			'counter_number_one',
+			'counter_number',
 			[
 				'label' => esc_html__( 'Ending Number', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::NUMBER,
@@ -137,6 +148,8 @@ class Counter extends Widget_Base
 			[
 				'label' => esc_html__( 'Number Suffix', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
+				'placeholder' => esc_html__( 'Plus', 'elementor-magic-kit' ),
+
 				
 			]
 		);
@@ -148,7 +161,7 @@ class Counter extends Widget_Base
 			]
 		);
         $this->add_control(
-			'counter_one_title',
+			'counter_title',
 			[
 				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
@@ -156,7 +169,6 @@ class Counter extends Widget_Base
 				'placeholder' => esc_html__( 'Type your title here', 'elementor-magic-kit' ),
 			]
 		);
-
         $this->end_controls_section();
 
         // Style section
@@ -222,17 +234,6 @@ class Counter extends Widget_Base
 			[
 				'name' => 'number_text_shadow',
 				'selector' => '{{WRAPPER}} .counter h3',
-			]
-		);
-        $this->add_responsive_control(
-			'number_margin',
-			[
-				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'selectors' => [
-					'{{WRAPPER}} .counter h3' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
 			]
 		);
         $this->end_controls_section();
@@ -313,8 +314,6 @@ class Counter extends Widget_Base
 			]
 		);
         $this->end_controls_section();
-
-
 
     }
 

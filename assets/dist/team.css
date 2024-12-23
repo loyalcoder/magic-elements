@@ -1,1 +1,7 @@
-.team .team-icon{display:flex;column-gap:10px}
+/*!********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/team.scss ***!
+  \********************************************************************************************************************/
+.team .team-icon {
+  display: flex;
+  column-gap: 10px;
+}
