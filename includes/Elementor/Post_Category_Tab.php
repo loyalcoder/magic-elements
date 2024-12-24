@@ -179,7 +179,141 @@ class Post_Category_Tab extends Widget_Base
 		$this->end_controls_section();
 
         // Style section
-       
+            // Tabs Style Section
+            $this->start_controls_section(
+                'tab_styles_section',
+                [
+                    'label' => __( 'Tab Styles', 'elementor-magic-kit' ),
+                    'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                ]
+            );
+    
+            $this->add_control(
+                'tab_color',
+                [
+                    'label' => __( 'Tab Text Color', 'elementor-magic-kit' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .nav-tabs .nav-item .nav-link' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
+    
+            $this->add_control(
+                'tab_bg_color',
+                [
+                    'label' => __( 'Tab Background Color', 'elementor-magic-kit' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .nav-tabs .nav-item .nav-link' => 'background-color: {{VALUE}};',
+                    ],
+                ]
+            );
+    
+            $this->add_control(
+                'active_tab_color',
+                [
+                    'label' => __( 'Active Tab Text Color', 'elementor-magic-kit' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .nav-tabs .nav-item .nav-link.active' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
+    
+            $this->add_control(
+                'active_tab_bg_color',
+                [
+                    'label' => __( 'Active Tab Background Color', 'elementor-magic-kit' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .nav-tabs .nav-item .nav-link.active' => 'background-color: {{VALUE}};',
+                    ],
+                ]
+            );
+    
+            $this->end_controls_section();
+    
+            // Post Style Section
+            $this->start_controls_section(
+                'post_styles_section',
+                [
+                    'label' => __( 'Post Styles', 'elementor-magic-kit' ),
+                    'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                ]
+            );
+    
+            $this->add_control(
+                'post_border_color',
+                [
+                    'label' => __( 'Post Border Color', 'elementor-magic-kit' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .post' => 'border-color: {{VALUE}};',
+                    ],
+                ]
+            );
+    
+            $this->add_control(
+                'img_height',
+                [
+                    'label' => __( 'Image Height', 'elementor-magic-kit' ),
+                    'type' => \Elementor\Controls_Manager::SLIDER,
+                    'size_units' => [ 'px', '%' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 50,
+                            'max' => 500,
+                            'step' => 5,
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .img-container img' => 'height: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'post_title_color',
+                [
+                    'label' => __( 'Post Title Color', 'elementor-magic-kit' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .post-title' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
+    
+            $this->add_group_control(
+                \Elementor\Group_Control_Typography::get_type(),
+                [
+                    'name' => 'post_title_typography',
+                    'label' => __( 'Post Title Typography', 'elementor-magic-kit' ),
+                    'selector' => '{{WRAPPER}} .post-title',
+                ]
+            );
+    
+            $this->add_control(
+                'post_author_color',
+                [
+                    'label' => __( 'Post Author Color', 'elementor-magic-kit' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .author' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
+    
+            $this->add_group_control(
+                \Elementor\Group_Control_Typography::get_type(),
+                [
+                    'name' => 'post_author_typography',
+                    'label' => __( 'Post Author Typography', 'elementor-magic-kit' ),
+                    'selector' => '{{WRAPPER}} .author',
+                ]
+            );
+    
+            $this->end_controls_section();
     }
 
     /**
