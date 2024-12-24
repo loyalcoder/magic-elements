@@ -149,7 +149,7 @@ class Load_Elementor
                 'src'     => EM_KIT_ASSETS . '/dist/team.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/team.css'),
             ],
-            'emkit-feature-list' => [
+            'emk-feature-list' => [
                 'src'     => EM_KIT_ASSETS . '/dist/feature_list.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/feature_list.css'),
             ],
