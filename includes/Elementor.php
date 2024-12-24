@@ -144,6 +144,10 @@ class Load_Elementor
                 'src'     => EM_KIT_ASSETS . '/dist/team.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/team.css'),
             ],
+            'emkit-feature-list' => [
+                'src'     => EM_KIT_ASSETS . '/dist/feature-list.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/feature-list.css'),
+            ],
             'emkit-style' => [
                 'src'     => EM_KIT_ASSETS . '/css/style.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/css/style.css'),

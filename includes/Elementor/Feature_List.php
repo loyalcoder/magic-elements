@@ -87,7 +87,7 @@ class Feature_List extends Widget_Base
     }
     public function get_style_depends()
     {
-        return ['emkit-flipcard', 'emkit-style'];
+        return ['emkit-feature-list', 'emkit-style'];
     }
 
     public function get_script_depends()
@@ -115,9 +115,9 @@ class Feature_List extends Widget_Base
     protected function register_feature_list_controls()
     {
         $this->start_controls_section(
-			'image_content_section',
+			'feature_list_content_section',
 			[
-				'label' => esc_html__( 'Image', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Feature List', 'elementor-magic-kit' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -129,7 +129,7 @@ class Feature_List extends Widget_Base
         $this->start_controls_section(
             $this->get_name() .'style_section',
 			[
-				'label' => esc_html__( 'Image', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Feature List', 'elementor-magic-kit' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
