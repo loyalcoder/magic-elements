@@ -159,7 +159,6 @@ class Load_Elementor
             'Heading',
         ];
     }
-
     /**
      * Widget files
      *
