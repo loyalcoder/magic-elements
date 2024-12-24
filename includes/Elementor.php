@@ -84,6 +84,7 @@ class Load_Elementor
         Plugin::instance()->widgets_manager->register(new Elementor\Image());
         Plugin::instance()->widgets_manager->register(new Elementor\Flip_Card());
         Plugin::instance()->widgets_manager->register(new Elementor\Heading());
+        Plugin::instance()->widgets_manager->register(new Elementor\Accordion());
     }
 
     /**
@@ -176,6 +177,7 @@ class Load_Elementor
             'Team',
             'Flip_Card',
             'Heading',
+            'Accordion',
         ];
     }
 
