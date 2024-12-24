@@ -4780,10 +4780,6 @@
     display: none !important;
   }
 }
-.container {
-  width: 1170px;
-}
-
 /* Tab styles */
 .nav-tabs {
   border-bottom: 2px solid #ddd;
@@ -4807,6 +4803,7 @@
 
 /* Post styles */
 .post {
+  height: 300px;
   border: 1px solid #ddd;
   padding: 15px;
   margin-bottom: 20px;

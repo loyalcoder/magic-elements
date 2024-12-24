@@ -7,9 +7,7 @@
 @import "../../../node_modules/bootstrap/scss/utilities/api";
 @import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
-.container{
-    width: 1170px;
-}
+
 
 /* Tab styles */
 .nav-tabs {
@@ -32,6 +30,7 @@
 
 /* Post styles */
 .post {
+    height: 300px;
     border: 1px solid #ddd;
     padding: 15px;
     margin-bottom: 20px;
