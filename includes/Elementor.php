@@ -78,6 +78,7 @@ class Load_Elementor
 
         Plugin::instance()->widgets_manager->register(new Elementor\Hello_World());
         Plugin::instance()->widgets_manager->register(new Elementor\Button());
+        Plugin::instance()->widgets_manager->register(new Elementor\Social_Icon());
         Plugin::instance()->widgets_manager->register(new Elementor\Image_Accordion());
         Plugin::instance()->widgets_manager->register(new Elementor\Team());
         Plugin::instance()->widgets_manager->register(new Elementor\Image());
@@ -145,9 +146,9 @@ class Load_Elementor
                 'src'     => EM_KIT_ASSETS . '/dist/team.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/team.css'),
             ],
-            'emk-counter' => [
-                'src'     => EM_KIT_ASSETS . '/dist/counter.css',
-                'version' => filemtime(EM_KIT_PATH . '/assets/dist/counter.css'),
+            'emkit-social-icon' => [
+                'src'     => EM_KIT_ASSETS . '/dist/social_icon.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/social_icon.css'),
             ],
             'emkit-style' => [
                 'src'     => EM_KIT_ASSETS . '/css/style.css',
@@ -168,6 +169,7 @@ class Load_Elementor
             'Hello_World',
             'Image',
             'Button',
+            'Social_Icon',
             'Image_Accordion',
             'Team',
             'Flip_Card',

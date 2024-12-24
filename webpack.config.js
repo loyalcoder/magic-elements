@@ -7,6 +7,7 @@ module.exports = {
     button: './assets/src/scss/button.scss',
     flipcard: './assets/src/scss/flipcard.scss',
     team: './assets/src/scss/team.scss',
+    social_icon: './assets/src/scss/social_icon.scss',
     counter: './assets/src/scss/counter.scss',
     style: './assets/src/scss/style.scss',
     image_accordion: './assets/src/scss/image_accordion.scss',
@@ -20,6 +21,7 @@ module.exports = {
     path: path.resolve(__dirname, 'assets/dist'),
     filename: '[name].js', // For JS outputs
   },
+  
   module: {
     rules: [
       {
