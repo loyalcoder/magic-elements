@@ -23,7 +23,7 @@ if (!defined('ABSPATH')) {
  *
  * @since 1.0.0
  */
-class Post_Tab extends Widget_Base
+class Post_Category_Tab extends Widget_Base
 {
     /**
      * Retrieve the widget name.

@@ -83,7 +83,7 @@ class Load_Elementor
         Plugin::instance()->widgets_manager->register(new Elementor\Image());
         Plugin::instance()->widgets_manager->register(new Elementor\Flip_Card());
         Plugin::instance()->widgets_manager->register(new Elementor\Heading());
-        Plugin::instance()->widgets_manager->register(new Elementor\Post_Tab());
+        Plugin::instance()->widgets_manager->register(new Elementor\Post_Category_Tab());
     }
 
     /**
@@ -175,7 +175,7 @@ class Load_Elementor
             'Team',
             'Flip_Card',
             'Heading',
-            'Post_Tab',
+            'Post_Category_Tab',
         ];
     }
 
