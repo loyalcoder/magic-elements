@@ -78,6 +78,7 @@ class Load_Elementor
 
         Plugin::instance()->widgets_manager->register(new Elementor\Hello_World());
         Plugin::instance()->widgets_manager->register(new Elementor\Button());
+        Plugin::instance()->widgets_manager->register(new Elementor\Text_Editor());
         Plugin::instance()->widgets_manager->register(new Elementor\Icon());
         Plugin::instance()->widgets_manager->register(new Elementor\Social_Icon());
         Plugin::instance()->widgets_manager->register(new Elementor\Image_Accordion());
@@ -170,6 +171,7 @@ class Load_Elementor
             'Hello_World',
             'Image',
             'Button',
+            'Text_Editor',
             'Icon',
             'Social_Icon',
             'Image_Accordion',
