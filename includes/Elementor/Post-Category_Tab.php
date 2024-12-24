@@ -3,7 +3,7 @@
 /**
  * Elementor Classes.
  *
- * @package Heading Elementor Magic Kit
+ * @package Post Category Tab Elementor Magic Kit
  */
 
 
@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 /**
  * Magic Kit for Elementor Extension
  *
- * Elementor widget for Heading.
+ * Elementor widget for Post Category Tab.
  *
  * @since 1.0.0
  */
@@ -50,7 +50,7 @@ class Post_Category_Tab extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Magic Post Tab', 'elementor-magic-kit');
+        return esc_html__('Post Category Tab', 'elementor-magic-kit');
     }
 
     /**
@@ -104,7 +104,7 @@ class Post_Category_Tab extends Widget_Base
      */
     protected function register_controls()
     {
-        $this->register_heading_controls();
+        $this->register_post_category_tab_controls();
     }
 
     /**
@@ -113,7 +113,7 @@ class Post_Category_Tab extends Widget_Base
      * @since 1.0.0
      * @access protected
      */
-    protected function register_heading_controls()
+    protected function register_post_category_tab_controls()
     {
 
 		$this->start_controls_section(
@@ -211,7 +211,7 @@ class Post_Category_Tab extends Widget_Base
 		$query = new \WP_Query($args);
        
 
-        include __DIR__ . '/layouts/post/post-tab.php';
+        include __DIR__ . '/layouts/post/post-category-tab.php';
     }
 
     /**
