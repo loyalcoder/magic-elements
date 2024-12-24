@@ -149,8 +149,6 @@ class Counter extends Widget_Base
 				'label' => esc_html__( 'Number Suffix', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
 				'placeholder' => esc_html__( 'Plus', 'elementor-magic-kit' ),
-
-				
 			]
 		);
         $this->add_control(
