@@ -23,7 +23,7 @@ class Assets
     public function get_scripts()
     {
         return [
-            'pkun-script' => [
+            'script' => [
                 'src'     => EM_KIT_ASSETS . '/js/frontend.js',
                 'version' => filemtime(EM_KIT_PATH . '/assets/js/frontend.js'),
                 'deps'    => ['jquery']
