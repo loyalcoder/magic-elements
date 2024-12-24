@@ -113,6 +113,7 @@ class Load_Elementor
             'emkit-post-tab' => [
                 'src'     => EM_KIT_ASSETS . '/dist/post_tab.js',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/post_tab.js'),
+            ],
             'emkit-image-accordion-script' => [
                 'src'     => EM_KIT_ASSETS . '/dist/image_accordion.js',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/image_accordion.js'),
