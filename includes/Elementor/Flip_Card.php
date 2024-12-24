@@ -211,7 +211,7 @@ class Flip_Card extends Widget_Base
 				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
 				'default' => [
-					'value' => 'fas fa-circle',
+					'value' => 'fas fa-star',
 					'library' => 'fa-solid',
 				],
 				'recommended' => [
@@ -323,7 +323,7 @@ class Flip_Card extends Widget_Base
 				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
 				'default' => [
-					'value' => 'fas fa-circle',
+					'value' => 'fas fa-star',
 					'library' => 'fa-solid',
 				],
 				'recommended' => [
