@@ -509,7 +509,6 @@ class Social_Icon  extends Widget_Base
         // In plain mode, render without shortcode.
         echo esc_attr($this->get_settings('shortcode'));
     }
-
     /**
      * Render shortcode widget output in the editor.
      *
