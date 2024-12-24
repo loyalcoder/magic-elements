@@ -9,6 +9,7 @@ module.exports = {
     team: './assets/src/scss/team.scss',
     counter: './assets/src/scss/counter.scss',
     style: './assets/src/scss/style.scss',
+    image_accordion: './assets/src/scss/image_accordion.scss',
     // iconbox: './assets/css/iconbox.scss',
     // slider_css: './assets/css/slider.scss',
     button: './assets/src/js/button.js',

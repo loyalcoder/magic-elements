@@ -78,6 +78,7 @@ class Load_Elementor
 
         Plugin::instance()->widgets_manager->register(new Elementor\Hello_World());
         Plugin::instance()->widgets_manager->register(new Elementor\Button());
+        Plugin::instance()->widgets_manager->register(new Elementor\Image_Accordion());
         Plugin::instance()->widgets_manager->register(new Elementor\Team());
         Plugin::instance()->widgets_manager->register(new Elementor\Image());
         Plugin::instance()->widgets_manager->register(new Elementor\Flip_Card());
@@ -131,6 +132,10 @@ class Load_Elementor
                 'src'     => EM_KIT_ASSETS . '/dist/button.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/button.css'),
             ],
+            'emkit-image-accordion' => [
+                'src'     => EM_KIT_ASSETS . '/dist/image_accordion.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/image_accordion.css'),
+            ],
             'emkit-flipcard' => [
                 'src'     => EM_KIT_ASSETS . '/dist/flipcard.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/flipcard.css'),
@@ -162,6 +167,7 @@ class Load_Elementor
             'Hello_World',
             'Image',
             'Button',
+            'Image_Accordion',
             'Team',
             'Flip_Card',
             'Heading',
