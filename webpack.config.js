@@ -18,6 +18,7 @@ module.exports = {
     path: path.resolve(__dirname, 'assets/dist'),
     filename: '[name].js', // For JS outputs
   },
+  
   module: {
     rules: [
       {
