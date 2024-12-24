@@ -78,12 +78,17 @@ class Load_Elementor
 
         Plugin::instance()->widgets_manager->register(new Elementor\Hello_World());
         Plugin::instance()->widgets_manager->register(new Elementor\Button());
+        Plugin::instance()->widgets_manager->register(new Elementor\Text_Editor());
+        Plugin::instance()->widgets_manager->register(new Elementor\Icon());
+        Plugin::instance()->widgets_manager->register(new Elementor\Social_Icon());
         Plugin::instance()->widgets_manager->register(new Elementor\Image_Accordion());
         Plugin::instance()->widgets_manager->register(new Elementor\Team());
         Plugin::instance()->widgets_manager->register(new Elementor\Image());
         Plugin::instance()->widgets_manager->register(new Elementor\Flip_Card());
         Plugin::instance()->widgets_manager->register(new Elementor\Heading());
         Plugin::instance()->widgets_manager->register(new Elementor\Feature_List());
+        Plugin::instance()->widgets_manager->register(new Elementor\Counter());
+        Plugin::instance()->widgets_manager->register(new Elementor\Category_List());
     }
 
     /**
@@ -110,9 +115,9 @@ class Load_Elementor
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/button.js'),
                 'deps'    => ['jquery']
             ],
-            'emkit-image-accordion-script' => [
-                'src'     => EM_KIT_ASSETS . '/dist/image_accordion.js',
-                'version' => filemtime(EM_KIT_PATH . '/assets/dist/image_accordion.js'),
+            'emkit-counter' => [
+                'src'     => EM_KIT_ASSETS . '/dist/counter.js',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/counter.js'),
                 'deps'    => ['jquery']
             ],
         ];
@@ -148,6 +153,10 @@ class Load_Elementor
                 'src'     => EM_KIT_ASSETS . '/dist/feature_list.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/feature_list.css'),
             ],
+            'emkit-icon' => [
+                'src'     => EM_KIT_ASSETS . '/dist/icon.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/icon.css'),
+            ],
             'emkit-style' => [
                 'src'     => EM_KIT_ASSETS . '/css/style.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/css/style.css'),
@@ -167,14 +176,18 @@ class Load_Elementor
             'Hello_World',
             'Image',
             'Button',
+            'Text_Editor',
+            'Icon',
+            'Social_Icon',
             'Image_Accordion',
             'Team',
             'Flip_Card',
             'Heading',
             'Feature_List',
+            'Counter',
+            'Category_List',
         ];
     }
-
     /**
      * Widget files
      *

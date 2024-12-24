@@ -1,0 +1,12 @@
+.social-main {
+  display: flex;
+  flex-wrap: wrap;
+  -moz-column-gap: 5px;
+  column-gap: 5px;
+}
+.social-main .social-icon {
+  background-color: #21759b;
+  border-radius: 8px;
+  padding: 13px 13px 5px 13px;
+}
+/*# sourceMappingURL=social.css.map */

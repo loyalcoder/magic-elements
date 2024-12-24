@@ -99,7 +99,7 @@ class Team extends Widget_Base
      */
     protected function register_controls()
     {
-        $this->register_button_controls();
+        $this->register_team_controls();
     }
 
     /**
@@ -108,7 +108,7 @@ class Team extends Widget_Base
      * @since 1.0.0
      * @access protected
      */
-    protected function register_button_controls()
+    protected function register_team_controls()
     {
         $this->start_controls_section(
 			'team_layout_content_section',
@@ -744,7 +744,7 @@ class Team extends Widget_Base
         $this->add_responsive_control(
 			'team_icon_size',
 			[
-				'label' => esc_html__( 'Size', 'textdomain' ),
+				'label' => esc_html__( 'Size', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
