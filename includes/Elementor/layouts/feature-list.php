@@ -1,12 +1,11 @@
 <div class="feature_list">
     <h2><?php echo esc_html($settings['feature_list_title']); ?></h2>
-    <div>
+    <div class="feature_rep">
         <?php if(!empty($feature_list)){
             foreach($feature_list as $list){
-                $icon = $list['feature_list_icons']['value'];
                 $text = $list['feature_list_item']; ?>
-                <div class="feture">
-                    <i class="<?php echo esc_attr($icon); ?> feature_icon"></i>
+                <div class="feature">
+                    <?php \Elementor\Icons_Manager::render_icon( $list['feature_list_icons'], [ 'aria-hidden' => 'true' ] ); ?>
                     <h4><?php echo esc_html($text); ?></h4>
                 </div>
         <?php    }
