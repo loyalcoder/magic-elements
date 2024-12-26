@@ -124,10 +124,10 @@ class Feature_List extends Widget_Base
         $this->add_control(
 			'feature_list_title',
 			[
-				'label' => esc_html__( 'Title', 'textdomain' ),
+				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Default title', 'textdomain' ),
-				'placeholder' => esc_html__( 'Type your title here', 'textdomain' ),
+				'default' => esc_html__( 'Default title', 'elementor-magic-kit' ),
+				'placeholder' => esc_html__( 'Type your title here', 'elementor-magic-kit' ),
 			]
 		);
         $this->end_controls_section();
@@ -135,59 +135,48 @@ class Feature_List extends Widget_Base
         $this->start_controls_section(
 			'feature_list_section',
 			[
-				'label' => esc_html__( 'Feature List', 'textdomain' ),
+				'label' => esc_html__( 'Feature List', 'elementor-magic-kit' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 
 		$repeater = new \Elementor\Repeater();
         $repeater->add_control(
-			'feature_list_icon',
+			'feature_list_icons',
 			[
-				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
 				'default' => [
 					'value' => 'fas fa-check',
 					'library' => 'fa-solid',
-				],
-				'recommended' => [
-					'fa-solid' => [
-						'circle',
-						'dot-circle',
-						'square-full',
-					],
-					'fa-regular' => [
-						'circle',
-						'dot-circle',
-						'square-full',
-					],
+                    
 				],
 			]
 		);
         $repeater->add_control(
 			'feature_list_item',
 			[
-				'label' => esc_html__( 'Title', 'textdomain' ),
+				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Default title', 'textdomain' ),
-				'placeholder' => esc_html__( 'Type your title here', 'textdomain' ),
+				'default' => esc_html__( 'Feature Item', 'elementor-magic-kit' ),
+				'placeholder' => esc_html__( 'Type your title here', 'elementor-magic-kit' ),
 			]
 		);
         $this->add_control(
 			'feature_list',
 			[
-				'label' => esc_html__( 'Repeater List', 'textdomain' ),
+				'label' => esc_html__( 'Repeater List', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'list_title' => esc_html__( 'Title #1', 'textdomain' ),
+						'feature_list_item' => esc_html__( 'Feature Item', 'elementor-magic-kit' ),
 					],
 					[
-						'list_title' => esc_html__( 'Title #2', 'textdomain' ),
+						'feature_list_item' => esc_html__( 'Feature Item', 'elementor-magic-kit' ),
 					],
 				],
-				'title_field' => '{{{ list_title }}}',
+				'title_field' => '{{{ feature_list_item }}}',
 			]
 		);
 
@@ -219,8 +208,10 @@ class Feature_List extends Widget_Base
     protected function render()
     {
         $settings    = $this->get_settings_for_display();
-        include __DIR__ . '/layouts/feature-list.php';
+        
         $feature_list = $settings['feature_list'];
+
+        include __DIR__ . '/layouts/feature-list.php';
     }
 
     /**
