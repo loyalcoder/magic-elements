@@ -10,6 +10,7 @@ module.exports = {
     icon: './assets/src/scss/icon.scss',
     social_icon: './assets/src/scss/social_icon.scss',
     counter: './assets/src/scss/counter.scss',
+    card: './assets/src/scss/card.scss',
     style: './assets/src/scss/style.scss',
     pricingtable: './assets/src/scss/pricingtable.scss',
     // iconbox: './assets/css/iconbox.scss',
@@ -21,6 +22,7 @@ module.exports = {
     // slider_css: './assets/css/slider.scss',
     button: './assets/src/js/button.js',
     counter: './assets/src/js/counter.js',
+    card: './assets/src/js/card.js',
     main: './assets/src/js/index.js',
   },
   output: {

@@ -90,6 +90,7 @@ class Load_Elementor
         Plugin::instance()->widgets_manager->register(new Elementor\Accordion());
         Plugin::instance()->widgets_manager->register(new Elementor\Counter());
         Plugin::instance()->widgets_manager->register(new Elementor\Category_List());
+        Plugin::instance()->widgets_manager->register(new Elementor\Card());
     }
 
     /**
@@ -124,6 +125,10 @@ class Load_Elementor
                 'src'     => EM_KIT_ASSETS . '/dist/image_accordion.js',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/image_accordion.js'),
             ],
+            'emkit-card' => [
+                'src'     => EM_KIT_ASSETS . '/dist/card.js',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/card.js'),
+            ],
             'emkit-counter' => [
                 'src'     => EM_KIT_ASSETS . '/dist/counter.js',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/counter.js'),
@@ -149,6 +154,10 @@ class Load_Elementor
             'emk-pricingtable' => [
                 'src'     => EM_KIT_ASSETS . '/dist/pricingtable.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/pricingtable.css'),
+            ],
+            'emk-card' => [
+                'src'     => EM_KIT_ASSETS . '/dist/card.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/card.css'),
             ],
             'emkit-image-accordion' => [
                 'src'     => EM_KIT_ASSETS . '/dist/image_accordion.css',
@@ -196,6 +205,7 @@ class Load_Elementor
             'Accordion',
             'Counter',
             'Category_List',
+            'Card',
         ];
     }
     /**
