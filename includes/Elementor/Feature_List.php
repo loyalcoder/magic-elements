@@ -170,10 +170,19 @@ class Feature_List extends Widget_Base
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'feature_list_item' => esc_html__( 'Feature Item', 'elementor-magic-kit' ),
+						'feature_list_item' => esc_html__( 'Feature Item 1', 'elementor-magic-kit' ),
 					],
 					[
-						'feature_list_item' => esc_html__( 'Feature Item', 'elementor-magic-kit' ),
+						'feature_list_item' => esc_html__( 'Feature Item 2', 'elementor-magic-kit' ),
+					],
+					[
+						'feature_list_item' => esc_html__( 'Feature Item 3', 'elementor-magic-kit' ),
+					],
+					[
+						'feature_list_item' => esc_html__( 'Feature Item 4', 'elementor-magic-kit' ),
+					],
+					[
+						'feature_list_item' => esc_html__( 'Feature Item 5', 'elementor-magic-kit' ),
 					],
 				],
 				'title_field' => '{{{ feature_list_item }}}',
@@ -281,10 +290,10 @@ class Feature_List extends Widget_Base
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
-					'top' => 0,
-					'right' => 0,
-					'bottom' => 0,
-					'left' => 0,
+					'top' => 8,
+					'right' => 8,
+					'bottom' => 8,
+					'left' => 8,
 					'unit' => 'px',
 					'isLinked' => false,
 				],
@@ -361,10 +370,10 @@ class Feature_List extends Widget_Base
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
-					'top' => 0,
-					'right' => 0,
-					'bottom' => 0,
-					'left' => 0,
+					'top' => 8,
+					'right' => 8,
+					'bottom' => 8,
+					'left' => 8,
 					'unit' => 'px',
 					'isLinked' => false,
 				],
@@ -479,8 +488,8 @@ class Feature_List extends Widget_Base
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
-					'top' => 0,
-					'right' => 0,
+					'top' => 8,
+					'right' => 8,
 					'bottom' => 0,
 					'left' => 0,
 					'unit' => 'px',
@@ -498,9 +507,9 @@ class Feature_List extends Widget_Base
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
-					'top' => 0,
+					'top' => 10,
 					'right' => 0,
-					'bottom' => 0,
+					'bottom' => 10,
 					'left' => 0,
 					'unit' => 'px',
 					'isLinked' => false,
@@ -517,7 +526,7 @@ class Feature_List extends Widget_Base
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
-					'top' => 0,
+					'top' => 10,
 					'right' => 0,
 					'bottom' => 0,
 					'left' => 0,
@@ -565,10 +574,6 @@ class Feature_List extends Widget_Base
 						'max' => 100,
 					],
 				],
-				'default' => [
-					'unit' => 'px',
-					'size' => 14,
-				],
 				'selectors' => [
 					'{{WRAPPER}} .feature svg' => 'width: {{SIZE}}{{UNIT}};',
 				],
@@ -602,14 +607,6 @@ class Feature_List extends Widget_Base
 				'label' => esc_html__( 'Border Radius', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'default' => [
-					'top' => 0,
-					'right' => 0,
-					'bottom' => 0,
-					'left' => 0,
-					'unit' => 'px',
-					'isLinked' => false,
-				],
 				'selectors' => [
 					'{{WRAPPER}} .feature svg' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -622,10 +619,10 @@ class Feature_List extends Widget_Base
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
-					'top' => 0,
-					'right' => 0,
-					'bottom' => 0,
-					'left' => 0,
+					'top' => 4,
+					'right' => 4,
+					'bottom' => 4,
+					'left' => 4,
 					'unit' => 'px',
 					'isLinked' => false,
 				],
@@ -725,6 +722,13 @@ class Feature_List extends Widget_Base
 				],
 			]
 		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'button_content_typography',
+				'selector' => '{{WRAPPER}} .feature_button a',
+			]
+		);
 		//start-normal-hover
 		$this->start_controls_tabs(
 			'button_style_tabs'
@@ -744,13 +748,6 @@ class Feature_List extends Widget_Base
 				'selectors' => [
 					'{{WRAPPER}} .feature_button a' => 'color: {{VALUE}}',
 				],
-			]
-		);
-		$this->add_group_control(
-			\Elementor\Group_Control_Typography::get_type(),
-			[
-				'name' => 'button_normal_content_typography',
-				'selector' => '{{WRAPPER}} .feature_button a',
 			]
 		);
 		$this->add_group_control(
@@ -784,13 +781,13 @@ class Feature_List extends Widget_Base
 				'default' => [
 					'top' => 0,
 					'right' => 0,
-					'bottom' => 0,
-					'left' => 0,
+					'bottom' => 8,
+					'left' => 8,
 					'unit' => 'px',
 					'isLinked' => false,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .feature_button a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .feature_button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -801,15 +798,15 @@ class Feature_List extends Widget_Base
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
-					'top' => 0,
+					'top' => 10,
 					'right' => 0,
-					'bottom' => 0,
+					'bottom' => 10,
 					'left' => 0,
 					'unit' => 'px',
 					'isLinked' => false,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .feature_button a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .feature_button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -830,13 +827,6 @@ class Feature_List extends Widget_Base
 				'selectors' => [
 					'{{WRAPPER}} .feature_button a:hover' => 'color: {{VALUE}}',
 				],
-			]
-		);
-		$this->add_group_control(
-			\Elementor\Group_Control_Typography::get_type(),
-			[
-				'name' => 'button_hover_content_typography',
-				'selector' => '{{WRAPPER}} .feature_button a:hover',
 			]
 		);
 		$this->add_group_control(
@@ -887,13 +877,13 @@ class Feature_List extends Widget_Base
 				'default' => [
 					'top' => 0,
 					'right' => 0,
-					'bottom' => 0,
-					'left' => 0,
+					'bottom' => 8,
+					'left' => 8,
 					'unit' => 'px',
 					'isLinked' => false,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .feature_button a:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .feature_button:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -904,15 +894,15 @@ class Feature_List extends Widget_Base
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
-					'top' => 0,
+					'top' => 10,
 					'right' => 0,
-					'bottom' => 0,
+					'bottom' => 10,
 					'left' => 0,
 					'unit' => 'px',
 					'isLinked' => false,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .feature_button a:hover' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .feature_button:hover' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -935,7 +925,7 @@ class Feature_List extends Widget_Base
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
-					'top' => 0,
+					'top' => 30,
 					'right' => 0,
 					'bottom' => 0,
 					'left' => 0,
@@ -943,7 +933,7 @@ class Feature_List extends Widget_Base
 					'isLinked' => false,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .feature_button a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .feature_button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);

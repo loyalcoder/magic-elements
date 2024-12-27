@@ -1,4 +1,23 @@
-.feature{
-    display: flex;
-    align-items: center;
+.feature_list{
+    background-color: #ddd;
+    h2{
+        background-color: #2196f3;
+        color: white;
+    }
+    .feature{
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid white;
+        padding-bottom: 10px;
+        svg{
+            fill: white;
+            background-color: #019789;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+        }
+    }
+    .feature_button{
+        background-color: red;
+    }
 }
