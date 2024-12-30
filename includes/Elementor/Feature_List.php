@@ -311,7 +311,7 @@ class Feature_List extends Widget_Base
 				'default' => [
 					'top' => 0,
 					'right' => 0,
-					'bottom' => 0,
+					'bottom' => 30,
 					'left' => 0,
 					'unit' => 'px',
 					'isLinked' => false,
@@ -391,7 +391,7 @@ class Feature_List extends Widget_Base
 				'default' => [
 					'top' => 0,
 					'right' => 0,
-					'bottom' => 0,
+					'bottom' => 30,
 					'left' => 0,
 					'unit' => 'px',
 					'isLinked' => false,
@@ -554,28 +554,6 @@ class Feature_List extends Widget_Base
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .feature svg' => 'fill: {{VALUE}}',
-				],
-			]
-		);
-        $this->add_responsive_control(
-			'feature_icon_size',
-			[
-				'label' => esc_html__( 'Size', 'textdomain' ),
-				'type' => \Elementor\Controls_Manager::SLIDER,
-				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'range' => [
-					'px' => [
-						'min' => 0,
-						'max' => 1000,
-						'step' => 1,
-					],
-					'%' => [
-						'min' => 0,
-						'max' => 100,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} .feature svg' => 'width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -779,15 +757,15 @@ class Feature_List extends Widget_Base
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
-					'top' => 0,
-					'right' => 0,
-					'bottom' => 8,
-					'left' => 8,
+					'top' => 4,
+					'right' => 4,
+					'bottom' => 4,
+					'left' => 4,
 					'unit' => 'px',
 					'isLinked' => false,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .feature_button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .feature_button a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -799,14 +777,14 @@ class Feature_List extends Widget_Base
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
 					'top' => 10,
-					'right' => 0,
+					'right' => 30,
 					'bottom' => 10,
-					'left' => 0,
+					'left' => 30,
 					'unit' => 'px',
 					'isLinked' => false,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .feature_button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .feature_button a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -868,25 +846,7 @@ class Feature_List extends Widget_Base
 				'selector' => '{{WRAPPER}} .feature_button a:hover',
 			]
 		);
-		$this->add_responsive_control(
-			'button_hover_border_radius',
-			[
-				'label' => esc_html__( 'Border Radius', 'textdomain' ),
-				'type' => \Elementor\Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'default' => [
-					'top' => 0,
-					'right' => 0,
-					'bottom' => 8,
-					'left' => 8,
-					'unit' => 'px',
-					'isLinked' => false,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .feature_button:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
+		
 		$this->add_responsive_control(
 			'button_hover_padding',
 			[
@@ -895,14 +855,14 @@ class Feature_List extends Widget_Base
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
 					'top' => 10,
-					'right' => 0,
+					'right' => 30,
 					'bottom' => 10,
-					'left' => 0,
+					'left' => 30,
 					'unit' => 'px',
 					'isLinked' => false,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .feature_button:hover' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .feature_button a:hover' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);

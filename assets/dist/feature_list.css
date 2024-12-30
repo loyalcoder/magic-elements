@@ -7,6 +7,7 @@
 .feature_list h2 {
   background-color: #2196f3;
   color: white;
+  margin-bottom: 20px;
 }
 .feature_list .feature {
   display: flex;
@@ -21,6 +22,7 @@
   width: 20px;
   border-radius: 50%;
 }
-.feature_list .feature_button {
+.feature_list .feature_button a {
   background-color: red;
+  color: white;
 }

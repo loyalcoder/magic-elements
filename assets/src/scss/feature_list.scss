@@ -3,6 +3,8 @@
     h2{
         background-color: #2196f3;
         color: white;
+        margin-bottom: 20px;
+        
     }
     .feature{
         display: flex;
@@ -18,6 +20,9 @@
         }
     }
     .feature_button{
+       a{
         background-color: red;
+        color: white;
+       }
     }
 }
