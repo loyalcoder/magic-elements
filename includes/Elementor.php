@@ -90,6 +90,7 @@ class Load_Elementor
         Plugin::instance()->widgets_manager->register(new Elementor\Accordion());
         Plugin::instance()->widgets_manager->register(new Elementor\Counter());
         Plugin::instance()->widgets_manager->register(new Elementor\Category_List());
+        Plugin::instance()->widgets_manager->register(new Elementor\Tab());
     }
 
     /**
@@ -129,6 +130,11 @@ class Load_Elementor
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/counter.js'),
                 'deps'    => ['jquery']
             ],
+            'emkit-tab' => [
+                'src'     => EM_KIT_ASSETS . '/dist/tab.js',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/tab.js'),
+                'deps'    => ['jquery']
+            ],
         ];
     }
 
@@ -166,6 +172,10 @@ class Load_Elementor
                 'src'     => EM_KIT_ASSETS . '/dist/icon.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/icon.css'),
             ],
+            'emk-tab' => [
+                'src'     => EM_KIT_ASSETS . '/dist/tab.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/tab.css'),
+            ],
             'emkit-style' => [
                 'src'     => EM_KIT_ASSETS . '/css/style.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/css/style.css'),
@@ -196,6 +206,7 @@ class Load_Elementor
             'Accordion',
             'Counter',
             'Category_List',
+            'Tab',
         ];
     }
     /**
