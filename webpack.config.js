@@ -9,11 +9,11 @@ module.exports = {
     team: './assets/src/scss/team.scss',
     style: './assets/src/scss/style.scss',
     image_accordion: './assets/src/scss/image_accordion.scss',
-    // iconbox: './assets/css/iconbox.scss',
-    // slider_css: './assets/css/slider.scss',
     button: './assets/src/js/button.js',
     image_accordion: './assets/src/js/image_accordion.js',
     main: './assets/src/js/index.js',
+    // admin part 
+    admin: './assets/src/admin/index.js',
   },
   output: {
     path: path.resolve(__dirname, 'assets/dist'),

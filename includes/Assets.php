@@ -13,10 +13,16 @@ class Assets
     public function __construct()
     {
         //add_action('wp_enqueue_scripts', [$this, 'register_assets']);
+        add_action('admin_enqueue_scripts', [$this, 'register_admin_assets']);
+    
+        /**
+         * Register admin assets
+         */
+        
     }
 
     /**
-     * Pkun scripts
+     * Scripts
      *
      * @return array
      */
@@ -27,17 +33,12 @@ class Assets
                 'src'     => EM_KIT_ASSETS . '/js/frontend.js',
                 'version' => filemtime(EM_KIT_PATH . '/assets/js/frontend.js'),
                 'deps'    => ['jquery']
-            ],
-            'pkun-enquiry-script' => [
-                'src'     => EM_KIT_ASSETS . '/js/enquiry.js',
-                'version' => filemtime(EM_KIT_PATH . '/assets/js/enquiry.js'),
-                'deps'    => ['jquery']
             ]
         ];
     }
 
     /**
-     * Pkun styles
+     * Styles
      *
      * @return array
      */
@@ -66,16 +67,29 @@ class Assets
             wp_register_script($handle, $script['src'], $deps, $version, true);
         }
 
-        wp_localize_script('pkun-enquiry-script', 'EM_KIT_data', [
-            'ajax_url' => admin_url('admin-ajax.php'),
-            'message' => __('Message from enquiry form', 'pkun'),
-        ]);
-
         foreach ($styles as $handle => $style) {
             $deps = isset($style['deps']) ? $style['deps'] : false;
             $version = isset($style['version']) ? $style['version'] : EM_KIT_VERSION;
 
             wp_register_style($handle, $style['src'], $deps, $version);
+        }
+    }
+    public function register_admin_assets() {
+        if (isset($_GET['page']) && $_GET['page'] === 'magic-kit-dashboard') {
+            wp_enqueue_style(
+                'elementor-magic-kit-admin',
+                EM_KIT_ASSETS . '/dist/admin.css',
+                [],
+                filemtime(EM_KIT_PATH . '/assets/dist/admin.css')
+            );
+
+            wp_enqueue_script(
+                'elementor-magic-kit-admin',
+                EM_KIT_ASSETS . '/dist/admin.js', 
+                ['jquery'],
+                filemtime(EM_KIT_PATH . '/assets/dist/admin.js'),
+                true
+            );
         }
     }
 }

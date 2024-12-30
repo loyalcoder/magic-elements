@@ -22,12 +22,12 @@ class Menu
      */
     public function admin_menu()
     {
-        $parent_slug = 'pkun-dashboard';
+        $parent_slug = 'magic-kit-dashboard';
         $capability = 'manage_options';
 
-        add_menu_page(__('Pkun Dashboard', 'pkun'), __('Pkun', 'pkun'), $capability, $parent_slug, [$this, 'dashboard_page'], 'dashicons-buddicons-groups');
-        add_submenu_page($parent_slug, __('Settings', 'pkun'), __('Settings', 'pkun'), $capability, $parent_slug, [$this, 'dashboard_page']);
-        add_submenu_page($parent_slug, __('Report', 'pkun'), __('Report', 'pkun'), $capability, 'pkun-report', [$this, 'report_page']);
+        add_menu_page(__('MagicKit', 'magic-kit'), __('Magic Kit', 'magic-kit'), $capability, $parent_slug, [$this, 'dashboard_page'], 'dashicons-buddicons-groups');
+        add_submenu_page($parent_slug, __('Settings', 'magic-kit'), __('Settings', 'magic-kit'), $capability, $parent_slug, [$this, 'dashboard_page']);
+        add_submenu_page($parent_slug, __('Report', 'magic-kit'), __('Report', 'magic-kit'), $capability, 'magic-kit-report', [$this, 'report_page']);
     }
 
     /**
@@ -42,7 +42,7 @@ class Menu
     }
 
     /**
-     * Pkun report page
+     * Magic Kit report page
      *
      * @return void
      */
