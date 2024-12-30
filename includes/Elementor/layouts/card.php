@@ -1,9 +1,12 @@
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="<?php echo esc_url($img); ?>" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title"><?php  echo esc_html($title) ?>  </h5>
-    <p class="card-text"><?php  echo esc_html($desc) ?>  </p>
-    <a href="#" class="btn btn-primary"><?php  echo esc_html($button) ?></a>
+<div class="card-widget">
+  <div class="card-image">
+      <img src="<?php echo esc_url($settings['card_image']['url']); ?>" alt="">
+  </div>
+  <div class="card-content">
+      <h3 class="card-title"><?php echo esc_html($settings['card_title']); ?></h3>
+      <p class="card-description"><?php echo esc_html($settings['card_description']); ?></p>
+      <a class="card-button" href="<?php echo esc_url($settings['card_button_link']['url']); ?>">
+          <?php echo esc_html($settings['card_button_text']); ?> <!-- Only button text -->
+      </a>
   </div>
 </div>
-

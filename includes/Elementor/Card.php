@@ -115,78 +115,387 @@ class Card extends Widget_Base
      */
     protected function register_card_controls()
     {
-            // Section: Content
-            $this->start_controls_section(
-                'content_section',
-                [
-                    'label' => __( 'Content', 'plugin-name' ),
-                    'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-                ]
-            );
-    
-            // Image Control
-            $this->add_control(
-                'image',
-                [
-                    'label' => __( 'Choose Image', 'plugin-name' ),
-                    'type' => \Elementor\Controls_Manager::MEDIA,
-                    'default' => [
-                        'url' => \Elementor\Utils::get_placeholder_image_src(),
-                    ],
-                ]
-            );
-    
-            // Title Control
-            $this->add_control(
-                'title',
-                [
-                    'label' => __( 'Title', 'plugin-name' ),
-                    'type' => \Elementor\Controls_Manager::TEXT,
-                    'default' => __( 'Card title', 'plugin-name' ),
-                    'placeholder' => __( 'Enter your title', 'plugin-name' ),
-                ]
-            );
-    
-            // Paragraph Control
-            $this->add_control(
-                'paragraph',
-                [
-                    'label' => __( 'Paragraph', 'plugin-name' ),
-                    'type' => \Elementor\Controls_Manager::TEXTAREA,
-                    'default' => __( 'Some quick example text to build on the card title and make up the bulk of the card s content.', 'plugin-name' ),
-                    'placeholder' => __( 'Enter your text here', 'plugin-name' ),
-                ]
-            );
-    
-            // Button Text Control
-            $this->add_control(
-                'button_text',
-                [
-                    'label' => __( 'Button Text', 'plugin-name' ),
-                    'type' => \Elementor\Controls_Manager::TEXT,
-                    'default' => __( 'Click Here', 'plugin-name' ),
-                    'placeholder' => __( 'Enter button text', 'plugin-name' ),
-                ]
-            );
-    
-            // Button URL Control
-            $this->add_control(
-                'button_url',
-                [
-                    'label' => __( 'Button URL', 'plugin-name' ),
-                    'type' => \Elementor\Controls_Manager::URL,
-                    'placeholder' => __( 'https://your-link.com', 'plugin-name' ),
-                    'default' => [
-                        'url' => '',
-                        'is_external' => false,
-                        'nofollow' => false,
-                    ],
-                ]
-            );
-    
-            $this->end_controls_section();
+          
+            // Content Controls
+        $this->start_controls_section(
+            'card_section',
+            [
+                'label' => esc_html__('Card', 'elementor-magic-kit'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
 
-        // Style section
+        $this->add_control(
+            'card_title',
+            [
+                'label' => esc_html__('Title', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__('Card Title', 'elementor-magic-kit'),
+                'placeholder' => esc_html__('Enter your title', 'elementor-magic-kit'),
+            ]
+        );
+
+        $this->add_control(
+            'card_description',
+            [
+                'label' => esc_html__('Description', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'default' => esc_html__('This is the card description.', 'elementor-magic-kit'),
+                'placeholder' => esc_html__('Enter your description', 'elementor-magic-kit'),
+            ]
+        );
+
+        $this->add_control(
+            'card_image',
+            [
+                'label' => esc_html__('Image', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'card_button_text',
+            [
+                'label' => esc_html__('Button Text', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__('Read More', 'elementor-magic-kit'),
+                'placeholder' => esc_html__('Enter button text', 'elementor-magic-kit'),
+            ]
+        );
+                
+        $this->add_control(
+            'card_button_link',
+            [
+                'label' => esc_html__('Button Link', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::URL,
+                'placeholder' => esc_html__('https://your-link.com', 'elementor-magic-kit'),
+                'default' => [
+                    'url' => '',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // Style Controls
+        $this->start_controls_section(
+            'card_style_section',
+            [
+                'label' => esc_html__('Card', 'elementor-magic-kit'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'card_align',
+            [
+                'label' => esc_html__('Alignment', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => esc_html__('Left', 'elementor-magic-kit'),
+                        'icon' => 'eicon-text-align-left',
+                    ],
+                    'center' => [
+                        'title' => esc_html__('Center', 'elementor-magic-kit'),
+                        'icon' => 'eicon-text-align-center',
+                    ],
+                    'right' => [
+                        'title' => esc_html__('Right', 'elementor-magic-kit'),
+                        'icon' => 'eicon-text-align-right',
+                    ],
+                ],
+                'default' => 'center',
+                'toggle' => true,
+                'selectors' => [
+                    '{{WRAPPER}} .card-widget' => 'text-align: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'card_width',
+            [
+                'label' => esc_html__('Card Width', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 200,
+                        'max' => 1200,
+                    ],
+                    '%' => [
+                        'min' => 10,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => '%',
+                    'size' => 100,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .card-widget' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'card_height',
+            [
+                'label' => esc_html__('Card Height', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 100,
+                        'max' => 800,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .card-widget' => 'height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'card_border_color',
+            [
+                'label' => esc_html__('Border Color', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .card-widget' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'card_border_width',
+            [
+                'label' => esc_html__('Border Width', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 20,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .card-widget' => 'border-width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'card_border_radius',
+            [
+                'label' => esc_html__('Border Radius', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 50,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .card-widget' => 'border-radius: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        // Card Padding Control
+        $this->add_control(
+            'card_padding',
+            [
+                'label' => esc_html__('Padding', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .card-widget' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        // Card Background Color
+        $this->add_group_control(
+            \Elementor\Group_Control_Background::get_type(),
+            [
+                'name' => 'background',
+                'types' => ['classic', 'gradient', 'video'],
+                'selector' => '{{WRAPPER}} .card-widget',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'title_section',
+            [
+                'label' => esc_html__('Title', 'elementor-magic-kit'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        // Card Title Settings
+        $this->add_control(
+            'card_title_color',
+            [
+                'label' => esc_html__('Title Color', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .card-title' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'title_typography',
+                'selector' => '{{WRAPPER}} .card-title',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'description_section',
+            [
+                'label' => esc_html__('Description', 'elementor-magic-kit'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        // Card Description Settings
+        $this->add_control(
+            'card_description_color',
+            [
+                'label' => esc_html__('Description Color', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .card-description' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'description_typography',
+                'selector' => '{{WRAPPER}} .card-description',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'button_section',
+            [
+                'label' => esc_html__('Button', 'elementor-magic-kit'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        // Start Tabs
+        $this->start_controls_tabs('button_tabs');
+
+        // Normal Tab
+        $this->start_controls_tab(
+            'button_normal_tab',
+            [
+                'label' => esc_html__('Normal', 'elementor-magic-kit'),
+            ]
+        );
+
+        // Button Background Color
+        $this->add_control(
+            'card_button_background_color',
+            [
+                'label' => esc_html__('Background Color', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .card-button' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        // Button Text Color
+        $this->add_control(
+            'card_button_color',
+            [
+                'label' => esc_html__('Text Color', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .card-button' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        // Button Typography
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'button_typography',
+                'selector' => '{{WRAPPER}} .card-button',
+            ]
+        );
+
+        // Button Padding
+        $this->add_control(
+            'card_button_padding',
+            [
+                'label' => esc_html__('Padding', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .card-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab(); // End Normal Tab
+
+        // Hover Tab
+        $this->start_controls_tab(
+            'button_hover_tab',
+            [
+                'label' => esc_html__('Hover', 'elementor-magic-kit'),
+            ]
+        );
+
+        // Button Hover Background Color
+        $this->add_control(
+            'card_button_hover_color',
+            [
+                'label' => esc_html__('Background Hover Color', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .card-button:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'card_button_hover_text_color',
+            [
+                'label' => esc_html__('Text Hover Color', 'elementor-magic-kit'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .card-button:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab(); // End Hover Tab
+
+        $this->end_controls_tabs(); // End Tabs
+
+        $this->end_controls_section();
+
 
 
     }
@@ -202,11 +511,6 @@ class Card extends Widget_Base
     protected function render()
     {
         $settings    = $this->get_settings_for_display();
-        $img = $settings['image']['url'];
-        $title = $settings['title'];
-        $desc = $settings['paragraph'];
-        $button = $settings['button_text'];
-        
 
         include __DIR__ . '/layouts/card.php';
     }
