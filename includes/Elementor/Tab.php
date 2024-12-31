@@ -120,68 +120,59 @@ class Tab extends Widget_Base
             'tabs_section',
             [
                 'label' => __( 'Tabs', 'elementor' ),
-                'tab' => Controls_Manager::TAB_CONTENT,
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
-         // Tab Type (Horizontal or Vertical)
-         $this->add_control(
-            'tab_type',
-            [
-                'label' => __( 'Tab Type', 'elementor' ),
-                'type' =>  \Elementor\Controls_Manager::SELECT,
-                'options' => [
-                    'horizontal' => __( 'Horizontal', 'elementor' ),
-                    'vertical' => __( 'Vertical', 'elementor' ),
-                ],
-                'default' => 'horizontal',
-            ]
-        );
+        $repeater = new \Elementor\Repeater();
 
-        // Repeater for tabs
-        $repeater = new  \Elementor\Repeater();
-
-        // Tab Title
         $repeater->add_control(
             'tab_title',
             [
                 'label' => __( 'Tab Title', 'elementor' ),
-                'type' =>  \Elementor\Controls_Manager::TEXT,
+                'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => 'Tab Title',
             ]
         );
 
-        // Tab Content
+        $repeater->add_control(
+            'tab_content_title',
+            [
+                'label' => __( 'Tab Content Title', 'elementor' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => 'Content for this tab.',
+            ]
+        );
+
         $repeater->add_control(
             'tab_content',
             [
                 'label' => __( 'Tab Content', 'elementor' ),
-                'type' =>  \Elementor\Controls_Manager::WYSIWYG,
-                'default' => 'Tab content goes here.',
+                'type' => \Elementor\Controls_Manager::WYSIWYG,
+                'default' => 'Content for this tab.',
             ]
         );
 
-        // Add Repeater for tabs
         $this->add_control(
             'tabs',
             [
                 'label' => __( 'Tabs', 'elementor' ),
-                'type' =>  \Elementor\Controls_Manager::REPEATER,
+                'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
                     [
                         'tab_title' => __( 'Tab 1', 'elementor' ),
-                        'tab_content' => __( 'Content for Tab 1', 'elementor' ),
+                        'tab_content' => __( 'This is the content for the first tab.', 'elementor' ),
                     ],
                     [
                         'tab_title' => __( 'Tab 2', 'elementor' ),
-                        'tab_content' => __( 'Content for Tab 2', 'elementor' ),
+                        'tab_content' => __( 'This is the content for the second tab.', 'elementor' ),
                     ],
                 ],
                 'title_field' => '{{{ tab_title }}}',
             ]
         );
 
-        $this->end_controls_section();
+        $this->end_controls_section(); 
       
     }
 
@@ -197,10 +188,8 @@ class Tab extends Widget_Base
     {
         $settings    = $this->get_settings_for_display();
 
-    
-        $tab_type = $settings['tab_type'];
         $tabs = $settings['tabs'];
-
+       
         include __DIR__ . '/layouts/tab.php';
     }
 

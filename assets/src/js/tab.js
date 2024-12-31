@@ -17,30 +17,26 @@ import "./../scss/tab.scss"
 
       EmKitTab: function ($scope) {
         $(document).ready(function() {
-          // Horizontal Tab Logic
-          $('.horizontal-tabs .tab').first().addClass('active');
-          $('.tab-content .content').first().addClass('active');
+          // Activate the first tab by default
+          $('.tab').first().addClass('active');
+          $('.content').first().addClass('active');
         
-          $('.horizontal-tabs .tab').on('click', function() {
+          // On tab click, show the corresponding content
+          $('.tab').on('click', function() {
             var tabId = $(this).data('tab');
-            $('.horizontal-tabs .tab').removeClass('active');
-            $('.tab-content .content').removeClass('active');
-            $(this).addClass('active');
-            $('#tab-' + tabId).addClass('active');
-          });
         
-          // Vertical Tab Logic
-          $('.vertical-tabs .tab').first().addClass('active');
-          $('.tab-content .content').first().addClass('active');
+            // Remove active class from all tabs and contents
+            $('.tab').removeClass('active');
+            $('.content').removeClass('active');
         
-          $('.vertical-tabs .tab').on('click', function() {
-            var tabId = $(this).data('tab');
-            $('.vertical-tabs .tab').removeClass('active');
-            $('.tab-content .content').removeClass('active');
+            // Add active class to clicked tab and corresponding content
             $(this).addClass('active');
             $('#tab-' + tabId).addClass('active');
           });
         });
+        
+        
+        
         
         
     },
