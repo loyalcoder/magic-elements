@@ -173,6 +173,151 @@ class Tab extends Widget_Base
         );
 
         $this->end_controls_section(); 
+
+        // style section
+        $this->start_controls_section(
+			'tabs_style_section',
+			[
+				'label' => esc_html__( 'Tabs', 'textdomain' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'tabs_column gap',
+			[
+				'label' => esc_html__( 'Gap Between Tabs', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .tabs' => 'column-gap: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+        
+		$this->add_control(
+			'tabs_distance_from_content',
+			[
+				'label' => esc_html__( 'Distance From Content', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .tab-content' => 'margin-top: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+
+   
+
+    // control for tab
+
+    $this->start_controls_tabs(
+        'style_tabs'
+    );
+    // normal tab
+    $this->start_controls_tab(
+        'style_normal_tab',
+        [
+            'label' => esc_html__( 'Normal', 'textdomain' ),
+        ]
+    );
+
+     // Background Color Control
+     $this->add_group_control(
+        \Elementor\Group_Control_Background::get_type(),
+        [
+            'name' => 'background',
+            'types' => [ 'classic', 'gradient', 'video' ],
+            'selector' => '{{WRAPPER}} .tab',
+        ]
+    );
+
+    
+
+    // Box Shadow Control
+    $this->add_group_control(
+        \Elementor\Group_Control_Box_Shadow::get_type(),
+        [
+            'name' => 'tab_box_shadow',
+            'label' => __('Box Shadow', 'plugin-name'),
+            'selector' => '{{WRAPPER}} .tab',
+        ]
+    );
+    
+    $this->end_controls_tab();
+
+    // hover tab
+    $this->start_controls_tab(
+        'style_hover_tab',
+        [
+            'label' => esc_html__( 'Hover', 'textdomain' ),
+        ]
+    );
+    
+    $this->end_controls_tab();
+    // active tab
+    $this->start_controls_tab(
+        'style_active_tab',
+        [
+            'label' => esc_html__( 'Active', 'textdomain' ),
+        ]
+    );
+    
+    $this->end_controls_tab();
+    
+    $this->end_controls_tabs();
+
+    // Border Radius Control
+    $this->add_control(
+        'tab_border_radius',
+        [
+            'label' => __('Border Radius', 'plugin-name'),
+            'type' => \Elementor\Controls_Manager::DIMENSIONS,
+            'size_units' => ['px', '%', 'em'],
+            'selectors' => [
+                '{{WRAPPER}} .tab' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
+
+    // Margin Control
+    $this->add_responsive_control(
+        'tab_padding',
+        [
+            'label' => __('Padding', 'plugin-name'),
+            'type' => \Elementor\Controls_Manager::DIMENSIONS,
+            'size_units' => ['px', '%', 'em'],
+            'selectors' => [
+                '{{WRAPPER}} .tab' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
+
+	$this->end_controls_section();
+
       
     }
 
