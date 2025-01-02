@@ -265,7 +265,7 @@ class Tab extends Widget_Base
             'label' => __('Box Shadow', 'plugin-name'),
             'selector' => '{{WRAPPER}} .tab',
         ]
-    );
+    ); 
     
     $this->end_controls_tab();
 
