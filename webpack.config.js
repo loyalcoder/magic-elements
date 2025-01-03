@@ -21,6 +21,7 @@ module.exports = {
     // iconbox: './assets/css/iconbox.scss',
     // slider_css: './assets/css/slider.scss',
     button: './assets/src/js/button.js',
+    image_accordion: './assets/src/js/image_accordion.js',
     counter: './assets/src/js/counter.js',
     main: './assets/src/js/index.js',
   },
