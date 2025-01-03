@@ -83,7 +83,7 @@ class Image extends Widget_Base
      */
     public function get_categories()
     {
-        return ['pkun-widgets'];
+        return ['emk-widgets'];
     }
 
     public function get_script_depends()

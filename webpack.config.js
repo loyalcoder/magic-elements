@@ -17,6 +17,7 @@ module.exports = {
     button: './assets/src/js/button.js',
     pricingtable: './assets/src/js/pricingtable.js',
     image_accordion: './assets/src/scss/image_accordion.scss',
+    feature_list: './assets/src/scss/feature_list.scss',
     // iconbox: './assets/css/iconbox.scss',
     // slider_css: './assets/css/slider.scss',
     button: './assets/src/js/button.js',
