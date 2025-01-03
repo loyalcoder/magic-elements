@@ -88,7 +88,6 @@ class Load_Elementor
         Plugin::instance()->widgets_manager->register(new Elementor\Flip_Card());
         Plugin::instance()->widgets_manager->register(new Elementor\Heading());
         Plugin::instance()->widgets_manager->register(new Elementor\Feature_List());
-        Plugin::instance()->widgets_manager->register(new Elementor\Accordion());
         Plugin::instance()->widgets_manager->register(new Elementor\Counter());
         Plugin::instance()->widgets_manager->register(new Elementor\Category_List());
     }
@@ -199,7 +198,6 @@ class Load_Elementor
             'Flip_Card',
             'Heading',
             'Feature_List',
-            'Accordion',
             'Counter',
             'Category_List',
         ];

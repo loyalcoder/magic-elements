@@ -5,3 +5,5 @@ import "./../scss/feature_list.scss";
 import "./../scss/icon.scss";
 import "./../scss/social_icon.scss";
 import "./../scss/counter.scss";
+import "./../scss/image_accordion.scss"
+

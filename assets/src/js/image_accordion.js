@@ -1,4 +1,3 @@
-import "./../scss/image_accordion.scss"
 (function ($, elementor) {
     "use strict";
     var $window = $(elementor);

@@ -330,19 +330,19 @@ class Team extends Widget_Base
 				'default' => [
 					[
 						'social_icon' => [
-							'value' => 'fab fa-facebook',
+							'value' => 'fab fa-star',
 							'library' => 'fa-brands',
 						],
 					],
 					[
 						'social_icon' => [
-							'value' => 'fab fa-twitter',
+							'value' => 'fab fa-star',
 							'library' => 'fa-brands',
 						],
 					],
 					[
 						'social_icon' => [
-							'value' => 'fab fa-youtube',
+							'value' => 'fab fa-star',
 							'library' => 'fa-brands',
 						],
 					],
