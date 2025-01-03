@@ -11,5 +11,6 @@ class Admin
     {
         new Admin\Menu();
         new Admin\Handler();
+        new Admin\Ajax();
     }
 }

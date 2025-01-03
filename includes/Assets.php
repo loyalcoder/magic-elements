@@ -88,7 +88,7 @@ class Assets
                 EM_KIT_ASSETS . '/dist/admin.js', 
                 ['jquery'],
                 filemtime(EM_KIT_PATH . '/assets/dist/admin.js'),
-                true
+                false
             );
         }
     }
