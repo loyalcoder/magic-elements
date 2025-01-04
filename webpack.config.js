@@ -12,6 +12,7 @@ module.exports = {
     counter: './assets/src/scss/counter.scss',
     style: './assets/src/scss/style.scss',
     pricingtable: './assets/src/scss/pricingtable.scss',
+    accordion: './assets/src/scss/accordion.scss',
     // iconbox: './assets/css/iconbox.scss',
     // slider_css: './assets/css/slider.scss',
     button: './assets/src/js/button.js',
@@ -21,6 +22,7 @@ module.exports = {
     // slider_css: './assets/css/slider.scss',
     button: './assets/src/js/button.js',
     counter: './assets/src/js/counter.js',
+    accordion: './assets/src/js/accordion.js',
     main: './assets/src/js/index.js',
   },
   output: {
