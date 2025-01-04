@@ -318,8 +318,7 @@ class Category_List extends Widget_Base
                     '{{WRAPPER}} .category-list-widget li:hover i' => 'color: {{VALUE}};',
                 ],
             ]
-        );
-    
+        ); 
         $this->add_responsive_control(
             'icon_size',
             [
