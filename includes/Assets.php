@@ -15,9 +15,12 @@ class Assets
         //add_action('wp_enqueue_scripts', [$this, 'register_assets']);
         add_action('admin_enqueue_scripts', [$this, 'register_admin_assets']);
     
-        /**
-         * Register admin assets
-         */
+
+         add_action( 'elementor/editor/after_enqueue_styles', [$this, 'emk_elementor_css'] );
+
+         /**
+          * Enqueue editor styles
+          */
         
     }
 
@@ -101,5 +104,8 @@ class Assets
                 true
             );
         }
+    }
+    public function emk_elementor_css() {
+        wp_enqueue_style( 'emk-editor', EM_KIT_ASSETS . '/css/editor.css', [], EM_KIT_VERSION );
     }
 }
