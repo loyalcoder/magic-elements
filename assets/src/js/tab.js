@@ -16,30 +16,33 @@ import "./../scss/tab.scss"
       },
 
       EmKitTab: function ($scope) {
-        $(document).ready(function() {
-          // Activate the first tab by default
-          $('.tab').first().addClass('active');
-          $('.content').first().addClass('active');
-        
-          // On tab click, show the corresponding content
-          $('.tab').on('click', function() {
-            var tabId = $(this).data('tab');
-        
-            // Remove active class from all tabs and contents
-            $('.tab').removeClass('active');
-            $('.content').removeClass('active');
-        
-            // Add active class to clicked tab and corresponding content
-            $(this).addClass('active');
-            $('#tab-' + tabId).addClass('active');
-          });
+        let tabs = $scope.find('.tabs-container');
+    
+        tabs.each(function () {
+            const $tabsContainer = $(this);
+    
+            // Activate the first tab and its corresponding content by default
+            if (!$tabsContainer.find('.tab.active').length) {
+                $tabsContainer.find('.tab').first().addClass('active');
+                const firstTabId = $tabsContainer.find('.tab').first().data('tab');
+                $tabsContainer.find('#tab-' + firstTabId).addClass('active');
+            }
+    
+            // On tab click, show the corresponding content
+            $tabsContainer.on('click', '.tab', function () {
+                const tabId = $(this).data('tab');
+    
+                // Remove active class from all tabs and contents
+                $tabsContainer.find('.tab').removeClass('active');
+                $tabsContainer.find('.content').removeClass('active');
+    
+                // Add active class to clicked tab and its corresponding content
+                $(this).addClass('active');
+                $tabsContainer.find('#tab-' + tabId).addClass('active');
+            });
         });
-        
-        
-        
-        
-        
     },
+    
     
     };
   
