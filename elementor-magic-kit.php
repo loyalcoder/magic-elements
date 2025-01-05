@@ -93,7 +93,6 @@ final class Elementor_Magic_Kit
     public function init_plugin()
     {
         new Elementor_Magic_Kit\Assets();
-        new Elementor_Magic_Kit\EM_KIT_Ajax();
         new Elementor_Magic_Kit\Load_Elementor();
         new Elementor_Magic_Kit\Generator();
         if (is_admin()) {

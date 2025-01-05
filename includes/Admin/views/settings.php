@@ -1,3 +1,23 @@
+<?php
+/**
+ * Admin settings page template
+ * 
+ * Renders the main settings page interface for the Magic Kit plugin.
+ * This template includes:
+ * - Widget enable/disable toggles
+ * - Bulk action buttons
+ * - Settings form with nonce verification
+ * - Success/error toast notifications
+ *
+ * @package Elementor_Magic_Kit\Admin\Views
+ * @since 1.0.0
+ */
+
+// Exit if accessed directly
+if (!defined('ABSPATH')) {
+    exit;
+}
+?>
 <div class="wrap">
     <h1><?php echo esc_html__('Magic Kit Settings', 'magic-kit'); ?></h1>
 
@@ -43,7 +63,6 @@
                 </div>
             <?php endforeach; ?>
         </div>
-
         <button type="submit" class="button button-primary"><?php echo esc_html__('Save Changes', 'magic-kit'); ?></button>
     </form>
 </div>

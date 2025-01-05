@@ -2,13 +2,29 @@
 
 namespace Elementor_Magic_Kit\Admin;
 
+// Exit if accessed directly
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 /**
- * Ajax handler for admin settings
+ * Class Ajax
+ * 
+ * Handles AJAX requests for the Magic Kit plugin's admin settings.
+ * This class is responsible for:
+ * - Processing AJAX requests to save widget settings
+ * - Validating nonces and user capabilities
+ * - Sanitizing and storing widget configuration
+ *
+ * @package Elementor_Magic_Kit\Admin
+ * @since 1.0.0
  */
 class Ajax {
 
     /**
      * Initialize ajax handlers
+     * 
+     * Hooks into WordPress AJAX actions to handle settings updates
      */
     public function __construct() {
         add_action('wp_ajax_save_magic_kit_settings', [$this, 'save_settings']);
@@ -16,6 +32,11 @@ class Ajax {
 
     /**
      * Save widget settings
+     * 
+     * Handles the AJAX request to save enabled/disabled widget settings.
+     * Performs security checks and sanitizes input data before saving.
+     *
+     * @return void Sends JSON response and exits
      */
     public function save_settings() {
         // Sanitize and verify nonce
@@ -40,7 +61,6 @@ class Ajax {
                 return sanitize_key($widget);
             }, $_POST['magic_kit_enabled_widgets']);
         }
-
         // Update option
         update_option('magic_kit_enabled_widgets', $enabled_widgets);
 
