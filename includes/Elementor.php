@@ -87,6 +87,7 @@ class Load_Elementor
         Plugin::instance()->widgets_manager->register(new Elementor\Image());
         Plugin::instance()->widgets_manager->register(new Elementor\Flip_Card());
         Plugin::instance()->widgets_manager->register(new Elementor\Heading());
+        Plugin::instance()->widgets_manager->register(new Elementor\Feature_List());
         Plugin::instance()->widgets_manager->register(new Elementor\Accordion());
         Plugin::instance()->widgets_manager->register(new Elementor\Counter());
         Plugin::instance()->widgets_manager->register(new Elementor\Category_List());
@@ -168,6 +169,14 @@ class Load_Elementor
                 'src'     => EM_KIT_ASSETS . '/dist/team.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/team.css'),
             ],
+            'emk-category_list' => [
+                'src'     => EM_KIT_ASSETS . '/dist/category_list.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/category_list.css'),
+            ],
+            'emk-feature-list' => [
+                'src'     => EM_KIT_ASSETS . '/dist/feature_list.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/feature_list.css'),
+            ],
             'emkit-icon' => [
                 'src'     => EM_KIT_ASSETS . '/dist/icon.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/icon.css'),
@@ -203,6 +212,7 @@ class Load_Elementor
             'Team',
             'Flip_Card',
             'Heading',
+            'Feature_List',
             'Accordion',
             'Counter',
             'Category_List',
