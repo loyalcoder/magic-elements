@@ -7,6 +7,7 @@ module.exports = {
     button: './assets/src/scss/button.scss',
     flipcard: './assets/src/scss/flipcard.scss',
     team: './assets/src/scss/team.scss',
+    category_list: './assets/src/scss/category_list.scss',
     icon: './assets/src/scss/icon.scss',
     social_icon: './assets/src/scss/social_icon.scss',
     counter: './assets/src/scss/counter.scss',

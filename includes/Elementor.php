@@ -163,6 +163,10 @@ class Load_Elementor
                 'src'     => EM_KIT_ASSETS . '/dist/team.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/team.css'),
             ],
+            'emk-category_list' => [
+                'src'     => EM_KIT_ASSETS . '/dist/category_list.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/category_list.css'),
+            ],
             'emk-feature-list' => [
                 'src'     => EM_KIT_ASSETS . '/dist/feature_list.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/feature_list.css'),
