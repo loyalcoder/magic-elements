@@ -23,7 +23,7 @@ class Assets
     public function get_scripts()
     {
         return [
-            'pkun-script' => [
+            'script' => [
                 'src'     => EM_KIT_ASSETS . '/js/frontend.js',
                 'version' => filemtime(EM_KIT_PATH . '/assets/js/frontend.js'),
                 'deps'    => ['jquery']
@@ -47,6 +47,16 @@ class Assets
             'emk-button' => [
                 'src'     => EM_KIT_ASSETS . '/css/elementor/button.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/css/elementor/button.css'),
+            ],
+            'emk-social' => [
+                'src'     => EM_KIT_ASSETS . '/css/elementor/social.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/css/elementor/social.css'),
+            ],
+        ];
+        return [
+            'emk-icons' => [
+                'src'     => EM_KIT_ASSETS . '/css/elementor/icon.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/css/elementor/icon.css'),
             ],
         ];
     }

@@ -1,3 +1,4 @@
+import "./../scss/pricingtable.scss"
 (function ($, elementor) {
     "use strict";
     var $window = $(elementor);
@@ -6,7 +7,7 @@
       onInit: function () {
         var E_FRONT = elementorFrontend;
         var widgetHandlersMap = {
-          "em_kit_button.default": emkElementor.EmKitButton,
+          "em_kit_pricingtable.default": emkElementor.EmKitpricingtable,
         };
   
         $.each(widgetHandlersMap, function (widgetName, callback) {
@@ -14,7 +15,7 @@
         });
       },
 
-      EmKitButton: function ($scope) {
+      EmKitpricingtable: function ($scope) {
          alert();
       },
     };

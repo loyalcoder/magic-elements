@@ -322,12 +322,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnbillion/extended-cpts.git",
-                "reference": "57f2e74155a12e7a37d07250e6739dbab5a732b3"
+                "reference": "5cb25f823f93fe93e4463cb89e53bad497abcd6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnbillion/extended-cpts/zipball/57f2e74155a12e7a37d07250e6739dbab5a732b3",
-                "reference": "57f2e74155a12e7a37d07250e6739dbab5a732b3",
+                "url": "https://api.github.com/repos/johnbillion/extended-cpts/zipball/5cb25f823f93fe93e4463cb89e53bad497abcd6a",
+                "reference": "5cb25f823f93fe93e4463cb89e53bad497abcd6a",
                 "shasum": ""
             },
             "require": {
@@ -377,9 +377,9 @@
             "homepage": "https://github.com/johnbillion/extended-cpts/",
             "support": {
                 "issues": "https://github.com/johnbillion/extended-cpts/issues",
-                "source": "https://github.com/johnbillion/extended-cpts/tree/5.0.11"
+                "source": "https://github.com/johnbillion/extended-cpts/tree/develop"
             },
-            "time": "2024-11-30T23:16:17+00:00"
+            "time": "2024-12-21T18:57:29+00:00"
         }
     ],
     "packages-dev": [],
