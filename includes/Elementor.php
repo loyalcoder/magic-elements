@@ -74,23 +74,18 @@ class Load_Elementor
      */
     public function register_widgets()
     {
-        $this->includeWidgetsFiles();
-
-        Plugin::instance()->widgets_manager->register(new Elementor\Hello_World());
-        Plugin::instance()->widgets_manager->register(new Elementor\Button());
-        Plugin::instance()->widgets_manager->register(new Elementor\Pricing_Table());
-        Plugin::instance()->widgets_manager->register(new Elementor\Text_Editor());
-        Plugin::instance()->widgets_manager->register(new Elementor\Icon());
-        Plugin::instance()->widgets_manager->register(new Elementor\Social_Icon());
-        Plugin::instance()->widgets_manager->register(new Elementor\Image_Accordion());
-        Plugin::instance()->widgets_manager->register(new Elementor\Team());
-        Plugin::instance()->widgets_manager->register(new Elementor\Image());
-        Plugin::instance()->widgets_manager->register(new Elementor\Flip_Card());
-        Plugin::instance()->widgets_manager->register(new Elementor\Heading());
-        Plugin::instance()->widgets_manager->register(new Elementor\Feature_List());
-        Plugin::instance()->widgets_manager->register(new Elementor\Accordion());
-        Plugin::instance()->widgets_manager->register(new Elementor\Counter());
-        Plugin::instance()->widgets_manager->register(new Elementor\Category_List());
+       
+       $enabled_widgets = get_option('magic_kit_enabled_widgets', array());
+       
+       $widgets = (array) self::includeWidgetsFiles();
+       
+       foreach ($widgets as $widget) {
+           $widget_key = strtolower(str_replace('_', '', $widget));
+           if (!empty($enabled_widgets) && in_array($widget_key, $enabled_widgets)) {
+               $widget_class = "\\Elementor_Magic_Kit\\Elementor\\$widget";
+               \Elementor\Plugin::instance()->widgets_manager->register(new $widget_class());
+           }
+       }
     }
 
     /**
@@ -187,7 +182,6 @@ class Load_Elementor
     public static function getWidgetList()
     {
         return [
-            'Hello_World',
             'Image',
             'Button',
             'Pricing_Table',
@@ -216,30 +210,23 @@ class Load_Elementor
         $widget_list = $this->getWidgetList();
 
         if (!count($widget_list)) {
-            return;
+            return [];
         }
 
         foreach ($widget_list as $handle => $widget) {
             $file = EM_KIT_ELEMENTOR . $widget . '.php';
             if (file_exists($file)) {
-                continue;
+                require_once $file;
             }
-            require_once $file;
         }
 
         foreach ($scripts as $handle => $script) {
             $deps    = isset($script['deps']) ? $script['deps'] : false;
             $version = isset($script['version']) ? $script['version'] : EM_KIT_VERSION;
             wp_register_script($handle, $script['src'], $deps, $version, true);
-            // wp_enqueue_script($handle);
         }
 
-        // foreach ($styles as $handle => $style) {
-        //     $deps = isset($style['deps']) ? $style['deps'] : false;
-        //     $version = isset($style['version']) ? $style['version'] : EM_KIT_VERSION;
-        //     wp_register_style($handle, $style['src'], $deps, $version);
-        //     // wp_enqueue_style($handle);
-        // }
+        return $widget_list;
     }
     public function ekit_style_register () {
         $styles  = $this->getStyles();
