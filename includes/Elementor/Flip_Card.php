@@ -211,7 +211,7 @@ class Flip_Card extends Widget_Base
 				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
 				'default' => [
-					'value' => 'fas fa-circle',
+					'value' => 'fas fa-star',
 					'library' => 'fa-solid',
 				],
 				'recommended' => [
@@ -323,7 +323,7 @@ class Flip_Card extends Widget_Base
 				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
 				'default' => [
-					'value' => 'fas fa-circle',
+					'value' => 'fas fa-star',
 					'library' => 'fa-solid',
 				],
 				'recommended' => [
@@ -418,7 +418,7 @@ class Flip_Card extends Widget_Base
 		$this->add_responsive_control(
 			'flipcard_height',
 			[
-				'label' => esc_html__( 'Height', 'textdomain' ),
+				'label' => esc_html__( 'Height', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -1179,7 +1179,7 @@ class Flip_Card extends Widget_Base
 		$this->add_control(
 			'back_button_hover_color',
 			[
-				'label' => esc_html__( 'Text Color', 'textdomain' ),
+				'label' => esc_html__( 'Text Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .flip-card-back a:hover' => 'color: {{VALUE}}',
