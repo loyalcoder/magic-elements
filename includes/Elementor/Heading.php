@@ -85,7 +85,6 @@ class Heading extends Widget_Base
     {
         return ['emk-widgets'];
     }
-
     public function get_script_depends()
     {
         return [];
