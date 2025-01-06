@@ -258,7 +258,7 @@ class Heading extends Widget_Base
         $this->add_control(
 			'emk_replace_title',
 			[
-				'label' => esc_html__( 'Replace Title', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Highlight Title', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
