@@ -20,13 +20,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scs
 
 /***/ }),
 
-/***/ "./assets/src/scss/button.scss":
-/*!*************************************!*\
-  !*** ./assets/src/scss/button.scss ***!
-  \*************************************/
+/***/ "./assets/src/scss/category_list.scss":
+/*!********************************************!*\
+  !*** ./assets/src/scss/category_list.scss ***!
+  \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://elementor-magic-kit/./assets/src/scss/button.scss?");
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://elementor-magic-kit/./assets/src/scss/category_list.scss?");
 
 /***/ }),
 

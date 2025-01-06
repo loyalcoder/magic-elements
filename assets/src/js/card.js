@@ -1,4 +1,4 @@
-import "./../scss/button.scss";
+import "./../scss/card.scss"
 (function ($, elementor) {
     "use strict";
     var $window = $(elementor);
@@ -16,7 +16,7 @@ import "./../scss/button.scss";
       },
 
       EmKitButton: function ($scope) {
-        //  alert();
+         alert();
       },
     };
   

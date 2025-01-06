@@ -86,6 +86,11 @@ class Category_List extends Widget_Base
         return ['emk-widgets'];
     }
 
+    public function get_style_depends()
+    {
+        return ['emk-category_list'];
+    }
+
     public function get_script_depends()
     {
         return [];
@@ -113,7 +118,7 @@ class Category_List extends Widget_Base
         $this->start_controls_section(
             'content_section',
             [
-                'label' => __( 'Categories', 'elementor-magic-kit' ),
+                'label' => esc_html__( 'Categories', 'elementor-magic-kit' ),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -353,7 +358,7 @@ class Category_List extends Widget_Base
     {
         $settings    = $this->get_settings_for_display();
         $layout = $settings['layout'];
-        $limit = $settings['category_limit'];
+        // $limit = $settings['category_limit'];
         $alignment = isset( $settings['alignment'] ) ? $settings['alignment'] : 'flex-start';
 
         // Determine Flex or Column Layout Properties
