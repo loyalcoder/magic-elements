@@ -88,7 +88,7 @@ class Button extends Widget_Base
 
     public function get_style_depends()
     {
-        return ['emk-button', 'emkit-button'];
+        return ['emkit-button'];
     }
 	public function get_script_depends()
 	{
