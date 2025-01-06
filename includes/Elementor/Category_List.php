@@ -295,7 +295,6 @@ class Category_List extends Widget_Base
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
-    
         $this->add_control(
             'icon_color',
             [
@@ -307,7 +306,6 @@ class Category_List extends Widget_Base
                 ],
             ]
         );
-    
         $this->add_control(
             'icon_hover_color',
             [
