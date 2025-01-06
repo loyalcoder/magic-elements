@@ -262,7 +262,6 @@ class Heading extends Widget_Base
 				'separator' => 'before',
 			]
 		);
-
         $this->add_control(
             'emk_replace_color',
             [
