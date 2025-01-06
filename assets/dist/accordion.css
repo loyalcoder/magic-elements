@@ -1,6 +1,6 @@
-/*!****************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/pricingtable.scss ***!
-  \****************************************************************************************************************************/
+/*!*************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/accordion.scss ***!
+  \*************************************************************************************************************************/
 .align-baseline {
   vertical-align: baseline !important;
 }
@@ -4772,105 +4772,23 @@
     display: none !important;
   }
 }
-.pricing-table-container .title {
+.emk-accordion-item .emk-accordion-content p {
   margin: 0;
 }
-.pricing-table-container .sub-title {
-  margin: 0;
-}
-.pricing-table-container ul {
-  padding-left: 0;
-  margin: 0;
-}
-.pricing-table-container ul li {
-  list-style: none;
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
-.emk-button a {
-  transition: all 0.4s;
-}
-.emk-button a .btn-icon path {
-  transition: all 0.4s;
+.cursor-default {
+  cursor: default;
 }
 
-/* common */
-.pricing-table-container .ribbon {
-  width: 130px;
-  height: 130px;
-  overflow: hidden;
-  position: absolute;
-}
-.pricing-table-container .ribbon .ribbon-bar {
-  position: absolute;
-  display: block;
-  width: 225px;
-  background: #FF4D4D;
-  padding: 19px 0;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+/* Style-Specific Adjustments */
+.emk-accordion-wrapper.style_three .emk-accordion-content {
+  display: block; /* All items open by default */
 }
 
-.pricing-table-container .ribbon::before,
-.pricing-table-container .ribbon::after {
-  position: absolute;
-  z-index: -1;
-  content: "";
-  display: block;
-  border: 5px solid;
-}
-
-/* top left*/
-.pricing-table-container .ribbon-top-left {
-  top: -10px;
-  left: -10px;
-}
-
-.pricing-table-container .ribbon-top-left::before,
-.pricing-table-container .ribbon-top-left::after {
-  border-top-color: transparent;
-  border-left-color: transparent;
-}
-
-.pricing-table-container .ribbon-top-left::before {
-  top: 0;
-  right: 0;
-}
-
-.pricing-table-container .ribbon-top-left::after {
-  bottom: 0;
-  left: 0;
-}
-
-.pricing-table-container .ribbon-top-left .ribbon-bar {
-  right: -31px;
-  top: 36px;
-  transform: rotate(-45deg);
-}
-
-/* top right*/
-.pricing-table-container .ribbon-top-right {
-  top: -10px;
-  right: -10px;
-}
-
-.pricing-table-container .ribbon-top-right::before,
-.pricing-table-container .ribbon-top-right::after {
-  border-top-color: transparent;
-  border-right-color: transparent;
-}
-
-.pricing-table-container .ribbon-top-right::before {
-  top: 0;
-  left: 0;
-}
-
-.pricing-table-container .ribbon-top-right::after {
-  bottom: 0;
-  right: 0;
-}
-
-.pricing-table-container .ribbon-top-right .ribbon-bar {
-  left: -31px;
-  top: 36px;
-  transform: rotate(45deg);
+.emk-icons {
+  order: 2;
 }

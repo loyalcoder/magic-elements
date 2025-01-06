@@ -141,6 +141,11 @@ class Load_Elementor
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/counter.js'),
                 'deps'    => ['jquery']
             ],
+            'emkit-accordion' => [
+                'src'     => EM_KIT_ASSETS . '/dist/accordion.js',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/accordion.js'),
+                'deps'    => ['jquery']
+            ],
             'emkit-tab' => [
                 'src'     => EM_KIT_ASSETS . '/dist/tab.js',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/tab.js'),
@@ -198,6 +203,10 @@ class Load_Elementor
             'emkit-icon' => [
                 'src'     => EM_KIT_ASSETS . '/dist/icon.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/icon.css'),
+            ],
+            'emkit-accordion' => [
+                'src'     => EM_KIT_ASSETS . '/dist/accordion.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/accordion.css'),
             ],
             'emk-tab' => [
                 'src'     => EM_KIT_ASSETS . '/dist/tab.css',
