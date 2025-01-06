@@ -443,6 +443,57 @@
   display: flex;
   column-gap: 10px;
 }
+/*!*****************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/category_list.scss ***!
+  \*****************************************************************************************************************************/
+.category-list-widget {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.category-list-widget li {
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+.category-list-widget li i {
+  margin-right: 10px;
+}
+.category-list-widget li a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+}
+/*!****************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/feature_list.scss ***!
+  \****************************************************************************************************************************/
+.feature_list {
+  background-color: #ddd;
+}
+.feature_list h2 {
+  background-color: #2196f3;
+  color: white;
+  margin-bottom: 20px;
+}
+.feature_list .feature {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid white;
+  padding-bottom: 10px;
+}
+.feature_list .feature svg {
+  fill: white;
+  background-color: #019789;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+}
+.feature_list .feature_button a {
+  background-color: red;
+  color: white;
+}
 /*!********************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/icon.scss ***!
   \********************************************************************************************************************/

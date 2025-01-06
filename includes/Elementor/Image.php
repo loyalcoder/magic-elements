@@ -83,7 +83,7 @@ class Image extends Widget_Base
      */
     public function get_categories()
     {
-        return ['pkun-widgets'];
+        return ['emk-widgets'];
     }
 
     public function get_script_depends()
@@ -178,7 +178,7 @@ class Image extends Widget_Base
 				'default' => 'none',
 				'options' => [
 					'none' => esc_html__( 'None', 'elementor-magic-kit' ),
-					'file' => esc_html__( 'Media File', 'elementor-magic-kit' ),
+					// 'file' => esc_html__( 'Media File', 'elementor-magic-kit' ),
 					'custom' => esc_html__( 'Custom URL', 'elementor-magic-kit' ),
 				],
 				'condition' => [
