@@ -312,13 +312,6 @@ class Pricing_Table extends Widget_Base
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
-		$this->add_group_control(
-			\Elementor\Group_Control_Typography::get_type(),
-			[
-				'name' => 'emk_btn_typography',
-				'selector' => '{{WRAPPER}} .emk-button a',
-			]
-		);
         $this->add_control(
 			'pricing_btn',
 			[
@@ -1415,6 +1408,13 @@ class Pricing_Table extends Widget_Base
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'emk_btn_typography',
+				'selector' => '{{WRAPPER}} .emk-button a',
+			]
+		);
 		$this->add_control(
 			'btn_direction',
 			[
