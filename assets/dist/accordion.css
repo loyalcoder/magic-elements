@@ -1,6 +1,6 @@
-/*!***************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/social_icon.scss ***!
-  \***************************************************************************************************************************/
+/*!*************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/accordion.scss ***!
+  \*************************************************************************************************************************/
 .align-baseline {
   vertical-align: baseline !important;
 }
@@ -4772,13 +4772,23 @@
     display: none !important;
   }
 }
-.social-main {
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 5px;
+.emk-accordion-item .emk-accordion-content p {
+  margin: 0;
 }
-.social-main .social-icon {
-  background-color: #21759b;
-  border-radius: 8px;
-  padding: 13px 13px 5px 13px;
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-default {
+  cursor: default;
+}
+
+/* Style-Specific Adjustments */
+.emk-accordion-wrapper.style_three .emk-accordion-content {
+  display: block; /* All items open by default */
+}
+
+.emk-icons {
+  order: 2;
 }

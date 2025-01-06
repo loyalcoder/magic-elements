@@ -112,6 +112,10 @@ class Load_Elementor
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/button.js'),
                 'deps'    => ['jquery']
             ],
+            'emkit-post-tab' => [
+                'src'     => EM_KIT_ASSETS . '/dist/post_tab.js',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/post_tab.js'),
+            ],
             'emkit-pricingtable' => [
                 'src'     => EM_KIT_ASSETS . '/dist/pricingtable.js',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/pricingtable.js'),
@@ -120,9 +124,23 @@ class Load_Elementor
                 'src'     => EM_KIT_ASSETS . '/dist/image_accordion.js',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/image_accordion.js'),
             ],
+            'emkit-card' => [
+                'src'     => EM_KIT_ASSETS . '/dist/card.js',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/card.js'),
+            ],
             'emkit-counter' => [
                 'src'     => EM_KIT_ASSETS . '/dist/counter.js',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/counter.js'),
+                'deps'    => ['jquery']
+            ],
+            'emkit-accordion' => [
+                'src'     => EM_KIT_ASSETS . '/dist/accordion.js',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/accordion.js'),
+                'deps'    => ['jquery']
+            ],
+            'emkit-tab' => [
+                'src'     => EM_KIT_ASSETS . '/dist/tab.js',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/tab.js'),
                 'deps'    => ['jquery']
             ],
         ];
@@ -146,6 +164,10 @@ class Load_Elementor
                 'src'     => EM_KIT_ASSETS . '/dist/pricingtable.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/pricingtable.css'),
             ],
+            'emk-card' => [
+                'src'     => EM_KIT_ASSETS . '/dist/card.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/card.css'),
+            ],
             'emkit-image-accordion' => [
                 'src'     => EM_KIT_ASSETS . '/dist/image_accordion.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/image_accordion.css'),
@@ -158,6 +180,14 @@ class Load_Elementor
                 'src'     => EM_KIT_ASSETS . '/dist/team.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/team.css'),
             ],
+            'emk-post-tab' => [
+                'src'     => EM_KIT_ASSETS . '/dist/post_tab.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/post_tab.css'),
+            ],
+            'emk-category_list' => [
+                'src'     => EM_KIT_ASSETS . '/dist/category_list.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/category_list.css'),
+            ],
             'emk-feature-list' => [
                 'src'     => EM_KIT_ASSETS . '/dist/feature_list.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/feature_list.css'),
@@ -165,6 +195,14 @@ class Load_Elementor
             'emkit-icon' => [
                 'src'     => EM_KIT_ASSETS . '/dist/icon.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/icon.css'),
+            ],
+            'emkit-accordion' => [
+                'src'     => EM_KIT_ASSETS . '/dist/accordion.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/accordion.css'),
+            ],
+            'emk-tab' => [
+                'src'     => EM_KIT_ASSETS . '/dist/tab.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/tab.css'),
             ],
             'emkit-style' => [
                 'src'     => EM_KIT_ASSETS . '/css/style.css',
@@ -192,10 +230,13 @@ class Load_Elementor
             'Team',
             'Flip_Card',
             'Heading',
+            'Post_Category_Tab',
             'Feature_List',
             'Accordion',
             'Counter',
             'Category_List',
+            'Card',
+            'Tab',
         ];
     }
     /**

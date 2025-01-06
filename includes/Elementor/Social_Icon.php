@@ -493,7 +493,7 @@ class Social_Icon  extends Widget_Base
     {
         $settings    = $this->get_settings_for_display();
         $social_item = $settings['social_lists'];
-        include __DIR__ . '/layouts/icon/social-icon.php';
+        include __DIR__ . '/layouts/Icon/social-icon.php';
     }
 
     /**
@@ -509,7 +509,6 @@ class Social_Icon  extends Widget_Base
         // In plain mode, render without shortcode.
         echo esc_attr($this->get_settings('shortcode'));
     }
-
     /**
      * Render shortcode widget output in the editor.
      *

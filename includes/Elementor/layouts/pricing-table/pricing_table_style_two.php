@@ -45,7 +45,7 @@
             ?></ul><?php
         }?>
         </div>
-        <div class="button d-flex">
+        <div class="emk-button d-flex">
             <a href="<?php echo esc_url( $settings['btn_link']['url'] ); ?>" class="d-inline-flex align-items-center"><?php echo esc_html($settings['pricing_btn']); ?><?php \Elementor\Icons_Manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true', 'class' => 'btn-icon' ] ); ?></a>
         </div>
     </div>

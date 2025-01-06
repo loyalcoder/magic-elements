@@ -10,23 +10,23 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./assets/src/js/pricingtable.js":
-/*!***************************************!*\
-  !*** ./assets/src/js/pricingtable.js ***!
-  \***************************************/
+/***/ "./assets/src/js/tab.js":
+/*!******************************!*\
+  !*** ./assets/src/js/tab.js ***!
+  \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_pricingtable_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../scss/pricingtable.scss */ \"./assets/src/scss/pricingtable.scss\");\n\n(function ($, elementor) {\n  \"use strict\";\n\n  var $window = $(elementor);\n  var emkElementor = {\n    onInit: function () {\n      var E_FRONT = elementorFrontend;\n      var widgetHandlersMap = {\n        \"em_kit_pricingtable.default\": emkElementor.EmKitpricingtable\n      };\n      $.each(widgetHandlersMap, function (widgetName, callback) {\n        E_FRONT.hooks.addAction(\"frontend/element_ready/\" + widgetName, callback);\n      });\n    },\n    EmKitpricingtable: function ($scope) {\n      //  alert();\n    }\n  };\n  $window.on(\"elementor/frontend/init\", emkElementor.onInit);\n})(jQuery, window);\n\n//# sourceURL=webpack://elementor-magic-kit/./assets/src/js/pricingtable.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_tab_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../scss/tab.scss */ \"./assets/src/scss/tab.scss\");\n\n(function ($, elementor) {\n  \"use strict\";\n\n  var $window = $(elementor);\n  var emkElementor = {\n    onInit: function () {\n      var E_FRONT = elementorFrontend;\n      var widgetHandlersMap = {\n        \"em_kit_tab.default\": emkElementor.EmKitTab\n      };\n      $.each(widgetHandlersMap, function (widgetName, callback) {\n        E_FRONT.hooks.addAction(\"frontend/element_ready/\" + widgetName, callback);\n      });\n    },\n    EmKitTab: function ($scope) {\n      let tabs = $scope.find('.tabs-container');\n      tabs.each(function () {\n        const $tabsContainer = $(this);\n\n        // Activate the first tab and its corresponding content by default\n        if (!$tabsContainer.find('.tab.active').length) {\n          $tabsContainer.find('.tab').first().addClass('active');\n          const firstTabId = $tabsContainer.find('.tab').first().data('tab');\n          $tabsContainer.find('#tab-' + firstTabId).addClass('active');\n        }\n\n        // On tab click, show the corresponding content\n        $tabsContainer.on('click', '.tab', function () {\n          const tabId = $(this).data('tab');\n\n          // Remove active class from all tabs and contents\n          $tabsContainer.find('.tab').removeClass('active');\n          $tabsContainer.find('.content').removeClass('active');\n\n          // Add active class to clicked tab and its corresponding content\n          $(this).addClass('active');\n          $tabsContainer.find('#tab-' + tabId).addClass('active');\n        });\n      });\n    }\n  };\n  $window.on(\"elementor/frontend/init\", emkElementor.onInit);\n})(jQuery, window);\n\n//# sourceURL=webpack://elementor-magic-kit/./assets/src/js/tab.js?");
 
 /***/ }),
 
-/***/ "./assets/src/scss/pricingtable.scss":
-/*!*******************************************!*\
-  !*** ./assets/src/scss/pricingtable.scss ***!
-  \*******************************************/
+/***/ "./assets/src/scss/tab.scss":
+/*!**********************************!*\
+  !*** ./assets/src/scss/tab.scss ***!
+  \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://elementor-magic-kit/./assets/src/scss/pricingtable.scss?");
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://elementor-magic-kit/./assets/src/scss/tab.scss?");
 
 /***/ })
 
@@ -73,7 +73,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./assets/src/js/pricingtable.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./assets/src/js/tab.js");
 /******/ 	
 /******/ })()
 ;
