@@ -988,7 +988,7 @@ class Accordion extends Widget_Base
     {
         $settings    = $this->get_settings_for_display();
 
-        include __DIR__ . '/layouts/Accordion/accordion.php';
+        include __DIR__ . '/layouts/accordion/accordion.php';
     }
 
     /**
