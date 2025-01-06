@@ -78,12 +78,22 @@ class Load_Elementor
 
         Plugin::instance()->widgets_manager->register(new Elementor\Hello_World());
         Plugin::instance()->widgets_manager->register(new Elementor\Button());
+        Plugin::instance()->widgets_manager->register(new Elementor\Pricing_Table());
+        Plugin::instance()->widgets_manager->register(new Elementor\Text_Editor());
+        Plugin::instance()->widgets_manager->register(new Elementor\Icon());
+        Plugin::instance()->widgets_manager->register(new Elementor\Social_Icon());
         Plugin::instance()->widgets_manager->register(new Elementor\Image_Accordion());
         Plugin::instance()->widgets_manager->register(new Elementor\Team());
         Plugin::instance()->widgets_manager->register(new Elementor\Image());
         Plugin::instance()->widgets_manager->register(new Elementor\Flip_Card());
         Plugin::instance()->widgets_manager->register(new Elementor\Heading());
         Plugin::instance()->widgets_manager->register(new Elementor\Post_Category_Tab());
+        Plugin::instance()->widgets_manager->register(new Elementor\Feature_List());
+        Plugin::instance()->widgets_manager->register(new Elementor\Accordion());
+        Plugin::instance()->widgets_manager->register(new Elementor\Counter());
+        Plugin::instance()->widgets_manager->register(new Elementor\Category_List());
+        Plugin::instance()->widgets_manager->register(new Elementor\Card());
+        Plugin::instance()->widgets_manager->register(new Elementor\Tab());
     }
 
     /**
@@ -114,9 +124,26 @@ class Load_Elementor
                 'src'     => EM_KIT_ASSETS . '/dist/post_tab.js',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/post_tab.js'),
             ],
+            'emkit-pricingtable' => [
+                'src'     => EM_KIT_ASSETS . '/dist/pricingtable.js',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/pricingtable.js'),
+            ],
             'emkit-image-accordion-script' => [
                 'src'     => EM_KIT_ASSETS . '/dist/image_accordion.js',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/image_accordion.js'),
+            ],
+            'emkit-card' => [
+                'src'     => EM_KIT_ASSETS . '/dist/card.js',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/card.js'),
+            ],
+            'emkit-counter' => [
+                'src'     => EM_KIT_ASSETS . '/dist/counter.js',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/counter.js'),
+                'deps'    => ['jquery']
+            ],
+            'emkit-tab' => [
+                'src'     => EM_KIT_ASSETS . '/dist/tab.js',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/tab.js'),
                 'deps'    => ['jquery']
             ],
         ];
@@ -136,6 +163,14 @@ class Load_Elementor
                 'src'     => EM_KIT_ASSETS . '/dist/button.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/button.css'),
             ],
+            'emk-pricingtable' => [
+                'src'     => EM_KIT_ASSETS . '/dist/pricingtable.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/pricingtable.css'),
+            ],
+            'emk-card' => [
+                'src'     => EM_KIT_ASSETS . '/dist/card.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/card.css'),
+            ],
             'emkit-image-accordion' => [
                 'src'     => EM_KIT_ASSETS . '/dist/image_accordion.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/image_accordion.css'),
@@ -151,6 +186,22 @@ class Load_Elementor
             'emk-post-tab' => [
                 'src'     => EM_KIT_ASSETS . '/dist/post_tab.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/post_tab.css'),
+            ],
+            'emk-category_list' => [
+                'src'     => EM_KIT_ASSETS . '/dist/category_list.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/category_list.css'),
+            ],
+            'emk-feature-list' => [
+                'src'     => EM_KIT_ASSETS . '/dist/feature_list.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/feature_list.css'),
+            ],
+            'emkit-icon' => [
+                'src'     => EM_KIT_ASSETS . '/dist/icon.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/icon.css'),
+            ],
+            'emk-tab' => [
+                'src'     => EM_KIT_ASSETS . '/dist/tab.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/tab.css'),
             ],
             'emkit-style' => [
                 'src'     => EM_KIT_ASSETS . '/css/style.css',
@@ -171,14 +222,23 @@ class Load_Elementor
             'Hello_World',
             'Image',
             'Button',
+            'Pricing_Table',
+            'Text_Editor',
+            'Icon',
+            'Social_Icon',
             'Image_Accordion',
             'Team',
             'Flip_Card',
             'Heading',
             'Post_Category_Tab',
+            'Feature_List',
+            'Accordion',
+            'Counter',
+            'Category_List',
+            'Card',
+            'Tab',
         ];
     }
-
     /**
      * Widget files
      *

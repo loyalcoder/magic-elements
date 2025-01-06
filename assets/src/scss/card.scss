@@ -1,0 +1,76 @@
+// Variables for consistent styling
+$primary-color: #0073e6;
+$primary-hover-color: #005bb5;
+$text-color: #333;
+$subtext-color: #666;
+$border-radius: 8px;
+$box-shadow-hover: 0 6px 15px rgba(0, 0, 0, 0.2);
+
+// Card Widget Styling
+.card-widget {
+    position: relative;
+    padding: 20px;
+    border-radius: $border-radius;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #fff;
+    overflow: hidden;
+    border: 3px solid $primary-color; // Static border with color
+
+    &:hover {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transform: scale(1.02);
+    }
+
+    // Card Image Styling
+    .card-image {
+        img {
+        width: 100%;
+        height: auto;
+        border-radius: $border-radius;
+        }
+    }
+
+  // Card Content Styling
+  .card-content {
+    padding: 15px 0;
+
+        // Card Title Styling
+        .card-title {
+            font-size: 1.5em;
+            margin: 10px 0;
+            color: $text-color;
+        }
+
+        // Card Description Styling
+        .card-description {
+            font-size: 1em;
+            margin: 10px 0;
+            color: $subtext-color;
+        }
+
+        // Card Button Styling
+        .card-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #fff;
+            background-color: $primary-color;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+            font-size: 1em;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+
+            &:hover {
+                background-color: $primary-hover-color;
+                transform: translateY(-2px) scale(1.05);
+                box-shadow: $box-shadow-hover;
+            }
+        }
+    }
+}
