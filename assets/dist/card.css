@@ -15,6 +15,7 @@
 .card-widget:hover {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transform: scale(1.02);
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 .card-widget .card-image img {
   width: 100%;
