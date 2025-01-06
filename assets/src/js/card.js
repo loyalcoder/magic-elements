@@ -1,4 +1,4 @@
-import "./../scss/button.scss";
+import "./../scss/card.scss"
 (function ($, elementor) {
     "use strict";
     var $window = $(elementor);

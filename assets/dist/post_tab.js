@@ -10,23 +10,23 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./assets/src/js/button.js":
-/*!*********************************!*\
-  !*** ./assets/src/js/button.js ***!
-  \*********************************/
+/***/ "./assets/src/js/post_tab.js":
+/*!***********************************!*\
+  !*** ./assets/src/js/post_tab.js ***!
+  \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_button_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../scss/button.scss */ \"./assets/src/scss/button.scss\");\n\n(function ($, elementor) {\n  \"use strict\";\n\n  var $window = $(elementor);\n  var emkElementor = {\n    onInit: function () {\n      var E_FRONT = elementorFrontend;\n      var widgetHandlersMap = {\n        \"em_kit_button.default\": emkElementor.EmKitButton\n      };\n      $.each(widgetHandlersMap, function (widgetName, callback) {\n        E_FRONT.hooks.addAction(\"frontend/element_ready/\" + widgetName, callback);\n      });\n    },\n    EmKitButton: function ($scope) {\n      //  alert();\n    }\n  };\n  $window.on(\"elementor/frontend/init\", emkElementor.onInit);\n})(jQuery, window);\n\n//# sourceURL=webpack://elementor-magic-kit/./assets/src/js/button.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_post_tab_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../scss/post_tab.scss */ \"./assets/src/scss/post_tab.scss\");\n\n(function ($, elementor) {\n  \"use strict\";\n\n  var $window = $(elementor);\n  var emkElementor = {\n    onInit: function () {\n      var E_FRONT = elementorFrontend;\n      var widgetHandlersMap = {\n        \"em_kit_post_tab.default\": emkElementor.EmKitPostTab\n      };\n      $.each(widgetHandlersMap, function (widgetName, callback) {\n        E_FRONT.hooks.addAction(\"frontend/element_ready/\" + widgetName, callback);\n      });\n    },\n    EmKitPostTab: function ($scope) {\n      let navLinks = $scope.find('.nav-link');\n      let postItems = $scope.find('.post-item');\n\n      // Initially show all posts\n      postItems.show();\n\n      // Tab click event\n      navLinks.on('click', function () {\n        let $clickedTab = $(this);\n        let category = $clickedTab.data('category');\n\n        // Remove active class from all tabs and add it to the clicked tab\n        navLinks.removeClass('active');\n        $clickedTab.addClass('active');\n\n        // Show or hide posts based on the category\n        if (category === 'all') {\n          postItems.show(); // Show all posts\n        } else {\n          postItems.hide(); // Hide all posts\n          postItems.filter('.category-' + category).show(); // Show posts with the selected category\n        }\n      });\n    }\n  };\n  $window.on(\"elementor/frontend/init\", emkElementor.onInit);\n})(jQuery, window);\n\n//# sourceURL=webpack://elementor-magic-kit/./assets/src/js/post_tab.js?");
 
 /***/ }),
 
-/***/ "./assets/src/scss/button.scss":
-/*!*************************************!*\
-  !*** ./assets/src/scss/button.scss ***!
-  \*************************************/
+/***/ "./assets/src/scss/post_tab.scss":
+/*!***************************************!*\
+  !*** ./assets/src/scss/post_tab.scss ***!
+  \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://elementor-magic-kit/./assets/src/scss/button.scss?");
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://elementor-magic-kit/./assets/src/scss/post_tab.scss?");
 
 /***/ })
 
@@ -73,7 +73,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./assets/src/js/button.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./assets/src/js/post_tab.js");
 /******/ 	
 /******/ })()
 ;
