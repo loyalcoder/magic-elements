@@ -22,7 +22,7 @@ module.exports = {
     feature_list: './assets/src/scss/feature_list.scss',
     // iconbox: './assets/css/iconbox.scss',
     // slider_css: './assets/css/slider.scss',
-    button: './assets/src/js/button.js',
+    // button: './assets/src/js/button.js',
     image_accordion: './assets/src/js/image_accordion.js',
     counter: './assets/src/js/counter.js',
     tab: './assets/src/js/tab.js',
