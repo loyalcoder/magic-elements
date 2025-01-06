@@ -312,6 +312,13 @@ class Pricing_Table extends Widget_Base
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'emk_btn_typography',
+				'selector' => '{{WRAPPER}} .emk-button a',
+			]
+		);
         $this->add_control(
 			'pricing_btn',
 			[
@@ -1430,7 +1437,7 @@ class Pricing_Table extends Widget_Base
 				'default' => 'space-evenly',
 				'toggle' => true,
 				'selectors' => [
-					'{{WRAPPER}} .button' => 'justify-content: {{VALUE}};',
+					'{{WRAPPER}} .emk-button' => 'justify-content: {{VALUE}};',
 				],
 				'condition' => [
 					'show_btn_icon' => 'yes'
@@ -1452,7 +1459,7 @@ class Pricing_Table extends Widget_Base
 					'isLinked' => false,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .button a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .emk-button a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1471,7 +1478,7 @@ class Pricing_Table extends Widget_Base
 					'isLinked' => false,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .button a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .emk-button a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1498,7 +1505,7 @@ class Pricing_Table extends Widget_Base
 				'label' => esc_html__( 'Background', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .button a' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .emk-button a' => 'background-color: {{VALUE}}',
 				],
 			]
 		);
@@ -1508,7 +1515,7 @@ class Pricing_Table extends Widget_Base
 				'label' => esc_html__( 'color', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .button a' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .emk-button a' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -1516,7 +1523,7 @@ class Pricing_Table extends Widget_Base
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name' => 'btn_border',
-				'selector' => '{{WRAPPER}} .button a',
+				'selector' => '{{WRAPPER}} .emk-button a',
 			]
 		);
 		$this->add_responsive_control(
@@ -1534,7 +1541,7 @@ class Pricing_Table extends Widget_Base
 					'isLinked' => false,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .button a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .emk-button a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1542,7 +1549,7 @@ class Pricing_Table extends Widget_Base
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'btn_box_shadow',
-				'selector' => '{{WRAPPER}} .button a',
+				'selector' => '{{WRAPPER}} .emk-button a',
 			]
 		);
 		$this->add_control(
@@ -1574,7 +1581,7 @@ class Pricing_Table extends Widget_Base
 				'default' => 'row',
 				'toggle' => true,
 				'selectors' => [
-					'{{WRAPPER}} .button a' => 'flex-direction: {{VALUE}};',
+					'{{WRAPPER}} .emk-button a' => 'flex-direction: {{VALUE}};',
 				],
 				'condition' => [
 					'show_btn_icon' => 'yes'
@@ -1599,7 +1606,7 @@ class Pricing_Table extends Widget_Base
 					'size' => 5,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .button a svg' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .emk-button a svg' => 'margin-right: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'btn_icon_direction' => 'row-reverse',
@@ -1625,7 +1632,7 @@ class Pricing_Table extends Widget_Base
 					'size' => 5,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .button a svg' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .emk-button a svg' => 'margin-left: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'btn_icon_direction' => 'row',
@@ -1689,7 +1696,7 @@ class Pricing_Table extends Widget_Base
 				'label' => esc_html__( 'Background', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .button a:hover' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .emk-button a:hover' => 'background-color: {{VALUE}}',
 				],
 			]
 		);
@@ -1699,7 +1706,7 @@ class Pricing_Table extends Widget_Base
 				'label' => esc_html__( 'color', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .button a:hover' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .emk-button a:hover' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -1707,7 +1714,7 @@ class Pricing_Table extends Widget_Base
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name' => 'btn_border_hover',
-				'selector' => '{{WRAPPER}} .button a:hover',
+				'selector' => '{{WRAPPER}} .emk-button a:hover',
 			]
 		);
 		$this->add_responsive_control(
@@ -1725,7 +1732,7 @@ class Pricing_Table extends Widget_Base
 					'isLinked' => false,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .button a:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .emk-button a:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1733,7 +1740,7 @@ class Pricing_Table extends Widget_Base
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'btn_box_shadow_hover',
-				'selector' => '{{WRAPPER}} .button a:hover',
+				'selector' => '{{WRAPPER}} .emk-button a:hover',
 			]
 		);
 		$this->add_control(
@@ -1753,7 +1760,7 @@ class Pricing_Table extends Widget_Base
 				'label' => esc_html__( 'Color', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .button a:hover .btn-icon path' => 'fill: {{VALUE}}',
+					'{{WRAPPER}} .emk-button a:hover .btn-icon path' => 'fill: {{VALUE}}',
 				],
 				'condition' => [
 					'show_btn_icon' => 'yes'
