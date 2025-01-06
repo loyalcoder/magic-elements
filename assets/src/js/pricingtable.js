@@ -16,7 +16,7 @@ import "./../scss/pricingtable.scss"
       },
 
       EmKitpricingtable: function ($scope) {
-         alert();
+        //  alert();
       },
     };
   
