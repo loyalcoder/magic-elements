@@ -87,6 +87,7 @@ class Load_Elementor
         Plugin::instance()->widgets_manager->register(new Elementor\Image());
         Plugin::instance()->widgets_manager->register(new Elementor\Flip_Card());
         Plugin::instance()->widgets_manager->register(new Elementor\Heading());
+        Plugin::instance()->widgets_manager->register(new Elementor\Post_Category_Tab());
         Plugin::instance()->widgets_manager->register(new Elementor\Feature_List());
         Plugin::instance()->widgets_manager->register(new Elementor\Counter());
         Plugin::instance()->widgets_manager->register(new Elementor\Category_List());
@@ -117,6 +118,10 @@ class Load_Elementor
                 'src'     => EM_KIT_ASSETS . '/dist/button.js',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/button.js'),
                 'deps'    => ['jquery']
+            ],
+            'emkit-post-tab' => [
+                'src'     => EM_KIT_ASSETS . '/dist/post_tab.js',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/post_tab.js'),
             ],
             'emkit-pricingtable' => [
                 'src'     => EM_KIT_ASSETS . '/dist/pricingtable.js',
@@ -177,6 +182,10 @@ class Load_Elementor
                 'src'     => EM_KIT_ASSETS . '/dist/team.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/team.css'),
             ],
+            'emk-post-tab' => [
+                'src'     => EM_KIT_ASSETS . '/dist/post_tab.css',
+                'version' => filemtime(EM_KIT_PATH . '/assets/dist/post_tab.css'),
+            ],
             'emk-category_list' => [
                 'src'     => EM_KIT_ASSETS . '/dist/category_list.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/category_list.css'),
@@ -220,6 +229,7 @@ class Load_Elementor
             'Team',
             'Flip_Card',
             'Heading',
+            'Post_Category_Tab',
             'Feature_List',
             'Counter',
             'Category_List',
