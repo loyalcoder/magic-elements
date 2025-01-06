@@ -254,7 +254,6 @@ class Heading extends Widget_Base
 				'selector' => '{{WRAPPER}} .emk-heading-title',
 			]
 		);
-
         $this->add_control(
 			'emk_replace_title',
 			[
@@ -263,7 +262,6 @@ class Heading extends Widget_Base
 				'separator' => 'before',
 			]
 		);
-
         $this->add_control(
             'emk_replace_color',
             [
