@@ -5,3 +5,14 @@
 @import "../../../node_modules/bootstrap/scss/mixins";
 @import "../../../node_modules/bootstrap/scss/utilities";
 @import "../../../node_modules/bootstrap/scss/utilities/api";
+
+.social-main{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 5px;
+    .social-icon{
+        background-color: #21759b;
+        border-radius: 8px;
+        padding: 13px 13px 5px 13px;
+    }
+}
