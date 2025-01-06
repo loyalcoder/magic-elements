@@ -36,7 +36,7 @@ class Card extends Widget_Base
      */
     public function get_name()
     {
-        return 'em_kit_image';
+        return 'em_kit_card';
     }
 
     /**
