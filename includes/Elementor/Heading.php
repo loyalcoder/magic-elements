@@ -85,7 +85,6 @@ class Heading extends Widget_Base
     {
         return ['emk-widgets'];
     }
-
     public function get_script_depends()
     {
         return [];
@@ -258,7 +257,7 @@ class Heading extends Widget_Base
         $this->add_control(
 			'emk_replace_title',
 			[
-				'label' => esc_html__( 'Replace Title', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Highlight Title', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -274,6 +273,14 @@ class Heading extends Widget_Base
                 ],
             ]
         );
+
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'emk_replace_typography',
+				'selector' => '{{WRAPPER}} span.ornaments',
+			]
+		);
 
         $this->add_group_control(
             \Elementor\Group_Control_Text_Stroke::get_type(),

@@ -1,0 +1,104 @@
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/variables-dark";
+@import "../../../node_modules/bootstrap/scss/maps";
+@import "../../../node_modules/bootstrap/scss/mixins";
+@import "../../../node_modules/bootstrap/scss/utilities";
+@import "../../../node_modules/bootstrap/scss/utilities/api";
+
+
+.pricing-table-container{
+  .title{
+    margin: 0;
+  }
+  .sub-title{
+    margin: 0;
+  }
+  ul {
+    padding-left: 0;
+    margin: 0;
+    li{
+        list-style: none;
+    }
+}
+}
+.emk-button a{
+  transition: all 0.4s;
+  .btn-icon path{
+    transition: all 0.4s;
+  }
+}
+
+  
+  /* common */
+  .pricing-table-container .ribbon {
+    width: 130px;
+    height: 130px;
+    overflow: hidden;
+    position: absolute;
+    .ribbon-bar {
+      position: absolute;
+      display: block;
+      width: 225px;
+      background: #FF4D4D;
+      padding: 19px 0;
+      box-shadow: 0 5px 10px rgba(0,0,0,.1);
+      text-shadow: 0 1px 1px rgba(0,0,0,.2);
+    }
+  }
+  .pricing-table-container .ribbon::before,
+  .pricing-table-container .ribbon::after {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    display: block;
+    border: 5px solid;
+  }
+  
+  /* top left*/
+  .pricing-table-container .ribbon-top-left {
+    top: -10px;
+    left: -10px;
+  }
+  .pricing-table-container .ribbon-top-left::before,
+  .pricing-table-container .ribbon-top-left::after {
+    border-top-color: transparent;
+    border-left-color: transparent;
+  }
+  .pricing-table-container .ribbon-top-left::before {
+    top: 0;
+    right: 0;
+  }
+  .pricing-table-container .ribbon-top-left::after {
+    bottom: 0;
+    left: 0;
+  }
+  .pricing-table-container .ribbon-top-left .ribbon-bar {
+    right: -31px;
+    top: 36px;
+    transform: rotate(-45deg);
+  }
+  
+  /* top right*/
+  .pricing-table-container .ribbon-top-right {
+    top: -10px;
+    right: -10px;
+  }
+  .pricing-table-container .ribbon-top-right::before,
+  .pricing-table-container .ribbon-top-right::after {
+    border-top-color: transparent;
+    border-right-color: transparent;
+  }
+  .pricing-table-container .ribbon-top-right::before {
+    top: 0;
+    left: 0;
+  }
+  .pricing-table-container .ribbon-top-right::after {
+    bottom: 0;
+    right: 0;
+  }
+  .pricing-table-container .ribbon-top-right .ribbon-bar {
+    left: -31px;
+    top: 36px;
+    transform: rotate(45deg);
+  }

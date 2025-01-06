@@ -1,32 +1,3 @@
-<style>
-.category-list-widget {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.category-list-widget li {
-    display: flex;
-    align-items: center;
-    transition: all 0.3s ease;
-}
-
-.category-list-widget li i {
-    margin-right: 10px;
-}
-
-.category-list-widget li a {
-    text-decoration: none;
-    color: inherit;
-    font-weight: bold;
-}
-
-
-
-</style>
-
 <?php
   // Render the List
   if ( ! empty( $settings['category_items'] ) ) {
