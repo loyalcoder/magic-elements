@@ -16,7 +16,7 @@ import "./../scss/card.scss"
       },
 
       EmKitButton: function ($scope) {
-         alert();
+        //  alert();
       },
     };
   
