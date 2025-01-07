@@ -4,6 +4,9 @@
 .social-main {
   display: flex;
   flex-wrap: wrap;
+  background-color: red;
+  height: 80px;
+  width: 80px;
   column-gap: 5px;
 }
 .social-main .social-icon {

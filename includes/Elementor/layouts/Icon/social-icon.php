@@ -1,4 +1,4 @@
-<div class="social-main d-flex">
+<div class="social-main">
     <?php if(!empty($social_item)) {?>
         <?php foreach($social_item as $item) { 
             $social_icon_link = (!empty($item['icon_link']['url']) ? $item['icon_link']['url'] : '' );
