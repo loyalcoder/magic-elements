@@ -1,6 +1,6 @@
 <?php
 
-/**
+    /**
  * Elementor Classes.
  *
  * @package Team Elementor Magic Kit
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-/**
+    /**
  * Magic Kit for Elementor Extension
  *
  * Elementor widget for Team.
@@ -25,7 +25,7 @@ if (!defined('ABSPATH')) {
  */
 class Team extends Widget_Base
 {
-    /**
+        /**
      * Retrieve the widget name.
      *
      * @since 1.0.0
@@ -39,7 +39,7 @@ class Team extends Widget_Base
         return 'em_kit_team';
     }
 
-    /**
+        /**
      * Retrieve the widget title.
      *
      * @since 1.0.0
@@ -53,7 +53,7 @@ class Team extends Widget_Base
         return esc_html__('Team', 'elementor-magic-kit');
     }
 
-    /**
+        /**
      * Retrieve the widget icon.
      *
      * @since 1.0.0
@@ -67,7 +67,7 @@ class Team extends Widget_Base
         return 'eicon-handle';
     }
 
-    /**
+        /**
      * Retrieve the list of categories the widget belongs to.
      *
      * Used to determine where to display the widget in the editor.
@@ -91,7 +91,7 @@ class Team extends Widget_Base
 		return ['emkit-team', 'emkit-style'];
     }
 
-    /**
+        /**
      * Register Copyright controls.
      *
      * @since 1.0.0
@@ -102,7 +102,7 @@ class Team extends Widget_Base
         $this->register_team_controls();
     }
 
-    /**
+        /**
      * Register Copyright General Controls.
      *
      * @since 1.0.0
@@ -114,30 +114,30 @@ class Team extends Widget_Base
 			'team_layout_content_section',
 			[
 				'label' => esc_html__( 'Layout', 'elementor-magic-kit' ),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
         $this->add_responsive_control(
 			'team_text_align',
 			[
-				'label' => esc_html__( 'Alignment', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'label'   => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
 						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
-						'icon' => 'eicon-text-align-left',
+						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
 						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
-						'icon' => 'eicon-text-align-center',
+						'icon'  => 'eicon-text-align-center',
 					],
 					'right' => [
 						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
-						'icon' => 'eicon-text-align-right',
+						'icon'  => 'eicon-text-align-right',
 					],
 				],
-				'default' => 'left',
-				'toggle' => true,
+				'default'   => 'left',
+				'toggle'    => true,
 				'selectors' => [
 					'{{WRAPPER}} .team' => 'text-align: {{VALUE}};',
 				],
@@ -149,15 +149,15 @@ class Team extends Widget_Base
 			'team_image_content_section',
 			[
 				'label' => esc_html__( 'Image', 'elementor-magic-kit' ),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
     
         $this->add_control(
 			'team_image',
 			[
-				'label' => esc_html__( 'Choose Image', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::MEDIA,
+				'label'   => esc_html__( 'Choose Image', 'elementor-magic-kit' ),
+				'type'    => \Elementor\Controls_Manager::MEDIA,
 				'default' => [
 					'url' => \Elementor\Utils::get_placeholder_image_src(),
 				],
@@ -167,7 +167,7 @@ class Team extends Widget_Base
 		$this->add_group_control(
 			\Elementor\Group_Control_Image_Size::get_type(),
 			[
-				'name' => 'thumbnail',
+				'name'    => 'thumbnail',
 				'exclude' => [ 'custom' ],
 				'default' => 'medium',
 			]
@@ -179,34 +179,34 @@ class Team extends Widget_Base
 			'team_content_content_section',
 			[
 				'label' => esc_html__( 'Content', 'elementor-magic-kit' ),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
         $this->add_control(
 			'team_title',
 			[
-				'label' => esc_html__( 'Name', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'John Michael', 'elementor-magic-kit' ),
+				'label'       => esc_html__( 'Name', 'elementor-magic-kit' ),
+				'type'        => \Elementor\Controls_Manager::TEXT,
+				'default'     => esc_html__( 'John Michael', 'elementor-magic-kit' ),
 				'placeholder' => esc_html__( 'Type your title here', 'elementor-magic-kit' ),
 			]
 		);
         $this->add_control(
 			'team_designation',
 			[
-				'label' => esc_html__( 'Designation', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Developer', 'elementor-magic-kit' ),
+				'label'       => esc_html__( 'Designation', 'elementor-magic-kit' ),
+				'type'        => \Elementor\Controls_Manager::TEXT,
+				'default'     => esc_html__( 'Developer', 'elementor-magic-kit' ),
 				'placeholder' => esc_html__( 'Type your title here', 'elementor-magic-kit' ),
 			]
 		);
         $this->add_control(
 			'team_description',
 			[
-				'label' => esc_html__( 'Description', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::TEXTAREA,
-				'rows' => 5,
-				'default' => esc_html__( 'LoyalCoder delivers innovative, robust, and reliable software development solutions worldwide.', 'elementor-magic-kit' ),
+				'label'       => esc_html__( 'Description', 'elementor-magic-kit' ),
+				'type'        => \Elementor\Controls_Manager::TEXTAREA,
+				'rows'        => 5,
+				'default'     => esc_html__( 'LoyalCoder delivers innovative, robust, and reliable software development solutions worldwide.', 'elementor-magic-kit' ),
 				'placeholder' => esc_html__( 'Type your description here', 'elementor-magic-kit' ),
 			]
 		);
@@ -216,28 +216,28 @@ class Team extends Widget_Base
 			'team_social_media_content_section',
 			[
 				'label' => esc_html__( 'Social Media', 'elementor-magic-kit' ),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 		$this->add_control(
 			'show_icon',
 			[
-				'label' => esc_html__( 'Social Icon', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'elementor-magic-kit' ),
-				'label_off' => esc_html__( 'Hide', 'elementor-magic-kit' ),
+				'label'        => esc_html__( 'Social Icon', 'elementor-magic-kit' ),
+				'type'         => \Elementor\Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Show', 'elementor-magic-kit' ),
+				'label_off'    => esc_html__( 'Hide', 'elementor-magic-kit' ),
 				'return_value' => 'yes',
-				'default' => 'yes',
+				'default'      => 'yes',
 			]
 		);
         $repeater = new \Elementor\Repeater();
         $repeater->add_control(
 			'team_social_icon',
 			[
-				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::ICONS,
+				'label'   => esc_html__( 'Icon', 'elementor-magic-kit' ),
+				'type'    => \Elementor\Controls_Manager::ICONS,
 				'default' => [
-					'value' => 'fas fa-circle',
+					'value'   => 'fas fa-circle',
 					'library' => 'fa-solid',
 				],
 				'recommended' => [
@@ -310,13 +310,13 @@ class Team extends Widget_Base
         $repeater->add_control(
 			'icon_link',
 			[
-				'label' => esc_html__( 'Link', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::URL,
+				'label'   => esc_html__( 'Link', 'elementor-magic-kit' ),
+				'type'    => \Elementor\Controls_Manager::URL,
 				'options' => [ 'url', 'is_external', 'nofollow' ],
 				'default' => [
-					'url' => '',
+					'url'         => '',
 					'is_external' => true,
-					'nofollow' => true,
+					'nofollow'    => true,
 				],
 				'label_block' => true,
 			]
@@ -324,25 +324,25 @@ class Team extends Widget_Base
         $this->add_control(
 			'icon_control',
 			[
-				'label' => esc_html__( 'Icon List', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::REPEATER,
-				'fields' => $repeater->get_controls(),
+				'label'   => esc_html__( 'Icon List', 'elementor-magic-kit' ),
+				'type'    => \Elementor\Controls_Manager::REPEATER,
+				'fields'  => $repeater->get_controls(),
 				'default' => [
 					[
 						'social_icon' => [
-							'value' => 'fab fa-facebook',
+							'value'   => 'fab fa-facebook',
 							'library' => 'fa-brands',
 						],
 					],
 					[
 						'social_icon' => [
-							'value' => 'fab fa-twitter',
+							'value'   => 'fab fa-twitter',
 							'library' => 'fa-brands',
 						],
 					],
 					[
 						'social_icon' => [
-							'value' => 'fab fa-youtube',
+							'value'   => 'fab fa-youtube',
 							'library' => 'fa-brands',
 						],
 					],
@@ -352,25 +352,25 @@ class Team extends Widget_Base
 
         $this->end_controls_section();
 
-        // Style section
+            // Style section
  
         $this->start_controls_section(
 			'team_image_style_section',
 			[
 				'label' => esc_html__( 'Image', 'elementor-magic-kit' ),
-				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
         $this->add_responsive_control(
 			'image_width',
 			[
-				'label' => esc_html__( 'Width', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::SLIDER,
+				'label'      => esc_html__( 'Width', 'elementor-magic-kit' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'range' => [
+				'range'      => [
 					'px' => [
-						'min' => 0,
-						'max' => 1000,
+						'min'  => 0,
+						'max'  => 1000,
 						'step' => 1,
 					],
 					'%' => [
@@ -386,13 +386,13 @@ class Team extends Widget_Base
         $this->add_responsive_control(
 			'image_max_width',
 			[
-				'label' => esc_html__( 'Max Width', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::SLIDER,
+				'label'      => esc_html__( 'Max Width', 'elementor-magic-kit' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'range' => [
+				'range'      => [
 					'px' => [
-						'min' => 0,
-						'max' => 1000,
+						'min'  => 0,
+						'max'  => 1000,
 						'step' => 1,
 					],
 					'%' => [
@@ -408,13 +408,13 @@ class Team extends Widget_Base
         $this->add_responsive_control(
 			'image_height',
 			[
-				'label' => esc_html__( 'Height', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::SLIDER,
+				'label'      => esc_html__( 'Height', 'elementor-magic-kit' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'range' => [
+				'range'      => [
 					'px' => [
-						'min' => 0,
-						'max' => 1000,
+						'min'  => 0,
+						'max'  => 1000,
 						'step' => 1,
 					],
 					'%' => [
@@ -430,9 +430,9 @@ class Team extends Widget_Base
         $this->add_responsive_control(
 			'team_object_fit',
 			[
-				'label'     => esc_html__( 'Object Fit', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::SELECT,
-				'options'   => [
+				'label'   => esc_html__( 'Object Fit', 'elementor-magic-kit' ),
+				'type'    => \Elementor\Controls_Manager::SELECT,
+				'options' => [
 					''        => esc_html__( 'Default', 'elementor-magic-kit' ),
 					'fill'    => esc_html__( 'Fill', 'elementor-magic-kit' ),
 					'cover'   => esc_html__( 'Cover', 'elementor-magic-kit' ),
@@ -447,31 +447,31 @@ class Team extends Widget_Base
         $this->add_control(
 			'more_options',
 			[
-				'type' => \Elementor\Controls_Manager::HEADING,
+				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
 		);
         $this->add_group_control(
 			\Elementor\Group_Control_Border::get_type(),
 			[
-				'name' => 'team_border',
+				'name'     => 'team_border',
 				'selector' => '{{WRAPPER}} .team .team-image img',
 			]
 		);
         $this->add_responsive_control(
 			'team_image_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'label'      => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'selectors' => [
+				'selectors'  => [
 					'{{WRAPPER}} .team .team-image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
 
-        // normal-hover-start
-		//normal
+				  // normal-hover-start
+				  //normal
         $this->start_controls_tabs(
 			'style_tabs'
 		);
@@ -487,11 +487,11 @@ class Team extends Widget_Base
 			'opacity',
 			[
 				'label' => esc_html__( 'Opacity', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::SLIDER,
+				'type'  => \Elementor\Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
-						'max' => 1,
-						'min' => 0.10,
+						'max'  => 1,
+						'min'  => 0.10,
 						'step' => 0.01,
 					],
 				],
@@ -504,13 +504,13 @@ class Team extends Widget_Base
         $this->add_group_control(
 			\Elementor\Group_Control_Css_Filter::get_type(),
 			[
-				'name' => 'css_filters',
+				'name'     => 'css_filters',
 				'selector' => '{{WRAPPER}} .team .team-image img',
 			]
 		);
    
 		$this->end_controls_tab();
-		//hover
+				  //hover
 		$this->start_controls_tab(
 			'style_hover_tab',
 			[
@@ -522,11 +522,11 @@ class Team extends Widget_Base
 			'hover_opacity',
 			[
 				'label' => esc_html__( 'Opacity', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::SLIDER,
+				'type'  => \Elementor\Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
-						'max' => 1,
-						'min' => 0.10,
+						'max'  => 1,
+						'min'  => 0.10,
 						'step' => 0.01,
 					],
 				],
@@ -539,7 +539,7 @@ class Team extends Widget_Base
         $this->add_group_control(
 			\Elementor\Group_Control_Css_Filter::get_type(),
 			[
-				'name' => 'css_filters_hover',
+				'name'     => 'css_filters_hover',
 				'selector' => '{{WRAPPER}}:hover .team .team-image img',
 			]
 		);
@@ -548,11 +548,11 @@ class Team extends Widget_Base
 			'hover_transition',
 			[
 				'label' => esc_html__( 'Transition Duration', 'elementor-magic-kit' ) . ' (s)',
-				'type' => \Elementor\Controls_Manager::SLIDER,
+				'type'  => \Elementor\Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
-						'min' => 0,
-						'max' => 3,
+						'min'  => 0,
+						'max'  => 3,
 						'step' => 0.1,
 					],
 				],
@@ -566,12 +566,12 @@ class Team extends Widget_Base
 			'hover_animation',
 			[
 				'label' => esc_html__( 'Hover Animation', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::HOVER_ANIMATION,
+				'type'  => \Elementor\Controls_Manager::HOVER_ANIMATION,
 			]
 		);
 		
 		$this->end_controls_tab();
-// normal-hover-end
+    // normal-hover-end
 
         $this->end_controls_section();
 
@@ -579,15 +579,15 @@ class Team extends Widget_Base
 			'team_name_style_section',
 			[
 				'label' => esc_html__( 'Name', 'elementor-magic-kit' ),
-				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 
 		);
         $this->add_control(
 			'team_name_color',
 			[
-				'label' => esc_html__( 'Text Color', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
+				'label'     => esc_html__( 'Text Color', 'elementor-magic-kit' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .team h2' => 'color: {{VALUE}}',
 				],
@@ -596,17 +596,17 @@ class Team extends Widget_Base
         $this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
-				'name' => 'team_name_content_typography',
+				'name'     => 'team_name_content_typography',
 				'selector' => '{{WRAPPER}} .team h2',
 			]
 		);
         $this->add_responsive_control(
 			'team_name_margin',
 			[
-				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'label'      => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'selectors' => [
+				'selectors'  => [
 					'{{WRAPPER}} .team h2' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
@@ -617,15 +617,15 @@ class Team extends Widget_Base
 			'team_designation_style_section',
 			[
 				'label' => esc_html__( 'Designation', 'elementor-magic-kit' ),
-				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 
 		);
         $this->add_control(
 			'team_designation_color',
 			[
-				'label' => esc_html__( 'Text Color', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
+				'label'     => esc_html__( 'Text Color', 'elementor-magic-kit' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .team h6' => 'color: {{VALUE}}',
 				],
@@ -634,17 +634,17 @@ class Team extends Widget_Base
         $this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
-				'name' => 'team_designation_content_typography',
+				'name'     => 'team_designation_content_typography',
 				'selector' => '{{WRAPPER}} .team h6',
 			]
 		);
         $this->add_responsive_control(
 			'team_designation_margin',
 			[
-				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'label'      => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'selectors' => [
+				'selectors'  => [
 					'{{WRAPPER}} .team h6' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
@@ -655,15 +655,15 @@ class Team extends Widget_Base
 			'team_description_style_section',
 			[
 				'label' => esc_html__( 'Description', 'elementor-magic-kit' ),
-				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 
 		);
         $this->add_control(
 			'team_description_color',
 			[
-				'label' => esc_html__( 'Text Color', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
+				'label'     => esc_html__( 'Text Color', 'elementor-magic-kit' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .team p' => 'color: {{VALUE}}',
 				],
@@ -672,17 +672,17 @@ class Team extends Widget_Base
         $this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
-				'name' => 'team_description_content_typography',
+				'name'     => 'team_description_content_typography',
 				'selector' => '{{WRAPPER}} .team p',
 			]
 		);
         $this->add_responsive_control(
 			'team_description_margin',
 			[
-				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'label'      => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'selectors' => [
+				'selectors'  => [
 					'{{WRAPPER}} .team p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
@@ -693,31 +693,31 @@ class Team extends Widget_Base
 			'team_social_media_style_section',
 			[
 				'label' => esc_html__( 'Social Media', 'elementor-magic-kit' ),
-				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 
 		);
 		$this->add_responsive_control(
 			'team_social_icon_align',
 			[
-				'label' => esc_html__( 'Alignment', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'label'   => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
 						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
-						'icon' => 'eicon-text-align-left',
+						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
 						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
-						'icon' => 'eicon-text-align-center',
+						'icon'  => 'eicon-text-align-center',
 					],
 					'right' => [
 						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
-						'icon' => 'eicon-text-align-right',
+						'icon'  => 'eicon-text-align-right',
 					],
 				],
-				'default' => 'left',
-				'toggle' => true,
+				'default'   => 'left',
+				'toggle'    => true,
 				'selectors' => [
 					'{{WRAPPER}} .team .team-icon' => 'justify-content: {{VALUE}};',
 				],
@@ -726,8 +726,8 @@ class Team extends Widget_Base
         $this->add_control(
 			'team_social_icon_color',
 			[
-				'label' => esc_html__( 'Icon Color', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
+				'label'     => esc_html__( 'Icon Color', 'elementor-magic-kit' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .team-icon .social-icon a svg', '{{WRAPPER}} .team-icon .social-icon svg' => 'fill: {{VALUE}}',
 				],
@@ -736,21 +736,21 @@ class Team extends Widget_Base
         $this->add_group_control(
 			\Elementor\Group_Control_Background::get_type(),
 			[
-				'name' => 'team_social_icon_background',
-				'types' => [ 'classic', 'gradient', 'video' ],
+				'name'     => 'team_social_icon_background',
+				'types'    => [ 'classic', 'gradient', 'video' ],
 				'selector' => '{{WRAPPER}} .team-icon .social-icon svg',
 			]
 		);
         $this->add_responsive_control(
 			'team_icon_size',
 			[
-				'label' => esc_html__( 'Size', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::SLIDER,
+				'label'      => esc_html__( 'Size', 'elementor-magic-kit' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'range' => [
+				'range'      => [
 					'px' => [
-						'min' => 0,
-						'max' => 1000,
+						'min'  => 0,
+						'max'  => 1000,
 						'step' => 1,
 					],
 					'%' => [
@@ -771,8 +771,8 @@ class Team extends Widget_Base
 		$this->add_responsive_control(
 			'icon_margin',
 			[
-				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'label'     => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'selectors' => [
 					'{{WRAPPER}} .team-icon .social-icon' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -781,8 +781,8 @@ class Team extends Widget_Base
         $this->add_responsive_control(
 			'icon_padding',
 			[
-				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'label'     => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'selectors' => [
 					'{{WRAPPER}} .team-icon .social-icon svg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -791,24 +791,24 @@ class Team extends Widget_Base
         $this->add_control(
 			'team_icon_more_options',
 			[
-				'type' => \Elementor\Controls_Manager::HEADING,
+				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
 		);
         $this->add_group_control(
 			\Elementor\Group_Control_Border::get_type(),
 			[
-				'name' => 'icon_border',
+				'name'     => 'icon_border',
 				'selector' => '{{WRAPPER}} .team-icon .social-icon svg',
 			]
 		);
         $this->add_responsive_control(
 			'icon_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'label'      => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'selectors' => [
+				'selectors'  => [
 					'{{WRAPPER}} .team-icon .social-icon svg' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
@@ -821,7 +821,7 @@ class Team extends Widget_Base
 
     }
 
-    /**
+        /**
      * Render Copyright output on the frontend.
      *
      * Written in PHP and used to generate the final HTML.
@@ -831,14 +831,14 @@ class Team extends Widget_Base
      */
     protected function render()
     {
-        $settings    = $this->get_settings_for_display();
+        $settings = $this->get_settings_for_display();
 
         $team_icon_list = $settings['icon_control'];
         include __DIR__ . '/layouts/team.php';
 
     }
 
-    /**
+        /**
      * Render shortcode widget as plain content.
      *
      * Override the default behavior by printing the shortcode instead of rendering it.
@@ -848,11 +848,11 @@ class Team extends Widget_Base
      */
     public function render_plain_content()
     {
-        // In plain mode, render without shortcode.
+            // In plain mode, render without shortcode.
         echo esc_attr($this->get_settings('shortcode'));
     }
 
-    /**
+        /**
      * Render shortcode widget output in the editor.
      *
      * Written as a Backbone JavaScript template and used to generate the live preview.

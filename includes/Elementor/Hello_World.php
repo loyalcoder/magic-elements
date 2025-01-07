@@ -1,6 +1,6 @@
 <?php
 
-/**
+    /**
  * Elementor Classes.
  *
  * @package Header Footer Elementor
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-/**
+    /**
  * Elementor test
  *
  * Elementor widget for test.
@@ -25,7 +25,7 @@ if (!defined('ABSPATH')) {
  */
 class Hello_World extends Widget_Base
 {
-    /**
+        /**
      * Retrieve the widget name.
      *
      * @since 1.0.0
@@ -39,7 +39,7 @@ class Hello_World extends Widget_Base
         return 'EM_KIT_hello_world';
     }
 
-    /**
+        /**
      * Retrieve the widget title.
      *
      * @since 1.0.0
@@ -53,7 +53,7 @@ class Hello_World extends Widget_Base
         return __('Hello World', 'pkun');
     }
 
-    /**
+        /**
      * Retrieve the widget icon.
      *
      * @since 1.0.0
@@ -67,7 +67,7 @@ class Hello_World extends Widget_Base
         return 'eicon-search-results';
     }
 
-    /**
+        /**
      * Retrieve the list of categories the widget belongs to.
      *
      * Used to determine where to display the widget in the editor.
@@ -91,7 +91,7 @@ class Hello_World extends Widget_Base
         return [];
     }
 
-    /**
+        /**
      * Register Copyright controls.
      *
      * @since 1.0.0
@@ -102,7 +102,7 @@ class Hello_World extends Widget_Base
         $this->register_hello_world_controls();
     }
 
-    /**
+        /**
      * Register Copyright General Controls.
      *
      * @since 1.0.0
@@ -134,26 +134,26 @@ class Hello_World extends Widget_Base
 
         $this->end_controls_section();
 
-        // Style section
-        // --- Container section
+            // Style section
+            // --- Container section
         $this->start_controls_section(
             $this->get_name() . 'container_style_section',
             [
                 'label' => __('Container', 'pkun'),
-                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
 
         $this->add_responsive_control(
             $this->get_name() . 'banner_container_height',
             [
-                'label' => __('Min Height', 'pkun'),
-                'type' => Controls_Manager::SLIDER,
+                'label'      => __('Min Height', 'pkun'),
+                'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
-                'range' => [
+                'range'      => [
                     'px' => [
-                        'min' => 0,
-                        'max' => 1000,
+                        'min'  => 0,
+                        'max'  => 1000,
                         'step' => 1,
                     ],
                 ],
@@ -166,8 +166,8 @@ class Hello_World extends Widget_Base
         $this->add_responsive_control(
             $this->get_name() . 'bg__color',
             [
-                'label' => __('Background Color', 'pkun'),
-                'type' => \Elementor\Controls_Manager::COLOR,
+                'label'     => __('Background Color', 'pkun'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .banner__slider__wraper' => 'background-color: {{VALUE}}',
                 ],
@@ -177,10 +177,10 @@ class Hello_World extends Widget_Base
         $this->add_responsive_control(
             $this->get_name() . 'banner_container_spacing',
             [
-                'label' => __('Padding', 'pkun'),
-                'type' => Controls_Manager::DIMENSIONS,
+                'label'      => __('Padding', 'pkun'),
+                'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em'],
-                'selectors' => [
+                'selectors'  => [
                     '{{WRAPPER}} .banner__slider__wraper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
@@ -190,8 +190,8 @@ class Hello_World extends Widget_Base
             $this->get_name() . 'bg_overlay_color',
             [
                 'label' => __('Overlay Color', 'pkun'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                // 'devices'   => ['mobile', 'tablet'],
+                'type'  => \Elementor\Controls_Manager::COLOR,
+                    // 'devices'   => ['mobile', 'tablet'],
                 'selectors' => [
                     '{{WRAPPER}} .banner__slider__wraper:before' => 'background-color: {{VALUE}}',
                 ],
@@ -201,7 +201,7 @@ class Hello_World extends Widget_Base
         $this->end_controls_section();
     }
 
-    /**
+        /**
      * Render Copyright output on the frontend.
      *
      * Written in PHP and used to generate the final HTML.
@@ -211,11 +211,11 @@ class Hello_World extends Widget_Base
      */
     protected function render()
     {
-        $settings    = $this->get_settings_for_display();
+        $settings = $this->get_settings_for_display();
         include __DIR__ . '/layouts/hello-world.php';
     }
 
-    /**
+        /**
      * Render shortcode widget as plain content.
      *
      * Override the default behavior by printing the shortcode instead of rendering it.
@@ -225,11 +225,11 @@ class Hello_World extends Widget_Base
      */
     public function render_plain_content()
     {
-        // In plain mode, render without shortcode.
+            // In plain mode, render without shortcode.
         echo esc_attr($this->get_settings('shortcode'));
     }
 
-    /**
+        /**
      * Render shortcode widget output in the editor.
      *
      * Written as a Backbone JavaScript template and used to generate the live preview.
