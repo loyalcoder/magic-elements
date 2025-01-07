@@ -1,6 +1,6 @@
 <?php
 
-/**
+    /**
  * Elementor Classes.
  *
  * @package Icon Elementor Magic Kit
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-/**
+    /**
  *  Magic Kit for Elementor Extension
  *
  * Elementor widget for Icon.
@@ -25,7 +25,7 @@ if (!defined('ABSPATH')) {
  */
 class Icon extends Widget_Base
 {
-    /**
+        /**
      * Retrieve the widget name.
      *
      * @since 1.0.0
@@ -39,7 +39,7 @@ class Icon extends Widget_Base
         return 'em_kit_icon';
     }
 
-    /**
+        /**
      * Retrieve the widget title.
      *
      * @since 1.0.0
@@ -53,7 +53,7 @@ class Icon extends Widget_Base
         return __('Icon', 'elementor-magic-kit');
     }
 
-    /**
+        /**
      * Retrieve the widget icon.
      *
      * @since 1.0.0
@@ -67,7 +67,7 @@ class Icon extends Widget_Base
         return 'eicon-nerd-chuckle';
     }
 
-    /**
+        /**
      * Retrieve the list of categories the widget belongs to.
      *
      * Used to determine where to display the widget in the editor.
@@ -90,7 +90,7 @@ class Icon extends Widget_Base
         return ['emkit-icon' , 'emkit-style'];
     }
 
-    /**
+        /**
      * Register Copyright controls.
      *
      * @since 1.0.0
@@ -101,7 +101,7 @@ class Icon extends Widget_Base
         $this->register_icon_controls();
     }
 
-    /**
+        /**
      * Register Copyright General Controls.
      *
      * @since 1.0.0
@@ -113,17 +113,17 @@ class Icon extends Widget_Base
 			'icon_section',
 			[
 				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 
         $this->add_control(
 			'icon_single',
 			[
-				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::ICONS,
+				'label'   => esc_html__( 'Icon', 'elementor-magic-kit' ),
+				'type'    => \Elementor\Controls_Manager::ICONS,
 				'default' => [
-					'value' => 'fas fa-star',
+					'value'   => 'fas fa-star',
 					'library' => 'fa-solid',
 				],
 				'recommended' => [
@@ -143,13 +143,13 @@ class Icon extends Widget_Base
         $this->add_control(
 			'icon_link',
 			[
-				'label' => esc_html__( 'Link', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::URL,
+				'label'   => esc_html__( 'Link', 'elementor-magic-kit' ),
+				'type'    => \Elementor\Controls_Manager::URL,
 				'options' => [ 'url', 'is_external', 'nofollow' ],
 				'default' => [
-					'url' => '',
+					'url'         => '',
 					'is_external' => true,
-					'nofollow' => true,
+					'nofollow'    => true,
 				],
 				'label_block' => true,
 			]
@@ -157,36 +157,36 @@ class Icon extends Widget_Base
 
         $this->end_controls_section();
 
-        // Style section
+            // Style section
         $this->start_controls_section(
 			'icon_style_section',
 			[
 				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
-				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
 
         $this->add_responsive_control(
 			'icon_alinenment',
 			[
-				'label' => esc_html__( 'Alignment', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'label'   => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
 						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
-						'icon' => 'eicon-text-align-left',
+						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
 						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
-						'icon' => 'eicon-text-align-center',
+						'icon'  => 'eicon-text-align-center',
 					],
 					'right' => [
 						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
-						'icon' => 'eicon-text-align-right',
+						'icon'  => 'eicon-text-align-right',
 					],
 				],
-				'default' => 'center',
-				'toggle' => true,
+				'default'   => 'center',
+				'toggle'    => true,
 				'selectors' => [
 					'{{WRAPPER}} .icon a' => 'justify-content: {{VALUE}};',
 				],
@@ -195,21 +195,21 @@ class Icon extends Widget_Base
         $this->add_group_control(
 			\Elementor\Group_Control_Background::get_type(),
 			[
-				'name' => 'icon_background',
-				'types' => [ 'classic', 'gradient', 'video' ],
+				'name'     => 'icon_background',
+				'types'    => [ 'classic', 'gradient', 'video' ],
 				'selector' => '{{WRAPPER}} .icon a svg',
 			]
 		);
         $this->add_responsive_control(
             $this->get_name() . 'icon_size',
             [
-                'label' => esc_html__( 'Size', 'elementor-magic-kit' ),
-                'type' => \Elementor\Controls_Manager::SLIDER,
+                'label'      => esc_html__( 'Size', 'elementor-magic-kit' ),
+                'type'       => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-                'range' => [
+                'range'      => [
                     'px' => [
-                        'min' => 0,
-                        'max' => 1000,
+                        'min'  => 0,
+                        'max'  => 1000,
                         'step' => 1,
                     ],
                     '%' => [
@@ -230,10 +230,10 @@ class Icon extends Widget_Base
         $this->add_responsive_control(
 			'icon_padding',
 			[
-				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'label'      => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'selectors' => [
+				'selectors'  => [
 					'{{WRAPPER}} .icon a svg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
@@ -241,16 +241,16 @@ class Icon extends Widget_Base
         $this->add_responsive_control(
 			'icon_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'label'      => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'selectors' => [
+				'selectors'  => [
 					'{{WRAPPER}} .icon a svg' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
-         // normal-hover-start
-		//normal
+				  // normal-hover-start
+				  //normal
         $this->start_controls_tabs(
 			'icon_style_tabs'
 		);
@@ -264,16 +264,16 @@ class Icon extends Widget_Base
         $this->add_control(
 			$this->get_name() .'icon_primary_color',
 			[
-				'label' => esc_html__( 'Primary Color', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-                'default'=>'#6ec1e4',
+				'label'     => esc_html__( 'Primary Color', 'elementor-magic-kit' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => '#6ec1e4',
 				'selectors' => [
 					'{{WRAPPER}} .icon a svg' => 'fill: {{VALUE}}',
 				],
 			]
 		);
 		$this->end_controls_tab();
-		//hover
+				  //hover
 		$this->start_controls_tab(
 			'style_icon_hover_tab',
 			[
@@ -283,8 +283,8 @@ class Icon extends Widget_Base
         $this->add_control(
 			$this->get_name() .'icon_hover_color',
 			[
-				'label' => esc_html__( 'Icon Hover Color', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
+				'label'     => esc_html__( 'Icon Hover Color', 'elementor-magic-kit' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .icon a svg:hover' => 'fill: {{VALUE}}',
 				],
@@ -294,11 +294,11 @@ class Icon extends Widget_Base
 			$this->get_name() .'icon_hover_transition',
 			[
 				'label' => esc_html__( 'Transition Duration', 'elementor-magic-kit' ) . ' (s)',
-				'type' => \Elementor\Controls_Manager::SLIDER,
+				'type'  => \Elementor\Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
-						'min' => 0,
-						'max' => 3,
+						'min'  => 0,
+						'max'  => 3,
 						'step' => 0.1,
 					],
 				],
@@ -311,16 +311,16 @@ class Icon extends Widget_Base
 			'hover_animation',
 			[
 				'label' => esc_html__( 'Hover Animation', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::HOVER_ANIMATION,
+				'type'  => \Elementor\Controls_Manager::HOVER_ANIMATION,
 			]
 		);
 		$this->end_controls_tab();
-    // normal-hover-end
+        // normal-hover-end
     
         $this->end_controls_section();
     }
 
-    /**
+        /**
      * Render Copyright output on the frontend.
      *
      * Written in PHP and used to generate the final HTML.
@@ -330,11 +330,11 @@ class Icon extends Widget_Base
      */
     protected function render()
     {
-        $settings    = $this->get_settings_for_display();
+        $settings = $this->get_settings_for_display();
         include __DIR__ . '/layouts/icon.php';
     }
 
-    /**
+        /**
      * Render shortcode widget as plain content.
      *
      * Override the default behavior by printing the shortcode instead of rendering it.
@@ -344,11 +344,11 @@ class Icon extends Widget_Base
      */
     public function render_plain_content()
     {
-        // In plain mode, render without shortcode.
+            // In plain mode, render without shortcode.
         echo esc_attr($this->get_settings('shortcode'));
     }
 
-    /**
+        /**
      * Render shortcode widget output in the editor.
      *
      * Written as a Backbone JavaScript template and used to generate the live preview.

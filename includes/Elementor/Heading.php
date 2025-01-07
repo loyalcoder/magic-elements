@@ -1,6 +1,6 @@
 <?php
 
-/**
+    /**
  * Elementor Classes.
  *
  * @package Heading Elementor Magic Kit
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
     exit;
 } 
 
-/**
+    /**
  * Magic Kit for Elementor Extension
  *
  * Elementor widget for Heading.
@@ -25,7 +25,7 @@ if (!defined('ABSPATH')) {
  */
 class Heading extends Widget_Base
 {
-    /**
+        /**
      * Retrieve the widget name.
      *
      * @since 1.0.0
@@ -39,7 +39,7 @@ class Heading extends Widget_Base
         return 'em_kit_heading';
     }
 
-    /**
+        /**
      * Retrieve the widget title.
      *
      * @since 1.0.0
@@ -53,7 +53,7 @@ class Heading extends Widget_Base
         return esc_html__('Magic Heading', 'elementor-magic-kit');
     }
 
-    /**
+        /**
      * Retrieve the widget icon.
      *
      * @since 1.0.0
@@ -67,7 +67,7 @@ class Heading extends Widget_Base
         return 'eicon-heading';
     }
 
-    /**
+        /**
      * Retrieve the list of categories the widget belongs to.
      *
      * Used to determine where to display the widget in the editor.
@@ -90,7 +90,7 @@ class Heading extends Widget_Base
         return [];
     }
 
-    /**
+        /**
      * Register Copyright controls.
      *
      * @since 1.0.0
@@ -101,7 +101,7 @@ class Heading extends Widget_Base
         $this->register_heading_controls();
     }
 
-    /**
+        /**
      * Register Copyright General Controls.
      *
      * @since 1.0.0
@@ -120,28 +120,28 @@ class Heading extends Widget_Base
 			'title',
 			[
 				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::TEXTAREA,
-				'ai' => [
+				'type'  => \Elementor\Controls_Manager::TEXTAREA,
+				'ai'    => [
 					'type' => 'text',
 				],
 				'dynamic' => [
 					'active' => true,
 				],
-				'placeholder' => esc_html__( 'Enter your title', 'elementor-magic-kit' ),
-				'default' => esc_html__( 'Add Your Heading Text Here', 'elementor-magic-kit' ),
-                'description' => esc_html__('to add highlight text use {{I am highlight}}', 'elementor-magic-kit'),
+    'placeholder' => esc_html__( 'Enter your title', 'elementor-magic-kit' ),
+    'default'     => esc_html__( 'Add Your Heading Text Here', 'elementor-magic-kit' ),
+    'description' => esc_html__('to add highlight text use {{I am highlight}}', 'elementor-magic-kit'),
 			]
 		);
 
-          // Link Control
+              // Link Control
         $this->add_control(
             'heading_link',
             [
-                'label'         => esc_html__( 'Heading Link', 'elementor-magic-kit' ),
-                'type'          => \Elementor\Controls_Manager::URL,
-                'placeholder'   => esc_html__( 'https://your-link.com', 'elementor-magic-kit' ),
-                'options'       => [ 'url', 'is_external', 'nofollow' ],
-                'default'       => [
+                'label'       => esc_html__( 'Heading Link', 'elementor-magic-kit' ),
+                'type'        => \Elementor\Controls_Manager::URL,
+                'placeholder' => esc_html__( 'https://your-link.com', 'elementor-magic-kit' ),
+                'options'     => [ 'url', 'is_external', 'nofollow' ],
+                'default'     => [
                     'url'         => '',
                     'is_external' => false,
                     'nofollow'    => false,
@@ -152,18 +152,18 @@ class Heading extends Widget_Base
 		$this->add_control(
 			'header_size',
 			[
-				'label' => esc_html__( 'HTML Tag', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::SELECT,
+				'label'   => esc_html__( 'HTML Tag', 'elementor-magic-kit' ),
+				'type'    => \Elementor\Controls_Manager::SELECT,
 				'options' => [
-					'h1' => 'H1',
-					'h2' => 'H2',
-					'h3' => 'H3',
-					'h4' => 'H4',
-					'h5' => 'H5',
-					'h6' => 'H6',
-					'div' => 'div',
+					'h1'   => 'H1',
+					'h2'   => 'H2',
+					'h3'   => 'H3',
+					'h4'   => 'H4',
+					'h5'   => 'H5',
+					'h6'   => 'H6',
+					'div'  => 'div',
 					'span' => 'span',
-					'p' => 'p',
+					'p'    => 'p',
 				],
 				'default' => 'h2',
 			]
@@ -171,40 +171,40 @@ class Heading extends Widget_Base
 
         $this->end_controls_section();
 
-        // Style section
-        // --- Container section
+            // Style section
+            // --- Container section
         $this->start_controls_section(
             'emk_section_title_style',
             [
                 'label' => esc_html__('Heading', 'elementor-magic-kit'),
-                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
 
         $this->add_responsive_control(
 			'align',
 			[
-				'label' => esc_html__( 'Alignment', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'label'   => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
 						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
-						'icon' => 'eicon-text-align-left',
+						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
 						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
-						'icon' => 'eicon-text-align-center',
+						'icon'  => 'eicon-text-align-center',
 					],
 					'right' => [
 						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
-						'icon' => 'eicon-text-align-right',
+						'icon'  => 'eicon-text-align-right',
 					],
 					'justify' => [
 						'title' => esc_html__( 'Justified', 'elementor-magic-kit' ),
-						'icon' => 'eicon-text-align-justify',
+						'icon'  => 'eicon-text-align-justify',
 					],
 				],
-				'default' => '',
+				'default'   => '',
 				'selectors' => [
 					'{{WRAPPER}} .emk-heading-title' => 'text-align: {{VALUE}};',
 				],
@@ -214,8 +214,8 @@ class Heading extends Widget_Base
         $this->add_control(
 			'emk_title',
 			[
-				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::HEADING,
+				'label'     => esc_html__( 'Title', 'elementor-magic-kit' ),
+				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
 		);
@@ -223,8 +223,8 @@ class Heading extends Widget_Base
 		$this->add_control(
 			'title_color_',
 			[
-				'label' => esc_html__( 'Color', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
+				'label'     => esc_html__( 'Color', 'elementor-magic-kit' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .emk-heading-title, {{WRAPPER}} .emk-heading-title a' => 'color: {{VALUE}};',
 				],
@@ -234,7 +234,7 @@ class Heading extends Widget_Base
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
-				'name' => 'typography',
+				'name'     => 'typography',
 				'selector' => '{{WRAPPER}} .emk-heading-title',
 			]
 		);
@@ -242,7 +242,7 @@ class Heading extends Widget_Base
 		$this->add_group_control(
 			\Elementor\Group_Control_Text_Stroke::get_type(),
 			[
-				'name' => 'text_stroke',
+				'name'     => 'text_stroke',
 				'selector' => '{{WRAPPER}} .emk-heading-title',
 			]
 		);
@@ -250,23 +250,23 @@ class Heading extends Widget_Base
 		$this->add_group_control(
 			\Elementor\Group_Control_Text_Shadow::get_type(),
 			[
-				'name' => 'text_shadow',
+				'name'     => 'text_shadow',
 				'selector' => '{{WRAPPER}} .emk-heading-title',
 			]
 		);
         $this->add_control(
 			'emk_replace_title',
 			[
-				'label' => esc_html__( 'Highlight Title', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::HEADING,
+				'label'     => esc_html__( 'Highlight Title', 'elementor-magic-kit' ),
+				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
 		);
         $this->add_control(
             'emk_replace_color',
             [
-                'label' => esc_html__('Replace Color', 'elementor-magic-kit'),
-                'type' => \Elementor\Controls_Manager::COLOR,
+                'label'     => esc_html__('Replace Color', 'elementor-magic-kit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} span.ornaments' => 'color: {{VALUE}}',
                 ],
@@ -276,7 +276,7 @@ class Heading extends Widget_Base
         $this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
-				'name' => 'emk_replace_typography',
+				'name'     => 'emk_replace_typography',
 				'selector' => '{{WRAPPER}} span.ornaments',
 			]
 		);
@@ -284,7 +284,7 @@ class Heading extends Widget_Base
         $this->add_group_control(
             \Elementor\Group_Control_Text_Stroke::get_type(),
             [
-                'name' => 'emk_replace_text_stroke',
+                'name'     => 'emk_replace_text_stroke',
                 'selector' => '{{WRAPPER}} span.ornaments',
             ]
         );
@@ -292,7 +292,7 @@ class Heading extends Widget_Base
         $this->end_controls_section();
     }
 
-    /**
+        /**
      * Render Copyright output on the frontend.
      *
      * Written in PHP and used to generate the final HTML.
@@ -302,16 +302,16 @@ class Heading extends Widget_Base
      */
     protected function render()
     {
-        $settings    = $this->get_settings_for_display();
+        $settings = $this->get_settings_for_display();
 
-        $title = $settings['title'];
-        $newoutput = str_replace(['{{', '}}'], ['<span class="ornaments">', '</span>'], $title);
+        $title        = $settings['title'];
+        $newoutput    = str_replace(['{{', '}}'], ['<span class="ornaments">', '</span>'], $title);
         $heading_link = !empty( $settings['heading_link']['url'] ) ? $settings['heading_link']['url'] : '';
 
         include __DIR__ . '/layouts/heading/heading.php';
     }
 
-    /**
+        /**
      * Render shortcode widget as plain content.
      *
      * Override the default behavior by printing the shortcode instead of rendering it.
@@ -321,11 +321,11 @@ class Heading extends Widget_Base
      */
     public function render_plain_content()
     {
-        // In plain mode, render without shortcode.
+            // In plain mode, render without shortcode.
         echo esc_attr($this->get_settings('shortcode'));
     }
 
-    /**
+        /**
      * Render shortcode widget output in the editor.
      *
      * Written as a Backbone JavaScript template and used to generate the live preview.
