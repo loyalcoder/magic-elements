@@ -1,16 +1,24 @@
 <?php
 
 /**
- * Plugin Name:       Elementor Magic kit
- * Plugin URI:        https://marlink-checkout.com
- * Description:       Boilerplate for WordPress Plugin
+ * Plugin Name:       Elementor Magic Kit
+ * Requires Plugins:  elementor
+ * Plugin URI:        https://loyalcoder.com
+ * Description:       Elementor Magic Kit is a comprehensive extension for Elementor, providing advanced features, custom widgets, and templates to enhance your page-building experience. Perfect for users seeking seamless design customization with ease.
  * Version:           1.0.0
- * Author:            WildRain
- * Author URI:        https://wildrain.net
- * License:           GPL v2 or later
- * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+ * Author:            LoyalCoder
+ * Author URI:        https://loyalcoder.com
+ * Requires at least: 5.0
+ * Tested up to:      6.6
+ *
  * Text Domain:       elementor-magic-kit
+ * Domain Path:       /languages/
+ *
+ * Copyright:         © 2025 LoyalCoder.
+ * License:           GNU General Public License v3.0
+ * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
  */
+
 
 if (!defined('ABSPATH')) {
     exit;
@@ -93,7 +101,6 @@ final class Elementor_Magic_Kit
     public function init_plugin()
     {
         new Elementor_Magic_Kit\Assets();
-        new Elementor_Magic_Kit\EM_KIT_Ajax();
         new Elementor_Magic_Kit\Load_Elementor();
         new Elementor_Magic_Kit\Generator();
         if (is_admin()) {

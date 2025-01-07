@@ -33,6 +33,8 @@ module.exports = {
     card: './assets/src/js/card.js',
     tab: './assets/src/js/tab.js',
     main: './assets/src/js/index.js',
+    // admin part 
+    admin: './assets/src/admin/index.js',
   },
   output: {
     path: path.resolve(__dirname, 'assets/dist'),

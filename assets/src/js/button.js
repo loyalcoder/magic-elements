@@ -15,9 +15,7 @@ import "./../scss/button.scss";
         });
       },
 
-      EmKitButton: function ($scope) {
-        //  alert();
-      },
+      EmKitButton: function ($scope) {      },
     };
   
     $window.on("elementor/frontend/init", emkElementor.onInit);
