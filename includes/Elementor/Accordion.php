@@ -124,12 +124,12 @@ class Accordion extends Widget_Base
 		$this->add_control(
 			'accordion_style',
 			[
-				'label' => __('Accordion Style', 'elementor-magic-kit'),
+				'label' => esc_html__('Accordion Style', 'elementor-magic-kit'),
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'options' => [
-					'style_one' => __('Style 1 - Only Current Item Toggles', 'elementor-magic-kit'),
-					'style_two' => __('Style 2 - Only This Item Toggles Independently', 'elementor-magic-kit'),
-					'style_three' => __('Style 3 - All Items Open By Default', 'elementor-magic-kit'),
+					'style_one' => esc_html__('Style 1 - Only Current Item Toggles', 'elementor-magic-kit'),
+					'style_two' => esc_html__('Style 2 - Only This Item Toggles Independently', 'elementor-magic-kit'),
+					'style_three' => esc_html__('Style 3 - All Items Open By Default', 'elementor-magic-kit'),
 				],
 				'default' => 'style_one',
 			]
@@ -193,10 +193,10 @@ class Accordion extends Widget_Base
 		$this->add_control(
 			'enable_cursor_pointer',
 			[
-				'label' => __('Enable Cursor Pointer', 'elementor-magic-kit'),
+				'label' => esc_html__('Enable Cursor Pointer', 'elementor-magic-kit'),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => __('Yes', 'elementor-magic-kit'),
-				'label_off' => __('No', 'elementor-magic-kit'),
+				'label_on' => esc_html__('Yes', 'elementor-magic-kit'),
+				'label_off' => esc_html__('No', 'elementor-magic-kit'),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -205,7 +205,7 @@ class Accordion extends Widget_Base
 		$this->add_control(
 			'toggle_animation_duration',
 			[
-				'label' => __('Toggle Animation Duration (ms)', 'elementor-magic-kit'),
+				'label' => esc_html__('Toggle Animation Duration (ms)', 'elementor-magic-kit'),
 				'type' => \Elementor\Controls_Manager::NUMBER,
 				'min' => 0,
 				'max' => 5000,
@@ -988,7 +988,7 @@ class Accordion extends Widget_Base
     {
         $settings    = $this->get_settings_for_display();
 
-        include __DIR__ . '/layouts/Accordion/accordion.php';
+        include __DIR__ . '/layouts/accordion/accordion.php';
     }
 
     /**

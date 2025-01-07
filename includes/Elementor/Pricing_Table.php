@@ -115,7 +115,7 @@ class Pricing_Table extends Widget_Base
         $this->start_controls_section(
             'section_style',
             [
-                'label' => __('Table Settings', 'elementor-magic-kit'),
+                'label' => esc_html__('Table Settings', 'elementor-magic-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -136,7 +136,7 @@ class Pricing_Table extends Widget_Base
         $this->start_controls_section(
             'table_header',
             [
-                'label' => __('Header', 'elementor-magic-kit'),
+                'label' => esc_html__('Header', 'elementor-magic-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -163,7 +163,7 @@ class Pricing_Table extends Widget_Base
         $this->start_controls_section(
             'price_section',
             [
-                'label' => __('Pricing', 'elementor-magic-kit'),
+                'label' => esc_html__('Pricing', 'elementor-magic-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -243,7 +243,7 @@ class Pricing_Table extends Widget_Base
         $this->start_controls_section(
             'features_section',
             [
-                'label' => __('Features', 'elementor-magic-kit'),
+                'label' => esc_html__('Features', 'elementor-magic-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -253,9 +253,9 @@ class Pricing_Table extends Widget_Base
         $repeater->add_control(
             'features_text',
             [
-                'label' => __( 'Text', 'text-domain' ),
+                'label' => esc_html__( 'Text', 'elementor-magic-kit' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'Default Text', 'text-domain' ),
+                'default' => esc_html__( 'Default Text', 'elementor-magic-kit' ),
             ]
         );
 
@@ -286,16 +286,16 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
             'features_items',
             [
-                'label' => __( 'Repeater Items', 'text-domain' ),
+                'label' => esc_html__( 'Repeater Items', 'elementor-magic-kit' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
                     [
-                        'features_text' => __( 'Sample Text 1', 'text-domain' ),
+                        'features_text' => __( 'Sample Text 1', 'elementor-magic-kit' ),
                         'features_icon' => 'fa fa-heart',
                     ],
                     [
-                        'features_text' => __( 'Sample Text 2', 'text-domain' ),
+                        'features_text' => __( 'Sample Text 2', 'elementor-magic-kit' ),
                         'features_icon' => 'fa fa-cogs',
                     ],
                 ],
@@ -338,10 +338,10 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'show_btn_icon',
 			[
-				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'textdomain' ),
-				'label_off' => esc_html__( 'Hide', 'textdomain' ),
+				'label_on' => esc_html__( 'Show', 'elementor-magic-kit' ),
+				'label_off' => esc_html__( 'Hide', 'elementor-magic-kit' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -376,7 +376,7 @@ class Pricing_Table extends Widget_Base
         $this->start_controls_section(
             'ribbon_section',
             [
-                'label' => __('Ribbon', 'elementor-magic-kit'),
+                'label' => esc_html__('Ribbon', 'elementor-magic-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -410,7 +410,7 @@ class Pricing_Table extends Widget_Base
         $this->start_controls_section(
             'pricing_card_style',
             [
-                'label' => __('Table Style', 'elementor-magic-kit'),
+                'label' => esc_html__('Table Style', 'elementor-magic-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'layout_style' => 'style_one'
@@ -490,7 +490,7 @@ class Pricing_Table extends Widget_Base
 		$this->start_controls_section(
             'pricing_card_style_two',
             [
-                'label' => __('Table Body', 'elementor-magic-kit'),
+                'label' => esc_html__('Table Body', 'elementor-magic-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'layout_style' => 'style_two'
@@ -706,7 +706,7 @@ class Pricing_Table extends Widget_Base
         $this->start_controls_section(
             'header_style',
             [
-                'label' => __('Header', 'elementor-magic-kit'),
+                'label' => esc_html__('Header', 'elementor-magic-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -870,7 +870,7 @@ class Pricing_Table extends Widget_Base
         $this->start_controls_section(
             'price_style',
             [
-                'label' => __('Price', 'elementor-magic-kit'),
+                'label' => esc_html__('Price', 'elementor-magic-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -1185,7 +1185,7 @@ class Pricing_Table extends Widget_Base
         $this->start_controls_section(
             'features_style',
             [
-                'label' => __('Features', 'elementor-magic-kit'),
+                'label' => esc_html__('Features', 'elementor-magic-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -1404,7 +1404,7 @@ class Pricing_Table extends Widget_Base
         $this->start_controls_section(
             'button_style',
             [
-                'label' => __('Button', 'elementor-magic-kit'),
+                'label' => esc_html__('Button', 'elementor-magic-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -1447,7 +1447,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_responsive_control(
 			'btn_padding',
 			[
-				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
@@ -1466,7 +1466,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_responsive_control(
 			'btn_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
@@ -1496,13 +1496,13 @@ class Pricing_Table extends Widget_Base
 		$this->start_controls_tab(
 			'style_normal_tab',
 			[
-				'label' => esc_html__( 'Normal', 'textdomain' ),
+				'label' => esc_html__( 'Normal', 'elementor-magic-kit' ),
 			]
 		);
 		$this->add_control(
 			'btn_bg',
 			[
-				'label' => esc_html__( 'Background', 'textdomain' ),
+				'label' => esc_html__( 'Background', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .emk-button a' => 'background-color: {{VALUE}}',
@@ -1512,7 +1512,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'btn_color',
 			[
-				'label' => esc_html__( 'color', 'textdomain' ),
+				'label' => esc_html__( 'color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .emk-button a' => 'color: {{VALUE}}',
@@ -1529,7 +1529,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_responsive_control(
 			'btn_radius',
 			[
-				'label' => esc_html__( 'Radius', 'textdomain' ),
+				'label' => esc_html__( 'Radius', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
@@ -1555,7 +1555,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'btn_icon_options',
 			[
-				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => [
@@ -1591,7 +1591,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'btn_icon_gap',
 			[
-				'label' => esc_html__( 'Gap', 'textdomain' ),
+				'label' => esc_html__( 'Gap', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -1617,7 +1617,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'btn_icon_gap_reverse',
 			[
-				'label' => esc_html__( 'Gap', 'textdomain' ),
+				'label' => esc_html__( 'Gap', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -1672,7 +1672,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'btn_icon_color',
 			[
-				'label' => esc_html__( 'Color', 'textdomain' ),
+				'label' => esc_html__( 'Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .btn-icon path' => 'fill: {{VALUE}}',
@@ -1687,13 +1687,13 @@ class Pricing_Table extends Widget_Base
 		$this->start_controls_tab(
 			'style_hover_tab',
 			[
-				'label' => esc_html__( 'Hover', 'textdomain' ),
+				'label' => esc_html__( 'Hover', 'elementor-magic-kit' ),
 			]
 		);
 		$this->add_control(
 			'btn_bg_hover',
 			[
-				'label' => esc_html__( 'Background', 'textdomain' ),
+				'label' => esc_html__( 'Background', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .emk-button a:hover' => 'background-color: {{VALUE}}',
@@ -1703,7 +1703,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'btn_color_hover',
 			[
-				'label' => esc_html__( 'color', 'textdomain' ),
+				'label' => esc_html__( 'color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .emk-button a:hover' => 'color: {{VALUE}}',
@@ -1720,7 +1720,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_responsive_control(
 			'btn_radius_hover',
 			[
-				'label' => esc_html__( 'Radius', 'textdomain' ),
+				'label' => esc_html__( 'Radius', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
@@ -1746,7 +1746,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'btn_icon_options_hover',
 			[
-				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => [
@@ -1757,7 +1757,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'btn_icon_color_hover',
 			[
-				'label' => esc_html__( 'Color', 'textdomain' ),
+				'label' => esc_html__( 'Color', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .emk-button a:hover .btn-icon path' => 'fill: {{VALUE}}',
@@ -1776,7 +1776,7 @@ class Pricing_Table extends Widget_Base
         $this->start_controls_section(
             'ribbon_style',
             [
-                'label' => __('Ribbon', 'elementor-magic-kit'),
+                'label' => esc_html__('Ribbon', 'elementor-magic-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
                 'condition' => [
                     'ribbon_control' => 'yes', // Only show this control when switch is ON
