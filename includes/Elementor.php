@@ -145,7 +145,6 @@ class Load_Elementor
             ],
         ];
     }
-
     /**
      * CHH Elementor styles
      *
