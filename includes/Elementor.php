@@ -175,10 +175,6 @@ class Load_Elementor
                 'src'     => EM_KIT_ASSETS . '/dist/flipcard.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/flipcard.css'),
             ],
-            'emkit-team' => [
-                'src'     => EM_KIT_ASSETS . '/dist/team.css',
-                'version' => filemtime(EM_KIT_PATH . '/assets/dist/team.css'),
-            ],
             'emk-post-tab' => [
                 'src'     => EM_KIT_ASSETS . '/dist/post_tab.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/post_tab.css'),
