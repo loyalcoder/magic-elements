@@ -223,7 +223,7 @@ class Text_Editor extends Widget_Base
 						'icon' => 'eicon-text-align-right',
 					],
                     'justify' => [
-						'title' => esc_html__( 'Justified', 'elementor' ),
+						'title' => esc_html__( 'Justified', 'elementor-magic-kit' ),
 						'icon' => 'eicon-text-align-justify',
 					],
 				],
