@@ -28,7 +28,7 @@
                 foreach ($categories as $category) {
                     $category_classes .= ' category-' . $category->term_id;
                 } ?>
-                <div class="col-lg-4 col-md-6 col-sm-12 post-item<?php echo $category_classes; ?>">
+                <div class="col-lg-4 col-md-6 col-sm-12 post-item<?php echo esc_attr($category_classes); ?>">
                     <div class="post">
                         <div class="post-wrapper">
                             <?php if (has_post_thumbnail()) : ?>
