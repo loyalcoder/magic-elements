@@ -292,7 +292,17 @@ class Post_Category_Tab extends Widget_Base
                     'selector' => '{{WRAPPER}} .post-title',
                 ]
             );
-    
+            $this->add_responsive_control(
+                'post_tab_margin',
+                [
+                    'label'      => esc_html__( 'Margin', 'elementor-magic-kit' ),
+                    'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                    'selectors'  => [
+                        '{{WRAPPER}} .post-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
             $this->add_control(
                 'post_author_color',
                 [
