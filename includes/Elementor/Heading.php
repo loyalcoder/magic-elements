@@ -138,7 +138,7 @@ class Heading extends Widget_Base
             'heading_link',
             [
                 'label'         => esc_html__( 'Heading Link', 'elementor-magic-kit' ),
-                'type'          => Controls_Manager::URL,
+                'type'          => \Elementor\Controls_Manager::URL,
                 'placeholder'   => esc_html__( 'https://your-link.com', 'elementor-magic-kit' ),
                 'options'       => [ 'url', 'is_external', 'nofollow' ],
                 'default'       => [

@@ -495,7 +495,6 @@ class Social_Icon  extends Widget_Base
         $social_item = $settings['social_lists'];
         include __DIR__ . '/layouts/Icon/social-icon.php';
     }
-
     /**
      * Render shortcode widget as plain content.
      *
