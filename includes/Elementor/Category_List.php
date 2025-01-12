@@ -50,7 +50,7 @@ class Category_List extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Magic Category List', 'elementor-magic-kit');
+        return esc_html__('Category List', 'elementor-magic-kit');
     }
 
         /**
