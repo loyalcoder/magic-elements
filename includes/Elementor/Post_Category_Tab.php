@@ -295,11 +295,22 @@ class Post_Category_Tab extends Widget_Base
             $this->add_responsive_control(
                 'post_tab_margin',
                 [
-                    'label'      => esc_html__( 'Margin', 'elementor-magic-kit' ),
-                    'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                    'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
+                    'type' => \Elementor\Controls_Manager::SLIDER,
                     'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-                    'selectors'  => [
-                        '{{WRAPPER}} .post-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 1000,
+                            'step' => 1,
+                        ],
+                        '%' => [
+                            'min' => 0,
+                            'max' => 100,
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .post-content' => 'margin-top: {{SIZE}}{{UNIT}};',
                     ],
                 ]
             );
