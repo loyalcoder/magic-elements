@@ -50,7 +50,7 @@ class Tab extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Magic Tab', 'elementor-magic-kit');
+        return esc_html__('Tab', 'elementor-magic-kit');
     }
 
         /**

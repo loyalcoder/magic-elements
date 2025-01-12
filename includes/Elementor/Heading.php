@@ -50,7 +50,7 @@ class Heading extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Magic Heading', 'elementor-magic-kit');
+        return esc_html__('Heading', 'elementor-magic-kit');
     }
 
         /**

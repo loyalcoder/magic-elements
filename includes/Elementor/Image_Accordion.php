@@ -50,7 +50,7 @@ class Image_Accordion extends Widget_Base
      */
     public function get_title()
     {   
-        return esc_html__('Magic Image Accordion', 'elementor-magic-kit');
+        return esc_html__('Image Accordion', 'elementor-magic-kit');
     }
 
         /**
