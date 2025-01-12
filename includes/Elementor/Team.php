@@ -168,7 +168,6 @@ class Team extends Widget_Base
 			\Elementor\Group_Control_Image_Size::get_type(),
 			[
 				'name' => 'thumbnail',
-				'exclude' => [ 'custom' ],
 				'default' => 'medium',
 			]
 		);
