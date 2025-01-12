@@ -64,7 +64,7 @@ class Feature_List extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-bullet-list';
+        return 'eicon-bullet-list emk-editor-widgets-icon';
     }
 
           /**

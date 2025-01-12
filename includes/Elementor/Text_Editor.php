@@ -63,7 +63,7 @@ class Text_Editor extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-text-align-left';
+        return 'eicon-text-align-left emk-editor-widgets-icon';
     }
 
         /**

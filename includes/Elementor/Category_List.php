@@ -64,7 +64,7 @@ class Category_List extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-product-categories';
+        return 'eicon-product-categories emk-editor-widgets-icon';
     }
 
         /**

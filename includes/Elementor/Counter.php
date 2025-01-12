@@ -64,7 +64,7 @@ class Counter extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-counter';
+        return 'eicon-counter emk-editor-widgets-icon';
     }
 
         /**

@@ -64,7 +64,7 @@ class Image_Accordion extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-image-box';
+        return 'eicon-image-box emk-editor-widgets-icon';
     }
 
         /**

@@ -49,7 +49,7 @@ class Pricing_Table extends Widget_Base
      */
     public function get_title()
     {
-        return __('Pricing Table', 'elementor-magic-kit');
+        return esc_html__('Pricing Table', 'elementor-magic-kit');
     }
 
         /**
@@ -63,7 +63,7 @@ class Pricing_Table extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-price-table';
+        return 'eicon-price-table emk-editor-widgets-icon';
     }
 
         /**

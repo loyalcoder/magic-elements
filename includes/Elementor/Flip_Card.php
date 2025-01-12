@@ -64,7 +64,7 @@ class Flip_Card extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-flip-box';
+        return 'eicon-flip-box emk-editor-widgets-icon';
     }
 
         /**
