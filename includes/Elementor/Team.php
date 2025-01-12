@@ -64,7 +64,7 @@ class Team extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-handle';
+        return 'eicon-handle emk-editor-widgets-icon';
     }
 
     /**

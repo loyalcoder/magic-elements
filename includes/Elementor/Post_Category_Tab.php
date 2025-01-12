@@ -64,7 +64,7 @@ class Post_Category_Tab extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-post-info';
+        return 'eicon-post-info emk-editor-widgets-icon';
     }
 
     /**

@@ -64,7 +64,7 @@ class Heading extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-heading';
+        return 'eicon-heading emk-editor-widgets-icon';
     }
 
     /**

@@ -50,7 +50,7 @@ class Social_Icon  extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Social Icon', 'elementor-magic-kit');
+        return esc_html__('Social Icon emk-editor-widgets-icon', 'elementor-magic-kit');
     }
 
     /**

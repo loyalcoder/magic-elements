@@ -64,7 +64,7 @@ class Card extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-image';
+        return 'eicon-image emk-editor-widgets-icon';
     }
 
     /**

@@ -50,7 +50,7 @@ class Button extends Widget_Base
      */
     public function get_title()
     {   
-        return esc_html__('Button Magic', 'elementor-magic-kit');
+        return esc_html__('Button', 'elementor-magic-kit');
     }
 
     /**
@@ -64,7 +64,7 @@ class Button extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-button';
+        return 'eicon-button emk-editor-widgets-icon';
     }
 
     /**
@@ -90,10 +90,6 @@ class Button extends Widget_Base
     {
         return ['emkit-button'];
     }
-	public function get_script_depends()
-	{
-		return ['emkit-button'];
-	}
     /**
      * Register Copyright controls.
      *

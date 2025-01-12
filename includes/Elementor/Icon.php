@@ -50,7 +50,7 @@ class Icon extends Widget_Base
      */
     public function get_title()
     {
-        return __('Icon', 'elementor-magic-kit');
+        return esc_html__('Icon', 'elementor-magic-kit');
     }
 
     /**
@@ -64,7 +64,7 @@ class Icon extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-nerd-chuckle';
+        return 'eicon-nerd-chuckle emk-editor-widgets-icon';
     }
 
     /**
