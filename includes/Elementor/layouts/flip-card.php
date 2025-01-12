@@ -6,8 +6,21 @@
 		        $this->add_render_attribute( 'flip-card-image', 'alt', \Elementor\Control_Media::get_image_alt( $settings['flip_card_front_image'] ) );
 		        $this->add_render_attribute( 'flip-card-image', 'title', \Elementor\Control_Media::get_image_title( $settings['flip_card_front_image'] ) );
 		        $this->add_render_attribute( 'flip-card-image', 'class', 'my-custom-class' );
-		        echo \Elementor\Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail', 'flip_card_front_image' );
-            ?>
+                echo wp_kses(
+                    \Elementor\Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail', 'flip_card_front_image' ),
+                    array(
+                        'img' => array(
+                            'src'    => true,
+                            'alt'    => true,
+                            'class'  => true,
+                            'width'  => true,
+                            'height' => true,
+                            'srcset' => true,
+                            'sizes'  => true,
+                        ),
+                    )
+                );
+              ?>
              <h3><?php echo esc_html($settings['card_front_title']); ?></h3>
              <p class="front-description"><?php echo esc_html($settings['card_front_description']); ?></p> 
             <div class="flip_card_icon">
@@ -49,7 +62,7 @@
                         $this->add_link_attributes( 'flip_card_button_link', $settings['flip_card_button_link'] );
                     }
                 ?>
-                 <a <?php echo $this->get_render_attribute_string( 'flip_card_button_link' ); ?>>
+                 <a <?php echo esc_attr($this->get_render_attribute_string( 'flip_card_button_link' )); ?>>
                     <?php echo esc_html($settings['card_back_button']); ?>
                 </a>
             </div> 
