@@ -196,7 +196,7 @@ class Text_Editor extends Widget_Base
 		);
         $this->end_controls_section();
 
-            // Style section
+        // Style section
         $this->start_controls_section(
 			'text_editor_style_section',
 			[
