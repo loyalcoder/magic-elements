@@ -50,7 +50,7 @@ class Image extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Image', 'elementor-magic-kit ');
+        return esc_html__('Image', 'elementor-magic-kit');
     }
 
     /**
