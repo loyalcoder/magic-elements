@@ -6,11 +6,9 @@ module.exports = {
   entry: {
     button: './assets/src/scss/button.scss',
     flipcard: './assets/src/scss/flipcard.scss',
-    team: './assets/src/scss/team.scss',
     post_tab: './assets/src/scss/post_tab.scss',
     category_list: './assets/src/scss/category_list.scss',
     icon: './assets/src/scss/icon.scss',
-    social_icon: './assets/src/scss/social_icon.scss',
     counter: './assets/src/scss/counter.scss',
     card: './assets/src/scss/card.scss',
     style: './assets/src/scss/style.scss',
