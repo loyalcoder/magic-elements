@@ -2,6 +2,11 @@
 
 namespace Elementor_Magic_Kit;
 
+// Prevent direct access to the file
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 /**
  * Assets class handler
  */

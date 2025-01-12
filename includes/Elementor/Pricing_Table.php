@@ -3,7 +3,7 @@
 /**
  * Elementor Classes.
  *
- * @package Header Footer Elementor
+ * @package Pricing Table Elementor
  */
 
 namespace Elementor_Magic_Kit\Elementor;
@@ -16,9 +16,9 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * Elementor test
+ * Elementor Pricing Table Widget
  *
- * Elementor widget for test.
+ * Elementor widget for pricing table.
  *
  * @since 1.0.0
  */
@@ -94,7 +94,7 @@ class Pricing_Table extends Widget_Base
     }
 
     /**
-     * Register Copyright controls.
+     * Register Pricing Table controls.
      *
      * @since 1.0.0
      * @access protected
@@ -105,7 +105,7 @@ class Pricing_Table extends Widget_Base
     }
 
     /**
-     * Register Copyright General Controls.
+     * Register Pricing Table General Controls.
      *
      * @since 1.0.0
      * @access protected
@@ -405,7 +405,7 @@ class Pricing_Table extends Widget_Base
 		);
         $this->end_controls_section();
         /**
-         * style control start ===============================
+         * Style control start
          */
         $this->start_controls_section(
             'pricing_card_style',
@@ -787,7 +787,7 @@ class Pricing_Table extends Widget_Base
 				],
 			]
 		);
-        //sub title ================================
+        // Sub Title
         $this->add_control(
 			'sub_title_options',
 			[
@@ -866,7 +866,7 @@ class Pricing_Table extends Widget_Base
 			]
 		);
         $this->end_controls_section();
-        // Price Style ===================================
+        // Price Style
         $this->start_controls_section(
             'price_style',
             [
@@ -1181,7 +1181,7 @@ class Pricing_Table extends Widget_Base
 			]
 		);
         $this->end_controls_section();
-        // Features Style ===================================
+        // Features Style
         $this->start_controls_section(
             'features_style',
             [
@@ -1400,7 +1400,7 @@ class Pricing_Table extends Widget_Base
 			]
 		);
         $this->end_controls_section();
-        // Button ==============================
+        // Button
         $this->start_controls_section(
             'button_style',
             [
@@ -1488,7 +1488,7 @@ class Pricing_Table extends Widget_Base
 				'type' => \Elementor\Controls_Manager::DIVIDER,
 			]
 		);
-		// tabs control start==========
+		// Tabs control start
 		$this->start_controls_tabs(
 			'btn_style_tabs'
 		);
