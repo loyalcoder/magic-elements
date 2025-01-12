@@ -133,7 +133,6 @@ class Image extends Widget_Base
 			\Elementor\Group_Control_Image_Size::get_type(),
 			[
 				'name' => 'thumbnail', 
-				'exclude' => [ 'custom' ],
 				'include' => [],
 				'default' => 'large',
 			]
@@ -421,9 +420,6 @@ class Image extends Widget_Base
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'image_box_shadow',
-				'exclude' => [
-					'box_shadow_position',
-				],
 				'selector' => '{{WRAPPER}} .main_img',
 			]
 		);
@@ -519,9 +515,6 @@ class Image extends Widget_Base
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'image_box_shadow_hover',
-				'exclude' => [
-					'box_shadow_position',
-				],
 				'selector' => '{{WRAPPER}}:hover img',
 			]
 		);

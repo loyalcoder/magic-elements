@@ -323,7 +323,6 @@ class Button extends Widget_Base
 			[
 				'name' => 'background',
 				'types' => [ 'classic', 'gradient', 'video' ],
-                'exclude' => [ 'image' ],
 				'selector' => '{{WRAPPER}} .emk-button',
 			]
 		);
@@ -353,7 +352,6 @@ class Button extends Widget_Base
 			[
 				'name' => 'button_background_hover',
 				'types' => [ 'classic', 'gradient', 'video' ],
-                'exclude' => [ 'image' ],
 				'selector' => '{{WRAPPER}} .emk-button:hover',
 			]
 		);
