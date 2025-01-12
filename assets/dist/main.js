@@ -16,7 +16,7 @@
   \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_flipcard_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../scss/flipcard.scss */ \"./assets/src/scss/flipcard.scss\");\n/* harmony import */ var _scss_category_list_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../scss/category_list.scss */ \"./assets/src/scss/category_list.scss\");\n/* harmony import */ var _scss_feature_list_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../scss/feature_list.scss */ \"./assets/src/scss/feature_list.scss\");\n/* harmony import */ var _scss_icon_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../scss/icon.scss */ \"./assets/src/scss/icon.scss\");\n/* harmony import */ var _scss_counter_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../scss/counter.scss */ \"./assets/src/scss/counter.scss\");\n\n\n\n\n\n\n//# sourceURL=webpack://elementor-magic-kit/./assets/src/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_flipcard_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../scss/flipcard.scss */ \"./assets/src/scss/flipcard.scss\");\n/* harmony import */ var _scss_category_list_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../scss/category_list.scss */ \"./assets/src/scss/category_list.scss\");\n/* harmony import */ var _scss_feature_list_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../scss/feature_list.scss */ \"./assets/src/scss/feature_list.scss\");\n/* harmony import */ var _scss_counter_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../scss/counter.scss */ \"./assets/src/scss/counter.scss\");\n\n\n\n\n\n//# sourceURL=webpack://elementor-magic-kit/./assets/src/js/index.js?");
 
 /***/ }),
 
@@ -57,16 +57,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://elementor-magic-kit/./assets/src/scss/flipcard.scss?");
-
-/***/ }),
-
-/***/ "./assets/src/scss/icon.scss":
-/*!***********************************!*\
-  !*** ./assets/src/scss/icon.scss ***!
-  \***********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://elementor-magic-kit/./assets/src/scss/icon.scss?");
 
 /***/ })
 

@@ -187,10 +187,6 @@ class Load_Elementor
                 'src'     => EM_KIT_ASSETS . '/dist/feature_list.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/feature_list.css'),
             ],
-            'emkit-icon' => [
-                'src'     => EM_KIT_ASSETS . '/dist/icon.css',
-                'version' => filemtime(EM_KIT_PATH . '/assets/dist/icon.css'),
-            ],
             'emkit-accordion' => [
                 'src'     => EM_KIT_ASSETS . '/dist/accordion.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/accordion.css'),
@@ -219,7 +215,6 @@ class Load_Elementor
             'Button',
             'Pricing_Table',
             'Text_Editor',
-            'Icon',
             'Image_Accordion',
             'Flip_Card',
             'Heading',
