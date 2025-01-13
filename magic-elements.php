@@ -1,17 +1,17 @@
 <?php
 
 /**
- * Plugin Name:       Elementor Magic Kit
- * Requires Plugins:  elementor
+ * Plugin Name:       Magic Elements
  * Plugin URI:        https://loyalcoder.com
- * Description:       Elementor Magic Kit is a comprehensive extension for Elementor, providing advanced features, custom widgets, and templates to enhance your page-building experience. Perfect for users seeking seamless design customization with ease.
+ * Description:       Magic Elements is a comprehensive extension for Elementor, providing advanced features, custom widgets, and templates to enhance your page-building experience. Perfect for users seeking seamless design customization with ease.
  * Version:           1.0.0
  * Author:            LoyalCoder
  * Author URI:        https://loyalcoder.com
  * Requires at least: 5.0
  * Tested up to:      6.6
- *
- * Text Domain:       elementor-magic-kit
+ * Requires Plugins:  elementor
+ * Requires PHP:      7.0
+ * Text Domain:       magic-elements
  * Domain Path:       /languages/
  *
  * Copyright:         © 2025 LoyalCoder.
