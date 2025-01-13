@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
  * - Validating nonces and user capabilities
  * - Sanitizing and storing widget configuration
  *
- * @package Elementor_Magic_Kit\Admin
+ * @package MagicElements\Admin
  * @since 1.0.0
  */
 class Ajax {
@@ -41,7 +41,7 @@ class Ajax {
     public function save_settings() {
         // Sanitize and verify nonce
         $nonce = isset($_POST['nonce']) ? sanitize_key($_POST['nonce']) : '';
-        if (!wp_verify_nonce($nonce, 'magic_kit_settings_nonce')) {
+        if (!wp_verify_nonce($nonce, 'magic_elements_settings_nonce')) {
             wp_send_json_error([
                 'message' => esc_html__('Security check failed', 'magic-elements')
             ]);

@@ -9,7 +9,7 @@
  * - Settings form with nonce verification
  * - Success/error toast notifications
  *
- * @package Elementor_Magic_Kit\Admin\Views
+ * @package MagicElements\Admin\Views
  * @since 1.0.0
  */
 
@@ -19,16 +19,15 @@ if (!defined('ABSPATH')) {
 }
 ?>
 <div class="wrap">
-    <h1><?php echo esc_html__('Magic Kit Settings', 'magic-elements'); ?></h1>
-
+    <h1><?php echo esc_html__('Magic Elements Settings', 'magic-elements'); ?></h1>
+    <hr>
     <div id="settings-toast" class="toast"></div>
 
     <form id="magic-kit-settings" method="post">
-        <?php wp_nonce_field('magic_kit_settings_nonce', 'magic_kit_nonce'); ?>
+        <?php wp_nonce_field('magic_elements_settings_nonce', 'magic_kit_nonce'); ?>
         
         <div class="form-group">
             <h3><?php echo esc_html__('Enable/Disable Widgets', 'magic-elements'); ?></h3>
-
             <div class="bulk-actions">
                 <button type="button" class="bulk-action-button" >
                     <?php echo esc_html__('Enable All', 'magic-elements'); ?>
