@@ -1,6 +1,6 @@
 <?php
 
-namespace Elementor_Magic_Kit;
+namespace MagicElements;
 
 // Prevent direct access to the file
 if (!defined('ABSPATH')) {
@@ -34,12 +34,12 @@ class Assets
      *
      * @return array
      */
-    public function get_scripts()
+    public function get_scripts(): array
     {
         return [
             'script' => [
-                'src'     => EM_KIT_ASSETS . '/js/frontend.js',
-                'version' => filemtime(EM_KIT_PATH . '/assets/js/frontend.js'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/js/frontend.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/js/frontend.js'),
                 'deps'    => ['jquery']
             ]
         ];
@@ -50,22 +50,22 @@ class Assets
      *
      * @return array
      */
-    public function get_styles()
+    public function get_styles(): array
     {
         return [
             'emk-button' => [
-                'src'     => EM_KIT_ASSETS . '/css/elementor/button.css',
-                'version' => filemtime(EM_KIT_PATH . '/assets/css/elementor/button.css'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/css/elementor/button.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/css/elementor/button.css'),
             ],
             'emk-social' => [
-                'src'     => EM_KIT_ASSETS . '/css/elementor/social.css',
-                'version' => filemtime(EM_KIT_PATH . '/assets/css/elementor/social.css'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/css/elementor/social.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/css/elementor/social.css'),
             ],
         ];
         return [
             'emk-icons' => [
-                'src'     => EM_KIT_ASSETS . '/css/elementor/icon.css',
-                'version' => filemtime(EM_KIT_PATH . '/assets/css/elementor/icon.css'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/css/elementor/icon.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/css/elementor/icon.css'),
             ],
         ];
     }
@@ -80,14 +80,14 @@ class Assets
 
         foreach ($scripts as $handle => $script) {
             $deps = isset($script['deps']) ? $script['deps'] : false;
-            $version = isset($script['version']) ? $script['version'] : EM_KIT_VERSION;
+            $version = isset($script['version']) ? $script['version'] : MAGIC_ELEMENTS_VERSION;
 
             wp_register_script($handle, $script['src'], $deps, $version, true);
         }
 
         foreach ($styles as $handle => $style) {
             $deps = isset($style['deps']) ? $style['deps'] : false;
-            $version = isset($style['version']) ? $style['version'] : EM_KIT_VERSION;
+            $version = isset($style['version']) ? $style['version'] : MAGIC_ELEMENTS_VERSION;
 
             wp_register_style($handle, $style['src'], $deps, $version);
         }
@@ -96,22 +96,21 @@ class Assets
         $screen = get_current_screen();
         if ($screen && $screen->id === 'toplevel_page_magic-kit-dashboard') {
             wp_enqueue_style(
-                'elementor-magic-kit-admin',
-                EM_KIT_ASSETS . '/dist/admin.css',
+                'magic-element-admin',
+                MAGIC_ELEMENTS_ASSETS . '/dist/admin.css',
                 [],
-                filemtime(EM_KIT_PATH . '/assets/dist/admin.css')
+                filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/admin.css')
             );
-
             wp_enqueue_script(
-                'elementor-magic-kit-admin',
-                EM_KIT_ASSETS . '/dist/admin.js', 
+                'magic-element-admin',
+                MAGIC_ELEMENTS_ASSETS . '/dist/admin.js', 
                 ['jquery'],
-                filemtime(EM_KIT_PATH . '/assets/dist/admin.js'),
+                filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/admin.js'),
                 true
             );
         }
     }
     public function emk_elementor_css() {
-        wp_enqueue_style( 'emk-editor', EM_KIT_ASSETS . '/css/editor.css', [], EM_KIT_VERSION );
+        wp_enqueue_style( 'emk-editor', MAGIC_ELEMENTS_ASSETS . '/css/editor.css', [], MAGIC_ELEMENTS_VERSION );
     }
 }

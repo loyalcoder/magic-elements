@@ -1,6 +1,6 @@
 <?php
 
-namespace Elementor_Magic_Kit;
+namespace MagicElements;
 
 use Elementor\Plugin;
 
@@ -39,7 +39,7 @@ class Load_Elementor
 
         foreach ($scripts as $handle => $script) {
             $deps    = isset($script['deps']) ? $script['deps'] : false;
-            $version = isset($script['version']) ? $script['version'] : EM_KIT_VERSION;
+            $version = isset($script['version']) ? $script['version'] : MAGIC_ELEMENTS_VERSION;
             wp_register_script($handle, $script['src'], $deps, $version, true);
             wp_enqueue_script($handle);
         }
@@ -108,39 +108,39 @@ class Load_Elementor
     {
         return [
             'emkit-button' => [
-                'src'     => EM_KIT_ASSETS . '/dist/button.js',
-                'version' => filemtime(EM_KIT_PATH . '/assets/dist/button.js'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/button.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/button.js'),
                 'deps'    => ['jquery']
             ],
             'emkit-post-tab' => [
-                'src'     => EM_KIT_ASSETS . '/dist/post_tab.js',
-                'version' => filemtime(EM_KIT_PATH . '/assets/dist/post_tab.js'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/post_tab.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/post_tab.js'),
             ],
             'emkit-pricingtable' => [
-                'src'     => EM_KIT_ASSETS . '/dist/pricingtable.js',
-                'version' => filemtime(EM_KIT_PATH . '/assets/dist/pricingtable.js'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/pricingtable.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/pricingtable.js'),
             ],
             'emkit-image-accordion-script' => [
-                'src'     => EM_KIT_ASSETS . '/dist/image_accordion.js',
-                'version' => filemtime(EM_KIT_PATH . '/assets/dist/image_accordion.js'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/image_accordion.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/image_accordion.js'),
             ],
             'emkit-card' => [
-                'src'     => EM_KIT_ASSETS . '/dist/card.js',
-                'version' => filemtime(EM_KIT_PATH . '/assets/dist/card.js'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/card.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/card.js'),
             ],
             'emkit-counter' => [
-                'src'     => EM_KIT_ASSETS . '/dist/counter.js',
-                'version' => filemtime(EM_KIT_PATH . '/assets/dist/counter.js'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/counter.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/counter.js'),
                 'deps'    => ['jquery']
             ],
             'emkit-accordion' => [
-                'src'     => EM_KIT_ASSETS . '/dist/accordion.js',
-                'version' => filemtime(EM_KIT_PATH . '/assets/dist/accordion.js'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/accordion.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/accordion.js'),
                 'deps'    => ['jquery']
             ],
             'emkit-tab' => [
-                'src'     => EM_KIT_ASSETS . '/dist/tab.js',
-                'version' => filemtime(EM_KIT_PATH . '/assets/dist/tab.js'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/tab.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/tab.js'),
                 'deps'    => ['jquery']
             ],
         ];
@@ -156,48 +156,48 @@ class Load_Elementor
         return [
 
             'emkit-button' => [
-                'src'     => EM_KIT_ASSETS . '/dist/button.css',
-                'version' => filemtime(EM_KIT_PATH . '/assets/dist/button.css'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/button.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/button.css'),
             ],
             'emk-pricingtable' => [
-                'src'     => EM_KIT_ASSETS . '/dist/pricingtable.css',
-                'version' => filemtime(EM_KIT_PATH . '/assets/dist/pricingtable.css'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/pricingtable.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/pricingtable.css'),
             ],
             'emk-card' => [
-                'src'     => EM_KIT_ASSETS . '/dist/card.css',
-                'version' => filemtime(EM_KIT_PATH . '/assets/dist/card.css'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/card.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/card.css'),
             ],
             'emkit-image-accordion' => [
-                'src'     => EM_KIT_ASSETS . '/dist/image_accordion.css',
-                'version' => filemtime(EM_KIT_PATH . '/assets/dist/image_accordion.css'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/image_accordion.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/image_accordion.css'),
             ],
             'emkit-flipcard' => [
-                'src'     => EM_KIT_ASSETS . '/dist/flipcard.css',
-                'version' => filemtime(EM_KIT_PATH . '/assets/dist/flipcard.css'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/flipcard.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/flipcard.css'),
             ],
             'emk-post-tab' => [
-                'src'     => EM_KIT_ASSETS . '/dist/post_tab.css',
-                'version' => filemtime(EM_KIT_PATH . '/assets/dist/post_tab.css'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/post_tab.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/post_tab.css'),
             ],
             'emk-category_list' => [
-                'src'     => EM_KIT_ASSETS . '/dist/category_list.css',
-                'version' => filemtime(EM_KIT_PATH . '/assets/dist/category_list.css'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/category_list.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/category_list.css'),
             ],
             'emk-feature-list' => [
-                'src'     => EM_KIT_ASSETS . '/dist/feature_list.css',
-                'version' => filemtime(EM_KIT_PATH . '/assets/dist/feature_list.css'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/feature_list.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/feature_list.css'),
             ],
             'emkit-accordion' => [
-                'src'     => EM_KIT_ASSETS . '/dist/accordion.css',
-                'version' => filemtime(EM_KIT_PATH . '/assets/dist/accordion.css'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/accordion.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/accordion.css'),
             ],
             'emk-tab' => [
-                'src'     => EM_KIT_ASSETS . '/dist/tab.css',
-                'version' => filemtime(EM_KIT_PATH . '/assets/dist/tab.css'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/tab.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/tab.css'),
             ],
             'emkit-style' => [
-                'src'     => EM_KIT_ASSETS . '/css/style.css',
-                'version' => filemtime(EM_KIT_PATH . '/assets/css/style.css'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/css/style.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/css/style.css'),
             ]
         ];
     }
@@ -243,7 +243,7 @@ class Load_Elementor
         }
 
         foreach ($widget_list as $handle => $widget) {
-            $file = EM_KIT_ELEMENTOR . $widget . '.php';
+            $file = MAGIC_ELEMENTS_ELEMENTOR . $widget . '.php';
             if (file_exists($file)) {
                 require_once $file;
             }
@@ -251,7 +251,7 @@ class Load_Elementor
 
         foreach ($scripts as $handle => $script) {
             $deps    = isset($script['deps']) ? $script['deps'] : false;
-            $version = isset($script['version']) ? $script['version'] : EM_KIT_VERSION;
+            $version = isset($script['version']) ? $script['version'] : MAGIC_ELEMENTS_VERSION;
             wp_register_script($handle, $script['src'], $deps, $version, true);
         }
 
@@ -261,7 +261,7 @@ class Load_Elementor
         $styles  = $this->getStyles();
          foreach ($styles as $handle => $style) {
             $deps = isset($style['deps']) ? $style['deps'] : false;
-            $version = isset($style['version']) ? $style['version'] : EM_KIT_VERSION;
+            $version = isset($style['version']) ? $style['version'] : MAGIC_ELEMENTS_VERSION;
             wp_register_style($handle, $style['src'], $deps, $version);
         }
     }

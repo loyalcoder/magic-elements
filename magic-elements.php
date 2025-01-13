@@ -1,17 +1,17 @@
 <?php
 
 /**
- * Plugin Name:       Elementor Magic Kit
- * Requires Plugins:  elementor
+ * Plugin Name:       Magic Elements
  * Plugin URI:        https://loyalcoder.com
- * Description:       Elementor Magic Kit is a comprehensive extension for Elementor, providing advanced features, custom widgets, and templates to enhance your page-building experience. Perfect for users seeking seamless design customization with ease.
+ * Description:       Magic Elements is a comprehensive extension for Elementor, providing advanced features, custom widgets, and templates to enhance your page-building experience. Perfect for users seeking seamless design customization with ease.
  * Version:           1.0.0
  * Author:            LoyalCoder
  * Author URI:        https://loyalcoder.com
  * Requires at least: 5.0
  * Tested up to:      6.6
- *
- * Text Domain:       elementor-magic-kit
+ * Requires Plugins:  elementor
+ * Requires PHP:      7.0
+ * Text Domain:       magic-elements
  * Domain Path:       /languages/
  *
  * Copyright:         © 2025 LoyalCoder.
@@ -29,7 +29,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 /**
  * Main plugin class
  */
-final class Elementor_Magic_Kit
+final class Magic_Elements
 {
     /**
      * Plugin version
@@ -52,7 +52,7 @@ final class Elementor_Magic_Kit
     /**
      * Initialize singleton instance
      *
-     * @return \Elementor_Magic_Kit
+     * @return \Magic_Elements
      */
     public static function init()
     {
@@ -72,13 +72,13 @@ final class Elementor_Magic_Kit
      */
     public function define_constants()
     {
-        define('EM_KIT_VERSION', self::version);
-        define('EM_KIT_FILE', __FILE__);
-        define('EM_KIT_PATH', __DIR__);
-        define('EM_KIT_URL', plugins_url('', EM_KIT_FILE));
-        define('EM_KIT_ASSETS', EM_KIT_URL . '/assets');
-        define('EM_KIT_DIR_PATH', plugin_dir_path(__FILE__));
-        define('EM_KIT_ELEMENTOR', EM_KIT_DIR_PATH . 'includes/Elementor/');
+        define('MAGIC_ELEMENTS_VERSION', self::version);
+        define('MAGIC_ELEMENTS_FILE', __FILE__);
+        define('MAGIC_ELEMENTS_PATH', __DIR__);
+        define('MAGIC_ELEMENTS_URL', plugins_url('', MAGIC_ELEMENTS_FILE));
+        define('MAGIC_ELEMENTS_ASSETS', MAGIC_ELEMENTS_URL . '/assets');
+        define('MAGIC_ELEMENTS_DIR_PATH', plugin_dir_path(__FILE__));
+        define('MAGIC_ELEMENTS_ELEMENTOR', MAGIC_ELEMENTS_DIR_PATH . 'includes/Elementor/');
     }
 
     /**
@@ -88,7 +88,7 @@ final class Elementor_Magic_Kit
      */
     public function activate()
     {
-        $installer = new Elementor_Magic_Kit\Installer();
+        $installer = new MagicElements\Installer();
 
         $installer->run();
     }
@@ -100,10 +100,10 @@ final class Elementor_Magic_Kit
      */
     public function init_plugin()
     {
-        new Elementor_Magic_Kit\Assets();
-        new Elementor_Magic_Kit\Load_Elementor();
+        new MagicElements\Assets();
+        new MagicElements\Load_Elementor();
         if (is_admin()) {
-            new Elementor_Magic_Kit\Admin();
+            new MagicElements\Admin();
         }
     }
 }
@@ -111,11 +111,11 @@ final class Elementor_Magic_Kit
 /**
  * Initialize main plugin
  *
- * @return \Elementor_Magic_Kit
+ * @return \Magic_Elements
  */
-function elementor_magic_kit()
+function magic_elements()
 {
-    return Elementor_Magic_Kit::init();
+    return Magic_Elements::init();
 }
 
-elementor_magic_kit();
+magic_elements();

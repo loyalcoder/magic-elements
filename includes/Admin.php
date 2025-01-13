@@ -1,6 +1,6 @@
 <?php
 
-namespace Elementor_Magic_Kit;
+namespace MagicElements;
 
 // Exit if accessed directly
 if (!defined('ABSPATH')) {
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
  * - Loading AJAX handlers
  * - Managing admin-side plugin components
  *
- * @package Elementor_Magic_Kit
+ * @package Magic_Elements
  * @since 1.0.0
  */
 class Admin

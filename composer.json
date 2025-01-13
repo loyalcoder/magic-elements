@@ -1,27 +1,21 @@
 {
-  "name": "loyalcoder/elementormagickit",
-  "description": "Boilerplate for WordPress Plugin",
+  "name": "loyalcoder/magic-elements",
+  "description": "Magic Elements is a comprehensive extension for Elementor, providing advanced features, custom widgets, and templates to enhance your page-building experience.",
   "type": "wordpress-plugin",
-  "license": "GPLv2",
+  "license": "GPLv3",
   "authors": [
     {
-      "name": "loyalcoder",
-      "email": "roman.ul.ferdosh@gmail.com"
+      "name": "LoyalCoder",
+      "email": "info@loyalcoder.com"
     }
   ],
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "autoload": {
     "classmap": [
       "includes"
     ],
     "psr-4": {
-      "ElementorMagicKit\\": "includes/"
-    },
-    "files": [
-      "includes/functions.php"
-    ]
-  },
-  "require": {
-    "johnbillion/extended-cpts": "dev-develop"
+      "MagicElements\\": "includes/"
+    }
   }
 }

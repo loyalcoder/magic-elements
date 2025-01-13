@@ -1,6 +1,6 @@
 <?php
 
-namespace Elementor_Magic_Kit;
+namespace MagicElements;
 
 // Prevent direct access to the file
 if (!defined('ABSPATH')) {
@@ -27,13 +27,13 @@ class Installer
      */
     public function add_version()
     {
-        $installed = get_option('EM_KIT_installed');
+        $installed = get_option('magic_elements_installed');
 
         if (!$installed) {
-            update_option('EM_KIT_installed', time());
+            update_option('magic_elements_installed', time());
         }
 
-        update_option('EM_KIT_version', EM_KIT_VERSION);
+        update_option('magic_elements_version', MAGIC_ELEMENTS_VERSION);
     }
 
     /**
@@ -47,7 +47,7 @@ class Installer
 
         $charset_collate = $wpdb->get_charset_collate();
 
-        $checkout_scheme = "CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}EM_KIT_boilerplate` (
+        $checkout_scheme = "CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}magic_elements` (
             `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
             `name` varchar(250) DEFAULT NULL,
             `value` varchar(250) DEFAULT NULL,

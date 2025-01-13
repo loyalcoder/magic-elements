@@ -1,6 +1,6 @@
 <?php
 
-namespace Elementor_Magic_Kit\Admin;
+namespace MagicElements\Admin;
 
 // Exit if accessed directly
 if (!defined('ABSPATH')) {
