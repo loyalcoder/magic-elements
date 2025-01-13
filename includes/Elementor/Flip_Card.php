@@ -168,8 +168,7 @@ class Flip_Card extends Widget_Base
 		$this->add_group_control(
 			\Elementor\Group_Control_Image_Size::get_type(),
 			[
-				'name'    => 'thumbnail',
-				'exclude' => [ 'custom' ],
+				'name' => 'thumbnail', 
 				'include' => [],
 				'default' => 'large',
 			]

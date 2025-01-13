@@ -160,12 +160,12 @@ class Tab extends Widget_Base
                 'fields'  => $repeater->get_controls(),
                 'default' => [
                     [
-                        'tab_title'   => esc_html__( 'Tab 1', 'elementor-magic-kit' ),
-                        'tab_content' => esc_html__( 'This is the content for the first tab.', 'elementor' ),
+                        'tab_title' => esc_html__( 'Tab 1', 'elementor-magic-kit' ),
+                        'tab_content' => esc_html__( 'This is the content for the first tab.', 'elementor-magic-kit' ),
                     ],
                     [
-                        'tab_title'   => esc_html__( 'Tab 2', 'elementor-magic-kit' ),
-                        'tab_content' => esc_html__( 'This is the content for the second tab.', 'elementor' ),
+                        'tab_title' => esc_html__( 'Tab 2', 'elementor-magic-kit' ),
+                        'tab_content' => esc_html__( 'This is the content for the second tab.', 'elementor-magic-kit' ),
                     ],
                 ],
                 'title_field' => '{{{ tab_title }}}',

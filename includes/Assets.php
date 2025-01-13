@@ -2,6 +2,11 @@
 
 namespace Elementor_Magic_Kit;
 
+// Prevent direct access to the file
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 /**
  * Assets class handler
  */
@@ -88,7 +93,8 @@ class Assets
         }
     }
     public function register_admin_assets() {
-        if (isset($_GET['page']) && $_GET['page'] === 'magic-kit-dashboard') {
+        $screen = get_current_screen();
+        if ($screen && $screen->id === 'toplevel_page_magic-kit-dashboard') {
             wp_enqueue_style(
                 'elementor-magic-kit-admin',
                 EM_KIT_ASSETS . '/dist/admin.css',

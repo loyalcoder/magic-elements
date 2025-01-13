@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 }
 ?>
 <div class="wrap">
-    <h1><?php echo esc_html__('Magic Kit Settings', 'magic-kit'); ?></h1>
+    <h1><?php echo esc_html__('Magic Kit Settings', 'elementor-magic-kit'); ?></h1>
 
     <div id="settings-toast" class="toast"></div>
 
@@ -27,14 +27,14 @@ if (!defined('ABSPATH')) {
         <?php wp_nonce_field('magic_kit_settings_nonce', 'magic_kit_nonce'); ?>
         
         <div class="form-group">
-            <h3><?php echo esc_html__('Enable/Disable Widgets', 'magic-kit'); ?></h3>
+            <h3><?php echo esc_html__('Enable/Disable Widgets', 'elementor-magic-kit'); ?></h3>
 
             <div class="bulk-actions">
                 <button type="button" class="bulk-action-button" >
-                    <?php echo esc_html__('Enable All', 'magic-kit'); ?>
+                    <?php echo esc_html__('Enable All', 'elementor-magic-kit'); ?>
                 </button>
                 <button type="button" class="bulk-action-button">
-                    <?php echo esc_html__('Disable All', 'magic-kit'); ?>
+                    <?php echo esc_html__('Disable All', 'elementor-magic-kit'); ?>
                 </button>
             </div>
             
@@ -63,6 +63,6 @@ if (!defined('ABSPATH')) {
                 </div>
             <?php endforeach; ?>
         </div>
-        <button type="submit" class="button button-primary"><?php echo esc_html__('Save Changes', 'magic-kit'); ?></button>
+        <button type="submit" class="button button-primary"><?php echo esc_html__('Save Changes', 'elementor-magic-kit'); ?></button>
     </form>
 </div>

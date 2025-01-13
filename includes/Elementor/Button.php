@@ -325,9 +325,8 @@ class Button extends Widget_Base
         $this->add_group_control(
 			\Elementor\Group_Control_Background::get_type(),
 			[
-				'name'     => 'background',
-				'types'    => [ 'classic', 'gradient', 'video' ],
-				'exclude'  => [ 'image' ],
+				'name' => 'background',
+				'types' => [ 'classic', 'gradient', 'video' ],
 				'selector' => '{{WRAPPER}} .emk-button',
 			]
 		);
@@ -355,9 +354,8 @@ class Button extends Widget_Base
         $this->add_group_control(
 			\Elementor\Group_Control_Background::get_type(),
 			[
-				'name'     => 'button_background_hover',
-				'types'    => [ 'classic', 'gradient', 'video' ],
-				'exclude'  => [ 'image' ],
+				'name' => 'button_background_hover',
+				'types' => [ 'classic', 'gradient', 'video' ],
 				'selector' => '{{WRAPPER}} .emk-button:hover',
 			]
 		);

@@ -50,7 +50,7 @@ class Image extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Image', 'elementor-magic-kit ');
+        return esc_html__('Image', 'elementor-magic-kit');
     }
 
         /**
@@ -132,8 +132,7 @@ class Image extends Widget_Base
         $this->add_group_control(
 			\Elementor\Group_Control_Image_Size::get_type(),
 			[
-				'name'    => 'thumbnail',
-				'exclude' => [ 'custom' ],
+				'name' => 'thumbnail', 
 				'include' => [],
 				'default' => 'large',
 			]
@@ -420,10 +419,7 @@ class Image extends Widget_Base
         $this->add_group_control(
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
-				'name'    => 'image_box_shadow',
-				'exclude' => [
-					'box_shadow_position',
-				],
+				'name' => 'image_box_shadow',
 				'selector' => '{{WRAPPER}} .main_img',
 			]
 		);
@@ -518,10 +514,7 @@ class Image extends Widget_Base
         $this->add_group_control(
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
-				'name'    => 'image_box_shadow_hover',
-				'exclude' => [
-					'box_shadow_position',
-				],
+				'name' => 'image_box_shadow_hover',
 				'selector' => '{{WRAPPER}}:hover img',
 			]
 		);

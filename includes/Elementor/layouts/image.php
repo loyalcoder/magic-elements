@@ -5,7 +5,7 @@
                 $this->add_link_attributes( 'link', $settings['link'] );
             }
         ?>
-        <a <?php echo $this->get_render_attribute_string( 'link' ); ?>>
+        <a <?php echo esc_attr($this->get_render_attribute_string( 'link' )); ?>>
             <?php echo wp_kses( \Elementor\Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail', 'image' ), 
                     array(
                         'img' => array(

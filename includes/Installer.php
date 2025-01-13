@@ -2,10 +2,15 @@
 
 namespace Elementor_Magic_Kit;
 
+// Prevent direct access to the file
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 class Installer
 {
     /**
-     * Initialize class functions
+     * Run the installer to set up plugin version and database tables.
      *
      * @return void
      */
@@ -16,7 +21,7 @@ class Installer
     }
 
     /**
-     * Store plugin information
+     * Store the plugin installation time and version in the WordPress options table.
      *
      * @return void
      */
@@ -32,7 +37,7 @@ class Installer
     }
 
     /**
-     * Create custom tables
+     * Create custom database tables required by the plugin.
      *
      * @return void
      */
