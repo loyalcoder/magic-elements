@@ -102,7 +102,6 @@ final class Elementor_Magic_Kit
     {
         new Elementor_Magic_Kit\Assets();
         new Elementor_Magic_Kit\Load_Elementor();
-        new Elementor_Magic_Kit\Generator();
         if (is_admin()) {
             new Elementor_Magic_Kit\Admin();
         }

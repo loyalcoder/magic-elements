@@ -1,6 +1,21 @@
 <div class="card-widget">
   <div class="card-image">
-      <img src="<?php echo esc_url($settings['card_image']['url']); ?>" alt="">
+      <?php  
+      echo wp_kses(
+        \Elementor\Group_Control_Image_Size::get_attachment_image_html( $settings, 'full', 'card_image' ),
+        array(
+            'img' => array(
+                'src'    => true,
+                'alt'    => true,
+                'class'  => true,
+                'width'  => true,
+                'height' => true,
+                'srcset' => true,
+                'sizes'  => true,
+            ),
+        )
+    );
+      ?>  
   </div>
   <div class="card-content">
       <h3 class="card-title"><?php echo esc_html($settings['card_title']); ?></h3>
