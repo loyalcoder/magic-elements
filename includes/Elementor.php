@@ -176,10 +176,6 @@ class Load_Elementor
                 'src'     => EM_KIT_ASSETS . '/dist/flipcard.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/flipcard.css'),
             ],
-            'emkit-team' => [
-                'src'     => EM_KIT_ASSETS . '/dist/team.css',
-                'version' => filemtime(EM_KIT_PATH . '/assets/dist/team.css'),
-            ],
             'emk-post-tab' => [
                 'src'     => EM_KIT_ASSETS . '/dist/post_tab.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/post_tab.css'),
@@ -191,10 +187,6 @@ class Load_Elementor
             'emk-feature-list' => [
                 'src'     => EM_KIT_ASSETS . '/dist/feature_list.css',
                 'version' => filemtime(EM_KIT_PATH . '/assets/dist/feature_list.css'),
-            ],
-            'emkit-icon' => [
-                'src'     => EM_KIT_ASSETS . '/dist/icon.css',
-                'version' => filemtime(EM_KIT_PATH . '/assets/dist/icon.css'),
             ],
             'emkit-accordion' => [
                 'src'     => EM_KIT_ASSETS . '/dist/accordion.css',
@@ -224,10 +216,7 @@ class Load_Elementor
             'Button',
             'Pricing_Table',
             'Text_Editor',
-            'Icon',
-            'Social_Icon',
             'Image_Accordion',
-            'Team',
             'Flip_Card',
             'Heading',
             'Post_Category_Tab',
