@@ -1,0 +1,1566 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Magic Elements\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-13 18:08+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.14; wp-6.7.1\n"
+"X-Domain: magic-elements"
+
+#: includes/Elementor/Pricing_Table.php:180
+msgid "&#128; euro"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:188
+msgid "&#163; pound"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:194
+msgid "&#165; yen/yuan"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:181
+msgid "&#3647; baht"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:177
+msgid "&#36; dollar"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:182
+msgid "&#8355; franc"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:185
+msgid "&#8356; lira"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:186
+msgid "&#8359; peseta"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:191
+msgid "&#8360; rupee"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:195
+msgid "&#8361; won"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:193
+msgid "&#8362; shekel"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:187
+msgid "&#8369; peso"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:192
+msgid "&#8377; rupee (Indian)"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:189
+msgid "&#8381; ruble"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:196
+msgid "&#8383; bitcoin"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:183
+msgid "&fnof; guilder"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:237
+msgid "/monthly"
+msgstr ""
+
+#: includes/Elementor/Text_Editor.php:136
+msgid "1"
+msgstr ""
+
+#: includes/Elementor/Text_Editor.php:145
+msgid "10"
+msgstr ""
+
+#: includes/Elementor/Text_Editor.php:137
+msgid "2"
+msgstr ""
+
+#: includes/Elementor/Text_Editor.php:138
+msgid "3"
+msgstr ""
+
+#: includes/Elementor/Text_Editor.php:139
+msgid "4"
+msgstr ""
+
+#: includes/Elementor/Text_Editor.php:140
+msgid "5"
+msgstr ""
+
+#: includes/Elementor/Text_Editor.php:141
+msgid "6"
+msgstr ""
+
+#: includes/Elementor/Text_Editor.php:142
+msgid "7"
+msgstr ""
+
+#: includes/Elementor/Text_Editor.php:143
+msgid "8"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:206
+msgid "89.9"
+msgstr ""
+
+#: includes/Elementor/Text_Editor.php:144
+msgid "9"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:226
+msgid "99.9"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:179
+msgid "A&#36; Australian dollar"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:53
+msgid "Accordion"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:173
+msgid "Accordion Items"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:127
+msgid "Accordion Style"
+msgstr ""
+
+#: includes/Elementor/Tab.php:313 includes/Elementor/Tab.php:476
+msgid "Active"
+msgstr ""
+
+#: includes/Elementor/Image_Accordion.php:196
+msgid "Active Behavior"
+msgstr ""
+
+#: includes/Elementor/Image_Accordion.php:210
+msgid "Active on load won't be working with this active behavior."
+msgstr ""
+
+#: includes/Elementor/Post_Category_Tab.php:227
+msgid "Active Tab Background Color"
+msgstr ""
+
+#: includes/Elementor/Post_Category_Tab.php:216
+msgid "Active Tab Text Color"
+msgstr ""
+
+#: includes/Elementor/Heading.php:131
+msgid "Add Your Heading Text Here"
+msgstr ""
+
+#: includes/Elementor/Button.php:240
+msgid "After"
+msgstr ""
+
+#: includes/Elementor/Card.php:195 includes/Elementor/Accordion.php:675
+#: includes/Elementor/Feature_List.php:237
+#: includes/Elementor/Feature_List.php:422
+#: includes/Elementor/Feature_List.php:700 includes/Elementor/Heading.php:187
+#: includes/Elementor/Counter.php:183 includes/Elementor/Counter.php:249
+#: includes/Elementor/Tab.php:528 includes/Elementor/Category_List.php:199
+#: includes/Elementor/Text_Editor.php:210
+#: includes/Elementor/Pricing_Table.php:741
+#: includes/Elementor/Pricing_Table.php:819
+#: includes/Elementor/Pricing_Table.php:880
+#: includes/Elementor/Pricing_Table.php:1222
+#: includes/Elementor/Flip_Card.php:134 includes/Elementor/Flip_Card.php:285
+#: includes/Elementor/Flip_Card.php:688 includes/Elementor/Image.php:235
+#: includes/Elementor/Image.php:538 includes/Elementor/Button.php:175
+msgid "Alignment"
+msgstr ""
+
+#: includes/Elementor/layouts/post/post-category-tab.php:12
+msgid "All"
+msgstr ""
+
+#: includes/Elementor/Post_Category_Tab.php:174
+msgid "ASC"
+msgstr ""
+
+#: includes/Elementor/Image.php:147
+msgid "Attachment Caption"
+msgstr ""
+
+#: includes/Elementor/Flip_Card.php:279 includes/Elementor/Flip_Card.php:832
+msgid "Back"
+msgstr ""
+
+#: includes/Elementor/Flip_Card.php:1031
+msgid "Back Description"
+msgstr ""
+
+#: includes/Elementor/Flip_Card.php:994
+msgid "Back Designation"
+msgstr ""
+
+#: includes/Elementor/Flip_Card.php:893
+msgid "Back Icon"
+msgstr ""
+
+#: includes/Elementor/Flip_Card.php:347 includes/Elementor/Flip_Card.php:957
+msgid "Back Title"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:556 includes/Elementor/Accordion.php:588
+#: includes/Elementor/Pricing_Table.php:555
+#: includes/Elementor/Pricing_Table.php:659
+#: includes/Elementor/Pricing_Table.php:1502
+#: includes/Elementor/Pricing_Table.php:1693
+msgid "Background"
+msgstr ""
+
+#: includes/Elementor/Card.php:418 includes/Elementor/Accordion.php:717
+#: includes/Elementor/Accordion.php:828 includes/Elementor/Accordion.php:928
+#: includes/Elementor/Pricing_Table.php:423
+msgid "Background Color"
+msgstr ""
+
+#: includes/Elementor/Card.php:474
+msgid "Background Hover Color"
+msgstr ""
+
+#: includes/Elementor/Feature_List.php:129
+msgid "Basic"
+msgstr ""
+
+#: includes/Elementor/Button.php:239
+msgid "Before"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:637 includes/Elementor/Accordion.php:741
+msgid "Border"
+msgstr ""
+
+#: includes/Elementor/Card.php:266 includes/Elementor/Button.php:362
+msgid "Border Color"
+msgstr ""
+
+#: includes/Elementor/Card.php:295 includes/Elementor/Accordion.php:504
+#: includes/Elementor/Accordion.php:644 includes/Elementor/Accordion.php:749
+#: includes/Elementor/Accordion.php:851 includes/Elementor/Accordion.php:951
+#: includes/Elementor/Feature_List.php:289
+#: includes/Elementor/Feature_List.php:369
+#: includes/Elementor/Feature_List.php:487
+#: includes/Elementor/Feature_List.php:585
+#: includes/Elementor/Feature_List.php:776 includes/Elementor/Tab.php:347
+#: includes/Elementor/Pricing_Table.php:466
+#: includes/Elementor/Flip_Card.php:479 includes/Elementor/Flip_Card.php:555
+#: includes/Elementor/Flip_Card.php:773 includes/Elementor/Flip_Card.php:880
+#: includes/Elementor/Flip_Card.php:1141 includes/Elementor/Flip_Card.php:1230
+#: includes/Elementor/Image.php:411 includes/Elementor/Image.php:506
+#: includes/Elementor/Button.php:395
+msgid "Border Radius"
+msgstr ""
+
+#: includes/Elementor/Card.php:277
+msgid "Border Width"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:596
+#: includes/Elementor/Pricing_Table.php:962
+#: includes/Elementor/Pricing_Table.php:1003
+#: includes/Elementor/Pricing_Table.php:1063
+#: includes/Elementor/Pricing_Table.php:1146
+msgid "Bottom"
+msgstr ""
+
+#: includes/Elementor/Card.php:398 includes/Elementor/Feature_List.php:197
+#: includes/Elementor/Feature_List.php:693
+#: includes/Elementor/Pricing_Table.php:311
+#: includes/Elementor/Pricing_Table.php:320
+#: includes/Elementor/Pricing_Table.php:1407
+#: includes/Elementor/Flip_Card.php:1076 includes/Elementor/Button.php:53
+#: includes/Elementor/Button.php:122 includes/Elementor/Button.php:278
+msgid "Button"
+msgstr ""
+
+#: includes/Elementor/Card.php:172
+msgid "Button Link"
+msgstr ""
+
+#: includes/Elementor/Card.php:162 includes/Elementor/Flip_Card.php:373
+msgid "Button Text"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:178
+msgid "C&#36; Canadian dollar"
+msgstr ""
+
+#: includes/Elementor/Image.php:143 includes/Elementor/Image.php:531
+msgid "Caption"
+msgstr ""
+
+#: includes/Elementor/Card.php:123 includes/Elementor/Card.php:187
+msgid "Card"
+msgstr ""
+
+#: includes/Elementor/Card.php:248
+msgid "Card Height"
+msgstr ""
+
+#: includes/Elementor/Card.php:133
+msgid "Card Title"
+msgstr ""
+
+#: includes/Elementor/Card.php:222
+msgid "Card Width"
+msgstr ""
+
+#: includes/Elementor/Category_List.php:121
+msgid "Categories"
+msgstr ""
+
+#: includes/Elementor/Category_List.php:53
+#: includes/Elementor/Category_List.php:155
+msgid "Category List"
+msgstr ""
+
+#: includes/Elementor/Card.php:203 includes/Elementor/Accordion.php:227
+#: includes/Elementor/Accordion.php:683 includes/Elementor/Feature_List.php:245
+#: includes/Elementor/Feature_List.php:430
+#: includes/Elementor/Feature_List.php:708 includes/Elementor/Heading.php:195
+#: includes/Elementor/Counter.php:191 includes/Elementor/Counter.php:257
+#: includes/Elementor/Tab.php:536 includes/Elementor/Category_List.php:207
+#: includes/Elementor/Text_Editor.php:218
+#: includes/Elementor/Pricing_Table.php:749
+#: includes/Elementor/Pricing_Table.php:827
+#: includes/Elementor/Pricing_Table.php:888
+#: includes/Elementor/Pricing_Table.php:1230
+#: includes/Elementor/Pricing_Table.php:1429
+#: includes/Elementor/Flip_Card.php:142 includes/Elementor/Flip_Card.php:293
+#: includes/Elementor/Flip_Card.php:696 includes/Elementor/Image.php:243
+#: includes/Elementor/Image.php:546 includes/Elementor/Button.php:183
+msgid "Center"
+msgstr ""
+
+#: includes/Elementor/Image_Accordion.php:131
+#: includes/Elementor/Flip_Card.php:160 includes/Elementor/Image.php:124
+msgid "Choose Image"
+msgstr ""
+
+#: includes/Elementor/Image_Accordion.php:199
+msgid "Click"
+msgstr ""
+
+#: includes/Elementor/Flip_Card.php:375 includes/Elementor/Button.php:150
+msgid "Click here"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:294 includes/Elementor/Accordion.php:877
+msgid "Collapse"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:163 includes/Elementor/Accordion.php:545
+#: includes/Elementor/Accordion.php:577 includes/Elementor/Accordion.php:816
+#: includes/Elementor/Accordion.php:916 includes/Elementor/Heading.php:226
+#: includes/Elementor/Image_Accordion.php:293
+#: includes/Elementor/Image_Accordion.php:345 includes/Elementor/Tab.php:404
+#: includes/Elementor/Tab.php:444 includes/Elementor/Tab.php:483
+#: includes/Elementor/Pricing_Table.php:925
+#: includes/Elementor/Pricing_Table.php:1028
+#: includes/Elementor/Pricing_Table.php:1117
+#: includes/Elementor/Pricing_Table.php:1370
+#: includes/Elementor/Pricing_Table.php:1672
+#: includes/Elementor/Pricing_Table.php:1757
+msgid "Color"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:1512
+#: includes/Elementor/Pricing_Table.php:1703
+msgid "color"
+msgstr ""
+
+#: includes/Elementor/Category_List.php:186
+msgid "Column"
+msgstr ""
+
+#: includes/Elementor/Text_Editor.php:131
+msgid "Columns"
+msgstr ""
+
+#: includes/Elementor/Text_Editor.php:155
+msgid "Columns Gap"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:153
+#: includes/Elementor/Image_Accordion.php:121
+#: includes/Elementor/Image_Accordion.php:264 includes/Elementor/Tab.php:520
+#: includes/Elementor/Pricing_Table.php:1380
+msgid "Content"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:659
+msgid "Content Style"
+msgstr ""
+
+#: includes/Elementor/Counter.php:53 includes/Elementor/Counter.php:120
+msgid "Counter"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:173
+#: includes/Elementor/Pricing_Table.php:976
+msgid "Currency Symbol"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:935
+msgid "Current Price"
+msgstr ""
+
+#: includes/Elementor/Image.php:148 includes/Elementor/Image.php:159
+msgid "Custom Caption"
+msgstr ""
+
+#: includes/Elementor/Image.php:181
+msgid "Custom URL"
+msgstr ""
+
+#: includes/Elementor/Button.php:137
+msgid "Danger"
+msgstr ""
+
+#: includes/Elementor/Button.php:139
+msgid "Dark"
+msgstr ""
+
+#: includes/Elementor/Post_Category_Tab.php:161
+msgid "Date"
+msgstr ""
+
+#: includes/Elementor/Text_Editor.php:135 includes/Elementor/Image.php:210
+#: includes/Elementor/Button.php:133
+msgid "Default"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:258
+msgid "Default Text"
+msgstr ""
+
+#: includes/Elementor/Post_Category_Tab.php:173
+msgid "DESC"
+msgstr ""
+
+#: includes/Elementor/Card.php:141 includes/Elementor/Card.php:368
+#: includes/Elementor/Image_Accordion.php:154
+#: includes/Elementor/Image_Accordion.php:336 includes/Elementor/Tab.php:592
+#: includes/Elementor/Text_Editor.php:122 includes/Elementor/Flip_Card.php:188
+#: includes/Elementor/Flip_Card.php:363
+msgid "Description"
+msgstr ""
+
+#: includes/Elementor/Card.php:377
+msgid "Description Color"
+msgstr ""
+
+#: includes/Elementor/Flip_Card.php:354
+msgid "Designation"
+msgstr ""
+
+#: includes/Elementor/Flip_Card.php:356
+msgid "Developer"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:1421
+#: includes/Elementor/Pricing_Table.php:1786
+msgid "Direction"
+msgstr ""
+
+#: includes/Admin/views/settings.php:36
+msgid "Disable All"
+msgstr ""
+
+#: includes/Elementor/Tab.php:221
+msgid "Distance From Content"
+msgstr ""
+
+#: includes/Elementor.php:61
+msgid "Elementor Magic Kit"
+msgstr ""
+
+#: includes/Admin/views/settings.php:33
+msgid "Enable All"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:196
+msgid "Enable Cursor Pointer"
+msgstr ""
+
+#: includes/Admin/views/settings.php:30
+msgid "Enable/Disable Widgets"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:231 includes/Elementor/Accordion.php:329
+#: includes/Elementor/Category_List.php:211
+msgid "End"
+msgstr ""
+
+#: includes/Elementor/Counter.php:138
+msgid "Ending Number"
+msgstr ""
+
+#: includes/Elementor/Card.php:165
+msgid "Enter button text"
+msgstr ""
+
+#: includes/Elementor/Card.php:144
+msgid "Enter your description"
+msgstr ""
+
+#: includes/Elementor/Image.php:162
+msgid "Enter your image caption"
+msgstr ""
+
+#: includes/Elementor/Card.php:134 includes/Elementor/Heading.php:130
+msgid "Enter your title"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:268 includes/Elementor/Accordion.php:777
+msgid "Expand"
+msgstr ""
+
+#: includes/Elementor/Button.php:214
+msgid "Extra Large"
+msgstr ""
+
+#: includes/Elementor/Button.php:210
+msgid "Extra Small"
+msgstr ""
+
+#: includes/Elementor/Feature_List.php:230
+msgid "Feature Box"
+msgstr ""
+
+#: includes/Elementor/Feature_List.php:161
+#: includes/Elementor/Feature_List.php:618
+msgid "Feature Item"
+msgstr ""
+
+#: includes/Elementor/Feature_List.php:173
+msgid "Feature Item 1"
+msgstr ""
+
+#: includes/Elementor/Feature_List.php:176
+msgid "Feature Item 2"
+msgstr ""
+
+#: includes/Elementor/Feature_List.php:179
+msgid "Feature Item 3"
+msgstr ""
+
+#: includes/Elementor/Feature_List.php:182
+msgid "Feature Item 4"
+msgstr ""
+
+#: includes/Elementor/Feature_List.php:185
+msgid "Feature Item 5"
+msgstr ""
+
+#: includes/Elementor/Feature_List.php:53
+#: includes/Elementor/Feature_List.php:138
+msgid "Feature List"
+msgstr ""
+
+#: includes/Elementor/layouts/feature-list.php:19
+msgid "Feature list not found"
+msgstr ""
+
+#: includes/Elementor/Feature_List.php:120
+#: includes/Elementor/Feature_List.php:415
+msgid "Feature Title"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:246
+#: includes/Elementor/Pricing_Table.php:1188
+msgid "Features"
+msgstr ""
+
+#: includes/Elementor/Category_List.php:182
+msgid "Flex"
+msgstr ""
+
+#: includes/Elementor/Flip_Card.php:53 includes/Elementor/Flip_Card.php:115
+msgid "Flip Card"
+msgstr ""
+
+#: includes/Elementor/Feature_List.php:206
+msgid "Free"
+msgstr ""
+
+#: includes/Elementor/Flip_Card.php:127 includes/Elementor/Flip_Card.php:404
+msgid "Front"
+msgstr ""
+
+#: includes/Elementor/Flip_Card.php:634
+msgid "Front Description"
+msgstr ""
+
+#: includes/Elementor/Flip_Card.php:681
+msgid "Front Icon"
+msgstr ""
+
+#: includes/Elementor/Flip_Card.php:500
+msgid "Front Image"
+msgstr ""
+
+#: includes/Elementor/Flip_Card.php:181 includes/Elementor/Flip_Card.php:587
+msgid "Front Title"
+msgstr ""
+
+#: includes/Elementor/Feature_List.php:643
+#: includes/Elementor/Pricing_Table.php:1080
+#: includes/Elementor/Pricing_Table.php:1160
+#: includes/Elementor/Pricing_Table.php:1591
+#: includes/Elementor/Pricing_Table.php:1617
+msgid "Gap"
+msgstr ""
+
+#: includes/Elementor/Tab.php:198
+msgid "Gap Between Tabs"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:139
+#: includes/Elementor/Pricing_Table.php:709
+msgid "Header"
+msgstr ""
+
+#: includes/Elementor/Heading.php:53 includes/Elementor/Heading.php:115
+#: includes/Elementor/Heading.php:179
+msgid "Heading"
+msgstr ""
+
+#: includes/Elementor/Heading.php:140
+msgid "Heading Link"
+msgstr ""
+
+#: includes/Elementor/Image_Accordion.php:234
+#: includes/Elementor/Flip_Card.php:420 includes/Elementor/Flip_Card.php:533
+#: includes/Elementor/Image.php:330
+msgid "Height"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:260
+#: includes/Elementor/Pricing_Table.php:216
+#: includes/Elementor/Pricing_Table.php:344
+#: includes/Elementor/Pricing_Table.php:389
+#: includes/Elementor/Pricing_Table.php:1270
+#: includes/Elementor/Flip_Card.php:201 includes/Elementor/Flip_Card.php:314
+msgid "Hide"
+msgstr ""
+
+#: includes/Elementor/Heading.php:260
+msgid "Highlight Title"
+msgstr ""
+
+#: includes/Elementor/Card.php:466 includes/Elementor/Accordion.php:393
+#: includes/Elementor/Accordion.php:570 includes/Elementor/Feature_List.php:331
+#: includes/Elementor/Feature_List.php:817
+#: includes/Elementor/Image_Accordion.php:200 includes/Elementor/Tab.php:282
+#: includes/Elementor/Tab.php:437 includes/Elementor/Pricing_Table.php:1687
+#: includes/Elementor/Flip_Card.php:1175 includes/Elementor/Image.php:432
+#: includes/Elementor/Button.php:335
+msgid "Hover"
+msgstr ""
+
+#: includes/Elementor/Image.php:483 includes/Elementor/Button.php:373
+msgid "Hover Animation"
+msgstr ""
+
+#: includes/Elementor/Heading.php:155
+msgid "HTML Tag"
+msgstr ""
+
+#. URI of the plugin
+#. Author URI of the plugin
+msgid "https://loyalcoder.com"
+msgstr ""
+
+#: includes/Elementor/Card.php:174 includes/Elementor/Heading.php:142
+msgid "https://your-link.com"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:250 includes/Elementor/Feature_List.php:147
+#: includes/Elementor/Feature_List.php:546
+#: includes/Elementor/Category_List.php:143
+#: includes/Elementor/Pricing_Table.php:265
+#: includes/Elementor/Pricing_Table.php:341
+#: includes/Elementor/Pricing_Table.php:352
+#: includes/Elementor/Pricing_Table.php:1310
+#: includes/Elementor/Pricing_Table.php:1555
+#: includes/Elementor/Pricing_Table.php:1746
+#: includes/Elementor/Flip_Card.php:210 includes/Elementor/Flip_Card.php:311
+#: includes/Elementor/Flip_Card.php:322 includes/Elementor/Button.php:222
+msgid "Icon"
+msgstr ""
+
+#: includes/Elementor/Feature_List.php:553
+#: includes/Elementor/Category_List.php:307
+#: includes/Elementor/Flip_Card.php:714 includes/Elementor/Flip_Card.php:900
+msgid "Icon Color"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:1566
+msgid "Icon Direction"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:1344
+msgid "Icon Gap"
+msgstr ""
+
+#: includes/Elementor/Category_List.php:319
+msgid "Icon Hover Color"
+msgstr ""
+
+#: includes/Elementor/Flip_Card.php:247
+msgid "Icon List"
+msgstr ""
+
+#: includes/Elementor/Button.php:235
+msgid "Icon Position"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:783 includes/Elementor/Accordion.php:883
+#: includes/Elementor/Category_List.php:331
+#: includes/Elementor/Pricing_Table.php:1318
+msgid "Icon Size"
+msgstr ""
+
+#: includes/Elementor/Button.php:249
+msgid "Icon Spacing"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:763
+#: includes/Elementor/Category_List.php:299
+msgid "Icon Style"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:257
+msgid "Icons"
+msgstr ""
+
+#: includes/Elementor/Post_Category_Tab.php:158
+msgid "ID"
+msgstr ""
+
+#: includes/Elementor/Card.php:151 includes/Elementor/Image_Accordion.php:226
+#: includes/Elementor/Image.php:53 includes/Elementor/Image.php:116
+#: includes/Elementor/Image.php:227
+msgid "Image"
+msgstr ""
+
+#: includes/Elementor/Image_Accordion.php:53
+msgid "Image Accordion"
+msgstr ""
+
+#: includes/Elementor/Image_Accordion.php:173
+msgid "Image Accordion 1"
+msgstr ""
+
+#: includes/Elementor/Image_Accordion.php:177
+msgid "Image Accordion 2"
+msgstr ""
+
+#: includes/Elementor/Image_Accordion.php:181
+msgid "Image Accordion 3"
+msgstr ""
+
+#: includes/Elementor/Image_Accordion.php:185
+msgid "Image Accordion 4"
+msgstr ""
+
+#: includes/Elementor/Image_Accordion.php:156
+#: includes/Elementor/Image_Accordion.php:174
+#: includes/Elementor/Image_Accordion.php:178
+#: includes/Elementor/Image_Accordion.php:182
+#: includes/Elementor/Image_Accordion.php:186
+msgid "Image accordion content."
+msgstr ""
+
+#: includes/Elementor/Post_Category_Tab.php:260
+msgid "Image Height"
+msgstr ""
+
+#: includes/Elementor/Button.php:134
+msgid "Info"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:120 includes/Elementor/Accordion.php:347
+#: includes/Elementor/Pricing_Table.php:1214
+msgid "Item"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:179 includes/Elementor/Accordion.php:183
+#: includes/Elementor/Accordion.php:187
+msgid "Item content. Click the edit button to change this text."
+msgstr ""
+
+#: includes/Elementor/Accordion.php:219
+msgid "Item Position"
+msgstr ""
+
+#: includes/Elementor/Image_Accordion.php:167
+msgid "Items"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:1267
+msgid "Items Border"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:477
+msgid "Items Gap"
+msgstr ""
+
+#: includes/Elementor/Heading.php:203 includes/Elementor/Text_Editor.php:226
+#: includes/Elementor/Button.php:191
+msgid "Justified"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:691
+msgid "Justify"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:184
+msgid "kr krona"
+msgstr ""
+
+#: includes/Elementor/Button.php:213
+msgid "Large"
+msgstr ""
+
+#: includes/Elementor/Category_List.php:168
+#: includes/Elementor/Category_List.php:178
+msgid "Layout"
+msgstr ""
+
+#: includes/Elementor/Card.php:199 includes/Elementor/Accordion.php:679
+#: includes/Elementor/Feature_List.php:241
+#: includes/Elementor/Feature_List.php:426
+#: includes/Elementor/Feature_List.php:704 includes/Elementor/Heading.php:191
+#: includes/Elementor/Counter.php:187 includes/Elementor/Counter.php:253
+#: includes/Elementor/Tab.php:532 includes/Elementor/Text_Editor.php:214
+#: includes/Elementor/Pricing_Table.php:745
+#: includes/Elementor/Pricing_Table.php:823
+#: includes/Elementor/Pricing_Table.php:884
+#: includes/Elementor/Pricing_Table.php:1226
+#: includes/Elementor/Pricing_Table.php:1425
+#: includes/Elementor/Pricing_Table.php:1570
+#: includes/Elementor/Pricing_Table.php:1790
+#: includes/Elementor/Flip_Card.php:138 includes/Elementor/Flip_Card.php:289
+#: includes/Elementor/Flip_Card.php:692 includes/Elementor/Image.php:239
+#: includes/Elementor/Image.php:542 includes/Elementor/Button.php:179
+msgid "Left"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:525
+msgid "Left Part"
+msgstr ""
+
+#: includes/Elementor/Button.php:138
+msgid "Light"
+msgstr ""
+
+#: includes/Elementor/Image.php:206
+msgid "Lightbox"
+msgstr ""
+
+#: includes/Elementor/Feature_List.php:213
+#: includes/Elementor/Pricing_Table.php:327
+#: includes/Elementor/Flip_Card.php:233 includes/Elementor/Flip_Card.php:382
+#: includes/Elementor/Image.php:175 includes/Elementor/Image.php:191
+#: includes/Elementor/Button.php:160
+msgid "Link"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:155
+msgid "List Content"
+msgstr ""
+
+#: includes/Elementor/Category_List.php:242
+msgid "List Padding"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:145
+msgid "List Title"
+msgstr ""
+
+#. Author of the plugin
+msgid "LoyalCoder"
+msgstr ""
+
+#: includes/Elementor/Card.php:53
+msgid "Magic Card"
+msgstr ""
+
+#. Name of the plugin
+#: includes/Admin/Menu.php:46
+msgid "Magic Elements"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Magic Elements is a comprehensive extension for Elementor, providing "
+"advanced features, custom widgets, and templates to enhance your page-"
+"building experience. Perfect for users seeking seamless design customization "
+"with ease."
+msgstr ""
+
+#: includes/Admin/views/settings.php:22
+msgid "Magic Elements Settings"
+msgstr ""
+
+#: includes/Elementor/Counter.php:166
+msgid "Magic Number"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:465 includes/Elementor/Accordion.php:862
+#: includes/Elementor/Accordion.php:962
+#: includes/Elementor/Post_Category_Tab.php:298
+#: includes/Elementor/Feature_List.php:525
+#: includes/Elementor/Feature_List.php:669
+#: includes/Elementor/Feature_List.php:904 includes/Elementor/Counter.php:306
+#: includes/Elementor/Image_Accordion.php:272
+#: includes/Elementor/Text_Editor.php:274
+#: includes/Elementor/Pricing_Table.php:906
+#: includes/Elementor/Pricing_Table.php:1195
+#: includes/Elementor/Pricing_Table.php:1248
+#: includes/Elementor/Pricing_Table.php:1466
+#: includes/Elementor/Flip_Card.php:566 includes/Elementor/Flip_Card.php:612
+#: includes/Elementor/Flip_Card.php:659 includes/Elementor/Flip_Card.php:811
+#: includes/Elementor/Flip_Card.php:936 includes/Elementor/Flip_Card.php:981
+#: includes/Elementor/Flip_Card.php:1018 includes/Elementor/Flip_Card.php:1055
+#: includes/Elementor/Flip_Card.php:1273 includes/Elementor/Image.php:596
+msgid "Margin"
+msgstr ""
+
+#: includes/Elementor/Image.php:295
+msgid "Max Width"
+msgstr ""
+
+#: includes/Elementor/Button.php:212
+msgid "Medium"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:592
+#: includes/Elementor/Pricing_Table.php:958
+#: includes/Elementor/Pricing_Table.php:999
+#: includes/Elementor/Pricing_Table.php:1059
+#: includes/Elementor/Pricing_Table.php:1142
+msgid "Middle"
+msgstr ""
+
+#: includes/Elementor/Post_Category_Tab.php:160
+msgid "Name"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:199 includes/Elementor/Image.php:212
+msgid "No"
+msgstr ""
+
+#: includes/Elementor/layouts/post/post-category-tab.php:58
+msgid "No posts found."
+msgstr ""
+
+#: includes/Elementor/Post_Category_Tab.php:157
+#: includes/Elementor/Pricing_Table.php:176 includes/Elementor/Image.php:146
+#: includes/Elementor/Image.php:179
+msgid "None"
+msgstr ""
+
+#: includes/Elementor/Card.php:410 includes/Elementor/Accordion.php:358
+#: includes/Elementor/Accordion.php:538 includes/Elementor/Feature_List.php:268
+#: includes/Elementor/Feature_List.php:738 includes/Elementor/Tab.php:250
+#: includes/Elementor/Tab.php:397 includes/Elementor/Pricing_Table.php:1496
+#: includes/Elementor/Flip_Card.php:1103 includes/Elementor/Image.php:364
+#: includes/Elementor/Button.php:306
+msgid "Normal"
+msgstr ""
+
+#: includes/Elementor/Counter.php:176
+msgid "Number"
+msgstr ""
+
+#: includes/Elementor/Counter.php:149
+msgid "Number Suffix"
+msgstr ""
+
+#: includes/Elementor/Image.php:371 includes/Elementor/Image.php:439
+msgid "Opacity"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:224
+#: includes/Elementor/Pricing_Table.php:1017
+msgid "Original Price"
+msgstr ""
+
+#: includes/Elementor/Card.php:314 includes/Elementor/Card.php:451
+#: includes/Elementor/Accordion.php:453 includes/Elementor/Accordion.php:625
+#: includes/Elementor/Accordion.php:728 includes/Elementor/Accordion.php:839
+#: includes/Elementor/Accordion.php:939 includes/Elementor/Feature_List.php:308
+#: includes/Elementor/Feature_List.php:388
+#: includes/Elementor/Feature_List.php:506
+#: includes/Elementor/Feature_List.php:596
+#: includes/Elementor/Feature_List.php:795
+#: includes/Elementor/Feature_List.php:873 includes/Elementor/Tab.php:360
+#: includes/Elementor/Text_Editor.php:285
+#: includes/Elementor/Pricing_Table.php:433
+#: includes/Elementor/Pricing_Table.php:565
+#: includes/Elementor/Pricing_Table.php:669
+#: includes/Elementor/Pricing_Table.php:774
+#: includes/Elementor/Pricing_Table.php:852
+#: includes/Elementor/Pricing_Table.php:1288
+#: includes/Elementor/Pricing_Table.php:1447
+#: includes/Elementor/Flip_Card.php:446 includes/Elementor/Flip_Card.php:792
+#: includes/Elementor/Flip_Card.php:847 includes/Elementor/Flip_Card.php:1152
+#: includes/Elementor/Flip_Card.php:1241 includes/Elementor/Image.php:607
+#: includes/Elementor/Button.php:415
+msgid "Padding"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:235
+#: includes/Elementor/Pricing_Table.php:1109
+msgid "Period"
+msgstr ""
+
+#: includes/Elementor/Image_Accordion.php:210
+msgid "Please note!"
+msgstr ""
+
+#: includes/Elementor/Counter.php:151
+msgid "Plus"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:321
+msgid "Position"
+msgstr ""
+
+#: includes/Elementor/Post_Category_Tab.php:122
+msgid "Post"
+msgstr ""
+
+#: includes/Elementor/Post_Category_Tab.php:320
+msgid "Post Author Color"
+msgstr ""
+
+#: includes/Elementor/Post_Category_Tab.php:332
+msgid "Post Author Typography"
+msgstr ""
+
+#: includes/Elementor/Post_Category_Tab.php:249
+msgid "Post Border Color"
+msgstr ""
+
+#: includes/Elementor/Post_Category_Tab.php:53
+msgid "Post Category Tab"
+msgstr ""
+
+#: includes/Elementor/Post_Category_Tab.php:169
+msgid "Post Order"
+msgstr ""
+
+#: includes/Elementor/Post_Category_Tab.php:153
+msgid "Post Order By"
+msgstr ""
+
+#: includes/Elementor/Post_Category_Tab.php:241
+msgid "Post Styles"
+msgstr ""
+
+#: includes/Elementor/Post_Category_Tab.php:279
+msgid "Post Title Color"
+msgstr ""
+
+#: includes/Elementor/Post_Category_Tab.php:291
+msgid "Post Title Typography"
+msgstr ""
+
+#: includes/Elementor/Post_Category_Tab.php:143
+msgid "Posts per page"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:204
+#: includes/Elementor/Pricing_Table.php:873
+msgid "Price"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:166
+msgid "Pricing"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:52
+msgid "Pricing Table"
+msgstr ""
+
+#: includes/Elementor/Text_Editor.php:124
+msgid ""
+"Proper nutrition plays a crucial role in maintaining good oral health. The "
+"foods you choose to include in your diet can either promote dental health or "
+"contribute to dental problems."
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:190
+msgid "R$ real"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:610
+#: includes/Elementor/Pricing_Table.php:688
+#: includes/Elementor/Pricing_Table.php:1529
+#: includes/Elementor/Pricing_Table.php:1720
+msgid "Radius"
+msgstr ""
+
+#: includes/Elementor/Card.php:164
+msgid "Read More"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:289
+msgid "Repeater Items"
+msgstr ""
+
+#: includes/Elementor/Feature_List.php:168
+msgid "Repeater List"
+msgstr ""
+
+#: includes/Elementor/Heading.php:268
+msgid "Replace Color"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:503
+msgid "Reverse"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:379
+#: includes/Elementor/Pricing_Table.php:386
+#: includes/Elementor/Pricing_Table.php:399
+#: includes/Elementor/Pricing_Table.php:1776
+msgid "Ribbon"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:1803
+msgid "Ribbon Background"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:1813
+msgid "Ribbon Before After"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:397
+#: includes/Elementor/Pricing_Table.php:1830
+msgid "Ribbon Text"
+msgstr ""
+
+#: includes/Elementor/Card.php:207 includes/Elementor/Accordion.php:687
+#: includes/Elementor/Feature_List.php:249
+#: includes/Elementor/Feature_List.php:434
+#: includes/Elementor/Feature_List.php:712 includes/Elementor/Heading.php:199
+#: includes/Elementor/Counter.php:195 includes/Elementor/Counter.php:261
+#: includes/Elementor/Tab.php:540 includes/Elementor/Text_Editor.php:222
+#: includes/Elementor/Pricing_Table.php:753
+#: includes/Elementor/Pricing_Table.php:831
+#: includes/Elementor/Pricing_Table.php:892
+#: includes/Elementor/Pricing_Table.php:1234
+#: includes/Elementor/Pricing_Table.php:1433
+#: includes/Elementor/Pricing_Table.php:1574
+#: includes/Elementor/Pricing_Table.php:1794
+#: includes/Elementor/Flip_Card.php:146 includes/Elementor/Flip_Card.php:297
+#: includes/Elementor/Flip_Card.php:700 includes/Elementor/Image.php:247
+#: includes/Elementor/Image.php:550 includes/Elementor/Button.php:187
+msgid "Right"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:629
+msgid "Right Part"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:507
+msgid "Row"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:511
+msgid "Row Reverse"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:213
+msgid "Sale"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:294
+msgid "Sample Text 1"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:298
+msgid "Sample Text 2"
+msgstr ""
+
+#: includes/Admin/views/settings.php:69
+msgid "Save Changes"
+msgstr ""
+
+#: includes/Admin/Ajax.php:46
+msgid "Security check failed"
+msgstr ""
+
+#: includes/Elementor/Post_Category_Tab.php:136
+msgid "Select a category"
+msgstr ""
+
+#: includes/Elementor/Post_Category_Tab.php:130
+#: includes/Elementor/Category_List.php:132
+msgid "Select Category"
+msgstr ""
+
+#: includes/Admin/Menu.php:47
+msgid "Settings"
+msgstr ""
+
+#: includes/Admin/Ajax.php:75
+msgid "Settings saved successfully"
+msgstr ""
+
+#: includes/Elementor/Tab.php:271 includes/Elementor/Tab.php:303
+#: includes/Elementor/Tab.php:334 includes/Elementor/Tab.php:417
+#: includes/Elementor/Tab.php:457 includes/Elementor/Tab.php:496
+msgid "Shadow"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:259
+#: includes/Elementor/Pricing_Table.php:215
+#: includes/Elementor/Pricing_Table.php:343
+#: includes/Elementor/Pricing_Table.php:388
+#: includes/Elementor/Pricing_Table.php:1269
+#: includes/Elementor/Flip_Card.php:200 includes/Elementor/Flip_Card.php:313
+msgid "Show"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:1643
+#: includes/Elementor/Flip_Card.php:507 includes/Elementor/Flip_Card.php:733
+#: includes/Elementor/Flip_Card.php:910 includes/Elementor/Button.php:206
+msgid "Size"
+msgstr ""
+
+#: includes/Elementor/Button.php:211
+msgid "Small"
+msgstr ""
+
+#: includes/Elementor/Flip_Card.php:198
+msgid "Social Icon"
+msgstr ""
+
+#: includes/Elementor/Image_Accordion.php:312
+msgid "Spacing"
+msgstr ""
+
+#: includes/Elementor/Category_List.php:223
+msgid "Spacing Between Items"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:223 includes/Elementor/Accordion.php:325
+#: includes/Elementor/Category_List.php:203
+msgid "Start"
+msgstr ""
+
+#: includes/Elementor/Counter.php:127
+msgid "Starting Number"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:235
+msgid "Stretch"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:125
+msgid "Style"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:130
+msgid "Style 1 - Only Current Item Toggles"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:131
+msgid "Style 2 - Only This Item Toggles Independently"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:132
+msgid "Style 3 - All Items Open By Default"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:129
+msgid "Style One"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:130
+msgid "Style Two"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:155
+#: includes/Elementor/Pricing_Table.php:157
+#: includes/Elementor/Pricing_Table.php:794
+msgid "Sub Title"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:809
+msgid "Sub Title Color"
+msgstr ""
+
+#: includes/Elementor/Button.php:135
+msgid "Success"
+msgstr ""
+
+#: includes/Elementor/Tab.php:53
+msgid "Tab"
+msgstr ""
+
+#: includes/Elementor/Tab.php:163
+msgid "Tab 1"
+msgstr ""
+
+#: includes/Elementor/Tab.php:167
+msgid "Tab 2"
+msgstr ""
+
+#: includes/Elementor/Post_Category_Tab.php:205
+msgid "Tab Background Color"
+msgstr ""
+
+#: includes/Elementor/Tab.php:149
+msgid "Tab Content"
+msgstr ""
+
+#: includes/Elementor/Tab.php:140
+msgid "Tab Content Title"
+msgstr ""
+
+#: includes/Elementor/Post_Category_Tab.php:186
+msgid "Tab Styles"
+msgstr ""
+
+#: includes/Elementor/Post_Category_Tab.php:194
+msgid "Tab Text Color"
+msgstr ""
+
+#: includes/Elementor/Tab.php:131
+msgid "Tab Title"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:493
+msgid "Table Body"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:118
+msgid "Table Settings"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:413
+msgid "Table Style"
+msgstr ""
+
+#: includes/Elementor/Tab.php:122 includes/Elementor/Tab.php:158
+#: includes/Elementor/Tab.php:181
+msgid "Tabs"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:256
+#: includes/Elementor/Pricing_Table.php:318 includes/Elementor/Button.php:147
+msgid "Text"
+msgstr ""
+
+#: includes/Elementor/Card.php:430 includes/Elementor/Accordion.php:706
+#: includes/Elementor/Feature_List.php:448
+#: includes/Elementor/Feature_List.php:626
+#: includes/Elementor/Feature_List.php:744
+#: includes/Elementor/Feature_List.php:823 includes/Elementor/Counter.php:209
+#: includes/Elementor/Counter.php:275 includes/Elementor/Tab.php:573
+#: includes/Elementor/Tab.php:601 includes/Elementor/Category_List.php:274
+#: includes/Elementor/Text_Editor.php:241
+#: includes/Elementor/Pricing_Table.php:1395
+#: includes/Elementor/Flip_Card.php:964 includes/Elementor/Flip_Card.php:1001
+#: includes/Elementor/Flip_Card.php:1038 includes/Elementor/Flip_Card.php:1109
+#: includes/Elementor/Flip_Card.php:1181 includes/Elementor/Image.php:564
+#: includes/Elementor/Button.php:313 includes/Elementor/Button.php:342
+msgid "Text Color"
+msgstr ""
+
+#: includes/Elementor/Text_Editor.php:52 includes/Elementor/Text_Editor.php:115
+#: includes/Elementor/Text_Editor.php:203
+msgid "Text Editor"
+msgstr ""
+
+#: includes/Elementor/Card.php:485 includes/Elementor/Category_List.php:285
+msgid "Text Hover Color"
+msgstr ""
+
+#: includes/Elementor/Text_Editor.php:266
+msgid "Text Shadow"
+msgstr ""
+
+#: includes/Elementor/Flip_Card.php:366
+msgid "This is back side content."
+msgstr ""
+
+#: includes/Elementor/Flip_Card.php:191
+msgid "This is front side content"
+msgstr ""
+
+#: includes/Elementor/Card.php:143
+msgid "This is the card description."
+msgstr ""
+
+#: includes/Elementor/Tab.php:164
+msgid "This is the content for the first tab."
+msgstr ""
+
+#: includes/Elementor/Tab.php:168
+msgid "This is the content for the second tab."
+msgstr ""
+
+#: includes/Elementor/Card.php:131 includes/Elementor/Card.php:338
+#: includes/Elementor/Accordion.php:143
+#: includes/Elementor/Post_Category_Tab.php:159
+#: includes/Elementor/Feature_List.php:127
+#: includes/Elementor/Feature_List.php:159
+#: includes/Elementor/Feature_List.php:204 includes/Elementor/Heading.php:122
+#: includes/Elementor/Heading.php:217 includes/Elementor/Counter.php:164
+#: includes/Elementor/Counter.php:242
+#: includes/Elementor/Image_Accordion.php:145
+#: includes/Elementor/Image_Accordion.php:284 includes/Elementor/Tab.php:564
+#: includes/Elementor/Pricing_Table.php:146
+#: includes/Elementor/Pricing_Table.php:148
+#: includes/Elementor/Pricing_Table.php:716
+#: includes/Elementor/Flip_Card.php:179 includes/Elementor/Flip_Card.php:345
+msgid "Title"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:178
+msgid "Title #1"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:182
+msgid "Title #2"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:186
+msgid "Title #3"
+msgstr ""
+
+#: includes/Elementor/Card.php:347 includes/Elementor/Pricing_Table.php:731
+#: includes/Elementor/Flip_Card.php:595 includes/Elementor/Flip_Card.php:642
+msgid "Title Color"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:518
+msgid "Title Style"
+msgstr ""
+
+#: includes/Elementor/Tab.php:375
+msgid "Titles"
+msgstr ""
+
+#: includes/Elementor/Heading.php:132
+msgid "to add highlight text use {{I am highlight}}"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:208
+msgid "Toggle Animation Duration (ms)"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:588
+#: includes/Elementor/Pricing_Table.php:954
+#: includes/Elementor/Pricing_Table.php:995
+#: includes/Elementor/Pricing_Table.php:1055
+#: includes/Elementor/Pricing_Table.php:1138
+msgid "Top"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:425 includes/Elementor/Accordion.php:598
+#: includes/Elementor/Feature_List.php:345
+#: includes/Elementor/Feature_List.php:841
+#: includes/Elementor/Flip_Card.php:1199 includes/Elementor/Image.php:465
+msgid "Transition Duration"
+msgstr ""
+
+#: includes/Elementor/Button.php:129
+msgid "Type"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:321
+msgid "Type your button text"
+msgstr ""
+
+#: includes/Elementor/Image_Accordion.php:157
+#: includes/Elementor/Text_Editor.php:125 includes/Elementor/Flip_Card.php:192
+#: includes/Elementor/Flip_Card.php:367
+msgid "Type your description here"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:238
+msgid "Type your period"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:207
+msgid "Type your price"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:158
+msgid "Type your sub title here"
+msgstr ""
+
+#: includes/Elementor/Feature_List.php:130
+#: includes/Elementor/Feature_List.php:162
+#: includes/Elementor/Feature_List.php:207 includes/Elementor/Counter.php:167
+#: includes/Elementor/Pricing_Table.php:149
+#: includes/Elementor/Pricing_Table.php:400
+#: includes/Elementor/Flip_Card.php:182 includes/Elementor/Flip_Card.php:348
+#: includes/Elementor/Flip_Card.php:357 includes/Elementor/Flip_Card.php:376
+msgid "Type your title here"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:527 includes/Elementor/Accordion.php:668
+#: includes/Elementor/Category_List.php:257
+#: includes/Elementor/Category_List.php:266
+msgid "Typography"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:584
+#: includes/Elementor/Pricing_Table.php:950
+#: includes/Elementor/Pricing_Table.php:991
+#: includes/Elementor/Pricing_Table.php:1051
+#: includes/Elementor/Pricing_Table.php:1134
+msgid "Vertical Alignment"
+msgstr ""
+
+#: includes/Elementor/Button.php:136
+msgid "Warning"
+msgstr ""
+
+#: includes/Elementor/Pricing_Table.php:533
+#: includes/Elementor/Pricing_Table.php:637 includes/Elementor/Image.php:260
+msgid "Width"
+msgstr ""
+
+#: includes/Elementor/Accordion.php:198 includes/Elementor/Image.php:211
+msgid "Yes"
+msgstr ""
+
+#: includes/Admin/Ajax.php:53
+msgid "You do not have permission to perform this action"
+msgstr ""

@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "watch": "webpack --watch --mode development",
-    "bundle": "find . -name '*.DS_Store' -type f -delete && find . -name '*.css.map' -type f -delete && dir-archiver --src ./ --dest ~/Downloads/magic-elements.zip --exclude .stylelintrc.json LICENSE .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules package-lock.json package.json .travis.yml phpcs.xml.dist readme.md sass src yarn.lock tailwind-blocks.config.js tailwind.config.js webpack.config.js"
+    "bundle": "find . -name '*.DS_Store' -type f -delete && find . -name '*.css.map' -type f -delete && dir-archiver --src ./ --dest ~/Downloads/magic-elements.zip --exclude .stylelintrc.json LICENSE .eslintrc .git .gitattributes .github .gitignore README.md node_modules  .cursorrules .travis.yml phpcs.xml.dist readme.md  yarn.lock tailwind-blocks.config.js tailwind.config.js"
   },
   "keywords": [],
   "author": "",
