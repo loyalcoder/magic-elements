@@ -24,7 +24,7 @@ class Load_Elementor
         add_action('elementor/elements/categories_registered', [$this, 'register_category']);
         add_action('elementor/widgets/widgets_registered', [$this, 'register_widgets']);
         add_action('elementor/editor/after_enqueue_scripts', [$this, 'custom_elementor_scripts']);
-        add_action('wp_enqueue_scripts', [$this, 'ekit_style_register']);
+        add_action('wp_enqueue_scripts', [$this, 'style_register']);
     }
 
 
@@ -82,7 +82,7 @@ class Load_Elementor
        foreach ($widgets as $widget) {
            $widget_key = strtolower(str_replace('_', '', $widget));
            if (!empty($enabled_widgets) && in_array($widget_key, $enabled_widgets)) {
-               $widget_class = "\\Elementor_Magic_Kit\\Elementor\\$widget";
+               $widget_class = "\\MagicElements\\Elementor\\$widget";
                \Elementor\Plugin::instance()->widgets_manager->register(new $widget_class());
            }
        }
@@ -257,7 +257,7 @@ class Load_Elementor
 
         return $widget_list;
     }
-    public function ekit_style_register () {
+    public function style_register () {
         $styles  = $this->getStyles();
          foreach ($styles as $handle => $style) {
             $deps = isset($style['deps']) ? $style['deps'] : false;
