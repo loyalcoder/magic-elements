@@ -47,13 +47,6 @@
 .flip-card .flip-card-inner .flip-card-back .flip_card_button:hover a {
   color: black;
 }
-/*!********************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/team.scss ***!
-  \********************************************************************************************************************/
-.team .team-icon {
-  display: flex;
-  column-gap: 10px;
-}
 /*!*****************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/category_list.scss ***!
   \*****************************************************************************************************************************/
@@ -104,23 +97,6 @@
 .feature_list .feature_button a {
   background-color: red;
   color: white;
-}
-/*!********************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/icon.scss ***!
-  \********************************************************************************************************************/
-
-/*!***************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/social_icon.scss ***!
-  \***************************************************************************************************************************/
-.social-main {
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 5px;
-}
-.social-main .social-icon {
-  background-color: #21759b;
-  border-radius: 8px;
-  padding: 13px 13px 5px 13px;
 }
 /*!***********************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/counter.scss ***!

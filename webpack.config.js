@@ -10,7 +10,6 @@ module.exports = {
     category_list: './assets/src/scss/category_list.scss',
     counter: './assets/src/scss/counter.scss',
     card: './assets/src/scss/card.scss',
-    style: './assets/src/scss/style.scss',
     pricingtable: './assets/src/scss/pricingtable.scss',
     accordion: './assets/src/scss/accordion.scss',
     // iconbox: './assets/css/iconbox.scss',

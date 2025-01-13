@@ -1,6 +1,6 @@
 <?php
 
-/**
+      /**
  * Elementor Classes.
  *
  * @package Feature List Elementor Magic Kit
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-/**
+      /**
  * Magic Kit for Elementor Extension
  *
  * Elementor widget for Feature List.
@@ -25,7 +25,7 @@ if (!defined('ABSPATH')) {
  */
 class Feature_List extends Widget_Base
 {
-    /**
+          /**
      * Retrieve the widget name.
      *
      * @since 1.0.0
@@ -39,7 +39,7 @@ class Feature_List extends Widget_Base
         return 'em_kit_feature_list';
     }
 
-    /**
+          /**
      * Retrieve the widget title.
      *
      * @since 1.0.0
@@ -53,7 +53,7 @@ class Feature_List extends Widget_Base
         return esc_html__('Feature List', 'elementor-magic-kit');
     }
 
-    /**
+          /**
      * Retrieve the widget icon.
      *
      * @since 1.0.0
@@ -67,7 +67,7 @@ class Feature_List extends Widget_Base
         return 'eicon-bullet-list emk-editor-widgets-icon';
     }
 
-    /**
+          /**
      * Retrieve the list of categories the widget belongs to.
      *
      * Used to determine where to display the widget in the editor.
@@ -95,7 +95,7 @@ class Feature_List extends Widget_Base
         return [];
     }
 
-    /**
+          /**
      * Register Copyright controls.
      *
      * @since 1.0.0
@@ -106,7 +106,7 @@ class Feature_List extends Widget_Base
         $this->register_feature_list_controls();
     }
 
-    /**
+          /**
      * Register Copyright General Controls.
      *
      * @since 1.0.0
@@ -118,15 +118,15 @@ class Feature_List extends Widget_Base
 			'feature_list_content_section',
 			[
 				'label' => esc_html__( 'Feature Title', 'elementor-magic-kit' ),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
         $this->add_control(
 			'feature_list_title',
 			[
-				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Basic', 'elementor-magic-kit' ),
+				'label'       => esc_html__( 'Title', 'elementor-magic-kit' ),
+				'type'        => \Elementor\Controls_Manager::TEXT,
+				'default'     => esc_html__( 'Basic', 'elementor-magic-kit' ),
 				'placeholder' => esc_html__( 'Type your title here', 'elementor-magic-kit' ),
 			]
 		);
@@ -136,7 +136,7 @@ class Feature_List extends Widget_Base
 			'feature_list_section',
 			[
 				'label' => esc_html__( 'Feature List', 'elementor-magic-kit' ),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 
@@ -144,10 +144,10 @@ class Feature_List extends Widget_Base
         $repeater->add_control(
 			'feature_list_icons',
 			[
-				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::ICONS,
+				'label'   => esc_html__( 'Icon', 'elementor-magic-kit' ),
+				'type'    => \Elementor\Controls_Manager::ICONS,
 				'default' => [
-					'value' => 'fas fa-check',
+					'value'   => 'fas fa-check',
 					'library' => 'fa-solid',
                     
 				],
@@ -156,18 +156,18 @@ class Feature_List extends Widget_Base
         $repeater->add_control(
 			'feature_list_item',
 			[
-				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Feature Item', 'elementor-magic-kit' ),
+				'label'       => esc_html__( 'Title', 'elementor-magic-kit' ),
+				'type'        => \Elementor\Controls_Manager::TEXT,
+				'default'     => esc_html__( 'Feature Item', 'elementor-magic-kit' ),
 				'placeholder' => esc_html__( 'Type your title here', 'elementor-magic-kit' ),
 			]
 		);
         $this->add_control(
 			'feature_list',
 			[
-				'label' => esc_html__( 'Repeater List', 'elementor-magic-kit' ),
-				'type' => \Elementor\Controls_Manager::REPEATER,
-				'fields' => $repeater->get_controls(),
+				'label'   => esc_html__( 'Repeater List', 'elementor-magic-kit' ),
+				'type'    => \Elementor\Controls_Manager::REPEATER,
+				'fields'  => $repeater->get_controls(),
 				'default' => [
 					[
 						'feature_list_item' => esc_html__( 'Feature Item 1', 'elementor-magic-kit' ),
@@ -214,16 +214,16 @@ class Feature_List extends Widget_Base
 				'type' => \Elementor\Controls_Manager::URL,
 				'options' => [ 'url', 'is_external', 'nofollow' ],
 				'default' => [
-					'url' => '#',
+					'url'         => '#',
 					'is_external' => true,
-					'nofollow' => true,
+					'nofollow'    => true,
 				],
 				'label_block' => true,
 			]
 		);
         $this->end_controls_section();
 
-        // Style section
+              // Style section
         $this->start_controls_section(
 			'feature_box_section',
 			[
@@ -250,18 +250,18 @@ class Feature_List extends Widget_Base
 						'icon' => 'eicon-text-align-right',
 					],
 				],
-				'default' => 'center',
-				'toggle' => true,
+				'default'   => 'center',
+				'toggle'    => true,
 				'selectors' => [
 					'{{WRAPPER}} .feature' => 'justify-content: {{VALUE}};',
 				],
 			]
 		);
-        //Start-normal-hover
+              //Start-normal-hover
         $this->start_controls_tabs(
 			'style_tabs'
 		);
-        //normal
+              //normal
 		$this->start_controls_tab(
 			'style_normal_tab',
 			[
@@ -271,15 +271,15 @@ class Feature_List extends Widget_Base
         $this->add_group_control(
 			\Elementor\Group_Control_Background::get_type(),
 			[
-				'name' => 'feature_box_normal_background',
-				'types' => [ 'classic', 'gradient', 'video' ],
+				'name'     => 'feature_box_normal_background',
+				'types'    => [ 'classic', 'gradient', 'video' ],
 				'selector' => '{{WRAPPER}} .feature_list',
 			]
 		);
         $this->add_group_control(
 			\Elementor\Group_Control_Border::get_type(),
 			[
-				'name' => 'feature_box_normal_border',
+				'name'     => 'feature_box_normal_border',
 				'selector' => '{{WRAPPER}} .feature_list',
 			]
 		);
@@ -289,12 +289,12 @@ class Feature_List extends Widget_Base
 				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'default' => [
-					'top' => 8,
-					'right' => 8,
-					'bottom' => 8,
-					'left' => 8,
-					'unit' => 'px',
+				'default'    => [
+					'top'      => 8,
+					'right'    => 8,
+					'bottom'   => 8,
+					'left'     => 8,
+					'unit'     => 'px',
 					'isLinked' => false,
 				],
 				'selectors' => [
@@ -308,12 +308,12 @@ class Feature_List extends Widget_Base
 				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'default' => [
-					'top' => 0,
-					'right' => 0,
-					'bottom' => 30,
-					'left' => 0,
-					'unit' => 'px',
+				'default'    => [
+					'top'      => 0,
+					'right'    => 0,
+					'bottom'   => 30,
+					'left'     => 0,
+					'unit'     => 'px',
 					'isLinked' => false,
 				],
 				'selectors' => [
@@ -324,7 +324,7 @@ class Feature_List extends Widget_Base
 
 		$this->end_controls_tab();
 
-        //hover
+              //hover
 		$this->start_controls_tab(
 			'style_hover_tab',
 			[
@@ -334,8 +334,8 @@ class Feature_List extends Widget_Base
         $this->add_group_control(
 			\Elementor\Group_Control_Background::get_type(),
 			[
-				'name' => 'feature_box_hover_background',
-				'types' => [ 'classic', 'gradient', 'video' ],
+				'name'     => 'feature_box_hover_background',
+				'types'    => [ 'classic', 'gradient', 'video' ],
 				'selector' => '{{WRAPPER}} .feature_list:hover',
 			]
 		);
@@ -343,11 +343,11 @@ class Feature_List extends Widget_Base
 			'feature_box_hover_transition',
 			[
 				'label' => esc_html__( 'Transition Duration', 'elementor-magic-kit' ) . ' (s)',
-				'type' => \Elementor\Controls_Manager::SLIDER,
+				'type'  => \Elementor\Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
-						'min' => 0,
-						'max' => 3,
+						'min'  => 0,
+						'max'  => 3,
 						'step' => 0.1,
 					],
 				],
@@ -359,7 +359,7 @@ class Feature_List extends Widget_Base
         $this->add_group_control(
 			\Elementor\Group_Control_Border::get_type(),
 			[
-				'name' => 'feature_box_hover_border',
+				'name'     => 'feature_box_hover_border',
 				'selector' => '{{WRAPPER}} .feature_list:hover',
 			]
 		);
@@ -369,12 +369,12 @@ class Feature_List extends Widget_Base
 				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'default' => [
-					'top' => 8,
-					'right' => 8,
-					'bottom' => 8,
-					'left' => 8,
-					'unit' => 'px',
+				'default'    => [
+					'top'      => 8,
+					'right'    => 8,
+					'bottom'   => 8,
+					'left'     => 8,
+					'unit'     => 'px',
 					'isLinked' => false,
 				],
 				'selectors' => [
@@ -388,12 +388,12 @@ class Feature_List extends Widget_Base
 				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'default' => [
-					'top' => 0,
-					'right' => 0,
-					'bottom' => 30,
-					'left' => 0,
-					'unit' => 'px',
+				'default'    => [
+					'top'      => 0,
+					'right'    => 0,
+					'bottom'   => 30,
+					'left'     => 0,
+					'unit'     => 'px',
 					'isLinked' => false,
 				],
 				'selectors' => [
@@ -405,7 +405,7 @@ class Feature_List extends Widget_Base
 		$this->end_controls_tab();
 
 		$this->end_controls_tabs();
-        //End-normal-hover
+              //End-normal-hover
         $this->end_controls_section();
 
         
@@ -413,7 +413,7 @@ class Feature_List extends Widget_Base
             $this->get_name() .'_feature_title_section',
 			[
 				'label' => esc_html__( 'Feature Title', 'elementor-magic-kit' ),
-				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
         $this->add_responsive_control(
@@ -435,8 +435,8 @@ class Feature_List extends Widget_Base
 						'icon' => 'eicon-text-align-right',
 					],
 				],
-				'default' => 'center',
-				'toggle' => true,
+				'default'   => 'center',
+				'toggle'    => true,
 				'selectors' => [
 					'{{WRAPPER}} .feature_list h2' => 'text-align: {{VALUE}};',
 				],
@@ -455,29 +455,29 @@ class Feature_List extends Widget_Base
         $this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
-				'name' => 'feature_title_typography',
+				'name'     => 'feature_title_typography',
 				'selector' => '{{WRAPPER}} .feature_list h2',
 			]
 		);
         $this->add_group_control(
 			\Elementor\Group_Control_Background::get_type(),
 			[
-				'name' => 'feature_title_background',
-				'types' => [ 'classic', 'gradient', 'video' ],
+				'name'     => 'feature_title_background',
+				'types'    => [ 'classic', 'gradient', 'video' ],
 				'selector' => '{{WRAPPER}} .feature_list h2',
 			]
 		);
 		$this->add_control(
 			'feature_title_more_options',
 			[
-				'type' => \Elementor\Controls_Manager::HEADING,
+				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
 		);
         $this->add_group_control(
 			\Elementor\Group_Control_Border::get_type(),
 			[
-				'name' => 'feature_title_border',
+				'name'     => 'feature_title_border',
 				'selector' => '{{WRAPPER}} .feature_list h2',
 			]
 		);
@@ -487,12 +487,12 @@ class Feature_List extends Widget_Base
 				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'default' => [
-					'top' => 8,
-					'right' => 8,
-					'bottom' => 0,
-					'left' => 0,
-					'unit' => 'px',
+				'default'    => [
+					'top'      => 8,
+					'right'    => 8,
+					'bottom'   => 0,
+					'left'     => 0,
+					'unit'     => 'px',
 					'isLinked' => false,
 				],
 				'selectors' => [
@@ -506,12 +506,12 @@ class Feature_List extends Widget_Base
 				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'default' => [
-					'top' => 10,
-					'right' => 0,
-					'bottom' => 10,
-					'left' => 0,
-					'unit' => 'px',
+				'default'    => [
+					'top'      => 10,
+					'right'    => 0,
+					'bottom'   => 10,
+					'left'     => 0,
+					'unit'     => 'px',
 					'isLinked' => false,
 				],
 				'selectors' => [
@@ -525,12 +525,12 @@ class Feature_List extends Widget_Base
 				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'default' => [
-					'top' => 10,
-					'right' => 0,
-					'bottom' => 0,
-					'left' => 0,
-					'unit' => 'px',
+				'default'    => [
+					'top'      => 10,
+					'right'    => 0,
+					'bottom'   => 0,
+					'left'     => 0,
+					'unit'     => 'px',
 					'isLinked' => false,
 				],
 				'selectors' => [
@@ -560,22 +560,22 @@ class Feature_List extends Widget_Base
         $this->add_group_control(
 			\Elementor\Group_Control_Background::get_type(),
 			[
-				'name' => 'feature_icon_background',
-				'types' => [ 'classic', 'gradient', 'video' ],
+				'name'     => 'feature_icon_background',
+				'types'    => [ 'classic', 'gradient', 'video' ],
 				'selector' => '{{WRAPPER}} .feature svg',
 			]
 		);
 		$this->add_control(
 			'icon_more_options',
 			[
-				'type' => \Elementor\Controls_Manager::HEADING,
+				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
 		);
         $this->add_group_control(
 			\Elementor\Group_Control_Border::get_type(),
 			[
-				'name' => 'feature_icon_border',
+				'name'     => 'feature_icon_border',
 				'selector' => '{{WRAPPER}} .feature svg',
 			]
 		);
@@ -585,7 +585,7 @@ class Feature_List extends Widget_Base
 				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'selectors' => [
+				'selectors'  => [
 					'{{WRAPPER}} .feature svg' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
@@ -596,12 +596,12 @@ class Feature_List extends Widget_Base
 				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'default' => [
-					'top' => 4,
-					'right' => 4,
-					'bottom' => 4,
-					'left' => 4,
-					'unit' => 'px',
+				'default'    => [
+					'top'      => 4,
+					'right'    => 4,
+					'bottom'   => 4,
+					'left'     => 4,
+					'unit'     => 'px',
 					'isLinked' => false,
 				],
 				'selectors' => [
@@ -633,7 +633,7 @@ class Feature_List extends Widget_Base
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
-				'name' => 'feature_item_typography',
+				'name'     => 'feature_item_typography',
 				'selector' => '{{WRAPPER}} .feature h4',
 			]
 		);
@@ -643,10 +643,10 @@ class Feature_List extends Widget_Base
 				'label' => esc_html__( 'Gap', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'range' => [
+				'range'      => [
 					'px' => [
-						'min' => 0,
-						'max' => 1000,
+						'min'  => 0,
+						'max'  => 1000,
 						'step' => 1,
 					],
 					'%' => [
@@ -669,12 +669,12 @@ class Feature_List extends Widget_Base
 				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'default' => [
-					'top' => 10,
-					'right' => 0,
-					'bottom' => 0,
-					'left' => 0,
-					'unit' => 'px',
+				'default'    => [
+					'top'      => 10,
+					'right'    => 0,
+					'bottom'   => 0,
+					'left'     => 0,
+					'unit'     => 'px',
 					'isLinked' => false,
 				],
 				'selectors' => [
@@ -713,8 +713,8 @@ class Feature_List extends Widget_Base
 						'icon' => 'eicon-text-align-right',
 					],
 				],
-				'default' => 'center',
-				'toggle' => true,
+				'default'   => 'center',
+				'toggle'    => true,
 				'selectors' => [
 					'{{WRAPPER}} .feature_button' => 'text-align: {{VALUE}};',
 				],
@@ -723,15 +723,15 @@ class Feature_List extends Widget_Base
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
-				'name' => 'button_content_typography',
+				'name'     => 'button_content_typography',
 				'selector' => '{{WRAPPER}} .feature_button a',
 			]
 		);
-		//start-normal-hover
+						  //start-normal-hover
 		$this->start_controls_tabs(
 			'button_style_tabs'
 		);
-		//normal
+						  //normal
 		$this->start_controls_tab(
 			'button_style_normal_tab',
 			[
@@ -751,22 +751,22 @@ class Feature_List extends Widget_Base
 		$this->add_group_control(
 			\Elementor\Group_Control_Background::get_type(),
 			[
-				'name' => 'button_normal_background',
-				'types' => [ 'classic', 'gradient', 'video' ],
+				'name'     => 'button_normal_background',
+				'types'    => [ 'classic', 'gradient', 'video' ],
 				'selector' => '{{WRAPPER}} .feature_button a',
 			]
 		);
 		$this->add_control(
 			'button_normal_more_options',
 			[
-				'type' => \Elementor\Controls_Manager::HEADING,
+				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
 		);
 		$this->add_group_control(
 			\Elementor\Group_Control_Border::get_type(),
 			[
-				'name' => 'button_normal_border',
+				'name'     => 'button_normal_border',
 				'selector' => '{{WRAPPER}} .feature_button a',
 			]
 		);
@@ -776,12 +776,12 @@ class Feature_List extends Widget_Base
 				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'default' => [
-					'top' => 4,
-					'right' => 4,
-					'bottom' => 4,
-					'left' => 4,
-					'unit' => 'px',
+				'default'    => [
+					'top'      => 4,
+					'right'    => 4,
+					'bottom'   => 4,
+					'left'     => 4,
+					'unit'     => 'px',
 					'isLinked' => false,
 				],
 				'selectors' => [
@@ -795,12 +795,12 @@ class Feature_List extends Widget_Base
 				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'default' => [
-					'top' => 10,
-					'right' => 30,
-					'bottom' => 10,
-					'left' => 30,
-					'unit' => 'px',
+				'default'    => [
+					'top'      => 10,
+					'right'    => 30,
+					'bottom'   => 10,
+					'left'     => 30,
+					'unit'     => 'px',
 					'isLinked' => false,
 				],
 				'selectors' => [
@@ -810,7 +810,7 @@ class Feature_List extends Widget_Base
 		);
 
 		$this->end_controls_tab();
-		//hover
+						  //hover
 		$this->start_controls_tab(
 			'button_style_hover_tab',
 			[
@@ -830,8 +830,8 @@ class Feature_List extends Widget_Base
 		$this->add_group_control(
 			\Elementor\Group_Control_Background::get_type(),
 			[
-				'name' => 'button_hover_background',
-				'types' => [ 'classic', 'gradient', 'video' ],
+				'name'     => 'button_hover_background',
+				'types'    => [ 'classic', 'gradient', 'video' ],
 				'selector' => '{{WRAPPER}} .feature_button a:hover',
 			]
 		);
@@ -839,11 +839,11 @@ class Feature_List extends Widget_Base
 			'button_hover_transition',
 			[
 				'label' => esc_html__( 'Transition Duration', 'elementor-magic-kit' ) . ' (s)',
-				'type' => \Elementor\Controls_Manager::SLIDER,
+				'type'  => \Elementor\Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
-						'min' => 0,
-						'max' => 3,
+						'min'  => 0,
+						'max'  => 3,
 						'step' => 0.1,
 					],
 				],
@@ -855,14 +855,14 @@ class Feature_List extends Widget_Base
 		$this->add_control(
 			'button_hover_more_options',
 			[
-				'type' => \Elementor\Controls_Manager::HEADING,
+				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
 		);
 		$this->add_group_control(
 			\Elementor\Group_Control_Border::get_type(),
 			[
-				'name' => 'button_hover_border',
+				'name'     => 'button_hover_border',
 				'selector' => '{{WRAPPER}} .feature_button a:hover',
 			]
 		);
@@ -873,12 +873,12 @@ class Feature_List extends Widget_Base
 				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'default' => [
-					'top' => 10,
-					'right' => 30,
-					'bottom' => 10,
-					'left' => 30,
-					'unit' => 'px',
+				'default'    => [
+					'top'      => 10,
+					'right'    => 30,
+					'bottom'   => 10,
+					'left'     => 30,
+					'unit'     => 'px',
 					'isLinked' => false,
 				],
 				'selectors' => [
@@ -890,11 +890,11 @@ class Feature_List extends Widget_Base
 		$this->end_controls_tab();
 
 		$this->end_controls_tabs();
-		//start-normal-hover
+						  //start-normal-hover
 		$this->add_control(
 			'button_more_options',
 			[
-				'type' => \Elementor\Controls_Manager::HEADING,
+				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
 		);
@@ -904,12 +904,12 @@ class Feature_List extends Widget_Base
 				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'default' => [
-					'top' => 30,
-					'right' => 0,
-					'bottom' => 0,
-					'left' => 0,
-					'unit' => 'px',
+				'default'    => [
+					'top'      => 30,
+					'right'    => 0,
+					'bottom'   => 0,
+					'left'     => 0,
+					'unit'     => 'px',
 					'isLinked' => false,
 				],
 				'selectors' => [
@@ -925,7 +925,7 @@ class Feature_List extends Widget_Base
 
     }
 
-    /**
+          /**
      * Render Copyright output on the frontend.
      *
      * Written in PHP and used to generate the final HTML.
@@ -935,14 +935,14 @@ class Feature_List extends Widget_Base
      */
     protected function render()
     {
-        $settings    = $this->get_settings_for_display();
+        $settings = $this->get_settings_for_display();
         
         $feature_list = $settings['feature_list'];
 
         include __DIR__ . '/layouts/feature-list.php';
     }
 
-    /**
+          /**
      * Render shortcode widget as plain content.
      *
      * Override the default behavior by printing the shortcode instead of rendering it.
@@ -952,11 +952,11 @@ class Feature_List extends Widget_Base
      */
     public function render_plain_content()
     {
-        // In plain mode, render without shortcode.
+              // In plain mode, render without shortcode.
         echo esc_attr($this->get_settings('shortcode'));
     }
 
-    /**
+          /**
      * Render shortcode widget output in the editor.
      *
      * Written as a Backbone JavaScript template and used to generate the live preview.
