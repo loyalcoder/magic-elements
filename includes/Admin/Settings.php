@@ -5,13 +5,13 @@ namespace MagicElements\Admin;
 /**
  * Class Settings
  * 
- * Handles the settings page functionality for the Magic Kit plugin.
+ * Handles the settings page functionality for the Magic Elements plugin.
  * This class is responsible for:
  * - Loading and rendering the settings page template
  * - Managing plugin configuration options
  * - Providing settings page interface
  *
- * @package Elementor_Magic_Kit\Admin
+ * @package MagicElements\Admin
  * @since 1.0.0
  */
 class Settings

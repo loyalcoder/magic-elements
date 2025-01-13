@@ -39,7 +39,7 @@ if (!defined('ABSPATH')) {
             </div>
             
             <?php
-            $widget_list = \Elementor_Magic_Kit\Load_Elementor::getWidgetList();
+            $widget_list = \MagicElements\Load_Elementor::getWidgetList();
             $widgets = [];
             foreach($widget_list as $widget) {
                 $widget_key = strtolower(str_replace('_', '', $widget));

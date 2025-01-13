@@ -10,13 +10,13 @@ if (!defined('ABSPATH')) {
 /**
  * Class Menu
  * 
- * Handles the admin menu registration and rendering for the Magic Kit plugin.
+ * Handles the admin menu registration and rendering for the Magic Elements plugin.
  * This class is responsible for:
  * - Adding the main plugin menu item
  * - Adding submenu items
  * - Rendering the dashboard/settings pages
  *
- * @package Elementor_Magic_Kit\Admin
+ * @package MagicElements\Admin
  * @since 1.0.0
  */
 class Menu
@@ -40,10 +40,10 @@ class Menu
      */
     public function admin_menu()
     {
-        $parent_slug = 'magic-kit-dashboard';
+        $parent_slug = 'magic-elements-dashboard';
         $capability = 'manage_options';
 
-        add_menu_page(esc_html__('MagicKit', 'magic-elements'), esc_html__('Magic Kit', 'magic-elements'), $capability, $parent_slug, [$this, 'dashboard_page'], 'dashicons-buddicons-groups');
+        add_menu_page(esc_html__('Magic Elements', 'magic-elements'), esc_html__('Magic Elements', 'magic-elements'), $capability, $parent_slug, [$this, 'dashboard_page'], 'dashicons-buddicons-groups');
         add_submenu_page($parent_slug, esc_html__('Settings', 'magic-elements'), esc_html__('Settings', 'magic-elements'), $capability, $parent_slug, [$this, 'dashboard_page']);
     }
 
