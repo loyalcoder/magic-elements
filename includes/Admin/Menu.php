@@ -43,7 +43,7 @@ class Menu
         $parent_slug = 'magic-elements-dashboard';
         $capability = 'manage_options';
 
-        add_menu_page(esc_html__('Magic Elements', 'magic-elements'), esc_html__('Magic Elements', 'magic-elements'), $capability, $parent_slug, [$this, 'dashboard_page'], 'dashicons-buddicons-groups');
+        add_menu_page(esc_html__('Magic Elements', 'magic-elements'), esc_html__('Magic Elements', 'magic-elements'), $capability, $parent_slug, [$this, 'dashboard_page'], 'dashicons-buddicons-groups', 59);
         add_submenu_page($parent_slug, esc_html__('Settings', 'magic-elements'), esc_html__('Settings', 'magic-elements'), $capability, $parent_slug, [$this, 'dashboard_page']);
     }
 

@@ -8,7 +8,7 @@ Stable tag: 1.0.0
 License: GPL v3 or later  
 License URI: https://www.gnu.org/licenses/gpl-3.0.html  
 
-Enhance your Elementor experience with Magic Elements! This plugin offers advanced widgets, templates, and features for creating stunning, customizable designs with ease.
+Enhance Elementor with advanced widgets, templates, and features for customizable, stunning designs.
 
 == Description ==
 
