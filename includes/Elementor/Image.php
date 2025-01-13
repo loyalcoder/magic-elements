@@ -3,7 +3,7 @@
     /**
  * Elementor Classes.
  *
- * @package Image Elementor Magic Kit
+ * @package Image Magic Elements
  */
 
 
@@ -50,7 +50,7 @@ class Image extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Image', 'elementor-magic-kit');
+        return esc_html__('Image', 'magic-elements');
     }
 
         /**
@@ -113,7 +113,7 @@ class Image extends Widget_Base
         $this->start_controls_section(
 			'image_content_section',
 			[
-				'label' => esc_html__( 'Image', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Image', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -121,7 +121,7 @@ class Image extends Widget_Base
         $this->add_control(
 			'image',
 			[
-				'label'       => esc_html__( 'Choose Image', 'elementor-magic-kit' ),
+				'label'       => esc_html__( 'Choose Image', 'magic-elements' ),
 				'type'        => \Elementor\Controls_Manager::MEDIA,
 				'media_types' => ['image' , 'svg'],
 				'default'     => [
@@ -140,12 +140,12 @@ class Image extends Widget_Base
         $this->add_control(
 			'caption_source',
 			[
-				'label'   => esc_html__( 'Caption', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Caption', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::SELECT,
 				'options' => [
-					'none'       => esc_html__( 'None', 'elementor-magic-kit' ),
-					'attachment' => esc_html__( 'Attachment Caption', 'elementor-magic-kit' ),
-					'custom'     => esc_html__( 'Custom Caption', 'elementor-magic-kit' ),
+					'none'       => esc_html__( 'None', 'magic-elements' ),
+					'attachment' => esc_html__( 'Attachment Caption', 'magic-elements' ),
+					'custom'     => esc_html__( 'Custom Caption', 'magic-elements' ),
 				],
 				'default'   => 'none',
 				'condition' => [
@@ -156,10 +156,10 @@ class Image extends Widget_Base
 		$this->add_control(
 			'caption',
 			[
-				'label'       => esc_html__( 'Custom Caption', 'elementor-magic-kit' ),
+				'label'       => esc_html__( 'Custom Caption', 'magic-elements' ),
 				'type'        => \Elementor\Controls_Manager::TEXT,
 				'default'     => '',
-				'placeholder' => esc_html__( 'Enter your image caption', 'elementor-magic-kit' ),
+				'placeholder' => esc_html__( 'Enter your image caption', 'magic-elements' ),
 				'condition'   => [
 					'image[url]!'    => '',
 					'caption_source' => 'custom',
@@ -172,13 +172,13 @@ class Image extends Widget_Base
         $this->add_control(
 			'link_to',
 			[
-				'label'   => esc_html__( 'Link', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Link', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::SELECT,
 				'default' => 'none',
 				'options' => [
-					'none' => esc_html__( 'None', 'elementor-magic-kit' ),
-							  // 'file' => esc_html__( 'Media File', 'elementor-magic-kit' ),
-					'custom' => esc_html__( 'Custom URL', 'elementor-magic-kit' ),
+					'none' => esc_html__( 'None', 'magic-elements' ),
+							  // 'file' => esc_html__( 'Media File', 'magic-elements' ),
+					'custom' => esc_html__( 'Custom URL', 'magic-elements' ),
 				],
 				'condition' => [
 					'image[url]!' => '',
@@ -188,7 +188,7 @@ class Image extends Widget_Base
 		$this->add_control(
 			'link',
 			[
-				'label'   => esc_html__( 'Link', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Link', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::URL,
 				'dynamic' => [
 					'active' => true,
@@ -203,13 +203,13 @@ class Image extends Widget_Base
 		$this->add_control(
 			'open_lightbox',
 			[
-				'label'   => esc_html__( 'Lightbox', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Lightbox', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::SELECT,
 				'default' => 'default',
 				'options' => [
-					'default' => esc_html__( 'Default', 'elementor-magic-kit' ),
-					'yes'     => esc_html__( 'Yes', 'elementor-magic-kit' ),
-					'no'      => esc_html__( 'No', 'elementor-magic-kit' ),
+					'default' => esc_html__( 'Default', 'magic-elements' ),
+					'yes'     => esc_html__( 'Yes', 'magic-elements' ),
+					'no'      => esc_html__( 'No', 'magic-elements' ),
 				],
 				'condition' => [
 					'image[url]!' => '',
@@ -224,7 +224,7 @@ class Image extends Widget_Base
         $this->start_controls_section(
             $this->get_name() .'style_section',
 			[
-				'label' => esc_html__( 'Image', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Image', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -232,19 +232,19 @@ class Image extends Widget_Base
         $this->add_responsive_control(
 			$this->get_name() .'text_align',
 			[
-				'label'   => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Alignment', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Left', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Center', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Right', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-right',
 					],
 				],
@@ -257,7 +257,7 @@ class Image extends Widget_Base
         $this->add_responsive_control(
 			'width',
 			[
-				'label'   => esc_html__( 'Width', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Width', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::SLIDER,
 				'default' => [
 					'unit' => 'px',
@@ -292,7 +292,7 @@ class Image extends Widget_Base
         $this->add_responsive_control(
 			'space',
 			[
-				'label'   => esc_html__( 'Max Width', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Max Width', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::SLIDER,
 				'default' => [
 					'unit' => 'px',
@@ -327,7 +327,7 @@ class Image extends Widget_Base
         $this->add_responsive_control(
 			'height',
 			[
-				'label'      => esc_html__( 'Height', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Height', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'vh', 'custom' ],
 				'range'      => [
@@ -361,14 +361,14 @@ class Image extends Widget_Base
 		$this->start_controls_tab(
 			'style_normal_tab',
 			[
-				'label' => esc_html__( 'Normal', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Normal', 'magic-elements' ),
 			]
 		);
 
         $this->add_responsive_control(
 			'opacity',
 			[
-				'label' => esc_html__( 'Opacity', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Opacity', 'magic-elements' ),
 				'type'  => \Elementor\Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -408,7 +408,7 @@ class Image extends Widget_Base
         $this->add_responsive_control(
 			'border_radius',
 			[
-				'label'      => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors'  => [
@@ -429,14 +429,14 @@ class Image extends Widget_Base
 		$this->start_controls_tab(
 			'style_hover_tab',
 			[
-				'label' => esc_html__( 'Hover', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Hover', 'magic-elements' ),
 			]
 		);
 
         $this->add_responsive_control(
 			'hover_opacity',
 			[
-				'label' => esc_html__( 'Opacity', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Opacity', 'magic-elements' ),
 				'type'  => \Elementor\Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -462,7 +462,7 @@ class Image extends Widget_Base
         $this->add_control(
 			'hover_transition',
 			[
-				'label' => esc_html__( 'Transition Duration', 'elementor-magic-kit' ) . ' (s)',
+				'label' => esc_html__( 'Transition Duration', 'magic-elements' ) . ' (s)',
 				'type'  => \Elementor\Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -480,7 +480,7 @@ class Image extends Widget_Base
         $this->add_control(
 			'hover_animation',
 			[
-				'label' => esc_html__( 'Hover Animation', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Hover Animation', 'magic-elements' ),
 				'type'  => \Elementor\Controls_Manager::HOVER_ANIMATION,
 			]
 		);
@@ -503,7 +503,7 @@ class Image extends Widget_Base
         $this->add_responsive_control(
 			'border_radius_hover',
 			[
-				'label'      => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors'  => [
@@ -528,26 +528,26 @@ class Image extends Widget_Base
 		$this->start_controls_section(
 			'caption_style_section',
 			[
-				'label' => esc_html__( 'Caption', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Caption', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
 		$this->add_responsive_control(
 			'caption_text_align',
 			[
-				'label'   => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Alignment', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Left', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Center', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Right', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-right',
 					],
 				],
@@ -561,7 +561,7 @@ class Image extends Widget_Base
 		$this->add_control(
 			'caption_text_color',
 			[
-				'label'     => esc_html__( 'Text Color', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Text Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .custom_caption' => 'color: {{VALUE}}',
@@ -593,7 +593,7 @@ class Image extends Widget_Base
 		$this->add_responsive_control(
 			'caption_margin',
 			[
-				'label'      => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Margin', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors'  => [
@@ -604,7 +604,7 @@ class Image extends Widget_Base
 		$this->add_responsive_control(
 			'caption_padding',
 			[
-				'label'      => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Padding', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors'  => [

@@ -3,7 +3,7 @@
     /**
  * Elementor Classes.
  *
- * @package Counter Elementor Magic Kit
+ * @package Counter Magic Elements
  */
 
 
@@ -50,7 +50,7 @@ class Counter extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Counter', 'elementor-magic-kit');
+        return esc_html__('Counter', 'magic-elements');
     }
 
         /**
@@ -117,14 +117,14 @@ class Counter extends Widget_Base
         $this->start_controls_section(
 			'counter_content_section',
 			[
-				'label' => esc_html__( 'Counter', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Counter', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 		$this->add_control(
 			'counter_start_number',
 			[
-				'label'   => esc_html__( 'Starting Number', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Starting Number', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::NUMBER,
 				'min'     => 5,
 				'max'     => 10000,
@@ -135,7 +135,7 @@ class Counter extends Widget_Base
         $this->add_control(
 			'counter_number',
 			[
-				'label'   => esc_html__( 'Ending Number', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Ending Number', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::NUMBER,
 				'min'     => 5,
 				'max'     => 10000,
@@ -146,9 +146,9 @@ class Counter extends Widget_Base
         $this->add_control(
 			'counter_suffix_one',
 			[
-				'label'       => esc_html__( 'Number Suffix', 'elementor-magic-kit' ),
+				'label'       => esc_html__( 'Number Suffix', 'magic-elements' ),
 				'type'        => \Elementor\Controls_Manager::TEXT,
-				'placeholder' => esc_html__( 'Plus', 'elementor-magic-kit' ),
+				'placeholder' => esc_html__( 'Plus', 'magic-elements' ),
 			]
 		);
         $this->add_control(
@@ -161,10 +161,10 @@ class Counter extends Widget_Base
         $this->add_control(
 			'counter_title',
 			[
-				'label'       => esc_html__( 'Title', 'elementor-magic-kit' ),
+				'label'       => esc_html__( 'Title', 'magic-elements' ),
 				'type'        => \Elementor\Controls_Manager::TEXT,
-				'default'     => esc_html__( 'Magic Number', 'elementor-magic-kit' ),
-				'placeholder' => esc_html__( 'Type your title here', 'elementor-magic-kit' ),
+				'default'     => esc_html__( 'Magic Number', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your title here', 'magic-elements' ),
 			]
 		);
         $this->end_controls_section();
@@ -173,26 +173,26 @@ class Counter extends Widget_Base
         $this->start_controls_section(
             $this->get_name() .'number_style_section',
 			[
-				'label' => esc_html__( 'Number', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Number', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
         $this->add_responsive_control(
 			'number_text_align',
 			[
-				'label'   => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Alignment', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Left', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Center', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Right', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-right',
 					],
 				],
@@ -206,7 +206,7 @@ class Counter extends Widget_Base
         $this->add_control(
 			'number_text_color',
 			[
-				'label'     => esc_html__( 'Text Color', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Text Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .counter h3' => 'color: {{VALUE}}',
@@ -239,26 +239,26 @@ class Counter extends Widget_Base
         $this->start_controls_section(
 			'title_style_section',
 			[
-				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Title', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
         $this->add_responsive_control(
 			'title_text_align',
 			[
-				'label'   => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Alignment', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Left', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Center', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Right', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-right',
 					],
 				],
@@ -272,7 +272,7 @@ class Counter extends Widget_Base
         $this->add_control(
 			'title_text_color',
 			[
-				'label'     => esc_html__( 'Text Color', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Text Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .counter p' => 'color: {{VALUE}}',
@@ -303,7 +303,7 @@ class Counter extends Widget_Base
         $this->add_responsive_control(
 			'title_margin',
 			[
-				'label'      => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Margin', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors'  => [
