@@ -107,11 +107,6 @@ class Load_Elementor
     public function get_scripts()
     {
         return [
-            'emkit-button' => [
-                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/button.js',
-                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/button.js'),
-                'deps'    => ['jquery']
-            ],
             'emkit-post-tab' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/post_tab.js',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/post_tab.js'),
@@ -194,10 +189,6 @@ class Load_Elementor
             'emk-tab' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/tab.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/tab.css'),
-            ],
-            'emkit-style' => [
-                'src'     => MAGIC_ELEMENTS_ASSETS . '/css/style.css',
-                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/css/style.css'),
             ]
         ];
     }

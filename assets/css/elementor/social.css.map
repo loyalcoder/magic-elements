@@ -1,1 +1,0 @@
-{"version":3,"sources":["social.scss"],"names":[],"mappings":"AAAA;EACI;EACA;EACA;EAAA;;AACA;EACI;EACA;EACA","file":"social.css","sourcesContent":[".social-main{\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    column-gap: 5px;\r\n    .social-icon{\r\n        background-color: #21759b;\r\n        border-radius: 8px;\r\n        padding: 13px 13px 5px 13px;\r\n    }\r\n}\r\n"]}

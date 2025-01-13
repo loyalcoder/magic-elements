@@ -90,10 +90,6 @@ class Button extends Widget_Base
     {
         return ['emkit-button'];
     }
-	public function get_script_depends()
-	{
-		return ['emkit-button'];
-	}
         /**
      * Register Copyright controls.
      *

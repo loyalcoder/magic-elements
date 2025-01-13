@@ -87,7 +87,7 @@ class Counter extends Widget_Base
     }
     public function get_style_depends()
     {
-        return ['emk-counter', 'emkit-style'];
+        return ['emk-counter'];
     }
 
     public function get_script_depends()

@@ -1,1 +1,0 @@
-{"version":3,"sources":["admin.scss"],"names":[],"mappings":"AAAA;EACI;;AACD;EACC","file":"admin.css","sourcesContent":["body{\r\n    background-color: red;\r\n   p{\r\n    background-color: rebeccapurple;\r\n   }\r\n}"]}
