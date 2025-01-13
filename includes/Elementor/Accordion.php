@@ -50,7 +50,7 @@ class Accordion extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Accordion', 'magic -elements');
+        return esc_html__('Accordion', 'magic-elements');
     }
 
         /**
