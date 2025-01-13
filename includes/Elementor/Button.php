@@ -3,7 +3,7 @@
     /**
  * Elementor Classes.
  *
- * @package Button Elementor Magic Kit
+ * @package Button Magic Elements
  */
 
 
@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 }
 
     /**
- * Magic Kit for Elementor Extension
+ * Magic Elements for Elementor Extension
  *
  * Elementor widget for Button.
  *
@@ -50,7 +50,7 @@ class Button extends Widget_Base
      */
     public function get_title()
     {   
-        return esc_html__('Button', 'elementor-magic-kit');
+        return esc_html__('Button', 'magic-elements');
     }
 
         /**
@@ -123,24 +123,24 @@ class Button extends Widget_Base
         $this->start_controls_section(
             'section_button',
             [
-                'label' => esc_html__('Button', 'elementor-magic-kit'),
+                'label' => esc_html__('Button', 'magic-elements'),
             ]
         );
 
         $this->add_control(
 			'button_type',
 			[
-				'label'   => esc_html__( 'Type', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Type', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::SELECT,
 				'default' => 'default',
 				'options' => [
-					'default' => esc_html__( 'Default', 'elementor-magic-kit' ),
-					'info'    => esc_html__( 'Info', 'elementor-magic-kit' ),
-					'success' => esc_html__( 'Success', 'elementor-magic-kit' ),
-					'warning' => esc_html__( 'Warning', 'elementor-magic-kit' ),
-					'danger'  => esc_html__( 'Danger', 'elementor-magic-kit' ),
-					'light'   => esc_html__( 'Light', 'elementor-magic-kit' ),
-					'dark'    => esc_html__( 'Dark', 'elementor-magic-kit' ),
+					'default' => esc_html__( 'Default', 'magic-elements' ),
+					'info'    => esc_html__( 'Info', 'magic-elements' ),
+					'success' => esc_html__( 'Success', 'magic-elements' ),
+					'warning' => esc_html__( 'Warning', 'magic-elements' ),
+					'danger'  => esc_html__( 'Danger', 'magic-elements' ),
+					'light'   => esc_html__( 'Light', 'magic-elements' ),
+					'dark'    => esc_html__( 'Dark', 'magic-elements' ),
 				],
 			]
 		);
@@ -148,10 +148,10 @@ class Button extends Widget_Base
         $this->add_control(
             'text',
             [
-                'label'       => esc_html__('Text', 'elementor-magic-kit'),
+                'label'       => esc_html__('Text', 'magic-elements'),
                 'type'        => \Elementor\Controls_Manager::TEXT,
                 'label_block' => false,
-                'default'     => esc_html__('Click here', 'elementor-magic-kit'),
+                'default'     => esc_html__('Click here', 'magic-elements'),
                 'dynamic'     => [
                     'active' => true,
                 ],
@@ -161,7 +161,7 @@ class Button extends Widget_Base
         $this->add_control(
 			'link',
 			[
-				'label'   => esc_html__( 'Link', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Link', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::URL,
 				'dynamic' => [
 					'active' => true,
@@ -176,23 +176,23 @@ class Button extends Widget_Base
         $this->add_control(
 			'align',
 			[
-				'label'   => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Alignment', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Left', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Center', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Right', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-right',
 					],
                     'justify' => [
-						'title' => esc_html__( 'Justified', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Justified', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-justify',
 					],
 				],
@@ -207,15 +207,15 @@ class Button extends Widget_Base
         $this->add_control(
 			'size',
 			[
-				'label'   => esc_html__( 'Size', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Size', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::SELECT,
 				'default' => 'sm',
 				'options' => [
-     'xs' => esc_html__( 'Extra Small', 'elementor-magic-kit' ),
-     'sm' => esc_html__( 'Small', 'elementor-magic-kit' ),
-     'md' => esc_html__( 'Medium', 'elementor-magic-kit' ),
-     'lg' => esc_html__( 'Large', 'elementor-magic-kit' ),
-     'xl' => esc_html__( 'Extra Large', 'elementor-magic-kit' ),
+     'xs' => esc_html__( 'Extra Small', 'magic-elements' ),
+     'sm' => esc_html__( 'Small', 'magic-elements' ),
+     'md' => esc_html__( 'Medium', 'magic-elements' ),
+     'lg' => esc_html__( 'Large', 'magic-elements' ),
+     'xl' => esc_html__( 'Extra Large', 'magic-elements' ),
 				],
 			]
 		);
@@ -223,7 +223,7 @@ class Button extends Widget_Base
 		$this->add_control(
 			'selected_icon',
 			[
-				'label'                       => esc_html__( 'Icon', 'elementor-magic-kit' ),
+				'label'                       => esc_html__( 'Icon', 'magic-elements' ),
 				'type'                        => \Elementor\Controls_Manager::ICONS,
 				'fa4compatibility'            => 'icon',
 				'skin'                        => 'inline',
@@ -236,12 +236,12 @@ class Button extends Widget_Base
         $this->add_control(
 			'icon_align',
 			[
-				'label'   => esc_html__( 'Icon Position', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Icon Position', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::SELECT,
 				'default' => 'left',
 				'options' => [
-					'left'  => esc_html__( 'Before', 'elementor-magic-kit' ),
-					'right' => esc_html__( 'After', 'elementor-magic-kit' ),
+					'left'  => esc_html__( 'Before', 'magic-elements' ),
+					'right' => esc_html__( 'After', 'magic-elements' ),
 				],
 				'condition' => array_merge( $args['section_condition'], [ 'selected_icon[value]!' => '' ] ),
 			]
@@ -250,7 +250,7 @@ class Button extends Widget_Base
         $this->add_control(
 			'icon_indent',
 			[
-				'label'      => esc_html__( 'Icon Spacing', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Icon Spacing', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', 'em', 'rem', 'custom' ],
 				'range'      => [
@@ -279,7 +279,7 @@ class Button extends Widget_Base
         $this->start_controls_section(
             $this->get_name() . 'button_style_section',
             [
-                'label' => esc_html__('Button', 'elementor-magic-kit'),
+                'label' => esc_html__('Button', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -307,14 +307,14 @@ class Button extends Widget_Base
 		$this->start_controls_tab(
 			'style_normal_tab',
 			[
-				'label' => esc_html__( 'Normal', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Normal', 'magic-elements' ),
 			]
 		);
 
         $this->add_control(
 			$this->get_name() . 'button_text_color',
 			[
-				'label'     => esc_html__( 'Text Color', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Text Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .emk-button-text' => 'color: {{VALUE}}',
@@ -336,14 +336,14 @@ class Button extends Widget_Base
 		$this->start_controls_tab(
 			'style_hover_tab',
 			[
-				'label' => esc_html__( 'Hover', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Hover', 'magic-elements' ),
 			]
 		);
 
         $this->add_control(
 			$this->get_name() . 'hover_color',
 			[
-				'label'     => esc_html__( 'Text Color', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Text Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .emk-button-text:hover' => 'color: {{VALUE}}',
@@ -363,7 +363,7 @@ class Button extends Widget_Base
         $this->add_control(
 			$this->get_name() . 'button_hover_border_color',
 			[
-				'label'     => esc_html__( 'Border Color', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Border Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .emk-button-text:hover, {{WRAPPER}} .emk-button-text:focus' => 'border-color: {{VALUE}};',
@@ -374,7 +374,7 @@ class Button extends Widget_Base
         $this->add_control(
 			'hover_animation',
 			[
-				'label'     => esc_html__( 'Hover Animation', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Hover Animation', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::HOVER_ANIMATION,
 				'condition' => $args['section_condition'],
 			]
@@ -396,7 +396,7 @@ class Button extends Widget_Base
         $this->add_responsive_control(
 			$this->get_name() . 'border_radius',
 			[
-				'label'      => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors'  => [
@@ -416,7 +416,7 @@ class Button extends Widget_Base
         $this->add_responsive_control(
 			$this->get_name() . 'text_padding',
 			[
-				'label'      => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Padding', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'vw', 'custom' ],
 				'selectors'  => [

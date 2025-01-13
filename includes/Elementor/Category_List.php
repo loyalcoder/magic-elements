@@ -3,7 +3,7 @@
     /**
  * Elementor Classes.
  *
- * @package Category List Elementor Magic Kit
+ * @package Category List Magic Elements
  */
 
 
@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 } 
 
     /**
- * Magic Kit for Elementor Extension
+ * Magic Elements for Elementor Extension
  *
  * Elementor widget for Category List.
  *
@@ -50,7 +50,7 @@ class Category_List extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Category List', 'elementor-magic-kit');
+        return esc_html__('Category List', 'magic-elements');
     }
 
         /**
@@ -118,7 +118,7 @@ class Category_List extends Widget_Base
         $this->start_controls_section(
             'content_section',
             [
-                'label' => esc_html__( 'Categories', 'elementor-magic-kit' ),
+                'label' => esc_html__( 'Categories', 'magic-elements' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -129,7 +129,7 @@ class Category_List extends Widget_Base
         $repeater->add_control(
             'selected_category',
             [
-                'label'   => esc_html__( 'Select Category', 'elementor-magic-kit' ),
+                'label'   => esc_html__( 'Select Category', 'magic-elements' ),
                 'type'    => \Elementor\Controls_Manager::SELECT,
                 'options' => $this->get_all_categories(),
                 'default' => '',
@@ -140,7 +140,7 @@ class Category_List extends Widget_Base
         $repeater->add_control(
             'icon',
             [
-                'label'   => esc_html__( 'Icon', 'elementor-magic-kit' ),
+                'label'   => esc_html__( 'Icon', 'magic-elements' ),
                 'type'    => \Elementor\Controls_Manager::ICONS,
                 'default' => [
                     'value'   => 'fas fa-tag',
@@ -152,7 +152,7 @@ class Category_List extends Widget_Base
         $this->add_control(
             'category_items',
             [
-                'label'       => esc_html__( 'Category List', 'elementor-magic-kit' ),
+                'label'       => esc_html__( 'Category List', 'magic-elements' ),
                 'type'        => \Elementor\Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'title_field' => '{{{ selected_category }}}',
@@ -165,7 +165,7 @@ class Category_List extends Widget_Base
         $this->start_controls_section(
             'layout_section',
             [
-                'label' => esc_html__( 'Layout', 'elementor-magic-kit' ),
+                'label' => esc_html__( 'Layout', 'magic-elements' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -175,15 +175,15 @@ class Category_List extends Widget_Base
         $this->add_control(
             'layout',
             [
-                'label'   => esc_html__( 'Layout', 'elementor-magic-kit' ),
+                'label'   => esc_html__( 'Layout', 'magic-elements' ),
                 'type'    => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
                     'flex' => [
-                        'title' => esc_html__( 'Flex', 'elementor-magic-kit' ),
+                        'title' => esc_html__( 'Flex', 'magic-elements' ),
                         'icon'  => 'eicon-gallery-grid',
                     ],
                     'column' => [
-                        'title' => esc_html__( 'Column', 'elementor-magic-kit' ),
+                        'title' => esc_html__( 'Column', 'magic-elements' ),
                         'icon'  => 'eicon-editor-list-ul',
                     ],
                 ],
@@ -196,19 +196,19 @@ class Category_List extends Widget_Base
         $this->add_responsive_control(
             'alignment',
             [
-                'label'   => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+                'label'   => esc_html__( 'Alignment', 'magic-elements' ),
                 'type'    => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
                     'flex-start' => [
-                        'title' => esc_html__( 'Start', 'elementor-magic-kit' ),
+                        'title' => esc_html__( 'Start', 'magic-elements' ),
                         'icon'  => 'eicon-text-align-left',
                     ],
                     'center' => [
-                        'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+                        'title' => esc_html__( 'Center', 'magic-elements' ),
                         'icon'  => 'eicon-text-align-center',
                     ],
                     'flex-end' => [
-                        'title' => esc_html__( 'End', 'elementor-magic-kit' ),
+                        'title' => esc_html__( 'End', 'magic-elements' ),
                         'icon'  => 'eicon-text-align-right',
                     ],
                 ],
@@ -220,7 +220,7 @@ class Category_List extends Widget_Base
         $this->add_responsive_control(
             'category_spacing',
             [
-                'label' => esc_html__( 'Spacing Between Items', 'elementor-magic-kit' ),
+                'label' => esc_html__( 'Spacing Between Items', 'magic-elements' ),
                 'type'  => \Elementor\Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [
@@ -239,7 +239,7 @@ class Category_List extends Widget_Base
         $this->add_responsive_control(
             'list_padding',
             [
-                'label'      => esc_html__( 'List Padding', 'elementor-magic-kit' ),
+                'label'      => esc_html__( 'List Padding', 'magic-elements' ),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors'  => [
@@ -254,7 +254,7 @@ class Category_List extends Widget_Base
         $this->start_controls_section(
             'typography_section',
             [
-                'label' => esc_html__( 'Typography', 'elementor-magic-kit' ),
+                'label' => esc_html__( 'Typography', 'magic-elements' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -263,7 +263,7 @@ class Category_List extends Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'category_typography',
-                'label'    => esc_html__( 'Typography', 'elementor-magic-kit' ),
+                'label'    => esc_html__( 'Typography', 'magic-elements' ),
                 'selector' => '{{WRAPPER}} .category-list-widget li a',
             ]
         );
@@ -271,7 +271,7 @@ class Category_List extends Widget_Base
         $this->add_control(
             'text_color',
             [
-                'label'     => esc_html__( 'Text Color', 'elementor-magic-kit' ),
+                'label'     => esc_html__( 'Text Color', 'magic-elements' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .category-list-widget li a' => 'color: {{VALUE}};',
@@ -282,7 +282,7 @@ class Category_List extends Widget_Base
         $this->add_control(
             'text_hover_color',
             [
-                'label'     => esc_html__( 'Text Hover Color', 'elementor-magic-kit' ),
+                'label'     => esc_html__( 'Text Hover Color', 'magic-elements' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .category-list-widget li a:hover' => 'color: {{VALUE}};',
@@ -296,7 +296,7 @@ class Category_List extends Widget_Base
         $this->start_controls_section(
             'icon_style_section',
             [
-                'label' => esc_html__( 'Icon Style', 'elementor-magic-kit' ),
+                'label' => esc_html__( 'Icon Style', 'magic-elements' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -304,7 +304,7 @@ class Category_List extends Widget_Base
         $this->add_control(
             'icon_color',
             [
-                'label'     => esc_html__( 'Icon Color', 'elementor-magic-kit' ),
+                'label'     => esc_html__( 'Icon Color', 'magic-elements' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#0073aa',
                 'selectors' => [
@@ -316,7 +316,7 @@ class Category_List extends Widget_Base
         $this->add_control(
             'icon_hover_color',
             [
-                'label'     => esc_html__( 'Icon Hover Color', 'elementor-magic-kit' ),
+                'label'     => esc_html__( 'Icon Hover Color', 'magic-elements' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#005177',
                 'selectors' => [
@@ -328,7 +328,7 @@ class Category_List extends Widget_Base
         $this->add_responsive_control(
             'icon_size',
             [
-                'label' => esc_html__( 'Icon Size', 'elementor-magic-kit' ),
+                'label' => esc_html__( 'Icon Size', 'magic-elements' ),
                 'type'  => \Elementor\Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [

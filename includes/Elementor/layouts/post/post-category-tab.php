@@ -3,7 +3,7 @@
     <ul class="nav nav-tabs justify-content-center" id="postTabs">
         <li class="nav-item">
             <button class="nav-link active" data-category="all">
-                <?php echo esc_html__('All', 'elementor-magic-kit'); ?>
+                <?php echo esc_html__('All', 'magic-elements'); ?>
             </button>
         </li>
         <?php if (!empty($settings['emk__get_post_in'])) {
@@ -49,7 +49,7 @@
                 </div>
             <?php endwhile;
         } else {
-            echo esc_html__('No posts found.', 'elementor-magic-kit');
+            echo esc_html__('No posts found.', 'magic-elements');
         } ?>
     </div>
 </div>

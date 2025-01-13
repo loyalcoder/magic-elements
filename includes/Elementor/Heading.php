@@ -3,7 +3,7 @@
     /**
  * Elementor Classes.
  *
- * @package Heading Elementor Magic Kit
+ * @package Heading Magic Elements
  */
 
 
@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 } 
 
     /**
- * Magic Kit for Elementor Extension
+ * Magic Elements for Elementor Extension
  *
  * Elementor widget for Heading.
  *
@@ -50,7 +50,7 @@ class Heading extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Heading', 'elementor-magic-kit');
+        return esc_html__('Heading', 'magic-elements');
     }
 
         /**
@@ -112,14 +112,14 @@ class Heading extends Widget_Base
         $this->start_controls_section(
             'emk_heading_section_title',
             [
-                'label' => esc_html__('Heading', 'elementor-magic-kit'),
+                'label' => esc_html__('Heading', 'magic-elements'),
             ]
         );
 
         $this->add_control(
 			'title',
 			[
-				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Title', 'magic-elements' ),
 				'type'  => \Elementor\Controls_Manager::TEXTAREA,
 				'ai'    => [
 					'type' => 'text',
@@ -127,9 +127,9 @@ class Heading extends Widget_Base
 				'dynamic' => [
 					'active' => true,
 				],
-    'placeholder' => esc_html__( 'Enter your title', 'elementor-magic-kit' ),
-    'default'     => esc_html__( 'Add Your Heading Text Here', 'elementor-magic-kit' ),
-    'description' => esc_html__('to add highlight text use {{I am highlight}}', 'elementor-magic-kit'),
+    'placeholder' => esc_html__( 'Enter your title', 'magic-elements' ),
+    'default'     => esc_html__( 'Add Your Heading Text Here', 'magic-elements' ),
+    'description' => esc_html__('to add highlight text use {{I am highlight}}', 'magic-elements'),
 			]
 		);
 
@@ -137,9 +137,9 @@ class Heading extends Widget_Base
         $this->add_control(
             'heading_link',
             [
-                'label'       => esc_html__( 'Heading Link', 'elementor-magic-kit' ),
+                'label'       => esc_html__( 'Heading Link', 'magic-elements' ),
                 'type'        => \Elementor\Controls_Manager::URL,
-                'placeholder' => esc_html__( 'https://your-link.com', 'elementor-magic-kit' ),
+                'placeholder' => esc_html__( 'https://your-link.com', 'magic-elements' ),
                 'options'     => [ 'url', 'is_external', 'nofollow' ],
                 'default'     => [
                     'url'         => '',
@@ -152,7 +152,7 @@ class Heading extends Widget_Base
 		$this->add_control(
 			'header_size',
 			[
-				'label'   => esc_html__( 'HTML Tag', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'HTML Tag', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::SELECT,
 				'options' => [
 					'h1'   => 'H1',
@@ -176,7 +176,7 @@ class Heading extends Widget_Base
         $this->start_controls_section(
             'emk_section_title_style',
             [
-                'label' => esc_html__('Heading', 'elementor-magic-kit'),
+                'label' => esc_html__('Heading', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -184,23 +184,23 @@ class Heading extends Widget_Base
         $this->add_responsive_control(
 			'align',
 			[
-				'label'   => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Alignment', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Left', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Center', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Right', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-right',
 					],
 					'justify' => [
-						'title' => esc_html__( 'Justified', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Justified', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-justify',
 					],
 				],
@@ -214,7 +214,7 @@ class Heading extends Widget_Base
         $this->add_control(
 			'emk_title',
 			[
-				'label'     => esc_html__( 'Title', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Title', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -223,7 +223,7 @@ class Heading extends Widget_Base
 		$this->add_control(
 			'title_color_',
 			[
-				'label'     => esc_html__( 'Color', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .emk-heading-title, {{WRAPPER}} .emk-heading-title a' => 'color: {{VALUE}};',
@@ -257,7 +257,7 @@ class Heading extends Widget_Base
         $this->add_control(
 			'emk_replace_title',
 			[
-				'label'     => esc_html__( 'Highlight Title', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Highlight Title', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -265,7 +265,7 @@ class Heading extends Widget_Base
         $this->add_control(
             'emk_replace_color',
             [
-                'label'     => esc_html__('Replace Color', 'elementor-magic-kit'),
+                'label'     => esc_html__('Replace Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} span.ornaments' => 'color: {{VALUE}}',

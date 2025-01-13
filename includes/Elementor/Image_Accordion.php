@@ -3,7 +3,7 @@
     /**
  * Elementor Classes.
  *
- * @package Image Accordion Elementor Magic Kit
+ * @package Image Accordion Magic Elements
  */
 
 
@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 }
 
     /**
- * Magic Kit for Elementor Extension
+ * Magic Elements for Elementor Extension
  *
  * Elementor widget for Button.
  *
@@ -50,7 +50,7 @@ class Image_Accordion extends Widget_Base
      */
     public function get_title()
     {   
-        return esc_html__('Image Accordion', 'elementor-magic-kit');
+        return esc_html__('Image Accordion', 'magic-elements');
     }
 
         /**
@@ -118,7 +118,7 @@ class Image_Accordion extends Widget_Base
         $this->start_controls_section(
             '_section_content',
             [
-                'label' => esc_html__('Content', 'elementor-magic-kit'),
+                'label' => esc_html__('Content', 'magic-elements'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -128,7 +128,7 @@ class Image_Accordion extends Widget_Base
         $repeater->add_control(
             'background_image',
             [
-                'label'   => esc_html__('Choose Image', 'elementor-magic-kit'),
+                'label'   => esc_html__('Choose Image', 'magic-elements'),
                 'type'    => \Elementor\Controls_Manager::MEDIA,
                 'default' => [
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
@@ -142,7 +142,7 @@ class Image_Accordion extends Widget_Base
         $repeater->add_control(
             'title',
             [
-                'label'       => esc_html__('Title', 'elementor-magic-kit'),
+                'label'       => esc_html__('Title', 'magic-elements'),
                 'type'        => \Elementor\Controls_Manager::TEXT,
                 'label_block' => true,
             ]
@@ -151,10 +151,10 @@ class Image_Accordion extends Widget_Base
         $repeater->add_control(
             'description',
             [
-                'label'       => esc_html__('Description', 'elementor-magic-kit'),
+                'label'       => esc_html__('Description', 'magic-elements'),
                 'type'        => \Elementor\Controls_Manager::TEXTAREA,
-                'default'     => esc_html__('Image accordion content.', 'elementor-magic-kit'),
-                'placeholder' => esc_html__('Type your description here', 'elementor-magic-kit'),
+                'default'     => esc_html__('Image accordion content.', 'magic-elements'),
+                'placeholder' => esc_html__('Type your description here', 'magic-elements'),
                 'dynamic'     => [
                     'active' => true,
                 ],
@@ -164,26 +164,26 @@ class Image_Accordion extends Widget_Base
         $this->add_control(
             'accordion_items',
             [
-                'label'         => esc_html__('Items', 'elementor-magic-kit'),
+                'label'         => esc_html__('Items', 'magic-elements'),
                 'type'          => \Elementor\Controls_Manager::REPEATER,
                 'fields'        => $repeater->get_controls(),
                 'prevent_empty' => true,
                 'default'       => [
                     [
-                        'title'       => esc_html__('Image Accordion 1', 'elementor-magic-kit'),
-                        'description' => __('Image accordion content.', 'elementor-magic-kit'),
+                        'title'       => esc_html__('Image Accordion 1', 'magic-elements'),
+                        'description' => __('Image accordion content.', 'magic-elements'),
                     ],
                     [
-                        'title'       => esc_html__('Image Accordion 2', 'elementor-magic-kit'),
-                        'description' => __('Image accordion content.', 'elementor-magic-kit'),
+                        'title'       => esc_html__('Image Accordion 2', 'magic-elements'),
+                        'description' => __('Image accordion content.', 'magic-elements'),
                     ],
                     [
-                        'title'       => esc_html__('Image Accordion 3', 'elementor-magic-kit'),
-                        'description' => __('Image accordion content.', 'elementor-magic-kit'),
+                        'title'       => esc_html__('Image Accordion 3', 'magic-elements'),
+                        'description' => __('Image accordion content.', 'magic-elements'),
                     ],
                     [
-                        'title'       => esc_html__('Image Accordion 4', 'elementor-magic-kit'),
-                        'description' => esc_html__('Image accordion content.', 'elementor-magic-kit'),
+                        'title'       => esc_html__('Image Accordion 4', 'magic-elements'),
+                        'description' => esc_html__('Image accordion content.', 'magic-elements'),
                     ],
                 ],
                 'title_field' => '{{{ title }}}',
@@ -193,11 +193,11 @@ class Image_Accordion extends Widget_Base
         $this->add_control(
             'active_behavior',
             [
-                'label'   => esc_html__('Active Behavior', 'elementor-magic-kit'),
+                'label'   => esc_html__('Active Behavior', 'magic-elements'),
                 'type'    => \Elementor\Controls_Manager::SELECT,
                 'options' => [
-                    'click' => esc_html__('Click', 'elementor-magic-kit'),
-                    'hover' => esc_html__('Hover', 'elementor-magic-kit'),
+                    'click' => esc_html__('Click', 'magic-elements'),
+                    'hover' => esc_html__('Hover', 'magic-elements'),
                 ],
                 'default'      => 'click',
                 'prefix_class' => 'emk-image-accordion-',
@@ -207,7 +207,7 @@ class Image_Accordion extends Widget_Base
         $this->add_control(
             'active_behavior_notice',
             [
-                'raw'             => '<strong>' . esc_html__('Please note!', 'elementor-magic-kit') . '</strong> ' . esc_html__('Active on load won\'t be working with this active behavior.', 'elementor-magic-kit'),
+                'raw'             => '<strong>' . esc_html__('Please note!', 'magic-elements') . '</strong> ' . esc_html__('Active on load won\'t be working with this active behavior.', 'magic-elements'),
                 'type'            => \Elementor\Controls_Manager::RAW_HTML,
                 'content_classes' => 'elementor-panel-alert elementor-panel-alert-warning',
                 'render_type'     => 'ui',
@@ -223,7 +223,7 @@ class Image_Accordion extends Widget_Base
         $this->start_controls_section(
             'section_style',
             [
-                'label' => esc_html__('Image', 'elementor-magic-kit'),
+                'label' => esc_html__('Image', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -231,7 +231,7 @@ class Image_Accordion extends Widget_Base
         $this->add_responsive_control(
             'image_accordion_min_height',
             [
-                'label'      => esc_html__('Height', 'elementor-magic-kit'),
+                'label'      => esc_html__('Height', 'magic-elements'),
                 'type'       => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px', 'vh'],
                 'range'      => [
@@ -261,7 +261,7 @@ class Image_Accordion extends Widget_Base
         $this->start_controls_section(
             'section_caption_style',
             [
-                'label' => esc_html__('Content', 'elementor-magic-kit'),
+                'label' => esc_html__('Content', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -269,7 +269,7 @@ class Image_Accordion extends Widget_Base
         $this->add_control(
 			'content_margin',
 			[
-				'label'      => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Margin', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors'  => [
@@ -281,7 +281,7 @@ class Image_Accordion extends Widget_Base
         $this->add_control(
 			'section_title_style',
 			[
-				'label'     => esc_html__( 'Title', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Title', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -290,7 +290,7 @@ class Image_Accordion extends Widget_Base
         $this->add_control(
             'title_color',
             [
-                'label'     => esc_html__('Color', 'elementor-magic-kit'),
+                'label'     => esc_html__('Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} h2' => 'color: {{VALUE}};',
@@ -309,7 +309,7 @@ class Image_Accordion extends Widget_Base
         $this->add_responsive_control(
             'title_spacing',
             [
-                'label'      => esc_html__('Spacing', 'elementor-magic-kit'),
+                'label'      => esc_html__('Spacing', 'magic-elements'),
                 'type'       => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range'      => [
@@ -333,7 +333,7 @@ class Image_Accordion extends Widget_Base
         $this->add_control(
 			'section_description_style',
 			[
-				'label'     => esc_html__( 'Description', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Description', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -342,7 +342,7 @@ class Image_Accordion extends Widget_Base
         $this->add_control(
             'description_color',
             [
-                'label'     => esc_html__('Color', 'elementor-magic-kit'),
+                'label'     => esc_html__('Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} p' => 'color: {{VALUE}};',
