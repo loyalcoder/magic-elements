@@ -3,7 +3,7 @@
     /**
  * Elementor Classes.
  *
- * @package Accordion Elementor Magic Kit
+ * @package Accordion Magic Elements
  */
 
 
@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 } 
 
     /**
- * Magic Kit for Elementor Extension
+ * Magic Elements for Elementor Extension
  *
  * Elementor widget for Accordion.
  *
@@ -50,7 +50,7 @@ class Accordion extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Accordion', 'elementor-magic-kit');
+        return esc_html__('Accordion', 'magic -elements');
     }
 
         /**
@@ -117,19 +117,19 @@ class Accordion extends Widget_Base
         $this->start_controls_section(
 			'emk_accordion_section',
 			[
-				'label' => esc_html__( 'Item', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Item', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 		$this->add_control(
 			'accordion_style',
 			[
-				'label'   => esc_html__('Accordion Style', 'elementor-magic-kit'),
+				'label'   => esc_html__('Accordion Style', 'magic-elements'),
 				'type'    => \Elementor\Controls_Manager::SELECT,
 				'options' => [
-					'style_one'   => esc_html__('Style 1 - Only Current Item Toggles', 'elementor-magic-kit'),
-					'style_two'   => esc_html__('Style 2 - Only This Item Toggles Independently', 'elementor-magic-kit'),
-					'style_three' => esc_html__('Style 3 - All Items Open By Default', 'elementor-magic-kit'),
+					'style_one'   => esc_html__('Style 1 - Only Current Item Toggles', 'magic-elements'),
+					'style_two'   => esc_html__('Style 2 - Only This Item Toggles Independently', 'magic-elements'),
+					'style_three' => esc_html__('Style 3 - All Items Open By Default', 'magic-elements'),
 				],
 				'default' => 'style_one',
 			]
@@ -140,9 +140,9 @@ class Accordion extends Widget_Base
 		$repeater->add_control(
 			'accordion_list_title',
 			[
-				'label'       => esc_html__( 'Title', 'elementor-magic-kit' ),
+				'label'       => esc_html__( 'Title', 'magic-elements' ),
 				'type'        => \Elementor\Controls_Manager::TEXT,
-				'default'     => esc_html__( 'List Title' , 'elementor-magic-kit' ),
+				'default'     => esc_html__( 'List Title' , 'magic-elements' ),
 				'label_block' => true,
 			]
 		);
@@ -150,9 +150,9 @@ class Accordion extends Widget_Base
 		$repeater->add_control(
 			'accordion_list_content',
 			[
-				'label'      => esc_html__( 'Content', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Content', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::WYSIWYG,
-				'default'    => esc_html__( 'List Content' , 'elementor-magic-kit' ),
+				'default'    => esc_html__( 'List Content' , 'magic-elements' ),
 				'show_label' => false,
 			]
 		);
@@ -160,7 +160,7 @@ class Accordion extends Widget_Base
 		$repeater->add_control(
 			'accordion_list_color',
 			[
-				'label'     => esc_html__( 'Color', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}}' => 'color: {{VALUE}}'
@@ -170,21 +170,21 @@ class Accordion extends Widget_Base
         $this->add_control(
 			'accordion_list',
 			[
-				'label'   => esc_html__( 'Accordion Items', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Accordion Items', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::REPEATER,
 				'fields'  => $repeater->get_controls(),
 				'default' => [
 					[
-						'accordion_list_title'   => esc_html__( 'Title #1', 'elementor-magic-kit' ),
-						'accordion_list_content' => esc_html__( 'Item content. Click the edit button to change this text.', 'elementor-magic-kit' ),
+						'accordion_list_title'   => esc_html__( 'Title #1', 'magic-elements' ),
+						'accordion_list_content' => esc_html__( 'Item content. Click the edit button to change this text.', 'magic-elements' ),
 					],
 					[
-						'accordion_list_title'   => esc_html__( 'Title #2', 'elementor-magic-kit' ),
-						'accordion_list_content' => esc_html__( 'Item content. Click the edit button to change this text.', 'elementor-magic-kit' ),
+						'accordion_list_title'   => esc_html__( 'Title #2', 'magic-elements' ),
+						'accordion_list_content' => esc_html__( 'Item content. Click the edit button to change this text.', 'magic-elements' ),
 					],
 					[
-						'accordion_list_title'   => esc_html__( 'Title #3', 'elementor-magic-kit' ),
-						'accordion_list_content' => esc_html__( 'Item content. Click the edit button to change this text.', 'elementor-magic-kit' ),
+						'accordion_list_title'   => esc_html__( 'Title #3', 'magic-elements' ),
+						'accordion_list_content' => esc_html__( 'Item content. Click the edit button to change this text.', 'magic-elements' ),
 					],
 				],
 				'accordion_title_field' => '{{{ accordion_list_title }}}',
@@ -193,10 +193,10 @@ class Accordion extends Widget_Base
 		$this->add_control(
 			'enable_cursor_pointer',
 			[
-				'label'        => esc_html__('Enable Cursor Pointer', 'elementor-magic-kit'),
+				'label'        => esc_html__('Enable Cursor Pointer', 'magic-elements'),
 				'type'         => \Elementor\Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__('Yes', 'elementor-magic-kit'),
-				'label_off'    => esc_html__('No', 'elementor-magic-kit'),
+				'label_on'     => esc_html__('Yes', 'magic-elements'),
+				'label_off'    => esc_html__('No', 'magic-elements'),
 				'return_value' => 'yes',
 				'default'      => 'yes',
 			]
@@ -205,7 +205,7 @@ class Accordion extends Widget_Base
 		$this->add_control(
 			'toggle_animation_duration',
 			[
-				'label'   => esc_html__('Toggle Animation Duration (ms)', 'elementor-magic-kit'),
+				'label'   => esc_html__('Toggle Animation Duration (ms)', 'magic-elements'),
 				'type'    => \Elementor\Controls_Manager::NUMBER,
 				'min'     => 0,
 				'max'     => 5000,
@@ -216,23 +216,23 @@ class Accordion extends Widget_Base
 		$this->add_control(
 			'emk_title_align',
 			[
-				'label'   => esc_html__( 'Item Position', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Item Position', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'flex-start' => [
-						'title' => esc_html__( 'Start', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Start', 'magic-elements' ),
 						'icon'  => 'eicon-align-start-h',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Center', 'magic-elements' ),
 						'icon'  => 'eicon-h-align-center',
 					],
 					'flex-end' => [
-						'title' => esc_html__( 'End', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'End', 'magic-elements' ),
 						'icon'  => 'eicon-align-end-h',
 					],
 					'space-between' => [
-						'title' => esc_html__( 'Stretch', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Stretch', 'magic-elements' ),
 						'icon'  => 'eicon-h-align-stretch',
 					],
 				],
@@ -247,17 +247,17 @@ class Accordion extends Widget_Base
         $this->start_controls_section(
 			'emk_accordion_icon',
 			[
-				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Icon', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
         $this->add_control(
 			'show_accordion_icon',
 			[
-				'label'        => esc_html__( 'Icons', 'elementor-magic-kit' ),
+				'label'        => esc_html__( 'Icons', 'magic-elements' ),
 				'type'         => \Elementor\Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Show', 'elementor-magic-kit' ),
-				'label_off'    => esc_html__( 'Hide', 'elementor-magic-kit' ),
+				'label_on'     => esc_html__( 'Show', 'magic-elements' ),
+				'label_off'    => esc_html__( 'Hide', 'magic-elements' ),
 				'return_value' => 'yes',
 				'default'      => 'no',
 			]
@@ -265,7 +265,7 @@ class Accordion extends Widget_Base
         $this->add_control(
 			'accordion_expand_icon',
 			[
-				'label'   => esc_html__( 'Expand', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Expand', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::ICONS,
 				'default' => [
 					'value'   => 'fas fa-plus',
@@ -291,7 +291,7 @@ class Accordion extends Widget_Base
         $this->add_control(
 			'accordion_collapse_icon',
 			[
-				'label'   => esc_html__( 'Collapse', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Collapse', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::ICONS,
 				'default' => [
 					'value'   => 'fas fa-minus',
@@ -318,15 +318,15 @@ class Accordion extends Widget_Base
 		$this->add_control(
 			'icons_align',
 			[
-				'label'   => esc_html__( 'Position', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Position', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'3' => [
-						'title' => esc_html__( 'Start', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Start', 'magic-elements' ),
 						'icon'  => 'eicon-h-align-left',
 					],
 					'1' => [
-						'title' => esc_html__( 'End', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'End', 'magic-elements' ),
 						'icon'  => 'eicon-h-align-right',
 					],
 				],
@@ -344,7 +344,7 @@ class Accordion extends Widget_Base
         $this->start_controls_section(
 			'emk_accordion_section_style',
 			[
-				'label' => esc_html__( 'Item', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Item', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -355,7 +355,7 @@ class Accordion extends Widget_Base
 		$this->start_controls_tab(
 			'accordion_item_normal',
 			[
-				'label' => esc_html__('Normal', 'elementor-magic-kit'),
+				'label' => esc_html__('Normal', 'magic-elements'),
 			]
 		);
 
@@ -390,7 +390,7 @@ class Accordion extends Widget_Base
 		$this->start_controls_tab(
 			'accordion_item_hover',
 			[
-				'label' => esc_html__('Hover', 'elementor-magic-kit'),
+				'label' => esc_html__('Hover', 'magic-elements'),
 			]
 		);
 
@@ -422,7 +422,7 @@ class Accordion extends Widget_Base
 		$this->add_control(
 			'item_hover_transition',
 			[
-				'label' => esc_html__('Transition Duration', 'elementor-magic-kit'),
+				'label' => esc_html__('Transition Duration', 'magic-elements'),
 				'type'  => \Elementor\Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -450,7 +450,7 @@ class Accordion extends Widget_Base
 		$this->add_responsive_control(
 			'item_padding',
 			[
-				'label'      => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Padding', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors'  => [
@@ -462,7 +462,7 @@ class Accordion extends Widget_Base
 		$this->add_responsive_control(
 			'item_margin',
 			[
-				'label'      => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Margin', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors'  => [
@@ -474,7 +474,7 @@ class Accordion extends Widget_Base
 		$this->add_responsive_control(
 			'item_gap',
 			[
-				'label'      => esc_html__( 'Items Gap', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Items Gap', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', 'em' ],
 				'range'      => [
@@ -501,7 +501,7 @@ class Accordion extends Widget_Base
 		$this->add_responsive_control(
 			'item_border_radius',
 			[
-				'label'      => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors'  => [
@@ -515,7 +515,7 @@ class Accordion extends Widget_Base
         $this->start_controls_section(
             'title_style_section',
             [
-                'label' => esc_html__('Title Style', 'elementor-magic-kit'),
+                'label' => esc_html__('Title Style', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -524,7 +524,7 @@ class Accordion extends Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'title_typography',
-                'label'    => esc_html__('Typography', 'elementor-magic-kit'),
+                'label'    => esc_html__('Typography', 'magic-elements'),
                 'selector' => '{{WRAPPER}} .emk-accordion-title h3',
             ]
         );
@@ -535,14 +535,14 @@ class Accordion extends Widget_Base
         $this->start_controls_tab(
             'title_style_normal',
             [
-                'label' => esc_html__('Normal', 'elementor-magic-kit'),
+                'label' => esc_html__('Normal', 'magic-elements'),
             ]
         );
 
         $this->add_control(
             'title_color',
             [
-                'label'     => esc_html__('Color', 'elementor-magic-kit'),
+                'label'     => esc_html__('Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .emk-accordion-title .emk-heading' => 'color: {{VALUE}};',
@@ -553,7 +553,7 @@ class Accordion extends Widget_Base
         $this->add_control(
             'title_background',
             [
-                'label'     => esc_html__('Background', 'elementor-magic-kit'),
+                'label'     => esc_html__('Background', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .emk-accordion-title' => 'background-color: {{VALUE}};',
@@ -567,14 +567,14 @@ class Accordion extends Widget_Base
         $this->start_controls_tab(
             'title_style_hover',
             [
-                'label' => esc_html__('Hover', 'elementor-magic-kit'),
+                'label' => esc_html__('Hover', 'magic-elements'),
             ]
         );
 
         $this->add_control(
             'title_hover_color',
             [
-                'label'     => esc_html__('Color', 'elementor-magic-kit'),
+                'label'     => esc_html__('Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .emk-accordion-title:hover .emk-heading' => 'color: {{VALUE}};',
@@ -585,7 +585,7 @@ class Accordion extends Widget_Base
         $this->add_control(
             'title_hover_background',
             [
-                'label'     => esc_html__('Background', 'elementor-magic-kit'),
+                'label'     => esc_html__('Background', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .emk-accordion-title:hover' => 'background-color: {{VALUE}};',
@@ -595,7 +595,7 @@ class Accordion extends Widget_Base
 		$this->add_control(
 			'title_hover_transition',
 			[
-				'label' => esc_html__('Transition Duration', 'elementor-magic-kit'),
+				'label' => esc_html__('Transition Duration', 'magic-elements'),
 				'type'  => \Elementor\Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -622,7 +622,7 @@ class Accordion extends Widget_Base
         $this->add_responsive_control(
             'title_padding',
             [
-                'label'      => esc_html__('Padding', 'elementor-magic-kit'),
+                'label'      => esc_html__('Padding', 'magic-elements'),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
@@ -634,14 +634,14 @@ class Accordion extends Widget_Base
             \Elementor\Group_Control_Border::get_type(),
             [
                 'name'     => 'title_border',
-                'label'    => esc_html__('Border', 'elementor-magic-kit'),
+                'label'    => esc_html__('Border', 'magic-elements'),
                 'selector' => '{{WRAPPER}} .emk-accordion-title',
             ]
         );
         $this->add_responsive_control(
             'title_radius',
             [
-                'label'      => esc_html__('Border Radius', 'elementor-magic-kit'),
+                'label'      => esc_html__('Border Radius', 'magic-elements'),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
@@ -656,7 +656,7 @@ class Accordion extends Widget_Base
         $this->start_controls_section(
             'content_style_section',
             [
-                'label' => esc_html__('Content Style', 'elementor-magic-kit'),
+                'label' => esc_html__('Content Style', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -665,30 +665,30 @@ class Accordion extends Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'content_typography',
-                'label'    => esc_html__('Typography', 'elementor-magic-kit'),
+                'label'    => esc_html__('Typography', 'magic-elements'),
                 'selector' => '{{WRAPPER}} .emk-accordion-content',
             ]
         );
         $this->add_control(
 			'content_text_align',
 			[
-				'label'   => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Alignment', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Left', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Center', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Right', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-right',
 					],
 					'justify' => [
-						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Justify', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-justify',
 					],
 				],
@@ -703,7 +703,7 @@ class Accordion extends Widget_Base
         $this->add_control(
             'content_color',
             [
-                'label'     => esc_html__('Text Color', 'elementor-magic-kit'),
+                'label'     => esc_html__('Text Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .emk-accordion-content' => 'color: {{VALUE}};',
@@ -714,7 +714,7 @@ class Accordion extends Widget_Base
         $this->add_control(
             'content_background',
             [
-                'label'     => esc_html__('Background Color', 'elementor-magic-kit'),
+                'label'     => esc_html__('Background Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .emk-accordion-content' => 'background-color: {{VALUE}};',
@@ -725,7 +725,7 @@ class Accordion extends Widget_Base
         $this->add_responsive_control(
             'content_padding',
             [
-                'label'      => esc_html__('Padding', 'elementor-magic-kit'),
+                'label'      => esc_html__('Padding', 'magic-elements'),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
@@ -738,7 +738,7 @@ class Accordion extends Widget_Base
             \Elementor\Group_Control_Border::get_type(),
             [
                 'name'     => 'content_border',
-                'label'    => esc_html__('Border', 'elementor-magic-kit'),
+                'label'    => esc_html__('Border', 'magic-elements'),
                 'selector' => '{{WRAPPER}} .emk-accordion-content',
             ]
         );
@@ -746,7 +746,7 @@ class Accordion extends Widget_Base
         $this->add_responsive_control(
             'content_border_radius',
             [
-                'label'      => esc_html__('Border Radius', 'elementor-magic-kit'),
+                'label'      => esc_html__('Border Radius', 'magic-elements'),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
@@ -760,7 +760,7 @@ class Accordion extends Widget_Base
         $this->start_controls_section(
             'icon_style_section',
             [
-				'label'     => esc_html__('Icon Style', 'elementor-magic-kit'),
+				'label'     => esc_html__('Icon Style', 'magic-elements'),
 				'tab'       => \Elementor\Controls_Manager::TAB_STYLE,
 				'condition' => [
                     'show_accordion_icon' => 'yes'
@@ -774,13 +774,13 @@ class Accordion extends Widget_Base
         $this->start_controls_tab(
             'icon_style_expand',
             [
-                'label' => esc_html__('Expand', 'elementor-magic-kit'),
+                'label' => esc_html__('Expand', 'magic-elements'),
             ]
         );
         $this->add_responsive_control(
             'expand_icon_size',
             [
-                'label'      => esc_html__('Icon Size', 'elementor-magic-kit'),
+                'label'      => esc_html__('Icon Size', 'magic-elements'),
                 'type'       => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em', 'rem'],
                 'range'      => [
@@ -813,7 +813,7 @@ class Accordion extends Widget_Base
         $this->add_control(
             'expand_icon_color',
             [
-                'label'     => esc_html__('Color', 'elementor-magic-kit'),
+                'label'     => esc_html__('Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .emk-accordion-title .emk-icons .accordion_expand_icon i'   => 'color: {{VALUE}};',
@@ -825,7 +825,7 @@ class Accordion extends Widget_Base
         $this->add_control(
             'expand_icon_background',
             [
-                'label'     => esc_html__('Background Color', 'elementor-magic-kit'),
+                'label'     => esc_html__('Background Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .emk-accordion-title .emk-icons .accordion_expand_icon' => 'background-color: {{VALUE}};',
@@ -836,7 +836,7 @@ class Accordion extends Widget_Base
 		$this->add_responsive_control(
             'expand_icon_padding',
             [
-                'label'      => esc_html__('Padding', 'elementor-magic-kit'),
+                'label'      => esc_html__('Padding', 'magic-elements'),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
@@ -848,7 +848,7 @@ class Accordion extends Widget_Base
         $this->add_responsive_control(
             'expand_icon_border_radius',
             [
-                'label'      => esc_html__('Border Radius', 'elementor-magic-kit'),
+                'label'      => esc_html__('Border Radius', 'magic-elements'),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
@@ -859,7 +859,7 @@ class Accordion extends Widget_Base
         $this->add_responsive_control(
             'expand_icon_margin',
             [
-                'label'      => esc_html__('Margin', 'elementor-magic-kit'),
+                'label'      => esc_html__('Margin', 'magic-elements'),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
@@ -874,13 +874,13 @@ class Accordion extends Widget_Base
         $this->start_controls_tab(
             'icon_style_collapse',
             [
-                'label' => esc_html__('Collapse', 'elementor-magic-kit'),
+                'label' => esc_html__('Collapse', 'magic-elements'),
             ]
         );
         $this->add_responsive_control(
             'collapse_icon_size',
             [
-                'label'      => esc_html__('Icon Size', 'elementor-magic-kit'),
+                'label'      => esc_html__('Icon Size', 'magic-elements'),
                 'type'       => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em', 'rem'],
                 'range'      => [
@@ -913,7 +913,7 @@ class Accordion extends Widget_Base
         $this->add_control(
             'collapse_icon_color',
             [
-                'label'     => esc_html__('Color', 'elementor-magic-kit'),
+                'label'     => esc_html__('Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .emk-accordion-title .emk-icons .accordion_collapse_icon i'   => 'color: {{VALUE}};',
@@ -925,7 +925,7 @@ class Accordion extends Widget_Base
         $this->add_control(
             'collapse_icon_background',
             [
-                'label'     => esc_html__('Background Color', 'elementor-magic-kit'),
+                'label'     => esc_html__('Background Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .emk-accordion-title .emk-icons .accordion_collapse_icon' => 'background-color: {{VALUE}};',
@@ -936,7 +936,7 @@ class Accordion extends Widget_Base
 		$this->add_responsive_control(
             'collapse_icon_padding',
             [
-                'label'      => esc_html__('Padding', 'elementor-magic-kit'),
+                'label'      => esc_html__('Padding', 'magic-elements'),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
@@ -948,7 +948,7 @@ class Accordion extends Widget_Base
         $this->add_responsive_control(
             'collapse_icon_border_radius',
             [
-                'label'      => esc_html__('Border Radius', 'elementor-magic-kit'),
+                'label'      => esc_html__('Border Radius', 'magic-elements'),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
@@ -959,7 +959,7 @@ class Accordion extends Widget_Base
         $this->add_responsive_control(
             'collapse_icon_margin',
             [
-                'label'      => esc_html__('Margin', 'elementor-magic-kit'),
+                'label'      => esc_html__('Margin', 'magic-elements'),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [

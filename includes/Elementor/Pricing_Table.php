@@ -1,9 +1,9 @@
 <?php
 
-    /**
+            /**
  * Elementor Classes.
  *
- * @package Pricing Table Elementor
+ * @package Pricing Table Magic Elements
  */
 
 namespace MagicElements\Elementor;
@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-/**
+        /**
  * Elementor Pricing Table Widget
  *
  * Elementor widget for pricing table.
@@ -24,7 +24,7 @@ if (!defined('ABSPATH')) {
  */
 class Pricing_Table extends Widget_Base
 {
-        /**
+                /**
      * Retrieve the widget name.
      *
      * @since 1.0.0
@@ -38,7 +38,7 @@ class Pricing_Table extends Widget_Base
         return 'EM_KIT_pricing_table';
     }
 
-        /**
+                /**
      * Retrieve the widget title.
      *
      * @since 1.0.0
@@ -49,10 +49,10 @@ class Pricing_Table extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Pricing Table', 'elementor-magic-kit');
+        return esc_html__('Pricing Table', 'magic-elements');
     }
 
-        /**
+                /**
      * Retrieve the widget icon.
      *
      * @since 1.0.0
@@ -66,7 +66,7 @@ class Pricing_Table extends Widget_Base
         return 'eicon-price-table emk-editor-widgets-icon';
     }
 
-        /**
+                /**
      * Retrieve the list of categories the widget belongs to.
      *
      * Used to determine where to display the widget in the editor.
@@ -93,7 +93,7 @@ class Pricing_Table extends Widget_Base
         return ['emkit-pricingtable', 'jquery'];
     }
 
-    /**
+            /**
      * Register Pricing Table controls.
      *
      * @since 1.0.0
@@ -104,7 +104,7 @@ class Pricing_Table extends Widget_Base
         $this->register_pricing_table_controls();
     }
 
-    /**
+            /**
      * Register Pricing Table General Controls.
      *
      * @since 1.0.0
@@ -115,19 +115,19 @@ class Pricing_Table extends Widget_Base
         $this->start_controls_section(
             'section_style',
             [
-                'label' => esc_html__('Table Settings', 'elementor-magic-kit'),
+                'label' => esc_html__('Table Settings', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
         $this->add_control(
             'layout_style',
             [
-                'label'   => esc_html__('Style', 'elementor-magic-kit'),
+                'label'   => esc_html__('Style', 'magic-elements'),
                 'type'    => \Elementor\Controls_Manager::SELECT,
                 'default' => 'style_one',
                 'options' => [
-                    'style_one' => esc_html__('Style One', 'elementor-magic-kit'),
-                    'style_two' => esc_html__('Style Two', 'elementor-magic-kit'),
+                    'style_one' => esc_html__('Style One', 'magic-elements'),
+                    'style_two' => esc_html__('Style Two', 'magic-elements'),
                 ],
             ]
         );
@@ -136,26 +136,26 @@ class Pricing_Table extends Widget_Base
         $this->start_controls_section(
             'table_header',
             [
-                'label' => esc_html__('Header', 'elementor-magic-kit'),
+                'label' => esc_html__('Header', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
         $this->add_control(
 			'pricing_table_title',
 			[
-				'label'       => esc_html__( 'Title', 'elementor-magic-kit' ),
+				'label'       => esc_html__( 'Title', 'magic-elements' ),
 				'type'        => \Elementor\Controls_Manager::TEXT,
-				'default'     => esc_html__( 'Title', 'elementor-magic-kit' ),
-				'placeholder' => esc_html__( 'Type your title here', 'elementor-magic-kit' ),
+				'default'     => esc_html__( 'Title', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your title here', 'magic-elements' ),
 			]
 		);
         $this->add_control(
 			'pricing_table_subtitle',
 			[
-				'label'       => esc_html__( 'Sub Title', 'elementor-magic-kit' ),
+				'label'       => esc_html__( 'Sub Title', 'magic-elements' ),
 				'type'        => \Elementor\Controls_Manager::TEXT,
-				'default'     => esc_html__( 'Sub Title', 'elementor-magic-kit' ),
-				'placeholder' => esc_html__( 'Type your sub title here', 'elementor-magic-kit' ),
+				'default'     => esc_html__( 'Sub Title', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your sub title here', 'magic-elements' ),
 			]
 		);
         $this->end_controls_section();
@@ -163,37 +163,37 @@ class Pricing_Table extends Widget_Base
         $this->start_controls_section(
             'price_section',
             [
-                'label' => esc_html__('Pricing', 'elementor-magic-kit'),
+                'label' => esc_html__('Pricing', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
         $this->add_control(
             'currency_symbol',
             [
-                'label'   => esc_html__( 'Currency Symbol', 'elementor-magic-kit' ),
+                'label'   => esc_html__( 'Currency Symbol', 'magic-elements' ),
                 'type'    => Controls_Manager::SELECT,
                 'options' => [
-                    ''        => esc_html__( 'None', 'elementor-magic-kit' ),
-                    '&#36;'   => esc_html__( '&#36; dollar', 'elementor-magic-kit' ),
-                    'C&#36;'  => esc_html__( 'C&#36; Canadian dollar', 'elementor-magic-kit' ),
-                    'A&#36;'  => esc_html__( 'A&#36; Australian dollar', 'elementor-magic-kit' ),
-                    '&#128;'  => esc_html__( '&#128; euro', 'elementor-magic-kit' ),
-                    '&#3647;' => esc_html__( '&#3647; baht', 'elementor-magic-kit' ),
-                    '&#8355;' => esc_html__( '&#8355; franc', 'elementor-magic-kit' ),
-                    '&fnof;'  => esc_html__( '&fnof; guilder', 'elementor-magic-kit' ),
-                    'kr'      => esc_html__( 'kr krona', 'elementor-magic-kit' ),
-                    '&#8356;' => esc_html__( '&#8356; lira', 'elementor-magic-kit' ),
-                    '&#8359;' => esc_html__( '&#8359; peseta', 'elementor-magic-kit' ),
-                    '&#8369;' => esc_html__( '&#8369; peso', 'elementor-magic-kit' ),
-                    '&#163;'  => esc_html__( '&#163; pound', 'elementor-magic-kit' ),
-                    '&#8381;' => esc_html__( '&#8381; ruble', 'elementor-magic-kit' ),
-                    'R$'      => esc_html__( 'R$ real', 'elementor-magic-kit' ),
-                    '&#8360;' => esc_html__( '&#8360; rupee', 'elementor-magic-kit' ),
-                    '&#8377;' => esc_html__( '&#8377; rupee (Indian)', 'elementor-magic-kit' ),
-                    '&#8362;' => esc_html__( '&#8362; shekel', 'elementor-magic-kit' ),
-                    '&#165;'  => esc_html__( '&#165; yen/yuan', 'elementor-magic-kit' ),
-                    '&#8361;' => esc_html__( '&#8361; won', 'elementor-magic-kit' ),
-                    '&#8383;' => esc_html__( '&#8383; bitcoin', 'elementor-magic-kit' ),
+                    ''        => esc_html__( 'None', 'magic-elements' ),
+                    '&#36;'   => esc_html__( '&#36; dollar', 'magic-elements' ),
+                    'C&#36;'  => esc_html__( 'C&#36; Canadian dollar', 'magic-elements' ),
+                    'A&#36;'  => esc_html__( 'A&#36; Australian dollar', 'magic-elements' ),
+                    '&#128;'  => esc_html__( '&#128; euro', 'magic-elements' ),
+                    '&#3647;' => esc_html__( '&#3647; baht', 'magic-elements' ),
+                    '&#8355;' => esc_html__( '&#8355; franc', 'magic-elements' ),
+                    '&fnof;'  => esc_html__( '&fnof; guilder', 'magic-elements' ),
+                    'kr'      => esc_html__( 'kr krona', 'magic-elements' ),
+                    '&#8356;' => esc_html__( '&#8356; lira', 'magic-elements' ),
+                    '&#8359;' => esc_html__( '&#8359; peseta', 'magic-elements' ),
+                    '&#8369;' => esc_html__( '&#8369; peso', 'magic-elements' ),
+                    '&#163;'  => esc_html__( '&#163; pound', 'magic-elements' ),
+                    '&#8381;' => esc_html__( '&#8381; ruble', 'magic-elements' ),
+                    'R$'      => esc_html__( 'R$ real', 'magic-elements' ),
+                    '&#8360;' => esc_html__( '&#8360; rupee', 'magic-elements' ),
+                    '&#8377;' => esc_html__( '&#8377; rupee (Indian)', 'magic-elements' ),
+                    '&#8362;' => esc_html__( '&#8362; shekel', 'magic-elements' ),
+                    '&#165;'  => esc_html__( '&#165; yen/yuan', 'magic-elements' ),
+                    '&#8361;' => esc_html__( '&#8361; won', 'magic-elements' ),
+                    '&#8383;' => esc_html__( '&#8383; bitcoin', 'magic-elements' ),
                 ],
                 'default' => '&#36;',
             ]
@@ -201,19 +201,19 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'price',
 			[
-				'label'       => esc_html__( 'Price', 'elementor-magic-kit' ),
+				'label'       => esc_html__( 'Price', 'magic-elements' ),
 				'type'        => \Elementor\Controls_Manager::TEXT,
-				'default'     => esc_html__( '89.9', 'elementor-magic-kit' ),
-				'placeholder' => esc_html__( 'Type your price', 'elementor-magic-kit' ),
+				'default'     => esc_html__( '89.9', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your price', 'magic-elements' ),
 			]
 		);
         $this->add_control(
 			'show_sale',
 			[
-				'label'        => esc_html__( 'Sale', 'elementor-magic-kit' ),
+				'label'        => esc_html__( 'Sale', 'magic-elements' ),
 				'type'         => \Elementor\Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Show', 'elementor-magic-kit' ),
-				'label_off'    => esc_html__( 'Hide', 'elementor-magic-kit' ),
+				'label_on'     => esc_html__( 'Show', 'magic-elements' ),
+				'label_off'    => esc_html__( 'Hide', 'magic-elements' ),
 				'return_value' => 'yes',
 				'default'      => 'no',
 			]
@@ -221,10 +221,10 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'original_price',
 			[
-    'label'     => esc_html__( 'Original Price', 'elementor-magic-kit' ),
-    'type'      => \Elementor\Controls_Manager::TEXT,
-    'default'   => esc_html__( '99.9', 'elementor-magic-kit' ),
-    'condition' => [
+                'label'     => esc_html__( 'Original Price', 'magic-elements' ),
+                'type'      => \Elementor\Controls_Manager::TEXT,
+                'default'   => esc_html__( '99.9', 'magic-elements' ),
+                'condition' => [
                     'show_sale' => 'yes',   // Only show this control when switch is ON
                 ]
 			]
@@ -232,10 +232,10 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'period',
 			[
-				'label'       => esc_html__( 'Period', 'elementor-magic-kit' ),
+				'label'       => esc_html__( 'Period', 'magic-elements' ),
 				'type'        => \Elementor\Controls_Manager::TEXT,
-				'default'     => esc_html__( '/monthly', 'elementor-magic-kit' ),
-				'placeholder' => esc_html__( 'Type your period', 'elementor-magic-kit' ),
+				'default'     => esc_html__( '/monthly', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your period', 'magic-elements' ),
 			]
 		);
         $this->end_controls_section();
@@ -243,7 +243,7 @@ class Pricing_Table extends Widget_Base
         $this->start_controls_section(
             'features_section',
             [
-                'label' => esc_html__('Features', 'elementor-magic-kit'),
+                'label' => esc_html__('Features', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -253,16 +253,16 @@ class Pricing_Table extends Widget_Base
         $repeater->add_control(
             'features_text',
             [
-                'label'   => esc_html__( 'Text', 'elementor-magic-kit' ),
+                'label'   => esc_html__( 'Text', 'magic-elements' ),
                 'type'    => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__( 'Default Text', 'elementor-magic-kit' ),
+                'default' => esc_html__( 'Default Text', 'magic-elements' ),
             ]
         );
 
         $repeater->add_control(
 			'features_icon',
 			[
-				'label'   => esc_html__( 'Icon', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Icon', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::ICONS,
 				'default' => [
 					'value'   => 'fas fa-check',
@@ -286,16 +286,16 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
             'features_items',
             [
-                'label'   => esc_html__( 'Repeater Items', 'elementor-magic-kit' ),
+                'label'   => esc_html__( 'Repeater Items', 'magic-elements' ),
                 'type'    => \Elementor\Controls_Manager::REPEATER,
                 'fields'  => $repeater->get_controls(),
                 'default' => [
                     [
-                        'features_text' => __( 'Sample Text 1', 'elementor-magic-kit' ),
+                        'features_text' => __( 'Sample Text 1', 'magic-elements' ),
                         'features_icon' => 'fa fa-heart',
                     ],
                     [
-                        'features_text' => __( 'Sample Text 2', 'elementor-magic-kit' ),
+                        'features_text' => __( 'Sample Text 2', 'magic-elements' ),
                         'features_icon' => 'fa fa-cogs',
                     ],
                 ],
@@ -308,23 +308,23 @@ class Pricing_Table extends Widget_Base
         $this->start_controls_section(
             'button_section',
             [
-                'label' => __('Button', 'elementor-magic-kit'),
+                'label' => __('Button', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
         $this->add_control(
 			'pricing_btn',
 			[
-				'label'       => esc_html__( 'Text', 'elementor-magic-kit' ),
+				'label'       => esc_html__( 'Text', 'magic-elements' ),
 				'type'        => \Elementor\Controls_Manager::TEXT,
-				'default'     => esc_html__( 'Button', 'elementor-magic-kit' ),
-				'placeholder' => esc_html__( 'Type your button text', 'elementor-magic-kit' ),
+				'default'     => esc_html__( 'Button', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your button text', 'magic-elements' ),
 			]
 		);
         $this->add_control(
 			'btn_link',
 			[
-				'label'   => esc_html__( 'Link', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Link', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::URL,
 				'options' => [ 'url', 'is_external', 'nofollow' ],
 				'default' => [
@@ -338,10 +338,10 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'show_btn_icon',
 			[
-				'label'        => esc_html__( 'Icon', 'elementor-magic-kit' ),
+				'label'        => esc_html__( 'Icon', 'magic-elements' ),
 				'type'         => \Elementor\Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Show', 'elementor-magic-kit' ),
-				'label_off'    => esc_html__( 'Hide', 'elementor-magic-kit' ),
+				'label_on'     => esc_html__( 'Show', 'magic-elements' ),
+				'label_off'    => esc_html__( 'Hide', 'magic-elements' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
 			]
@@ -349,7 +349,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'button_icon',
 			[
-				'label'   => esc_html__( 'Icon', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Icon', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::ICONS,
 				'default' => [
 					'value'   => 'fas fa-arrow-right',
@@ -376,17 +376,17 @@ class Pricing_Table extends Widget_Base
         $this->start_controls_section(
             'ribbon_section',
             [
-                'label' => esc_html__('Ribbon', 'elementor-magic-kit'),
+                'label' => esc_html__('Ribbon', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
         $this->add_control(
 			'ribbon_control',
 			[
-				'label'        => esc_html__( 'Ribbon', 'elementor-magic-kit' ),
+				'label'        => esc_html__( 'Ribbon', 'magic-elements' ),
 				'type'         => \Elementor\Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Show', 'elementor-magic-kit' ),
-				'label_off'    => esc_html__( 'Hide', 'elementor-magic-kit' ),
+				'label_on'     => esc_html__( 'Show', 'magic-elements' ),
+				'label_off'    => esc_html__( 'Hide', 'magic-elements' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
 			]
@@ -394,23 +394,23 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'ribbon_text',
 			[
-    'label'       => esc_html__( 'Ribbon Text', 'elementor-magic-kit' ),
+    'label'       => esc_html__( 'Ribbon Text', 'magic-elements' ),
     'type'        => \Elementor\Controls_Manager::TEXT,
-    'default'     => esc_html__( 'Ribbon', 'elementor-magic-kit' ),
-    'placeholder' => esc_html__( 'Type your title here', 'elementor-magic-kit' ),
+    'default'     => esc_html__( 'Ribbon', 'magic-elements' ),
+    'placeholder' => esc_html__( 'Type your title here', 'magic-elements' ),
     'condition'   => [
                     'ribbon_control' => 'yes',   // Only show this control when switch is ON
                 ]
 			]
 		);
         $this->end_controls_section();
-        /**
+                /**
          * Style control start
          */
         $this->start_controls_section(
             'pricing_card_style',
             [
-				'label'     => esc_html__('Table Style', 'elementor-magic-kit'),
+				'label'     => esc_html__('Table Style', 'magic-elements'),
 				'tab'       => \Elementor\Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'layout_style' => 'style_one'
@@ -420,7 +420,7 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'card_body_bg',
 			[
-				'label'     => esc_html__( 'Background Color', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Background Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .pricing-table-container' => 'background-color: {{VALUE}}',
@@ -430,7 +430,7 @@ class Pricing_Table extends Widget_Base
         $this->add_responsive_control(
 			'card_body_padding',
 			[
-				'label'      => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Padding', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -463,7 +463,7 @@ class Pricing_Table extends Widget_Base
         $this->add_responsive_control(
 			'card_body_radius',
 			[
-				'label'      => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -490,7 +490,7 @@ class Pricing_Table extends Widget_Base
 		$this->start_controls_section(
             'pricing_card_style_two',
             [
-				'label'     => esc_html__('Table Body', 'elementor-magic-kit'),
+				'label'     => esc_html__('Table Body', 'magic-elements'),
 				'tab'       => \Elementor\Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'layout_style' => 'style_two'
@@ -500,15 +500,15 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'table_reverse',
 			[
-				'label'   => esc_html__( 'Reverse', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Reverse', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'row' => [
-						'title' => esc_html__( 'Row', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Row', 'magic-elements' ),
 						'icon'  => 'eicon-order-start',
 					],
 					'row-reverse' => [
-						'title' => esc_html__( 'Row Reverse', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Row Reverse', 'magic-elements' ),
 						'icon'  => 'eicon-order-end',
 					],
 				],
@@ -522,7 +522,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'left_options',
 			[
-				'label'     => esc_html__( 'Left Part', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Left Part', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -530,7 +530,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_responsive_control(
 			'left_part_width',
 			[
-				'label'      => esc_html__( 'Width', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Width', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range'      => [
@@ -552,7 +552,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'left_bg',
 			[
-				'label'     => esc_html__( 'Background', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Background', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .left-part' => 'background-color: {{VALUE}}',
@@ -562,7 +562,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_responsive_control(
 			'left_part_padding',
 			[
-				'label'      => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Padding', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -581,19 +581,19 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'left_price_align',
 			[
-				'label'   => esc_html__( 'Vertical Alignment', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Vertical Alignment', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'flex-start' => [
-						'title' => esc_html__( 'Top', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Top', 'magic-elements' ),
 						'icon'  => 'eicon-v-align-top',
 					],
 					'center' => [
-						'title' => esc_html__( 'Middle', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Middle', 'magic-elements' ),
 						'icon'  => 'eicon-v-align-middle',
 					],
 					'flex-end' => [
-						'title' => esc_html__( 'Bottom', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Bottom', 'magic-elements' ),
 						'icon'  => 'eicon-v-align-bottom',
 					],
 				],
@@ -607,7 +607,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_responsive_control(
 			'left_part_radius',
 			[
-				'label'      => esc_html__( 'Radius', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Radius', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -626,7 +626,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'right_options',
 			[
-				'label'     => esc_html__( 'Right Part', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Right Part', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -634,7 +634,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_responsive_control(
 			'right_part_width',
 			[
-				'label'      => esc_html__( 'Width', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Width', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range'      => [
@@ -656,7 +656,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'right_bg',
 			[
-				'label'     => esc_html__( 'Background', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Background', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .right-part' => 'background-color: {{VALUE}}',
@@ -666,7 +666,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_responsive_control(
 			'right_part_padding',
 			[
-				'label'      => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Padding', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -685,7 +685,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_responsive_control(
 			'right_part_radius',
 			[
-				'label'      => esc_html__( 'Radius', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Radius', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -706,14 +706,14 @@ class Pricing_Table extends Widget_Base
         $this->start_controls_section(
             'header_style',
             [
-                'label' => esc_html__('Header', 'elementor-magic-kit'),
+                'label' => esc_html__('Header', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
 			'title_options',
 			[
-				'label'     => esc_html__( 'Title', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Title', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -728,7 +728,7 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'title_color',
 			[
-				'label'     => esc_html__( 'Title Color', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Title Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .title' => 'color: {{VALUE}}',
@@ -738,19 +738,19 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'title_text_align',
 			[
-				'label'   => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Alignment', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Left', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Center', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Right', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-right',
 					],
 				],
@@ -771,7 +771,7 @@ class Pricing_Table extends Widget_Base
         $this->add_responsive_control(
 			'title_padding',
 			[
-				'label'      => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Padding', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -787,11 +787,11 @@ class Pricing_Table extends Widget_Base
 				],
 			]
 		);
-        // Sub Title
+                // Sub Title
         $this->add_control(
 			'sub_title_options',
 			[
-				'label'     => esc_html__( 'Sub Title', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Sub Title', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -806,7 +806,7 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'sub_title_color',
 			[
-				'label'     => esc_html__( 'Sub Title Color', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Sub Title Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .sub-title' => 'color: {{VALUE}}',
@@ -816,19 +816,19 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'sub-title_text_align',
 			[
-				'label'   => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Alignment', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Left', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Center', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Right', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-right',
 					],
 				],
@@ -849,7 +849,7 @@ class Pricing_Table extends Widget_Base
         $this->add_responsive_control(
 			'sub_title_padding',
 			[
-				'label'      => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Padding', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -866,30 +866,30 @@ class Pricing_Table extends Widget_Base
 			]
 		);
         $this->end_controls_section();
-        // Price Style
+                // Price Style
         $this->start_controls_section(
             'price_style',
             [
-                'label' => esc_html__('Price', 'elementor-magic-kit'),
+                'label' => esc_html__('Price', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
 			'price_text_align',
 			[
-				'label'   => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Alignment', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Left', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Center', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Right', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-right',
 					],
 				],
@@ -903,7 +903,7 @@ class Pricing_Table extends Widget_Base
         $this->add_responsive_control(
 			'price_margin',
 			[
-				'label'      => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Margin', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -922,7 +922,7 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'price_text_color',
 			[
-				'label'     => esc_html__( 'Color', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .current-price' => 'color: {{VALUE}}',
@@ -932,7 +932,7 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'current_price_options',
 			[
-				'label'     => esc_html__( 'Current Price', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Current Price', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -947,19 +947,19 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'price_align',
 			[
-				'label'   => esc_html__( 'Vertical Alignment', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Vertical Alignment', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'flex-start' => [
-						'title' => esc_html__( 'Top', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Top', 'magic-elements' ),
 						'icon'  => 'eicon-v-align-top',
 					],
 					'center' => [
-						'title' => esc_html__( 'Middle', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Middle', 'magic-elements' ),
 						'icon'  => 'eicon-v-align-middle',
 					],
 					'flex-end' => [
-						'title' => esc_html__( 'Bottom', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Bottom', 'magic-elements' ),
 						'icon'  => 'eicon-v-align-bottom',
 					],
 				],
@@ -973,7 +973,7 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'currency_symbol_options',
 			[
-				'label'     => esc_html__( 'Currency Symbol', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Currency Symbol', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -988,19 +988,19 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'currency_symbol_align',
 			[
-				'label'   => esc_html__( 'Vertical Alignment', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Vertical Alignment', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'flex-start' => [
-						'title' => esc_html__( 'Top', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Top', 'magic-elements' ),
 						'icon'  => 'eicon-v-align-top',
 					],
 					'center' => [
-						'title' => esc_html__( 'Middle', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Middle', 'magic-elements' ),
 						'icon'  => 'eicon-v-align-middle',
 					],
 					'flex-end' => [
-						'title' => esc_html__( 'Bottom', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Bottom', 'magic-elements' ),
 						'icon'  => 'eicon-v-align-bottom',
 					],
 				],
@@ -1014,7 +1014,7 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'original_price_options',
 			[
-    'label'     => esc_html__( 'Original Price', 'elementor-magic-kit' ),
+    'label'     => esc_html__( 'Original Price', 'magic-elements' ),
     'type'      => \Elementor\Controls_Manager::HEADING,
     'separator' => 'before',
     'condition' => [
@@ -1025,7 +1025,7 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'original_price_text_color',
 			[
-				'label'     => esc_html__( 'Color', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .original-price' => 'color: {{VALUE}}',
@@ -1048,19 +1048,19 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'original_price_align',
 			[
-				'label'   => esc_html__( 'Vertical Alignment', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Vertical Alignment', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'flex-start' => [
-						'title' => esc_html__( 'Top', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Top', 'magic-elements' ),
 						'icon'  => 'eicon-v-align-top',
 					],
 					'center' => [
-						'title' => esc_html__( 'Middle', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Middle', 'magic-elements' ),
 						'icon'  => 'eicon-v-align-middle',
 					],
 					'flex-end' => [
-						'title' => esc_html__( 'Bottom', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Bottom', 'magic-elements' ),
 						'icon'  => 'eicon-v-align-bottom',
 					],
 				],
@@ -1077,7 +1077,7 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'original_price_gap',
 			[
-				'label'      => esc_html__( 'Gap', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Gap', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range'      => [
@@ -1106,7 +1106,7 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'period_options',
 			[
-				'label'     => esc_html__( 'Period', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Period', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -1114,7 +1114,7 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'period_text_color',
 			[
-				'label'     => esc_html__( 'Color', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .period' => 'color: {{VALUE}}',
@@ -1131,19 +1131,19 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'period_align',
 			[
-				'label'   => esc_html__( 'Vertical Alignment', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Vertical Alignment', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'flex-start' => [
-						'title' => esc_html__( 'Top', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Top', 'magic-elements' ),
 						'icon'  => 'eicon-v-align-top',
 					],
 					'center' => [
-						'title' => esc_html__( 'Middle', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Middle', 'magic-elements' ),
 						'icon'  => 'eicon-v-align-middle',
 					],
 					'flex-end' => [
-						'title' => esc_html__( 'Bottom', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Bottom', 'magic-elements' ),
 						'icon'  => 'eicon-v-align-bottom',
 					],
 				],
@@ -1157,7 +1157,7 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'period_gap',
 			[
-				'label'      => esc_html__( 'Gap', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Gap', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range'      => [
@@ -1181,18 +1181,18 @@ class Pricing_Table extends Widget_Base
 			]
 		);
         $this->end_controls_section();
-        // Features Style
+                // Features Style
         $this->start_controls_section(
             'features_style',
             [
-                'label' => esc_html__('Features', 'elementor-magic-kit'),
+                'label' => esc_html__('Features', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_responsive_control(
 			'content_margin',
 			[
-				'label'      => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Margin', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -1211,7 +1211,7 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'features_item_options',
 			[
-				'label'     => esc_html__( 'Item', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Item', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -1219,19 +1219,19 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'features_align',
 			[
-				'label'   => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Alignment', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'flex-start' => [
-						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Left', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Center', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-center',
 					],
 					'flex-end' => [
-						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Right', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-right',
 					],
 				],
@@ -1245,7 +1245,7 @@ class Pricing_Table extends Widget_Base
         $this->add_responsive_control(
 			'features_margin',
 			[
-				'label'      => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Margin', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -1264,10 +1264,10 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'show_item_border',
 			[
-				'label'        => esc_html__( 'Items Border', 'elementor-magic-kit' ),
+				'label'        => esc_html__( 'Items Border', 'magic-elements' ),
 				'type'         => \Elementor\Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Show', 'elementor-magic-kit' ),
-				'label_off'    => esc_html__( 'Hide', 'elementor-magic-kit' ),
+				'label_on'     => esc_html__( 'Show', 'magic-elements' ),
+				'label_off'    => esc_html__( 'Hide', 'magic-elements' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
 			]
@@ -1275,9 +1275,9 @@ class Pricing_Table extends Widget_Base
         $this->add_group_control(
 			\Elementor\Group_Control_Border::get_type(),
 			[
-    'name'      => 'border',
-    'selector'  => '{{WRAPPER}} .f-item:not(:last-child)',
-    'condition' => [
+                'name'      => 'border',
+                'selector'  => '{{WRAPPER}} .f-item:not(:last-child)',
+                'condition' => [
                     'show_item_border' => 'yes'
                 ],
 			]
@@ -1285,7 +1285,7 @@ class Pricing_Table extends Widget_Base
         $this->add_responsive_control(
 			'features_padding',
 			[
-				'label'      => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Padding', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -1307,7 +1307,7 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'features_icon_options',
 			[
-				'label'     => esc_html__( 'Icon', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Icon', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -1315,7 +1315,7 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'icon_size',
 			[
-				'label'      => esc_html__( 'Icon Size', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Icon Size', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range'      => [
@@ -1341,7 +1341,7 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'icon_gap',
 			[
-				'label'      => esc_html__( 'Icon Gap', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Icon Gap', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range'      => [
@@ -1367,7 +1367,7 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'f_icon_color',
 			[
-				'label'     => esc_html__( 'Color', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .list-icon path' => 'fill: {{VALUE}}',
@@ -1377,7 +1377,7 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'features_content_options',
 			[
-				'label'     => esc_html__( 'Content', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Content', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -1392,7 +1392,7 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'f-item_color',
 			[
-				'label'     => esc_html__( 'Text Color', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Text Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .f-item' => 'color: {{VALUE}}',
@@ -1400,11 +1400,11 @@ class Pricing_Table extends Widget_Base
 			]
 		);
         $this->end_controls_section();
-        // Button
+                // Button
         $this->start_controls_section(
             'button_style',
             [
-                'label' => esc_html__('Button', 'elementor-magic-kit'),
+                'label' => esc_html__('Button', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -1418,19 +1418,19 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'btn_direction',
 			[
-				'label'   => esc_html__( 'Direction', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Direction', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'flex-start' => [
-						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Left', 'magic-elements' ),
 						'icon'  => 'eicon-h-align-left',
 					],
 					'space-evenly' => [
-						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Center', 'magic-elements' ),
 						'icon'  => 'eicon-h-align-center',
 					],
 					'flex-end' => [
-						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Right', 'magic-elements' ),
 						'icon'  => 'eicon-h-align-right',
 					],
 				],
@@ -1439,15 +1439,12 @@ class Pricing_Table extends Widget_Base
 				'selectors' => [
 					'{{WRAPPER}} .emk-button' => 'justify-content: {{VALUE}};',
 				],
-				'condition' => [
-					'show_btn_icon' => 'yes'
-				]
 			]
 		);
 		$this->add_responsive_control(
 			'btn_padding',
 			[
-				'label'      => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Padding', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -1466,7 +1463,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_responsive_control(
 			'btn_margin',
 			[
-				'label'      => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Margin', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -1488,7 +1485,7 @@ class Pricing_Table extends Widget_Base
 				'type' => \Elementor\Controls_Manager::DIVIDER,
 			]
 		);
-		// Tabs control start
+								  // Tabs control start
 		$this->start_controls_tabs(
 			'btn_style_tabs'
 		);
@@ -1496,13 +1493,13 @@ class Pricing_Table extends Widget_Base
 		$this->start_controls_tab(
 			'style_normal_tab',
 			[
-				'label' => esc_html__( 'Normal', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Normal', 'magic-elements' ),
 			]
 		);
 		$this->add_control(
 			'btn_bg',
 			[
-				'label'     => esc_html__( 'Background', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Background', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .emk-button a' => 'background-color: {{VALUE}}',
@@ -1512,7 +1509,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'btn_color',
 			[
-				'label'     => esc_html__( 'color', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .emk-button a' => 'color: {{VALUE}}',
@@ -1529,7 +1526,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_responsive_control(
 			'btn_radius',
 			[
-				'label'      => esc_html__( 'Radius', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Radius', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -1555,7 +1552,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'btn_icon_options',
 			[
-				'label'     => esc_html__( 'Icon', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Icon', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => [
@@ -1566,15 +1563,15 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'btn_icon_direction',
 			[
-				'label'   => esc_html__( 'Icon Direction', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Icon Direction', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'row-reverse' => [
-						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Left', 'magic-elements' ),
 						'icon'  => 'eicon-h-align-left',
 					],
 					'row' => [
-						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Right', 'magic-elements' ),
 						'icon'  => 'eicon-h-align-right',
 					],
 				],
@@ -1591,7 +1588,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'btn_icon_gap',
 			[
-				'label'      => esc_html__( 'Gap', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Gap', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range'      => [
@@ -1617,7 +1614,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'btn_icon_gap_reverse',
 			[
-				'label'      => esc_html__( 'Gap', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Gap', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range'      => [
@@ -1643,7 +1640,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'btn_icon_size',
 			[
-				'label'      => esc_html__( 'Size', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Size', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range'      => [
@@ -1672,7 +1669,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'btn_icon_color',
 			[
-				'label'     => esc_html__( 'Color', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .btn-icon path' => 'fill: {{VALUE}}',
@@ -1687,13 +1684,13 @@ class Pricing_Table extends Widget_Base
 		$this->start_controls_tab(
 			'style_hover_tab',
 			[
-				'label' => esc_html__( 'Hover', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Hover', 'magic-elements' ),
 			]
 		);
 		$this->add_control(
 			'btn_bg_hover',
 			[
-				'label'     => esc_html__( 'Background', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Background', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .emk-button a:hover' => 'background-color: {{VALUE}}',
@@ -1703,7 +1700,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'btn_color_hover',
 			[
-				'label'     => esc_html__( 'color', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .emk-button a:hover' => 'color: {{VALUE}}',
@@ -1720,7 +1717,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_responsive_control(
 			'btn_radius_hover',
 			[
-				'label'      => esc_html__( 'Radius', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Radius', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -1746,7 +1743,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'btn_icon_options_hover',
 			[
-				'label'     => esc_html__( 'Icon', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Icon', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => [
@@ -1757,7 +1754,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_control(
 			'btn_icon_color_hover',
 			[
-				'label'     => esc_html__( 'Color', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .emk-button a:hover .btn-icon path' => 'fill: {{VALUE}}',
@@ -1770,13 +1767,13 @@ class Pricing_Table extends Widget_Base
 		$this->end_controls_tab();
 		
 		$this->end_controls_tabs();
-				  // tabs control end==========
+		// tabs control end==========
         $this->end_controls_section();
-            // Ribbon ==============================
+        // Ribbon ==============================
         $this->start_controls_section(
             'ribbon_style',
             [
-                'label'     => esc_html__('Ribbon', 'elementor-magic-kit'),
+                'label'     => esc_html__('Ribbon', 'magic-elements'),
                 'tab'       => \Elementor\Controls_Manager::TAB_STYLE,
                 'condition' => [
                     'ribbon_control' => 'yes',   // Only show this control when switch is ON
@@ -1786,15 +1783,15 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'ribbon_direction',
 			[
-				'label'   => esc_html__( 'Direction', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Direction', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Left', 'magic-elements' ),
 						'icon'  => 'eicon-h-align-left',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Right', 'magic-elements' ),
 						'icon'  => 'eicon-h-align-right',
 					],
 				],
@@ -1803,7 +1800,7 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'ribbon_bg',
 			[
-				'label'     => esc_html__( 'Ribbon Background', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Ribbon Background', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ribbon .ribbon-bar' => 'background-color: {{VALUE}}',
@@ -1813,7 +1810,7 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'ribbon_ba',
 			[
-				'label'     => esc_html__( 'Ribbon Before After', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Ribbon Before After', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}}   .pricing-table-container .ribbon::before, .pricing-table-container .ribbon::after ' => 'border-color: {{VALUE}}',
@@ -1830,7 +1827,7 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'ribbon_color',
 			[
-				'label'     => esc_html__( 'Ribbon Text', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Ribbon Text', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}}   .ribbon-bar span' => 'color: {{VALUE}}',
@@ -1848,7 +1845,7 @@ class Pricing_Table extends Widget_Base
 
     }
 
-        /**
+                /**
      * Render Copyright output on the frontend.
      *
      * Written in PHP and used to generate the final HTML.
@@ -1880,7 +1877,7 @@ class Pricing_Table extends Widget_Base
         } 
     }
 
-        /**
+                /**
      * Render shortcode widget as plain content.
      *
      * Override the default behavior by printing the shortcode instead of rendering it.
@@ -1890,11 +1887,11 @@ class Pricing_Table extends Widget_Base
      */
     public function render_plain_content()
     {
-            // In plain mode, render without shortcode.
+                    // In plain mode, render without shortcode.
         echo esc_attr($this->get_settings('shortcode'));
     }
 
-        /**
+                /**
      * Render shortcode widget output in the editor.
      *
      * Written as a Backbone JavaScript template and used to generate the live preview.
