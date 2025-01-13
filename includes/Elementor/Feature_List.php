@@ -87,7 +87,7 @@ class Feature_List extends Widget_Base
     }
     public function get_style_depends()
     {
-        return ['emk-feature-list', 'emkit-style'];
+        return ['emk-feature-list'];
     }
 
     public function get_script_depends()

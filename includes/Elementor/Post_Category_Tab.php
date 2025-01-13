@@ -88,7 +88,7 @@ class Post_Category_Tab extends Widget_Base
 
     public function get_style_depends()
     {
-        return ['emk-post-tab', 'emkit-style'];
+        return ['emk-post-tab'];
     }
 
     public function get_script_depends()
