@@ -39,12 +39,16 @@ if (!defined('ABSPATH')) {
             
             <?php
             $widget_list = \MagicElements\Load_Elementor::getWidgetList();
+            $default_widgets = \MagicElements\Load_Elementor::defaultWidgets();
             $widgets = [];
             foreach($widget_list as $widget) {
                 $widget_key = strtolower(str_replace('_', '', $widget));
                 $widgets[$widget_key] = esc_html($widget);
             }
-            $enabled_widgets = get_option('magic_elements_enabled_widgets', array());
+            $enabled_widgets = get_option('magic_elements_enabled_widgets', '');
+            if(!is_array($enabled_widgets)){
+                $enabled_widgets = $default_widgets;
+            }
 
             foreach($widgets as $widget_key => $widget_label) : 
                 $formatted_label = str_replace('_', ' ', $widget_label);

@@ -227,6 +227,25 @@ class Load_Elementor
             'Tab',
         ];
     }
+    public static function defaultWidgets()
+    {
+        return [
+            'image',
+            'button',
+            'pricingtable',
+            'texteditor',
+            'imageaccordion',
+            'flipcard',
+            'heading',
+            'postcategorytab',
+            'featurelist',
+            'accordion',
+            'counter',
+            'categorylist',
+            'card',
+            'tab',
+        ];
+    }
     /**
      * Widget files
      *
