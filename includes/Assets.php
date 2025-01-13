@@ -93,8 +93,8 @@ class Assets
         }
     }
     public function register_admin_assets() {
-        $screen = get_current_screen();
-        if ($screen && $screen->id === 'toplevel_page_magic-kit-dashboard') {
+        $screen = get_current_screen();        
+        if ($screen && $screen->id === 'toplevel_page_magic-elements-dashboard') {
             wp_enqueue_style(
                 'magic-element-admin',
                 MAGIC_ELEMENTS_ASSETS . '/dist/admin.css',

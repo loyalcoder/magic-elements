@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
     exit;
 } 
 
-    /**
+/**
  * Magic Elements for Elementor Extension
  *
  * Elementor widget for Accordion.

@@ -45,7 +45,7 @@ if (!defined('ABSPATH')) {
                 $widget_key = strtolower(str_replace('_', '', $widget));
                 $widgets[$widget_key] = esc_html($widget);
             }
-            $enabled_widgets = get_option('magic_kit_enabled_widgets', array());
+            $enabled_widgets = get_option('magic_elements_enabled_widgets', array());
 
             foreach($widgets as $widget_key => $widget_label) : 
                 $formatted_label = str_replace('_', ' ', $widget_label);
@@ -54,7 +54,7 @@ if (!defined('ABSPATH')) {
                     <label class="toggle-switch" for="toggle-<?php echo esc_attr($widget_key); ?>">
                         <input type="checkbox" 
                                id="toggle-<?php echo esc_attr($widget_key); ?>"
-                               name="magic_kit_enabled_widgets[]" 
+                               name="magic_elements_enabled_widgets[]" 
                                value="<?php echo esc_attr($widget_key); ?>" 
                                <?php checked(in_array($widget_key, $enabled_widgets)); ?>>
                         <span class="toggle-slider"></span>
