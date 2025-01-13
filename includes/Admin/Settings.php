@@ -2,6 +2,10 @@
 
 namespace MagicElements\Admin;
 
+// Exit if accessed directly
+if (!defined('ABSPATH')) {
+    exit;
+}
 /**
  * Class Settings
  * 
@@ -14,6 +18,7 @@ namespace MagicElements\Admin;
  * @package MagicElements\Admin
  * @since 1.0.0
  */
+
 class Settings
 {
     /**

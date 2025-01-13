@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
  * - Loading AJAX handlers
  * - Managing admin-side plugin components
  *
- * @package Magic_Elements
+ * @package MagicElements
  * @since 1.0.0
  */
 class Admin
