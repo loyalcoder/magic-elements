@@ -3,7 +3,7 @@
     /**
  * Elementor Classes.
  *
- * @package Image Elementor Magic Kit
+ * @package Image Magic Elements
  */
 
 
@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 }
 
     /**
- * Magic Kit for Elementor Extension
+ * magic-elements for Elementor Extension
  *
  * Elementor widget for Image.
  *
@@ -50,7 +50,7 @@ class Card extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Magic Card', 'elementor-magic-kit');
+        return esc_html__('Magic Card', 'magic-elements');
     }
 
         /**
@@ -120,7 +120,7 @@ class Card extends Widget_Base
         $this->start_controls_section(
             'card_section',
             [
-                'label' => esc_html__('Card', 'elementor-magic-kit'),
+                'label' => esc_html__('Card', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -128,27 +128,27 @@ class Card extends Widget_Base
         $this->add_control(
             'card_title',
             [
-                'label'       => esc_html__('Title', 'elementor-magic-kit'),
+                'label'       => esc_html__('Title', 'magic-elements'),
                 'type'        => \Elementor\Controls_Manager::TEXT,
-                'default'     => esc_html__('Card Title', 'elementor-magic-kit'),
-                'placeholder' => esc_html__('Enter your title', 'elementor-magic-kit'),
+                'default'     => esc_html__('Card Title', 'magic-elements'),
+                'placeholder' => esc_html__('Enter your title', 'magic-elements'),
             ]
         );
 
         $this->add_control(
             'card_description',
             [
-                'label'       => esc_html__('Description', 'elementor-magic-kit'),
+                'label'       => esc_html__('Description', 'magic-elements'),
                 'type'        => \Elementor\Controls_Manager::TEXTAREA,
-                'default'     => esc_html__('This is the card description.', 'elementor-magic-kit'),
-                'placeholder' => esc_html__('Enter your description', 'elementor-magic-kit'),
+                'default'     => esc_html__('This is the card description.', 'magic-elements'),
+                'placeholder' => esc_html__('Enter your description', 'magic-elements'),
             ]
         );
 
         $this->add_control(
             'card_image',
             [
-                'label'   => esc_html__('Image', 'elementor-magic-kit'),
+                'label'   => esc_html__('Image', 'magic-elements'),
                 'type'    => \Elementor\Controls_Manager::MEDIA,
                 'default' => [
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
@@ -159,19 +159,19 @@ class Card extends Widget_Base
         $this->add_control(
             'card_button_text',
             [
-                'label'       => esc_html__('Button Text', 'elementor-magic-kit'),
+                'label'       => esc_html__('Button Text', 'magic-elements'),
                 'type'        => \Elementor\Controls_Manager::TEXT,
-                'default'     => esc_html__('Read More', 'elementor-magic-kit'),
-                'placeholder' => esc_html__('Enter button text', 'elementor-magic-kit'),
+                'default'     => esc_html__('Read More', 'magic-elements'),
+                'placeholder' => esc_html__('Enter button text', 'magic-elements'),
             ]
         );
                 
         $this->add_control(
             'card_button_link',
             [
-                'label'       => esc_html__('Button Link', 'elementor-magic-kit'),
+                'label'       => esc_html__('Button Link', 'magic-elements'),
                 'type'        => \Elementor\Controls_Manager::URL,
-                'placeholder' => esc_html__('https://your-link.com', 'elementor-magic-kit'),
+                'placeholder' => esc_html__('https://your-link.com', 'magic-elements'),
                 'default'     => [
                     'url' => '',
                 ],
@@ -184,7 +184,7 @@ class Card extends Widget_Base
         $this->start_controls_section(
             'card_style_section',
             [
-                'label' => esc_html__('Card', 'elementor-magic-kit'),
+                'label' => esc_html__('Card', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -192,19 +192,19 @@ class Card extends Widget_Base
         $this->add_responsive_control(
             'card_align',
             [
-                'label'   => esc_html__('Alignment', 'elementor-magic-kit'),
+                'label'   => esc_html__('Alignment', 'magic-elements'),
                 'type'    => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
-                        'title' => esc_html__('Left', 'elementor-magic-kit'),
+                        'title' => esc_html__('Left', 'magic-elements'),
                         'icon'  => 'eicon-text-align-left',
                     ],
                     'center' => [
-                        'title' => esc_html__('Center', 'elementor-magic-kit'),
+                        'title' => esc_html__('Center', 'magic-elements'),
                         'icon'  => 'eicon-text-align-center',
                     ],
                     'right' => [
-                        'title' => esc_html__('Right', 'elementor-magic-kit'),
+                        'title' => esc_html__('Right', 'magic-elements'),
                         'icon'  => 'eicon-text-align-right',
                     ],
                 ],
@@ -219,7 +219,7 @@ class Card extends Widget_Base
         $this->add_control(
             'card_width',
             [
-                'label'      => esc_html__('Card Width', 'elementor-magic-kit'),
+                'label'      => esc_html__('Card Width', 'magic-elements'),
                 'type'       => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range'      => [
@@ -245,7 +245,7 @@ class Card extends Widget_Base
         $this->add_control(
             'card_height',
             [
-                'label'      => esc_html__('Card Height', 'elementor-magic-kit'),
+                'label'      => esc_html__('Card Height', 'magic-elements'),
                 'type'       => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range'      => [
@@ -263,7 +263,7 @@ class Card extends Widget_Base
         $this->add_control(
             'card_border_color',
             [
-                'label'     => esc_html__('Border Color', 'elementor-magic-kit'),
+                'label'     => esc_html__('Border Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .card-widget' => 'border-color: {{VALUE}};',
@@ -274,7 +274,7 @@ class Card extends Widget_Base
         $this->add_control(
             'card_border_width',
             [
-                'label'      => esc_html__('Border Width', 'elementor-magic-kit'),
+                'label'      => esc_html__('Border Width', 'magic-elements'),
                 'type'       => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em', '%'],
                 'range'      => [
@@ -292,7 +292,7 @@ class Card extends Widget_Base
         $this->add_control(
             'card_border_radius',
             [
-                'label'      => esc_html__('Border Radius', 'elementor-magic-kit'),
+                'label'      => esc_html__('Border Radius', 'magic-elements'),
                 'type'       => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range'      => [
@@ -311,7 +311,7 @@ class Card extends Widget_Base
         $this->add_control(
             'card_padding',
             [
-                'label'      => esc_html__('Padding', 'elementor-magic-kit'),
+                'label'      => esc_html__('Padding', 'magic-elements'),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
@@ -335,7 +335,7 @@ class Card extends Widget_Base
         $this->start_controls_section(
             'title_section',
             [
-                'label' => esc_html__('Title', 'elementor-magic-kit'),
+                'label' => esc_html__('Title', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -344,7 +344,7 @@ class Card extends Widget_Base
         $this->add_control(
             'card_title_color',
             [
-                'label'     => esc_html__('Title Color', 'elementor-magic-kit'),
+                'label'     => esc_html__('Title Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .card-title' => 'color: {{VALUE}};',
@@ -365,7 +365,7 @@ class Card extends Widget_Base
         $this->start_controls_section(
             'description_section',
             [
-                'label' => esc_html__('Description', 'elementor-magic-kit'),
+                'label' => esc_html__('Description', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -374,7 +374,7 @@ class Card extends Widget_Base
         $this->add_control(
             'card_description_color',
             [
-                'label'     => esc_html__('Description Color', 'elementor-magic-kit'),
+                'label'     => esc_html__('Description Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .card-description' => 'color: {{VALUE}};',
@@ -395,7 +395,7 @@ class Card extends Widget_Base
         $this->start_controls_section(
             'button_section',
             [
-                'label' => esc_html__('Button', 'elementor-magic-kit'),
+                'label' => esc_html__('Button', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -407,7 +407,7 @@ class Card extends Widget_Base
         $this->start_controls_tab(
             'button_normal_tab',
             [
-                'label' => esc_html__('Normal', 'elementor-magic-kit'),
+                'label' => esc_html__('Normal', 'magic-elements'),
             ]
         );
 
@@ -415,7 +415,7 @@ class Card extends Widget_Base
         $this->add_control(
             'card_button_background_color',
             [
-                'label'     => esc_html__('Background Color', 'elementor-magic-kit'),
+                'label'     => esc_html__('Background Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .card-button' => 'background-color: {{VALUE}};',
@@ -427,7 +427,7 @@ class Card extends Widget_Base
         $this->add_control(
             'card_button_color',
             [
-                'label'     => esc_html__('Text Color', 'elementor-magic-kit'),
+                'label'     => esc_html__('Text Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .card-button' => 'color: {{VALUE}};',
@@ -448,7 +448,7 @@ class Card extends Widget_Base
         $this->add_control(
             'card_button_padding',
             [
-                'label'      => esc_html__('Padding', 'elementor-magic-kit'),
+                'label'      => esc_html__('Padding', 'magic-elements'),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
@@ -463,7 +463,7 @@ class Card extends Widget_Base
         $this->start_controls_tab(
             'button_hover_tab',
             [
-                'label' => esc_html__('Hover', 'elementor-magic-kit'),
+                'label' => esc_html__('Hover', 'magic-elements'),
             ]
         );
 
@@ -471,7 +471,7 @@ class Card extends Widget_Base
         $this->add_control(
             'card_button_hover_color',
             [
-                'label'     => esc_html__('Background Hover Color', 'elementor-magic-kit'),
+                'label'     => esc_html__('Background Hover Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .card-button:hover' => 'background-color: {{VALUE}};',
@@ -482,7 +482,7 @@ class Card extends Widget_Base
         $this->add_control(
             'card_button_hover_text_color',
             [
-                'label'     => esc_html__('Text Hover Color', 'elementor-magic-kit'),
+                'label'     => esc_html__('Text Hover Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .card-button:hover' => 'color: {{VALUE}};',

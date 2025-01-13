@@ -3,7 +3,7 @@
     /**
  * Elementor Classes.
  *
- * @package Post Category Tab Elementor Magic Kit
+ * @package Post Category Tab Magic Elements
  */
 
 
@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 } 
 
     /**
- * Magic Kit for Elementor Extension
+ * Magic Elements for Elementor Extension
  *
  * Elementor widget for Post Category Tab.
  *
@@ -50,7 +50,7 @@ class Post_Category_Tab extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Post Category Tab', 'elementor-magic-kit');
+        return esc_html__('Post Category Tab', 'magic-elements');
     }
 
         /**
@@ -119,7 +119,7 @@ class Post_Category_Tab extends Widget_Base
 		$this->start_controls_section(
 			'emk__post_section',
 			[
-				'label' => esc_html__( 'Post', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Post', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -127,20 +127,20 @@ class Post_Category_Tab extends Widget_Base
 		$this->add_control(
 			'emk__get_post_in',
 			[
-    'label'       => esc_html__( 'Select Category', 'elementor-magic-kit' ),
+    'label'       => esc_html__( 'Select Category', 'magic-elements' ),
     'type'        => \Elementor\Controls_Manager::SELECT2,
     'label_'      => true,
     'multiple'    => true,
     'options'     => $this->get_post_terms(),
     'default'     => [],
-    'description' => esc_html__( 'Select a category', 'elementor-magic-kit' ),
+    'description' => esc_html__( 'Select a category', 'magic-elements' ),
 			]
 		);
 
 		$this->add_control(
             'emk__post_per_page',
             [
-                'label'   => esc_html__('Posts per page', 'elementor-magic-kit'),
+                'label'   => esc_html__('Posts per page', 'magic-elements'),
                 'type'    => \Elementor\Controls_Manager::NUMBER,
                 'step'    => 1,
                 'default' => 3,
@@ -150,15 +150,15 @@ class Post_Category_Tab extends Widget_Base
         $this->add_control(
             'emk__post_order_by',
             [
-                'label'   => esc_html__('Post Order By', 'elementor-magic-kit'),
+                'label'   => esc_html__('Post Order By', 'magic-elements'),
                 'type'    => \Elementor\Controls_Manager::SELECT,
                 'default' => 'none',
                 'options' => [
-                    'none'  => esc_html__('None', 'elementor-magic-kit'),
-                    'ID'    => esc_html__('ID', 'elementor-magic-kit'),
-                    'title' => esc_html__('Title', 'elementor-magic-kit'),
-                    'name'  => esc_html__('Name', 'elementor-magic-kit'),
-                    'date'  => esc_html__('Date', 'elementor-magic-kit'),
+                    'none'  => esc_html__('None', 'magic-elements'),
+                    'ID'    => esc_html__('ID', 'magic-elements'),
+                    'title' => esc_html__('Title', 'magic-elements'),
+                    'name'  => esc_html__('Name', 'magic-elements'),
+                    'date'  => esc_html__('Date', 'magic-elements'),
                 ],
             ]
         );
@@ -166,12 +166,12 @@ class Post_Category_Tab extends Widget_Base
         $this->add_control(
             'emk__post_case_order',
             [
-                'label'   => esc_html__('Post Order', 'elementor-magic-kit'),
+                'label'   => esc_html__('Post Order', 'magic-elements'),
                 'type'    => \Elementor\Controls_Manager::SELECT,
                 'default' => 'DESC',
                 'options' => [
-                    'DESC' => esc_html__('DESC', 'elementor-magic-kit'),
-                    'ASC'  => esc_html__('ASC', 'elementor-magic-kit'),
+                    'DESC' => esc_html__('DESC', 'magic-elements'),
+                    'ASC'  => esc_html__('ASC', 'magic-elements'),
                 ],
             ]
         );
@@ -183,7 +183,7 @@ class Post_Category_Tab extends Widget_Base
             $this->start_controls_section(
                 'tab_styles_section',
                 [
-                    'label' => esc_html__( 'Tab Styles', 'elementor-magic-kit' ),
+                    'label' => esc_html__( 'Tab Styles', 'magic-elements' ),
                     'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
                 ]
             );
@@ -191,7 +191,7 @@ class Post_Category_Tab extends Widget_Base
             $this->add_control(
                 'tab_color',
                 [
-                    'label'     => esc_html__( 'Tab Text Color', 'elementor-magic-kit' ),
+                    'label'     => esc_html__( 'Tab Text Color', 'magic-elements' ),
                     'type'      => \Elementor\Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .nav-tabs .nav-item .nav-link' => 'color: {{VALUE}};',
@@ -202,7 +202,7 @@ class Post_Category_Tab extends Widget_Base
             $this->add_control(
                 'tab_bg_color',
                 [
-                    'label'     => esc_html__( 'Tab Background Color', 'elementor-magic-kit' ),
+                    'label'     => esc_html__( 'Tab Background Color', 'magic-elements' ),
                     'type'      => \Elementor\Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .nav-tabs .nav-item .nav-link' => 'background-color: {{VALUE}};',
@@ -213,7 +213,7 @@ class Post_Category_Tab extends Widget_Base
             $this->add_control(
                 'active_tab_color',
                 [
-                    'label'     => esc_html__( 'Active Tab Text Color', 'elementor-magic-kit' ),
+                    'label'     => esc_html__( 'Active Tab Text Color', 'magic-elements' ),
                     'type'      => \Elementor\Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .nav-tabs .nav-item .nav-link.active' => 'color: {{VALUE}};',
@@ -224,7 +224,7 @@ class Post_Category_Tab extends Widget_Base
             $this->add_control(
                 'active_tab_bg_color',
                 [
-                    'label'     => esc_html__( 'Active Tab Background Color', 'elementor-magic-kit' ),
+                    'label'     => esc_html__( 'Active Tab Background Color', 'magic-elements' ),
                     'type'      => \Elementor\Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .nav-tabs .nav-item .nav-link.active' => 'background-color: {{VALUE}};',
@@ -238,7 +238,7 @@ class Post_Category_Tab extends Widget_Base
             $this->start_controls_section(
                 'post_styles_section',
                 [
-                    'label' => esc_html__( 'Post Styles', 'elementor-magic-kit' ),
+                    'label' => esc_html__( 'Post Styles', 'magic-elements' ),
                     'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
                 ]
             );
@@ -246,7 +246,7 @@ class Post_Category_Tab extends Widget_Base
             $this->add_control(
                 'post_border_color',
                 [
-                    'label'     => esc_html__( 'Post Border Color', 'elementor-magic-kit' ),
+                    'label'     => esc_html__( 'Post Border Color', 'magic-elements' ),
                     'type'      => \Elementor\Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .post' => 'border-color: {{VALUE}};',
@@ -257,7 +257,7 @@ class Post_Category_Tab extends Widget_Base
             $this->add_control(
                 'img_height',
                 [
-                    'label'      => esc_html__( 'Image Height', 'elementor-magic-kit' ),
+                    'label'      => esc_html__( 'Image Height', 'magic-elements' ),
                     'type'       => \Elementor\Controls_Manager::SLIDER,
                     'size_units' => [ 'px', '%' ],
                     'range'      => [
@@ -276,7 +276,7 @@ class Post_Category_Tab extends Widget_Base
             $this->add_control(
                 'post_title_color',
                 [
-                    'label'     => esc_html__( 'Post Title Color', 'elementor-magic-kit' ),
+                    'label'     => esc_html__( 'Post Title Color', 'magic-elements' ),
                     'type'      => \Elementor\Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .post-title' => 'color: {{VALUE}};',
@@ -288,14 +288,14 @@ class Post_Category_Tab extends Widget_Base
                 \Elementor\Group_Control_Typography::get_type(),
                 [
                     'name'     => 'post_title_typography',
-                    'label'    => esc_html__( 'Post Title Typography', 'elementor-magic-kit' ),
+                    'label'    => esc_html__( 'Post Title Typography', 'magic-elements' ),
                     'selector' => '{{WRAPPER}} .post-title',
                 ]
             );
             $this->add_responsive_control(
                 'post_tab_margin',
                 [
-                    'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
+                    'label' => esc_html__( 'Margin', 'magic-elements' ),
                     'type' => \Elementor\Controls_Manager::SLIDER,
                     'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
                     'range' => [
@@ -317,7 +317,7 @@ class Post_Category_Tab extends Widget_Base
             $this->add_control(
                 'post_author_color',
                 [
-                    'label'     => esc_html__( 'Post Author Color', 'elementor-magic-kit' ),
+                    'label'     => esc_html__( 'Post Author Color', 'magic-elements' ),
                     'type'      => \Elementor\Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .author' => 'color: {{VALUE}};',
@@ -329,7 +329,7 @@ class Post_Category_Tab extends Widget_Base
                 \Elementor\Group_Control_Typography::get_type(),
                 [
                     'name'     => 'post_author_typography',
-                    'label'    => esc_html__( 'Post Author Typography', 'elementor-magic-kit' ),
+                    'label'    => esc_html__( 'Post Author Typography', 'magic-elements' ),
                     'selector' => '{{WRAPPER}} .author',
                 ]
             );
