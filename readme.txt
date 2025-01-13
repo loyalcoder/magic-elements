@@ -1,4 +1,4 @@
-=== Elementor Magic Kit ===
+=== Magic Elements ===
 Contributors: loyalcoder  
 Tags: elementor, elementor widgets, elementor templates, page builder, addons  
 Requires at least: 5.0  
@@ -8,11 +8,11 @@ Stable tag: 1.0.0
 License: GPL v3 or later  
 License URI: https://www.gnu.org/licenses/gpl-3.0.html  
 
-Enhance your Elementor experience with Elementor Magic Kit! This plugin offers advanced widgets, templates, and features for creating stunning, customizable designs with ease.
+Enhance your Elementor experience with Magic Elements! This plugin offers advanced widgets, templates, and features for creating stunning, customizable designs with ease.
 
 == Description ==
 
-**Elementor Magic Kit** is a comprehensive extension for Elementor, designed to enhance your page-building capabilities with a wide variety of customizable widgets, pre-designed templates, and advanced features. Whether you're a beginner or an experienced developer, this plugin provides tools to make your website-building process faster and easier.
+**Magic Elements** is a comprehensive extension for Elementor, designed to enhance your page-building capabilities with a wide variety of customizable widgets, pre-designed templates, and advanced features. Whether you're a beginner or an experienced developer, this plugin provides tools to make your website-building process faster and easier.
 
 ### Features:
 - A collection of unique and powerful Elementor widgets.

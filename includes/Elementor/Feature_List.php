@@ -50,7 +50,7 @@ class Feature_List extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Feature List', 'elementor-magic-kit');
+        return esc_html__('Feature List', 'magic-elements');
     }
 
           /**
@@ -117,17 +117,17 @@ class Feature_List extends Widget_Base
         $this->start_controls_section(
 			'feature_list_content_section',
 			[
-				'label' => esc_html__( 'Feature Title', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Feature Title', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
         $this->add_control(
 			'feature_list_title',
 			[
-				'label'       => esc_html__( 'Title', 'elementor-magic-kit' ),
+				'label'       => esc_html__( 'Title', 'magic-elements' ),
 				'type'        => \Elementor\Controls_Manager::TEXT,
-				'default'     => esc_html__( 'Basic', 'elementor-magic-kit' ),
-				'placeholder' => esc_html__( 'Type your title here', 'elementor-magic-kit' ),
+				'default'     => esc_html__( 'Basic', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your title here', 'magic-elements' ),
 			]
 		);
         $this->end_controls_section();
@@ -135,7 +135,7 @@ class Feature_List extends Widget_Base
         $this->start_controls_section(
 			'feature_list_section',
 			[
-				'label' => esc_html__( 'Feature List', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Feature List', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -144,7 +144,7 @@ class Feature_List extends Widget_Base
         $repeater->add_control(
 			'feature_list_icons',
 			[
-				'label'   => esc_html__( 'Icon', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Icon', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::ICONS,
 				'default' => [
 					'value'   => 'fas fa-check',
@@ -156,33 +156,33 @@ class Feature_List extends Widget_Base
         $repeater->add_control(
 			'feature_list_item',
 			[
-				'label'       => esc_html__( 'Title', 'elementor-magic-kit' ),
+				'label'       => esc_html__( 'Title', 'magic-elements' ),
 				'type'        => \Elementor\Controls_Manager::TEXT,
-				'default'     => esc_html__( 'Feature Item', 'elementor-magic-kit' ),
-				'placeholder' => esc_html__( 'Type your title here', 'elementor-magic-kit' ),
+				'default'     => esc_html__( 'Feature Item', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your title here', 'magic-elements' ),
 			]
 		);
         $this->add_control(
 			'feature_list',
 			[
-				'label'   => esc_html__( 'Repeater List', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Repeater List', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::REPEATER,
 				'fields'  => $repeater->get_controls(),
 				'default' => [
 					[
-						'feature_list_item' => esc_html__( 'Feature Item 1', 'elementor-magic-kit' ),
+						'feature_list_item' => esc_html__( 'Feature Item 1', 'magic-elements' ),
 					],
 					[
-						'feature_list_item' => esc_html__( 'Feature Item 2', 'elementor-magic-kit' ),
+						'feature_list_item' => esc_html__( 'Feature Item 2', 'magic-elements' ),
 					],
 					[
-						'feature_list_item' => esc_html__( 'Feature Item 3', 'elementor-magic-kit' ),
+						'feature_list_item' => esc_html__( 'Feature Item 3', 'magic-elements' ),
 					],
 					[
-						'feature_list_item' => esc_html__( 'Feature Item 4', 'elementor-magic-kit' ),
+						'feature_list_item' => esc_html__( 'Feature Item 4', 'magic-elements' ),
 					],
 					[
-						'feature_list_item' => esc_html__( 'Feature Item 5', 'elementor-magic-kit' ),
+						'feature_list_item' => esc_html__( 'Feature Item 5', 'magic-elements' ),
 					],
 				],
 				'title_field' => '{{{ feature_list_item }}}',
@@ -194,23 +194,23 @@ class Feature_List extends Widget_Base
         $this->start_controls_section(
 			'button_content_section',
 			[
-				'label' => esc_html__( 'Button', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Button', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
         $this->add_control(
 			'button_text',
 			[
-				'label' => esc_html__( 'Title', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Title', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Free', 'elementor-magic-kit' ),
-				'placeholder' => esc_html__( 'Type your title here', 'elementor-magic-kit' ),
+				'default' => esc_html__( 'Free', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your title here', 'magic-elements' ),
 			]
 		);
         $this->add_control(
 			'button_link',
 			[
-				'label' => esc_html__( 'Link', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Link', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::URL,
 				'options' => [ 'url', 'is_external', 'nofollow' ],
 				'default' => [
@@ -227,26 +227,26 @@ class Feature_List extends Widget_Base
         $this->start_controls_section(
 			'feature_box_section',
 			[
-				'label' => esc_html__( 'Feature Box', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Feature Box', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
 		$this->add_responsive_control(
 			'feature_box_align',
 			[
-				'label' => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Alignment', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Left', 'magic-elements' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Center', 'magic-elements' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Right', 'magic-elements' ),
 						'icon' => 'eicon-text-align-right',
 					],
 				],
@@ -265,7 +265,7 @@ class Feature_List extends Widget_Base
 		$this->start_controls_tab(
 			'style_normal_tab',
 			[
-				'label' => esc_html__( 'Normal', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Normal', 'magic-elements' ),
 			]
 		);
         $this->add_group_control(
@@ -286,7 +286,7 @@ class Feature_List extends Widget_Base
         $this->add_responsive_control(
 			'feature_box_normal_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -305,7 +305,7 @@ class Feature_List extends Widget_Base
         $this->add_responsive_control(
 			'feature_box_normal_padding',
 			[
-				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -328,7 +328,7 @@ class Feature_List extends Widget_Base
 		$this->start_controls_tab(
 			'style_hover_tab',
 			[
-				'label' => esc_html__( 'Hover', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Hover', 'magic-elements' ),
 			]
 		);
         $this->add_group_control(
@@ -342,7 +342,7 @@ class Feature_List extends Widget_Base
         $this->add_control(
 			'feature_box_hover_transition',
 			[
-				'label' => esc_html__( 'Transition Duration', 'elementor-magic-kit' ) . ' (s)',
+				'label' => esc_html__( 'Transition Duration', 'magic-elements' ) . ' (s)',
 				'type'  => \Elementor\Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -366,7 +366,7 @@ class Feature_List extends Widget_Base
         $this->add_responsive_control(
 			'feature_box_hover_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -385,7 +385,7 @@ class Feature_List extends Widget_Base
         $this->add_responsive_control(
 			'feature_box_hover_padding',
 			[
-				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -412,26 +412,26 @@ class Feature_List extends Widget_Base
         $this->start_controls_section(
             $this->get_name() .'_feature_title_section',
 			[
-				'label' => esc_html__( 'Feature Title', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Feature Title', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
         $this->add_responsive_control(
 			'feature_title_align',
 			[
-				'label' => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Alignment', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Left', 'magic-elements' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Center', 'magic-elements' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Right', 'magic-elements' ),
 						'icon' => 'eicon-text-align-right',
 					],
 				],
@@ -445,7 +445,7 @@ class Feature_List extends Widget_Base
         $this->add_control(
 			'feature_title_color',
 			[
-				'label' => esc_html__( 'Text Color', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Text Color', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .feature_list h2' => 'color: {{VALUE}}',
@@ -484,7 +484,7 @@ class Feature_List extends Widget_Base
         $this->add_responsive_control(
 			'feature_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -503,7 +503,7 @@ class Feature_List extends Widget_Base
         $this->add_responsive_control(
 			'feature_title_padding',
 			[
-				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -522,7 +522,7 @@ class Feature_List extends Widget_Base
         $this->add_responsive_control(
 			'feature_title_margin',
 			[
-				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -543,14 +543,14 @@ class Feature_List extends Widget_Base
         $this->start_controls_section(
 			'feature_icon_section',
 			[
-				'label' => esc_html__( 'Icon', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Icon', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
         $this->add_control(
 			'feature_icon_color',
 			[
-				'label' => esc_html__( 'Icon Color', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Icon Color', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .feature svg' => 'fill: {{VALUE}}',
@@ -582,7 +582,7 @@ class Feature_List extends Widget_Base
         $this->add_responsive_control(
 			'feature_icon_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors'  => [
@@ -593,7 +593,7 @@ class Feature_List extends Widget_Base
         $this->add_responsive_control(
 			'feature_icon_padding',
 			[
-				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -615,7 +615,7 @@ class Feature_List extends Widget_Base
 		$this->start_controls_section(
 			'feature_item_section',
 			[
-				'label' => esc_html__( 'Feature Item', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Feature Item', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -623,7 +623,7 @@ class Feature_List extends Widget_Base
 		$this->add_control(
 			'feature_item_color',
 			[
-				'label' => esc_html__( 'Text Color', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Text Color', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .feature h4' => 'color: {{VALUE}}',
@@ -640,7 +640,7 @@ class Feature_List extends Widget_Base
 		$this->add_responsive_control(
 			'feature_item_gap',
 			[
-				'label' => esc_html__( 'Gap', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Gap', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range'      => [
@@ -666,7 +666,7 @@ class Feature_List extends Widget_Base
 		$this->add_responsive_control(
 			'feature_item_margin',
 			[
-				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -690,26 +690,26 @@ class Feature_List extends Widget_Base
 		$this->start_controls_section(
 			'feature_button_section',
 			[
-				'label' => esc_html__( 'Button', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Button', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
 		$this->add_responsive_control(
 			'feature_button_align',
 			[
-				'label' => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Alignment', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Left', 'magic-elements' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Center', 'magic-elements' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Right', 'magic-elements' ),
 						'icon' => 'eicon-text-align-right',
 					],
 				],
@@ -735,13 +735,13 @@ class Feature_List extends Widget_Base
 		$this->start_controls_tab(
 			'button_style_normal_tab',
 			[
-				'label' => esc_html__( 'Normal', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Normal', 'magic-elements' ),
 			]
 		);
 		$this->add_control(
 			'button_normal_text_color',
 			[
-				'label' => esc_html__( 'Text Color', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Text Color', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .feature_button a' => 'color: {{VALUE}}',
@@ -773,7 +773,7 @@ class Feature_List extends Widget_Base
 		$this->add_responsive_control(
 			'button_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -792,7 +792,7 @@ class Feature_List extends Widget_Base
 		$this->add_responsive_control(
 			'button_padding',
 			[
-				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -814,13 +814,13 @@ class Feature_List extends Widget_Base
 		$this->start_controls_tab(
 			'button_style_hover_tab',
 			[
-				'label' => esc_html__( 'Hover', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Hover', 'magic-elements' ),
 			]
 		);
 		$this->add_control(
 			'button_hover_text_color',
 			[
-				'label' => esc_html__( 'Text Color', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Text Color', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .feature_button a:hover' => 'color: {{VALUE}}',
@@ -838,7 +838,7 @@ class Feature_List extends Widget_Base
 		$this->add_control(
 			'button_hover_transition',
 			[
-				'label' => esc_html__( 'Transition Duration', 'elementor-magic-kit' ) . ' (s)',
+				'label' => esc_html__( 'Transition Duration', 'magic-elements' ) . ' (s)',
 				'type'  => \Elementor\Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -870,7 +870,7 @@ class Feature_List extends Widget_Base
 		$this->add_responsive_control(
 			'button_hover_padding',
 			[
-				'label' => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -901,7 +901,7 @@ class Feature_List extends Widget_Base
 		$this->add_responsive_control(
 			'button_margin',
 			[
-				'label' => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [

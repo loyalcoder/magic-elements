@@ -16,7 +16,7 @@
                 </div>
         <?php    }
         }else{
-            echo esc_html__("Feature list not found", "elementor-magic-kit");
+            echo esc_html__("Feature list not found", "magic-elements");
         } ?>
     </div>
     <div class="feature_button">
