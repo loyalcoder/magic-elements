@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name:       Magic Elements
- * Plugin URI:        https://loyalcoder.com
+ * Plugin URI:        https://magickit.loyalcoder.com/
  * Description:       Magic Elements is a comprehensive extension for Elementor, providing advanced features, custom widgets, and templates to enhance your page-building experience. Perfect for users seeking seamless design customization with ease.
  * Version:           1.0.0
  * Author:            LoyalCoder
