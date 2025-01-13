@@ -3,7 +3,7 @@
     /**
  * Elementor Classes.
  *
- * @package Text Editor Elementor Magic Kit
+ * @package Text Editor Magic Elements
  */
 
 namespace Elementor_Magic_Kit\Elementor;
@@ -49,7 +49,7 @@ class Text_Editor extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Text Editor', 'elementor-magic-kit');
+        return esc_html__('Text Editor', 'magic-elements');
     }
 
         /**
@@ -112,37 +112,37 @@ class Text_Editor extends Widget_Base
         $this->start_controls_section(
 			'text_editor_section',
 			[
-				'label' => esc_html__( 'Text Editor', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Text Editor', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
         $this->add_control(
 			'text_editor_description',
 			[
-				'label'       => esc_html__( 'Description', 'elementor-magic-kit' ),
+				'label'       => esc_html__( 'Description', 'magic-elements' ),
 				'type'        => \Elementor\Controls_Manager::TEXTAREA,
-				'default'     => esc_html__( 'Proper nutrition plays a crucial role in maintaining good oral health. The foods you choose to include in your diet can either promote dental health or contribute to dental problems.', 'elementor-magic-kit' ),
-				'placeholder' => esc_html__( 'Type your description here', 'elementor-magic-kit' ),
+				'default'     => esc_html__( 'Proper nutrition plays a crucial role in maintaining good oral health. The foods you choose to include in your diet can either promote dental health or contribute to dental problems.', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your description here', 'magic-elements' ),
 			]
 		);
         $this->add_responsive_control(
 			'text_columns',
 			[
-				'label'     => esc_html__( 'Columns', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Columns', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::SELECT,
 				'separator' => 'before',
 				'options'   => [
-					''   => esc_html__( 'Default', 'elementor-magic-kit' ),
-					'1'  => esc_html__( '1', 'elementor-magic-kit' ),
-					'2'  => esc_html__( '2', 'elementor-magic-kit' ),
-					'3'  => esc_html__( '3', 'elementor-magic-kit' ),
-					'4'  => esc_html__( '4', 'elementor-magic-kit' ),
-					'5'  => esc_html__( '5', 'elementor-magic-kit' ),
-					'6'  => esc_html__( '6', 'elementor-magic-kit' ),
-					'7'  => esc_html__( '7', 'elementor-magic-kit' ),
-					'8'  => esc_html__( '8', 'elementor-magic-kit' ),
-					'9'  => esc_html__( '9', 'elementor-magic-kit' ),
-					'10' => esc_html__( '10', 'elementor-magic-kit' ),
+					''   => esc_html__( 'Default', 'magic-elements' ),
+					'1'  => esc_html__( '1', 'magic-elements' ),
+					'2'  => esc_html__( '2', 'magic-elements' ),
+					'3'  => esc_html__( '3', 'magic-elements' ),
+					'4'  => esc_html__( '4', 'magic-elements' ),
+					'5'  => esc_html__( '5', 'magic-elements' ),
+					'6'  => esc_html__( '6', 'magic-elements' ),
+					'7'  => esc_html__( '7', 'magic-elements' ),
+					'8'  => esc_html__( '8', 'magic-elements' ),
+					'9'  => esc_html__( '9', 'magic-elements' ),
+					'10' => esc_html__( '10', 'magic-elements' ),
 				],
 				'selectors' => [
 					'{{WRAPPER}}' => 'columns: {{VALUE}};',
@@ -152,7 +152,7 @@ class Text_Editor extends Widget_Base
         $this->add_responsive_control(
 			'column_gap',
 			[
-				'label'      => esc_html__( 'Columns Gap', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Columns Gap', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'vw', 'custom' ],
 				'range'      => [
@@ -200,30 +200,30 @@ class Text_Editor extends Widget_Base
         $this->start_controls_section(
 			'text_editor_style_section',
 			[
-				'label' => esc_html__( 'Text Editor', 'elementor-magic-kit' ),
+				'label' => esc_html__( 'Text Editor', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
         $this->add_responsive_control(
             $this->get_name() .'text_editor_align',
 			[
-				'label'   => esc_html__( 'Alignment', 'elementor-magic-kit' ),
+				'label'   => esc_html__( 'Alignment', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Left', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Center', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Right', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-right',
 					],
                     'justify' => [
-						'title' => esc_html__( 'Justified', 'elementor-magic-kit' ),
+						'title' => esc_html__( 'Justified', 'magic-elements' ),
 						'icon' => 'eicon-text-align-justify',
 					],
 				],
@@ -238,7 +238,7 @@ class Text_Editor extends Widget_Base
         $this->add_control(
 			$this->get_name() .'text_editor_color',
 			[
-				'label'     => esc_html__( 'Text Color', 'elementor-magic-kit' ),
+				'label'     => esc_html__( 'Text Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .text_editor p' => 'color: {{VALUE}}',
@@ -263,7 +263,7 @@ class Text_Editor extends Widget_Base
         $this->add_group_control(
 			\Elementor\Group_Control_Text_Shadow::get_type(),
 			[
-				'label'    => esc_html__( 'Text Shadow', 'elementor-magic-kit' ),
+				'label'    => esc_html__( 'Text Shadow', 'magic-elements' ),
 				'name'     => 'text_shadow',
 				'selector' => '{{WRAPPER}} .text_editor p',
 			]
@@ -271,7 +271,7 @@ class Text_Editor extends Widget_Base
 		$this->add_responsive_control(
 			'text_editor_margin',
 			[
-				'label'      => esc_html__( 'Margin', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Margin', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors'  => [
@@ -282,7 +282,7 @@ class Text_Editor extends Widget_Base
 		$this->add_responsive_control(
 			'text_editor_padding',
 			[
-				'label'      => esc_html__( 'Padding', 'elementor-magic-kit' ),
+				'label'      => esc_html__( 'Padding', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors'  => [
