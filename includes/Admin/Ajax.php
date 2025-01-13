@@ -43,14 +43,14 @@ class Ajax {
         $nonce = isset($_POST['nonce']) ? sanitize_key($_POST['nonce']) : '';
         if (!wp_verify_nonce($nonce, 'magic_kit_settings_nonce')) {
             wp_send_json_error([
-                'message' => esc_html__('Security check failed', 'elementor-magic-kit')
+                'message' => esc_html__('Security check failed', 'magic-elements')
             ]);
         }
 
         // Verify user capabilities
         if (!current_user_can('manage_options')) {
             wp_send_json_error([
-                'message' => esc_html__('You do not have permission to perform this action', 'elementor-magic-kit')
+                'message' => esc_html__('You do not have permission to perform this action', 'magic-elements')
             ]);
         }
 
@@ -72,7 +72,7 @@ class Ajax {
         update_option('magic_kit_enabled_widgets', $enabled_widgets);
 
         wp_send_json_success([
-            'message' => esc_html__('Settings saved successfully', 'elementor-magic-kit'),
+            'message' => esc_html__('Settings saved successfully', 'magic-elements'),
             'widgets' => $enabled_widgets
         ]);
     }

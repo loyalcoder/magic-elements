@@ -58,7 +58,7 @@ class Load_Elementor
         $elementor->add_category(
             'emk-widgets',
             [
-                'title' =>  esc_html__('Elementor Magic Kit', 'elementor-magic-kit'),
+                'title' =>  esc_html__('Elementor Magic Kit', 'magic-elements'),
                 'icon'  => 'eicon-font',
             ]
         );

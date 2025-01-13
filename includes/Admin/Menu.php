@@ -43,8 +43,8 @@ class Menu
         $parent_slug = 'magic-kit-dashboard';
         $capability = 'manage_options';
 
-        add_menu_page(esc_html__('MagicKit', 'elementor-magic-kit'), esc_html__('Magic Kit', 'elementor-magic-kit'), $capability, $parent_slug, [$this, 'dashboard_page'], 'dashicons-buddicons-groups');
-        add_submenu_page($parent_slug, esc_html__('Settings', 'elementor-magic-kit'), esc_html__('Settings', 'elementor-magic-kit'), $capability, $parent_slug, [$this, 'dashboard_page']);
+        add_menu_page(esc_html__('MagicKit', 'magic-elements'), esc_html__('Magic Kit', 'magic-elements'), $capability, $parent_slug, [$this, 'dashboard_page'], 'dashicons-buddicons-groups');
+        add_submenu_page($parent_slug, esc_html__('Settings', 'magic-elements'), esc_html__('Settings', 'magic-elements'), $capability, $parent_slug, [$this, 'dashboard_page']);
     }
 
     /**
