@@ -1,3 +1,9 @@
+<?php 
+// Prevent direct access to the file
+    if (!defined('ABSPATH')) {
+        exit;
+    }
+?>
 <div class="emk-heading-title">
     <?php if ( $heading_link ) { ?>
         <a href="<?php echo esc_url( $heading_link ); ?>">

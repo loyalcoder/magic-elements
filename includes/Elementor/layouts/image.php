@@ -1,3 +1,9 @@
+<?php 
+// Prevent direct access to the file
+    if (!defined('ABSPATH')) {
+        exit;
+    }
+?>
 <div>
     <div class="main_img">
         <?php

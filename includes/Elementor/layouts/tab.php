@@ -1,3 +1,9 @@
+<?php 
+// Prevent direct access to the file
+    if (!defined('ABSPATH')) {
+        exit;
+    }
+?>
 <div class="tabs-container">
   <div class="tabs">
     <?php  foreach($tabs as $index => $tab){ 

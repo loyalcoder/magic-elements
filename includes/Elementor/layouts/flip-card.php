@@ -1,3 +1,9 @@
+<?php 
+// Prevent direct access to the file
+    if (!defined('ABSPATH')) {
+        exit;
+    }
+?>
 <div class="flip-card">
     <div class="flip-card-inner">
         <div class="flip-card-front">

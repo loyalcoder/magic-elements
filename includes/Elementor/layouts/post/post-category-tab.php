@@ -1,3 +1,9 @@
+<?php 
+    // Prevent direct access to the file
+    if (!defined('ABSPATH')) {
+        exit;
+    }
+?>
 <div class="tabs">
     <!-- Tab Navigation -->
     <ul class="nav nav-tabs justify-content-center" id="postTabs">

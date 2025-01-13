@@ -1,4 +1,8 @@
 <?php 
+    // Prevent direct access to the file
+    if (!defined('ABSPATH')) {
+        exit;
+    }
     $cursor_class = $settings['enable_cursor_pointer'] === 'yes' ? 'cursor-pointer' : 'cursor-default';
  ?>
 <div class="emk-accordion-wrapper <?php echo esc_attr($settings['accordion_style']); ?> " data-animation-duration="<?php echo esc_attr($settings['toggle_animation_duration']); ?>">

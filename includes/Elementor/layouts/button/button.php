@@ -1,3 +1,9 @@
+<?php
+  // Prevent direct access to the file
+  if (!defined('ABSPATH')) {
+    exit;
+  }
+?>
 <div <?php echo esc_attr($this->get_render_attribute_string( 'wrapper')); ?>>
 	<a  <?php echo esc_attr($this->get_render_attribute_string( 'button')); ?>>
         <span <?php echo esc_attr($this->get_render_attribute_string( 'content')); ?>>

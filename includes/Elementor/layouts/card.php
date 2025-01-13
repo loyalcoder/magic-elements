@@ -1,3 +1,9 @@
+<?php 
+// Prevent direct access to the file
+    if (!defined('ABSPATH')) {
+        exit;
+    }
+?>
 <div class="card-widget">
   <div class="card-image">
       <?php  

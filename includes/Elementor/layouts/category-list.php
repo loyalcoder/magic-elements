@@ -1,4 +1,10 @@
 <?php 
+
+// Prevent direct access to the file
+    if (!defined('ABSPATH')) {
+        exit;
+    }
+    
     if ( ! empty( $settings['category_items'] ) ) {
         // Initialize an empty variable to store the HTML
         $output = '<ul class="category-list-widget" style="display: flex; flex-direction: ' . esc_attr( $flex_direction ) . '; ' . esc_attr( $align_property ) . ': ' . esc_attr( $alignment ) . ';">';

@@ -1,3 +1,9 @@
+<?php 
+    // Prevent direct access to the file
+    if (!defined('ABSPATH')) {
+        exit;
+    }
+?>
 <div class="pricing-table-container position-relative">
     <!-- ribbon start -->
      <?php 
