@@ -19,7 +19,6 @@
  * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
  */
 
-
 if (!defined('ABSPATH')) {
     exit;
 }
@@ -29,17 +28,17 @@ require_once __DIR__ . '/vendor/autoload.php';
 /**
  * Main plugin class
  */
-final class Magic_Elements
+final class MagicElements_Main
 {
     /**
      * Plugin version
      * 
      * @var string
      */
-    const version = '1.0.0';
+    const VERSION = '1.0.0';
 
     /**
-     * contractor
+     * Constructor
      */
     private function __construct()
     {
@@ -47,13 +46,12 @@ final class Magic_Elements
 
         register_activation_hook(__FILE__, [$this, 'activate']);
         add_action('plugins_loaded', [$this, 'init_plugin']);
-        add_action('init', [$this, 'load_textdomain']);
     }
 
     /**
      * Initialize singleton instance
      *
-     * @return \Magic_Elements
+     * @return \MagicElements_Main
      */
     public static function init()
     {
@@ -73,29 +71,28 @@ final class Magic_Elements
      */
     public function define_constants()
     {
-        define('MAGIC_ELEMENTS_VERSION', self::version);
-        define('MAGIC_ELEMENTS_FILE', __FILE__);
-        define('MAGIC_ELEMENTS_PATH', __DIR__);
-        define('MAGIC_ELEMENTS_URL', plugins_url('', MAGIC_ELEMENTS_FILE));
-        define('MAGIC_ELEMENTS_ASSETS', MAGIC_ELEMENTS_URL . '/assets');
-        define('MAGIC_ELEMENTS_DIR_PATH', plugin_dir_path(__FILE__));
-        define('MAGIC_ELEMENTS_ELEMENTOR', MAGIC_ELEMENTS_DIR_PATH . 'includes/Elementor/');
+        define('MAGICELEMENTS_VERSION', self::VERSION);
+        define('MAGICELEMENTS_FILE', __FILE__);
+        define('MAGICELEMENTS_PATH', __DIR__);
+        define('MAGICELEMENTS_URL', plugins_url('', MAGICELEMENTS_FILE));
+        define('MAGICELEMENTS_ASSETS', MAGICELEMENTS_URL . '/assets');
+        define('MAGICELEMENTS_DIR_PATH', plugin_dir_path(__FILE__));
+        define('MAGICELEMENTS_ELEMENTOR_PATH', MAGICELEMENTS_DIR_PATH . 'includes/Elementor/');
     }
 
     /**
-     * Plugin information
+     * Plugin activation
      *
      * @return void
      */
     public function activate()
     {
         $installer = new MagicElements\Installer();
-
         $installer->run();
     }
 
     /**
-     * Load plugin files
+     * Initialize plugin components
      *
      * @return void
      */
@@ -103,29 +100,21 @@ final class Magic_Elements
     {
         new MagicElements\Assets();
         new MagicElements\Load_Elementor();
+
         if (is_admin()) {
             new MagicElements\Admin();
         }
-    }
-    /**
-     * Load text domain for translations
-     *
-     * @return void
-     */
-    public function load_textdomain()
-    {
-        load_plugin_textdomain('magic-elements', false, dirname(plugin_basename(__FILE__)) . '/languages/');
     }
 }
 
 /**
  * Initialize main plugin
  *
- * @return \Magic_Elements
+ * @return \MagicElements_Main
  */
-function magic_elements()
+function magic_elements_main()
 {
-    return Magic_Elements::init();
+    return MagicElements_Main::init();
 }
 
-magic_elements();
+magic_elements_main();

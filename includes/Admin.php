@@ -10,11 +10,11 @@ if (!defined('ABSPATH')) {
 /**
  * Class Admin
  * 
- * Main admin class that initializes all admin functionality.
- * This class is responsible for:
- * - Loading admin menu functionality
- * - Loading AJAX handlers
- * - Managing admin-side plugin components
+ * Handles all admin functionality for Magic Elements.
+ * This includes:
+ * - Initializing the admin menu functionality.
+ * - Initializing AJAX handlers.
+ * - Managing admin-specific plugin components.
  *
  * @package MagicElements
  * @since 1.0.0
@@ -22,14 +22,14 @@ if (!defined('ABSPATH')) {
 class Admin
 {
     /**
-     * Class initialize
+     * Initialize Admin class
      * 
      * Instantiates the admin menu and AJAX handler classes
      * to set up admin functionality.
      */
-    function __construct()
+    public function __construct()
     {
-        new Admin\Menu();
-        new Admin\Ajax();
+        new \MagicElements\Admin\Menu();
+        new \MagicElements\Admin\Ajax();
     }
 }
