@@ -123,9 +123,13 @@ final class Magic_Elements
  *
  * @return \Magic_Elements
  */
-function magicelements()
+if(!function_exists('magicelements'))
 {
-    return Magic_Elements::init();
+    function magicelements()
+    {
+        return Magic_Elements::init();
+    }
 }
-
-magicelements();
+if(function_exists('magicelements')){
+    magicelements();
+}

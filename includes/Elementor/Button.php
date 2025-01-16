@@ -36,7 +36,7 @@ class Button extends Widget_Base
      */
     public function get_name()
     {
-        return 'em_kit_button';
+        return 'magicelements_button';
     }
 
         /**
@@ -64,7 +64,7 @@ class Button extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-button emk-editor-widgets-icon';
+        return 'eicon-button magicelements-editor-widgets-icon';
     }
 
         /**
@@ -83,7 +83,7 @@ class Button extends Widget_Base
      */
     public function get_categories()
     {
-        return ['emk-widgets'];
+        return ['magicelements-widgets'];
     }
 
     public function get_style_depends()
@@ -261,8 +261,8 @@ class Button extends Widget_Base
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .emk-button-wrapper .emk-button .emk-button-content-wrapper .emk-align-icon-left'  => 'margin-right: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .emk-button-wrapper .emk-button .emk-button-content-wrapper .emk-align-icon-right' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .emk-button-wrapper .emk-button .emk-button-content-wrapper .magicelements-align-icon-left'  => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .emk-button-wrapper .emk-button .emk-button-content-wrapper .magicelements-align-icon-right' => 'margin-left: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => array_merge( $args['section_condition'], [ 'selected_icon[value]!' => '' ] ),
 			]
@@ -469,10 +469,9 @@ class Button extends Widget_Base
 				  // }
 
 		if ( ! empty( $settings['icon_align'] ) ) {
-			$this->add_render_attribute( 'span', 'class', 'emk-align-icon-' . $settings['icon_align'] );
+			$this->add_render_attribute( 'span', 'class', 'magicelements-align-icon-' . $settings['icon_align'] );
 		}
         
-
         include __DIR__ . '/layouts/button/button.php';
     }
 

@@ -56,9 +56,9 @@ class Load_Elementor
     public function register_category($elementor)
     {
         $elementor->add_category(
-            'emk-widgets',
+            'magicelements-widgets',
             [
-                'title' =>  esc_html__('Elementor Magic Kit', 'magic-elements'),
+                'title' =>  esc_html__('Magic Elements', 'magic-elements'),
                 'icon'  => 'eicon-font',
             ]
         );

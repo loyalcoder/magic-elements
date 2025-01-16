@@ -1,3 +1,59 @@
-.card-widget{position:relative;padding:20px;border-radius:8px;max-width:100%;box-sizing:border-box;text-align:center;background-color:#fff;overflow:hidden;border:3px solid #0073e6}.card-widget:hover{box-shadow:0 4px 10px rgba(0,0,0,.1);transform:scale(1.02);transition:background-color .3s ease,transform .3s ease,box-shadow .3s ease}.card-widget .card-image img{width:100%;height:auto;border-radius:8px}.card-widget .card-content{padding:15px 0}.card-widget .card-content .card-title{font-size:1.5em;margin:10px 0;color:#333}.card-widget .card-content .card-description{font-size:1em;margin:10px 0;color:#666}.card-widget .card-content .card-button{display:inline-flex;align-items:center;justify-content:center;padding:10px 20px;border-radius:5px;text-decoration:none;color:#fff;background-color:#0073e6;transition:background-color .3s ease,box-shadow .3s ease,transform .2s ease;font-size:1em;font-weight:bold;position:relative;overflow:hidden}.card-widget .card-content .card-button:hover{background-color:#005bb5;transform:translateY(-2px) scale(1.05);box-shadow:0 6px 15px rgba(0,0,0,.2)}
+/*!********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/card.scss ***!
+  \********************************************************************************************************************/
+.card-widget {
+  position: relative;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: #fff;
+  overflow: hidden;
+  border: 3px solid #0073e6;
+}
+.card-widget:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transform: scale(1.02);
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-widget .card-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.card-widget .card-content {
+  padding: 15px 0;
+}
+.card-widget .card-content .card-title {
+  font-size: 1.5em;
+  margin: 10px 0;
+  color: #333;
+}
+.card-widget .card-content .card-description {
+  font-size: 1em;
+  margin: 10px 0;
+  color: #666;
+}
+.card-widget .card-content .card-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #0073e6;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  font-size: 1em;
+  font-weight: bold;
+  position: relative;
+  overflow: hidden;
+}
+.card-widget .card-content .card-button:hover {
+  background-color: #005bb5;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
 
 /*# sourceMappingURL=card.min.css.map*/
