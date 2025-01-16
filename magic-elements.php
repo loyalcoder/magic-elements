@@ -123,9 +123,9 @@ final class Magic_Elements
  *
  * @return \Magic_Elements
  */
-function magic_elements()
+function magicelements()
 {
     return Magic_Elements::init();
 }
 
-magic_elements();
+magicelements();

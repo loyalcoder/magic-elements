@@ -26,12 +26,12 @@ class Installer
      */
     public function add_version()
     {
-        $installed = get_option('magic_elements_installed');
+        $installed = get_option('magicelements_installed');
 
         if (!$installed) {
-            update_option('magic_elements_installed', time());
+            update_option('magicelements_installed', time());
         }
 
-        update_option('magic_elements_version', MAGIC_ELEMENTS_VERSION);
+        update_option('magicelements_version', MAGIC_ELEMENTS_VERSION);
     }
 }
