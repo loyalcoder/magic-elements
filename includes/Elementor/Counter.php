@@ -36,7 +36,7 @@ class Counter extends Widget_Base
      */
     public function get_name()
     {
-        return 'em_kit_counter';
+        return 'magicelements_counter';
     }
 
         /**
@@ -64,7 +64,7 @@ class Counter extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-counter emk-editor-widgets-icon';
+        return 'eicon-counter magicelements-editor-widgets-icon';
     }
 
         /**
@@ -83,16 +83,12 @@ class Counter extends Widget_Base
      */
     public function get_categories()
     {
-        return ['emk-widgets'];
-    }
-    public function get_style_depends()
-    {
-        return ['emk-counter'];
+        return ['magicelements-widgets'];
     }
 
     public function get_script_depends()
     {
-        return ['emkit-counter', 'jquery' ];
+        return ['magicelements-counter', 'jquery' ];
     }
 
         /**
@@ -154,8 +150,8 @@ class Counter extends Widget_Base
         $this->add_control(
 			'more_options',
 			[
-    'type'      => \Elementor\Controls_Manager::HEADING,
-    'separator' => 'before',
+    			'type'      => \Elementor\Controls_Manager::HEADING,
+    			'separator' => 'before',
 			]
 		);
         $this->add_control(

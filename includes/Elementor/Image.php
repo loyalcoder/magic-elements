@@ -36,7 +36,7 @@ class Image extends Widget_Base
      */
     public function get_name()
     {
-        return 'em_kit_image';
+        return 'magicelements_image';
     }
 
         /**
@@ -64,7 +64,7 @@ class Image extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-image emk-editor-widgets-icon';
+        return 'eicon-image magicelements-editor-widgets-icon';
     }
 
         /**
@@ -83,7 +83,7 @@ class Image extends Widget_Base
      */
     public function get_categories()
     {
-        return ['emk-widgets'];
+        return ['magicelements-widgets'];
     }
 
     public function get_script_depends()
@@ -177,7 +177,6 @@ class Image extends Widget_Base
 				'default' => 'none',
 				'options' => [
 					'none' => esc_html__( 'None', 'magic-elements' ),
-							  // 'file' => esc_html__( 'Media File', 'magic-elements' ),
 					'custom' => esc_html__( 'Custom URL', 'magic-elements' ),
 				],
 				'condition' => [

@@ -7,7 +7,7 @@ import "./../scss/accordion.scss"
       onInit: function () {
         var E_FRONT = elementorFrontend;
         var widgetHandlersMap = {
-          "em_kit_accordion.default": emkElementor.EmKitAccordion,
+          "magicelements_accordion.default": emkElementor.MagicelementsAccordion,
         };
   
         $.each(widgetHandlersMap, function (widgetName, callback) {
@@ -15,15 +15,15 @@ import "./../scss/accordion.scss"
         });
       },
 
-      EmKitAccordion: function ($scope) {
-        $('.emk-accordion-wrapper').each(function () {
+      MagicelementsAccordion: function ($scope) {
+        $('.magicelements-accordion-wrapper').each(function () {
             const $wrapper = $(this);
             const duration = parseInt($wrapper.data('animation-duration'), 10) || 300;
     
             // Style 1: Only Current Item Toggles
             if ($wrapper.hasClass('style_one')) {
-                const $titles = $wrapper.find('.emk-accordion-title');
-                const $contents = $wrapper.find('.emk-accordion-content');
+                const $titles = $wrapper.find('.magicelements-accordion-title');
+                const $contents = $wrapper.find('.magicelements-accordion-content');
     
                 // Initialize icons for Style 1
                 $titles.find('.accordion_expand_icon').show();
@@ -37,7 +37,7 @@ import "./../scss/accordion.scss"
     
                 $titles.off('click.style_one').on('click.style_one', function () {
                     const $this = $(this);
-                    const $content = $this.next('.emk-accordion-content');
+                    const $content = $this.next('.magicelements-accordion-content');
     
                     // Collapse all other accordions
                     $titles.not($this).removeClass('active').find('.accordion_expand_icon').show().end().find('.accordion_collapse_icon').hide();
@@ -55,7 +55,7 @@ import "./../scss/accordion.scss"
     
             // Style 2: Only This Item Toggles Independently
             if ($wrapper.hasClass('style_two')) {
-                const $titles = $wrapper.find('.emk-accordion-title');
+                const $titles = $wrapper.find('.magicelements-accordion-title');
     
                 // Initialize icons for Style 2
                 $titles.find('.accordion_expand_icon').show();
@@ -63,7 +63,7 @@ import "./../scss/accordion.scss"
     
                 $titles.off('click.style_two').on('click.style_two', function () {
                     const $this = $(this);
-                    const $content = $this.next('.emk-accordion-content');
+                    const $content = $this.next('.magicelements-accordion-content');
     
                     // Only toggle this item's content
                     $this.toggleClass('active');
@@ -77,8 +77,8 @@ import "./../scss/accordion.scss"
     
             // Style 3: All Items Open By Default
             if ($wrapper.hasClass('style_three')) {
-                const $titles = $wrapper.find('.emk-accordion-title');
-                const $contents = $wrapper.find('.emk-accordion-content');
+                const $titles = $wrapper.find('.magicelements-accordion-title');
+                const $contents = $wrapper.find('.magicelements-accordion-content');
     
                 // Initialize icons and content for Style 3
                 $titles.find('.accordion_expand_icon').hide(); // Hide expand icon by default
@@ -87,7 +87,7 @@ import "./../scss/accordion.scss"
     
                 $titles.off('click.style_three').on('click.style_three', function () {
                     const $this = $(this);
-                    const $content = $this.next('.emk-accordion-content');
+                    const $content = $this.next('.magicelements-accordion-content');
     
                     // Toggle content visibility
                     $this.toggleClass('active');

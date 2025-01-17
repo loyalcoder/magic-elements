@@ -36,7 +36,7 @@ class Accordion extends Widget_Base
      */
     public function get_name()
     {
-        return 'em_kit_accordion';
+        return 'magicelements_accordion';
     }
 
         /**
@@ -64,7 +64,7 @@ class Accordion extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-accordion emk-editor-widgets-icon';
+        return 'eicon-accordion magicelements-editor-widgets-icon';
     }
 
         /**
@@ -83,16 +83,16 @@ class Accordion extends Widget_Base
      */
     public function get_categories()
     {
-        return ['emk-widgets'];
+        return ['magicelements-widgets'];
     }
 
     public function get_style_depends()
     {
-        return ['emkit-accordion'];
+        return ['magicelements-accordion'];
     }
     public function get_script_depends()
     {
-        return ['emkit-accordion'];
+        return ['magicelements-accordion'];
     }
 
         /**
@@ -115,7 +115,7 @@ class Accordion extends Widget_Base
     protected function register_accordion_controls()
     {
         $this->start_controls_section(
-			'emk_accordion_section',
+			'magicelements_accordion_section',
 			[
 				'label' => esc_html__( 'Item', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
@@ -214,7 +214,7 @@ class Accordion extends Widget_Base
 			]
 		);
 		$this->add_control(
-			'emk_title_align',
+			'magicelements_title_align',
 			[
 				'label'   => esc_html__( 'Item Position', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
@@ -239,13 +239,13 @@ class Accordion extends Widget_Base
 				'default'   => 'flex-start',
 				'toggle'    => true,
 				'selectors' => [
-					'{{WRAPPER}} .emk-accordion-title' => 'justify-content: {{VALUE}};',
+					'{{WRAPPER}} .magicelements-accordion-title' => 'justify-content: {{VALUE}};',
 				],
 			]
 		);
 		$this->end_controls_section();
         $this->start_controls_section(
-			'emk_accordion_icon',
+			'magicelements_accordion_icon',
 			[
 				'label' => esc_html__( 'Icon', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
@@ -333,7 +333,7 @@ class Accordion extends Widget_Base
 				'default'   => '3',
 				'toggle'    => true,
 				'selectors' => [
-					'{{WRAPPER}} .emk-heading' => 'order: {{VALUE}};',
+					'{{WRAPPER}} .magicelements-heading' => 'order: {{VALUE}};',
 				],
 				'condition' => [
                     'show_accordion_icon' => 'yes'
@@ -342,7 +342,7 @@ class Accordion extends Widget_Base
 		);
 		$this->end_controls_section();
         $this->start_controls_section(
-			'emk_accordion_section_style',
+			'magicelements_accordion_section_style',
 			[
 				'label' => esc_html__( 'Item', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
@@ -363,7 +363,7 @@ class Accordion extends Widget_Base
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name'     => 'item_border',
-				'selector' => '{{WRAPPER}} .emk-accordion-container .emk-accordion-item',
+				'selector' => '{{WRAPPER}} .magicelements-accordion-container .magicelements-accordion-item',
 			]
 		);
 
@@ -371,7 +371,7 @@ class Accordion extends Widget_Base
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'item_box_shadow',
-				'selector' => '{{WRAPPER}} .emk-accordion-container .emk-accordion-item',
+				'selector' => '{{WRAPPER}} .magicelements-accordion-container .magicelements-accordion-item',
 			]
 		);
 
@@ -380,7 +380,7 @@ class Accordion extends Widget_Base
 			[
 				'name'     => 'item_background',
 				'types'    => ['classic', 'gradient'],
-				'selector' => '{{WRAPPER}} .emk-accordion-container .emk-accordion-item',
+				'selector' => '{{WRAPPER}} .magicelements-accordion-container .magicelements-accordion-item',
 			]
 		);
 
@@ -398,7 +398,7 @@ class Accordion extends Widget_Base
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name'     => 'item_border_hover',
-				'selector' => '{{WRAPPER}} .emk-accordion-container .emk-accordion-item:hover',
+				'selector' => '{{WRAPPER}} .magicelements-accordion-container .magicelements-accordion-item:hover',
 			]
 		);
 
@@ -406,7 +406,7 @@ class Accordion extends Widget_Base
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'item_box_shadow_hover',
-				'selector' => '{{WRAPPER}} .emk-accordion-container .emk-accordion-item:hover',
+				'selector' => '{{WRAPPER}} .magicelements-accordion-container .magicelements-accordion-item:hover',
 			]
 		);
 
@@ -415,7 +415,7 @@ class Accordion extends Widget_Base
 			[
 				'name'     => 'item_background_hover',
 				'types'    => ['classic', 'gradient'],
-				'selector' => '{{WRAPPER}} .emk-accordion-container .emk-accordion-item:hover',
+				'selector' => '{{WRAPPER}} .magicelements-accordion-container .magicelements-accordion-item:hover',
 			]
 		);
 
@@ -431,7 +431,7 @@ class Accordion extends Widget_Base
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .emk-accordion-container .emk-accordion-item' => 'transition-duration: {{SIZE}}s',
+					'{{WRAPPER}} .magicelements-accordion-container .magicelements-accordion-item' => 'transition-duration: {{SIZE}}s',
 				],
 			]
 		);
@@ -454,7 +454,7 @@ class Accordion extends Widget_Base
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors'  => [
-					'{{WRAPPER}} .emk-accordion-container .emk-accordion-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .magicelements-accordion-container .magicelements-accordion-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -466,7 +466,7 @@ class Accordion extends Widget_Base
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors'  => [
-					'{{WRAPPER}} .emk-accordion-container .emk-accordion-item' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .magicelements-accordion-container .magicelements-accordion-item' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -494,7 +494,7 @@ class Accordion extends Widget_Base
 					'size' => 15,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .emk-accordion-container .emk-accordion-item:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .magicelements-accordion-container .magicelements-accordion-item:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -505,7 +505,7 @@ class Accordion extends Widget_Base
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors'  => [
-					'{{WRAPPER}} .emk-accordion-container .emk-accordion-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .magicelements-accordion-container .magicelements-accordion-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -525,7 +525,7 @@ class Accordion extends Widget_Base
             [
                 'name'     => 'title_typography',
                 'label'    => esc_html__('Typography', 'magic-elements'),
-                'selector' => '{{WRAPPER}} .emk-accordion-title h3',
+                'selector' => '{{WRAPPER}} .magicelements-accordion-title h3',
             ]
         );
 
@@ -545,7 +545,7 @@ class Accordion extends Widget_Base
                 'label'     => esc_html__('Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .emk-accordion-title .emk-heading' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .magicelements-accordion-title .magicelements-heading' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -556,7 +556,7 @@ class Accordion extends Widget_Base
                 'label'     => esc_html__('Background', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .emk-accordion-title' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .magicelements-accordion-title' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -577,7 +577,7 @@ class Accordion extends Widget_Base
                 'label'     => esc_html__('Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .emk-accordion-title:hover .emk-heading' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .magicelements-accordion-title:hover .magicelements-heading' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -588,7 +588,7 @@ class Accordion extends Widget_Base
                 'label'     => esc_html__('Background', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .emk-accordion-title:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .magicelements-accordion-title:hover' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -604,7 +604,7 @@ class Accordion extends Widget_Base
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .emk-accordion-container .emk-accordion-item .emk-accordion-title, .emk-accordion-container .emk-accordion-item .emk-accordion-title h3' => 'transition-duration: {{SIZE}}s',
+					'{{WRAPPER}} .magicelements-accordion-container .magicelements-accordion-item .magicelements-accordion-title, .magicelements-accordion-container .magicelements-accordion-item .magicelements-accordion-title h3' => 'transition-duration: {{SIZE}}s',
 				],
 			]
 		);
@@ -626,7 +626,7 @@ class Accordion extends Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .emk-accordion-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .magicelements-accordion-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -635,7 +635,7 @@ class Accordion extends Widget_Base
             [
                 'name'     => 'title_border',
                 'label'    => esc_html__('Border', 'magic-elements'),
-                'selector' => '{{WRAPPER}} .emk-accordion-title',
+                'selector' => '{{WRAPPER}} .magicelements-accordion-title',
             ]
         );
         $this->add_responsive_control(
@@ -645,7 +645,7 @@ class Accordion extends Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .emk-accordion-title' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .magicelements-accordion-title' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -666,7 +666,7 @@ class Accordion extends Widget_Base
             [
                 'name'     => 'content_typography',
                 'label'    => esc_html__('Typography', 'magic-elements'),
-                'selector' => '{{WRAPPER}} .emk-accordion-content',
+                'selector' => '{{WRAPPER}} .magicelements-accordion-content',
             ]
         );
         $this->add_control(
@@ -695,7 +695,7 @@ class Accordion extends Widget_Base
 				'default'   => 'left',
 				'toggle'    => true,
 				'selectors' => [
-					'{{WRAPPER}} .emk-accordion-content' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .magicelements-accordion-content' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
@@ -706,7 +706,7 @@ class Accordion extends Widget_Base
                 'label'     => esc_html__('Text Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .emk-accordion-content' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .magicelements-accordion-content' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -717,7 +717,7 @@ class Accordion extends Widget_Base
                 'label'     => esc_html__('Background Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .emk-accordion-content' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .magicelements-accordion-content' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -729,7 +729,7 @@ class Accordion extends Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .emk-accordion-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .magicelements-accordion-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -739,7 +739,7 @@ class Accordion extends Widget_Base
             [
                 'name'     => 'content_border',
                 'label'    => esc_html__('Border', 'magic-elements'),
-                'selector' => '{{WRAPPER}} .emk-accordion-content',
+                'selector' => '{{WRAPPER}} .magicelements-accordion-content',
             ]
         );
 
@@ -750,7 +750,7 @@ class Accordion extends Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .emk-accordion-content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .magicelements-accordion-content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -805,8 +805,8 @@ class Accordion extends Widget_Base
                     'size' => 16,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .emk-accordion-title .emk-icons .accordion_expand_icon i'   => 'font-size: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .emk-accordion-title .emk-icons .accordion_expand_icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .magicelements-accordion-title .magicelements-icons .accordion_expand_icon i'   => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .magicelements-accordion-title .magicelements-icons .accordion_expand_icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -816,8 +816,8 @@ class Accordion extends Widget_Base
                 'label'     => esc_html__('Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .emk-accordion-title .emk-icons .accordion_expand_icon i'   => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .emk-accordion-title .emk-icons .accordion_expand_icon svg' => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .magicelements-accordion-title .magicelements-icons .accordion_expand_icon i'   => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .magicelements-accordion-title .magicelements-icons .accordion_expand_icon svg' => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -828,7 +828,7 @@ class Accordion extends Widget_Base
                 'label'     => esc_html__('Background Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .emk-accordion-title .emk-icons .accordion_expand_icon' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .magicelements-accordion-title .magicelements-icons .accordion_expand_icon' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -840,7 +840,7 @@ class Accordion extends Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .emk-accordion-title .emk-icons .accordion_expand_icon' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .magicelements-accordion-title .magicelements-icons .accordion_expand_icon' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -852,7 +852,7 @@ class Accordion extends Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .emk-accordion-title .emk-icons .accordion_expand_icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .magicelements-accordion-title .magicelements-icons .accordion_expand_icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -863,7 +863,7 @@ class Accordion extends Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .emk-accordion-title .emk-icons .accordion_expand_icon' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .magicelements-accordion-title .magicelements-icons .accordion_expand_icon' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -905,8 +905,8 @@ class Accordion extends Widget_Base
                     'size' => 16,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .emk-accordion-title .emk-icons .accordion_collapse_icon i'   => 'font-size: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .emk-accordion-title .emk-icons .accordion_collapse_icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .magicelements-accordion-title .magicelements-icons .accordion_collapse_icon i'   => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .magicelements-accordion-title .magicelements-icons .accordion_collapse_icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -916,8 +916,8 @@ class Accordion extends Widget_Base
                 'label'     => esc_html__('Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .emk-accordion-title .emk-icons .accordion_collapse_icon i'   => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .emk-accordion-title .emk-icons .accordion_collapse_icon svg' => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .magicelements-accordion-title .magicelements-icons .accordion_collapse_icon i'   => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .magicelements-accordion-title .magicelements-icons .accordion_collapse_icon svg' => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -928,7 +928,7 @@ class Accordion extends Widget_Base
                 'label'     => esc_html__('Background Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .emk-accordion-title .emk-icons .accordion_collapse_icon' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .magicelements-accordion-title .magicelements-icons .accordion_collapse_icon' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -940,7 +940,7 @@ class Accordion extends Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .emk-accordion-title .emk-icons .accordion_collapse_icon' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .magicelements-accordion-title .magicelements-icons .accordion_collapse_icon' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -952,7 +952,7 @@ class Accordion extends Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .emk-accordion-title .emk-icons .accordion_collapse_icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .magicelements-accordion-title .magicelements-icons .accordion_collapse_icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -963,7 +963,7 @@ class Accordion extends Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .emk-accordion-title .emk-icons .accordion_collapse_icon' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .magicelements-accordion-title .magicelements-icons .accordion_collapse_icon' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );

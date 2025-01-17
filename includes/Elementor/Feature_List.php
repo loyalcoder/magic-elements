@@ -1,6 +1,6 @@
 <?php
 
-      /**
+/**
  * Elementor Classes.
  *
  * @package Feature List Elementor Magic Kit
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-      /**
+/**
  * Magic Kit for Elementor Extension
  *
  * Elementor widget for Feature List.
@@ -25,7 +25,7 @@ if (!defined('ABSPATH')) {
  */
 class Feature_List extends Widget_Base
 {
-          /**
+    /**
      * Retrieve the widget name.
      *
      * @since 1.0.0
@@ -36,10 +36,10 @@ class Feature_List extends Widget_Base
      */
     public function get_name()
     {
-        return 'em_kit_feature_list';
+        return 'magicelements_feature_list';
     }
 
-          /**
+    /**
      * Retrieve the widget title.
      *
      * @since 1.0.0
@@ -53,7 +53,7 @@ class Feature_List extends Widget_Base
         return esc_html__('Feature List', 'magic-elements');
     }
 
-          /**
+    /**
      * Retrieve the widget icon.
      *
      * @since 1.0.0
@@ -64,10 +64,10 @@ class Feature_List extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-bullet-list emk-editor-widgets-icon';
+        return 'eicon-bullet-list magicelements-editor-widgets-icon';
     }
 
-          /**
+    /**
      * Retrieve the list of categories the widget belongs to.
      *
      * Used to determine where to display the widget in the editor.
@@ -83,11 +83,11 @@ class Feature_List extends Widget_Base
      */
     public function get_categories()
     {
-        return ['emk-widgets'];
+        return ['magicelements-widgets'];
     }
     public function get_style_depends()
     {
-        return ['emk-feature-list'];
+        return ['magicelements-feature-list'];
     }
 
     public function get_script_depends()

@@ -1,5 +1,5 @@
 <?php 
-    // Prevent direct access to the file
+    // Prevent direct access to the file 
     if (!defined('ABSPATH')) {
         exit;
     }
@@ -51,7 +51,7 @@
             ?></ul><?php
         }?>
         </div>
-        <div class="emk-button d-flex">
+        <div class="magicelements-button d-flex">
             <a href="<?php echo esc_url( $settings['btn_link']['url'] ); ?>" class="d-inline-flex align-items-center"><?php echo esc_html($settings['pricing_btn']); ?><?php \Elementor\Icons_Manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true', 'class' => 'btn-icon' ] ); ?></a>
         </div>
     </div>

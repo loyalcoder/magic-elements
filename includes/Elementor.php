@@ -111,7 +111,7 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/post_tab.js',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/post_tab.js'),
             ],
-            'emkit-pricingtable' => [
+            'magicelements-pricingtable' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/pricingtable.js',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/pricingtable.js'),
             ],
@@ -123,12 +123,12 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/card.js',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/card.js'),
             ],
-            'emkit-counter' => [
+            'magicelements-counter' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/counter.js',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/counter.js'),
                 'deps'    => ['jquery']
             ],
-            'emkit-accordion' => [
+            'magicelements-accordion' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/accordion.js',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/accordion.js'),
                 'deps'    => ['jquery']
@@ -154,7 +154,7 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/button.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/button.css'),
             ],
-            'emk-pricingtable' => [
+            'magicelements-pricingtable' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/pricingtable.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/pricingtable.css'),
             ],
@@ -166,7 +166,7 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/image_accordion.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/image_accordion.css'),
             ],
-            'emkit-flipcard' => [
+            'magicelements-flipcard' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/flipcard.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/flipcard.css'),
             ],
@@ -178,11 +178,11 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/category_list.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/category_list.css'),
             ],
-            'emk-feature-list' => [
+            'magicelements-feature-list' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/feature_list.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/feature_list.css'),
             ],
-            'emkit-accordion' => [
+            'magicelements-accordion' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/accordion.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/accordion.css'),
             ],
