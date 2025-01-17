@@ -7,7 +7,7 @@ import "./../scss/image_accordion.scss"
       onInit: function () {
         var E_FRONT = elementorFrontend;
         var widgetHandlersMap = {
-          "em_image_accordion.default": emkElementor.EmKitImageAccordion,
+          "magicelements_image_accordion.default": emkElementor.magicelementsImageAccordion,
         };
   
         $.each(widgetHandlersMap, function (widgetName, callback) {
@@ -15,12 +15,12 @@ import "./../scss/image_accordion.scss"
         });
       },
 
-      EmKitImageAccordion: function ($scope) {
+      magicelementsImageAccordion: function ($scope) {
         let image_accordion = $scope.find('.accordion');
     
         image_accordion.each(function () {
             const $accordion = $(this);
-            const behavior = $accordion.hasClass('emk-image-accordion-hover') ? 'hover' : 'click';
+            const behavior = $accordion.hasClass('magicelements-image-accordion-hover') ? 'hover' : 'click';
     
             if (!$accordion.find('.tab.active').length) {
                 $accordion.find('.tab').first().addClass('active');
@@ -38,7 +38,7 @@ import "./../scss/image_accordion.scss"
                 });
             }
         });
-    },
+      },
     
     };
   

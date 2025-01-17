@@ -36,7 +36,7 @@ class Category_List extends Widget_Base
      */
     public function get_name()
     {
-        return 'em_kit_category_list';
+        return 'magicelements_category_list';
     }
 
         /**
@@ -64,7 +64,7 @@ class Category_List extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-product-categories emk-editor-widgets-icon';
+        return 'eicon-product-categories magicelements-editor-widgets-icon';
     }
 
         /**
@@ -83,12 +83,12 @@ class Category_List extends Widget_Base
      */
     public function get_categories()
     {
-        return ['emk-widgets'];
+        return ['magicelements-widgets'];
     }
 
     public function get_style_depends()
     {
-        return ['emk-category_list'];
+        return ['magicelements-category_list'];
     }
 
     public function get_script_depends()

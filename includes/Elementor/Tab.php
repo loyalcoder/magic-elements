@@ -36,7 +36,7 @@ class Tab extends Widget_Base
      */
     public function get_name()
     {
-        return 'em_kit_tab';
+        return 'magicelements_tab';
     }
 
         /**
@@ -64,7 +64,7 @@ class Tab extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-accordion emk-editor-widgets-icon';
+        return 'eicon-accordion magicelements-editor-widgets-icon';
     }
 
         /**
@@ -83,17 +83,17 @@ class Tab extends Widget_Base
      */
     public function get_categories()
     {
-        return ['emk-widgets'];
+        return ['magicelements-widgets'];
     }
 
     public function get_style_depends()
     {
-        return ['emk-tab'];
+        return ['magicelements-tab'];
     }
 
     public function get_script_depends()
     {
-        return ['emkit-tab', 'jquery'];
+        return ['magicelements-tab', 'jquery'];
     }
 
         /**

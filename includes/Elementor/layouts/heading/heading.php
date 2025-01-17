@@ -4,7 +4,7 @@
         exit;
     }
 ?>
-<div class="emk-heading-title">
+<div class="magicelements-heading-title">
     <?php if ( $heading_link ) { ?>
         <a href="<?php echo esc_url( $heading_link ); ?>">
             <?php echo wp_kses_post( $newoutput ); ?>

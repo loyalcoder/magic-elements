@@ -5,8 +5,8 @@
 // @import "../../../node_modules/bootstrap/scss/mixins";
 // @import "../../../node_modules/bootstrap/scss/buttons";
 
-.emk-button-wrapper{
-    .emk-button {
+.magicelements-button-wrapper{
+    .magicelements-button {
         display: inline-block;
         line-height: 1;
         font-size: 15px;
@@ -16,58 +16,58 @@
         fill: #fff;
         text-align: center;
         transition: all .3s;
-        &.emk-size-xs{
+        &.magicelements-size-xs{
             font-size: 13px;
             padding: 10px 20px;
             border-radius: 2px
         }
-        &.emk-size-md {
+        &.magicelements-size-md {
             font-size: 16px;
             padding: 15px 30px;
             border-radius: 4px
         }
-        &.emk-size-lg{
+        &.magicelements-size-lg{
             font-size: 18px;
             padding: 20px 40px;
             border-radius: 5px
         }
-        &.emk-size-xl{
+        &.magicelements-size-xl{
             font-size: 20px;
             padding: 25px 50px;
             border-radius: 6px;
         }
-        &.emk-color-default{
+        &.magicelements-color-default{
             background-color: #0D6EFD;
         }
-        &.emk-color-info{
+        &.magicelements-color-info{
             background-color: #0DCAF0;
         }
-        &.emk-color-success{
+        &.magicelements-color-success{
             background-color: #198754;
         }
-        &.emk-color-warning{
+        &.magicelements-color-warning{
             background-color: #FFC107;
         }
-        &.emk-color-danger{
+        &.magicelements-color-danger{
             background-color: #DC3545;
         }
-        &.emk-color-light {
+        &.magicelements-color-light {
             background-color: #F8F9FA;
         }
-        &.emk-color-dark  {
+        &.magicelements-color-dark  {
             background-color: #212529;
         }
-        .emk-button-content-wrapper {
+        .magicelements-button-content-wrapper {
             display: flex;
             justify-content: center;
-            .emk-button-icon {
+            .magicelements-button-icon {
                 flex-grow: 0;
                 order: 5;
-                &.emk-align-icon-right{
+                &.magicelements-align-icon-right{
                     margin-left: 5px;
                     order: 15;
                 }
-                &.emk-align-icon-left{
+                &.magicelements-align-icon-left{
                     margin-right: 5px;
                     order: 5;
                 }
@@ -79,7 +79,7 @@
                     height: 1em
                 }
             }
-            .emk-button-text {
+            .magicelements-button-text {
                 flex-grow: 1;
                 order: 10;
                 display: inline-block

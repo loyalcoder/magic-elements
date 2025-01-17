@@ -36,7 +36,7 @@ class Image_Accordion extends Widget_Base
      */
     public function get_name()
     {
-        return 'em_image_accordion';
+        return 'magicelements_image_accordion';
     }
 
         /**
@@ -64,7 +64,7 @@ class Image_Accordion extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-image-box emk-editor-widgets-icon';
+        return 'eicon-image-box magicelements-editor-widgets-icon';
     }
 
         /**
@@ -83,17 +83,17 @@ class Image_Accordion extends Widget_Base
      */
     public function get_categories()
     {
-        return ['emk-widgets'];
+        return ['magicelements-widgets'];
     }
 
     public function get_style_depends()
     {
-        return ['emkit-image-accordion'];
+        return ['magicelements-image-accordion'];
     }
 
     public function get_script_depends()
     {
-        return ['emkit-image-accordion-script', 'jquery'];
+        return ['magicelements-image-accordion-script', 'jquery'];
     }
 
         /**
@@ -200,7 +200,7 @@ class Image_Accordion extends Widget_Base
                     'hover' => esc_html__('Hover', 'magic-elements'),
                 ],
                 'default'      => 'click',
-                'prefix_class' => 'emk-image-accordion-',
+                'prefix_class' => 'magicelements-image-accordion-',
             ]
         );
 
@@ -379,7 +379,7 @@ class Image_Accordion extends Widget_Base
 
             // Determine active behavior class
         $active_behavior = $settings['active_behavior'];
-        $behavior_class  = ($active_behavior === 'hover') ? 'emk-image-accordion-hover' : 'emk-image-accordion-click';
+        $behavior_class  = ($active_behavior === 'hover') ? 'magicelements-image-accordion-hover' : 'magicelements-image-accordion-click';
 
 		
         include __DIR__ . '/layouts/image-accordion/image-accordion.php';

@@ -7,7 +7,7 @@ import "./../scss/post_tab.scss";
       onInit: function () {
         var E_FRONT = elementorFrontend;
         var widgetHandlersMap = {
-          "em_kit_post_tab.default": emkElementor.EmKitPostTab,
+          "magicelements_post_tab.default": emkElementor.magicelementsPostTab,
         };
   
         $.each(widgetHandlersMap, function (widgetName, callback) {
@@ -15,7 +15,7 @@ import "./../scss/post_tab.scss";
         });
       },
 
-      EmKitPostTab: function ($scope) {
+      magicelementsPostTab: function ($scope) {
         let navLinks = $scope.find('.nav-link');
         let postItems = $scope.find('.post-item');
     

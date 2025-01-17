@@ -12,8 +12,8 @@
                 <?php echo esc_html__('All', 'magic-elements'); ?>
             </button>
         </li>
-        <?php if (!empty($settings['emk__get_post_in'])) {
-            foreach ($settings['emk__get_post_in'] as $cat) {
+        <?php if (!empty($settings['magicelements__get_post_in'])) {
+            foreach ($settings['magicelements__get_post_in'] as $cat) {
                 $term = get_term($cat); ?>
                 <li class="nav-item">
                     <button class="nav-link" data-category="<?php echo esc_attr($term->term_id); ?>">

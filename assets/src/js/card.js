@@ -7,7 +7,7 @@ import "./../scss/card.scss"
       onInit: function () {
         var E_FRONT = elementorFrontend;
         var widgetHandlersMap = {
-          "em_kit_button.default": emkElementor.EmKitButton,
+          "magicelements_card.default": emkElementor.magicelementsButton,
         };
   
         $.each(widgetHandlersMap, function (widgetName, callback) {
@@ -15,7 +15,7 @@ import "./../scss/card.scss"
         });
       },
 
-      EmKitButton: function ($scope) {
+      magicelementsButton: function ($scope) {
         //  alert();
       },
     };
