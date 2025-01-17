@@ -1,6 +1,6 @@
 <?php
 
-    /**
+/**
  * Elementor Classes.
  *
  * @package Flip Card Magic Elements
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-    /**
+/**
  * Magic Kit for Elementor Extension
  *
  * Elementor widget for Flip Card.
@@ -25,7 +25,7 @@ if (!defined('ABSPATH')) {
  */
 class Flip_Card extends Widget_Base
 {
-        /**
+    /**
      * Retrieve the widget name.
      *
      * @since 1.0.0
@@ -39,7 +39,7 @@ class Flip_Card extends Widget_Base
         return 'magicelements_flip_card';
     }
 
-        /**
+    /**
      * Retrieve the widget title.
      *
      * @since 1.0.0
@@ -53,7 +53,7 @@ class Flip_Card extends Widget_Base
         return esc_html__('Flip Card', 'magic-elements');
     }
 
-        /**
+    /**
      * Retrieve the widget icon.
      *
      * @since 1.0.0
@@ -67,7 +67,7 @@ class Flip_Card extends Widget_Base
         return 'eicon-flip-box magicelements-editor-widgets-icon';
     }
 
-        /**
+    /**
      * Retrieve the list of categories the widget belongs to.
      *
      * Used to determine where to display the widget in the editor.
@@ -90,7 +90,7 @@ class Flip_Card extends Widget_Base
         return ['magicelements-flipcard'];
     }
 
-        /**
+    /**
      * Register Copyright controls.
      *
      * @since 1.0.0
@@ -101,7 +101,7 @@ class Flip_Card extends Widget_Base
         $this->register_flip_card_controls();
     }
 
-        /**
+    /**
      * Register Copyright General Controls.
      *
      * @since 1.0.0
@@ -116,7 +116,7 @@ class Flip_Card extends Widget_Base
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
-				  //Front
+			//Front
         $this->start_controls_tabs(
 			'flipcard_content_tabs'
 		);

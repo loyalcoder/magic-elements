@@ -1,6 +1,6 @@
 <?php
 
-    /**
+/**
  * Elementor Classes.
  *
  * @package Accordion Magic Elements
@@ -25,7 +25,7 @@ if (!defined('ABSPATH')) {
  */
 class Accordion extends Widget_Base
 {
-        /**
+    /**
      * Retrieve the widget name.
      *
      * @since 1.0.0
@@ -39,7 +39,7 @@ class Accordion extends Widget_Base
         return 'magicelements_accordion';
     }
 
-        /**
+    /**
      * Retrieve the widget title.
      *
      * @since 1.0.0
@@ -53,7 +53,7 @@ class Accordion extends Widget_Base
         return esc_html__('Accordion', 'magic-elements');
     }
 
-        /**
+    /**
      * Retrieve the widget icon.
      *
      * @since 1.0.0
@@ -67,7 +67,7 @@ class Accordion extends Widget_Base
         return 'eicon-accordion magicelements-editor-widgets-icon';
     }
 
-        /**
+    /**
      * Retrieve the list of categories the widget belongs to.
      *
      * Used to determine where to display the widget in the editor.
@@ -95,7 +95,7 @@ class Accordion extends Widget_Base
         return ['magicelements-accordion'];
     }
 
-        /**
+    /**
      * Register Copyright controls.
      *
      * @since 1.0.0
@@ -106,7 +106,7 @@ class Accordion extends Widget_Base
         $this->register_accordion_controls();
     }
 
-        /**
+    /**
      * Register Copyright General Controls.
      *
      * @since 1.0.0

@@ -1,6 +1,6 @@
 <?php
 
-    /**
+/**
  * Elementor Classes.
  *
  * @package Counter Magic Elements
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-    /**
+/**
  * Magic Kit for Elementor Extension
  *
  * Elementor widget for Counter.
@@ -25,7 +25,7 @@ if (!defined('ABSPATH')) {
  */
 class Counter extends Widget_Base
 {
-        /**
+    /**
      * Retrieve the widget name.
      *
      * @since 1.0.0
@@ -39,7 +39,7 @@ class Counter extends Widget_Base
         return 'magicelements_counter';
     }
 
-        /**
+    /**
      * Retrieve the widget title.
      *
      * @since 1.0.0
@@ -53,7 +53,7 @@ class Counter extends Widget_Base
         return esc_html__('Counter', 'magic-elements');
     }
 
-        /**
+    /**
      * Retrieve the widget icon.
      *
      * @since 1.0.0
@@ -67,7 +67,7 @@ class Counter extends Widget_Base
         return 'eicon-counter magicelements-editor-widgets-icon';
     }
 
-        /**
+    /**
      * Retrieve the list of categories the widget belongs to.
      *
      * Used to determine where to display the widget in the editor.
@@ -91,7 +91,7 @@ class Counter extends Widget_Base
         return ['magicelements-counter', 'jquery' ];
     }
 
-        /**
+    /**
      * Register Copyright controls.
      *
      * @since 1.0.0
@@ -102,7 +102,7 @@ class Counter extends Widget_Base
         $this->register_counter_controls();
     }
 
-        /**
+    /**
      * Register Copyright General Controls.
      *
      * @since 1.0.0
