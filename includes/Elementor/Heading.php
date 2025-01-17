@@ -36,7 +36,7 @@ class Heading extends Widget_Base
      */
     public function get_name()
     {
-        return 'em_kit_heading';
+        return 'magicelements_heading';
     }
 
         /**
@@ -64,7 +64,7 @@ class Heading extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-heading emk-editor-widgets-icon';
+        return 'eicon-heading magicelements-editor-widgets-icon';
     }
 
         /**
@@ -83,7 +83,7 @@ class Heading extends Widget_Base
      */
     public function get_categories()
     {
-        return ['emk-widgets'];
+        return ['magicelements-widgets'];
     }
     public function get_script_depends()
     {
@@ -110,7 +110,7 @@ class Heading extends Widget_Base
     protected function register_heading_controls()
     {
         $this->start_controls_section(
-            'emk_heading_section_title',
+            'magicelements_heading_section_title',
             [
                 'label' => esc_html__('Heading', 'magic-elements'),
             ]
@@ -174,7 +174,7 @@ class Heading extends Widget_Base
             // Style section
             // --- Container section
         $this->start_controls_section(
-            'emk_section_title_style',
+            'magicelements_section_title_style',
             [
                 'label' => esc_html__('Heading', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
@@ -206,13 +206,13 @@ class Heading extends Widget_Base
 				],
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .emk-heading-title' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .magicelements-heading-title' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
 
         $this->add_control(
-			'emk_title',
+			'magicelements_title',
 			[
 				'label'     => esc_html__( 'Title', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::HEADING,
@@ -226,7 +226,7 @@ class Heading extends Widget_Base
 				'label'     => esc_html__( 'Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .emk-heading-title, {{WRAPPER}} .emk-heading-title a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .magicelements-heading-title, {{WRAPPER}} .magicelements-heading-title a' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -235,7 +235,7 @@ class Heading extends Widget_Base
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name'     => 'typography',
-				'selector' => '{{WRAPPER}} .emk-heading-title',
+				'selector' => '{{WRAPPER}} .magicelements-heading-title',
 			]
 		);
 
@@ -243,7 +243,7 @@ class Heading extends Widget_Base
 			\Elementor\Group_Control_Text_Stroke::get_type(),
 			[
 				'name'     => 'text_stroke',
-				'selector' => '{{WRAPPER}} .emk-heading-title',
+				'selector' => '{{WRAPPER}} .magicelements-heading-title',
 			]
 		);
 
@@ -251,11 +251,11 @@ class Heading extends Widget_Base
 			\Elementor\Group_Control_Text_Shadow::get_type(),
 			[
 				'name'     => 'text_shadow',
-				'selector' => '{{WRAPPER}} .emk-heading-title',
+				'selector' => '{{WRAPPER}} .magicelements-heading-title',
 			]
 		);
         $this->add_control(
-			'emk_replace_title',
+			'magicelements_replace_title',
 			[
 				'label'     => esc_html__( 'Highlight Title', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::HEADING,
@@ -263,7 +263,7 @@ class Heading extends Widget_Base
 			]
 		);
         $this->add_control(
-            'emk_replace_color',
+            'magicelements_replace_color',
             [
                 'label'     => esc_html__('Replace Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
@@ -276,7 +276,7 @@ class Heading extends Widget_Base
         $this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
-				'name'     => 'emk_replace_typography',
+				'name'     => 'magicelements_replace_typography',
 				'selector' => '{{WRAPPER}} span.ornaments',
 			]
 		);
@@ -284,7 +284,7 @@ class Heading extends Widget_Base
         $this->add_group_control(
             \Elementor\Group_Control_Text_Stroke::get_type(),
             [
-                'name'     => 'emk_replace_text_stroke',
+                'name'     => 'magicelements_replace_text_stroke',
                 'selector' => '{{WRAPPER}} span.ornaments',
             ]
         );

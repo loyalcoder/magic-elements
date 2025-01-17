@@ -88,7 +88,7 @@ class Button extends Widget_Base
 
     public function get_style_depends()
     {
-        return ['emkit-button'];
+        return ['magicelements-button'];
     }
         /**
      * Register Copyright controls.
@@ -195,7 +195,7 @@ class Button extends Widget_Base
 				'default'   => 'center',
 				'toggle'    => true,
 				'selectors' => [
-					'{{WRAPPER}} .emk-button-wrapper' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .magicelements-button-wrapper' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
@@ -261,8 +261,8 @@ class Button extends Widget_Base
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .emk-button-wrapper .emk-button .emk-button-content-wrapper .magicelements-align-icon-left'  => 'margin-right: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .emk-button-wrapper .emk-button .emk-button-content-wrapper .magicelements-align-icon-right' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .magicelements-button-wrapper .magicelements-button .magicelements-button-content-wrapper .magicelements-align-icon-left'  => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .magicelements-button-wrapper .magicelements-button .magicelements-button-content-wrapper .magicelements-align-icon-right' => 'margin-left: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => array_merge( $args['section_condition'], [ 'selected_icon[value]!' => '' ] ),
 			]
@@ -284,7 +284,7 @@ class Button extends Widget_Base
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name'     => 'typography',
-				'selector' => '{{WRAPPER}} .emk-button',
+				'selector' => '{{WRAPPER}} .magicelements-button',
 			]
 		);
 
@@ -292,7 +292,7 @@ class Button extends Widget_Base
 			\Elementor\Group_Control_Text_Shadow::get_type(),
 			[
 				'name'     => 'text_shadow',
-				'selector' => '{{WRAPPER}} .emk-button-text',
+				'selector' => '{{WRAPPER}} .magicelements-button-text',
 			]
 		);
 
@@ -313,7 +313,7 @@ class Button extends Widget_Base
 				'label'     => esc_html__( 'Text Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .emk-button-text' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .magicelements-button-text' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -323,7 +323,7 @@ class Button extends Widget_Base
 			[
 				'name' => 'background',
 				'types' => [ 'classic', 'gradient', 'video' ],
-				'selector' => '{{WRAPPER}} .emk-button',
+				'selector' => '{{WRAPPER}} .magicelements-button',
 			]
 		);
 
@@ -342,7 +342,7 @@ class Button extends Widget_Base
 				'label'     => esc_html__( 'Text Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .emk-button-text:hover' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .magicelements-button-text:hover' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -352,7 +352,7 @@ class Button extends Widget_Base
 			[
 				'name' => 'button_background_hover',
 				'types' => [ 'classic', 'gradient', 'video' ],
-				'selector' => '{{WRAPPER}} .emk-button:hover',
+				'selector' => '{{WRAPPER}} .magicelements-button:hover',
 			]
 		);
 
@@ -362,7 +362,7 @@ class Button extends Widget_Base
 				'label'     => esc_html__( 'Border Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .emk-button-text:hover, {{WRAPPER}} .emk-button-text:focus' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .magicelements-button-text:hover, {{WRAPPER}} .magicelements-button-text:focus' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -385,7 +385,7 @@ class Button extends Widget_Base
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name'     => 'border',
-				'selector' => '{{WRAPPER}} .emk-button',
+				'selector' => '{{WRAPPER}} .magicelements-button',
 			]
 		);
 
@@ -396,7 +396,7 @@ class Button extends Widget_Base
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors'  => [
-					'{{WRAPPER}} .emk-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .magicelements-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -405,7 +405,7 @@ class Button extends Widget_Base
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'button_box_shadow',
-				'selector' => '{{WRAPPER}} .emk-button',
+				'selector' => '{{WRAPPER}} .magicelements-button',
 			]
 		);
 
@@ -416,7 +416,7 @@ class Button extends Widget_Base
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'vw', 'custom' ],
 				'selectors'  => [
-					'{{WRAPPER}} .emk-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .magicelements-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -436,18 +436,18 @@ class Button extends Widget_Base
     {
         $settings = $this->get_settings_for_display();
 		
-		$this->add_render_attribute( 'wrapper', 'class', 'emk-button-wrapper' );
+		$this->add_render_attribute( 'wrapper', 'class', 'magicelements-button-wrapper' );
 
-		$this->add_render_attribute( 'button', 'class', 'emk-button' );
+		$this->add_render_attribute( 'button', 'class', 'magicelements-button' );
 
-		$this->add_render_attribute( 'content', 'class', 'emk-button-content-wrapper' );
+		$this->add_render_attribute( 'content', 'class', 'magicelements-button-content-wrapper' );
 
-		$this->add_render_attribute( 'span', 'class', 'emk-button-icon' );
+		$this->add_render_attribute( 'span', 'class', 'magicelements-button-icon' );
 
-		$this->add_render_attribute( 'text', 'class', 'emk-button-text' );
+		$this->add_render_attribute( 'text', 'class', 'magicelements-button-text' );
 
 		if ( ! empty( $settings['button_type'] ) ) {
-			$this->add_render_attribute( 'button', 'class', 'emk-color-' . $settings['button_type'] );
+			$this->add_render_attribute( 'button', 'class', 'magicelements-color-' . $settings['button_type'] );
 		}
 
 		if ( ! empty( $settings['link']['url'] ) ) {
@@ -456,11 +456,11 @@ class Button extends Widget_Base
 		}
 
 		if ( ! empty( $settings['size'] ) ) {
-			$this->add_render_attribute( 'button', 'class', 'emk-size-' . $settings['size'] );
+			$this->add_render_attribute( 'button', 'class', 'magicelements-size-' . $settings['size'] );
 		}
 
 		if ( ! empty( $settings['hover_animation'] ) ) {
-			$this->add_render_attribute( 'button', 'class', 'emk-animation-' . $settings['hover_animation'] );
+			$this->add_render_attribute( 'button', 'class', 'magicelements-animation-' . $settings['hover_animation'] );
 		}
 		
 

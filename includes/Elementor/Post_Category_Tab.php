@@ -36,7 +36,7 @@ class Post_Category_Tab extends Widget_Base
      */
     public function get_name()
     {
-        return 'em_kit_post_tab';
+        return 'magicelements_post_tab';
     }
 
         /**
@@ -64,7 +64,7 @@ class Post_Category_Tab extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-post-info emk-editor-widgets-icon';
+        return 'eicon-post-info magicelements-editor-widgets-icon';
     }
 
         /**
@@ -83,17 +83,17 @@ class Post_Category_Tab extends Widget_Base
      */
     public function get_categories()
     {
-        return ['emk-widgets'];
+        return ['magicelements-widgets'];
     }
 
     public function get_style_depends()
     {
-        return ['emk-post-tab'];
+        return ['magicelements-post-tab'];
     }
 
     public function get_script_depends()
     {
-        return ['emkit-post-tab', 'jquery'];
+        return ['magicelements-post-tab', 'jquery'];
     }
 
         /**
@@ -117,7 +117,7 @@ class Post_Category_Tab extends Widget_Base
     {
 
 		$this->start_controls_section(
-			'emk__post_section',
+			'magicelements__post_section',
 			[
 				'label' => esc_html__( 'Post', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
@@ -125,7 +125,7 @@ class Post_Category_Tab extends Widget_Base
 		);
 
 		$this->add_control(
-			'emk__get_post_in',
+			'magicelements__get_post_in',
 			[
     'label'       => esc_html__( 'Select Category', 'magic-elements' ),
     'type'        => \Elementor\Controls_Manager::SELECT2,
@@ -138,7 +138,7 @@ class Post_Category_Tab extends Widget_Base
 		);
 
 		$this->add_control(
-            'emk__post_per_page',
+            'magicelements__post_per_page',
             [
                 'label'   => esc_html__('Posts per page', 'magic-elements'),
                 'type'    => \Elementor\Controls_Manager::NUMBER,
@@ -148,7 +148,7 @@ class Post_Category_Tab extends Widget_Base
         );
 
         $this->add_control(
-            'emk__post_order_by',
+            'magicelements__post_order_by',
             [
                 'label'   => esc_html__('Post Order By', 'magic-elements'),
                 'type'    => \Elementor\Controls_Manager::SELECT,
@@ -164,7 +164,7 @@ class Post_Category_Tab extends Widget_Base
         );
 
         $this->add_control(
-            'emk__post_case_order',
+            'magicelements__post_case_order',
             [
                 'label'   => esc_html__('Post Order', 'magic-elements'),
                 'type'    => \Elementor\Controls_Manager::SELECT,
@@ -351,14 +351,14 @@ class Post_Category_Tab extends Widget_Base
 
 		$args = [
             'post_type'      => 'post',                              // Your custom post type
-            'posts_per_page' => $settings['emk__post_per_page'],
-            'orderby'        => $settings['emk__post_order_by'],
-            'order'          => $settings['emk__post_case_order'],
+            'posts_per_page' => $settings['magicelements__post_per_page'],
+            'orderby'        => $settings['magicelements__post_order_by'],
+            'order'          => $settings['magicelements__post_case_order'],
             'tax_query'      => [
                 [
                     'taxonomy' => 'category',                      // Replace with your taxonomy slug
                     'field'    => 'term_id',                       // Use term_id if terms are IDs
-                    'terms'    => $settings['emk__get_post_in'],   // The selected terms from the SELECT2 control
+                    'terms'    => $settings['magicelements__get_post_in'],   // The selected terms from the SELECT2 control
                 ],
             ],
         ];

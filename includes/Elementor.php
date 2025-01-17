@@ -107,7 +107,7 @@ class Load_Elementor
     public function get_scripts()
     {
         return [
-            'emkit-post-tab' => [
+            'magicelements-post-tab' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/post_tab.js',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/post_tab.js'),
             ],
@@ -115,11 +115,11 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/pricingtable.js',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/pricingtable.js'),
             ],
-            'emkit-image-accordion-script' => [
+            'magicelements-image-accordion-script' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/image_accordion.js',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/image_accordion.js'),
             ],
-            'emkit-card' => [
+            'magicelements-card' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/card.js',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/card.js'),
             ],
@@ -133,7 +133,7 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/accordion.js'),
                 'deps'    => ['jquery']
             ],
-            'emkit-tab' => [
+            'magicelements-tab' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/tab.js',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/tab.js'),
                 'deps'    => ['jquery']
@@ -150,7 +150,7 @@ class Load_Elementor
     {
         return [
 
-            'emkit-button' => [
+            'magicelements-button' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/button.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/button.css'),
             ],
@@ -158,11 +158,11 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/pricingtable.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/pricingtable.css'),
             ],
-            'emk-card' => [
+            'magicelements-card' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/card.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/card.css'),
             ],
-            'emkit-image-accordion' => [
+            'magicelements-image-accordion' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/image_accordion.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/image_accordion.css'),
             ],
@@ -170,15 +170,15 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/flipcard.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/flipcard.css'),
             ],
-            'emk-post-tab' => [
+            'magicelements-post-tab' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/post_tab.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/post_tab.css'),
             ],
-            'emk-category_list' => [
+            'magicelements-category_list' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/category_list.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/category_list.css'),
             ],
-            'emk-feature-list' => [
+            'magicelements-feature-list' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/feature_list.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/feature_list.css'),
             ],
@@ -186,7 +186,7 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/accordion.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/accordion.css'),
             ],
-            'emk-tab' => [
+            'magicelements-tab' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/tab.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/tab.css'),
             ]

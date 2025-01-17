@@ -7,7 +7,7 @@ import "./../scss/tab.scss"
       onInit: function () {
         var E_FRONT = elementorFrontend;
         var widgetHandlersMap = {
-          "em_kit_tab.default": emkElementor.EmKitTab,
+          "magicelements_tab.default": emkElementor.magicelementsTab,
         };
   
         $.each(widgetHandlersMap, function (widgetName, callback) {
@@ -15,7 +15,7 @@ import "./../scss/tab.scss"
         });
       },
 
-      EmKitTab: function ($scope) {
+      magicelementsTab: function ($scope) {
         let tabs = $scope.find('.tabs-container');
     
         tabs.each(function () {
