@@ -35,7 +35,7 @@ class Text_Editor extends Widget_Base
      */
     public function get_name()
     {
-        return 'em_kit_text_editor';
+        return 'magicelements_text_editor';
     }
 
         /**
@@ -63,7 +63,7 @@ class Text_Editor extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-text-align-left emk-editor-widgets-icon';
+        return 'eicon-text-align-left magicelements-editor-widgets-icon';
     }
 
         /**
@@ -82,7 +82,7 @@ class Text_Editor extends Widget_Base
      */
     public function get_categories()
     {
-        return ['emk-widgets'];
+        return ['magicelements-widgets'];
     }
 
     public function get_script_depends()
@@ -227,7 +227,7 @@ class Text_Editor extends Widget_Base
 						'icon' => 'eicon-text-align-justify',
 					],
 				],
-				'default'   => 'center',
+				'default'   => 'Left',
 				'toggle'    => true,
 				'selectors' => [
 					'{{WRAPPER}} .text_editor p' => 'text-align: {{VALUE}};',

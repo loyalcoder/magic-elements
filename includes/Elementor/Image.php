@@ -1,6 +1,6 @@
 <?php
 
-    /**
+/**
  * Elementor Classes.
  *
  * @package Image Magic Elements
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-    /**
+/**
  * Magic Kit for Elementor Extension
  *
  * Elementor widget for Image.
@@ -25,7 +25,7 @@ if (!defined('ABSPATH')) {
  */
 class Image extends Widget_Base
 {
-        /**
+    /**
      * Retrieve the widget name.
      *
      * @since 1.0.0
@@ -36,10 +36,10 @@ class Image extends Widget_Base
      */
     public function get_name()
     {
-        return 'em_kit_image';
+        return 'magicelements_image';
     }
 
-        /**
+    /**
      * Retrieve the widget title.
      *
      * @since 1.0.0
@@ -53,7 +53,7 @@ class Image extends Widget_Base
         return esc_html__('Image', 'magic-elements');
     }
 
-        /**
+    /**
      * Retrieve the widget icon.
      *
      * @since 1.0.0
@@ -64,10 +64,10 @@ class Image extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-image emk-editor-widgets-icon';
+        return 'eicon-image magicelements-editor-widgets-icon';
     }
 
-        /**
+    /**
      * Retrieve the list of categories the widget belongs to.
      *
      * Used to determine where to display the widget in the editor.
@@ -83,7 +83,7 @@ class Image extends Widget_Base
      */
     public function get_categories()
     {
-        return ['emk-widgets'];
+        return ['magicelements-widgets'];
     }
 
     public function get_script_depends()
@@ -91,7 +91,7 @@ class Image extends Widget_Base
         return [];
     }
 
-        /**
+    /**
      * Register Copyright controls.
      *
      * @since 1.0.0
@@ -102,7 +102,7 @@ class Image extends Widget_Base
         $this->register_image_controls();
     }
 
-        /**
+    /**
      * Register Copyright General Controls.
      *
      * @since 1.0.0
@@ -177,7 +177,6 @@ class Image extends Widget_Base
 				'default' => 'none',
 				'options' => [
 					'none' => esc_html__( 'None', 'magic-elements' ),
-							  // 'file' => esc_html__( 'Media File', 'magic-elements' ),
 					'custom' => esc_html__( 'Custom URL', 'magic-elements' ),
 				],
 				'condition' => [

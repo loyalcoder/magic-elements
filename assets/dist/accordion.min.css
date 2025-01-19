@@ -4772,7 +4772,7 @@
     display: none !important;
   }
 }
-.emk-accordion-item .emk-accordion-content p {
+.magicelements-accordion-item .magicelements-accordion-content p {
   margin: 0;
 }
 
@@ -4785,11 +4785,11 @@
 }
 
 /* Style-Specific Adjustments */
-.emk-accordion-wrapper.style_three .emk-accordion-content {
+.magicelements-accordion-wrapper.style_three .magicelements-accordion-content {
   display: block; /* All items open by default */
 }
 
-.emk-icons {
+.magicelements-icons {
   order: 2;
 }
 

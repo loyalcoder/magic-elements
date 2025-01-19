@@ -41,7 +41,7 @@ class Ajax {
     public function save_settings() {
         // Sanitize and verify nonce
         $nonce = isset($_POST['nonce']) ? sanitize_key($_POST['nonce']) : '';
-        if (!wp_verify_nonce($nonce, 'magic_elements_settings_nonce')) {
+        if (!wp_verify_nonce($nonce, 'magicelements_settings_nonce')) {
             wp_send_json_error([
                 'message' => esc_html__('Security check failed', 'magic-elements')
             ]);
@@ -56,11 +56,11 @@ class Ajax {
 
         // Get and sanitize enabled widgets
         $enabled_widgets = [];
-        if (isset($_POST['magic_elements_enabled_widgets'])) {
+        if (isset($_POST['magicelements_enabled_widgets'])) {
             // Unslash and ensure it's an array
-            $raw_widgets = ! is_array( $_POST['magic_elements_enabled_widgets'] ) 
+            $raw_widgets = ! is_array( $_POST['magicelements_enabled_widgets'] ) 
             ? array() 
-            : array_map( 'sanitize_text_field', wp_unslash( $_POST['magic_elements_enabled_widgets'] ) );
+            : array_map( 'sanitize_text_field', wp_unslash( $_POST['magicelements_enabled_widgets'] ) );
 
             
             if (is_array($raw_widgets)) {
@@ -69,7 +69,7 @@ class Ajax {
             }
         }
         // Update option
-        update_option('magic_elements_enabled_widgets', $enabled_widgets);
+        update_option('magicelements_enabled_widgets', $enabled_widgets);
 
         wp_send_json_success([
             'message' => esc_html__('Settings saved successfully', 'magic-elements'),

@@ -4786,10 +4786,10 @@
   list-style: none;
 }
 
-.emk-button a {
+.magicelements-button a {
   transition: all 0.4s;
 }
-.emk-button a .btn-icon path {
+.magicelements-button a .btn-icon path {
   transition: all 0.4s;
 }
 

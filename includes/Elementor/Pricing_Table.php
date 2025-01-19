@@ -1,6 +1,6 @@
 <?php
 
-            /**
+/**
  * Elementor Classes.
  *
  * @package Pricing Table Magic Elements
@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-        /**
+/**
  * Elementor Pricing Table Widget
  *
  * Elementor widget for pricing table.
@@ -24,7 +24,7 @@ if (!defined('ABSPATH')) {
  */
 class Pricing_Table extends Widget_Base
 {
-                /**
+    /**
      * Retrieve the widget name.
      *
      * @since 1.0.0
@@ -35,10 +35,10 @@ class Pricing_Table extends Widget_Base
      */
     public function get_name()
     {
-        return 'EM_KIT_pricing_table';
+        return 'magicelements_pricing_table';
     }
 
-                /**
+    /**
      * Retrieve the widget title.
      *
      * @since 1.0.0
@@ -63,7 +63,7 @@ class Pricing_Table extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-price-table emk-editor-widgets-icon';
+        return 'eicon-price-table magicelements-editor-widgets-icon';
     }
 
                 /**
@@ -82,15 +82,15 @@ class Pricing_Table extends Widget_Base
      */
     public function get_categories()
     {
-        return ['emk-widgets'];
+        return ['magicelements-widgets'];
     }
     public function get_style_depends()
     {
-        return ['emk-pricingtable'];
+        return ['magicelements-pricingtable'];
     }
     public function get_script_depends()
     {
-        return ['emkit-pricingtable', 'jquery'];
+        return ['magicelements-pricingtable', 'jquery'];
     }
 
             /**
@@ -1014,12 +1014,12 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'original_price_options',
 			[
-    'label'     => esc_html__( 'Original Price', 'magic-elements' ),
-    'type'      => \Elementor\Controls_Manager::HEADING,
-    'separator' => 'before',
-    'condition' => [
-                    'show_sale' => 'yes',
-                ]
+				'label'     => esc_html__( 'Original Price', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+				'condition' => [
+					'show_sale' => 'yes',
+				]
 			]
 		);
         $this->add_control(
@@ -1411,8 +1411,8 @@ class Pricing_Table extends Widget_Base
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
-				'name'     => 'emk_btn_typography',
-				'selector' => '{{WRAPPER}} .emk-button a',
+				'name'     => 'magicelements_btn_typography',
+				'selector' => '{{WRAPPER}} .magicelements-button a',
 			]
 		);
 		$this->add_control(
@@ -1437,7 +1437,7 @@ class Pricing_Table extends Widget_Base
 				'default'   => 'space-evenly',
 				'toggle'    => true,
 				'selectors' => [
-					'{{WRAPPER}} .emk-button' => 'justify-content: {{VALUE}};',
+					'{{WRAPPER}} .magicelements-button' => 'justify-content: {{VALUE}};',
 				],
 			]
 		);
@@ -1456,7 +1456,7 @@ class Pricing_Table extends Widget_Base
 					'isLinked' => false,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .emk-button a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .magicelements-button a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1475,7 +1475,7 @@ class Pricing_Table extends Widget_Base
 					'isLinked' => false,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .emk-button a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .magicelements-button a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1502,7 +1502,7 @@ class Pricing_Table extends Widget_Base
 				'label'     => esc_html__( 'Background', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .emk-button a' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .magicelements-button a' => 'background-color: {{VALUE}}',
 				],
 			]
 		);
@@ -1512,7 +1512,7 @@ class Pricing_Table extends Widget_Base
 				'label'     => esc_html__( 'color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .emk-button a' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .magicelements-button a' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -1520,7 +1520,7 @@ class Pricing_Table extends Widget_Base
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name'     => 'btn_border',
-				'selector' => '{{WRAPPER}} .emk-button a',
+				'selector' => '{{WRAPPER}} .magicelements-button a',
 			]
 		);
 		$this->add_responsive_control(
@@ -1538,7 +1538,7 @@ class Pricing_Table extends Widget_Base
 					'isLinked' => false,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .emk-button a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .magicelements-button a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1546,7 +1546,7 @@ class Pricing_Table extends Widget_Base
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'btn_box_shadow',
-				'selector' => '{{WRAPPER}} .emk-button a',
+				'selector' => '{{WRAPPER}} .magicelements-button a',
 			]
 		);
 		$this->add_control(
@@ -1578,7 +1578,7 @@ class Pricing_Table extends Widget_Base
 				'default'   => 'row',
 				'toggle'    => true,
 				'selectors' => [
-					'{{WRAPPER}} .emk-button a' => 'flex-direction: {{VALUE}};',
+					'{{WRAPPER}} .magicelements-button a' => 'flex-direction: {{VALUE}};',
 				],
 				'condition' => [
 					'show_btn_icon' => 'yes'
@@ -1603,7 +1603,7 @@ class Pricing_Table extends Widget_Base
 					'size' => 5,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .emk-button a svg' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .magicelements-button a svg' => 'margin-right: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'btn_icon_direction' => 'row-reverse',
@@ -1629,7 +1629,7 @@ class Pricing_Table extends Widget_Base
 					'size' => 5,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .emk-button a svg' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .magicelements-button a svg' => 'margin-left: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'btn_icon_direction' => 'row',
@@ -1693,7 +1693,7 @@ class Pricing_Table extends Widget_Base
 				'label'     => esc_html__( 'Background', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .emk-button a:hover' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .magicelements-button a:hover' => 'background-color: {{VALUE}}',
 				],
 			]
 		);
@@ -1703,7 +1703,7 @@ class Pricing_Table extends Widget_Base
 				'label'     => esc_html__( 'color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .emk-button a:hover' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .magicelements-button a:hover' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -1711,7 +1711,7 @@ class Pricing_Table extends Widget_Base
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name'     => 'btn_border_hover',
-				'selector' => '{{WRAPPER}} .emk-button a:hover',
+				'selector' => '{{WRAPPER}} .magicelements-button a:hover',
 			]
 		);
 		$this->add_responsive_control(
@@ -1729,7 +1729,7 @@ class Pricing_Table extends Widget_Base
 					'isLinked' => false,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .emk-button a:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .magicelements-button a:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1737,7 +1737,7 @@ class Pricing_Table extends Widget_Base
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'btn_box_shadow_hover',
-				'selector' => '{{WRAPPER}} .emk-button a:hover',
+				'selector' => '{{WRAPPER}} .magicelements-button a:hover',
 			]
 		);
 		$this->add_control(
@@ -1757,7 +1757,7 @@ class Pricing_Table extends Widget_Base
 				'label'     => esc_html__( 'Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .emk-button a:hover .btn-icon path' => 'fill: {{VALUE}}',
+					'{{WRAPPER}} .magicelements-button a:hover .btn-icon path' => 'fill: {{VALUE}}',
 				],
 				'condition' => [
 					'show_btn_icon' => 'yes'
