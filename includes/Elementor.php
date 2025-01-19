@@ -75,7 +75,7 @@ class Load_Elementor
     public function register_widgets()
     {
        
-       $enabled_widgets = get_option('magic_elements_enabled_widgets', array());
+       $enabled_widgets = get_option('magicelements_enabled_widgets', array());
        
        $widgets = (array) self::includeWidgetsFiles();
        

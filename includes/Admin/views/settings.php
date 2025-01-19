@@ -24,7 +24,7 @@ if (!defined('ABSPATH')) {
     <div id="settings-toast" class="toast"></div>
 
     <form id="magic-kit-settings" method="post">
-        <?php wp_nonce_field('magic_elements_settings_nonce', 'magic_kit_nonce'); ?>
+        <?php wp_nonce_field('magicelements_settings_nonce', 'magic_kit_nonce'); ?>
         
         <div class="form-group">
             <h3><?php echo esc_html__('Enable/Disable Widgets', 'magic-elements'); ?></h3>
@@ -45,7 +45,7 @@ if (!defined('ABSPATH')) {
                 $widget_key = strtolower(str_replace('_', '', $widget));
                 $widgets[$widget_key] = esc_html($widget);
             }
-            $enabled_widgets = get_option('magic_elements_enabled_widgets', '');
+            $enabled_widgets = get_option('magicelements_enabled_widgets', '');
             if(!is_array($enabled_widgets)){
                 $enabled_widgets = $default_widgets;
             }
@@ -57,7 +57,7 @@ if (!defined('ABSPATH')) {
                     <label class="toggle-switch" for="toggle-<?php echo esc_attr($widget_key); ?>">
                         <input type="checkbox" 
                                id="toggle-<?php echo esc_attr($widget_key); ?>"
-                               name="magic_elements_enabled_widgets[]" 
+                               name="magicelements_enabled_widgets[]" 
                                value="<?php echo esc_attr($widget_key); ?>" 
                                <?php checked(in_array($widget_key, $enabled_widgets)); ?>>
                         <span class="toggle-slider"></span>
