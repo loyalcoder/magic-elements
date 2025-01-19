@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Magic Elements\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-13 18:08+0000\n"
+"POT-Creation-Date: 2025-01-19 17:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -496,10 +496,6 @@ msgstr ""
 msgid "Distance From Content"
 msgstr ""
 
-#: includes/Elementor.php:61
-msgid "Elementor Magic Kit"
-msgstr ""
-
 #: includes/Admin/views/settings.php:33
 msgid "Enable All"
 msgstr ""
@@ -692,9 +688,12 @@ msgstr ""
 msgid "HTML Tag"
 msgstr ""
 
-#. URI of the plugin
 #. Author URI of the plugin
 msgid "https://loyalcoder.com"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://magickit.loyalcoder.com/"
 msgstr ""
 
 #: includes/Elementor/Card.php:174 includes/Elementor/Heading.php:142
@@ -914,6 +913,7 @@ msgid "Magic Card"
 msgstr ""
 
 #. Name of the plugin
+#: includes/Elementor.php:61 includes/Admin/Menu.php:46
 #: includes/Admin/Menu.php:46
 msgid "Magic Elements"
 msgstr ""
