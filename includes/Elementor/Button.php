@@ -436,42 +436,36 @@ class Button extends Widget_Base
     {
         $settings = $this->get_settings_for_display();
 		
-		$this->add_render_attribute( 'wrapper', 'class', 'emk-button-wrapper' );
-
-		$this->add_render_attribute( 'button', 'class', 'emk-button' );
-
-		$this->add_render_attribute( 'content', 'class', 'emk-button-content-wrapper' );
-
-		$this->add_render_attribute( 'span', 'class', 'emk-button-icon' );
-
-		$this->add_render_attribute( 'text', 'class', 'emk-button-text' );
+		
+		$wrapper_class = ['emk-button-wrapper'];
+		$button_class = ['emk-button'];
+		$content_class = ['emk-button-content-wrapper'];
+		$span_class = ['emk-button-icon'];
+		$text_class = ['emk-button-text'];
 
 		if ( ! empty( $settings['button_type'] ) ) {
-			$this->add_render_attribute( 'button', 'class', 'emk-color-' . $settings['button_type'] );
+			$button_class[] = 'emk-color-' . $settings['button_type'];
 		}
 
 		if ( ! empty( $settings['link']['url'] ) ) {
 			$this->add_link_attributes( 'button', $settings['link'] );
-			$this->add_render_attribute( 'button', 'class', 'ekm-button-link' );
+			$button_class[] = 'ekm-button-link';
 		}
 
 		if ( ! empty( $settings['size'] ) ) {
-			$this->add_render_attribute( 'button', 'class', 'emk-size-' . $settings['size'] );
+			$button_class[] = 'emk-size-' . $settings['size'];
 		}
 
 		if ( ! empty( $settings['hover_animation'] ) ) {
-			$this->add_render_attribute( 'button', 'class', 'emk-animation-' . $settings['hover_animation'] );
+			$button_class[] = 'emk-animation-' . $settings['hover_animation'];
+		}if ( ! empty( $settings['icon_align'] ) ) {
+			$span_class[] = 'magicelements-align-icon-' . $settings['icon_align'];
 		}
-		
-
-				  // if ( ! empty( $settings['background_transitions'] ) ) {
-				  // 	$this->add_render_attribute( 'button', 'class', 'hvr-' . $settings['background_transitions'] );
-				  // }
-
-		if ( ! empty( $settings['icon_align'] ) ) {
-			$this->add_render_attribute( 'span', 'class', 'magicelements-align-icon-' . $settings['icon_align'] );
-		}
-        
+        $wrapper_class= join(' ', $wrapper_class);
+        $button_class= join(' ', $button_class);
+        $content_class= join(' ', $content_class);
+        $span_class= join(' ', $span_class);
+        $text_class= join(' ', $text_class);	
         include __DIR__ . '/layouts/button/button.php';
     }
 
