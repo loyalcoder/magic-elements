@@ -63,7 +63,7 @@ class Pricing_Table extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-price-table emk-editor-widgets-icon';
+        return 'eicon-price-table magicelements-editor-widgets-icon';
     }
 
                 /**
@@ -82,7 +82,7 @@ class Pricing_Table extends Widget_Base
      */
     public function get_categories()
     {
-        return ['emk-widgets'];
+        return ['magicelements-widgets'];
     }
     public function get_style_depends()
     {

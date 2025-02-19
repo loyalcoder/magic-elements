@@ -64,7 +64,7 @@ class Heading extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-heading emk-editor-widgets-icon';
+        return 'eicon-heading magicelements-editor-widgets-icon';
     }
 
         /**
@@ -83,7 +83,7 @@ class Heading extends Widget_Base
      */
     public function get_categories()
     {
-        return ['emk-widgets'];
+        return ['magicelements-widgets'];
     }
     public function get_script_depends()
     {

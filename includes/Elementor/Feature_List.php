@@ -64,7 +64,7 @@ class Feature_List extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-bullet-list emk-editor-widgets-icon';
+        return 'eicon-bullet-list magicelements-editor-widgets-icon';
     }
 
           /**
@@ -83,7 +83,7 @@ class Feature_List extends Widget_Base
      */
     public function get_categories()
     {
-        return ['emk-widgets'];
+        return ['magicelements-widgets'];
     }
     public function get_style_depends()
     {
