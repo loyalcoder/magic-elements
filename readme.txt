@@ -27,7 +27,7 @@ Elevate your Elementor experience and create visually stunning websites with eas
 
 The uncompiled JavaScript and CSS source code for this plugin is available in the following repository:
 
-[Link to your repository - e.g., https://github.com/yourusername/magic-elements]  *(Replace with your actual repository link)*
+https://github.com/loyalcoder/magic-elements
 
 This repository contains the original source files used to generate the minified assets included in the `/assets/dist/` directory of the plugin.  You can review, study, and modify the source as needed.
 
