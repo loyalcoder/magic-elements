@@ -216,6 +216,7 @@ class Load_Elementor
             'Category_List',
             'Card',
             'Tab',
+            'Post'
         ];
     }
     public static function defaultWidgets()
