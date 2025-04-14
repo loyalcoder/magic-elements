@@ -23,7 +23,7 @@
 if (!defined('ABSPATH')) {
     exit;
 }
-
+use MagicElements\Traits\Data;
 require_once __DIR__ . '/vendor/autoload.php';
 
 /**
@@ -31,6 +31,7 @@ require_once __DIR__ . '/vendor/autoload.php';
  */
 final class Magic_Elements
 {
+    use Data;
     /**
      * Plugin version
      * 
@@ -47,6 +48,9 @@ final class Magic_Elements
 
         register_activation_hook(__FILE__, [$this, 'activate']);
         add_action('plugins_loaded', [$this, 'init_plugin']);
+        add_action('save_post', [$this, 'clear_post_cache'], 10, 3);
+        add_action('delete_post', [$this, 'clear_post_cache']);
+        add_action('wp_insert_post', [$this, 'clear_post_cache']);
     }
 
     /**
@@ -105,6 +109,11 @@ final class Magic_Elements
         if (is_admin()) {
             new MagicElements\Admin();
         }
+    }
+    public function clear_post_cache($post_id, $post = null, $update = null)
+    {
+        $this->clear_posts_cache();
+        $this->clear_products_cache();
     }
 }
 

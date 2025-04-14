@@ -2,17 +2,18 @@
 
 namespace MagicElements;
 
-use Elementor\Plugin;
-
 if (!defined('ABSPATH')) {
     exit;
 }
+use Elementor\Plugin;
+use MagicElements\Traits\Data;
 
 /**
  * Load elementor class
  */
 class Load_Elementor
 {
+    use Data;
     /**
      * Init elementor class
      *

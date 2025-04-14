@@ -51,7 +51,7 @@ trait Data {
                     'excerpt' => get_the_excerpt(),
                     'content' => get_the_content(),
                     'permalink' => get_permalink(),
-                    'thumbnail' => get_the_post_thumbnail_url(get_the_ID(), 'full'),
+                    'thumbnail' => get_the_post_thumbnail(get_the_ID(), 'full'),
                     'date' => get_the_date(),
                     'author' => get_the_author(),
                     'post_type' => get_post_type(),

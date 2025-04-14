@@ -2,5 +2,8 @@
 if (!defined('ABSPATH')) {
     exit;
 }
-?>
-post will display here 
+
+foreach ($query as $post) {
+    include __DIR__ . '/loop/default.php';
+}
+
