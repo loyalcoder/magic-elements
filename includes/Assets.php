@@ -29,7 +29,7 @@ class Assets
     }
 
     public function register_admin_assets() {
-        $screen = get_current_screen();        
+        $screen = get_current_screen();                
         if ($screen && $screen->id === 'toplevel_page_magic-elements-dashboard') {
             wp_enqueue_style(
                 'magic-element-admin',
@@ -43,6 +43,29 @@ class Assets
                 ['jquery'],
                 filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/admin.js'),
                 true
+            );
+        }
+        if ($screen && $screen->id === 'magic-elements_page_magic-builder') {
+            wp_enqueue_style(
+                'magic-builder',
+                MAGIC_ELEMENTS_ASSETS . '/dist/magic_builder.css',
+                [],
+                filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/magic_builder.css')
+            );
+            wp_enqueue_script(
+                'magic-builder',
+                MAGIC_ELEMENTS_ASSETS . '/dist/magic_builder.js',
+                ['jquery'],
+                filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/magic_builder.js'),
+                true
+            );
+            wp_localize_script(
+                'magic-builder',
+                'magic_builder_data',
+                [
+                    'ajax_url' => admin_url('admin-ajax.php'),
+                    'nonce' => wp_create_nonce('magic_builder_nonce')
+                ]
             );
         }
     }

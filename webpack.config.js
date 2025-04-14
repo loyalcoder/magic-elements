@@ -47,6 +47,7 @@ const baseConfig = {
     // 3) JS ONLY (if there's no SCSS for 'main', or your 'admin' is JS only, etc.):
     main: './assets/src/js/index.js',
     admin: './assets/src/admin/index.js',
+    magic_builder: './assets/src/admin/magic_builder.js',
   },
   externals: {
     jquery: 'jQuery',

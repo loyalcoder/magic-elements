@@ -11,7 +11,6 @@
  */
 
 import "./admin.scss";
-
 /**
  * Display toast notification message
  * 

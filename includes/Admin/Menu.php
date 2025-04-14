@@ -45,6 +45,7 @@ class Menu
 
         add_menu_page(esc_html__('Magic Elements', 'magic-elements'), esc_html__('Magic Elements', 'magic-elements'), $capability, $parent_slug, [$this, 'dashboard_page'], 'dashicons-buddicons-groups', 59);
         add_submenu_page($parent_slug, esc_html__('Settings', 'magic-elements'), esc_html__('Settings', 'magic-elements'), $capability, $parent_slug, [$this, 'dashboard_page']);
+        add_submenu_page($parent_slug, esc_html__('Magic Builder', 'magic-elements'), esc_html__('Magic Builder', 'magic-elements'), $capability, 'magic-builder', [$this, 'magic_builder_page']);
     }
 
     /**
@@ -58,5 +59,18 @@ class Menu
     {
         $settings = new Settings();
         $settings->settings_page();
+    }
+
+    /**
+     * Handle Magic Builder page
+     * 
+     * Renders the Magic Builder page content
+     *
+     * @return void
+     */
+    public function magic_builder_page()
+    {
+        $builder = new Builder();
+        $builder->builder_page();
     }
 }

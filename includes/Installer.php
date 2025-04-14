@@ -17,6 +17,7 @@ class Installer
     public function run()
     {
         $this->add_version();
+        add_filter('elementor/documents/post_type_support', [$this, 'add_elementor_support'], 10, 2);
     }
 
     /**
@@ -33,5 +34,13 @@ class Installer
         }
 
         update_option('magicelements_version', MAGIC_ELEMENTS_VERSION);
+    }
+
+    public function add_elementor_support($post_type_support, $post_type)
+    {
+        if ('magic_builder' === $post_type) {
+            return true;
+        }
+        return $post_type_support;
     }
 }

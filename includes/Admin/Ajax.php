@@ -6,7 +6,7 @@ namespace MagicElements\Admin;
 if (!defined('ABSPATH')) {
     exit;
 }
-
+use MagicElements\Trait\Builder;
 /**
  * Class Ajax
  * 
@@ -15,19 +15,21 @@ if (!defined('ABSPATH')) {
  * - Processing AJAX requests to save widget settings
  * - Validating nonces and user capabilities
  * - Sanitizing and storing widget configuration
+ * - Handling template preview requests
  *
  * @package MagicElements\Admin
  * @since 1.0.0
  */
 class Ajax {
-
+    use Builder;
     /**
      * Initialize ajax handlers
      * 
-     * Hooks into WordPress AJAX actions to handle settings updates
+     * Hooks into WordPress AJAX actions to handle settings updates and previews
      */
     public function __construct() {
         add_action('wp_ajax_save_magic_kit_settings', [$this, 'save_settings']);
+        add_action('wp_ajax_magic_builder_header_list', [$this, 'magic_builder_header_list']);
     }
 
     /**
@@ -76,4 +78,17 @@ class Ajax {
             'widgets' => $enabled_widgets
         ]);
     }
+
+    public function magic_builder_header_list() {
+        check_ajax_referer('magic_builder_nonce', 'nonce');
+        $builder_posts = $this->get_builder_by_type('header');
+        ob_start();
+         include __DIR__ . '/views/builder/builder.php';
+        $html = ob_get_clean();
+        wp_send_json_success([
+            'html' => $html
+        ]);
+    }
+   
+    
 }

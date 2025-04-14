@@ -102,6 +102,7 @@ final class Magic_Elements
     {
         new MagicElements\Assets();
         new MagicElements\Load_Elementor();
+        new MagicElements\Admin\Ctp();
         if (is_admin()) {
             new MagicElements\Admin();
         }
