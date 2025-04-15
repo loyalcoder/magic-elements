@@ -216,7 +216,8 @@ class Load_Elementor
             'Category_List',
             'Card',
             'Tab',
-            'Post'
+            'Post',
+            'Info_Box',
         ];
     }
     public static function defaultWidgets()
@@ -236,6 +237,7 @@ class Load_Elementor
             'categorylist',
             'card',
             'tab',
+            'infobox',
         ];
     }
     /**
