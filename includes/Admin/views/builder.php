@@ -5,14 +5,14 @@
         'post_type' => 'magic_builder',
         'posts_per_page' => -1,
      ]);
-     echo '<pre>';
-     print_r(get_post_meta(2123, '_display_type', true));
-     print_r(get_post_meta(2122, '_display_type', true));
-     echo '</pre>';
+    //  echo '<pre>';
+    //  print_r(get_post_meta(2123, '_display_type', true));
+    //  print_r(get_post_meta(2122, '_display_type', true));
+    //  echo '</pre>';
      
-    echo '<pre>';
-    print_r($builder_posts);
-    echo '</pre>';
+    // echo '<pre>';
+    // print_r($builder_posts);
+    // echo '</pre>';
     // $post_id = wp_insert_post([
     //     'post_type' => 'magic_builder',
     //     'post_title' => 'Header header',

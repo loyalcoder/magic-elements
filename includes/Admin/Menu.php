@@ -70,7 +70,7 @@ class Menu
      */
     public function magic_builder_page()
     {
-        $builder = new Builder();
+        $builder = new Mbuilder();
         $builder->builder_page();
     }
 }

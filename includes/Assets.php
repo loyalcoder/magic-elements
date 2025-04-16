@@ -59,6 +59,19 @@ class Assets
                 filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/magic_builder.js'),
                 true
             );
+            wp_enqueue_style(
+                'magic-builder-select2',
+                MAGIC_ELEMENTS_ASSETS . '/vendor/select2/select2.min.css',
+                [],
+                MAGIC_ELEMENTS_VERSION
+            );
+            wp_enqueue_script(
+                'magic-builder-select2',
+                MAGIC_ELEMENTS_ASSETS . '/vendor/select2/select2.min.js',
+                ['jquery'],
+                MAGIC_ELEMENTS_VERSION,
+                true);
+           
             wp_localize_script(
                 'magic-builder',
                 'magic_builder_data',

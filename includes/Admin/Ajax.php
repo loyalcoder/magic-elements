@@ -82,6 +82,8 @@ class Ajax {
     public function magic_builder_header_list() {
         check_ajax_referer('magic_builder_nonce', 'nonce');
         $builder_posts = $this->get_builder_by_type('header');
+        $display = $this->get_display_on_list();
+        $post_types = $this->get_all_post_type_list();
         ob_start();
          include __DIR__ . '/views/builder/builder.php';
         $html = ob_get_clean();

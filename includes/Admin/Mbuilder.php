@@ -7,6 +7,8 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+use MagicElements\Trait\Builder;
+
 /**
  * Class Builder
  * 
@@ -20,8 +22,9 @@ if (!defined('ABSPATH')) {
  * @since 1.0.0
  */
 
-class Builder
+class Mbuilder
 {
+    use Builder;
     /**
      * Render the builder page template
      * 
@@ -33,6 +36,7 @@ class Builder
      */
     public function builder_page()
     {
+        $display = $this->get_display_on_list();
         $template = __DIR__ . '/views/builder.php';
 
         if (file_exists($template)) {
