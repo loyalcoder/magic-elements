@@ -88,7 +88,12 @@ class Info_Box extends Widget_Base
 
     public function get_script_depends()
     {
-        return [];
+        return ['emkit-info-box','jquery'];
+    }
+
+	public function get_style_depends()
+    {
+        return ['emk-info-box'];
     }
 
         /**
@@ -120,7 +125,7 @@ class Info_Box extends Widget_Base
         $this->add_control(
 			'info_box_icon',
 			[
-				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'label' => esc_html__( 'Icon', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
 				'default' => [
 					'value' => 'fas fa-star',
@@ -143,35 +148,35 @@ class Info_Box extends Widget_Base
         $this->add_control(
 			'info_box_title',
 			[
-				'label' => esc_html__( 'Title', 'textdomain' ),
+				'label' => esc_html__( 'Title', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Need Help?', 'textdomain' ),
-				'placeholder' => esc_html__( 'Type your title here', 'textdomain' ),
+				'default' => esc_html__( 'Need Help?', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your title here', 'magic-elements' ),
 			]
 		);
         $this->add_control(
 			'info_box_description',
 			[
-				'label' => esc_html__( 'Description', 'textdomain' ),
+				'label' => esc_html__( 'Description', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'rows' => 6,
-				'default' => esc_html__( 'Click below to get support from our team.', 'textdomain' ),
-				'placeholder' => esc_html__( 'Type your description here', 'textdomain' ),
+				'default' => esc_html__( 'Click below to get support from our team.', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your description here', 'magic-elements' ),
 			]
 		);
         $this->add_control(
 			'info_box_button_title',
 			[
-				'label' => esc_html__( 'Button', 'textdomain' ),
+				'label' => esc_html__( 'Button', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Explore ', 'textdomain' ),
-				'placeholder' => esc_html__( 'Type your title here', 'textdomain' ),
+				'default' => esc_html__( 'Explore ', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your title here', 'magic-elements' ),
 			]
 		);
         $this->add_control(
 			'info_box_button_link',
 			[
-				'label' => esc_html__( 'Link', 'textdomain' ),
+				'label' => esc_html__( 'Link', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::URL,
 				'options' => [ 'url', 'is_external', 'nofollow' ],
 				'default' => [
@@ -195,19 +200,19 @@ class Info_Box extends Widget_Base
         $this->add_responsive_control(
 			'info_box_align',
 			[
-				'label' => esc_html__( 'Alignment', 'textdomain' ),
+				'label' => esc_html__( 'Alignment', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'textdomain' ),
+						'title' => esc_html__( 'Left', 'magic-elements' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'textdomain' ),
+						'title' => esc_html__( 'Center', 'magic-elements' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'textdomain' ),
+						'title' => esc_html__( 'Right', 'magic-elements' ),
 						'icon' => 'eicon-text-align-right',
 					],
 				],
@@ -218,6 +223,33 @@ class Info_Box extends Widget_Base
 				],
 			]
 		);
+		$this->add_responsive_control(
+			'info_box_icon_position',
+			[
+				'label' => esc_html__( 'Icon Position', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'magic-elements' ),
+						'icon' => 'eicon-h-align-left',
+					],
+					'top' => [
+						'title' => esc_html__( 'Top', 'magic-elements' ),
+						'icon' => 'eicon-v-align-top',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'magic-elements' ),
+						'icon' => 'eicon-h-align-right',
+					],
+				],
+				'default' => 'top',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .info-bo' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+
         //Start normal-hover style
         $this->start_controls_tabs(
             'style_tabs'
@@ -226,7 +258,7 @@ class Info_Box extends Widget_Base
         $this->start_controls_tab(
             'style_normal_tab',
             [
-                'label' => esc_html__( 'Normal', 'textdomain' ),
+                'label' => esc_html__( 'Normal', 'magic-elements' ),
             ]
         );
         $this->add_group_control(
@@ -254,7 +286,7 @@ class Info_Box extends Widget_Base
         $this->add_responsive_control(
 			'info_box_normal_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -268,7 +300,7 @@ class Info_Box extends Widget_Base
         $this->start_controls_tab(
             'style_hover_tab',
             [
-                'label' => esc_html__( 'Hover', 'textdomain' ),
+                'label' => esc_html__( 'Hover', 'magic-elements' ),
             ]
         );
         $this->add_group_control(
@@ -313,7 +345,7 @@ class Info_Box extends Widget_Base
         $this->add_responsive_control(
 			'info_box_hover_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -335,7 +367,7 @@ class Info_Box extends Widget_Base
         $this->add_responsive_control(
 			'info_box_padding',
 			[
-				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -355,7 +387,7 @@ class Info_Box extends Widget_Base
         $this->add_control(
 			'info_box_icon_color',
 			[
-				'label' => esc_html__( 'Icon Color', 'textdomain' ),
+				'label' => esc_html__( 'Icon Color', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .info-icon svg' => 'fill: {{VALUE}}',
@@ -373,7 +405,7 @@ class Info_Box extends Widget_Base
         $this->add_responsive_control(
 			'info_box_icon_size',
 			[
-				'label' => esc_html__( 'Size', 'textdomain' ),
+				'label' => esc_html__( 'Size', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -389,7 +421,7 @@ class Info_Box extends Widget_Base
 				],
 				'default' => [
 					'unit' => '%',
-					'size' => 8,
+					'size' => 5,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .info-icon svg' => 'width: {{SIZE}}{{UNIT}};',
@@ -413,7 +445,7 @@ class Info_Box extends Widget_Base
         $this->add_responsive_control(
 			'info_box_icon_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -424,7 +456,7 @@ class Info_Box extends Widget_Base
         $this->add_responsive_control(
 			'info_box_icon_padding',
 			[
-				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -444,7 +476,7 @@ class Info_Box extends Widget_Base
         $this->add_control(
 			'info_box_title_color',
 			[
-				'label' => esc_html__( 'Title Color', 'textdomain' ),
+				'label' => esc_html__( 'Title Color', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .info-content h3' => 'color: {{VALUE}}',
@@ -475,7 +507,7 @@ class Info_Box extends Widget_Base
         $this->add_responsive_control(
 			'info_box_title_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -495,7 +527,7 @@ class Info_Box extends Widget_Base
         $this->add_control(
 			'info_box_description_color',
 			[
-				'label' => esc_html__( 'Description Color', 'textdomain' ),
+				'label' => esc_html__( 'Description Color', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .info-content p' => 'color: {{VALUE}}',
@@ -526,7 +558,7 @@ class Info_Box extends Widget_Base
         $this->add_responsive_control(
 			'info_box_description_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -565,13 +597,13 @@ class Info_Box extends Widget_Base
         $this->start_controls_tab(
             'style_button_normal_tab',
             [
-                'label' => esc_html__( 'Normal', 'textdomain' ),
+                'label' => esc_html__( 'Normal', 'magic-elements' ),
             ]
         );
         $this->add_control(
 			'info_box_button_normal_text_color',
 			[
-				'label' => esc_html__( 'Text Color', 'textdomain' ),
+				'label' => esc_html__( 'Text Color', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .info-content .info-button a' => 'color: {{VALUE}}',
@@ -603,7 +635,7 @@ class Info_Box extends Widget_Base
         $this->add_responsive_control(
 			'info_box_button_normal_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -625,13 +657,13 @@ class Info_Box extends Widget_Base
         $this->start_controls_tab(
             'style_button_hover_tab',
             [
-                'label' => esc_html__( 'Hover', 'textdomain' ),
+                'label' => esc_html__( 'Hover', 'magic-elements' ),
             ]
         );
         $this->add_control(
 			'info_box_button_hover_text_color',
 			[
-				'label' => esc_html__( 'Text Color', 'textdomain' ),
+				'label' => esc_html__( 'Text Color', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .info-content .info-button a:hover' => 'color: {{VALUE}}',
@@ -666,7 +698,7 @@ class Info_Box extends Widget_Base
         $this->add_control(
 			'info_box_button_hover_animation',
 			[
-				'label' => esc_html__( 'Hover Animation', 'textdomain' ),
+				'label' => esc_html__( 'Hover Animation', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::HOVER_ANIMATION,
 			]
 		);
@@ -699,7 +731,7 @@ class Info_Box extends Widget_Base
         $this->add_responsive_control(
 			'info_box_button_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -710,7 +742,7 @@ class Info_Box extends Widget_Base
         $this->add_responsive_control(
 			'info_box_button_padding',
 			[
-				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -719,6 +751,62 @@ class Info_Box extends Widget_Base
 			]
 		);
         $this->end_controls_section();
+
+		// $this->start_controls_section(
+		// 	'section_icon_box',
+		// 	[
+		// 		'label' => esc_html__( 'Icon Box', 'plugin-name' ),
+		// 		'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+
+		// 	]
+		// );
+		
+		// $this->add_control(
+		// 	'icon',
+		// 	[
+		// 		'label' => esc_html__( 'Icon', 'plugin-name' ),
+		// 		'type' => \Elementor\Controls_Manager::ICONS,
+		// 		'default' => [
+		// 			'value' => 'fas fa-star',
+		// 			'library' => 'solid',
+		// 		],
+		// 	]
+		// );
+		
+		// $this->add_control(
+		// 	'title',
+		// 	[
+		// 		'label' => esc_html__( 'Title', 'plugin-name' ),
+		// 		'type' => \Elementor\Controls_Manager::TEXT,
+		// 		'default' => esc_html__( 'This is the heading', 'plugin-name' ),
+		// 	]
+		// );
+		
+		// $this->add_control(
+		// 	'description',
+		// 	[
+		// 		'label' => esc_html__( 'Description', 'plugin-name' ),
+		// 		'type' => \Elementor\Controls_Manager::TEXTAREA,
+		// 		'default' => esc_html__( 'Lorem ipsum dolor sit amet.', 'plugin-name' ),
+		// 	]
+		// );
+		
+		// $this->add_control(
+		// 	'icon_position',
+		// 	[
+		// 		'label' => esc_html__( 'Icon Position', 'plugin-name' ),
+		// 		'type' => \Elementor\Controls_Manager::SELECT,
+		// 		'default' => 'top',
+		// 		'options' => [
+		// 			'top' => esc_html__( 'Top', 'plugin-name' ),
+		// 			'left' => esc_html__( 'Left', 'plugin-name' ),
+		// 			'right' => esc_html__( 'Right', 'plugin-name' ),
+		// 		],
+		// 	]
+		// );
+		
+		// $this->end_controls_section();
+		
 
     }
 
@@ -733,7 +821,11 @@ class Info_Box extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+		// $icon_position = $settings['info_box_icon_position'];
+
         include __DIR__ . '/layouts/Info-Box/info-box.php';
+
+
     }
 
         /**

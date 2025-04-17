@@ -138,6 +138,11 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/tab.js'),
                 'deps'    => ['jquery']
             ],
+            'emkit-info-box' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/info_box.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/info_box.js'),
+                'deps'    => ['jquery']
+            ],
         ];
     }
     /**
@@ -189,7 +194,11 @@ class Load_Elementor
             'emk-tab' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/tab.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/tab.css'),
-            ]
+            ],
+            'emk-info-box' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/info_box.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/info_box.css'),
+            ],
         ];
     }
 
