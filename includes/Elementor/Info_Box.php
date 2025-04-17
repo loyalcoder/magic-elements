@@ -696,13 +696,6 @@ class Info_Box extends Widget_Base
 			]
 		);
         $this->add_control(
-			'info_box_button_hover_animation',
-			[
-				'label' => esc_html__( 'Hover Animation', 'magic-elements' ),
-				'type' => \Elementor\Controls_Manager::HOVER_ANIMATION,
-			]
-		);
-        $this->add_control(
 			'info_box_button_hover_devider',
 			[
 				'type' => \Elementor\Controls_Manager::HEADING,
@@ -751,61 +744,6 @@ class Info_Box extends Widget_Base
 			]
 		);
         $this->end_controls_section();
-
-		// $this->start_controls_section(
-		// 	'section_icon_box',
-		// 	[
-		// 		'label' => esc_html__( 'Icon Box', 'plugin-name' ),
-		// 		'tab' => \Elementor\Controls_Manager::TAB_STYLE,
-
-		// 	]
-		// );
-		
-		// $this->add_control(
-		// 	'icon',
-		// 	[
-		// 		'label' => esc_html__( 'Icon', 'plugin-name' ),
-		// 		'type' => \Elementor\Controls_Manager::ICONS,
-		// 		'default' => [
-		// 			'value' => 'fas fa-star',
-		// 			'library' => 'solid',
-		// 		],
-		// 	]
-		// );
-		
-		// $this->add_control(
-		// 	'title',
-		// 	[
-		// 		'label' => esc_html__( 'Title', 'plugin-name' ),
-		// 		'type' => \Elementor\Controls_Manager::TEXT,
-		// 		'default' => esc_html__( 'This is the heading', 'plugin-name' ),
-		// 	]
-		// );
-		
-		// $this->add_control(
-		// 	'description',
-		// 	[
-		// 		'label' => esc_html__( 'Description', 'plugin-name' ),
-		// 		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		// 		'default' => esc_html__( 'Lorem ipsum dolor sit amet.', 'plugin-name' ),
-		// 	]
-		// );
-		
-		// $this->add_control(
-		// 	'icon_position',
-		// 	[
-		// 		'label' => esc_html__( 'Icon Position', 'plugin-name' ),
-		// 		'type' => \Elementor\Controls_Manager::SELECT,
-		// 		'default' => 'top',
-		// 		'options' => [
-		// 			'top' => esc_html__( 'Top', 'plugin-name' ),
-		// 			'left' => esc_html__( 'Left', 'plugin-name' ),
-		// 			'right' => esc_html__( 'Right', 'plugin-name' ),
-		// 		],
-		// 	]
-		// );
-		
-		// $this->end_controls_section();
 		
 
     }
@@ -821,8 +759,6 @@ class Info_Box extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-		// $icon_position = $settings['info_box_icon_position'];
-
         include __DIR__ . '/layouts/Info-Box/info-box.php';
 
 
