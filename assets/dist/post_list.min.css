@@ -1,0 +1,52 @@
+/*!*************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/post_list.scss ***!
+  \*************************************************************************************************************************/
+.magic-post-list {
+  display: grid;
+  gap: 30px;
+}
+
+.magic-post-item {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: 0.3s;
+}
+
+.magic-post-item:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.magic-post-thumbnail img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.magic-post-content {
+  padding: 20px;
+}
+
+.magic-post-title {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.magic-post-meta {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.magic-post-meta span {
+  margin-right: 15px;
+}
+
+.magic-post-excerpt {
+  font-size: 14px;
+  color: #444;
+}
+
+/*# sourceMappingURL=post_list.min.css.map*/
