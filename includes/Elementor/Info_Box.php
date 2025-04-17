@@ -6,7 +6,6 @@
  * @package Image Magic Elements
  */
 
-
 namespace MagicElements\Elementor;
 
 use Elementor\Controls_Manager;
