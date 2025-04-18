@@ -11,7 +11,6 @@
                     $this->add_link_attributes( 'info_box_button_link', $settings['info_box_button_link'] );
                 }
             ?>
-            
             <a <?php $this->print_render_attribute_string( 'info_box_button_link' ); ?>>
                 <?php echo esc_html($settings['info_box_button_title']); ?>
             </a>

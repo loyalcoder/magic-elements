@@ -281,6 +281,13 @@ class Info_Box extends Widget_Base
 				'separator' => 'before',
 			]
 		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'info_box_normal_shadow',
+				'selector' => '{{WRAPPER}} .info-box',
+			]
+		);
         $this->add_responsive_control(
 			'info_box_normal_border_radius',
 			[
@@ -326,6 +333,13 @@ class Info_Box extends Widget_Base
 				],
 			]
 		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'info_box_shadow',
+				'selector' => '{{WRAPPER}} .info-box:hover',
+			]
+		);
         $this->add_control(
 			'info_box_hover_border_devider',
 			[
@@ -368,6 +382,14 @@ class Info_Box extends Widget_Base
 				'label' => esc_html__( 'Padding', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 30,
+					'right' => 30,
+					'bottom' => 30,
+					'left' => 30,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
 				'selectors' => [
 					'{{WRAPPER}} .info-box' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -419,7 +441,7 @@ class Info_Box extends Widget_Base
 				],
 				'default' => [
 					'unit' => '%',
-					'size' => 5,
+					'size' => 8,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .info-icon svg' => 'width: {{SIZE}}{{UNIT}};',

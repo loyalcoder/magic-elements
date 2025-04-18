@@ -1,4 +1,9 @@
 /*!************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/info_box.scss ***!
   \************************************************************************************************************************/
+.info-box {
+  border: 1px solid rgb(229, 228, 228);
+  border-radius: 4px;
+}
 
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5mb19ib3guY3NzIiwibWFwcGluZ3MiOiI7OztBQUFBO0VBQ0k7RUFDQTtBQUNKLEMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9lbGVtZW50b3ItbWFnaWMta2l0Ly4vYXNzZXRzL3NyYy9zY3NzL2luZm9fYm94LnNjc3MiXSwic291cmNlc0NvbnRlbnQiOlsiLmluZm8tYm94e1xyXG4gICAgYm9yZGVyOiAxcHggc29saWQgcmdiKDIyOSwgMjI4LCAyMjgpO1xyXG4gICAgYm9yZGVyLXJhZGl1czogNHB4O1xyXG4gICAgXHJcbn0iXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=*/

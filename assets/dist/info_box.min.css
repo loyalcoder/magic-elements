@@ -1,4 +1,9 @@
 /*!************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/info_box.scss ***!
   \************************************************************************************************************************/
+.info-box {
+  border: 1px solid rgb(229, 228, 228);
+  border-radius: 4px;
+}
 
+/*# sourceMappingURL=info_box.min.css.map*/
