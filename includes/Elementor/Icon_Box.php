@@ -86,9 +86,9 @@ class Icon_Box extends Widget_Base
         return ['magicelements-widgets'];
     }
 
-    public function get_script_depends()
+    public function get_style_depends()
     {
-        return [];
+        return ['emk-icon-box'];
     }
 
         /**

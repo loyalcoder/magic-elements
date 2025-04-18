@@ -1,0 +1,1 @@
+{"version":3,"file":"icon_box.min.css","mappings":";;;AAAA;EACI;AACJ,C","sources":["webpack://elementor-magic-kit/./assets/src/scss/icon_box.scss"],"sourcesContent":["*{\r\n    background-color: red;\r\n}"],"names":[],"sourceRoot":""}

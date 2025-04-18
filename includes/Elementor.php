@@ -189,6 +189,10 @@ class Load_Elementor
             'emk-tab' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/tab.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/tab.css'),
+            ],
+            'emk-icon-box' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/icon_box.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/icon_box.css'),
             ]
         ];
     }
