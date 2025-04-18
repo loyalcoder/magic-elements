@@ -126,7 +126,7 @@ class Post_List extends Widget_Base
                     'recent' => esc_html__('Recent Posts', 'magic-elements'),
                     'popular' => esc_html__('Popular Posts', 'magic-elements'),
                     'selected' => esc_html__('Selected Posts', 'magic-elements'),
-                    'category' => esc_html__('Category Posts', 'magic-elements'), // Changed from 'taxonomy'
+                    'category' => esc_html__('Category Posts', 'magic-elements'),
                 ],
                 'default' => 'recent',
             ]
