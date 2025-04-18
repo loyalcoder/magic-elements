@@ -1,27 +1,84 @@
 <?php
-/**
- * Elementor Post List Widget - Fixed Version
+
+    /**
+ * Elementor Classes.
+ *
+ * @package Post List Magic Elements
  */
+
+
 namespace MagicElements\Elementor;
 
 use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
 
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+} 
 
-class Post_List extends Widget_Base {
+    /**
+ * Magic Elements for Elementor Extension
+ *
+ * Elementor widget for Post Category Tab.
+ *
+ * @since 1.0.0
+ */
+class Post_List extends Widget_Base 
+{
+        /**
+     * Retrieve the widget name.
+     *
+     * @since 1.0.0
+     *
+     * @access public
+     *
+     * @return string Widget name.
+     */
 
     public function get_name() {
         return 'em_kit_post_list';
     }
+      /**
+     * Retrieve the widget title.
+     *
+     * @since 1.0.0
+     *
+     * @access public
+     *
+     * @return string Widget title.
+     */
 
     public function get_title() {
         return esc_html__('Post List', 'magic-elements');
     }
+       /**
+     * Retrieve the widget icon.
+     *
+     * @since 1.0.0
+     *
+     * @access public
+     *
+     * @return string Widget icon.
+     */
 
     public function get_icon() {
         return 'eicon-post-list magicelements-editor-widgets-icon';
     }
+    
+        /**
+     * Retrieve the list of categories the widget belongs to.
+     *
+     * Used to determine where to display the widget in the editor.
+     *
+     * Note that currently Elementor supports only one category.
+     * When multiple categories passed, Elementor uses the first one.
+     *
+     * @since 1.0.0
+     *
+     * @access public
+     *
+     * @return array Widget categories.
+     */
 
     public function get_categories() {
         return ['magicelements-widgets'];
@@ -30,32 +87,46 @@ class Post_List extends Widget_Base {
     public function get_style_depends() {
         return ['emk-post-list'];
     }
+          /**
+     * Register Copyright controls.
+     *
+     * @since 1.0.0
+     * @access protected
+     */
 
     protected function register_controls() {
         $this->register_query_controls();
         $this->register_layout_controls();
         $this->register_content_controls();
+        $this->register_style_controls();
     }
+    
+        /**
+     * Register Copyright General Controls.
+     *
+     * @since 1.0.0
+     * @access protected
+     */
 
     protected function register_query_controls() {
         $this->start_controls_section(
             'section_query',
             [
-                'label' => __('Query', 'magic-elements'),
-                'tab' => Controls_Manager::TAB_CONTENT,
+                'label' => esc_html__('Query', 'magic-elements'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
 
         $this->add_control(
             'post_source',
             [
-                'label' => __('Post Source', 'magic-elements'),
-                'type' => Controls_Manager::SELECT,
+                'label' => esc_html__('Post Source', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => [
-                    'recent' => __('Recent Posts', 'magic-elements'),
-                    'popular' => __('Popular Posts', 'magic-elements'),
-                    'selected' => __('Selected Posts', 'magic-elements'),
-                    'taxonomy' => __('Taxonomy Posts', 'magic-elements'),
+                    'recent' => esc_html__('Recent Posts', 'magic-elements'),
+                    'popular' => esc_html__('Popular Posts', 'magic-elements'),
+                    'selected' => esc_html__('Selected Posts', 'magic-elements'),
+                    'taxonomy' => esc_html__('Taxonomy Posts', 'magic-elements'),
                 ],
                 'default' => 'recent',
             ]
@@ -64,11 +135,11 @@ class Post_List extends Widget_Base {
         $this->add_control(
             'popular_by',
             [
-                'label' => __('Popular By', 'magic-elements'),
-                'type' => Controls_Manager::SELECT,
+                'label' => esc_html__('Popular By', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => [
-                    'views' => __('Views', 'magic-elements'),
-                    'comments' => __('Comments', 'magic-elements'),
+                    'views' => esc_html__('Views', 'magic-elements'),
+                    'comments' => esc_html__('Comments', 'magic-elements'),
                 ],
                 'condition' => ['post_source' => 'popular'],
                 'default' => 'views'
@@ -78,8 +149,8 @@ class Post_List extends Widget_Base {
         $this->add_control(
             'selected_posts',
             [
-                'label' => __('Select Posts', 'magic-elements'),
-                'type' => Controls_Manager::SELECT2,
+                'label' => esc_html__('Select Posts', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SELECT2,
                 'options' => $this->get_all_posts(),
                 'multiple' => true,
                 'label_block' => true,
@@ -90,8 +161,8 @@ class Post_List extends Widget_Base {
         $this->add_control(
             'taxonomy',
             [
-                'label' => __('Taxonomy', 'magic-elements'),
-                'type' => Controls_Manager::SELECT,
+                'label' => esc_html__('Taxonomy', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => $this->get_taxonomies(),
                 'condition' => ['post_source' => 'taxonomy'],
                 'default' => 'category'
@@ -101,8 +172,8 @@ class Post_List extends Widget_Base {
         $this->add_control(
             'terms',
             [
-                'label' => __('Terms', 'magic-elements'),
-                'type' => Controls_Manager::SELECT2,
+                'label' => esc_html__('Terms', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SELECT2,
                 'options' => $this->get_terms_options(),
                 'multiple' => true,
                 'label_block' => true,
@@ -113,8 +184,8 @@ class Post_List extends Widget_Base {
         $this->add_control(
             'posts_per_page',
             [
-                'label' => __('Number of Posts', 'magic-elements'),
-                'type' => Controls_Manager::NUMBER,
+                'label' => esc_html__('Number of Posts', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 6,
             ]
         );
@@ -126,19 +197,19 @@ class Post_List extends Widget_Base {
         $this->start_controls_section(
             'section_layout',
             [
-                'label' => __('Layout', 'magic-elements'),
-                'tab' => Controls_Manager::TAB_CONTENT,
+                'label' => esc_html__('Layout', 'magic-elements'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
 
         $this->add_control(
             'layout',
             [
-                'label' => __('Layout Style', 'magic-elements'),
-                'type' => Controls_Manager::SELECT,
+                'label' => esc_html__('Layout Style', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => [
-                    'grid' => __('Grid', 'magic-elements'),
-                    'list' => __('List', 'magic-elements'),
+                    'grid' => esc_html__('Grid', 'magic-elements'),
+                    'list' => esc_html__('List', 'magic-elements'),
                 ],
                 'default' => 'grid',
                 'prefix_class' => 'magic-post-layout-',
@@ -148,8 +219,8 @@ class Post_List extends Widget_Base {
         $this->add_responsive_control(
             'columns',
             [
-                'label' => __('Columns', 'magic-elements'),
-                'type' => Controls_Manager::SELECT,
+                'label' => esc_html__('Columns', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => '3',
                 'options' => [
                     '1' => '1',
@@ -164,6 +235,28 @@ class Post_List extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'gap_between_posts',
+            [
+                'label' => esc_html__('Gap Between Posts', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'size' => 30,
+                    'unit' => 'px',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-list' => 'gap: {{SIZE}}{{UNIT}}',
+                ],
+            ]
+        );
+
         $this->end_controls_section();
     }
 
@@ -171,18 +264,18 @@ class Post_List extends Widget_Base {
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'magic-elements'),
-                'tab' => Controls_Manager::TAB_CONTENT,
+                'label' => esc_html__('Content', 'magic-elements'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
 
         $this->add_control(
             'show_image',
             [
-                'label' => __('Show Featured Image', 'magic-elements'),
-                'type' => Controls_Manager::SWITCHER,
-                'label_on' => __('Show', 'magic-elements'),
-                'label_off' => __('Hide', 'magic-elements'),
+                'label' => esc_html__('Show Featured Image', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Show', 'magic-elements'),
+                'label_off' => esc_html__('Hide', 'magic-elements'),
                 'return_value' => 'yes',
                 'default' => 'yes',
             ]
@@ -200,10 +293,10 @@ class Post_List extends Widget_Base {
         $this->add_control(
             'show_title',
             [
-                'label' => __('Show Title', 'magic-elements'),
-                'type' => Controls_Manager::SWITCHER,
-                'label_on' => __('Show', 'magic-elements'),
-                'label_off' => __('Hide', 'magic-elements'),
+                'label' => esc_html__('Show Title', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Show', 'magic-elements'),
+                'label_off' => esc_html__('Hide', 'magic-elements'),
                 'return_value' => 'yes',
                 'default' => 'yes',
             ]
@@ -212,8 +305,8 @@ class Post_List extends Widget_Base {
         $this->add_control(
             'title_tag',
             [
-                'label' => __('Title HTML Tag', 'magic-elements'),
-                'type' => Controls_Manager::SELECT,
+                'label' => esc_html__('Title HTML Tag', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => [
                     'h1' => 'H1',
                     'h2' => 'H2',
@@ -230,10 +323,10 @@ class Post_List extends Widget_Base {
         $this->add_control(
             'show_excerpt',
             [
-                'label' => __('Show Excerpt', 'magic-elements'),
-                'type' => Controls_Manager::SWITCHER,
-                'label_on' => __('Show', 'magic-elements'),
-                'label_off' => __('Hide', 'magic-elements'),
+                'label' => esc_html__('Show Excerpt', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Show', 'magic-elements'),
+                'label_off' => esc_html__('Hide', 'magic-elements'),
                 'return_value' => 'yes',
                 'default' => 'yes',
             ]
@@ -242,8 +335,8 @@ class Post_List extends Widget_Base {
         $this->add_control(
             'excerpt_length',
             [
-                'label' => __('Excerpt Length', 'magic-elements'),
-                'type' => Controls_Manager::NUMBER,
+                'label' => esc_html__('Excerpt Length', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 20,
                 'condition' => ['show_excerpt' => 'yes'],
             ]
@@ -252,10 +345,10 @@ class Post_List extends Widget_Base {
         $this->add_control(
             'show_meta',
             [
-                'label' => __('Show Meta', 'magic-elements'),
-                'type' => Controls_Manager::SWITCHER,
-                'label_on' => __('Show', 'magic-elements'),
-                'label_off' => __('Hide', 'magic-elements'),
+                'label' => esc_html__('Show Meta', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Show', 'magic-elements'),
+                'label_off' => esc_html__('Hide', 'magic-elements'),
                 'return_value' => 'yes',
                 'default' => 'yes',
             ]
@@ -264,17 +357,407 @@ class Post_List extends Widget_Base {
         $this->add_control(
             'meta_data',
             [
-                'label' => __('Meta Data', 'magic-elements'),
-                'type' => Controls_Manager::SELECT2,
+                'label' => esc_html__('Meta Data', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SELECT2,
                 'default' => ['date', 'author'],
                 'multiple' => true,
                 'options' => [
-                    'author' => __('Author', 'magic-elements'),
-                    'date' => __('Date', 'magic-elements'),
-                    'categories' => __('Categories', 'magic-elements'),
-                    'comments' => __('Comments', 'magic-elements'),
+                    'author' => esc_html__('Author', 'magic-elements'),
+                    'date' => esc_html__('Date', 'magic-elements'),
+                    'categories' => esc_html__('Categories', 'magic-elements'),
+                    'comments' => esc_html__('Comments', 'magic-elements'),
                 ],
                 'condition' => ['show_meta' => 'yes'],
+            ]
+        );
+
+        $this->end_controls_section();
+    }
+
+    protected function register_style_controls() {
+        // Container Style
+        $this->start_controls_section(
+            'section_container_style',
+            [
+                'label' => esc_html__('Container', 'magic-elements'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'container_background',
+            [
+                'label' => esc_html__('Background Color', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-list' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name' => 'container_border',
+                'label' => esc_html__('Border', 'magic-elements'),
+                'selector' => '{{WRAPPER}} .magic-post-list',
+            ]
+        );
+
+        $this->add_control(
+            'container_border_radius',
+            [
+                'label' => esc_html__('Border Radius', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-list' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'container_box_shadow',
+                'label' => esc_html__('Box Shadow', 'magic-elements'),
+                'selector' => '{{WRAPPER}} .magic-post-list',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'container_padding',
+            [
+                'label' => esc_html__('Padding', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-list' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'container_margin',
+            [
+                'label' => esc_html__('Margin', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-list' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // Post Item Style
+        $this->start_controls_section(
+            'section_post_item_style',
+            [
+                'label' => esc_html__('Post Item', 'magic-elements'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'post_item_background',
+            [
+                'label' => esc_html__('Background Color', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-item' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name' => 'post_item_border',
+                'label' => esc_html__('Border', 'magic-elements'),
+                'selector' => '{{WRAPPER}} .magic-post-item',
+            ]
+        );
+
+        $this->add_control(
+            'post_item_border_radius',
+            [
+                'label' => esc_html__('Border Radius', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'post_item_box_shadow',
+                'label' => esc_html__('Box Shadow', 'magic-elements'),
+                'selector' => '{{WRAPPER}} .magic-post-item',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'post_item_padding',
+            [
+                'label' => esc_html__('Padding', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'post_item_margin',
+            [
+                'label' => esc_html__('Margin', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-item' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // Image Style
+        $this->start_controls_section(
+            'section_image_style',
+            [
+                'label' => esc_html__('Featured Image', 'magic-elements'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                'condition' => ['show_image' => 'yes'],
+            ]
+        );
+
+        $this->add_control(
+            'image_spacing',
+            [
+                'label' => esc_html__('Spacing', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-thumbnail' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'image_border_radius',
+            [
+                'label' => esc_html__('Border Radius', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-thumbnail img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'image_box_shadow',
+                'label' => esc_html__('Box Shadow', 'magic-elements'),
+                'selector' => '{{WRAPPER}} .magic-post-thumbnail img',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // Title Style
+        $this->start_controls_section(
+            'section_title_style',
+            [
+                'label' => esc_html__('Title', 'magic-elements'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                'condition' => ['show_title' => 'yes'],
+            ]
+        );
+
+        $this->add_control(
+            'title_color',
+            [
+                'label' => esc_html__('Color', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-title a' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'title_hover_color',
+            [
+                'label' => esc_html__('Hover Color', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-title a:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'title_typography',
+                'label' => esc_html__('Typography', 'magic-elements'),
+                'selector' => '{{WRAPPER}} .magic-post-title',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'title_spacing',
+            [
+                'label' => esc_html__('Spacing', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-title' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // Excerpt Style
+        $this->start_controls_section(
+            'section_excerpt_style',
+            [
+                'label' => esc_html__('Excerpt', 'magic-elements'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                'condition' => ['show_excerpt' => 'yes'],
+            ]
+        );
+
+        $this->add_control(
+            'excerpt_color',
+            [
+                'label' => esc_html__('Color', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-excerpt' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'excerpt_typography',
+                'label' => esc_html__('Typography', 'magic-elements'),
+                'selector' => '{{WRAPPER}} .magic-post-excerpt',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'excerpt_spacing',
+            [
+                'label' => esc_html__('Spacing', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-excerpt' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // Meta Style
+        $this->start_controls_section(
+            'section_meta_style',
+            [
+                'label' => esc_html__('Meta Data', 'magic-elements'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                'condition' => ['show_meta' => 'yes'],
+            ]
+        );
+
+        $this->add_control(
+            'meta_color',
+            [
+                'label' => esc_html__('Color', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-meta' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .magic-post-meta a' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'meta_link_hover_color',
+            [
+                'label' => esc_html__('Link Hover Color', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-meta a:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'meta_typography',
+                'label' => esc_html__('Typography', 'magic-elements'),
+                'selector' => '{{WRAPPER}} .magic-post-meta',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'meta_spacing',
+            [
+                'label' => esc_html__('Spacing', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-meta' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'meta_divider',
+            [
+                'label' => esc_html__('Divider', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => '|',
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-meta span + span:before' => 'content: "{{VALUE}}"; margin: 0 0.5em;',
+                ],
             ]
         );
 
@@ -413,6 +896,32 @@ class Post_List extends Widget_Base {
                     break;
             }
         }
+    }
+
+        /**
+     * Render shortcode widget as plain content.
+     *
+     * Override the default behavior by printing the shortcode instead of rendering it.
+     *
+     * @since 1.0.0
+     * @access public
+     */
+    public function render_plain_content()
+    {
+            // In plain mode, render without shortcode.
+        echo esc_attr($this->get_settings('shortcode'));
+    }
+
+        /**
+     * Render shortcode widget output in the editor.
+     *
+     * Written as a Backbone JavaScript template and used to generate the live preview.
+     *
+     * @since 1.3.0
+     * @access protected
+     */
+    protected function content_template()
+    {
     }
 
     protected function get_all_posts() {
