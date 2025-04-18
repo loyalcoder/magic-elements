@@ -175,13 +175,381 @@ class Icon_Box extends Widget_Base
 		);
 
         $this->end_controls_section();
-
             // Style section
         $this->start_controls_section(
-            'style_section',
+            'icon_box_style_section',
 			[
 				'label' => esc_html__( 'Icon Box', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+        $this->add_responsive_control(
+			'icon_box_align',
+			[
+				'label' => esc_html__( 'Alignment', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'magic-elements' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'magic-elements' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'magic-elements' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .icon-box-wapper' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'icon_box_icon_position',
+			[
+				'label' => esc_html__( 'Icon Position', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'magic-elements' ),
+						'icon' => 'eicon-h-align-left',
+					],
+					'top' => [
+						'title' => esc_html__( 'Top', 'magic-elements' ),
+						'icon' => 'eicon-v-align-top',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'magic-elements' ),
+						'icon' => 'eicon-h-align-right',
+					],
+				],
+				'default' => 'top',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .icon-box-wappe' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+
+        //Start normal-hover style
+        $this->start_controls_tabs(
+            'style_tabs'
+        );
+        //normal
+        $this->start_controls_tab(
+            'style_normal_tab',
+            [
+                'label' => esc_html__( 'Normal', 'magic-elements' ),
+            ]
+        );
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'icon_box_normal_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .icon-box-wapper',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'icon_box_normal_border',
+				'selector' => '{{WRAPPER}} .icon-box-wapper',
+			]
+		);
+        $this->add_control(
+			'icon_box_normal_border_devider',
+			[
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+        $this->add_responsive_control(
+			'icon_box_normal_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .icon-box-wapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+    
+        $this->end_controls_tab();
+        //hover
+        $this->start_controls_tab(
+            'style_hover_tab',
+            [
+                'label' => esc_html__( 'Hover', 'magic-elements' ),
+            ]
+        );
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'icon_box_hover_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .icon-box-wapper:hover',
+			]
+		);
+        $this->add_control(
+			'icon_box_hover_transition',
+			[
+				'label' => esc_html__( 'Transition Duration', 'magic-elements' ) . ' (s)',
+				'type'  => \Elementor\Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min'  => 0,
+						'max'  => 3,
+						'step' => 0.1,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .icon-box-wapper:hover' => 'transition-duration: {{SIZE}}s',
+				],
+			]
+		);
+        $this->add_control(
+			'icon_box_hover_border_devider',
+			[
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'icon_box_hover_border',
+				'selector' => '{{WRAPPER}} .icon-box-wapper:hover',
+			]
+		);
+        $this->add_responsive_control(
+			'icon_box_hover_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .icon-box-wapper:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->end_controls_tab();
+        
+        $this->end_controls_tabs();
+        //end normal-hover style
+        $this->add_control(
+			'icon_box_border_devider',
+			[
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+        $this->add_responsive_control(
+			'icon_box_padding',
+			[
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .icon-box-wapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->end_controls_section();
+         //Icon
+         $this->start_controls_section(
+            'icon_box_icon_style_section',
+			[
+				'label' => esc_html__( 'Icon', 'magic-elements' ),
+				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+        $this->add_control(
+			'icon_box_icon_color',
+			[
+				'label' => esc_html__( 'Icon Color', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .icon-box .icon svg' => 'fill: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'icon_box_icon_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .icon-box .icon svg',
+			]
+		);
+        $this->add_responsive_control(
+			'icon_box_icon_size',
+			[
+				'label' => esc_html__( 'Size', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => '%',
+					'size' => 5,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .icon-box .icon svg' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_control(
+			'icon_box_icon_devider',
+			[
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'icon_box_icon_border',
+				'selector' => '{{WRAPPER}} .icon-box .icon svg',
+			]
+		);
+        $this->add_responsive_control(
+			'icon_box_icon_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .icon-box .icon svg' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'icon_box_icon_padding',
+			[
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .icon-box .icon svg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->end_controls_section();
+        //Title
+        $this->start_controls_section(
+            'icon_box_title_style_section',
+			[
+				'label' => esc_html__( 'Title', 'magic-elements' ),
+				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+        $this->add_control(
+			'icon_box_title_color',
+			[
+				'label' => esc_html__( 'Title Color', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .icon-box-content h3' => 'color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'icon_box_title_typography',
+				'selector' => '{{WRAPPER}} .icon-box-content h3',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Text_Shadow::get_type(),
+			[
+				'name' => 'icon_box_title_shadow',
+				'selector' => '{{WRAPPER}} .icon-box-content h3',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Text_Stroke::get_type(),
+			[
+				'name' => 'icon_box_title_stroke',
+				'selector' => '{{WRAPPER}} .icon-box-content h3',
+			]
+		);
+        $this->add_responsive_control(
+			'icon_box_title_margin',
+			[
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .icon-box-content h3' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->end_controls_section();
+        //Description
+        $this->start_controls_section(
+            'icon_box_description_style_section',
+			[
+				'label' => esc_html__( 'Description', 'magic-elements' ),
+				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+        $this->add_control(
+			'icon_box_description_color',
+			[
+				'label' => esc_html__( 'Description Color', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .icon-box-content p' => 'color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'icon_box_description_typography',
+				'selector' => '{{WRAPPER}} .icon-box-content p',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Text_Shadow::get_type(),
+			[
+				'name' => 'icon_box_description_shadow',
+				'selector' => '{{WRAPPER}} .icon-box-content p',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Text_Stroke::get_type(),
+			[
+				'name' => 'icon_box_description_stroke',
+				'selector' => '{{WRAPPER}} .icon-box-content p',
+			]
+		);
+        $this->add_responsive_control(
+			'icon_box_description_margin',
+			[
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .icon-box-content p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
 			]
 		);
         $this->end_controls_section();
