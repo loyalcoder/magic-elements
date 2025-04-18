@@ -7,7 +7,6 @@
  */
 
 namespace MagicElements\Elementor;
-
 use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
 
