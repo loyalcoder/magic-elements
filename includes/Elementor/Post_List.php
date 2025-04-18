@@ -116,7 +116,7 @@ class Post_List extends Widget_Base
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
-
+    
         $this->add_control(
             'post_source',
             [
@@ -126,12 +126,12 @@ class Post_List extends Widget_Base
                     'recent' => esc_html__('Recent Posts', 'magic-elements'),
                     'popular' => esc_html__('Popular Posts', 'magic-elements'),
                     'selected' => esc_html__('Selected Posts', 'magic-elements'),
-                    'taxonomy' => esc_html__('Taxonomy Posts', 'magic-elements'),
+                    'category' => esc_html__('Category Posts', 'magic-elements'), // Changed from 'taxonomy'
                 ],
                 'default' => 'recent',
             ]
         );
-
+    
         $this->add_control(
             'popular_by',
             [
@@ -145,7 +145,7 @@ class Post_List extends Widget_Base
                 'default' => 'views'
             ]
         );
-
+    
         $this->add_control(
             'selected_posts',
             [
@@ -157,30 +157,19 @@ class Post_List extends Widget_Base
                 'condition' => ['post_source' => 'selected'],
             ]
         );
-
+    
         $this->add_control(
-            'taxonomy',
+            'categories',
             [
-                'label' => esc_html__('Taxonomy', 'magic-elements'),
-                'type' => \Elementor\Controls_Manager::SELECT,
-                'options' => $this->get_taxonomies(),
-                'condition' => ['post_source' => 'taxonomy'],
-                'default' => 'category'
-            ]
-        );
-
-        $this->add_control(
-            'terms',
-            [
-                'label' => esc_html__('Terms', 'magic-elements'),
+                'label' => esc_html__('Categories', 'magic-elements'),
                 'type' => \Elementor\Controls_Manager::SELECT2,
-                'options' => $this->get_terms_options(),
+                'options' => $this->get_categories_options(),
                 'multiple' => true,
                 'label_block' => true,
-                'condition' => ['post_source' => 'taxonomy'],
+                'condition' => ['post_source' => 'category'],
             ]
         );
-
+    
         $this->add_control(
             'posts_per_page',
             [
@@ -189,8 +178,9 @@ class Post_List extends Widget_Base
                 'default' => 6,
             ]
         );
-
+    
         $this->end_controls_section();
+           
     }
 
     protected function register_layout_controls() {
@@ -785,7 +775,7 @@ class Post_List extends Widget_Base
             'posts_per_page' => $settings['posts_per_page'],
             'ignore_sticky_posts' => 1,
         ];
-
+    
         switch ($settings['post_source']) {
             case 'popular':
                 $args['orderby'] = ('views' === $settings['popular_by']) ? 'meta_value_num' : 'comment_count';
@@ -793,31 +783,26 @@ class Post_List extends Widget_Base
                     $args['meta_key'] = 'post_views';
                 }
                 break;
-
+    
             case 'selected':
                 $args['post__in'] = $settings['selected_posts'];
                 $args['orderby'] = 'post__in';
                 break;
-
-            case 'taxonomy':
-                if (!empty($settings['taxonomy']) && !empty($settings['terms'])) {
-                    $args['tax_query'] = [
-                        [
-                            'taxonomy' => $settings['taxonomy'],
-                            'field' => 'term_id',
-                            'terms' => $settings['terms'],
-                        ]
-                    ];
+    
+            case 'category':
+                if (!empty($settings['categories'])) {
+                    $args['category__in'] = $settings['categories'];
                 }
                 break;
-
+    
             default: // recent
                 $args['orderby'] = 'date';
                 $args['order'] = 'DESC';
         }
-
+    
         return $args;
     }
+    
 
     protected function render_posts($posts, $settings) {
         echo '<div class="magic-post-list magic-post-layout-' . esc_attr($settings['layout']) . '">';
@@ -939,39 +924,19 @@ class Post_List extends Widget_Base
         return $options;
     }
 
-    protected function get_taxonomies() {
-        $taxonomies = get_taxonomies([
-            'public' => true,
-            'object_type' => ['post'],
-        ], 'objects');
-
+    protected function get_categories_options() {
+        $categories = get_categories([
+            'hide_empty' => false,
+        ]);
+    
         $options = [];
-        foreach ($taxonomies as $taxonomy) {
-            $options[$taxonomy->name] = $taxonomy->label;
-        }
-
-        return $options;
-    }
-
-    protected function get_terms_options() {
-        // $settings = $this->get_settings();
-        $terms = [];
-
-        if (!empty($settings['taxonomy'])) {
-            $terms = get_terms([
-                'taxonomy' => $settings['taxonomy'],
-                'hide_empty' => false,
-            ]);
-        }
-
-        $options = [];
-
-        if (!empty($terms) && !is_wp_error($terms)) {
-            foreach ($terms as $term) {
-                $options[$term->term_id] = $term->name;
+    
+        if (!empty($categories) && !is_wp_error($categories)) {
+            foreach ($categories as $category) {
+                $options[$category->term_id] = $category->name;
             }
         }
-
+    
         return $options;
     }
 }
