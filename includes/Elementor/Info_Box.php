@@ -23,7 +23,7 @@ if (!defined('ABSPATH')) {
  */
 class Info_Box extends Widget_Base
 {
-        /**
+    /**
      * Retrieve the widget name.
      *
      * @since 1.0.0
@@ -128,6 +128,18 @@ class Info_Box extends Widget_Base
 				'default' => [
 					'value' => 'fas fa-star',
 					'library' => 'fa-solid',
+				],
+				'recommended' => [
+					'fa-solid' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+					'fa-regular' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
 				],
 			]
 		);
@@ -413,10 +425,10 @@ class Info_Box extends Widget_Base
 						'max' => 100,
 					],
 				],
-				'default' => [
-					'unit' => '%',
-					'size' => 8,
-				],
+				// 'default' => [
+				// 	'unit' => '%',
+				// 	'size' => 8,
+				// ],
 				'selectors' => [
 					'{{WRAPPER}} .info-icon svg' => 'width: {{SIZE}}{{UNIT}};',
 				],
@@ -739,7 +751,6 @@ class Info_Box extends Widget_Base
 		);
         $this->end_controls_section();
 		
-
     }
 
         /**
