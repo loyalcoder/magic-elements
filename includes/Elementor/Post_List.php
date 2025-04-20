@@ -180,15 +180,15 @@ class Post_List extends Widget_Base
         $this->add_control(
             'orderby',
             [
-                'label' => __('Order By', 'magic-elements'),
-                'type' => Controls_Manager::SELECT,
+                'label' => esc_html__('Order By', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => [
-                    'date' => __('Date', 'magic-elements'),
-                    'title' => __('Title', 'magic-elements'),
-                    'rand' => __('Random', 'magic-elements'),
-                    'comment_count' => __('Comment Count', 'magic-elements'),
-                    'menu_order' => __('Menu Order', 'magic-elements'),
-                    'modified' => __('Last Modified', 'magic-elements'),
+                    'date' => esc_html__('Date', 'magic-elements'),
+                    'title' => esc_html__('Title', 'magic-elements'),
+                    'rand' => esc_html__('Random', 'magic-elements'),
+                    'comment_count' => esc_html__('Comment Count', 'magic-elements'),
+                    'menu_order' => esc_html__('Menu Order', 'magic-elements'),
+                    'modified' => esc_html__('Last Modified', 'magic-elements'),
                 ],
                 'default' => 'date',
                 'condition' => [
@@ -200,11 +200,11 @@ class Post_List extends Widget_Base
         $this->add_control(
             'order',
             [
-                'label' => __('Order', 'magic-elements'),
-                'type' => Controls_Manager::SELECT,
+                'label' => esc_html__('Order', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => [
-                    'ASC' => __('Ascending', 'magic-elements'),
-                    'DESC' => __('Descending', 'magic-elements'),
+                    'ASC' => esc_html__('Ascending', 'magic-elements'),
+                    'DESC' => esc_html__('Descending', 'magic-elements'),
                 ],
                 'default' => 'DESC',
                 'condition' => [
@@ -261,6 +261,8 @@ class Post_List extends Widget_Base
                     '2' => '2',
                     '3' => '3',
                     '4' => '4',
+                    '5' => '5',
+                    '6' => '6',
                 ],
                 'condition' => ['layout' => 'grid'],
                 'selectors' => [
