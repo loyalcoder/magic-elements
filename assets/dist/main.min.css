@@ -109,5 +109,25 @@
   border: 1px solid rgb(229, 228, 228);
   border-radius: 4px;
 }
+.info-box .my-info-box {
+  text-align: center;
+}
+.info-box .my-info-box .info-box-icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+.info-box .my-info-box.icon-position-left .info-box-flex, .info-box .my-info-box.icon-position-right .info-box-flex {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  gap: 12px;
+}
+.info-box .my-info-box.icon-position-left .info-box-icon, .info-box .my-info-box.icon-position-right .info-box-icon {
+  margin: 0;
+}
+.info-box .my-info-box.icon-position-right .info-box-flex {
+  flex-direction: row-reverse;
+}
 
 /*# sourceMappingURL=main.min.css.map*/

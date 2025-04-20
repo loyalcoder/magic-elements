@@ -217,7 +217,7 @@ class Info_Box extends Widget_Base
 				'default' => 'center',
 				'toggle' => true,
 				'selectors' => [
-					'{{WRAPPER}} .info-box' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .my-info-box' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
@@ -225,25 +225,11 @@ class Info_Box extends Widget_Base
 			'info_box_icon_position',
 			[
 				'label' => esc_html__( 'Icon Position', 'magic-elements' ),
-				'type' => \Elementor\Controls_Manager::CHOOSE,
-				'options' => [
-					'left' => [
-						'title' => esc_html__( 'Left', 'magic-elements' ),
-						'icon' => 'eicon-h-align-left',
-					],
-					'top' => [
-						'title' => esc_html__( 'Top', 'magic-elements' ),
-						'icon' => 'eicon-v-align-top',
-					],
-					'right' => [
-						'title' => esc_html__( 'Right', 'magic-elements' ),
-						'icon' => 'eicon-h-align-right',
-					],
-				],
+				'type' => \Elementor\Controls_Manager::SELECT,
 				'default' => 'top',
-				'toggle' => true,
-				'selectors' => [
-					'{{WRAPPER}} .info-bo' => 'text-align: {{VALUE}};',
+				'options' => [
+					'top' => esc_html__( 'Top', 'magic-elements' ),
+					'left' => esc_html__( 'Left', 'magic-elements' ),
 				],
 			]
 		);
@@ -779,8 +765,9 @@ class Info_Box extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        include __DIR__ . '/layouts/Info-Box/info-box.php';
+		$icon_position = $settings['info_box_icon_position'];
 
+        include __DIR__ . '/layouts/Info-Box/info-box.php';
 
     }
 
