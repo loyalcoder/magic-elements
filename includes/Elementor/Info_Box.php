@@ -129,18 +129,6 @@ class Info_Box extends Widget_Base
 					'value' => 'fas fa-star',
 					'library' => 'fa-solid',
 				],
-				'recommended' => [
-					'fa-solid' => [
-						'circle',
-						'dot-circle',
-						'square-full',
-					],
-					'fa-regular' => [
-						'circle',
-						'dot-circle',
-						'square-full',
-					],
-				],
 			]
 		);
         $this->add_control(
