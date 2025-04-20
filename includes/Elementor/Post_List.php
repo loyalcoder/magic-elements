@@ -1,22 +1,21 @@
 <?php
-
-    /**
+/**
  * Elementor Classes.
  *
  * @package Post List Magic Elements
  */
 
-
 namespace MagicElements\Elementor;
 
 use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
+use MagicElements\Traits\Data;
 
 if (!defined('ABSPATH')) {
     exit;
 } 
 
-    /**
+/**
  * Magic Elements for Elementor Extension
  *
  * Elementor widget for Post Category Tab.
@@ -25,7 +24,9 @@ if (!defined('ABSPATH')) {
  */
 class Post_List extends Widget_Base 
 {
-        /**
+    use Data;
+    
+    /**
      * Retrieve the widget name.
      *
      * @since 1.0.0
@@ -34,11 +35,11 @@ class Post_List extends Widget_Base
      *
      * @return string Widget name.
      */
-
     public function get_name() {
         return 'em_kit_post_list';
     }
-      /**
+    
+    /**
      * Retrieve the widget title.
      *
      * @since 1.0.0
@@ -47,11 +48,11 @@ class Post_List extends Widget_Base
      *
      * @return string Widget title.
      */
-
     public function get_title() {
         return esc_html__('Post List', 'magic-elements');
     }
-       /**
+    
+    /**
      * Retrieve the widget icon.
      *
      * @since 1.0.0
@@ -60,12 +61,11 @@ class Post_List extends Widget_Base
      *
      * @return string Widget icon.
      */
-
     public function get_icon() {
         return 'eicon-post-list magicelements-editor-widgets-icon';
     }
     
-        /**
+    /**
      * Retrieve the list of categories the widget belongs to.
      *
      * Used to determine where to display the widget in the editor.
@@ -79,7 +79,6 @@ class Post_List extends Widget_Base
      *
      * @return array Widget categories.
      */
-
     public function get_categories() {
         return ['magicelements-widgets'];
     }
@@ -87,13 +86,13 @@ class Post_List extends Widget_Base
     public function get_style_depends() {
         return ['emk-post-list'];
     }
-          /**
+    
+    /**
      * Register Copyright controls.
      *
      * @since 1.0.0
      * @access protected
      */
-
     protected function register_controls() {
         $this->register_query_controls();
         $this->register_layout_controls();
@@ -101,13 +100,12 @@ class Post_List extends Widget_Base
         $this->register_style_controls();
     }
     
-        /**
+    /**
      * Register Copyright General Controls.
      *
      * @since 1.0.0
      * @access protected
      */
-
     protected function register_query_controls() {
         $this->start_controls_section(
             'section_query',
@@ -178,9 +176,55 @@ class Post_List extends Widget_Base
                 'default' => 6,
             ]
         );
+
+        $this->add_control(
+            'orderby',
+            [
+                'label' => __('Order By', 'magic-elements'),
+                'type' => Controls_Manager::SELECT,
+                'options' => [
+                    'date' => __('Date', 'magic-elements'),
+                    'title' => __('Title', 'magic-elements'),
+                    'rand' => __('Random', 'magic-elements'),
+                    'comment_count' => __('Comment Count', 'magic-elements'),
+                    'menu_order' => __('Menu Order', 'magic-elements'),
+                    'modified' => __('Last Modified', 'magic-elements'),
+                ],
+                'default' => 'date',
+                'condition' => [
+                    'post_source!' => ['popular', 'selected'],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'order',
+            [
+                'label' => __('Order', 'magic-elements'),
+                'type' => Controls_Manager::SELECT,
+                'options' => [
+                    'ASC' => __('Ascending', 'magic-elements'),
+                    'DESC' => __('Descending', 'magic-elements'),
+                ],
+                'default' => 'DESC',
+                'condition' => [
+                    'post_source!' => 'selected',
+                ],
+            ]
+        );
+    
+    
+        $this->add_control(
+            'cache_time',
+            [
+                'label' => esc_html__('Cache Time (seconds)', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::NUMBER,
+                'default' => 3600,
+                'description' => esc_html__('Set 0 to disable caching', 'magic-elements'),
+            ]
+        );
     
         $this->end_controls_section();
-           
     }
 
     protected function register_layout_controls() {
@@ -757,16 +801,17 @@ class Post_List extends Widget_Base
     protected function render() {
         $settings = $this->get_settings_for_display();
         $query_args = $this->get_query_args($settings);
-        $posts = new \WP_Query($query_args);
+        
+        // Use the trait method to get posts data with caching
+        $posts = $this->get_posts_data($query_args, $settings['cache_time']);
+        
 
-        if (!$posts->have_posts()) {
+        if (empty($posts)) {
             echo '<div class="magic-no-posts">' . esc_html__('No posts found', 'magic-elements') . '</div>';
             return;
         }
 
         $this->render_posts($posts, $settings);
-        
-        wp_reset_postdata();
     }
 
     protected function get_query_args($settings) {
@@ -793,36 +838,39 @@ class Post_List extends Widget_Base
                 if (!empty($settings['categories'])) {
                     $args['category__in'] = $settings['categories'];
                 }
-                break;
-    
+                // Fall through to apply orderby and order for category posts
+                
             default: // recent
-                $args['orderby'] = 'date';
-                $args['order'] = 'DESC';
+                if (!empty($settings['orderby'])) {
+                    $args['orderby'] = $settings['orderby'];
+                }
+                if (!empty($settings['order'])) {
+                    $args['order'] = $settings['order'];
+                }
         }
     
         return $args;
     }
     
-
     protected function render_posts($posts, $settings) {
         echo '<div class="magic-post-list magic-post-layout-' . esc_attr($settings['layout']) . '">';
 
-        while ($posts->have_posts()) {
-            $posts->the_post();
-            $this->render_single_post($settings);
+        foreach ($posts as $post) {
+            $this->render_single_post($post, $settings);
         }
 
         echo '</div>';
     }
 
-    protected function render_single_post($settings) {
+    protected function render_single_post($post, $settings) {
+        $thumbnail_url = !empty($post['thumbnail']) ? $post['thumbnail'] : '';
         ?>
         <article class="magic-post-item">
             
-            <?php if ('yes' === $settings['show_image'] && has_post_thumbnail()) : ?>
+            <?php if ('yes' === $settings['show_image'] && $thumbnail_url) : ?>
                 <div class="magic-post-thumbnail">
-                    <a href="<?php the_permalink(); ?>">
-                        <?php the_post_thumbnail($settings['image_size_size']); ?>
+                    <a href="<?php echo esc_url($post['permalink']); ?>">
+                        <img src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr($post['title']); ?>" />
                     </a>
                 </div>
             <?php endif; ?>
@@ -831,19 +879,19 @@ class Post_List extends Widget_Base
                 
                 <?php if ('yes' === $settings['show_title']) : ?>
                     <<?php echo esc_attr($settings['title_tag']); ?> class="magic-post-title">
-                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                        <a href="<?php echo esc_url($post['permalink']); ?>"><?php echo esc_html($post['title']); ?></a>
                     </<?php echo esc_attr($settings['title_tag']); ?>>
                 <?php endif; ?>
                 
                 <?php if ('yes' === $settings['show_meta'] && !empty($settings['meta_data'])) : ?>
                     <div class="magic-post-meta">
-                        <?php $this->render_meta_data($settings['meta_data']); ?>
+                        <?php $this->render_meta_data($post, $settings['meta_data']); ?>
                     </div>
                 <?php endif; ?>
                 
                 <?php if ('yes' === $settings['show_excerpt']) : ?>
                     <div class="magic-post-excerpt">
-                        <?php echo wp_trim_words(get_the_excerpt(), $settings['excerpt_length']); ?>
+                        <?php echo wp_trim_words($post['excerpt'], $settings['excerpt_length']); ?>
                     </div>
                 <?php endif; ?>
                 
@@ -852,38 +900,44 @@ class Post_List extends Widget_Base
         <?php
     }
 
-    protected function render_meta_data($meta_data) {
+    protected function render_meta_data($post, $meta_data) {
         foreach ($meta_data as $meta) {
             switch ($meta) {
                 case 'author':
                     echo '<span class="post-author">';
-                    echo get_the_author();
+                    echo esc_html($post['author']);
                     echo '</span>';
                     break;
                     
                 case 'date':
                     echo '<span class="post-date">';
-                    echo get_the_date();
+                    echo esc_html($post['date']);
                     echo '</span>';
                     break;
                     
                 case 'categories':
-                    $categories = get_the_category_list(', ');
-                    if ($categories) {
-                        echo '<span class="post-categories">' . $categories . '</span>';
+                    if (!empty($post['meta']['category'])) {
+                        $categories = get_the_category_list(', ', '', $post['ID']);
+                        if ($categories) {
+                            echo '<span class="post-categories">' . $categories . '</span>';
+                        }
                     }
                     break;
                     
                 case 'comments':
+                    $comments_number = get_comments_number($post['ID']);
                     echo '<span class="post-comments">';
-                    comments_number();
+                    printf(
+                        _n('%s Comment', '%s Comments', $comments_number, 'magic-elements'),
+                        number_format_i18n($comments_number)
+                    );
                     echo '</span>';
                     break;
             }
         }
     }
 
-        /**
+    /**
      * Render shortcode widget as plain content.
      *
      * Override the default behavior by printing the shortcode instead of rendering it.
@@ -891,13 +945,12 @@ class Post_List extends Widget_Base
      * @since 1.0.0
      * @access public
      */
-    public function render_plain_content()
-    {
-            // In plain mode, render without shortcode.
+    public function render_plain_content() {
+        // In plain mode, render without shortcode.
         echo esc_attr($this->get_settings('shortcode'));
     }
 
-        /**
+    /**
      * Render shortcode widget output in the editor.
      *
      * Written as a Backbone JavaScript template and used to generate the live preview.
@@ -905,20 +958,19 @@ class Post_List extends Widget_Base
      * @since 1.3.0
      * @access protected
      */
-    protected function content_template()
-    {
+    protected function content_template() {
     }
 
     protected function get_all_posts() {
-        $posts = get_posts([
+        $posts = $this->get_posts_data([
             'post_type' => 'post',
             'post_status' => 'publish',
-            'numberposts' => -1,
-        ]);
+            'posts_per_page' => -1,
+        ], 0); // No caching for admin
 
         $options = [];
         foreach ($posts as $post) {
-            $options[$post->ID] = $post->post_title;
+            $options[$post['ID']] = $post['title'];
         }
 
         return $options;
