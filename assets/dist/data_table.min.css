@@ -1,0 +1,21 @@
+/*!**************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/data_table.scss ***!
+  \**************************************************************************************************************************/
+.data {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.data svg {
+  width: 15px;
+}
+.data .first-data,
+.data .second-data,
+.data .third-data,
+.data .fourth-data {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+/*# sourceMappingURL=data_table.min.css.map*/

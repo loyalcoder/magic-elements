@@ -38,6 +38,9 @@ const baseConfig = {
       './assets/src/scss/tab.scss',
       './assets/src/js/tab.js',
     ],
+    data_table: [
+      './assets/src/scss/data_table.scss',
+    ],
 
     // 2) SCSS ONLY (no JS file mentioned):
     flipcard: './assets/src/scss/flipcard.scss',

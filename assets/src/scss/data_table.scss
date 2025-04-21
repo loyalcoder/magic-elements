@@ -1,0 +1,17 @@
+.data {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    svg {
+        width: 15px;
+    }
+    .first-data,
+    .second-data,
+    .third-data,
+    .fourth-data {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+    }
+}

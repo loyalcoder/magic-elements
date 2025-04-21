@@ -86,9 +86,9 @@ class Data_table extends Widget_Base
         return ['magicelements-widgets'];
     }
 
-    public function get_script_depends()
+    public function get_style_depends()
     {
-        return [];
+        return ['emk-data-table'];
     }
 
         /**
@@ -119,12 +119,133 @@ class Data_table extends Widget_Base
 		);
         $repeater = new \Elementor\Repeater();
         $repeater->add_control(
-			'list_title',
+			'first_data_icon',
 			[
-				'label' => esc_html__( 'Title', 'textdomain' ),
+				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::ICONS,
+                'skin' => 'media',
+				'default' => [
+					'value' => 'fas fa-star',
+					'library' => 'fa-solid',
+				],
+				'recommended' => [
+					'fa-solid' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+					'fa-regular' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+				],
+			]
+		);
+        $repeater->add_control(
+			'data_table_first_item',
+			[
+				'label' => esc_html__( 'Serial', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
 				'default' => esc_html__( 'List Title' , 'textdomain' ),
 				'label_block' => true,
+			]
+		);
+        $repeater->add_control(
+			'second_data_icon',
+			[
+				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-star',
+					'library' => 'fa-solid',
+				],
+				'recommended' => [
+					'fa-solid' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+					'fa-regular' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+				],
+			]
+		);
+        $repeater->add_control(
+			'data_table_second_item',
+			[
+				'label' => esc_html__( 'First Name', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'List Title' , 'textdomain' ),
+				'label_block' => true,
+			]
+		);
+        $repeater->add_control(
+			'third_data_icon',
+			[
+				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-star',
+					'library' => 'fa-solid',
+				],
+				'recommended' => [
+					'fa-solid' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+					'fa-regular' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+				],
+			]
+		);
+        $repeater->add_control(
+			'data_table_third_item',
+			[
+				'label' => esc_html__( 'Last Name', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'List Title' , 'textdomain' ),
+				'label_block' => true,
+			]
+		);
+        $repeater->add_control(
+			'fourth_data_icon',
+			[
+				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-star',
+					'library' => 'fa-solid',
+				],
+				'recommended' => [
+					'fa-solid' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+					'fa-regular' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+				],
+			]
+		);
+        $repeater->add_control(
+			'data_table_fourth_item',
+			[
+				'label' => esc_html__( 'Handle', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'rows' => 6,
+				'default' => esc_html__( 'Default description', 'textdomain' ),
+				'placeholder' => esc_html__( 'Type your description here', 'textdomain' ),
 			]
 		);
         $this->add_control(
@@ -134,16 +255,21 @@ class Data_table extends Widget_Base
 				'type' => \Elementor\Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
-					[
-						'list_title' => esc_html__( 'Title #1', 'textdomain' ),
-						'list_content' => esc_html__( 'Item content. Click the edit button to change this text.', 'textdomain' ),
-					],
-					[
-						'list_title' => esc_html__( 'Title #2', 'textdomain' ),
-						'list_content' => esc_html__( 'Item content. Click the edit button to change this text.', 'textdomain' ),
-					],
-				],
-				'title_field' => '{{{ list_title }}}',
+                    [
+                        'data_table_first_item' => esc_html__( 'Title #1', 'textdomain' ),
+                        'data_table_second_item' => esc_html__( 'First Name #1', 'textdomain' ),
+                        'data_table_third_item' => esc_html__( 'Last Name #1', 'textdomain' ),
+                        'data_table_fourth_item' => esc_html__( '@handle1', 'textdomain' ),
+                    ],
+                    [
+                        'data_table_first_item' => esc_html__( 'Title #2', 'textdomain' ),
+                        'data_table_second_item' => esc_html__( 'First Name #2', 'textdomain' ),
+                        'data_table_third_item' => esc_html__( 'Last Name #2', 'textdomain' ),
+                        'data_table_fourth_item' => esc_html__( '@handle2', 'textdomain' ),
+                    ],
+                ],
+
+                'title_field' => '{{{ data_table_first_item }}}',
 			]
 		);
 
