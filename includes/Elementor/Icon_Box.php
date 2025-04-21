@@ -6,7 +6,6 @@
  * @package Icon Box Magic Elements
  */
 
-
 namespace MagicElements\Elementor;
 
 use Elementor\Controls_Manager;
@@ -210,28 +209,42 @@ class Icon_Box extends Widget_Base
 			]
 		);
 		$this->add_responsive_control(
-			'icon_box_icon_position',
+			'icon_position',
 			[
 				'label' => esc_html__( 'Icon Position', 'magic-elements' ),
-				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'type' => \Elementor\Controls_Manager::SELECT,
 				'options' => [
-					'left' => [
-						'title' => esc_html__( 'Left', 'magic-elements' ),
-						'icon' => 'eicon-h-align-left',
-					],
-					'top' => [
-						'title' => esc_html__( 'Top', 'magic-elements' ),
-						'icon' => 'eicon-v-align-top',
-					],
-					'right' => [
-						'title' => esc_html__( 'Right', 'magic-elements' ),
-						'icon' => 'eicon-h-align-right',
-					],
+					'top' => esc_html__( 'Top', 'magic-elements' ),
+					'left' => esc_html__( 'Left', 'magic-elements' ),
+					'right' => esc_html__( 'Right', 'magic-elements' ),
+					'bottom' => esc_html__( 'Bottom', 'magic-elements' ),
 				],
 				'default' => 'top',
-				'toggle' => true,
+			]
+		);
+		$this->add_responsive_control(
+			'info_box_icon_gap',
+			[
+				'label' => esc_html__( 'Icon Gap', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 16,
+				],
 				'selectors' => [
-					'{{WRAPPER}} .icon-box-wappe' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .icon-box' => 'gap: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -405,10 +418,6 @@ class Icon_Box extends Widget_Base
 						'max' => 100,
 					],
 				],
-				'default' => [
-					'unit' => '%',
-					'size' => 5,
-				],
 				'selectors' => [
 					'{{WRAPPER}} .icon-box .icon svg' => 'width: {{SIZE}}{{UNIT}};',
 				],
@@ -568,6 +577,8 @@ class Icon_Box extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+		$icon_position = $settings['icon_position'];
+
         include __DIR__ . '/layouts/Icon-Box/icon-box.php';
     }
 

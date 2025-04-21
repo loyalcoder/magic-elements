@@ -3,9 +3,9 @@
         if ( ! empty( $settings['icon_box_link']['url'] ) ) {
             $this->add_link_attributes( 'icon_box_link', $settings['icon_box_link'] );
         }
-    ?>
+    ?> 
     <a <?php $this->print_render_attribute_string( 'icon_box_link' ); ?>>
-        <div class="icon-box">
+        <div class="icon-box icon-box--icon-<?php echo esc_attr($icon_position); ?>">
             <div class="icon">
                 <?php \Elementor\Icons_Manager::render_icon( $settings['icon_box_icon'], [ 'aria-hidden' => 'true' ] ); ?>
             </div>
