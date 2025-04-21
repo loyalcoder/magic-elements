@@ -77,6 +77,9 @@
                 <div class="preloader"></div>
                 <div class="condition-loader"></div>
             </div>
+            
+            <div class="condition-container-dep-3">
+            </div>
             <div class="form-group">
                <button class="button button-primary" type="button" id="add-condition"><?php echo esc_html__('Add Condition', 'magic-elements'); ?></button>
             </div>

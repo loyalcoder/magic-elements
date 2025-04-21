@@ -87,34 +87,58 @@ trait Builder {
         return get_posts($args);
     }
 
-    public function generate_post_type_list() {
-        $post_types = $this->get_all_post_type();
+    public function generate_post_type_list($post_type) {
+        $post_type_obj = get_post_type_object($post_type);
+        if (!$post_type_obj) {
+            return array();
+        }
         $post_types_list = array();
+        $post_types_list[$post_type] = array(
+            'label' => $post_type_obj->label,
+            'taxonomies' => array()
+        );
         
-        foreach ($post_types as $post_type) {
-            $post_types_list[$post_type->name] = array(
-                'label' => $post_type->label,
-                'taxonomies' => array()
-            );
-            
-            // Get all taxonomies for this post type
-            $taxonomies = $this->get_all_taxonomy_by_post_type($post_type->name);
-            
-            foreach ($taxonomies as $taxonomy) {
-                // Only include taxonomies that are shown in admin menu
-                if ($taxonomy->show_in_menu) {
-                    $post_types_list[$post_type->name]['taxonomies'][$taxonomy->name] = array(
-                        'label' => $taxonomy->label,
-                        'terms' => $this->get_all_term_list($post_type->name, $taxonomy->name)
-                    );
-                }
+        // Get all taxonomies for this post type
+        $taxonomies = $this->get_all_taxonomy_by_post_type($post_type);
+        
+        foreach ($taxonomies as $taxonomy) {
+            // Only include taxonomies that are shown in admin menu
+            if ($taxonomy->show_in_menu) {
+                $post_types_list[$post_type]['taxonomies'][$taxonomy->name] = array(
+                    'label' => $taxonomy->label,
+                    'terms' => $this->get_all_term_list($post_type, $taxonomy->name)
+                );
             }
-            if ($post_type->name == 'post') {
-                $post_types_list[$post_type->name]['blog_page'] = esc_html__('Blog Page', 'magic-elements');
-            }
-            $post_types_list[$post_type->name]['specific_pages'] = esc_html__('Specific ' . $post_type->label . 's', 'magic-elements');
+        }
+
+        if ($post_type === 'post') {
+            $post_types_list[$post_type]['blog_page'] = esc_html__('Blog Page', 'magic-elements');
         }
         
+        $post_types_list[$post_type]['specific_pages'] = esc_html__('Specific ' . $post_type_obj->label . 's', 'magic-elements');
+        _log($post_type);
+        return $post_types_list;
+    }
+    public function post_type_archive_list( $post_type ) {
+        $post_type_obj = get_post_type_object($post_type);
+        if (!$post_type_obj) {
+            return array();
+        }
+        $post_types_list = array();
+        $post_types_list[$post_type] = array(
+            'label' => esc_html__('All', 'magic-elements').' '.$post_type_obj->label,
+            'taxonomies' => array()
+        );
+        $taxonomies = $this->get_all_taxonomy_by_post_type($post_type);
+        foreach ($taxonomies as $taxonomy) {
+            if ($taxonomy->show_in_menu) {
+                $post_types_list[$post_type]['taxonomies'][$taxonomy->name] = array(
+                    'label' => $taxonomy->label,
+                    'terms' => $this->get_all_term_list($post_type, $taxonomy->name)
+                );
+            }
+        }
+        $post_types_list[$post_type]['specific_pages'] = esc_html__('Specific ' . $post_type_obj->label . 's', 'magic-elements');
         return $post_types_list;
     }
     public function user_role_list() {
@@ -127,9 +151,6 @@ trait Builder {
         foreach ($user_roles as $role_key => $user_role) {
             $user_roles_list[$role_key] = $user_role['name'];
         }
-        echo '<pre>';
-        print_r($user_roles_list);
-        echo '</pre>';
         return $user_roles_list;
     }
 }

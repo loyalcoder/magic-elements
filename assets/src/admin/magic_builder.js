@@ -96,7 +96,6 @@
         });
         // add new condition display
         $(document).on('change', '.condition-display', function() {
-            console.log($(this).val());
             let current_condition = $(this).val();
             let currentElement = $(this);
             if(current_condition == 'singular') {
@@ -111,7 +110,6 @@
                     $('.preloader').html('<p>Loading options...</p>');
                 },
                 success: function(response) {
-                    console.log(response);
                     if (response.success) {
                         // Create a new select element for singular options
                         currentElement.parent().append(response.data.html);
@@ -136,5 +134,97 @@
                 }
             });
             }
+        });
+        // post type change
+        $(document).on('change', '.condition-singular-d-1', function() {
+            console.log($(this).val());
+            let current_condition = $(this).val();
+            let currentElement = $(this);
+        $.ajax({
+            url: magic_builder_data.ajax_url,
+            type: 'POST',
+            data: {
+                action: 'magic_builder_single_post_type_options',
+                nonce: magic_builder_data.nonce,
+                post_type: current_condition
+            },
+            beforeSend: function() {
+                $('.preloader').html('<p>Loading options...</p>');
+            },
+            success: function(response) {
+                console.log(response);
+                if (response.success) {
+                    // Handle the response data
+                    $('.condition-container-dep-2').html(response.data.html);
+                    
+                    // Initialize Select2 for the new content
+                    $('.condition-container-dep-2 select').select2({
+                        width: '100%',
+                        placeholder: 'Select option',
+                        allowClear: true
+                    });
+                } else {
+                    $('.condition-loader').html('<p>Error loading post type options.</p>');
+                }
+            },
+            error: function() {
+                $('.condition-loader').html('<p>Error loading post type options.</p>');
+            }
+        });
+        });
+        $(document).on('change', '.condition-singular-d-2', function() {
+            let current_condition = $(this).val();
+            let currentElement = $(this);
+            console.log(current_condition);
+            let postOrTaxonomy = '<div class="condition-container-dep-3">Loaded<select class="single_post_loader" multiple></select></div>';
+            if(current_condition == 'specific') {
+                $('.spacif-ox').html(postOrTaxonomy);
+                // Initialize Select2 for the single post loader
+                $('.single_post_loader').select2({
+                    width: '100%',
+                    placeholder: 'Select posts',
+                    allowClear: true,
+                    multiple: true,
+                    minimumInputLength: 1, // Require at least 1 character
+                    ajax: {
+                        url: magic_builder_data.ajax_url,
+                        dataType: 'json',
+                        delay: 250,
+                        data: function(params) {
+                            return {
+                                action: 'magic_builder_search_posts',
+                                nonce: magic_builder_data.nonce,
+                                post_type: currentElement.closest('.condition-item').find('.condition-singular-d-1').val(),
+                                search: params.term,
+                                page: params.page || 1
+                            };
+                        },
+                        processResults: function(data, params) {
+                            params.page = params.page || 1;
+                            
+                            if (!data.success || !data.data || !data.data.items) {
+                                return {
+                                    results: [],
+                                    pagination: { more: false }
+                                };
+                            }
+
+                            const results = data.data.items.map(item => ({
+                                id: item.ID,
+                                text: item.post_title
+                            }));
+
+                            return {
+                                results: results,
+                                pagination: {
+                                    more: data.data.pagination.more
+                                }
+                            };
+                        },
+                        cache: true
+                    }
+                });
+            }
+            
         });
     });

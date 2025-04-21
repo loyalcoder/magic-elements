@@ -32,6 +32,8 @@ class Ajax {
         add_action('wp_ajax_magic_builder_header_list', [$this, 'magic_builder_header_list']);
         add_action('wp_ajax_magic_builder_header_condition_form', [$this, 'magic_builder_header_condition_form']);
         add_action('wp_ajax_magic_builder_singular_options', [$this, 'magic_builder_singular_options']);
+        add_action('wp_ajax_magic_builder_single_post_type_options', [$this, 'magic_builder_single_post_type_options']);
+        add_action('wp_ajax_magic_builder_search_posts', [$this, 'magic_builder_search_posts']);
     }
 
     /**
@@ -112,6 +114,58 @@ class Ajax {
         $html = ob_get_clean();
         wp_send_json_success([
             'html' => $html
+        ]);
+    }
+    public function magic_builder_single_post_type_options() {
+        check_ajax_referer('magic_builder_nonce', 'nonce');
+        if (!isset($_REQUEST['post_type']) || empty($_REQUEST['post_type'])) {
+            wp_send_json_error([
+                'message' => esc_html__('Post type is required', 'magic-elements')
+            ]);
+        }
+        $post_type = sanitize_key($_REQUEST['post_type']);
+        if (!post_type_exists($post_type)) {
+            wp_send_json_error([
+                'message' => esc_html__('Invalid post type', 'magic-elements')
+            ]);
+        }
+        $post_types_archive_list = $this->post_type_archive_list($post_type);
+        ob_start();
+        include __DIR__ . '/views/builder/ctp-singular.php';
+        $html = ob_get_clean();
+        wp_send_json_success([
+            'html' => $html
+        ]);
+    }
+    public function magic_builder_search_posts() {
+        check_ajax_referer('magic_builder_nonce', 'nonce');
+        $page = isset($_REQUEST['page']) ? intval($_REQUEST['page']) : 1;
+        $posts_per_page = 100; // Set a reasonable number for posts per page
+    
+        $query_args = [
+            'post_type' => 'product',
+            'posts_per_page' => $posts_per_page,
+            'paged' => $page,
+            's' => ''
+        ];
+        
+        $query = new \WP_Query($query_args);
+    
+        $items = [];
+        foreach ($query->posts as $post) {
+            $items[] = [
+                'ID' => $post->ID,
+                'post_title' => $post->post_title
+            ];
+        }
+        _log($items);
+        
+        wp_send_json_success([
+            'items' => $items,
+            'total' => $query->found_posts, // Total count for pagination
+            'pagination' => [
+                'more' => $page < $query->max_num_pages // Whether more pages exist
+            ]
         ]);
     }
 }

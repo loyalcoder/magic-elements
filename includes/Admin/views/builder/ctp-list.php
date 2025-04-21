@@ -1,5 +1,6 @@
 <div class="condition-item">
     <select name="condition-type[display][]" class="condition-display condition-singular-d-1">
+        <option value=""><?php echo esc_html__('Select Post Type', 'magic-elements'); ?></option>
         <?php 
         if (!empty($singular_options) && is_array($singular_options)) {
             foreach($singular_options as $key => $value) {
@@ -13,3 +14,4 @@
         ?>
     </select>
 </div>
+<div class="condition-container-dep-2"></div>
