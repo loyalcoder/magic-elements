@@ -30,6 +30,8 @@ class Ajax {
     public function __construct() {
         add_action('wp_ajax_save_magic_kit_settings', [$this, 'save_settings']);
         add_action('wp_ajax_magic_builder_header_list', [$this, 'magic_builder_header_list']);
+        add_action('wp_ajax_magic_builder_header_condition_form', [$this, 'magic_builder_header_condition_form']);
+        add_action('wp_ajax_magic_builder_singular_options', [$this, 'magic_builder_singular_options']);
     }
 
     /**
@@ -92,5 +94,24 @@ class Ajax {
         ]);
     }
    
-    
+    public function magic_builder_header_condition_form() {
+        check_ajax_referer('magic_builder_nonce', 'nonce');
+        $display = $this->get_display_on_list();
+        ob_start();
+        include __DIR__ . '/views/builder/condition-form.php';
+        $html = ob_get_clean();
+        wp_send_json_success([
+            'html' => $html
+        ]);
+    }
+    public function magic_builder_singular_options() {
+        check_ajax_referer('magic_builder_nonce', 'nonce');
+        $singular_options = $this->get_all_post_type_list();
+        ob_start();
+        include __DIR__ . '/views/builder/ctp-list.php';
+        $html = ob_get_clean();
+        wp_send_json_success([
+            'html' => $html
+        ]);
+    }
 }

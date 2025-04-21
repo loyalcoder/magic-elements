@@ -37,6 +37,8 @@ class Mbuilder
     public function builder_page()
     {
         $display = $this->get_display_on_list();
+        $post_types = $this->generate_post_type_list();
+        $user_roles = $this->user_role_list();
         $template = __DIR__ . '/views/builder.php';
 
         if (file_exists($template)) {

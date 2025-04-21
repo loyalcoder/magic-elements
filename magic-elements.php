@@ -19,7 +19,6 @@
  * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
  */
 
-
 if (!defined('ABSPATH')) {
     exit;
 }
@@ -103,6 +102,7 @@ final class Magic_Elements
         new MagicElements\Assets();
         new MagicElements\Load_Elementor();
         new MagicElements\Admin\Ctp();
+        new MagicElements\Admin\Api(); // Initialize API class
         if (is_admin()) {
             new MagicElements\Admin();
         }

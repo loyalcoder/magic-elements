@@ -35,17 +35,18 @@ trait Builder {
     }
     public function get_display_on_list() {
         $display = [
-            'entire_website' => esc_html__('Entire Website', 'turbo-manager'),
-            'front_page'     => esc_html__('Front Page', 'turbo-manager'),
-            'blog_page'      => esc_html__('Blog Page', 'turbo-manager'),
-            'four_0_4'       => esc_html__('404', 'turbo-manager'),
-            'post_types'     => [
-                'title'   => esc_html__('Post Types(Singular)', 'turbo-manager'),
-				'options' => $this->get_all_post_type_list()
-            ],
-            'specific_select'  => esc_html__('Specific Select', 'turbo-manager'),
+            'entire_website' => esc_html__('Entire Website', 'magic-elements'),
+            'front_page'     => esc_html__('Front Page', 'magic-elements'),
+            'blog_page'      => esc_html__('Blog Page', 'magic-elements'),
+            'four_0_4'       => esc_html__('404', 'magic-elements'),
+            'search_page'    => esc_html__('Search Page', 'magic-elements'),
+            'blog_archive'   => esc_html__('Blog Archive', 'magic-elements'),
+            'blog_date_archive' => esc_html__('Blog Date Archive', 'magic-elements'),
+            'blog_category_archive' => esc_html__('Blog Category Archive', 'magic-elements'),
+            'blog_tag_archive' => esc_html__('Blog Tag Archive', 'magic-elements'),
+            'blog_author_archive' => esc_html__('Author Archive', 'magic-elements'),
+            'singular' => esc_html__('Singular', 'magic-elements'),
         ];
-
         // Add taxonomy groups
         return apply_filters('magic_elements_display_on_list', $display);
     }
@@ -64,14 +65,9 @@ trait Builder {
         return $post_types_list;
     }
     public function get_all_taxonomy_by_post_type( $post_type ) {
-        $taxonomies = get_taxonomies(array(
-            'public' => true,
-            'show_in_nav_menus' => true,
-        ), 'objects');
-        return $taxonomies;
+        return get_object_taxonomies( $post_type, 'objects' );
     }
     public function get_all_term_list( $post_type, $taxonomies ) {
-   
         $terms = get_terms(array(
             'taxonomy' => $taxonomies,
             'object_ids' => $post_type,
@@ -79,13 +75,6 @@ trait Builder {
         return $terms;
     }
     public function get_post_list($post_type, $keyword = '') {
-        $cache_key = 'magic_elements_post_list_' . $post_type . '_' . md5($keyword);
-        $cached_posts = get_transient($cache_key);
-        
-        if (false !== $cached_posts) {
-            return $cached_posts;
-        }
-
         $args = array(
             'post_type' => $post_type,
             'posts_per_page' => -1,
@@ -95,24 +84,52 @@ trait Builder {
             'order' => 'ASC'
         );
         
-        $posts = get_posts($args);
-        
-        if (!empty($posts)) {
-            set_transient($cache_key, $posts, HOUR_IN_SECONDS);
-        }
-        
-        return $posts;
+        return get_posts($args);
     }
 
-    /**
-     * Clear all cached post lists
-     *
-     * @return bool True if cache was cleared, false otherwise
-     */
-    public function clear_post_list_cache() {
-        global $wpdb;
-        $wpdb->query("DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_magic_elements_post_list_%'");
-        $wpdb->query("DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_timeout_magic_elements_post_list_%'");
-        return true;
+    public function generate_post_type_list() {
+        $post_types = $this->get_all_post_type();
+        $post_types_list = array();
+        
+        foreach ($post_types as $post_type) {
+            $post_types_list[$post_type->name] = array(
+                'label' => $post_type->label,
+                'taxonomies' => array()
+            );
+            
+            // Get all taxonomies for this post type
+            $taxonomies = $this->get_all_taxonomy_by_post_type($post_type->name);
+            
+            foreach ($taxonomies as $taxonomy) {
+                // Only include taxonomies that are shown in admin menu
+                if ($taxonomy->show_in_menu) {
+                    $post_types_list[$post_type->name]['taxonomies'][$taxonomy->name] = array(
+                        'label' => $taxonomy->label,
+                        'terms' => $this->get_all_term_list($post_type->name, $taxonomy->name)
+                    );
+                }
+            }
+            if ($post_type->name == 'post') {
+                $post_types_list[$post_type->name]['blog_page'] = esc_html__('Blog Page', 'magic-elements');
+            }
+            $post_types_list[$post_type->name]['specific_pages'] = esc_html__('Specific ' . $post_type->label . 's', 'magic-elements');
+        }
+        
+        return $post_types_list;
+    }
+    public function user_role_list() {
+        $user_roles = get_editable_roles();
+        $user_roles_list = array(
+            'logged_in' => esc_html__('Logged In Users', 'magic-elements'),
+            'logged_out' => esc_html__('Logged Out Users', 'magic-elements')
+        );
+        
+        foreach ($user_roles as $role_key => $user_role) {
+            $user_roles_list[$role_key] = $user_role['name'];
+        }
+        echo '<pre>';
+        print_r($user_roles_list);
+        echo '</pre>';
+        return $user_roles_list;
     }
 }

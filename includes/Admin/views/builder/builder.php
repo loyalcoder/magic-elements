@@ -74,50 +74,11 @@
                 </div>
             </div>
             <div class="form-group">
-            
-                <label for="display-on"><?php echo esc_html__('Display On', 'magic-elements'); ?></label>
-                <select id="display-on" name="display-on[]" multiple>
-                    <?php 
-                    foreach ($display as $key => $value) : 
-                        if (is_array($value) && !empty($value)) {
-                            $title = ($value['title']) ?? ucfirst(str_replace(['_', '-'], ' ', $key));
-                    ?>
-                            <optgroup label="<?php echo esc_attr($title); ?>">
-                                <?php
-                                $options = ($value['options']) ?? [];
-                                foreach ($options as $option_key => $option_value) : ?>
-                                    <option value="<?php echo esc_attr($option_key); ?>">
-                                        <?php echo esc_html($option_value); ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </optgroup>
-                    <?php
-                        } else {
-                    ?>
-                            <option value="<?php echo esc_attr($key); ?>">
-                                <?php echo esc_html($value); ?>
-                            </option>
-                    <?php
-                        }
-                    endforeach; 
-                    ?>
-                </select>
+                <div class="preloader"></div>
+                <div class="condition-loader"></div>
             </div>
             <div class="form-group">
-                <label for="post-type"><?php echo esc_html__('Select Post Type', 'magic-elements'); ?></label>
-                <select id="post-type" name="post-type[]" multiple>
-                    <?php foreach ($post_types as $key => $value) : ?>
-                        <option value="<?php echo esc_attr($key); ?>"><?php echo esc_html($value); ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="post-type"><?php echo esc_html__('Select Post Type', 'magic-elements'); ?></label>
-                <select id="post-type" name="post-type[]" multiple>
-                    <?php foreach ($post_types as $key => $value) : ?>
-                        <option value="<?php echo esc_attr($key); ?>"><?php echo esc_html($value); ?></option>
-                    <?php endforeach; ?>
-                </select>
+               <button class="button button-primary" type="button" id="add-condition"><?php echo esc_html__('Add Condition', 'magic-elements'); ?></button>
             </div>
             <div class="form-actions">
                 <input type="hidden" name="_display_type" value="header">                
