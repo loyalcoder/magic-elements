@@ -213,7 +213,6 @@ class Post_List extends Widget_Base
             ]
         );
     
-    
         $this->add_control(
             'cache_time',
             [
@@ -235,7 +234,7 @@ class Post_List extends Widget_Base
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
-
+    
         $this->add_control(
             'layout',
             [
@@ -249,7 +248,7 @@ class Post_List extends Widget_Base
                 'prefix_class' => 'magic-post-layout-',
             ]
         );
-
+    
         $this->add_responsive_control(
             'columns',
             [
@@ -270,7 +269,48 @@ class Post_List extends Widget_Base
                 ],
             ]
         );
-
+    
+        // ইমেজ পজিশন কন্ট্রোল (শুধুমাত্র Top, Left, Bottom)
+        $this->add_control(
+            'image_position',
+            [
+                'label' => esc_html__('Image Position', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'options' => [
+                    'top' => esc_html__('Top', 'magic-elements'),
+                    'left' => esc_html__('Left', 'magic-elements'),
+                    'bottom' => esc_html__('Bottom', 'magic-elements'),
+                ],
+                'default' => 'top',
+                'prefix_class' => 'magic-post-imgpos-',
+            ]
+        );
+    
+        $this->add_control(
+            'image_width',
+            [
+                'label' => esc_html__('Image Width (for Left position)', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['%'],
+                'range' => [
+                    '%' => [
+                        'min' => 20,
+                        'max' => 50,
+                    ],
+                ],
+                'default' => [
+                    'unit' => '%',
+                    'size' => 30,
+                ],
+                'condition' => [
+                    'image_position' => 'left',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}}.magic-post-imgpos-left .magic-post-item' => 'grid-template-columns: {{SIZE}}{{UNIT}} 1fr',
+                ],
+            ]
+        );
+    
         $this->add_control(
             'gap_between_posts',
             [
@@ -404,6 +444,28 @@ class Post_List extends Widget_Base
                     'comments' => esc_html__('Comments', 'magic-elements'),
                 ],
                 'condition' => ['show_meta' => 'yes'],
+            ]
+        );
+
+        $this->add_control(
+            'show_read_more',
+            [
+                'label' => esc_html__('Show Read More', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Show', 'magic-elements'),
+                'label_off' => esc_html__('Hide', 'magic-elements'),
+                'return_value' => 'yes',
+                'default' => 'no',
+            ]
+        );
+
+        $this->add_control(
+            'read_more_text',
+            [
+                'label' => esc_html__('Read More Text', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__('Read More', 'magic-elements'),
+                'condition' => ['show_read_more' => 'yes'],
             ]
         );
 
@@ -587,6 +649,8 @@ class Post_List extends Widget_Base
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .magic-post-thumbnail' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                    '{{WRAPPER}}.magic-post-list-style-image-left .magic-post-thumbnail' => 'margin-right: {{SIZE}}{{UNIT}}; margin-bottom: 0',
+                    '{{WRAPPER}}.magic-post-list-style-image-right .magic-post-thumbnail' => 'margin-left: {{SIZE}}{{UNIT}}; margin-bottom: 0',
                 ],
             ]
         );
@@ -798,6 +862,67 @@ class Post_List extends Widget_Base
         );
 
         $this->end_controls_section();
+
+        // Read More Style
+        $this->start_controls_section(
+            'section_read_more_style',
+            [
+                'label' => esc_html__('Read More', 'magic-elements'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                'condition' => ['show_read_more' => 'yes'],
+            ]
+        );
+
+        $this->add_control(
+            'read_more_color',
+            [
+                'label' => esc_html__('Color', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-read-more' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'read_more_hover_color',
+            [
+                'label' => esc_html__('Hover Color', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-read-more:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'read_more_typography',
+                'label' => esc_html__('Typography', 'magic-elements'),
+                'selector' => '{{WRAPPER}} .magic-post-read-more',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'read_more_spacing',
+            [
+                'label' => esc_html__('Spacing', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-read-more' => 'margin-top: {{SIZE}}{{UNIT}}',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
     }
 
     protected function render() {
@@ -807,7 +932,6 @@ class Post_List extends Widget_Base
         // Use the trait method to get posts data with caching
         $posts = $this->get_posts_data($query_args, $settings['cache_time']);
         
-
         if (empty($posts)) {
             echo '<div class="magic-no-posts">' . esc_html__('No posts found', 'magic-elements') . '</div>';
             return;
@@ -855,90 +979,101 @@ class Post_List extends Widget_Base
     }
     
     protected function render_posts($posts, $settings) {
-        echo '<div class="magic-post-list magic-post-layout-' . esc_attr($settings['layout']) . '">';
+    $layout = $settings['layout'];
+    $image_position = $settings['image_position'];
+    
+    echo '<div class="magic-post-list magic-post-layout-' . esc_attr($layout) . ' magic-post-imgpos-' . esc_attr($image_position) . '">';
 
-        foreach ($posts as $post) {
-            $this->render_single_post($post, $settings);
-        }
-
-        echo '</div>';
+    foreach ($posts as $index => $post) {
+        $this->render_single_post($post, $settings, $index);
     }
 
-    protected function render_single_post($post, $settings) {
-        $thumbnail_url = !empty($post['thumbnail']) ? $post['thumbnail'] : '';
-        ?>
-        <article class="magic-post-item">
+    echo '</div>';
+}
+
+protected function render_single_post($post, $settings) {
+    $thumbnail_url = !empty($post['thumbnail']) ? $post['thumbnail'] : '';
+    ?>
+    
+    <article class="magic-post-item">
+        <?php if ($settings['image_position'] !== 'bottom' && 'yes' === $settings['show_image'] && $thumbnail_url) : ?>
+            <div class="magic-post-thumbnail">
+                <a href="<?php echo esc_url($post['permalink']); ?>">
+                    <img src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr($post['title']); ?>" />
+                </a>
+            </div>
+        <?php endif; ?>
+        
+        <div class="magic-post-content">
+            <?php if ('yes' === $settings['show_title']) : ?>
+                <<?php echo esc_attr($settings['title_tag']); ?> class="magic-post-title">
+                    <a href="<?php echo esc_url($post['permalink']); ?>"><?php echo esc_html($post['title']); ?></a>
+                </<?php echo esc_attr($settings['title_tag']); ?>>
+            <?php endif; ?>
             
-            <?php if ('yes' === $settings['show_image'] && $thumbnail_url) : ?>
-                <div class="magic-post-thumbnail">
-                    <a href="<?php echo esc_url($post['permalink']); ?>">
-                        <img src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr($post['title']); ?>" />
-                    </a>
+            <?php if ('yes' === $settings['show_meta'] && !empty($settings['meta_data'])) : ?>
+                <div class="magic-post-meta">
+                    <?php $this->render_meta_data($post, $settings['meta_data']); ?>
                 </div>
             <?php endif; ?>
             
-            <div class="magic-post-content">
-                
-                <?php if ('yes' === $settings['show_title']) : ?>
-                    <<?php echo esc_attr($settings['title_tag']); ?> class="magic-post-title">
-                        <a href="<?php echo esc_url($post['permalink']); ?>"><?php echo esc_html($post['title']); ?></a>
-                    </<?php echo esc_attr($settings['title_tag']); ?>>
-                <?php endif; ?>
-                
-                <?php if ('yes' === $settings['show_meta'] && !empty($settings['meta_data'])) : ?>
-                    <div class="magic-post-meta">
-                        <?php $this->render_meta_data($post, $settings['meta_data']); ?>
-                    </div>
-                <?php endif; ?>
-                
-                <?php if ('yes' === $settings['show_excerpt']) : ?>
-                    <div class="magic-post-excerpt">
-                        <?php echo wp_trim_words($post['excerpt'], $settings['excerpt_length']); ?>
-                    </div>
-                <?php endif; ?>
-                
+            <?php if ('yes' === $settings['show_excerpt']) : ?>
+                <div class="magic-post-excerpt">
+                    <?php echo wp_trim_words($post['excerpt'], $settings['excerpt_length']); ?>
+                </div>
+            <?php endif; ?>
+            
+            <?php if ('yes' === $settings['show_read_more']) : ?>
+                <div class="magic-post-read-more">
+                    <a href="<?php echo esc_url($post['permalink']); ?>">
+                        <?php echo esc_html($settings['read_more_text']); ?>
+                    </a>
+                </div>
+            <?php endif; ?>
+        </div>
+        
+        <?php if ($settings['image_position'] === 'bottom' && 'yes' === $settings['show_image'] && $thumbnail_url) : ?>
+            <div class="magic-post-thumbnail">
+                <a href="<?php echo esc_url($post['permalink']); ?>">
+                    <img src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr($post['title']); ?>" />
+                </a>
             </div>
-        </article>
-        <?php
-    }
+        <?php endif; ?>
+    </article>
+    <?php
+}
 
-    protected function render_meta_data($post, $meta_data) {
-        foreach ($meta_data as $meta) {
-            switch ($meta) {
-                case 'author':
-                    echo '<span class="post-author">';
-                    echo esc_html($post['author']);
-                    echo '</span>';
-                    break;
-                    
-                case 'date':
-                    echo '<span class="post-date">';
-                    echo esc_html($post['date']);
-                    echo '</span>';
-                    break;
-                    
-                case 'categories':
-                    if (!empty($post['meta']['category'])) {
-                        $categories = get_the_category_list(', ', '', $post['ID']);
-                        if ($categories) {
-                            echo '<span class="post-categories">' . $categories . '</span>';
-                        }
-                    }
-                    break;
-                    
-                case 'comments':
-                    $comments_number = get_comments_number($post['ID']);
-                    echo '<span class="post-comments">';
-                    printf(
-                        _n('%s Comment', '%s Comments', $comments_number, 'magic-elements'),
-                        number_format_i18n($comments_number)
-                    );
-                    echo '</span>';
-                    break;
-            }
+
+
+protected function render_meta_data($post, $meta_data) {
+    foreach ($meta_data as $meta) {
+        switch ($meta) {
+            case 'author':
+                echo '<span class="post-author">' . esc_html($post['author']) . '</span>';
+                break;
+                
+            case 'date':
+                echo '<span class="post-date">' . esc_html($post['date']) . '</span>';
+                break;
+                
+            case 'categories':
+                if (!empty($post['categories'])) {
+                    echo '<span class="post-categories">' . implode(', ', $post['categories']) . '</span>';
+                }
+                break;
+                
+            case 'comments':
+                $comments_number = get_comments_number($post['ID']);
+                echo '<span class="post-comments">';
+                printf(
+                    _n('%s Comment', '%s Comments', $comments_number, 'magic-elements'),
+                    number_format_i18n($comments_number)
+                );
+                echo '</span>';
+                break;
         }
     }
-
+}
     /**
      * Render shortcode widget as plain content.
      *
