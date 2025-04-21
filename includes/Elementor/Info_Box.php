@@ -235,6 +235,32 @@ class Info_Box extends Widget_Base
 				'default' => 'top',
 			]
 		);
+		$this->add_responsive_control(
+			'info_box_icon_gap',
+			[
+				'label' => esc_html__( 'Icon Gap', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 16,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .info-box' => 'gap: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
 		
 
         //Start normal-hover style
