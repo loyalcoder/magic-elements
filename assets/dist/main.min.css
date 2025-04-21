@@ -106,20 +106,23 @@
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/info_box.scss ***!
   \************************************************************************************************************************/
 .info-box {
-  text-align: center;
-}
-.info-box.info-box-left {
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 12px;
+  gap: 16px;
 }
 .info-box .info-icon svg {
   width: 100px;
 }
-.info-box.info-box-top {
-  display: flex;
+.info-box--icon-left {
+  flex-direction: row;
+}
+.info-box--icon-right {
+  flex-direction: row-reverse;
+}
+.info-box--icon-top {
   flex-direction: column;
+}
+.info-box--icon-bottom {
+  flex-direction: column-reverse;
 }
 
 /*# sourceMappingURL=main.min.css.map*/

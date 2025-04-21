@@ -221,18 +221,21 @@ class Info_Box extends Widget_Base
 				],
 			]
 		);
-		$this->add_responsive_control(
-			'info_box_icon_position',
+		$this->add_control(
+			'icon_position',
 			[
 				'label' => esc_html__( 'Icon Position', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
-				'default' => 'top',
 				'options' => [
 					'top' => esc_html__( 'Top', 'magic-elements' ),
 					'left' => esc_html__( 'Left', 'magic-elements' ),
+					'right' => esc_html__( 'Right', 'magic-elements' ),
+					'bottom' => esc_html__( 'Bottom', 'magic-elements' ),
 				],
+				'default' => 'top',
 			]
 		);
+		
 
         //Start normal-hover style
         $this->start_controls_tabs(
@@ -764,7 +767,7 @@ class Info_Box extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-		$icon_position = $settings['info_box_icon_position'];
+		$icon_position = $settings['icon_position'];
 
         include __DIR__ . '/layouts/Info-Box/info-box.php';
 
