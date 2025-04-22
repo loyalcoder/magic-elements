@@ -1,267 +1,122 @@
+/* Base List Styles */
 .magic-post-list {
     display: grid;
     gap: 30px;
+
+    &.list-layout {
+        display: block !important;
+        grid-template-columns: none !important;
+    }
+
+    .magic-post-item {
+        margin-bottom: 30px;
+    }
 }
 
-// .magic-post-item {
-//     border: 1px solid #eee;
-//     border-radius: 10px;
-//     overflow: hidden;
-//     background-color: #fff;
-//     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-//     transition: 0.3s;
-// }
+/* Layout Styles */
+.magic-post-layout {
+    &-grid .magic-post-item {
+        display: flex;
+        flex-direction: column;
+    }
 
-// .magic-post-item:hover {
-//     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-// }
+    &-list .magic-post-list {
+        display: block;
+        grid-template-columns: none !important;
 
-// .magic-post-thumbnail img {
-//     width: 100%;
-//     height: auto;
-//     display: block;
-// }
-
-// .magic-post-content {
-//     padding: 20px;
-// }
-
-// .magic-post-title {
-//     margin-top: 0;
-//     margin-bottom: 10px;
-// }
-
-// .magic-post-meta {
-//     font-size: 13px;
-//     color: #777;
-//     margin-bottom: 10px;
-// }
-
-// .magic-post-meta span {
-//     margin-right: 15px;
-// }
-
-// .magic-post-excerpt {
-//     font-size: 14px;
-//     color: #444;
-// }
-
-/* List Layout Styles */
-.magic-post-list.list-layout {
-    display: block !important;
-    grid-template-columns: none !important;
+        .magic-post-item {
+            display: grid;
+            align-items: center;
+        }
+    }
 }
 
-.magic-post-list.list-layout .magic-post-item {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-}
-
-/* Image Left Layout */
-.magic-post-list-style-image-left .magic-post-item {
+/* Image Position Mixins (for reuse) */
+@mixin image-position-left {
     display: grid;
     grid-template-columns: 30% 1fr;
     gap: 20px;
     align-items: center;
 }
 
-/* Image Right Layout */
-.magic-post-list-style-image-right .magic-post-item {
-    display: grid;
-    grid-template-columns: 1fr 30%;
-    gap: 20px;
-    align-items: center;
-}
-
-/* Image Top Layout */
-.magic-post-list-style-image-top .magic-post-item {
-    display: block;
-}
-
-/* Image Bottom Layout */
-.magic-post-list-style-image-bottom .magic-post-item {
-    display: flex;
-    flex-direction: column-reverse;
-}
-
-/* Alternate Layout */
-.magic-post-list-style-image-alternate .magic-post-item:nth-child(odd) {
-    grid-template-columns: 30% 1fr;
-}
-
-.magic-post-list-style-image-alternate .magic-post-item:nth-child(even) {
-    grid-template-columns: 1fr 30%;
-}
-
-/* বেসিক লেআউট স্টাইল */
-.magic-post-list {
-    display: grid;
-    gap: 30px;
-}
-
-/* Grid লেআউট স্টাইল */
-.magic-post-layout-grid .magic-post-item {
+@mixin image-position-top {
     display: flex;
     flex-direction: column;
 }
 
-/* List লেআউট স্টাইল */
-.magic-post-layout-list .magic-post-list {
-    display: block;
-    grid-template-columns: none !important;
+@mixin image-position-bottom {
+    display: flex;
+    flex-direction: column-reverse;
 }
 
-.magic-post-layout-list .magic-post-item {
-    display: grid;
-    margin-bottom: 30px;
-    align-items: center;
+/* Image Position Styles */
+.magic-post-imgpos {
+    &-left .magic-post-item {
+        @include image-position-left;
+    }
+
+    &-top .magic-post-item {
+        @include image-position-top;
+    }
+
+    &-bottom .magic-post-item {
+        @include image-position-bottom;
+    }
 }
 
-/* ইমেজ পজিশন স্টাইল */
-.magic-post-imgpos-top .magic-post-item {
-    grid-template-columns: 1fr !important;
+/* List Style Variations */
+.magic-post-list-style {
+    &-image-left .magic-post-item {
+        @include image-position-left;
+    }
+
+    &-image-top .magic-post-item {
+        @include image-position-top;
+    }
+
+    &-image-bottom .magic-post-item {
+        @include image-position-bottom;
+    }
 }
 
-.magic-post-imgpos-left .magic-post-item {
-    grid-template-columns: 30% 1fr;
-    gap: 20px;
-}
-
-.magic-post-imgpos-right .magic-post-item {
-    grid-template-columns: 1fr 30%;
-    gap: 20px;
-}
-
-.magic-post-imgpos-alternate .magic-post-item {
-    gap: 20px;
-}
-
-.magic-post-imgpos-alternate .magic-post-alternate-left {
-    grid-template-columns: 30% 1fr;
-}
-
-.magic-post-imgpos-alternate .magic-post-alternate-right {
-    grid-template-columns: 1fr 30%;
-}
-
-/* থাম্বনেইল স্টাইল */
+/* Thumbnail Styles */
 .magic-post-thumbnail {
     overflow: hidden;
+
+    img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
 }
 
-.magic-post-thumbnail img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.3s ease;
-}
-
-.magic-post-thumbnail:hover img {
-    transform: scale(1.05);
-}
-
-/* Read More বাটন স্টাইল */
+/* Read More Button Styles */
 .magic-post-read-more {
     margin-top: 15px;
+
+    a {
+        display: inline-block;
+        padding: 8px 15px;
+        background-color: #0073aa;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 3px;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #005177;
+        }
+    }
 }
 
-.magic-post-read-more a {
-    display: inline-block;
-    padding: 8px 15px;
-    background-color: #0073aa;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 3px;
-    transition: background-color 0.3s ease;
-}
-
-.magic-post-read-more a:hover {
-    background-color: #005177;
-}
-
-/* বেসিক লেআউট স্টাইল */
-.magic-post-list {
-    display: grid;
-    gap: 30px;
-}
-
-/* Grid লেআউট স্টাইল */
-.magic-post-layout-grid .magic-post-item {
-    display: flex;
-    flex-direction: column;
-}
-
-/* List লেআউট স্টাইল */
-.magic-post-layout-list .magic-post-list {
-    display: block;
-}
-
-.magic-post-layout-list .magic-post-item {
-    margin-bottom: 30px;
-}
-
-/* ইমেজ পজিশন স্টাইল */
-.magic-post-imgpos-top .magic-post-item {
-    display: flex;
-    flex-direction: column;
-}
-
-.magic-post-imgpos-left .magic-post-item {
-    display: grid;
-    grid-template-columns: 30% 1fr;
-    gap: 20px;
-    align-items: center;
-}
-
-.magic-post-imgpos-bottom .magic-post-item {
-    display: flex;
-    flex-direction: column-reverse;
-}
-
-/* থাম্বনেইল স্টাইল */
-.magic-post-thumbnail {
-    overflow: hidden;
-}
-
-.magic-post-thumbnail img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* মেটা ডাটা স্টাইল */
+/* Meta Data Styles */
 .magic-post-meta {
     margin: 10px 0;
     font-size: 0.9em;
     color: #666;
-}
-
-.magic-post-meta span {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.magic-post-meta span:not(:last-child):after {
-    content: "|";
-    margin-left: 10px;
-}
-
-/* Read More বাটন স্টাইল */
-.magic-post-read-more {
-    margin-top: 15px;
-}
-
-.magic-post-read-more a {
-    display: inline-block;
-    padding: 8px 15px;
-    background-color: #0073aa;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 3px;
-    transition: background-color 0.3s;
-}
-
-.magic-post-read-more a:hover {
-    background-color: #005177;
 }

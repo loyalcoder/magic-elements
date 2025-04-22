@@ -932,8 +932,10 @@ class Post_List extends Widget_Base
         // Use the trait method to get posts data with caching
         $posts = $this->get_posts_data($query_args, $settings['cache_time']);
         
-        if (empty($posts)) {
-            echo '<div class="magic-no-posts">' . esc_html__('No posts found', 'magic-elements') . '</div>';
+        if (empty($posts)) { ?>
+        
+            <div class="magic-no-posts"> <?php  echo esc_html__('No posts found', 'magic-elements') ?>   </div>;
+            <?php
             return;
         }
 
@@ -980,15 +982,16 @@ class Post_List extends Widget_Base
     
     protected function render_posts($posts, $settings) {
     $layout = $settings['layout'];
-    $image_position = $settings['image_position'];
+    $image_position = $settings['image_position']; ?>
     
-    echo '<div class="magic-post-list magic-post-layout-' . esc_attr($layout) . ' magic-post-imgpos-' . esc_attr($image_position) . '">';
+    <div class="magic-post-list magic-post-layout-<?php echo esc_attr($layout); ?> magic-post-imgpos-<?php echo esc_attr($image_position); ?>">
 
-    foreach ($posts as $index => $post) {
+   <?php foreach ($posts as $index => $post) {
         $this->render_single_post($post, $settings, $index);
-    }
+    } ?>
 
-    echo '</div>';
+    </div>
+    <?php
 }
 
 protected function render_single_post($post, $settings) {
