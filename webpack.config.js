@@ -38,6 +38,10 @@ const baseConfig = {
       './assets/src/scss/tab.scss',
       './assets/src/js/tab.js',
     ],
+    multiple_button: [
+      './assets/src/scss/multiple_button.scss',
+      './assets/src/js/multiple_button.js',
+    ],
 
     // 2) SCSS ONLY (no JS file mentioned):
     flipcard: './assets/src/scss/flipcard.scss',
