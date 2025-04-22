@@ -123,7 +123,6 @@ class Data_table extends Widget_Base
 			[
 				'label' => esc_html__( 'Icon', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
-                'skin' => 'media',
 				'default' => [
 					'value' => 'fas fa-star',
 					'library' => 'fa-solid',
@@ -151,103 +150,6 @@ class Data_table extends Widget_Base
 				'label_block' => true,
 			]
 		);
-        $repeater->add_control(
-			'second_data_icon',
-			[
-				'label' => esc_html__( 'Icon', 'textdomain' ),
-				'type' => \Elementor\Controls_Manager::ICONS,
-				'default' => [
-					'value' => 'fas fa-star',
-					'library' => 'fa-solid',
-				],
-				'recommended' => [
-					'fa-solid' => [
-						'circle',
-						'dot-circle',
-						'square-full',
-					],
-					'fa-regular' => [
-						'circle',
-						'dot-circle',
-						'square-full',
-					],
-				],
-			]
-		);
-        $repeater->add_control(
-			'data_table_second_item',
-			[
-				'label' => esc_html__( 'First Name', 'textdomain' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'List Title' , 'textdomain' ),
-				'label_block' => true,
-			]
-		);
-        $repeater->add_control(
-			'third_data_icon',
-			[
-				'label' => esc_html__( 'Icon', 'textdomain' ),
-				'type' => \Elementor\Controls_Manager::ICONS,
-				'default' => [
-					'value' => 'fas fa-star',
-					'library' => 'fa-solid',
-				],
-				'recommended' => [
-					'fa-solid' => [
-						'circle',
-						'dot-circle',
-						'square-full',
-					],
-					'fa-regular' => [
-						'circle',
-						'dot-circle',
-						'square-full',
-					],
-				],
-			]
-		);
-        $repeater->add_control(
-			'data_table_third_item',
-			[
-				'label' => esc_html__( 'Last Name', 'textdomain' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'List Title' , 'textdomain' ),
-				'label_block' => true,
-			]
-		);
-        $repeater->add_control(
-			'fourth_data_icon',
-			[
-				'label' => esc_html__( 'Icon', 'textdomain' ),
-				'type' => \Elementor\Controls_Manager::ICONS,
-				'default' => [
-					'value' => 'fas fa-star',
-					'library' => 'fa-solid',
-				],
-				'recommended' => [
-					'fa-solid' => [
-						'circle',
-						'dot-circle',
-						'square-full',
-					],
-					'fa-regular' => [
-						'circle',
-						'dot-circle',
-						'square-full',
-					],
-				],
-			]
-		);
-        $repeater->add_control(
-			'data_table_fourth_item',
-			[
-				'label' => esc_html__( 'Handle', 'textdomain' ),
-				'type' => \Elementor\Controls_Manager::TEXTAREA,
-				'rows' => 6,
-				'default' => esc_html__( 'Default description', 'textdomain' ),
-				'placeholder' => esc_html__( 'Type your description here', 'textdomain' ),
-			]
-		);
         $this->add_control(
 			'data_table_list',
 			[
@@ -257,15 +159,6 @@ class Data_table extends Widget_Base
 				'default' => [
                     [
                         'data_table_first_item' => esc_html__( 'Title #1', 'textdomain' ),
-                        'data_table_second_item' => esc_html__( 'First Name #1', 'textdomain' ),
-                        'data_table_third_item' => esc_html__( 'Last Name #1', 'textdomain' ),
-                        'data_table_fourth_item' => esc_html__( '@handle1', 'textdomain' ),
-                    ],
-                    [
-                        'data_table_first_item' => esc_html__( 'Title #2', 'textdomain' ),
-                        'data_table_second_item' => esc_html__( 'First Name #2', 'textdomain' ),
-                        'data_table_third_item' => esc_html__( 'Last Name #2', 'textdomain' ),
-                        'data_table_fourth_item' => esc_html__( '@handle2', 'textdomain' ),
                     ],
                 ],
 
