@@ -863,7 +863,7 @@ class Post_List extends Widget_Base
 
         $this->end_controls_section();
 
-        // Read More Style
+       // Read More Style
         $this->start_controls_section(
             'section_read_more_style',
             [
@@ -873,37 +873,133 @@ class Post_List extends Widget_Base
             ]
         );
 
+        // Text Color
         $this->add_control(
             'read_more_color',
             [
-                'label' => esc_html__('Color', 'magic-elements'),
+                'label' => esc_html__('Text Color', 'magic-elements'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .magic-post-read-more' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .magic-post-read-more a' => 'color: {{VALUE}};',
                 ],
             ]
         );
 
+        // Text Hover Color
         $this->add_control(
             'read_more_hover_color',
             [
-                'label' => esc_html__('Hover Color', 'magic-elements'),
+                'label' => esc_html__('Text Hover Color', 'magic-elements'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .magic-post-read-more:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .magic-post-read-more a:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
 
+        // Background Color
+        $this->add_control(
+            'read_more_bg_color',
+            [
+                'label' => esc_html__('Background Color', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-read-more a' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        // Background Hover Color
+        $this->add_control(
+            'read_more_bg_hover_color',
+            [
+                'label' => esc_html__('Background Hover Color', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-read-more a:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        // Typography
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'read_more_typography',
                 'label' => esc_html__('Typography', 'magic-elements'),
-                'selector' => '{{WRAPPER}} .magic-post-read-more',
+                'selector' => '{{WRAPPER}} .magic-post-read-more a',
             ]
         );
 
+        // Padding
+        $this->add_responsive_control(
+            'read_more_padding',
+            [
+                'label' => esc_html__('Padding', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-read-more a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        // Border
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name' => 'read_more_border',
+                'label' => esc_html__('Border', 'magic-elements'),
+                'selector' => '{{WRAPPER}} .magic-post-read-more a',
+            ]
+        );
+
+        // Border Hover Color
+        $this->add_control(
+            'read_more_border_hover_color',
+            [
+                'label' => esc_html__('Border Hover Color', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-read-more a:hover' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        // Border Radius
+        $this->add_responsive_control(
+            'read_more_border_radius',
+            [
+                'label' => esc_html__('Border Radius', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-read-more a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        // Box Shadow
+        $this->add_group_control(
+            \Elementor\Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'read_more_box_shadow',
+                'label' => esc_html__('Box Shadow', 'magic-elements'),
+                'selector' => '{{WRAPPER}} .magic-post-read-more a',
+            ]
+        );
+
+        // Hover Box Shadow
+        $this->add_group_control(
+            \Elementor\Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'read_more_box_shadow_hover',
+                'label' => esc_html__('Hover Box Shadow', 'magic-elements'),
+                'selector' => '{{WRAPPER}} .magic-post-read-more a:hover',
+            ]
+        );
+
+        // Spacing
         $this->add_responsive_control(
             'read_more_spacing',
             [
