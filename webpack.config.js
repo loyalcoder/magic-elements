@@ -38,6 +38,10 @@ const baseConfig = {
       './assets/src/scss/tab.scss',
       './assets/src/js/tab.js',
     ],
+    team: [
+      './assets/src/scss/team.scss',
+      './assets/src/js/team.js',
+    ],
 
     // 2) SCSS ONLY (no JS file mentioned):
     flipcard: './assets/src/scss/flipcard.scss',
