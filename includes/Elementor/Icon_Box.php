@@ -274,6 +274,13 @@ class Icon_Box extends Widget_Base
 				'selector' => '{{WRAPPER}} .icon-box-wapper',
 			]
 		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'icon_box_normal_box_shadow',
+				'selector' => '{{WRAPPER}} .icon-box-wapper',
+			]
+		);
         $this->add_control(
 			'icon_box_normal_border_devider',
 			[
@@ -337,6 +344,13 @@ class Icon_Box extends Widget_Base
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name' => 'icon_box_hover_border',
+				'selector' => '{{WRAPPER}} .icon-box-wapper:hover',
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'icon_box_hover_box_shadow',
 				'selector' => '{{WRAPPER}} .icon-box-wapper:hover',
 			]
 		);
