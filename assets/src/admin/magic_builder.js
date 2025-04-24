@@ -66,10 +66,11 @@
             type: 'POST',
             data: {
                 action: 'magic_builder_header_condition_form',
+                conditionTyp: 'first_label',
                 nonce: magic_builder_data.nonce
             },
             beforeSend: function() {
-                $('.preloader').html('<p>Loading conditions...</p>');
+            $('.preloader').html('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="loading-spinner"><circle cx="12" cy="12" r="10" opacity="0.25"/><path d="M12 2a10 10 0 0 1 10 10" opacity="1"><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="1s" repeatCount="indefinite"/></path></svg>');
             },
             success: function(response) {
                 if (response.success) {
@@ -133,6 +134,8 @@
                     $('.condition-loader').html('<p>Error loading singular options.</p>');
                 }
             });
+            }else {
+                $('.condition-container-dep-2').html('');
             }
         });
         // post type change
@@ -175,7 +178,7 @@
         $(document).on('change', '.condition-singular-d-2', function() {
             let current_condition = $(this).val();
             let currentElement = $(this);
-            console.log(current_condition);
+            console.log($('.condition-singular-d-1').val(), 'last');
             let postOrTaxonomy = '<div class="condition-container-dep-3">Loaded<select class="single_post_loader" multiple></select></div>';
             if(current_condition == 'specific') {
                 $('.spacif-ox').html(postOrTaxonomy);

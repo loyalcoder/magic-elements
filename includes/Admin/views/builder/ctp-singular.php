@@ -1,4 +1,9 @@
 <div class="condition-item">
+    <?php 
+     
+     _log($post_types_archive_list, 'singll');
+    
+    ?>
     <select name="condition-type[display][]" class="condition-display condition-singular-d-2">
         <?php 
         if (!empty($post_types_archive_list) && is_array($post_types_archive_list)) {

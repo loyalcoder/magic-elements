@@ -99,8 +99,9 @@ class Ajax {
     public function magic_builder_header_condition_form() {
         check_ajax_referer('magic_builder_nonce', 'nonce');
         $display = $this->get_display_on_list();
+        $condition_type = isset($_REQUEST['conditionTyp'])? sanitize_key($_REQUEST['conditionTyp']) : '';
         ob_start();
-        include __DIR__ . '/views/builder/condition-form.php';
+        include __DIR__ . '/views/builder/'.$condition_type.'.php';
         $html = ob_get_clean();
         wp_send_json_success([
             'html' => $html
@@ -140,8 +141,8 @@ class Ajax {
     public function magic_builder_search_posts() {
         check_ajax_referer('magic_builder_nonce', 'nonce');
         $page = isset($_REQUEST['page']) ? intval($_REQUEST['page']) : 1;
-        $posts_per_page = 100; // Set a reasonable number for posts per page
-    
+        $posts_per_page = 5; // Set a reasonable number for posts per page
+        _log($_REQUEST);
         $query_args = [
             'post_type' => 'product',
             'posts_per_page' => $posts_per_page,
@@ -158,8 +159,6 @@ class Ajax {
                 'post_title' => $post->post_title
             ];
         }
-        _log($items);
-        
         wp_send_json_success([
             'items' => $items,
             'total' => $query->found_posts, // Total count for pagination
