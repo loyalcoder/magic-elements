@@ -138,6 +138,11 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/tab.js'),
                 'deps'    => ['jquery']
             ],
+            'emkit-info-box' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/info_box.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/info_box.js'),
+                'deps'    => ['jquery']
+            ],
         ];
     }
     /**
@@ -193,7 +198,11 @@ class Load_Elementor
             'emk-icon-box' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/icon_box.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/icon_box.css'),
-            ]
+            ],
+            'emk-info-box' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/info_box.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/info_box.css'),
+            ],
         ];
     }
 
@@ -222,6 +231,7 @@ class Load_Elementor
             'Tab',
             'Post',
             'Icon_Box',
+            'Info_Box',
         ];
     }
     public static function defaultWidgets()
@@ -242,6 +252,7 @@ class Load_Elementor
             'card',
             'tab',
             'iconiox',
+            'infobox',
         ];
     }
     /**
