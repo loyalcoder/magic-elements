@@ -38,9 +38,18 @@ const baseConfig = {
       './assets/src/scss/tab.scss',
       './assets/src/js/tab.js',
     ],
+<<<<<<< HEAD
     multiple_button: [
       './assets/src/scss/multiple_button.scss',
       './assets/src/js/multiple_button.js',
+=======
+    icon_box: [
+      './assets/src/scss/icon_box.scss',
+    ],
+    info_box: [
+      './assets/src/scss/info_box.scss',
+      './assets/src/js/info_box.js',
+>>>>>>> 0886e3b9685c65d78a0148ee65e20d0a0b940439
     ],
 
     // 2) SCSS ONLY (no JS file mentioned):
