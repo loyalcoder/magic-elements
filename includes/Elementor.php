@@ -159,6 +159,10 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/button.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/button.css'),
             ],
+            'emkit-multiple-button' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/multiple_button.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/multiple_button.css'),
+            ],
             'emk-pricingtable' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/pricingtable.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/pricingtable.css'),
@@ -225,6 +229,7 @@ class Load_Elementor
             'Card',
             'Tab',
             'Post',
+            'Multiple_Button',
             'Icon_Box',
             'Info_Box',
         ];
@@ -245,6 +250,7 @@ class Load_Elementor
             'categorylist',
             'card',
             'tab',
+            'multiplebutton',
             'iconiox',
             'infobox',
         ];

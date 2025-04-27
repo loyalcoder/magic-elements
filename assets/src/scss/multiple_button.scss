@@ -1,0 +1,35 @@
+// Mixins
+@mixin flex {
+    display: flex;
+}
+
+@mixin color-white {
+color: white;
+}
+  
+  .multiple-button-wrapper {
+    @include flex;
+    flex-wrap: wrap;
+
+    .bt-item {
+      .btn-item-wrapper {
+        display: inline-block;
+
+        .magic-button {
+          @include flex;
+          align-items: center;
+          background-color: burlywood;
+          @include color-white;
+        }
+      }
+  
+      &:first-child {
+        .btn-item-wrapper {
+          .magic-button {
+            background-color: rgb(190, 61, 61);
+            @include color-white;
+          }
+        }
+      }
+    }
+  }
