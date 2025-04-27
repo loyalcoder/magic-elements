@@ -130,7 +130,6 @@ class Feature_list extends Widget_Base
 		);
         $this->end_controls_section();
 
-
     }
 
         /**
