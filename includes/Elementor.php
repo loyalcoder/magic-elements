@@ -232,6 +232,7 @@ class Load_Elementor
             'Multiple_Button',
             'Icon_Box',
             'Info_Box',
+            'Feature_list',
         ];
     }
     public static function defaultWidgets()
@@ -253,6 +254,7 @@ class Load_Elementor
             'multiplebutton',
             'iconiox',
             'infobox',
+            'featurelist',
         ];
     }
     /**
