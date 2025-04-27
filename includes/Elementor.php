@@ -183,10 +183,6 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/category_list.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/category_list.css'),
             ],
-            'emk-feature-list' => [
-                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/feature_list.css',
-                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/feature_list.css'),
-            ],
             'emkit-accordion' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/accordion.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/accordion.css'),
@@ -223,7 +219,6 @@ class Load_Elementor
             'Flip_Card',
             'Heading',
             'Post_Category_Tab',
-            'Feature_List',
             'Accordion',
             'Counter',
             'Category_List',
@@ -245,7 +240,6 @@ class Load_Elementor
             'flipcard',
             'heading',
             'postcategorytab',
-            'featurelist',
             'accordion',
             'counter',
             'categorylist',
