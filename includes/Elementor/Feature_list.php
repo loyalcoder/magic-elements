@@ -111,9 +111,9 @@ class Feature_list extends Widget_Base
     protected function register_feature_list_controls()
     {
         $this->start_controls_section(
-			'image_content_section',
+			'feature_list_content_section',
 			[
-				'label' => esc_html__( 'Image', 'magic-elements' ),
+				'label' => esc_html__( 'Feature List', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -122,9 +122,9 @@ class Feature_list extends Widget_Base
 
             // Style section
         $this->start_controls_section(
-            $this->get_name() .'style_section',
+            'feature_list_style_section',
 			[
-				'label' => esc_html__( 'Image', 'magic-elements' ),
+				'label' => esc_html__( 'Feature List', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
