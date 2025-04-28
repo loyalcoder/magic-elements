@@ -195,6 +195,10 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/tab.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/tab.css'),
             ],
+            'emk-post-list' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/post_list.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/post_list.css'),
+            ],
             'emk-page-list' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/page_list.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/page_list.css'),
@@ -237,6 +241,7 @@ class Load_Elementor
             'Card',
             'Tab',
             'Post',
+            'Post_List',
             'Page_List',
             'Multiple_Button',
             'Icon_Box',
@@ -260,6 +265,7 @@ class Load_Elementor
             'categorylist',
             'card',
             'tab',
+            'postlist',
             'pageList',
             'multiplebutton',
             'iconiox',

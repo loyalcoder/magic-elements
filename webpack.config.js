@@ -54,6 +54,7 @@ const baseConfig = {
     flipcard: './assets/src/scss/flipcard.scss',
     category_list: './assets/src/scss/category_list.scss',
     feature_list: './assets/src/scss/feature_list.scss',
+    post_list: './assets/src/scss/post_list.scss',
     page_list: './assets/src/scss/page_list.scss',
 
     // 3) JS ONLY (if there's no SCSS for 'main', or your 'admin' is JS only, etc.):
