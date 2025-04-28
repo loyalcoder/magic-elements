@@ -138,6 +138,11 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/tab.js'),
                 'deps'    => ['jquery']
             ],
+            'emkit-info-box' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/info_box.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/info_box.js'),
+                'deps'    => ['jquery']
+            ],
         ];
     }
     /**
@@ -153,6 +158,10 @@ class Load_Elementor
             'emkit-button' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/button.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/button.css'),
+            ],
+            'emkit-multiple-button' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/multiple_button.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/multiple_button.css'),
             ],
             'emk-pricingtable' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/pricingtable.css',
@@ -178,10 +187,6 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/category_list.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/category_list.css'),
             ],
-            'emk-feature-list' => [
-                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/feature_list.css',
-                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/feature_list.css'),
-            ],
             'emkit-accordion' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/accordion.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/accordion.css'),
@@ -193,6 +198,22 @@ class Load_Elementor
             'emk-post-list' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/post_list.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/post_list.css'),
+            ],
+            'emk-page-list' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/page_list.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/page_list.css'),
+            ],
+            'emk-icon-box' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/icon_box.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/icon_box.css'),
+            ],
+            'emk-info-box' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/info_box.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/info_box.css'),
+            ],
+            'emk-feature-list' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/feature_list.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/feature_list.css'),
             ],
         ];
     }
@@ -214,14 +235,18 @@ class Load_Elementor
             'Flip_Card',
             'Heading',
             'Post_Category_Tab',
-            'Feature_List',
             'Accordion',
             'Counter',
             'Category_List',
             'Card',
             'Tab',
             'Post',
-            'Post_List'
+            'Post_List',
+            'Page_List',
+            'Multiple_Button',
+            'Icon_Box',
+            'Info_Box',
+            'Feature_list',
         ];
     }
     public static function defaultWidgets()
@@ -235,13 +260,17 @@ class Load_Elementor
             'flipcard',
             'heading',
             'postcategorytab',
-            'featurelist',
             'accordion',
             'counter',
             'categorylist',
             'card',
             'tab',
             'postlist',
+            'pageList',
+            'multiplebutton',
+            'iconiox',
+            'infobox',
+            'featurelist',
         ];
     }
     /**
