@@ -86,9 +86,9 @@ class Feature_list extends Widget_Base
         return ['magicelements-widgets'];
     }
 
-    public function get_script_depends()
+    public function get_style_depends()
     {
-        return [];
+        return ['emk-feature-list'];
     }
 
         /**
@@ -117,6 +117,74 @@ class Feature_list extends Widget_Base
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
+        $repeater = new \Elementor\Repeater();
+        $repeater->add_control(
+			'feature_list_icon',
+			[
+				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-star',
+					'library' => 'fa-solid',
+				],
+				'recommended' => [
+					'fa-solid' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+					'fa-regular' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+				],
+			]
+		);
+        $repeater->add_control(
+			'feature_list_title',
+			[
+				'label' => esc_html__( 'Serial', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Find out where we’re located.' , 'textdomain' ),
+				'label_block' => true,
+			]
+		);
+        $repeater->add_control(
+			'feature_list_description',
+			[
+				'label' => esc_html__( 'Description', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'rows' => 6,
+				'default' => esc_html__( 'A streamlined version of Info packed with powerful features.', 'textdomain' ),
+				'placeholder' => esc_html__( 'Type your description here', 'textdomain' ),
+			]
+		);
+        $this->add_control(
+			'feature_list',
+			[
+				'label' => esc_html__( 'Repeater List', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
+				'default' => [
+                    [
+                        'feature_list_title' => esc_html__( 'Discover where we call home.', 'textdomain' ),
+                        'feature_list_description' => esc_html__( 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'textdomain' ),
+                    ],
+                    [
+                        'feature_list_title' => esc_html__( 'Discover where we call home.', 'textdomain' ),
+                        'feature_list_description' => esc_html__( 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'textdomain' ),
+                    ],
+                    [
+                        'feature_list_title' => esc_html__( 'Discover where we call home.', 'textdomain' ),
+                        'feature_list_description' => esc_html__( 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'textdomain' ),
+                    ]
+                ],
+
+                'title_field' => '{{{ feature_list_title }}}',
+			]
+		);
+        
 
         $this->end_controls_section();
 
@@ -143,6 +211,7 @@ class Feature_list extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+        $feature_list = $settings['feature_list'];
         include __DIR__ . '/layouts/Feature-List/feature-list.php';
     }
 

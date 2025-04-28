@@ -1,0 +1,13 @@
+/*!****************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/feature_list.scss ***!
+  \****************************************************************************************************************************/
+.feature {
+  display: flex;
+  align-items: start;
+  gap: 15px;
+}
+.feature .feature-icon svg {
+  width: 40px;
+}
+
+/*# sourceMappingURL=feature_list.min.css.map*/
