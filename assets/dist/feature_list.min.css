@@ -1,12 +1,12 @@
 /*!****************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/feature_list.scss ***!
   \****************************************************************************************************************************/
-.feature {
+.feature-list .feature {
   display: flex;
   align-items: start;
   gap: 15px;
 }
-.feature .feature-icon svg {
+.feature-list .feature .feature-icon svg {
   width: 40px;
 }
 

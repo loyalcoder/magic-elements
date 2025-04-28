@@ -1,10 +1,12 @@
-.feature{
-    display: flex;
-    align-items: start;
-    gap: 15px;
-    .feature-icon{
-        svg{
-            width: 40px;
+.feature-list{
+    .feature{
+        display: flex;
+        align-items: start;
+        gap: 15px;
+        .feature-icon{
+            svg{
+                width: 40px;
+            }
         }
     }
 }

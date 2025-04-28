@@ -121,7 +121,7 @@ class Feature_list extends Widget_Base
         $repeater->add_control(
 			'feature_list_icon',
 			[
-				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'label' => esc_html__( 'Icon', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
 				'default' => [
 					'value' => 'fas fa-star',
@@ -144,20 +144,20 @@ class Feature_list extends Widget_Base
         $repeater->add_control(
 			'feature_list_title',
 			[
-				'label' => esc_html__( 'Serial', 'textdomain' ),
+				'label' => esc_html__( 'Serial', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Find out where we’re located.' , 'textdomain' ),
+				'default' => esc_html__( 'Find out where we’re located.' , 'magic-elements' ),
 				'label_block' => true,
 			]
 		);
         $repeater->add_control(
 			'feature_list_description',
 			[
-				'label' => esc_html__( 'Description', 'textdomain' ),
+				'label' => esc_html__( 'Description', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'rows' => 6,
-				'default' => esc_html__( 'A streamlined version of Info packed with powerful features.', 'textdomain' ),
-				'placeholder' => esc_html__( 'Type your description here', 'textdomain' ),
+				'default' => esc_html__( 'A streamlined version of Info packed with powerful features.', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your description here', 'magic-elements' ),
 			]
 		);
         $repeater->add_group_control(
@@ -171,21 +171,21 @@ class Feature_list extends Widget_Base
         $this->add_control(
 			'feature_list',
 			[
-				'label' => esc_html__( 'Repeater List', 'textdomain' ),
+				'label' => esc_html__( 'Repeater List', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
                     [
-                        'feature_list_title' => esc_html__( 'Discover where we call home.', 'textdomain' ),
-                        'feature_list_description' => esc_html__( 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'textdomain' ),
+                        'feature_list_title' => esc_html__( 'Discover where we call home.', 'magic-elements' ),
+                        'feature_list_description' => esc_html__( 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'magic-elements' ),
                     ],
                     [
-                        'feature_list_title' => esc_html__( 'Discover where we call home.', 'textdomain' ),
-                        'feature_list_description' => esc_html__( 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'textdomain' ),
+                        'feature_list_title' => esc_html__( 'Discover where we call home.', 'magic-elements' ),
+                        'feature_list_description' => esc_html__( 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'magic-elements' ),
                     ],
                     [
-                        'feature_list_title' => esc_html__( 'Discover where we call home.', 'textdomain' ),
-                        'feature_list_description' => esc_html__( 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'textdomain' ),
+                        'feature_list_title' => esc_html__( 'Discover where we call home.', 'magic-elements' ),
+                        'feature_list_description' => esc_html__( 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'magic-elements' ),
                     ]
                 ],
 
@@ -198,11 +198,421 @@ class Feature_list extends Widget_Base
         $this->start_controls_section(
             'feature_list_style_section',
 			[
-				'label' => esc_html__( 'Feature List', 'magic-elements' ),
+				'label' => esc_html__( 'Feature Box', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
+        $this->add_responsive_control(
+			'feature_box_align',
+			[
+				'label' => esc_html__( 'Alignment', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'magic-elements' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'magic-elements' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'magic-elements' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .feature' => 'justify-content: {{VALUE}};',
+				],
+			]
+		);
+        //start normal hover
+        $this->start_controls_tabs(
+            'feature_style_tabs'
+        );
+        //normal
+        $this->start_controls_tab(
+            'style_normal_tab',
+            [
+                'label' => esc_html__( 'Normal', 'magic-elements' ),
+            ]
+        );
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'feature_box_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .feature-list',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'feature_box_shadow',
+				'selector' => '{{WRAPPER}} .feature-list',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'feature_box_border',
+				'selector' => '{{WRAPPER}} .feature-list',
+			]
+		);
+        $this->add_control(
+			'feature_box_divider',
+			[
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+        $this->add_responsive_control(
+			'feature_box_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .feature-list' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'feature_box_padding',
+			[
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .feature-list' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        
+        $this->end_controls_tab();
+        //hover
+        $this->start_controls_tab(
+            'style_hover_tab',
+            [
+                'label' => esc_html__( 'Hover', 'magic-elements' ),
+            ]
+        );
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'feature_box_hover_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .feature-list:hover',
+			]
+		);
+        $this->add_control(
+			'feature_box_hover_transition',
+			[
+				'label' => esc_html__( 'Transition Duration', 'magic-elements' ) . ' (s)',
+				'type'  => \Elementor\Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min'  => 0,
+						'max'  => 3,
+						'step' => 0.1,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .feature-list:hover' => 'transition-duration: {{SIZE}}s',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'feature_box_hover_shadow',
+				'selector' => '{{WRAPPER}} .feature-list:hover',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'feature_box_hover_border',
+				'selector' => '{{WRAPPER}} .feature-list:hover',
+			]
+		);
+        $this->add_control(
+			'feature_box_hover_divider',
+			[
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+        $this->add_responsive_control(
+			'feature_box_hover_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .feature-list:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'feature_box_hover_padding',
+			[
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .feature-list:hover' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->end_controls_tab();
+        
+        $this->end_controls_tabs();
+        //end normal hover
         $this->end_controls_section();
+        //Feature Item
+        $this->start_controls_section(
+			'feature_item_style_section',
+			[
+				'label' => esc_html__( 'Feature Item', 'magic-elements' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+        $this->add_responsive_control(
+			'feature_item_gap',
+			[
+				'label' => esc_html__( 'Gap', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .feature:not(:first-child)' => 'margin-top: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'feature_item_border',
+				'selector' => '{{WRAPPER}} .feature',
+			]
+		);
+        $this->add_responsive_control(
+			'feature_item_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .feature' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'feature_item_padding',
+			[
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .feature' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->end_controls_section();
+        //Icon
+        $this->start_controls_section(
+			'feature_list_icon_style',
+			[
+				'label' => esc_html__( 'Icon', 'magic-elements' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+		$this->add_control(
+			'feature_list_icon_color',
+			[
+				'label' => esc_html__( 'Icon Color', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .feature-icon svg' => 'fill: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'feature_list_icon_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .feature-icon svg',
+			]
+		);
+        $this->add_responsive_control(
+			'feature_list_icon_size',
+			[
+				'label' => esc_html__( 'Size', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .feature-icon svg' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'feature_list_icon_gap',
+			[
+				'label' => esc_html__( 'Gap', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .feature' => 'gap: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_control(
+			'feature_list_icon_divider',
+			[
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+        $this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'feature_list_icon_border',
+				'selector' => '{{WRAPPER}} .feature-icon svg',
+			]
+		);
+        $this->add_responsive_control(
+			'feature_list_icon_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .feature-icon svg' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'feature_list_icon_padding',
+			[
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .feature-icon svg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->end_controls_section();
+        //Title
+        $this->start_controls_section(
+			'feature_list_title_style',
+			[
+				'label' => esc_html__( 'Title', 'magic-elements' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'feature_list_title_color',
+			[
+				'label' => esc_html__( 'Text Color', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .feature-content h3' => 'color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'feature_list_title_typography',
+				'selector' => '{{WRAPPER}} .feature-content h3',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Text_Shadow::get_type(),
+			[
+				'name' => 'feature_list_title_shadow',
+				'selector' => '{{WRAPPER}} .feature-content h3',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Text_Stroke::get_type(),
+			[
+				'name' => 'feature_list_title_stroke',
+				'selector' => '{{WRAPPER}} .feature-content h3',
+			]
+		);
+        $this->add_responsive_control(
+			'feature_list_title_margin',
+			[
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .feature-content h3' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->end_controls_section();
+        //Description
+        $this->start_controls_section(
+			'feature_list_description_style',
+			[
+				'label' => esc_html__( 'Description', 'magic-elements' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'feature_list_description_color',
+			[
+				'label' => esc_html__( 'Text Color', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .feature-content p' => 'color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'feature_list_description_typography',
+				'selector' => '{{WRAPPER}} .feature-content p',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Text_Shadow::get_type(),
+			[
+				'name' => 'feature_list_description_shadow',
+				'selector' => '{{WRAPPER}} .feature-content p',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Text_Stroke::get_type(),
+			[
+				'name' => 'feature_list_description_stroke',
+				'selector' => '{{WRAPPER}} .feature-content p',
+			]
+		);
+        $this->add_responsive_control(
+			'feature_list_description_margin',
+			[
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .feature-content p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->end_controls_section();
+
 
     }
 
