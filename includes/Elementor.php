@@ -203,6 +203,10 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/info_box.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/info_box.css'),
             ],
+            'emk-feature-list' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/feature_list.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/feature_list.css'),
+            ],
         ];
     }
 
@@ -232,6 +236,7 @@ class Load_Elementor
             'Multiple_Button',
             'Icon_Box',
             'Info_Box',
+            'Feature_list',
         ];
     }
     public static function defaultWidgets()
@@ -253,6 +258,7 @@ class Load_Elementor
             'multiplebutton',
             'iconiox',
             'infobox',
+            'featurelist',
         ];
     }
     /**
