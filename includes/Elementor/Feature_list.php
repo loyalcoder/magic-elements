@@ -160,6 +160,14 @@ class Feature_list extends Widget_Base
 				'placeholder' => esc_html__( 'Type your description here', 'textdomain' ),
 			]
 		);
+        $repeater->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'feature_items_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} {{CURRENT_ITEM}}',
+			]
+		);
         $this->add_control(
 			'feature_list',
 			[
@@ -184,8 +192,6 @@ class Feature_list extends Widget_Base
                 'title_field' => '{{{ feature_list_title }}}',
 			]
 		);
-        
-
         $this->end_controls_section();
 
             // Style section
