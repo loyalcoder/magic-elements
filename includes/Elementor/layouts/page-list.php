@@ -19,7 +19,7 @@
                     $output .= '<li>';
                     $output .= '<i class="' . esc_attr( $icon ) . '"></i> ';
                     $output .= '<a href="' . esc_url( get_permalink( $page_id ) ) . '">';
-                    $output .= esc_html( $page->name );
+                    $output .= esc_html( $page->post_title );
                     $output .= '</a>';
                     $output .= '</li>';
                 }

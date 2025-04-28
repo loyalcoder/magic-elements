@@ -308,7 +308,7 @@ class Page_List extends Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#0073aa',
                 'selectors' => [
-                    '{{WRAPPER}} .category-list-widget li i' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .page-list-widget li i' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -320,7 +320,7 @@ class Page_List extends Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#005177',
                 'selectors' => [
-                    '{{WRAPPER}} .category-list-widget li:hover i' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .page-list-widget li:hover i' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -341,7 +341,7 @@ class Page_List extends Widget_Base
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .category-list-widget li i' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .page-list-widget li i' => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
