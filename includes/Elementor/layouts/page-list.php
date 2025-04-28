@@ -14,11 +14,11 @@
             $icon = $item['icon']['value'];
 
             if ( $page_id ) {
-                $page = get_page( $page_id );
-                if ( $category ) {
+                $page = get_post( $page_id );
+                if ( $page ) {
                     $output .= '<li>';
                     $output .= '<i class="' . esc_attr( $icon ) . '"></i> ';
-                    $output .= '<a href="' . esc_url( get_page_link( $page_id ) ) . '">';
+                    $output .= '<a href="' . esc_url( get_permalink( $page_id ) ) . '">';
                     $output .= esc_html( $page->name );
                     $output .= '</a>';
                     $output .= '</li>';

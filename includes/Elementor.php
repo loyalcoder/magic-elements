@@ -189,7 +189,11 @@ class Load_Elementor
             'emk-tab' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/tab.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/tab.css'),
-            ]
+            ],
+            'emk-page-list' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/page_list.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/page_list.css'),
+            ],
         ];
     }
 

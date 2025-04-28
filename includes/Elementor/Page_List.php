@@ -230,7 +230,7 @@ class Page_List extends Widget_Base
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .category-list-widget li' => 'margin: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .page-list-widget li' => 'margin: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -243,7 +243,7 @@ class Page_List extends Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors'  => [
-                    '{{WRAPPER}} .category-list-widget' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .page-list-widget' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -262,9 +262,9 @@ class Page_List extends Widget_Base
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
-                'name'     => 'category_typography',
+                'name'     => 'page_typography',
                 'label'    => esc_html__( 'Typography', 'magic-elements' ),
-                'selector' => '{{WRAPPER}} .category-list-widget li a',
+                'selector' => '{{WRAPPER}} .page-list-widget li a',
             ]
         );
 
@@ -274,7 +274,7 @@ class Page_List extends Widget_Base
                 'label'     => esc_html__( 'Text Color', 'magic-elements' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .category-list-widget li a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .page-list-widget li a' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -285,7 +285,7 @@ class Page_List extends Widget_Base
                 'label'     => esc_html__( 'Text Hover Color', 'magic-elements' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .category-list-widget li a:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .page-list-widget li a:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
