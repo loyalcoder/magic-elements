@@ -44,10 +44,6 @@
     flex-direction: column;
 }
 
-@mixin image-position-bottom {
-    display: flex;
-    flex-direction: column-reverse;
-}
 
 /* Image Position Styles */
 .magic-post-imgpos {
@@ -59,9 +55,6 @@
         @include image-position-top;
     }
 
-    &-bottom .magic-post-item {
-        @include image-position-bottom;
-    }
 }
 
 /* List Style Variations */
@@ -73,10 +66,7 @@
     &-image-top .magic-post-item {
         @include image-position-top;
     }
-
-    &-image-bottom .magic-post-item {
-        @include image-position-bottom;
-    }
+    
 }
 
 /* Thumbnail Styles */

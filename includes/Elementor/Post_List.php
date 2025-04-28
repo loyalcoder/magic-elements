@@ -270,7 +270,7 @@ class Post_List extends Widget_Base
             ]
         );
     
-        // ইমেজ পজিশন কন্ট্রোল (শুধুমাত্র Top, Left, Bottom)
+        // image position control ( Top, Left, Bottom)
         $this->add_control(
             'image_position',
             [
@@ -279,7 +279,6 @@ class Post_List extends Widget_Base
                 'options' => [
                     'top' => esc_html__('Top', 'magic-elements'),
                     'left' => esc_html__('Left', 'magic-elements'),
-                    'bottom' => esc_html__('Bottom', 'magic-elements'),
                 ],
                 'default' => 'top',
                 'prefix_class' => 'magic-post-imgpos-',
@@ -1062,8 +1061,9 @@ class Post_List extends Widget_Base
                 if (!empty($settings['categories'])) {
                     $args['category__in'] = $settings['categories'];
                 }
-                // Fall through to apply orderby and order for category posts
-                
+                // No break - intentionally fall through to apply orderby and order
+                // for category posts just like recent posts
+                            
             default: // recent
                 if (!empty($settings['orderby'])) {
                     $args['orderby'] = $settings['orderby'];
@@ -1077,70 +1077,61 @@ class Post_List extends Widget_Base
     }
     
     protected function render_posts($posts, $settings) {
-    $layout = $settings['layout'];
-    $image_position = $settings['image_position']; ?>
-    
-    <div class="magic-post-list magic-post-layout-<?php echo esc_attr($layout); ?> magic-post-imgpos-<?php echo esc_attr($image_position); ?>">
-
-   <?php foreach ($posts as $index => $post) {
-        $this->render_single_post($post, $settings, $index);
-    } ?>
-
-    </div>
-    <?php
-}
-
-protected function render_single_post($post, $settings) {
-    $thumbnail_url = !empty($post['thumbnail']) ? $post['thumbnail'] : '';
-    ?>
-    
-    <article class="magic-post-item">
-        <?php if ($settings['image_position'] !== 'bottom' && 'yes' === $settings['show_image'] && $thumbnail_url) : ?>
-            <div class="magic-post-thumbnail">
-                <a href="<?php echo esc_url($post['permalink']); ?>">
-                    <img src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr($post['title']); ?>" />
-                </a>
-            </div>
-        <?php endif; ?>
+        $layout = $settings['layout'];
+        $image_position = $settings['image_position']; ?>
         
-        <div class="magic-post-content">
-            <?php if ('yes' === $settings['show_title']) : ?>
-                <<?php echo esc_attr($settings['title_tag']); ?> class="magic-post-title">
-                    <a href="<?php echo esc_url($post['permalink']); ?>"><?php echo esc_html($post['title']); ?></a>
-                </<?php echo esc_attr($settings['title_tag']); ?>>
-            <?php endif; ?>
-            
-            <?php if ('yes' === $settings['show_meta'] && !empty($settings['meta_data'])) : ?>
-                <div class="magic-post-meta">
-                    <?php $this->render_meta_data($post, $settings['meta_data']); ?>
-                </div>
-            <?php endif; ?>
-            
-            <?php if ('yes' === $settings['show_excerpt']) : ?>
-                <div class="magic-post-excerpt">
-                    <?php echo wp_trim_words($post['excerpt'], $settings['excerpt_length']); ?>
-                </div>
-            <?php endif; ?>
-            
-            <?php if ('yes' === $settings['show_read_more']) : ?>
-                <div class="magic-post-read-more">
+        <div class="magic-post-list magic-post-layout-<?php echo esc_attr($layout); ?>" data-image-pos="<?php echo esc_attr($image_position); ?>">
+            <?php foreach ($posts as $index => $post) {
+                $this->render_single_post($post, $settings, $index);
+            } ?>
+        </div>
+        <?php
+    }
+    
+    protected function render_single_post($post, $settings, $index = 0) {
+        $thumbnail_url = !empty($post['thumbnail']) ? $post['thumbnail'] : '';
+        $image_position = $settings['image_position'];
+        ?>
+        
+        <article class="magic-post-item magic-post-imgpos-<?php echo esc_attr($image_position); ?>">
+            <?php if (in_array($image_position, ['top', 'left']) && 'yes' === $settings['show_image'] && $thumbnail_url) : ?>
+                <div class="magic-post-thumbnail">
                     <a href="<?php echo esc_url($post['permalink']); ?>">
-                        <?php echo esc_html($settings['read_more_text']); ?>
+                        <img src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr($post['title']); ?>" />
                     </a>
                 </div>
             <?php endif; ?>
-        </div>
-        
-        <?php if ($settings['image_position'] === 'bottom' && 'yes' === $settings['show_image'] && $thumbnail_url) : ?>
-            <div class="magic-post-thumbnail">
-                <a href="<?php echo esc_url($post['permalink']); ?>">
-                    <img src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr($post['title']); ?>" />
-                </a>
+            
+            <div class="magic-post-content">
+                <?php if ('yes' === $settings['show_title']) : ?>
+                    <<?php echo esc_attr($settings['title_tag']); ?> class="magic-post-title">
+                        <a href="<?php echo esc_url($post['permalink']); ?>"><?php echo esc_html($post['title']); ?></a>
+                    </<?php echo esc_attr($settings['title_tag']); ?>>
+                <?php endif; ?>
+                
+                <?php if ('yes' === $settings['show_meta'] && !empty($settings['meta_data'])) : ?>
+                    <div class="magic-post-meta">
+                        <?php $this->render_meta_data($post, $settings['meta_data']); ?>
+                    </div>
+                <?php endif; ?>
+                
+                <?php if ('yes' === $settings['show_excerpt']) : ?>
+                    <div class="magic-post-excerpt">
+                        <?php echo wp_trim_words($post['excerpt'], $settings['excerpt_length']); ?>
+                    </div>
+                <?php endif; ?>
+                
+                <?php if ('yes' === $settings['show_read_more']) : ?>
+                    <div class="magic-post-read-more">
+                        <a href="<?php echo esc_url($post['permalink']); ?>">
+                            <?php echo esc_html($settings['read_more_text']); ?>
+                        </a>
+                    </div>
+                <?php endif; ?>
             </div>
-        <?php endif; ?>
-    </article>
-    <?php
-}
+        </article>
+        <?php
+    }
 
 
 

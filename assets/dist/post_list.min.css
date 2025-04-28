@@ -40,10 +40,6 @@
   display: flex;
   flex-direction: column;
 }
-.magic-post-imgpos-bottom .magic-post-item {
-  display: flex;
-  flex-direction: column-reverse;
-}
 
 /* List Style Variations */
 .magic-post-list-style-image-left .magic-post-item {
@@ -55,10 +51,6 @@
 .magic-post-list-style-image-top .magic-post-item {
   display: flex;
   flex-direction: column;
-}
-.magic-post-list-style-image-bottom .magic-post-item {
-  display: flex;
-  flex-direction: column-reverse;
 }
 
 /* Thumbnail Styles */
