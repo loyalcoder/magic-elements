@@ -70,6 +70,17 @@
   color: inherit;
   font-weight: bold;
 }
+/*!****************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/feature_list.scss ***!
+  \****************************************************************************************************************************/
+.feature-list .feature {
+  display: flex;
+  align-items: start;
+  gap: 15px;
+}
+.feature-list .feature .feature-icon svg {
+  width: 40px;
+}
 /*!***********************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/counter.scss ***!
   \***********************************************************************************************************************/
