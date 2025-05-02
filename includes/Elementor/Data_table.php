@@ -149,7 +149,7 @@ class Data_table extends Widget_Base
 				'default' => esc_html__( 'List Title' , 'textdomain' ),
 				'label_block' => true,
 			]
-		);
+		); 
         $this->add_control(
 			'data_table_list',
 			[
