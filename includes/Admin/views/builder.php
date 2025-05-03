@@ -4,7 +4,18 @@
      $builder_posts = get_posts([
         'post_type' => 'magic_builder',
         'posts_per_page' => -1,
+        'meta_query' => [
+            [
+                'key' => '_display_type',
+                'value' => 'header',
+                'compare' => '='
+            ]
+        ]
      ]);
+     echo '<pre>';
+     print_r($builder_posts);
+     echo '</pre>';
+     
     //  echo '<pre>';
     //  print_r(get_post_meta(2123, '_display_type', true));
     //  print_r(get_post_meta(2122, '_display_type', true));
@@ -70,7 +81,6 @@
             <div class="modal-content">
                 <span class="close-modal">&times;</span>
                 <div class="modal-body">
-                    htis is 
                 </div>
             </div>
         </div>

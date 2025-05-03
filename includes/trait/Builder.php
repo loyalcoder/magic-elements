@@ -2,10 +2,10 @@
 namespace MagicElements\Trait;
 
 trait Builder {
-    public function get_builder_by_type($type = 'header') {
+    public function get_builder_by_type($type = 'header', $paged = 1, $per_page = -1) {
         $args = array(
             'post_type' => 'magic_builder',
-            'posts_per_page' => -1,
+            'posts_per_page' => $per_page,
             'meta_query' => array(
                 array(
                     'key' => '_display_type',

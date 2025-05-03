@@ -1,5 +1,20 @@
 <div class="builder-list">
-        <?php if (!empty($builder_posts)) : ?>
+    <?php 
+    
+    $args = array(
+        'post_type' => 'magic_builder',
+        'posts_per_page' => -1,
+        'meta_query' => array(
+            array(
+                'key' => '_display_type',
+                'value' => $type,
+                'compare' => '='
+            )
+        )
+    );
+    $get_all_post = get_posts($args);
+    ?>
+        <?php if (!empty($get_all_post)) : ?>
             <table class="wp-list-table widefat fixed striped">
                 <thead>
                     <tr>
@@ -11,13 +26,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($builder_posts as $post) : ?>
+                    <?php foreach ($get_all_post as $post) : ?>
                         <tr>
                             <td><?php echo esc_html($post->post_title); ?></td>
                             <td>
                                 <?php 
                                 $is_active = get_post_meta($post->ID, '_is_active', true);
-                                echo $is_active === 'yes' ? 
+                                echo $is_active === 'on' ? 
                                     '<span class="status-active">' . esc_html__('Active', 'magic-elements') . '</span>' : 
                                     '<span class="status-inactive">' . esc_html__('Inactive', 'magic-elements') . '</span>';
                                 ?>

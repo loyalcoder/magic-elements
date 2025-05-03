@@ -2,7 +2,7 @@
     <div class="modal-content">
         <span class="close-modal">&times;</span>
         <h3><?php echo esc_html__('Create Content', 'magic-elements'); ?></h3>
-        <form id="create-content-form">
+        <form id="create-content-form" name="ml-builder-condition">
             <div class="form-group">
                 <label for="content-title"><?php echo esc_html__('Content Title', 'magic-elements'); ?></label>
                 <input type="text" id="content-title" name="content-title" required>
@@ -30,5 +30,6 @@
                 <button type="button" class="button close-modal"><?php echo esc_html__('Cancel', 'magic-elements'); ?></button>
             </div>
         </form>
+        <div class="me-show-error"></div>
     </div>
 </div>

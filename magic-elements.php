@@ -103,6 +103,8 @@ final class Magic_Elements
         new MagicElements\Load_Elementor();
         new MagicElements\Admin\Ctp();
         new MagicElements\Admin\Api(); // Initialize API class
+        $builder = new MagicElements\Builder();
+        $builder->init();
         if (is_admin()) {
             new MagicElements\Admin();
         }

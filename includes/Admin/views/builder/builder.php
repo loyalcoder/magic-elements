@@ -5,7 +5,10 @@
     <div class="builder-add-new">
         <button class="button button-primary add-new-header" data-type="header"><?php echo esc_html__('Add New Header', 'magic-elements'); ?></button>
     </div>
-    <?php include __DIR__.'/builder-list.php'; ?>
+    <?php 
+       $type = 'header';
+        include __DIR__.'/builder-list.php'; 
+    ?>
 </div>
 
 <!-- Add New Header Modal -->

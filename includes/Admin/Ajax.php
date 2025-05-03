@@ -31,9 +31,10 @@ class Ajax {
         add_action('wp_ajax_save_magic_kit_settings', [$this, 'save_settings']);
         add_action('wp_ajax_magic_builder_header_list', [$this, 'magic_builder_header_list']);
         add_action('wp_ajax_magic_builder_header_condition_form', [$this, 'magic_builder_header_condition_form']);
-        add_action('wp_ajax_magic_builder_singular_options', [$this, 'magic_builder_singular_options']);
-        add_action('wp_ajax_magic_builder_single_post_type_options', [$this, 'magic_builder_single_post_type_options']);
-        add_action('wp_ajax_magic_builder_search_posts', [$this, 'magic_builder_search_posts']);
+        add_action('wp_ajax_magic_builder_create_content', [$this,'magic_builder_create_content']);
+        // add_action('wp_ajax_magic_builder_singular_options', [$this, 'magic_builder_singular_options']);
+        // add_action('wp_ajax_magic_builder_single_post_type_options', [$this, 'magic_builder_single_post_type_options']);
+        // add_action('wp_ajax_magic_builder_search_posts', [$this, 'magic_builder_search_posts']);
     }
 
     /**
@@ -101,7 +102,7 @@ class Ajax {
         $display = $this->get_display_on_list();
         $condition_type = isset($_REQUEST['conditionTyp'])? sanitize_key($_REQUEST['conditionTyp']) : '';
         ob_start();
-        include __DIR__ . '/views/builder/'.$condition_type.'.php';
+        include __DIR__ . '/views/builder/display-condition.php';
         $html = ob_get_clean();
         wp_send_json_success([
             'html' => $html
@@ -142,7 +143,6 @@ class Ajax {
         check_ajax_referer('magic_builder_nonce', 'nonce');
         $page = isset($_REQUEST['page']) ? intval($_REQUEST['page']) : 1;
         $posts_per_page = 5; // Set a reasonable number for posts per page
-        _log($_REQUEST);
         $query_args = [
             'post_type' => 'product',
             'posts_per_page' => $posts_per_page,
@@ -166,5 +166,60 @@ class Ajax {
                 'more' => $page < $query->max_num_pages // Whether more pages exist
             ]
         ]);
+    }
+    // create content
+    public function magic_builder_create_content() {
+        check_ajax_referer('magic_builder_nonce', 'nonce');
+        $post_title = isset($_REQUEST['content-title'])? sanitize_text_field($_REQUEST['content-title']) : '';
+        $is_active = isset($_REQUEST['content-status'])? sanitize_key($_REQUEST['content-status']) : '';
+        // $raw_widgets = ! is_array( $_POST['magic_elements_enabled_widgets'] ) 
+        //     ? array() 
+        //     : array_map( 'sanitize_text_field', wp_unslash( $_POST['magic_elements_enabled_widgets'] ) );
+        $condition = isset($_REQUEST['condition']) && is_array($_REQUEST['condition']) ? array_map(function($item) {
+            if (!isset($item['type']) || !isset($item['display'])) {
+                return null;
+            }
+            return [
+                'type' => sanitize_key($item['type']),
+                'display' => sanitize_key($item['display'])
+            ];
+        }, wp_unslash($_REQUEST['condition'])) : [];
+        
+        // Remove any null values from invalid items
+        $condition = array_filter($condition);
+        $display_type = isset($_REQUEST['_display_type'])? sanitize_key($_REQUEST['_display_type']) : '';
+// Create new post with title and condition meta
+        $post_data = array(
+            'post_title'    => $post_title,
+            'post_status'   => 'publish',
+            'post_type'     => 'magic_builder'
+        );
+
+    // Insert the post into the database
+        $post_id = wp_insert_post($post_data);
+ 
+    if (!is_wp_error($post_id)) {
+    // Add condition meta if post was created successfully
+    if (!empty($condition)) {
+        update_post_meta($post_id, '_magic_builder_conditions', $condition);
+        update_post_meta($post_id, '_display_type', $display_type);
+        update_post_meta($post_id, '_is_active', $is_active);
+    }
+    $edit_url = add_query_arg([
+        'action' => 'elementor',
+        'post' => $post_id
+    ], admin_url('post.php'));
+    $editHtml = '<a href="'.esc_url($edit_url).'" target="_blank" class="button button-primary">'.esc_html__('Edit With Elementor','magic-elements').'</a>';
+    wp_send_json_success([
+        'post_id' => $post_id,
+        'message' => esc_html__('Template created successfully', 'magic-elements'),
+        'edit_url' =>$editHtml
+    ]);
+    } else {
+        wp_send_json_error([
+            'message' => esc_html__('Failed to create template', 'magic-elements')
+        ]);
+    }
+        
     }
 }
