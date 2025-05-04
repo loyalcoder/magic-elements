@@ -111,75 +111,122 @@ class Data_table extends Widget_Base
     protected function register_data_table_controls()
     {
         $this->start_controls_section(
-			'data_table_content_section',
-			[
-				'label' => esc_html__( 'Data Table', 'magic-elements' ),
-				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
-			]
-		);
-        $repeater = new \Elementor\Repeater();
-        $repeater->add_control(
-			'first_data_icon',
-			[
-				'label' => esc_html__( 'Icon', 'textdomain' ),
-				'type' => \Elementor\Controls_Manager::ICONS,
-				'default' => [
-					'value' => 'fas fa-star',
-					'library' => 'fa-solid',
-				],
-				'recommended' => [
-					'fa-solid' => [
-						'circle',
-						'dot-circle',
-						'square-full',
-					],
-					'fa-regular' => [
-						'circle',
-						'dot-circle',
-						'square-full',
-					],
-				],
-			]
-		);
-        $repeater->add_control(
-			'data_table_first_item',
-			[
-				'label' => esc_html__( 'Serial', 'textdomain' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'List Title' , 'textdomain' ),
-				'label_block' => true,
-			]
-		); 
+            'columns_section',
+            [
+                'label' => __('Table Columns', 'text-domain'),
+            ]
+        );
+
         $this->add_control(
-			'data_table_list',
-			[
-				'label' => esc_html__( 'Repeater List', 'textdomain' ),
-				'type' => \Elementor\Controls_Manager::REPEATER,
-				'fields' => $repeater->get_controls(),
-				'default' => [
+            'table_columns',
+            [
+                'label' => __('Columns', 'text-domain'),
+                'type' => \Elementor\Controls_Manager::REPEATER,
+                'fields' => [
                     [
-                        'data_table_first_item' => esc_html__( 'Title #1', 'textdomain' ),
+                        'name' => 'column_name',
+                        'label' => __('Column Title', 'text-domain'),
+                        'type' => \Elementor\Controls_Manager::TEXT,
+                        'default' => __('Column', 'text-domain'),
+                    ],
+                    [
+                        'name' => 'column_width',
+                        'label' => __('Width', 'text-domain'),
+                        'type' => \Elementor\Controls_Manager::SLIDER,
+                        'size_units' => ['%', 'px'],
+                        'range' => [
+                            '%' => [
+                                'min' => 1,
+                                'max' => 100,
+                            ],
+                            'px' => [
+                                'min' => 50,
+                                'max' => 500,
+                            ],
+                        ],
+                        'default' => [
+                            'unit' => '%',
+                            'size' => 20,
+                        ],
                     ],
                 ],
-
-                'title_field' => '{{{ data_table_first_item }}}',
-			]
-		);
-
+                'default' => [
+                    [
+                        'column_name' => __('First Name', 'text-domain'),
+                    ],
+                    [
+                        'column_name' => __('Last Name', 'text-domain'),
+                    ],
+                ],
+                'title_field' => '{{{ column_name }}}',
+            ]
+        );
 
         $this->end_controls_section();
 
-            // Style section
+        // Rows Repeater Control
         $this->start_controls_section(
-            'data_table_style_section',
-			[
-				'label' => esc_html__( 'Data Table', 'magic-elements' ),
-				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
-			]
-		);
+            'rows_section',
+            [
+                'label' => __('Table Rows', 'text-domain'),
+            ]
+        );
+
+        $this->add_control(
+            'table_rows',
+            [
+                'label' => __('Rows', 'text-domain'),
+                'type' => \Elementor\Controls_Manager::REPEATER,
+                'fields' => [
+                    [
+                        'name' => 'row_cells',
+                        'label' => __('Cells', 'text-domain'),
+                        'type' => \Elementor\Controls_Manager::REPEATER,
+                        'fields' => [
+                            [
+                                'name' => 'cell_content',
+                                'label' => __('Cell Content', 'text-domain'),
+                                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                                'default' => __('Cell Content', 'text-domain'),
+                            ],
+                        ],
+                        'default' => [
+                            [
+                                'cell_content' => __('Cell 1', 'text-domain'),
+                            ],
+                            [
+                                'cell_content' => __('Cell 2', 'text-domain'),
+                            ],
+                        ],
+                    ],
+                ],
+                'default' => [
+                    [
+                        'row_cells' => [
+                            [
+                                'cell_content' => __('John', 'text-domain'),
+                            ],
+                            [
+                                'cell_content' => __('Doe', 'text-domain'),
+                            ],
+                        ],
+                    ],
+                    [
+                        'row_cells' => [
+                            [
+                                'cell_content' => __('Jane', 'text-domain'),
+                            ],
+                            [
+                                'cell_content' => __('Smith', 'text-domain'),
+                            ],
+                        ],
+                    ],
+                ],
+                'title_field' => __('Row', 'text-domain'),
+            ]
+        );
 
         $this->end_controls_section();
-
 
     }
 
@@ -194,7 +241,8 @@ class Data_table extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        $data_table_list = $settings['data_table_list'];
+        $columns = $settings['table_columns'];
+        $rows = $settings['table_rows'];
         include __DIR__ . '/layouts/Data-Table/data-table.php';
     }
 

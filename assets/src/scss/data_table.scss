@@ -1,16 +1,23 @@
-.data {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    svg {
-        width: 15px;
+.custom-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px 15px;
+      text-align: left;
     }
-    .first-data,
-    .second-data,
-    .third-data,
-    .fourth-data {
-        display: flex;
-        align-items: baseline;
-        gap: 10px;
+    thead {
+      background-color: #f4f4f4;
+      th {
+        font-weight: 600;
+        color: #333;
+      }
     }
-}
+    tbody tr:nth-child(even) {
+      background-color: #fafafa;
+    }
+    tbody tr:hover {
+      background-color: #f1f1f1;
+    }
+  }
+  

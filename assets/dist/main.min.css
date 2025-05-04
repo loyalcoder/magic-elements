@@ -108,6 +108,31 @@
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/counter.scss ***!
   \***********************************************************************************************************************/
 
+/*!**************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/data_table.scss ***!
+  \**************************************************************************************************************************/
+.custom-data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.custom-data-table th, .custom-data-table td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: left;
+}
+.custom-data-table thead {
+  background-color: #f4f4f4;
+}
+.custom-data-table thead th {
+  font-weight: 600;
+  color: #333;
+}
+.custom-data-table tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+.custom-data-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
 /*!*************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/post_list.scss ***!
   \*************************************************************************************************************************/
