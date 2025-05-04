@@ -3,7 +3,7 @@
         return;
     }
 ?>
-<div class="elementor-data-table">
+<div class="data-table">
     <table>
         <thead>
             <tr>
