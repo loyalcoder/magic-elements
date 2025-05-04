@@ -171,7 +171,6 @@ class Data_table extends Widget_Base
                 'label' => __('Table Rows', 'text-domain'),
             ]
         );
-
         $this->add_control(
             'table_rows',
             [
@@ -227,6 +226,27 @@ class Data_table extends Widget_Base
         );
 
         $this->end_controls_section();
+        //Style
+        $this->start_controls_section(
+			'style_section',
+			[
+				'label' => esc_html__( 'Style', 'textdomain' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'text_color',
+			[
+				'label' => esc_html__( 'Text Color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .your-class' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->end_controls_section();
 
     }
 
