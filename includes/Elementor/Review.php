@@ -111,12 +111,11 @@ class Review extends Widget_Base
     protected function register_review_controls()
     {
         $this->start_controls_section(
-			'image_content_section',
-			[
-				'label' => esc_html__( 'Image', 'magic-elements' ),
-				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
-			]
-		);
+            'section_review',
+            [
+                'label' => esc_html__( 'Review Settings', 'plugin-name' ),
+            ]
+        );
 
         $this->end_controls_section();
 
@@ -144,7 +143,9 @@ class Review extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+    
         include __DIR__ . '/layouts/Review/review.php';
+        
     }
 
         /**
