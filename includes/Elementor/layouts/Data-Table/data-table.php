@@ -7,7 +7,7 @@
     <table>
         <thead>
             <tr>
-                <?php foreach ($columns as $column): ?>
+                <?php foreach($columns as $column): ?>
                     <th style="width: <?php echo esc_attr($column['column_width']['size'] . $column['column_width']['unit']); ?>;">
                         <?php echo esc_html($column['column_name']); ?>
                     </th>

@@ -171,6 +171,7 @@ class Data_table extends Widget_Base
                 'label' => __('Table Rows', 'text-domain'),
             ]
         );
+        
         $this->add_control(
             'table_rows',
             [
@@ -224,8 +225,9 @@ class Data_table extends Widget_Base
                 'title_field' => __('Row', 'text-domain'),
             ]
         );
-
+        
         $this->end_controls_section();
+        
         //Style
         $this->start_controls_section(
 			'style_section',
@@ -261,8 +263,10 @@ class Data_table extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+        
         $columns = $settings['table_columns'];
         $rows = $settings['table_rows'];
+       
         include __DIR__ . '/layouts/Data-Table/data-table.php';
     }
 
