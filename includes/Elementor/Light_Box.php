@@ -88,7 +88,11 @@ class Light_Box extends Widget_Base
 
     public function get_script_depends()
     {
-        return [];
+        return ['emkit-light-box'];
+    }
+    public function get_style_depends()
+    {
+        return ['emk-light-box'];
     }
 
         /**
@@ -110,21 +114,21 @@ class Light_Box extends Widget_Base
      */
     protected function register_light_box_controls()
     {
-        $this->start_controls_section(
-			'image_content_section',
-			[
-				'label' => esc_html__( 'Image', 'magic-elements' ),
-				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
-			]
-		);
+    // Content Section
+    $this->start_controls_section(
+        "section_content",
+        [
+            "label" => __("Lightbox Content", "custom-elementor-widgets"),
+        ]
+    );
 
-        $this->end_controls_section();
+    $this->end_controls_section();
 
             // Style section
         $this->start_controls_section(
-            $this->get_name() .'style_section',
+            'light_box_style_section',
 			[
-				'label' => esc_html__( 'Image', 'magic-elements' ),
+				'label' => esc_html__( 'Light Box', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -145,7 +149,13 @@ class Light_Box extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+
+
         include __DIR__ . '/layouts/Light-Box/light-box.php';
+
+
+
+
     }
 
         /**
