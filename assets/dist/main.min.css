@@ -73,34 +73,192 @@
 /*!****************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/feature_list.scss ***!
   \****************************************************************************************************************************/
-.feature_list {
-  background-color: #ddd;
+.feature-list .feature {
+  display: flex;
+  align-items: start;
+  gap: 15px;
 }
-.feature_list h2 {
-  background-color: #2196f3;
-  color: white;
-  margin-bottom: 20px;
+.feature-list .feature .feature-icon svg {
+  width: 40px;
 }
-.feature_list .feature {
+/*!*************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/page_list.scss ***!
+  \*************************************************************************************************************************/
+.page-list-widget {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.page-list-widget li {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid white;
-  padding-bottom: 10px;
+  transition: all 0.3s ease;
 }
-.feature_list .feature svg {
-  fill: white;
-  background-color: #019789;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
+.page-list-widget li i {
+  margin-right: 10px;
 }
-.feature_list .feature_button a {
-  background-color: red;
-  color: white;
+.page-list-widget li a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
 }
 /*!***********************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/counter.scss ***!
   \***********************************************************************************************************************/
 
+/*!*************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/post_list.scss ***!
+  \*************************************************************************************************************************/
+/* Base List Styles */
+.magic-post-list {
+  display: grid;
+  gap: 30px;
+}
+.magic-post-list.list-layout {
+  display: block !important;
+  grid-template-columns: none !important;
+}
+.magic-post-list .magic-post-item {
+  margin-bottom: 30px;
+}
+
+/* Layout Styles */
+.magic-post-layout-grid .magic-post-item {
+  display: flex;
+  flex-direction: column;
+}
+.magic-post-layout-list .magic-post-list {
+  display: block;
+  grid-template-columns: none !important;
+}
+.magic-post-layout-list .magic-post-list .magic-post-item {
+  display: grid;
+  align-items: center;
+}
+
+/* Image Position Mixins (for reuse) */
+/* Image Position Styles */
+.magic-post-imgpos-left .magic-post-item {
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  gap: 20px;
+  align-items: center;
+}
+.magic-post-imgpos-top .magic-post-item {
+  display: flex;
+  flex-direction: column;
+}
+
+/* List Style Variations */
+.magic-post-list-style-image-left .magic-post-item {
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  gap: 20px;
+  align-items: center;
+}
+.magic-post-list-style-image-top .magic-post-item {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Thumbnail Styles */
+.magic-post-thumbnail {
+  overflow: hidden;
+}
+.magic-post-thumbnail img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.magic-post-thumbnail img:hover {
+  transform: scale(1.05);
+}
+
+/* Read More Button Styles */
+.magic-post-read-more {
+  margin-top: 15px;
+}
+.magic-post-read-more a {
+  display: inline-block;
+  padding: 8px 15px;
+  background-color: #0073aa;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+.magic-post-read-more a:hover {
+  background-color: #005177;
+}
+
+/* Meta Data Styles */
+.magic-post-meta {
+  margin: 10px 0;
+  font-size: 0.9em;
+  color: #666;
+}
+/*!************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/icon_box.scss ***!
+  \************************************************************************************************************************/
+.icon-box-wapper {
+  border: 1px solid rgb(205, 205, 200);
+}
+.icon-box-wapper .icon-box {
+  display: flex;
+  gap: 16px;
+  border-radius: 4px;
+  padding: 20px;
+}
+.icon-box-wapper .icon-box .icon svg {
+  width: 100px;
+}
+.icon-box-wapper .icon-box--icon-left {
+  flex-direction: row;
+}
+.icon-box-wapper .icon-box--icon-right {
+  flex-direction: row-reverse;
+}
+.icon-box-wapper .icon-box--icon-top {
+  flex-direction: column;
+}
+.icon-box-wapper .icon-box--icon-bottom {
+  flex-direction: column-reverse;
+}
+/*!************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/info_box.scss ***!
+  \************************************************************************************************************************/
+.info-box {
+  display: flex;
+  gap: 16px;
+  border: 1px solid rgb(205, 205, 200);
+  border-radius: 4px;
+  padding: 30px;
+}
+.info-box .info-icon svg {
+  width: 100px;
+}
+.info-box--icon-left {
+  flex-direction: row;
+}
+.info-box--icon-right {
+  flex-direction: row-reverse;
+}
+.info-box--icon-top {
+  flex-direction: column;
+}
+.info-box--icon-bottom {
+  flex-direction: column-reverse;
+}
+.info-box .info-content .info-button a {
+  padding: 10px 18px;
+  background-color: #0D0C1D;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+}
 
 /*# sourceMappingURL=main.min.css.map*/
