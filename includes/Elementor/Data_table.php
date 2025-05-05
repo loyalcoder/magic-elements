@@ -1,6 +1,6 @@
 <?php
 
-    /**
+/**
  * Elementor Classes.
  *
  * @package Data Table Magic Elements
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-    /**
+/**
  * Magic Kit for Elementor Extension
  *
  * Elementor widget for Data Table.
@@ -25,7 +25,7 @@ if (!defined('ABSPATH')) {
  */
 class Data_table extends Widget_Base
 {
-        /**
+    /**
      * Retrieve the widget name.
      *
      * @since 1.0.0
@@ -39,7 +39,7 @@ class Data_table extends Widget_Base
         return 'em_kit_data_table';
     }
 
-        /**
+    /**
      * Retrieve the widget title.
      *
      * @since 1.0.0
@@ -53,7 +53,7 @@ class Data_table extends Widget_Base
         return esc_html__('Data Table', 'magic-elements');
     }
 
-        /**
+    /**
      * Retrieve the widget icon.
      *
      * @since 1.0.0
@@ -91,7 +91,7 @@ class Data_table extends Widget_Base
         return ['emk-data-table'];
     }
 
-        /**
+    /**
      * Register Copyright controls.
      *
      * @since 1.0.0
@@ -161,7 +161,6 @@ class Data_table extends Widget_Base
                 'title_field' => '{{{ column_name }}}',
             ]
         );
-
         $this->end_controls_section();
 
         // Rows Repeater Control
