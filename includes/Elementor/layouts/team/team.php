@@ -1,52 +1,55 @@
-<div class="circle-top"></div>
-<div class="circle-bottom"></div>
-<header>
-  <div class="header-content">
-    <span>company management</span>
-    <h1>Meet a team of experts and innovators who are pioneers in their field</h1>
-  </div>
-</header>
-<section>
-  <div class="card-top">
-    <div class="card">
-      <img src="https://images.pexels.com/photos/2811089/pexels-photo-2811089.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=11" alt="Alexandra Smith">
-      <h2>Alexandra Smith</h2>
-      <p>Founder and Chief Operations Officer</p>
+<div class="me-team-wrapper">
+  <div class="team-card">
+    <div class="img-part">
+      <?php
+      if ( ! empty( $settings['team_image']['id'] )) {
+          // If image is from Media Library (has ID), use Group_Control_Image_Size
+          echo wp_kses(
+              \Elementor\Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail', 'team_image' ),
+              array(
+                  'img' => array(
+                      'src'    => true,
+                      'alt'    => true,
+                      'width'  => true,
+                      'height' => true,
+                      'class'  => true,
+                      'srcset' => true,
+                      'sizes'  => true,
+                  ),
+              )
+          );
+      } elseif ( ! empty( $settings['team_image']['url'] )) {
+          ?>
+          <img src="<?php echo esc_url( $settings['team_image']['url'] ); ?>" alt="<?php echo esc_attr__( 'Team Member', 'magic-elements' ); ?>" />
+          <?php
+      }
+      ?>
     </div>
-    <div class="card">
-      <img src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="John Smith">
-      <h2>John Smith</h2>
-      <p>Founder and Chief Executive Officer</p>
+    <div class="content-part">
+      <h3 class="team-title">
+        <?php echo $settings['team_title']; ?>
+      </h3>
+        <?php echo $settings['team_description']; ?>
+      <div class="icon-part">
+        <?php 
+          if ( ! empty( $settings['icon_list'] ) ) {
+            foreach ( $settings['icon_list'] as $item ) {
+                $link_url = ! empty( $item['link']['url'] ) ? $item['link']['url'] : '#';
+                $link_target = ! empty( $item['link']['is_external'] ) ? ' target="_blank"' : '';
+                $link_nofollow = ! empty( $item['link']['nofollow'] ) ? ' rel="nofollow"' : '';
+              ?>
+                <a href="<?php echo esc_url( $link_url ); ?>" <?php echo $link_target . $link_nofollow; ?>>
+                    <?php 
+                    if ( ! empty( $item['icon'] ) ) {
+                      \Elementor\Icons_Manager::render_icon( $item['icon'], [ 'aria-hidden' => 'true' ] );
+                    }
+                    ?>
+                </a>
+              <?php
+            }
+          }
+        ?>
+      </div>
     </div>
   </div>
-  <div class="card">
-    <img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Erik Longman">
-    <h2>Erik Longman</h2>
-    <p>Chief Process and Innovation Officer</p>
-  </div>
-  <div class="card">
-    <img src="https://images.pexels.com/photos/2216607/pexels-photo-2216607.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Matthew Foster">
-    <h2>Matthew Foster</h2>
-    <p>Chief Sales Officer</p>
-  </div>
-  <div class="card">
-    <img src="https://images.pexels.com/photos/1043473/pexels-photo-1043473.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Artur Dichter">
-    <h2>Artur Dichter</h2>
-    <p>Chief Financial Officer</p>
-  </div>
-  <div class="card">
-    <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Oliver Rohlsson">
-    <h2>Oliver Rohlsson</h2>
-    <p>Chief Technical Officer</p>
-  </div>
-  <div class="card">
-    <img src="https://images.pexels.com/photos/262391/pexels-photo-262391.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="James Hedge">
-    <h2>James Hedge</h2>
-    <p>Chief Legal Officer</p>
-  </div>
-  <div class="card">
-    <img src="https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Eve Johnsson">
-    <h2>Eve Johnsson</h2>
-    <p>HR Manager</p>
-  </div>
-</section>
+</div>
