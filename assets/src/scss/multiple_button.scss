@@ -10,16 +10,16 @@ color: white;
   .multiple-button-wrapper {
     @include flex;
     flex-wrap: wrap;
-
     .bt-item {
+      @include flex;
       .btn-item-wrapper {
         display: inline-block;
-
         .magic-button {
           @include flex;
+          @include color-white;
           align-items: center;
           background-color: burlywood;
-          @include color-white;
+          text-decoration: none;
         }
       }
   

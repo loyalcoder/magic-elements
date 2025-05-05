@@ -574,7 +574,35 @@ class Multiple_Button extends Widget_Base
                 ],
 			]
 		);
-
+        $this->add_control(
+			'button_self_justify',
+			[
+				'label' => esc_html__( 'Justify', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'flex-start' => [
+						'title' => esc_html__( 'Start', 'magic-elements' ),
+						'icon' => 'eicon-justify-start-h',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'magic-elements' ),
+						'icon' => 'eicon-justify-center-h',
+					],
+					'flex-end' => [
+						'title' => esc_html__( 'End', 'magic-elements' ),
+						'icon' => 'eicon-justify-end-h',
+					],
+				],
+				'default' => 'flex-start',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .multiple-button-wrapper .bt-item' => 'justify-content: {{VALUE}};',
+				],
+                'condition' => [
+                    'bt_direction' => 'column',
+                ],
+			]
+		);
         $this->add_control(
 			'btn_clmn_gap',
 			[
