@@ -118,7 +118,7 @@ class Light_Box extends Widget_Base
     $this->start_controls_section(
         'content_section',
         [
-            'label' => esc_html__('Content', 'magic-elements'),
+            'label' => esc_html__('Light Box', 'magic-elements'),
             'tab' => Controls_Manager::TAB_CONTENT,
         ]
     );
@@ -231,10 +231,191 @@ class Light_Box extends Widget_Base
 
         // Style section
     $this->start_controls_section(
-        'light_box_style_section',
+        'light_box_image_style_section',
         [
-            'label' => esc_html__( 'Light Box', 'magic-elements' ),
+            'label' => esc_html__( 'Image', 'magic-elements' ),
             'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+        ]
+    );
+    $this->add_responsive_control(
+        'light_box_image_width',
+        [
+            'label' => esc_html__( 'Width', 'textdomain' ),
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+            'range' => [
+                'px' => [
+                    'min' => 0,
+                    'max' => 2000,
+                    'step' => 1,
+                ],
+                '%' => [
+                    'min' => 0,
+                    'max' => 100,
+                ],
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .lightbox-inner img' => 'width: {{SIZE}}{{UNIT}};',
+            ],
+        ]
+    );
+    $this->add_responsive_control(
+        'light_box_image_max_width',
+        [
+            'label' => esc_html__( 'Max Width', 'textdomain' ),
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+            'range' => [
+                'px' => [
+                    'min' => 0,
+                    'max' => 2000,
+                    'step' => 1,
+                ],
+                '%' => [
+                    'min' => 0,
+                    'max' => 100,
+                ],
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .lightbox-inner img' => 'max-width: {{SIZE}}{{UNIT}};',
+            ],
+        ]
+    );
+    $this->add_responsive_control(
+        'light_box_image_height',
+        [
+            'label' => esc_html__( 'Height', 'textdomain' ),
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+            'range' => [
+                'px' => [
+                    'min' => 0,
+                    'max' => 1000,
+                    'step' => 1,
+                ],
+                '%' => [
+                    'min' => 0,
+                    'max' => 100,
+                ],
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .lightbox-inner img' => 'height: {{SIZE}}{{UNIT}};',
+            ],
+        ]
+    );
+    $this->add_control(
+        'light_box_image_divider',
+        [
+            'type' => \Elementor\Controls_Manager::HEADING,
+            'separator' => 'before',
+        ]
+    );
+    $this->add_responsive_control(
+        'light_box_image_border_radius',
+        [
+            'label' => esc_html__( 'Border Radius', 'textdomain' ),
+            'type' => \Elementor\Controls_Manager::DIMENSIONS,
+            'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+            'selectors' => [
+                '{{WRAPPER}} .lightbox-inner img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
+    $this->end_controls_section();
+    //Title
+    $this->start_controls_section(
+        'light_box_content_style_section',
+        [
+            'label' => esc_html__( 'Content', 'textdomain' ),
+            'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+        ]
+    );
+
+    $this->add_control(
+        'light_box_content_color',
+        [
+            'label' => esc_html__( 'Text Color', 'textdomain' ),
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .lightbox-inner .lightbox-text-content' => 'color: {{VALUE}}',
+            ],
+        ]
+    );
+    $this->add_group_control(
+        \Elementor\Group_Control_Background::get_type(),
+        [
+            'name' => 'light_box_content_background',
+            'types' => [ 'classic', 'gradient', 'video' ],
+            'selector' => '{{WRAPPER}} .lightbox-inner .lightbox-text-content',
+        ]
+    );
+    $this->add_group_control(
+        \Elementor\Group_Control_Typography::get_type(),
+        [
+            'name' => 'light_box_content_typography',
+            'selector' => '{{WRAPPER}} .lightbox-inner .lightbox-text-content',
+        ]
+    );
+    $this->add_group_control(
+        \Elementor\Group_Control_Text_Shadow::get_type(),
+        [
+            'name' => 'light_box_content_text_shadow',
+            'selector' => '{{WRAPPER}} .lightbox-inner .lightbox-text-content',
+        ]
+    );
+    $this->add_group_control(
+        \Elementor\Group_Control_Text_Stroke::get_type(),
+        [
+            'name' => 'light_box_content_text_stroke',
+            'selector' => '{{WRAPPER}} .lightbox-inner .lightbox-text-content',
+        ]
+    );
+    $this->add_control(
+        'lightbox_content_divider',
+        [
+            'type' => \Elementor\Controls_Manager::HEADING,
+            'separator' => 'before',
+        ]
+    );
+    $this->add_responsive_control(
+        'light_box_content_border_radius',
+        [
+            'label' => esc_html__( 'Border Radius', 'textdomain' ),
+            'type' => \Elementor\Controls_Manager::DIMENSIONS,
+            'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+            'selectors' => [
+                '{{WRAPPER}} .lightbox-inner .lightbox-text-content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
+    $this->add_responsive_control(
+        'light_box_content_padding',
+        [
+            'label' => esc_html__( 'Padding', 'textdomain' ),
+            'type' => \Elementor\Controls_Manager::DIMENSIONS,
+            'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+            'selectors' => [
+                '{{WRAPPER}} .lightbox-inner .lightbox-text-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
+    $this->end_controls_section();
+    //Close Icon
+    $this->start_controls_section(
+        'lightbox_close_icon_style_section',
+        [
+            'label' => esc_html__( 'Close Button', 'textdomain' ),
+            'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+        ]
+    );
+    $this->add_control(
+        'lightbox_close_icon_color',
+        [
+            'label' => esc_html__( 'Icon Color', 'textdomain' ),
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .lightbox-inner .lightbox-close' => 'color: {{VALUE}}',
+            ],
         ]
     );
 
@@ -245,7 +426,7 @@ class Light_Box extends Widget_Base
 
         /**
      * Render Copyright output on the frontend.
-     *
+     *s
      * Written in PHP and used to generate the final HTML.
      *
      * @since 1.0.0
