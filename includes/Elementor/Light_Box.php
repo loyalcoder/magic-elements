@@ -150,17 +150,17 @@ class Light_Box extends Widget_Base
             ],
         ]
     );
-
     $this->add_control(
         'text_content',
         [
             'label' => esc_html__('Text Content', 'magic-elements'),
-            'type' => Controls_Manager::WYSIWYG,
+            'type' => \Elementor\Controls_Manager::TEXTAREA,
+            'rows' => 5,
             'default' => esc_html__('This is your lightbox text content', 'magic-elements'),
             'condition' => [
                 'lightbox_type' => 'text',
-            ],
-        ]
+                ],
+            ]
     );
 
     $this->add_control(
