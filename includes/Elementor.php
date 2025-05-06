@@ -143,6 +143,11 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/info_box.js'),
                 'deps'    => ['jquery']
             ],
+            'emkit-light-box' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/light_box.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/light_box.js'),
+                'deps'    => ['jquery']
+            ],
         ];
     }
     /**
@@ -215,6 +220,10 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/feature_list.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/feature_list.css'),
             ],
+            'emk-light-box' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/light_box.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/light_box.css'),
+            ],
         ];
     }
 
@@ -241,6 +250,7 @@ class Load_Elementor
             'Card',
             'Tab',
             'Post',
+            'Light_Box',
             'Post_List',
             'Page_List',
             'Multiple_Button',
@@ -265,6 +275,7 @@ class Load_Elementor
             'categorylist',
             'card',
             'tab',
+            'lightbox',
             'postlist',
             'pageList',
             'multiplebutton',
