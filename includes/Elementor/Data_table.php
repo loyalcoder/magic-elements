@@ -262,7 +262,7 @@ class Data_table extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        
+    
         $columns = $settings['table_columns'];
         $rows = $settings['table_rows'];
        
