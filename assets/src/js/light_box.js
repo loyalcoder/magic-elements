@@ -1,8 +1,8 @@
-jQuery(document).ready(function($) {
+jQuery(function($) {
     // Lightbox trigger
     $(document).on('click', '.lightbox-trigger', function(e) {
         e.preventDefault();
-        var target = $(this).data('target');
+        let target = $(this).data('target');
         $(target).fadeIn();
         $('body').addClass('lightbox-open');
     });
