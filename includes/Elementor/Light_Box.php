@@ -418,8 +418,146 @@ class Light_Box extends Widget_Base
             ],
         ]
     );
+    $this->end_controls_section();
+    //Button
+    $this->start_controls_section(
+        'lightbox_button_style_section',
+        [
+            'label' => esc_html__( 'Button', 'textdomain' ),
+            'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+        ]
+    );
+    $this->add_group_control(
+        \Elementor\Group_Control_Typography::get_type(),
+        [
+            'name' => 'lightbox_button_typography',
+            'selector' => '{{WRAPPER}} .lightbox-trigger',
+        ]
+    );
+    $this->add_group_control(
+        \Elementor\Group_Control_Text_Shadow::get_type(),
+        [
+            'name' => 'lightbox_button_text_shadow',
+            'selector' => '{{WRAPPER}} .lightbox-trigger',
+        ]
+    );
+    $this->add_group_control(
+        \Elementor\Group_Control_Text_Stroke::get_type(),
+        [
+            'name' => 'lightbox_button_text_stroke',
+            'selector' => '{{WRAPPER}} .lightbox-trigger',
+        ]
+    );
+    //start normal hover
+    $this->start_controls_tabs(
+        'lightbox_button_style_tabs'
+    );
+    //normal
+    $this->start_controls_tab(
+        'lightbox_button_normal_tab',
+        [
+            'label' => esc_html__( 'Normal', 'textdomain' ),
+        ]
+    );
+    $this->add_control(
+        'lightbox_button_normal_text_color',
+        [
+            'label' => esc_html__( 'Text Color', 'textdomain' ),
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .lightbox-trigger' => 'color: {{VALUE}}',
+            ],
+        ]
+    );
+    $this->add_group_control(
+        \Elementor\Group_Control_Background::get_type(),
+        [
+            'name' => 'lightbox_button_normal_background',
+            'types' => [ 'classic', 'gradient', 'video' ],
+            'selector' => '{{WRAPPER}} .lightbox-trigger',
+        ]
+    );
+    
+    $this->end_controls_tab();
+    //hover
+    $this->start_controls_tab(
+        'lightbox_button_hover_tab',
+        [
+            'label' => esc_html__( 'Hover', 'textdomain' ),
+        ]
+    );
+    $this->add_control(
+        'lightbox_button_hover_text_color',
+        [
+            'label' => esc_html__( 'Text Color', 'textdomain' ),
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .lightbox-trigger:hover' => 'color: {{VALUE}}',
+            ],
+        ]
+    );
+    $this->add_group_control(
+        \Elementor\Group_Control_Background::get_type(),
+        [
+            'name' => 'lightbox_button_hover_background',
+            'types' => [ 'classic', 'gradient', 'video' ],
+            'selector' => '{{WRAPPER}} .lightbox-trigger:hover',
+        ]
+    );
+    $this->add_control(
+        'lightbox_button_hover_transition',
+        [
+            'label' => esc_html__( 'Transition Duration', 'magic-elements' ) . ' (s)',
+            'type'  => \Elementor\Controls_Manager::SLIDER,
+            'range' => [
+                'px' => [
+                    'min'  => 0,
+                    'max'  => 3,
+                    'step' => 0.1,
+                ],
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .lightbox-trigger:hover' => 'transition-duration: {{SIZE}}s',
+            ],
+        ]
+    );
+    
+    $this->end_controls_tab();
+    
+    $this->end_controls_tabs();
+    //end normal hover
+    $this->add_control(
+        'lightbox_button_divider',
+        [
+            'type' => \Elementor\Controls_Manager::HEADING,
+            'separator' => 'before',
+        ]
+    );
+    $this->add_responsive_control(
+        'lightbox_button_border_radius',
+        [
+            'label' => esc_html__( 'Border Radius', 'textdomain' ),
+            'type' => \Elementor\Controls_Manager::DIMENSIONS,
+            'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+            'selectors' => [
+                '{{WRAPPER}} .lightbox-trigger' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
+    $this->add_responsive_control(
+        'lightbox_button_padding',
+        [
+            'label' => esc_html__( 'Padding', 'textdomain' ),
+            'type' => \Elementor\Controls_Manager::DIMENSIONS,
+            'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+            'selectors' => [
+                '{{WRAPPER}} .lightbox-trigger' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
 
     $this->end_controls_section();
+
 
 
     }
