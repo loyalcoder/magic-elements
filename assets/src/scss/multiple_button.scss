@@ -20,6 +20,9 @@ color: white;
           align-items: center;
           background-color: burlywood;
           text-decoration: none;
+          .btn-icon{
+            @include flex;
+          }
         }
       }
   

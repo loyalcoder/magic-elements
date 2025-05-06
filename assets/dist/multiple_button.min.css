@@ -18,6 +18,9 @@
   background-color: burlywood;
   text-decoration: none;
 }
+.multiple-button-wrapper .bt-item .btn-item-wrapper .magic-button .btn-icon {
+  display: flex;
+}
 .multiple-button-wrapper .bt-item:first-child .btn-item-wrapper .magic-button {
   background-color: rgb(190, 61, 61);
   color: white;
