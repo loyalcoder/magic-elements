@@ -1,7 +1,10 @@
 /*!*************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/light_box.scss ***!
   \*************************************************************************************************************************/
-.custom-lightbox-content {
+.custom-lightbox-wrapper .lightbox-trigger {
+  cursor: pointer;
+}
+.custom-lightbox-wrapper .custom-lightbox-content {
   position: fixed;
   top: 0;
   left: 0;
@@ -13,8 +16,7 @@
   justify-content: center;
   align-items: center;
 }
-
-.lightbox-inner {
+.custom-lightbox-wrapper .custom-lightbox-content .lightbox-inner {
   padding: 30px;
   border-radius: 5px;
   max-width: 60%;
@@ -22,8 +24,11 @@
   overflow: auto;
   position: relative;
 }
-
-.lightbox-close {
+.custom-lightbox-wrapper .custom-lightbox-content .lightbox-inner img {
+  max-width: 100%;
+  height: auto;
+}
+.custom-lightbox-wrapper .custom-lightbox-content .lightbox-inner .lightbox-close {
   position: absolute;
   top: -20px;
   right: 0px;
@@ -31,21 +36,13 @@
   cursor: pointer;
   color: #ffffff;
 }
-
-.lightbox-inner img {
-  max-width: 100%;
-  height: auto;
-}
-
-.lightbox-text-content {
+.custom-lightbox-wrapper .custom-lightbox-content .lightbox-inner .lightbox-text-content {
   padding: 20px;
   border-radius: 4px;
   max-width: 800px;
   background-color: #ffffff;
 }
-
-.lightbox-inner iframe,
-.lightbox-inner video {
+.custom-lightbox-wrapper .custom-lightbox-content .lightbox-inner iframe, .custom-lightbox-wrapper .custom-lightbox-content .lightbox-inner video {
   width: 800px;
   height: 450px;
   max-width: 100%;
@@ -53,10 +50,6 @@
 
 body.lightbox-open {
   overflow: hidden;
-}
-
-.lightbox-trigger {
-  cursor: pointer;
 }
 
 /*# sourceMappingURL=light_box.min.css.map*/
