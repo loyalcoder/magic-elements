@@ -533,6 +533,13 @@ class Light_Box extends Widget_Base
             'separator' => 'before',
         ]
     );
+    $this->add_group_control(
+        \Elementor\Group_Control_Border::get_type(),
+        [
+            'name' => 'lightbox_button_border',
+            'selector' => '{{WRAPPER}} .lightbox-trigger',
+        ]
+    );
     $this->add_responsive_control(
         'lightbox_button_border_radius',
         [
