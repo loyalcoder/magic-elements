@@ -114,131 +114,131 @@ class Light_Box extends Widget_Base
      */
     protected function register_light_box_controls()
     {
-  // Content Tab
-  $this->start_controls_section(
-    'content_section',
-    [
-        'label' => __('Content', 'my-elementor-widgets'),
-        'tab' => Controls_Manager::TAB_CONTENT,
-    ]
-);
+    // Content Tab
+    $this->start_controls_section(
+        'content_section',
+        [
+            'label' => esc_html__('Content', 'magic-elements'),
+            'tab' => Controls_Manager::TAB_CONTENT,
+        ]
+    );
 
-$this->add_control(
-    'lightbox_type',
-    [
-        'label' => __('Lightbox Content Type', 'my-elementor-widgets'),
-        'type' => Controls_Manager::SELECT,
-        'default' => 'image',
-        'options' => [
-            'image' => __('Image', 'my-elementor-widgets'),
-            'text' => __('Text', 'my-elementor-widgets'),
-            'video' => __('Video', 'my-elementor-widgets'),
-        ],
-    ]
-);
+    $this->add_control(
+        'lightbox_type',
+        [
+            'label' => esc_html__('Lightbox Content Type', 'magic-elements'),
+            'type' => Controls_Manager::SELECT,
+            'default' => 'image',
+            'options' => [
+                'image' => esc_html__('Image', 'magic-elements'),
+                'text' => esc_html__('Text', 'magic-elements'),
+                'video' => esc_html__('Video', 'magic-elements'),
+            ],
+        ]
+    );
 
-$this->add_control(
-    'image_content',
-    [
-        'label' => __('Image', 'my-elementor-widgets'),
-        'type' => Controls_Manager::MEDIA,
-        'default' => [
-            'url' => \Elementor\Utils::get_placeholder_image_src(),
-        ],
-        'condition' => [
-            'lightbox_type' => 'image',
-        ],
-    ]
-);
+    $this->add_control(
+        'image_content',
+        [
+            'label' => esc_html__('Image', 'magic-elements'),
+            'type' => Controls_Manager::MEDIA,
+            'default' => [
+                'url' => \Elementor\Utils::get_placeholder_image_src(),
+            ],
+            'condition' => [
+                'lightbox_type' => 'image',
+            ],
+        ]
+    );
 
-$this->add_control(
-    'text_content',
-    [
-        'label' => __('Text Content', 'my-elementor-widgets'),
-        'type' => Controls_Manager::WYSIWYG,
-        'default' => __('This is your lightbox text content', 'my-elementor-widgets'),
-        'condition' => [
-            'lightbox_type' => 'text',
-        ],
-    ]
-);
+    $this->add_control(
+        'text_content',
+        [
+            'label' => esc_html__('Text Content', 'magic-elements'),
+            'type' => Controls_Manager::WYSIWYG,
+            'default' => esc_html__('This is your lightbox text content', 'magic-elements'),
+            'condition' => [
+                'lightbox_type' => 'text',
+            ],
+        ]
+    );
 
-$this->add_control(
-    'video_content',
-    [
-        'label' => __('Video URL', 'my-elementor-widgets'),
-        'type' => Controls_Manager::TEXT,
-        'placeholder' => __('Enter YouTube or Vimeo URL', 'my-elementor-widgets'),
-        'condition' => [
-            'lightbox_type' => 'video',
-        ],
-    ]
-);
+    $this->add_control(
+        'video_content',
+        [
+            'label' => esc_html__('Video URL', 'magic-elements'),
+            'type' => Controls_Manager::TEXT,
+            'placeholder' => esc_html__('Enter YouTube or Vimeo URL', 'magic-elements'),
+            'condition' => [
+                'lightbox_type' => 'video',
+            ],
+        ]
+    );
 
-$this->add_control(
-    'trigger_type',
-    [
-        'label' => __('Trigger Type', 'my-elementor-widgets'),
-        'type' => Controls_Manager::SELECT,
-        'default' => 'button',
-        'options' => [
-            'button' => __('Button', 'my-elementor-widgets'),
-            'image' => __('Image', 'my-elementor-widgets'),
-            'text' => __('Text Link', 'my-elementor-widgets'),
-        ],
-    ]
-);
+    $this->add_control(
+        'trigger_type',
+        [
+            'label' => esc_html__('Trigger Type', 'magic-elements'),
+            'type' => Controls_Manager::SELECT,
+            'default' => 'button',
+            'options' => [
+                'button' => esc_html__('Button', 'magic-elements'),
+                'image' => esc_html__('Image', 'magic-elements'),
+                'text' => esc_html__('Text Link', 'magic-elements'),
+            ],
+        ]
+    );
 
-$this->add_control(
-    'button_text',
-    [
-        'label' => __('Button Text', 'my-elementor-widgets'),
-        'type' => Controls_Manager::TEXT,
-        'default' => __('Open Lightbox', 'my-elementor-widgets'),
-        'condition' => [
-            'trigger_type' => 'button',
-        ],
-    ]
-);
+    $this->add_control(
+        'button_text',
+        [
+            'label' => esc_html__('Button Text', 'magic-elements'),
+            'type' => Controls_Manager::TEXT,
+            'default' => esc_html__('Open Lightbox', 'magic-elements'),
+            'condition' => [
+                'trigger_type' => 'button',
+            ],
+        ]
+    );
 
-$this->add_control(
-    'trigger_image',
-    [
-        'label' => __('Trigger Image', 'my-elementor-widgets'),
-        'type' => Controls_Manager::MEDIA,
-        'default' => [
-            'url' => \Elementor\Utils::get_placeholder_image_src(),
-        ],
-        'condition' => [
-            'trigger_type' => 'image',
-        ],
-    ]
-);
+    $this->add_control(
+        'trigger_image',
+        [
+            'label' => esc_html__('Trigger Image', 'magic-elements'),
+            'type' => Controls_Manager::MEDIA,
+            'default' => [
+                'url' => \Elementor\Utils::get_placeholder_image_src(),
+            ],
+            'condition' => [
+                'trigger_type' => 'image',
+            ],
+        ]
+    );
 
-$this->add_control(
-    'trigger_text',
-    [
-        'label' => __('Trigger Text', 'my-elementor-widgets'),
-        'type' => Controls_Manager::TEXT,
-        'default' => __('Click to open', 'my-elementor-widgets'),
-        'condition' => [
-            'trigger_type' => 'text',
-        ],
-    ]
-);
+    $this->add_control(
+        'trigger_text',
+        [
+            'label' => esc_html__('Trigger Text', 'magic-elements'),
+            'type' => Controls_Manager::TEXT,
+            'default' => esc_html__('Click to open', 'magic-elements'),
+            'condition' => [
+                'trigger_type' => 'text',
+            ],
+        ]
+    );
 
-$this->end_controls_section();
+    $this->end_controls_section();
 
-            // Style section
-        $this->start_controls_section(
-            'light_box_style_section',
-			[
-				'label' => esc_html__( 'Light Box', 'magic-elements' ),
-				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
-			]
-		);
+        // Style section
+    $this->start_controls_section(
+        'light_box_style_section',
+        [
+            'label' => esc_html__( 'Light Box', 'magic-elements' ),
+            'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+        ]
+    );
 
-        $this->end_controls_section();
+    $this->end_controls_section();
 
 
     }
