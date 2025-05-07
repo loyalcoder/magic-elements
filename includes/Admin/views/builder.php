@@ -12,31 +12,6 @@
             ]
         ]
      ]);
-     echo '<pre>';
-     print_r($builder_posts);
-     echo '</pre>';
-     
-    //  echo '<pre>';
-    //  print_r(get_post_meta(2123, '_display_type', true));
-    //  print_r(get_post_meta(2122, '_display_type', true));
-    //  echo '</pre>';
-     
-    // echo '<pre>';
-    // print_r($builder_posts);
-    // echo '</pre>';
-    // $post_id = wp_insert_post([
-    //     'post_type' => 'magic_builder',
-    //     'post_title' => 'Header header',
-    //     'post_content' => 'Header se',
-    //     'post_status' => 'publish',
-    // ]);
-
-    // if ($post_id) {
-    //     update_post_meta($post_id, '_is_active', 'yes');
-    //     update_post_meta($post_id, '_display_type', 'header');
-    //     update_post_meta($post_id, '_display_on', 'all');
-    // }
-    
     ?>
     
     <div class="magic-builder-container">
@@ -75,7 +50,6 @@
                 <span><?php echo esc_html__('Post Archive', 'magic-elements'); ?></span>
             </div>
         </div>
-
         <!-- Template Preview Modal -->
         <div id="template-preview-modal" class="template-modal">
             <div class="modal-content">

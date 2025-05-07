@@ -2,10 +2,13 @@
 namespace MagicElements\Trait;
 
 trait Builder {
-    public function get_builder_by_type($type = 'header', $paged = 1, $per_page = -1) {
-        $args = array(
+    public function get_builder_by_type($args, $type) {
+        // Parse arguments with defaults
+        $data = [];
+        $default_args = array(
             'post_type' => 'magic_builder',
-            'posts_per_page' => $per_page,
+            'posts_per_page' => -1,
+            'paged' => 1,
             'meta_query' => array(
                 array(
                     'key' => '_display_type',
@@ -14,18 +17,59 @@ trait Builder {
                 )
             )
         );
-        $builder_posts = get_posts($args);
-        return $builder_posts;
-    }
-    public function get_active_builder_by_type($type = 'header') {
-        $builder_posts = $this->get_builder_by_type($type);
-        foreach ($builder_posts as $builder_post) {
-            if (get_post_meta($builder_post->ID, '_is_active', true) == 'yes') {
-                return $builder_post;
+        
+        $args = wp_parse_args($args, $default_args);
+        
+        // Generate cache key based on type and pagination
+        $cache_key = 'magic_builder_' . $type . '_' . $args['posts_per_page'] . '_' . $args['paged'];
+        
+        // Try to get cached result
+        $builder_posts = get_transient($cache_key);
+        
+        if (false === $builder_posts) {
+            $query = new \WP_Query($args);
+            $builder_posts = array();
+
+            while ($query->have_posts()) {
+                $query->the_post();
+                $builder_posts[] = get_post();
             }
+            wp_reset_postdata();
+
+            // Cache the results for 12 hours
+            set_transient($cache_key, $builder_posts, 12 * HOUR_IN_SECONDS);
         }
-        return null;
+
+        return [
+            'posts' => $builder_posts,
+            'max_num_pages' => $query->max_num_pages ?? 1
+        ];
     }
+
+    public function clear_builder_cache($type = '') {
+        global $wpdb;
+        
+        if (empty($type)) {
+            // Delete all magic builder transients
+            $wpdb->query(
+                "DELETE FROM $wpdb->options 
+                WHERE option_name LIKE '_transient_magic_builder_%' 
+                OR option_name LIKE '_transient_timeout_magic_builder_%'"
+            );
+        } else {
+            // Delete transients for specific type
+            $wpdb->query(
+                $wpdb->prepare(
+                    "DELETE FROM $wpdb->options 
+                    WHERE option_name LIKE %s 
+                    OR option_name LIKE %s",
+                    '_transient_magic_builder_' . $type . '_%',
+                    '_transient_timeout_magic_builder_' . $type . '_%'
+                )
+            );
+        }
+    }
+
     public function display_type_list() {
         $display_types = array(
             'header' => 'Header',
@@ -45,7 +89,6 @@ trait Builder {
             'blog_category_archive' => esc_html__('Blog Category Archive', 'magic-elements'),
             'blog_tag_archive' => esc_html__('Blog Tag Archive', 'magic-elements'),
             'blog_author_archive' => esc_html__('Author Archive', 'magic-elements'),
-            'singular' => esc_html__('Singular', 'magic-elements'),
         ];
         // Add taxonomy groups
         return apply_filters('magic_elements_display_on_list', $display);

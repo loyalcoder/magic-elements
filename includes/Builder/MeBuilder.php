@@ -6,8 +6,10 @@ namespace MagicElements;
 if (!defined('ABSPATH')) {
     exit;
 }
-class Builder
+use MagicElements\Trait\Builder;
+class MeBuilder
 {
+    use Builder;
     private static $_instance = null;
     /**
 	 * Instance
@@ -54,9 +56,7 @@ class Builder
 	 */
 	public function replace_header()
 	{
-		global $post;
-		$post_id = isset($post->ID) ?  $post->ID : 0;
-       
+		
 		$header_id = $this->active_header_id();
 		if ($header_id == '') {
 			return false;
@@ -129,14 +129,18 @@ class Builder
         }
         $query_object = get_queried_object();
         $current_page = $this->get_current_page($query_object);
-        
-        if (! empty($exclude) && in_array($current_page, $exclude)) {
+
+        if (!empty($exclude) && in_array('entire_website', $exclude)) {
+            return false;
+        }elseif (!empty($exclude) && in_array($current_page, $exclude)) {
             return false;
         }
-        if (! empty($include) && in_array($current_page, $include)) {
+        if (! empty($include) && in_array('entire_website', $include)) {
+            return $header_id;
+        }elseif (! empty($include) && in_array($current_page, $include)) {
             return $header_id;
         }
-      
+
         return false;
     }
     public function get_current_page($obj){
@@ -161,7 +165,11 @@ class Builder
                     return false;
             }
         }else{
-            return $obj->ID;
+            if(class_exists('WooCommerce') && is_shop()){
+                return 'shop_page';
+            }else{
+                return $obj->ID;
+            }
         }
     }
 }

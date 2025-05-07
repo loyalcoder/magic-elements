@@ -35,6 +35,10 @@ class Ajax {
         // add_action('wp_ajax_magic_builder_singular_options', [$this, 'magic_builder_singular_options']);
         // add_action('wp_ajax_magic_builder_single_post_type_options', [$this, 'magic_builder_single_post_type_options']);
         // add_action('wp_ajax_magic_builder_search_posts', [$this, 'magic_builder_search_posts']);
+           // delete builder content
+           add_action('wp_ajax_magic_builder_delete_builder', [$this,'delete_builder_content']);
+           add_action ('wp_ajax_magic_builder_refresh_list', [$this,'magic_builder_refresh_list']);
+   
     }
 
     /**
@@ -86,7 +90,11 @@ class Ajax {
 
     public function magic_builder_header_list() {
         check_ajax_referer('magic_builder_nonce', 'nonce');
-        $builder_posts = $this->get_builder_by_type('header');
+        $args = [
+            'posts_per_page' => 5, 
+            'paged' => 1
+        ];
+        $builder_posts = $this->get_builder_by_type($args, 'header');
         $display = $this->get_display_on_list();
         $post_types = $this->get_all_post_type_list();
         ob_start();
@@ -221,5 +229,39 @@ class Ajax {
         ]);
     }
         
+    }
+    public function magic_builder_refresh_list(){
+        check_ajax_referer('magic_builder_nonce', 'nonce');
+        $builder_posts = $this->get_builder_by_type('header', 1);
+        ob_start();
+         include __DIR__. '/views/builder/builder-list.php';
+        $html = ob_get_clean();
+        wp_send_json_success([
+            'html' => $html
+         ]);
+    }
+    public function delete_builder_content(){
+        check_ajax_referer('magic_builder_nonce', 'nonce');
+        $post_id = isset($_POST['builder_id'])? sanitize_text_field($_POST['builder_id']) : '';
+        if($post_id == ''){
+            wp_send_json_error([
+                'message' => esc_html__('Post ID is required','magic-elements')
+            ]);
+        }
+        $post = get_post($post_id);
+        if($post == null){
+            wp_send_json_error([
+                'message' => esc_html__('Post not found','magic-elements')
+            ]);
+        }
+        if($post->post_type != 'magic_builder'){
+            wp_send_json_error([
+               'message' => esc_html__('Invalid post type','magic-elements')
+            ]);
+        }
+        wp_delete_post($post_id,true);
+        wp_send_json_success([
+            'message' => esc_html__('Post deleted successfully','magic-elements')
+        ]);
     }
 }
