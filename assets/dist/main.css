@@ -108,6 +108,21 @@
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/counter.scss ***!
   \***********************************************************************************************************************/
 
+/*!*************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/post_list.scss ***!
+  \*************************************************************************************************************************/
+/* Base List Styles */
+.magic-post-list {
+  display: grid;
+  gap: 30px;
+}
+.magic-post-list.list-layout {
+  display: block !important;
+  grid-template-columns: none !important;
+}
+.magic-post-list .magic-post-item {
+  margin-bottom: 30px;
+}
 
 /* Layout Styles */
 .magic-post-layout-grid .magic-post-item {

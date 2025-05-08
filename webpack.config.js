@@ -53,6 +53,10 @@ const baseConfig = {
       './assets/src/scss/light_box.scss',
       './assets/src/js/light_box.js',
     ],
+    news_ticker: [
+      './assets/src/scss/news_ticker.scss',
+      './assets/src/js/news_ticker.js',
+    ],
 
     // 2) SCSS ONLY (no JS file mentioned):
     flipcard: './assets/src/scss/flipcard.scss',

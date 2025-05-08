@@ -148,6 +148,16 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/light_box.js'),
                 'deps'    => ['jquery']
             ],
+            'emkit-news-ticker' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/news_ticker.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/news_ticker.js'),
+                'deps'    => ['jquery']
+            ],
+            'emkit-slick' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/vendor/slick/slick.min.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendor/slick/slick.min.js'),
+                'deps'    => ['jquery']
+            ],
         ];
     }
     /**
@@ -224,6 +234,18 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/light_box.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/light_box.css'),
             ],
+            'emk-news-ticker' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/news_ticker.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/news_ticker.css'),
+            ],
+            'emk-slick' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/vendor/slick/slick.scss',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendor/slick/slick.scss'),
+            ],
+            'emk-slick-theme' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/vendor/slick/slick-theme.scss',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendor/slick/slick-theme.scss'),
+            ],
         ];
     }
 
@@ -257,6 +279,7 @@ class Load_Elementor
             'Icon_Box',
             'Info_Box',
             'Feature_list',
+            'News_Ticker',
         ];
     }
     public static function defaultWidgets()
@@ -282,6 +305,7 @@ class Load_Elementor
             'iconiox',
             'infobox',
             'featurelist',
+            'newsticker',
         ];
     }
     /**
