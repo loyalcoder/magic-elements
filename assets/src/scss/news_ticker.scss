@@ -1,3 +1,4 @@
+/* Main Ticker Container */
 .multi-source-ticker {
     width: 100%;
     margin: 0 auto;
@@ -8,28 +9,61 @@
     border-radius: 3px;
 }
 
+/* Header containing title and content */
 .mst-header {
     display: flex;
     align-items: center;
     width: 100%;
 }
 
+/* Title positioning classes */
+.mst-title-left .mst-header {
+    flex-direction: row;
+}
+
+/* Right title specific styles */
+.mst-title-right .mst-header {
+    // flex-direction: row-reverse;
+}
+
+.mst-title-right .mst-content {
+    // direction: rtl; /* This ensures text alignment is correct */
+}
+
+.mst-title-right .mst-item {
+    text-align: right;
+}
+
+/* Fix for RTL scrolling */
+.mst-title-right .slick-slide {
+    float: right !important;
+}
+
+/* If using arrows, adjust their position */
+.mst-title-right .mst-arrows {
+    order: -1; /* Moves arrows to the left side */
+}
+
+/* Ticker Title */
 .mst-title {
     padding: 8px 15px;
     font-weight: bold;
     text-transform: uppercase;
     white-space: nowrap;
-    background: #e74c3c;
+    background: #ff0000;
     color: white;
     z-index: 1;
 }
 
+/* Ticker Content */
 .mst-content {
     flex-grow: 1;
     overflow: hidden;
     position: relative;
+    background: #f8f8f8;
 }
 
+/* Individual Ticker Items */
 .mst-item {
     padding: 8px 15px;
     white-space: nowrap;
@@ -45,10 +79,32 @@
     text-decoration: underline;
 }
 
-/* Responsive adjustments */
+/* Navigation Arrows */
+.mst-arrows {
+    display: flex;
+    padding: 0 10px;
+}
+
+.mst-arrow {
+    cursor: pointer;
+    padding: 5px;
+    font-size: 18px;
+    user-select: none;
+    color: #333;
+}
+
+.mst-arrow:hover {
+    color: #ff0000;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-    .mst-header {
+    .multi-source-ticker {
         flex-direction: column;
+    }
+    
+    .mst-header {
+        flex-direction: column !important;
     }
     
     .mst-title {

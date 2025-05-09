@@ -7,7 +7,7 @@ import "./../scss/news_ticker.scss";
       onInit: function () {
         var E_FRONT = elementorFrontend;
         var widgetHandlersMap = {
-          "em_kit_post_tab.default": emkElementor.EmKitPostTab,
+          "em_kit_news_ticker.default": emkElementor.EmKitNewsTicker,
         };
   
         $.each(widgetHandlersMap, function (widgetName, callback) {
@@ -15,31 +15,31 @@ import "./../scss/news_ticker.scss";
         });
       },
 
-      EmKitPostTab: function ($scope) {
-        let navLinks = $scope.find('.nav-link');
-        let postItems = $scope.find('.post-item');
+      EmKitNewsTicker: function($scope) {
+        let $ticker = $scope.find('.multi-source-ticker');
+        let settings = $ticker.data('settings');
+        let $content = $ticker.find('.mst-content');
     
-        // Initially show all posts
-        postItems.show();
-    
-        // Tab click event
-        navLinks.on('click', function () {
-            let $clickedTab = $(this);
-            let category = $clickedTab.data('category');
-    
-            // Remove active class from all tabs and add it to the clicked tab
-            navLinks.removeClass('active');
-            $clickedTab.addClass('active');
-    
-            // Show or hide posts based on the category
-            if (category === 'all') {
-                postItems.show(); // Show all posts
-            } else {
-                postItems.hide(); // Hide all posts
-                postItems.filter('.category-' + category).show(); // Show posts with the selected category
-            }
+        // Initialize Slick slider
+        $content.slick({
+            vertical: settings.direction,
+            verticalSwiping: settings.direction,
+            autoplay: settings.autoplay,
+            autoplaySpeed: settings.speed,
+            pauseOnHover: settings.pauseOnHover,
+            arrows: settings.arrows,
+            infinite: settings.infinite,
+            rtl: settings.rtl,
+            prevArrow: $ticker.find('.mst-prev'),
+            nextArrow: $ticker.find('.mst-next')
         });
-    },
+    
+        // Handle window resize
+        $(window).on('resize', function() {
+            $content.slick('resize');
+        });
+    }
+    
     
     };
   
