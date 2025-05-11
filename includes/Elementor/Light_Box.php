@@ -240,7 +240,7 @@ class Light_Box extends Widget_Base
     $this->add_responsive_control(
         'light_box_image_width',
         [
-            'label' => esc_html__( 'Width', 'textdomain' ),
+            'label' => esc_html__( 'Width', 'magic-elements' ),
             'type' => \Elementor\Controls_Manager::SLIDER,
             'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
             'range' => [
@@ -262,7 +262,7 @@ class Light_Box extends Widget_Base
     $this->add_responsive_control(
         'light_box_image_max_width',
         [
-            'label' => esc_html__( 'Max Width', 'textdomain' ),
+            'label' => esc_html__( 'Max Width', 'magic-elements' ),
             'type' => \Elementor\Controls_Manager::SLIDER,
             'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
             'range' => [
@@ -284,7 +284,7 @@ class Light_Box extends Widget_Base
     $this->add_responsive_control(
         'light_box_image_height',
         [
-            'label' => esc_html__( 'Height', 'textdomain' ),
+            'label' => esc_html__( 'Height', 'magic-elements' ),
             'type' => \Elementor\Controls_Manager::SLIDER,
             'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
             'range' => [
@@ -313,7 +313,7 @@ class Light_Box extends Widget_Base
     $this->add_responsive_control(
         'light_box_image_border_radius',
         [
-            'label' => esc_html__( 'Border Radius', 'textdomain' ),
+            'label' => esc_html__( 'Border Radius', 'magic-elements' ),
             'type' => \Elementor\Controls_Manager::DIMENSIONS,
             'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
             'selectors' => [
@@ -326,7 +326,7 @@ class Light_Box extends Widget_Base
     $this->start_controls_section(
         'light_box_content_style_section',
         [
-            'label' => esc_html__( 'Content', 'textdomain' ),
+            'label' => esc_html__( 'Content', 'magic-elements' ),
             'tab' => \Elementor\Controls_Manager::TAB_STYLE,
         ]
     );
@@ -334,7 +334,7 @@ class Light_Box extends Widget_Base
     $this->add_control(
         'light_box_content_color',
         [
-            'label' => esc_html__( 'Text Color', 'textdomain' ),
+            'label' => esc_html__( 'Text Color', 'magic-elements' ),
             'type' => \Elementor\Controls_Manager::COLOR,
             'selectors' => [
                 '{{WRAPPER}} .lightbox-inner .lightbox-text-content' => 'color: {{VALUE}}',
@@ -380,7 +380,7 @@ class Light_Box extends Widget_Base
     $this->add_responsive_control(
         'light_box_content_border_radius',
         [
-            'label' => esc_html__( 'Border Radius', 'textdomain' ),
+            'label' => esc_html__( 'Border Radius', 'magic-elements' ),
             'type' => \Elementor\Controls_Manager::DIMENSIONS,
             'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
             'selectors' => [
@@ -391,7 +391,7 @@ class Light_Box extends Widget_Base
     $this->add_responsive_control(
         'light_box_content_padding',
         [
-            'label' => esc_html__( 'Padding', 'textdomain' ),
+            'label' => esc_html__( 'Padding', 'magic-elements' ),
             'type' => \Elementor\Controls_Manager::DIMENSIONS,
             'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
             'selectors' => [
@@ -404,14 +404,14 @@ class Light_Box extends Widget_Base
     $this->start_controls_section(
         'lightbox_close_icon_style_section',
         [
-            'label' => esc_html__( 'Close Button', 'textdomain' ),
+            'label' => esc_html__( 'Close Button', 'magic-elements' ),
             'tab' => \Elementor\Controls_Manager::TAB_STYLE,
         ]
     );
     $this->add_control(
         'lightbox_close_icon_color',
         [
-            'label' => esc_html__( 'Icon Color', 'textdomain' ),
+            'label' => esc_html__( 'Icon Color', 'magic-elements' ),
             'type' => \Elementor\Controls_Manager::COLOR,
             'selectors' => [
                 '{{WRAPPER}} .lightbox-inner .lightbox-close' => 'color: {{VALUE}}',
@@ -423,7 +423,7 @@ class Light_Box extends Widget_Base
     $this->start_controls_section(
         'lightbox_button_style_section',
         [
-            'label' => esc_html__( 'Button', 'textdomain' ),
+            'label' => esc_html__( 'Button', 'magic-elements' ),
             'tab' => \Elementor\Controls_Manager::TAB_STYLE,
         ]
     );
@@ -456,13 +456,13 @@ class Light_Box extends Widget_Base
     $this->start_controls_tab(
         'lightbox_button_normal_tab',
         [
-            'label' => esc_html__( 'Normal', 'textdomain' ),
+            'label' => esc_html__( 'Normal', 'magic-elements' ),
         ]
     );
     $this->add_control(
         'lightbox_button_normal_text_color',
         [
-            'label' => esc_html__( 'Text Color', 'textdomain' ),
+            'label' => esc_html__( 'Text Color', 'magic-elements' ),
             'type' => \Elementor\Controls_Manager::COLOR,
             'selectors' => [
                 '{{WRAPPER}} .lightbox-trigger' => 'color: {{VALUE}}',
@@ -483,13 +483,13 @@ class Light_Box extends Widget_Base
     $this->start_controls_tab(
         'lightbox_button_hover_tab',
         [
-            'label' => esc_html__( 'Hover', 'textdomain' ),
+            'label' => esc_html__( 'Hover', 'magic-elements' ),
         ]
     );
     $this->add_control(
         'lightbox_button_hover_text_color',
         [
-            'label' => esc_html__( 'Text Color', 'textdomain' ),
+            'label' => esc_html__( 'Text Color', 'magic-elements' ),
             'type' => \Elementor\Controls_Manager::COLOR,
             'selectors' => [
                 '{{WRAPPER}} .lightbox-trigger:hover' => 'color: {{VALUE}}',
@@ -536,7 +536,7 @@ class Light_Box extends Widget_Base
     $this->add_responsive_control(
         'lightbox_button_border_radius',
         [
-            'label' => esc_html__( 'Border Radius', 'textdomain' ),
+            'label' => esc_html__( 'Border Radius', 'magic-elements' ),
             'type' => \Elementor\Controls_Manager::DIMENSIONS,
             'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
             'selectors' => [
@@ -547,7 +547,7 @@ class Light_Box extends Widget_Base
     $this->add_responsive_control(
         'lightbox_button_padding',
         [
-            'label' => esc_html__( 'Padding', 'textdomain' ),
+            'label' => esc_html__( 'Padding', 'magic-elements' ),
             'type' => \Elementor\Controls_Manager::DIMENSIONS,
             'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
             'selectors' => [
