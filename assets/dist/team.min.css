@@ -5,9 +5,16 @@
   display: flex;
   justify-content: center;
 }
-
-.icon-item {
-  width: 50px;
+.team-card .magic-team-social-icons {
+  display: flex;
+}
+.team-card .magic-team-social-icons a {
+  position: relative;
+  height: 75px;
+  width: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 svg {

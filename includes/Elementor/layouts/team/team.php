@@ -29,26 +29,25 @@
       <h3 class="team-title">
         <?php echo $settings['team_title']; ?>
       </h3>
-        <?php echo $settings['team_description']; ?>
+        <p class="team-des">
+          <?php echo $settings['team_description']; ?>
+        </p>
       <div class="icon-part">
-        <?php 
-          if ( ! empty( $settings['icon_list'] ) ) {
-            foreach ( $settings['icon_list'] as $item ) {
-                $link_url = ! empty( $item['link']['url'] ) ? $item['link']['url'] : '#';
-                $link_target = ! empty( $item['link']['is_external'] ) ? ' target="_blank"' : '';
-                $link_nofollow = ! empty( $item['link']['nofollow'] ) ? ' rel="nofollow"' : '';
-              ?>
-                <a href="<?php echo esc_url( $link_url ); ?>" <?php echo $link_target . $link_nofollow; ?>>
-                    <?php 
-                    if ( ! empty( $item['icon'] ) ) {
-                      \Elementor\Icons_Manager::render_icon( $item['icon'], [ 'aria-hidden' => 'true' ] );
-                    }
-                    ?>
+      <?php if (!empty($settings['social_icon_list'])) : ?>
+        <div class="magic-team-social-icons">
+            <?php foreach ($settings['social_icon_list'] as $index => $item) : ?>
+                <?php
+                $link_key = 'link_' . $index;
+                $this->add_link_attributes($link_key, $item['social_link']);
+                ?>
+                <a <?php echo $this->get_render_attribute_string($link_key); ?> class="elementor-repeater-item-<?php echo esc_attr($item['_id']); ?>">
+                    <!-- <div class="i-box"> -->
+                      <?php \Elementor\Icons_Manager::render_icon($item['social_icon'], ['aria-hidden' => 'true']); ?>
+                    <!-- </div> -->
                 </a>
-              <?php
-            }
-          }
-        ?>
+            <?php endforeach; ?>
+        </div>
+      <?php endif; ?>
       </div>
     </div>
   </div>

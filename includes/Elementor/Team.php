@@ -160,229 +160,157 @@ class Team extends Widget_Base
 
 
         $this->start_controls_section(
-            'icon_section',
+            'section_social_icons',
             [
-                'label' => esc_html__( 'Icon List with Links', 'magic-elements' ),
+                'label' => esc_html__('Social Icons', 'magic-elements'),
+                'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
+
         $repeater = new \Elementor\Repeater();
-        
-        // Icon control
+
         $repeater->add_control(
-            'icon',
+            'social_icon',
             [
-                'label' => esc_html__( 'Icon', 'magic-elements' ),
-                'type' => \Elementor\Controls_Manager::ICONS,
+                'label' => esc_html__('Icon', 'magic-elements'),
+                'type' => Controls_Manager::ICONS,
                 'default' => [
-                    'value' => 'fab fa-linkedin-in',
+                    'value' => 'fab fa-wordpress',
                     'library' => 'fa-brands',
                 ],
                 'recommended' => [
                     'fa-brands' => [
-                        'facebook-f',
+                        'facebook',
                         'twitter',
-                        'linkedin-in',
-                    ],
-                    'fa-solid' => [
-                        'circle',
-                        'square-full',
+                        'linkedin',
+                        'instagram',
+                        'youtube',
+                        'pinterest',
                     ],
                 ],
             ]
         );
-        
-        // Link control
+
         $repeater->add_control(
-            'link',
+            'social_link',
             [
-                'label' => esc_html__( 'Link', 'magic-elements' ),
-                'type' => \Elementor\Controls_Manager::URL,
-                'placeholder' => esc_html__( 'https://your-link.com', 'magic-elements' ),
+                'label' => esc_html__('Link', 'magic-elements'),
+                'type' => Controls_Manager::URL,
+                'placeholder' => esc_html__('https://your-link.com', 'magic-elements'),
                 'show_external' => true,
                 'default' => [
-                    'url' => '#',
+                    'url' => '',
                     'is_external' => true,
                     'nofollow' => true,
                 ],
             ]
         );
-        
-        // Start style controls for each icon
-        $repeater->add_control(
-            'icon_style_heading',
-            [
-                'label' => esc_html__( 'Icon Style', 'magic-elements' ),
-                'type' => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
-        
-        // Icon padding
-        $repeater->add_responsive_control(
-            'icon_padding',
-            [
-                'label' => esc_html__( 'Padding', 'magic-elements' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', 'em', '%' ],
-                'selectors' => [
-                    '{{WRAPPER}} .me-team-wrapper .icon-part a{{CURRENT_ITEM}}' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        
-        // Icon margin
-        $repeater->add_responsive_control(
-            'icon_margin',
-            [
-                'label' => esc_html__( 'Margin', 'magic-elements' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', 'em', '%' ],
-                'selectors' => [
-                    '{{WRAPPER}} .me-team-wrapper .icon-part a{{CURRENT_ITEM}}' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        
-        // Icon color
+
+        // Icon Style Controls
         $repeater->add_control(
             'icon_color',
             [
-                'label' => esc_html__( 'Color', 'magic-elements' ),
+                'label' => esc_html__('Color', 'magic-elements'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .me-team-wrapper .icon-part a{{CURRENT_ITEM}}' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .me-team-wrapper .icon-part a{{CURRENT_ITEM}} svg' => 'fill: {{VALUE}}',
+                    '{{WRAPPER}} {{CURRENT_ITEM}} i' => 'color: {{VALUE}}',
                 ],
             ]
         );
-        
-        // Icon background color
+
         $repeater->add_control(
             'icon_bg_color',
             [
-                'label' => esc_html__( 'Background Color', 'magic-elements' ),
+                'label' => esc_html__('Background Color', 'magic-elements'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .me-team-wrapper .icon-part a{{CURRENT_ITEM}}' => 'background-color: {{VALUE}}',
+                    '{{WRAPPER}} {{CURRENT_ITEM}}' => 'background-color: {{VALUE}}',
                 ],
             ]
         );
-        
-        // Icon border
-        $repeater->add_group_control(
-            \Elementor\Group_Control_Border::get_type(),
+
+        $repeater->add_control(
+            'icon_size',
             [
-                'name' => 'icon_border',
-                'selector' => '{{WRAPPER}} .me-team-wrapper .icon-part a{{CURRENT_ITEM}}',
+                'label' => esc_html__('Size', 'magic-elements'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em'],
+                'range' => [
+                    'px' => [
+                        'min' => 6,
+                        'max' => 50,
+                    ],
+                    'em' => [
+                        'min' => 0.5,
+                        'max' => 3,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} {{CURRENT_ITEM}} i' => 'font-size: {{SIZE}}{{UNIT}};',
+                ],
             ]
         );
-        
-        // Icon border radius
+
+        $repeater->add_control(
+            'icon_padding',
+            [
+                'label' => esc_html__('Padding', 'magic-elements'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 50,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} {{CURRENT_ITEM}}' => 'padding: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $repeater->add_control(
             'icon_border_radius',
             [
-                'label' => esc_html__( 'Border Radius', 'magic-elements' ),
+                'label' => esc_html__('Border Radius', 'magic-elements'),
                 'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%' ],
+                'size_units' => ['px', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .me-team-wrapper .icon-part a{{CURRENT_ITEM}}' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} {{CURRENT_ITEM}}' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
-        
-        // Hover tab
-        $repeater->add_control(
-            'hover_tab',
-            [
-                'label' => esc_html__( 'Hover', 'magic-elements' ),
-                'type' => Controls_Manager::TAB,
-            ]
-        );
-        
-        // Hover color
-        $repeater->add_control(
-            'icon_hover_color',
-            [
-                'label' => esc_html__( 'Hover Color', 'magic-elements' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .me-team-wrapper .icon-part a{{CURRENT_ITEM}}:hover' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .me-team-wrapper .icon-part a{{CURRENT_ITEM}}:hover svg' => 'fill: {{VALUE}}',
-                ],
-            ]
-        );
-        
-        // Hover background color
-        $repeater->add_control(
-            'icon_hover_bg_color',
-            [
-                'label' => esc_html__( 'Hover Background Color', 'magic-elements' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .me-team-wrapper .icon-part a{{CURRENT_ITEM}}:hover' => 'background-color: {{VALUE}}',
-                ],
-            ]
-        );
-        
-        // Hover border color
-        $repeater->add_control(
-            'icon_hover_border_color',
-            [
-                'label' => esc_html__( 'Hover Border Color', 'magic-elements' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .me-team-wrapper .icon-part a{{CURRENT_ITEM}}:hover' => 'border-color: {{VALUE}}',
-                ],
-            ]
-        );
-        
-        // Hover animation
-        $repeater->add_control(
-            'icon_hover_animation',
-            [
-                'label' => esc_html__( 'Hover Animation', 'magic-elements' ),
-                'type' => Controls_Manager::HOVER_ANIMATION,
-            ]
-        );
-        
+
         $this->add_control(
-            'icon_list',
+            'social_icon_list',
             [
-                'label' => esc_html__( 'Icons with Links', 'magic-elements' ),
-                'type' => \Elementor\Controls_Manager::REPEATER,
+                'label' => esc_html__('Social Icons', 'magic-elements'),
+                'type' => Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
                     [
-                        'icon' => [
-                            'value' => 'fab fa-linkedin-in',
+                        'social_icon' => [
+                            'value' => 'fab fa-facebook',
                             'library' => 'fa-brands',
-                        ],
-                        'link' => [
-                            'url' => 'https://linkedin.com',
                         ],
                     ],
                     [
-                        'icon' => [
-                            'value' => 'fab fa-facebook-f',
-                            'library' => 'fa-brands',
-                        ],
-                        'link' => [
-                            'url' => 'https://facebook.com',
-                        ],
-                    ],
-                    [
-                        'icon' => [
+                        'social_icon' => [
                             'value' => 'fab fa-twitter',
                             'library' => 'fa-brands',
                         ],
-                        'link' => [
-                            'url' => 'https://twitter.com',
+                    ],
+                    [
+                        'social_icon' => [
+                            'value' => 'fab fa-linkedin',
+                            'library' => 'fa-brands',
                         ],
                     ],
                 ],
-                'title_field' => '<i class="{{ icon.value }}"></i>',
+                'title_field' => '<# var migrated = "undefined" !== typeof __fa4_migrated, social = ( "undefined" === typeof social ) ? false : social; #>{{{ elementor.helpers.getSocialNetworkNameFromIcon( social_icon, social, true, migrated, true ) }}}',
             ]
         );
+
         $this->end_controls_section();
         
         $this->start_controls_section(
@@ -403,7 +331,7 @@ class Team extends Widget_Base
                 ],
             ]
         );
-        $this->add_control(
+        $this->add_responsive_control(
 			'card_width',
 			[
 				'label' => esc_html__( 'Width', 'magic-elements' ),
@@ -421,15 +349,15 @@ class Team extends Widget_Base
 					],
 				],
 				'default' => [
-					'unit' => '%',
-					'size' => 35,
+					'unit' => 'px',
+					'size' => 250,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .me-team-wrapper .team-card' => 'width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
-        $this->add_control(
+        $this->add_responsive_control(
             'card_margin',
             [
                 'label' => esc_html__( 'Margin', 'magic-elements' ),
@@ -448,17 +376,17 @@ class Team extends Widget_Base
                 ],
             ]
         );
-        $this->add_control(
+        $this->add_responsive_control(
 			'card_padding',
 			[
 				'label' => esc_html__( 'Padding', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
-					'top' => 30,
-					'right' => 30,
-					'bottom' => 30,
-					'left' => 30,
+					'top' => 10,
+					'right' => 10,
+					'bottom' => 10,
+					'left' => 10,
 					'unit' => 'px',
 					'isLinked' => true,
 				],
@@ -538,7 +466,7 @@ class Team extends Widget_Base
             ]
         );
         
-        $this->add_control(
+        $this->add_responsive_control(
             'image_border_radius',
             [
                 'label' => __('Border Radius', 'magic-elements'),
@@ -660,7 +588,7 @@ class Team extends Widget_Base
             ],
         ]
     );
-    $this->add_control(
+    $this->add_responsive_control(
         'title_margin',
         [
             'label' => esc_html__( 'Margin', 'magic-elements' ),
@@ -679,7 +607,7 @@ class Team extends Widget_Base
             ],
         ]
     );
-    $this->add_control(
+    $this->add_responsive_control(
         'title_padding',
         [
             'label' => esc_html__( 'Padding', 'magic-elements' ),
@@ -759,7 +687,7 @@ class Team extends Widget_Base
             ],
         ]
     );
-    $this->add_control(
+    $this->add_responsive_control(
         'content_margin',
         [
             'label' => esc_html__( 'Margin', 'magic-elements' ),
@@ -778,7 +706,7 @@ class Team extends Widget_Base
             ],
         ]
     );
-    $this->add_control(
+    $this->add_responsive_control(
         'content_padding',
         [
             'label' => esc_html__( 'Padding', 'magic-elements' ),
@@ -797,6 +725,7 @@ class Team extends Widget_Base
             ],
         ]
     );
+    
     $this->end_controls_section();
 
 

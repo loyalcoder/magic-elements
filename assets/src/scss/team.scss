@@ -7,12 +7,26 @@ $flex: flex;
   @include flex;
   justify-content: center;
   }
+  .magic-team-social-icons{
+    @include flex;
+    a{
+      position: relative;
+    height: 75px;
+    width: 75px;
+    @include flex;
+    justify-content: center;
+    align-items: center;
+    }
+  }
 }
+// .i-box{
+//   position: relative;
+// }
 
 // for design macing. --============
-.icon-item{
-  width: 50px;
-}
+// .icon-item{
+//   width: 50px;
+// }
 svg{
   width: 30px;
 }
