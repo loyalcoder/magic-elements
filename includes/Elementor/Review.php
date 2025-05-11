@@ -243,8 +243,13 @@ class Review extends Widget_Base
 				'selector' => '{{WRAPPER}} .review-wapper',
 			]
 		);
-
-        
+        $this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'review_box_shadow',
+				'selector' => '{{WRAPPER}} .review-wapper',
+			]
+		);
         $this->end_controls_tab();
         //Hover
         $this->start_controls_tab(
@@ -285,6 +290,14 @@ class Review extends Widget_Base
 				'selector' => '{{WRAPPER}} .review-wapper:hover',
 			]
 		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'review_box_hover_box_shadow',
+				'selector' => '{{WRAPPER}} .review-wapper:hover',
+			]
+		);
+
         $this->end_controls_tab();
         
         $this->end_controls_tabs();
@@ -313,6 +326,14 @@ class Review extends Widget_Base
 				'label' => esc_html__( 'Padding', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+					'top' => 30,
+					'right' => 20,
+					'bottom' => 30,
+					'left' => 20,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
 				'selectors' => [
 					'{{WRAPPER}} .review-wapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
