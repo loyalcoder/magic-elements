@@ -41,12 +41,29 @@ const baseConfig = {
     team: [
       './assets/src/scss/team.scss',
       './assets/src/js/team.js',
+      ],
+    multiple_button: [
+      './assets/src/scss/multiple_button.scss',
+      './assets/src/js/multiple_button.js',
+    ],
+    icon_box: [
+      './assets/src/scss/icon_box.scss',
+    ],
+    info_box: [
+      './assets/src/scss/info_box.scss',
+      './assets/src/js/info_box.js',
+    ],
+    light_box: [
+      './assets/src/scss/light_box.scss',
+      './assets/src/js/light_box.js',
     ],
 
     // 2) SCSS ONLY (no JS file mentioned):
     flipcard: './assets/src/scss/flipcard.scss',
     category_list: './assets/src/scss/category_list.scss',
     feature_list: './assets/src/scss/feature_list.scss',
+    post_list: './assets/src/scss/post_list.scss',
+    page_list: './assets/src/scss/page_list.scss',
 
     // 3) JS ONLY (if there's no SCSS for 'main', or your 'admin' is JS only, etc.):
     main: './assets/src/js/index.js',
