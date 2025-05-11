@@ -257,6 +257,7 @@ class Load_Elementor
             'Icon_Box',
             'Info_Box',
             'Feature_list',
+            'Review',
         ];
     }
     public static function defaultWidgets()
@@ -282,6 +283,7 @@ class Load_Elementor
             'iconiox',
             'infobox',
             'featurelist',
+            'review',
         ];
     }
     /**
