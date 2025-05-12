@@ -110,6 +110,28 @@ class Team extends Widget_Base
     protected function register_team_controls()
     {
         $this->start_controls_section(
+			'team_style',
+			[
+				'label' => esc_html__( 'Card Style', 'magic-elements' ),
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+
+        $this->add_control(
+            'card_layout_style',
+            [
+                'label'   => esc_html__('Style', 'magic-elements'),
+                'type'    => \Elementor\Controls_Manager::SELECT,
+                'default' => 'style_one',
+                'options' => [
+                    'style_one' => esc_html__('Style One', 'magic-elements'),
+                    'style_two' => esc_html__('Style Two', 'magic-elements'),
+                ],
+            ]
+        );
+        
+        $this->end_controls_section();
+        $this->start_controls_section(
 			'image_content_section',
 			[
 				'label' => esc_html__( 'Image', 'magic-elements' ),
@@ -159,194 +181,319 @@ class Team extends Widget_Base
         $this->end_controls_section();
 
 
-        $this->start_controls_section(
-            'section_social_icons',
-            [
-                'label' => esc_html__('Social Icons', 'magic-elements'),
-                'tab' => Controls_Manager::TAB_CONTENT,
-            ]
-        );
+ $this->start_controls_section(
+    'section_social_icons',
+    [
+        'label' => esc_html__('Social Icons', 'magic-elements'),
+        'tab' => Controls_Manager::TAB_CONTENT,
+    ]
+);
 
-        $repeater = new \Elementor\Repeater();
+$repeater = new \Elementor\Repeater();
 
-        $repeater->add_control(
-            'social_icon',
+$repeater->add_control(
+    'social_icon',
+    [
+        'label' => esc_html__('Icon', 'magic-elements'),
+        'type' => Controls_Manager::ICONS,
+        'default' => [
+            'value' => 'fab fa-wordpress',
+            'library' => 'fa-brands',
+        ],
+        'recommended' => [
+            'fa-brands' => [
+                'facebook',
+                'twitter',
+                'linkedin',
+                'instagram',
+                'youtube',
+                'pinterest',
+            ],
+        ],
+    ]
+);
+
+$repeater->add_control(
+    'social_link',
+    [
+        'label' => esc_html__('Link', 'magic-elements'),
+        'type' => Controls_Manager::URL,
+        'placeholder' => esc_html__('https://your-link.com', 'magic-elements'),
+        'show_external' => true,
+        'default' => [
+            'url' => '',
+            'is_external' => true,
+            'nofollow' => true,
+        ],
+    ]
+);
+
+// Start Icon Style Tabs
+$repeater->start_controls_tabs(
+    'icon_style_tabs'
+);
+
+// Normal Tab
+$repeater->start_controls_tab(
+    'icon_style_normal_tab',
+    [
+        'label' => esc_html__('Normal', 'magic-elements'),
+    ]
+);
+
+$repeater->add_control(
+    'icon_color',
+    [
+        'label' => esc_html__('Color', 'magic-elements'),
+        'type' => Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} {{CURRENT_ITEM}} svg path' => 'fill: {{VALUE}}',
+        ],
+    ]
+);
+
+$repeater->add_control(
+    'icon_bg_color',
+    [
+        'label' => esc_html__('Background Color', 'magic-elements'),
+        'type' => Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} {{CURRENT_ITEM}}' => 'background-color: {{VALUE}}',
+        ],
+    ]
+);
+
+// Border Controls
+$repeater->add_group_control(
+    \Elementor\Group_Control_Border::get_type(),
+    [
+        'name' => 'icon_border',
+        'selector' => '{{WRAPPER}} {{CURRENT_ITEM}}',
+    ]
+);
+
+// Continue with other controls
+$repeater->add_control(
+    'icon_size',
+    [
+        'label' => esc_html__('Size', 'magic-elements'),
+        'type' => Controls_Manager::SLIDER,
+        'size_units' => ['px', 'em'],
+        'range' => [
+            'px' => [
+                'min' => 6,
+                'max' => 200,
+            ],
+            'em' => [
+                'min' => 0.5,
+                'max' => 20,
+            ],
+        ],
+        'default' => [
+            'unit' => 'px',
+            'size' => 25,
+        ],
+        'selectors' => [
+            '{{WRAPPER}} {{CURRENT_ITEM}} svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+        ],
+    ]
+);
+
+$repeater->add_control(
+    'icon_body_width',
+    [
+        'label' => esc_html__('Width', 'magic-elements'),
+        'type' => Controls_Manager::SLIDER,
+        'size_units' => ['px', 'em'],
+        'range' => [
+            'px' => [
+                'min' => 6,
+                'max' => 200,
+            ],
+            'em' => [
+                'min' => 0.5,
+                'max' => 20,
+            ],
+        ],
+        'default' => [
+            'unit' => 'px',
+            'size' => 50,
+        ],
+        'selectors' => [
+            '{{WRAPPER}} {{CURRENT_ITEM}}' => 'width: {{SIZE}}{{UNIT}};',
+        ],
+    ]
+);
+
+$repeater->add_control(
+    'icon_body_height',
+    [
+        'label' => esc_html__('Height', 'magic-elements'),
+        'type' => Controls_Manager::SLIDER,
+        'size_units' => ['px', 'em'],
+        'range' => [
+            'px' => [
+                'min' => 6,
+                'max' => 200,
+            ],
+            'em' => [
+                'min' => 0.5,
+                'max' => 20,
+            ],
+        ],
+        'default' => [
+            'unit' => 'px',
+            'size' => 50,
+        ],
+        'selectors' => [
+            '{{WRAPPER}} {{CURRENT_ITEM}}' => 'height: {{SIZE}}{{UNIT}};',
+        ],
+    ]
+);
+$repeater->add_group_control(
+    \Elementor\Group_Control_Box_Shadow::get_type(),
+    [
+        'name' => 'box_shadow_normal',
+        'selector' => '{{WRAPPER}} {{CURRENT_ITEM}}',
+    ]
+);
+$repeater->add_control(
+    'icon_border_radius',
+    [
+        'label' => esc_html__('Border Radius', 'magic-elements'),
+        'type' => Controls_Manager::DIMENSIONS,
+        'size_units' => ['px', '%'],
+        'selectors' => [
+            '{{WRAPPER}} {{CURRENT_ITEM}}' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+        ],
+    ]
+);
+
+$repeater->end_controls_tab();
+
+// Hover Tab
+$repeater->start_controls_tab(
+    'icon_style_hover_tab',
+    [
+        'label' => esc_html__('Hover', 'magic-elements'),
+    ]
+);
+
+$repeater->add_control(
+    'icon_hover_color',
+    [
+        'label' => esc_html__('Color', 'magic-elements'),
+        'type' => Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} {{CURRENT_ITEM}}:hover svg path' => 'fill: {{VALUE}}',
+        ],
+    ]
+);
+
+$repeater->add_control(
+    'icon_hover_bg_color',
+    [
+        'label' => esc_html__('Background Color', 'magic-elements'),
+        'type' => Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} {{CURRENT_ITEM}}:hover' => 'background-color: {{VALUE}}',
+        ],
+    ]
+);
+// Add this after the hover animation control in your repeater
+$repeater->add_control(
+    'hover_duration',
+    [
+        'label' => esc_html__('Hover Duration', 'magic-elements'),
+        'type' => Controls_Manager::SLIDER,
+        'size_units' => ['ms'],
+        'range' => [
+            'ms' => [
+                'min' => 0,
+                'max' => 2000,
+                'step' => 50,
+            ],
+        ],
+        'default' => [
+            'unit' => 'ms',
+            'size' => 300,
+        ],
+        'selectors' => [
+            '{{WRAPPER}} {{CURRENT_ITEM}}' => 'transition: all {{SIZE}}{{UNIT}} ease;',
+            '{{WRAPPER}} {{CURRENT_ITEM}} svg path' => 'transition: fill {{SIZE}}{{UNIT}} ease;',
+        ],
+    ]
+);
+$repeater->add_control(
+    'icon_hover_animation',
+    [
+        'label' => esc_html__('Hover Animation', 'magic-elements'),
+        'type' => Controls_Manager::HOVER_ANIMATION,
+    ]
+);
+
+// Border Controls
+$repeater->add_group_control(
+    \Elementor\Group_Control_Border::get_type(),
+    [
+        'name' => 'icon_border_hover',
+        'selector' => '{{WRAPPER}} {{CURRENT_ITEM}}:hover',
+        'separator' => 'before',
+    ]
+);
+$repeater->add_group_control(
+    \Elementor\Group_Control_Box_Shadow::get_type(),
+    [
+        'name' => 'box_shadow_hover',
+        'selector' => '{{WRAPPER}} {{CURRENT_ITEM}}:hover',
+    ]
+);
+$repeater->add_control(
+    'icon_border_radius',
+    [
+        'label' => esc_html__('Border Radius', 'magic-elements'),
+        'type' => Controls_Manager::DIMENSIONS,
+        'size_units' => ['px', '%'],
+        'selectors' => [
+            '{{WRAPPER}} {{CURRENT_ITEM}}:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+        ],
+    ]
+);
+$repeater->end_controls_tab();
+
+$repeater->end_controls_tabs();
+
+$this->add_control(
+    'social_icon_list',
+    [
+        'label' => esc_html__('Social Icons', 'magic-elements'),
+        'type' => Controls_Manager::REPEATER,
+        'fields' => $repeater->get_controls(),
+        'default' => [
             [
-                'label' => esc_html__('Icon', 'magic-elements'),
-                'type' => Controls_Manager::ICONS,
-                'default' => [
-                    'value' => 'fab fa-wordpress',
+                'social_icon' => [
+                    'value' => 'fab fa-facebook',
                     'library' => 'fa-brands',
                 ],
-                'recommended' => [
-                    'fa-brands' => [
-                        'facebook',
-                        'twitter',
-                        'linkedin',
-                        'instagram',
-                        'youtube',
-                        'pinterest',
-                    ],
+            ],
+            [
+                'social_icon' => [
+                    'value' => 'fab fa-twitter',
+                    'library' => 'fa-brands',
                 ],
-            ]
-        );
+            ],
+            [
+                'social_icon' => [
+                    'value' => 'fab fa-linkedin',
+                    'library' => 'fa-brands',
+                ],
+            ],
+        ],
+        'title_field' => '<# var migrated = "undefined" !== typeof __fa4_migrated, social = ( "undefined" === typeof social ) ? false : social; #>{{{ elementor.helpers.getSocialNetworkNameFromIcon( social_icon, social, true, migrated, true ) }}}',
+    ]
+);
 
-        $repeater->add_control(
-            'social_link',
-            [
-                'label' => esc_html__('Link', 'magic-elements'),
-                'type' => Controls_Manager::URL,
-                'placeholder' => esc_html__('https://your-link.com', 'magic-elements'),
-                'show_external' => true,
-                'default' => [
-                    'url' => '',
-                    'is_external' => true,
-                    'nofollow' => true,
-                ],
-            ]
-        );
-
-        // Icon Style Controls
-        $repeater->add_control(
-            'icon_color',
-            [
-                'label' => esc_html__('Color', 'magic-elements'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} {{CURRENT_ITEM}} svg path' => 'fill: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $repeater->add_control(
-            'icon_bg_color',
-            [
-                'label' => esc_html__('Background Color', 'magic-elements'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} {{CURRENT_ITEM}}' => 'background-color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $repeater->add_control(
-            'icon_size',
-            [
-                'label' => esc_html__('Size', 'magic-elements'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px', 'em'],
-                'range' => [
-                    'px' => [
-                        'min' => 6,
-                        'max' => 200,
-                    ],
-                    'em' => [
-                        'min' => 0.5,
-                        'max' => 20,
-                    ],
-                ],
-                'default' => [
-					'unit' => 'px',
-					'size' => 25,
-				],
-                'selectors' => [
-                    '{{WRAPPER}} {{CURRENT_ITEM}} svg' => 'width: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $repeater->add_control(
-            'icon_body_width',
-            [
-                'label' => esc_html__('Width', 'magic-elements'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px', 'em'],
-                                'range' => [
-                    'px' => [
-                        'min' => 6,
-                        'max' => 200,
-                    ],
-                    'em' => [
-                        'min' => 0.5,
-                        'max' => 20,
-                    ],
-                ],
-                'default' => [
-					'unit' => 'px',
-					'size' => 50,
-				],
-                'selectors' => [
-                    '{{WRAPPER}} {{CURRENT_ITEM}}' => 'width: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-        $repeater->add_control(
-            'icon_body_height',
-            [
-                'label' => esc_html__('Height', 'magic-elements'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px', 'em'],
-                                'range' => [
-                    'px' => [
-                        'min' => 6,
-                        'max' => 200,
-                    ],
-                    'em' => [
-                        'min' => 0.5,
-                        'max' => 20,
-                    ],
-                ],
-                'default' => [
-					'unit' => 'px',
-					'size' => 50,
-				],
-                'selectors' => [
-                    '{{WRAPPER}} {{CURRENT_ITEM}}' => 'height: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $repeater->add_control(
-            'icon_border_radius',
-            [
-                'label' => esc_html__('Border Radius', 'magic-elements'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%'],
-                'selectors' => [
-                    '{{WRAPPER}} {{CURRENT_ITEM}}' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'social_icon_list',
-            [
-                'label' => esc_html__('Social Icons', 'magic-elements'),
-                'type' => Controls_Manager::REPEATER,
-                'fields' => $repeater->get_controls(),
-                'default' => [
-                    [
-                        'social_icon' => [
-                            'value' => 'fab fa-facebook',
-                            'library' => 'fa-brands',
-                        ],
-                    ],
-                    [
-                        'social_icon' => [
-                            'value' => 'fab fa-twitter',
-                            'library' => 'fa-brands',
-                        ],
-                    ],
-                    [
-                        'social_icon' => [
-                            'value' => 'fab fa-linkedin',
-                            'library' => 'fa-brands',
-                        ],
-                    ],
-                ],
-                'title_field' => '<# var migrated = "undefined" !== typeof __fa4_migrated, social = ( "undefined" === typeof social ) ? false : social; #>{{{ elementor.helpers.getSocialNetworkNameFromIcon( social_icon, social, true, migrated, true ) }}}',
-            ]
-        );
+// ... [rest of your existing controls remain the same] ...
          $this->add_control(
 			'bt_direction',
 			[
@@ -396,16 +543,18 @@ class Team extends Widget_Base
 						'icon' => 'eicon-justify-space-around-h',
 					],
 				],
-				'default' => 'flex-start',
+				'default' => 'center',
 				'toggle' => true,
 				'selectors' => [
 					'{{WRAPPER}} .magic-team-social-icons' => 'justify-content: {{VALUE}};',
 				],
                 'condition' => [
                     'bt_direction' => 'row',
+                    'card_layout_style' => 'style_one',
                 ],
 			]
 		);
+
 		$this->add_control(
 			'button_alinment',
 			[
@@ -428,15 +577,17 @@ class Team extends Widget_Base
 				'default' => 'flex-start',
 				'toggle' => true,
 				'selectors' => [
-					'{{WRAPPER}} .magic-team-social-icons' => 'align-content: {{VALUE}};',
+					'{{WRAPPER}} .magic-team-social-icons' => 'align-items: {{VALUE}};',
 				],
                 'condition' => [
                     'bt_direction' => 'column',
+                    'card_layout_style' => 'style_one',
                 ],
 			]
 		);
-        $this->add_control(
-			'button_self_justify',
+        // style two =========
+		$this->add_control(
+			'button_justify_two',
 			[
 				'label' => esc_html__( 'Justify', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
@@ -454,23 +605,115 @@ class Team extends Widget_Base
 						'icon' => 'eicon-justify-end-h',
 					],
 				],
-				'default' => 'flex-start',
+				'default' => 'center',
 				'toggle' => true,
 				'selectors' => [
-					'{{WRAPPER}} .magic-team-social-icons' => 'justify-content: {{VALUE}};',
+					'{{WRAPPER}} .style-two-img-part' => 'justify-content: {{VALUE}};',
 				],
                 'condition' => [
-                    'bt_direction' => 'column',
+                    // 'bt_direction' => 'row',
+                    'card_layout_style' => 'style_two',
                 ],
 			]
 		);
-        $this->end_controls_section();
+        $this->add_control(
+			'button_alinment_two',
+			[
+				'label' => esc_html__( 'Alinment', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'flex-start' => [
+						'title' => esc_html__( 'Start', 'magic-elements' ),
+						'icon' => 'eicon-align-start-v',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'magic-elements' ),
+						'icon' => 'eicon-align-center-v',
+					],
+					'flex-end' => [
+						'title' => esc_html__( 'End', 'magic-elements' ),
+						'icon' => 'eicon-align-end-v',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .style-two-img-part' => 'align-items: {{VALUE}};',
+				],
+                'condition' => [
+                    // 'bt_direction' => 'row',
+                    'card_layout_style' => 'style_two',
+                ],
+			]
+		);
+
+        $this->add_control(
+			'icon_gap',
+			[
+				'label' => esc_html__( 'Gap', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 5,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .magic-team-social-icons' => 'gap: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+        $this->add_responsive_control(
+            'icon_margin',
+            [
+                'label' => esc_html__( 'Margin', 'magic-elements' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'top' => 0,
+                    'right' => 'auto',
+                    'bottom' => 0,
+                    'left' => 'auto',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .magic-team-social-icons' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}} {{BOTTOM}}{{UNIT}} {{LEFT}};',
+                ],
+            ]
+        );
+
+
+$this->end_controls_section();
         
         $this->start_controls_section(
             'card_style_section',
             [
                 'label' => esc_html__( 'Card Design', 'magic-elements' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+         $this->add_control(
+            'card_layout_style',
+            [
+                'label'   => esc_html__('Style', 'magic-elements'),
+                'type'    => \Elementor\Controls_Manager::SELECT,
+                'default' => 'style_one',
+                'options' => [
+                    'style_one' => esc_html__('Style One', 'magic-elements'),
+                    'style_two' => esc_html__('Style Two', 'magic-elements'),
+                ],
             ]
         );
         $this->add_control(
@@ -546,6 +789,32 @@ class Team extends Widget_Base
 				'selectors' => [
 					'{{WRAPPER}} .me-team-wrapper .team-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
+			]
+		);
+        $this->add_responsive_control(
+			'card_border_radius',
+			[
+				'label' => esc_html__( 'Radius', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 0,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .me-team-wrapper .team-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'team_card_box_shadow',
+				'selector' => '{{WRAPPER}} .me-team-wrapper .team-card',
 			]
 		);
         $this->end_controls_section();
@@ -878,7 +1147,215 @@ class Team extends Widget_Base
             ],
         ]
     );
-    
+    $this->end_controls_section();
+
+
+    $this->start_controls_section(
+        'social_icon_style',
+        [
+            'label' => esc_html__( 'Social Icons', 'magic-elements' ),
+            'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+        ]
+    );
+
+
+    $this->start_controls_tabs(
+			'icons_style_tabs'
+		);
+
+    $this->start_controls_tab(
+        'icon_style_normal_tab',
+        [
+            'label' => esc_html__( 'Normal', 'magic-elements' ),
+        ]
+    );
+
+    $this->add_control(
+        'icons_container_bg',
+        [
+            'label' => esc_html__( 'Background', 'magic-elements' ),
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .icon-part' => 'background-color: {{VALUE}}',
+            ],
+        ]
+    );
+    $this->add_control(
+        'icos_opacity',
+        [
+            'label' => esc_html__( 'Icons Opacity', 'magic-elements' ),
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'range' => [
+                '' => [
+                    'min' => 0,
+                    'max' => 1,
+                    'step' => 0.01,
+                ],
+            ],
+            'default' => [
+                'size' => 1,
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .icon-part' => 'opacity: {{SIZE}};',
+            ],
+        ]
+    );
+
+
+    $this->add_control(
+        'icons_container_margin',
+        [
+            'label' => esc_html__( 'Margin', 'magic-elements' ),
+            'type' => \Elementor\Controls_Manager::DIMENSIONS,
+            'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+            'default' => [
+                'top' => 0,
+                'right' => 0,
+                'bottom' => 0,
+                'left' => 0,
+                'unit' => 'px',
+                'isLinked' => false,
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .icon-part' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
+    $this->add_control(
+        'icons_container_padding',
+        [
+            'label' => esc_html__( 'Padding', 'magic-elements' ),
+            'type' => \Elementor\Controls_Manager::DIMENSIONS,
+            'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+            'default' => [
+                'top' => 0,
+                'right' => 0,
+                'bottom' => 0,
+                'left' => 0,
+                'unit' => 'px',
+                'isLinked' => false,
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .icon-part' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
+    $this->add_group_control(
+        \Elementor\Group_Control_Border::get_type(),
+        [
+            'name' => 'social_container_border',
+            'selector' => '{{WRAPPER}} .icon-part',
+        ]
+    );
+    $this->add_control(
+        'icons_container_radius',
+        [
+            'label' => esc_html__( 'Radius', 'magic-elements' ),
+            'type' => \Elementor\Controls_Manager::DIMENSIONS,
+            'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+            'default' => [
+                'top' => 0,
+                'right' => 0,
+                'bottom' => 0,
+                'left' => 0,
+                'unit' => 'px',
+                'isLinked' => false,
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .icon-part' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
+    $this->add_group_control(
+        \Elementor\Group_Control_Box_Shadow::get_type(),
+        [
+            'name' => 'social_icons_container_box_shadow',
+            'selector' => '{{WRAPPER}} .icon-part',
+        ]
+    );
+
+    $this->end_controls_tab();
+
+    $this->start_controls_tab(
+        'icon_style_hover_tab',
+        [
+            'label' => esc_html__( 'Hover', 'magic-elements' ),
+        ]
+    );
+    $this->add_control(
+        'icos_opacity_hover',
+        [
+            'label' => esc_html__( 'Icons Opacity', 'magic-elements' ),
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'range' => [
+                '' => [
+                    'min' => 0,
+                    'max' => 1,
+                    'step' => 0.01,
+                ],
+            ],
+            'default' => [
+                'size' => 1,
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .team-card:hover .icon-part' => 'opacity: {{SIZE}};',
+            ],
+        ]
+    );
+    $this->add_control(
+        'icons_container_margin_hover',
+        [
+            'label' => esc_html__( 'Margin', 'magic-elements' ),
+            'type' => \Elementor\Controls_Manager::DIMENSIONS,
+            'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+            'default' => [
+                'top' => 0,
+                'right' => 0,
+                'bottom' => 0,
+                'left' => 0,
+                'unit' => 'px',
+                'isLinked' => false,
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .team-card:hover .icon-part' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
+    $this->add_control(
+        'img_overlay',
+        [
+            'label' => esc_html__( 'Img Overlay', 'magic-elements' ),
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .team-card:hover .img-overlay' => 'background-color: {{VALUE}}',
+            ],
+        ]
+    );
+    $this->add_control(
+        'img_hover_duration',
+        [
+            'label' => esc_html__('Hover Duration', 'magic-elements'),
+            'type' => Controls_Manager::SLIDER,
+            'size_units' => ['ms'],
+            'range' => [
+                'ms' => [
+                    'min' => 0,
+                    'max' => 2000,
+                    'step' => 50,
+                ],
+            ],
+            'default' => [
+                'unit' => 'ms',
+                'size' => 300,
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .img-overlay, .icon-part' => 'transition: all {{SIZE}}{{UNIT}} ease;',
+            ],
+        ]
+    );
+    $this->end_controls_tab();
+
+    $this->end_controls_tabs();
     $this->end_controls_section();
 
  
@@ -898,7 +1375,23 @@ class Team extends Widget_Base
     {
         $settings = $this->get_settings_for_display();
 		
-        include __DIR__ . '/layouts/team/team.php';
+        $layout_style = $settings['card_layout_style'];
+        $file_path    = __DIR__ . '/layouts/team/';
+
+        switch ($layout_style) {
+            case 'style_two': 
+                $file_path .= 'team_style_two.php';
+                break;
+
+            case 'style_one': 
+                 default    : 
+                $file_path .= 'team_style_one.php';
+                break;
+        }
+
+        if (file_exists($file_path)) {
+            include $file_path;
+        } 
     }
 
         /**

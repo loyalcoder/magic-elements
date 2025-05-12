@@ -3,7 +3,6 @@
     <div class="img-part">
       <?php
       if ( ! empty( $settings['team_image']['id'] )) {
-          // If image is from Media Library (has ID), use Group_Control_Image_Size
           echo wp_kses(
               \Elementor\Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail', 'team_image' ),
               array(
@@ -32,23 +31,25 @@
                 <?php
                 $link_key = 'link_' . $index;
                 $this->add_link_attributes($link_key, $item['social_link']);
+                $hover_animation = '';
+                if (!empty($item['icon_hover_animation'])) {
+                    $hover_animation = ' elementor-animation-' . $item['icon_hover_animation'];
+                }
                 ?>
-                <a <?php echo $this->get_render_attribute_string($link_key); ?> class="elementor-repeater-item-<?php echo esc_attr($item['_id']); ?>">
-                    <!-- <div class="i-box"> -->
-                      <?php \Elementor\Icons_Manager::render_icon($item['social_icon'], ['aria-hidden' => 'true']); ?>
-                    <!-- </div> -->
+                <a <?php echo $this->get_render_attribute_string($link_key); ?> class="elementor-repeater-item-<?php echo esc_attr($item['_id']); ?><?php echo esc_attr($hover_animation); ?>">
+                    <?php \Elementor\Icons_Manager::render_icon($item['social_icon'], ['aria-hidden' => 'true']); ?>
                 </a>
             <?php endforeach; ?>
         </div>
       <?php endif; ?>
-      </div>
+    </div>
     <div class="content-part">
       <h3 class="team-title">
-        <?php echo $settings['team_title']; ?>
+        <?php echo esc_html($settings['team_title']); ?>
       </h3>
-        <p class="team-des">
-          <?php echo $settings['team_description']; ?>
-        </p>
+      <p class="team-des">
+        <?php echo esc_html($settings['team_description']); ?>
+      </p>
     </div>
   </div>
 </div>
