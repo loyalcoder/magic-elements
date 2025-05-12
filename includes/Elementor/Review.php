@@ -162,6 +162,18 @@ class Review extends Widget_Base
                     'value' => 'fas fa-star',
                     'library' => 'solid',
                 ],
+				'recommended' => [
+					'fa-solid' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+					'fa-regular' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+				],
             ]
         );
         $this->add_control(
@@ -173,6 +185,18 @@ class Review extends Widget_Base
                     'value' => 'fas fa-star-half-alt',
                     'library' => 'solid',
                 ],
+				'recommended' => [
+					'fa-solid' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+					'fa-regular' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+				],
             ]
         );
         $this->add_control(
@@ -184,6 +208,18 @@ class Review extends Widget_Base
                     'value' => 'far fa-star',
                     'library' => 'regular',
                 ],
+				'recommended' => [
+					'fa-solid' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+					'fa-regular' => [
+						'circle',
+						'dot-circle',
+						'square-full',
+					],
+				],
             ]
         );
         $this->end_controls_section();
