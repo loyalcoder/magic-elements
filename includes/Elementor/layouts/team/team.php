@@ -25,14 +25,7 @@
       }
       ?>
     </div>
-    <div class="content-part">
-      <h3 class="team-title">
-        <?php echo $settings['team_title']; ?>
-      </h3>
-        <p class="team-des">
-          <?php echo $settings['team_description']; ?>
-        </p>
-      <div class="icon-part">
+    <div class="icon-part">
       <?php if (!empty($settings['social_icon_list'])) : ?>
         <div class="magic-team-social-icons">
             <?php foreach ($settings['social_icon_list'] as $index => $item) : ?>
@@ -49,6 +42,13 @@
         </div>
       <?php endif; ?>
       </div>
+    <div class="content-part">
+      <h3 class="team-title">
+        <?php echo $settings['team_title']; ?>
+      </h3>
+        <p class="team-des">
+          <?php echo $settings['team_description']; ?>
+        </p>
     </div>
   </div>
 </div>

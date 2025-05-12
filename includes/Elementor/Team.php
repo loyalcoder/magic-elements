@@ -213,7 +213,7 @@ class Team extends Widget_Base
                 'label' => esc_html__('Color', 'magic-elements'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} {{CURRENT_ITEM}} i' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} {{CURRENT_ITEM}} svg path' => 'fill: {{VALUE}}',
                 ],
             ]
         );
@@ -238,33 +238,70 @@ class Team extends Widget_Base
                 'range' => [
                     'px' => [
                         'min' => 6,
-                        'max' => 50,
+                        'max' => 200,
                     ],
                     'em' => [
                         'min' => 0.5,
-                        'max' => 3,
+                        'max' => 20,
                     ],
                 ],
+                'default' => [
+					'unit' => 'px',
+					'size' => 25,
+				],
                 'selectors' => [
-                    '{{WRAPPER}} {{CURRENT_ITEM}} i' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} {{CURRENT_ITEM}} svg' => 'width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
 
         $repeater->add_control(
-            'icon_padding',
+            'icon_body_width',
             [
-                'label' => esc_html__('Padding', 'magic-elements'),
+                'label' => esc_html__('Width', 'magic-elements'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
-                'range' => [
+                                'range' => [
                     'px' => [
-                        'min' => 0,
-                        'max' => 50,
+                        'min' => 6,
+                        'max' => 200,
+                    ],
+                    'em' => [
+                        'min' => 0.5,
+                        'max' => 20,
                     ],
                 ],
+                'default' => [
+					'unit' => 'px',
+					'size' => 50,
+				],
                 'selectors' => [
-                    '{{WRAPPER}} {{CURRENT_ITEM}}' => 'padding: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} {{CURRENT_ITEM}}' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+        $repeater->add_control(
+            'icon_body_height',
+            [
+                'label' => esc_html__('Height', 'magic-elements'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em'],
+                                'range' => [
+                    'px' => [
+                        'min' => 6,
+                        'max' => 200,
+                    ],
+                    'em' => [
+                        'min' => 0.5,
+                        'max' => 20,
+                    ],
+                ],
+                'default' => [
+					'unit' => 'px',
+					'size' => 50,
+				],
+                'selectors' => [
+                    '{{WRAPPER}} {{CURRENT_ITEM}}' => 'height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -310,7 +347,123 @@ class Team extends Widget_Base
                 'title_field' => '<# var migrated = "undefined" !== typeof __fa4_migrated, social = ( "undefined" === typeof social ) ? false : social; #>{{{ elementor.helpers.getSocialNetworkNameFromIcon( social_icon, social, true, migrated, true ) }}}',
             ]
         );
-
+         $this->add_control(
+			'bt_direction',
+			[
+				'label' => esc_html__( 'Direction', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'row' => [
+						'title' => esc_html__( 'Row', 'magic-elements' ),
+						'icon' => 'eicon-arrow-right',
+					],
+					'column' => [
+						'title' => esc_html__( 'Column', 'magic-elements' ),
+						'icon' => 'eicon-arrow-down',
+					],
+				],
+				'default' => 'row',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .magic-team-social-icons' => 'flex-direction: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_control(
+			'button_justify',
+			[
+				'label' => esc_html__( 'Justify', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'flex-start' => [
+						'title' => esc_html__( 'Start', 'magic-elements' ),
+						'icon' => 'eicon-justify-start-h',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'magic-elements' ),
+						'icon' => 'eicon-justify-center-h',
+					],
+					'flex-end' => [
+						'title' => esc_html__( 'End', 'magic-elements' ),
+						'icon' => 'eicon-justify-end-h',
+					],
+					'space-between' => [
+						'title' => esc_html__( 'Space Between', 'magic-elements' ),
+						'icon' => 'eicon-justify-space-between-h',
+					],
+					'space-around' => [
+						'title' => esc_html__( 'Space Around', 'magic-elements' ),
+						'icon' => 'eicon-justify-space-around-h',
+					],
+				],
+				'default' => 'flex-start',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .magic-team-social-icons' => 'justify-content: {{VALUE}};',
+				],
+                'condition' => [
+                    'bt_direction' => 'row',
+                ],
+			]
+		);
+		$this->add_control(
+			'button_alinment',
+			[
+				'label' => esc_html__( 'Alinment', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'flex-start' => [
+						'title' => esc_html__( 'Start', 'magic-elements' ),
+						'icon' => 'eicon-justify-start-h',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'magic-elements' ),
+						'icon' => 'eicon-justify-center-h',
+					],
+					'flex-end' => [
+						'title' => esc_html__( 'End', 'magic-elements' ),
+						'icon' => 'eicon-justify-end-h',
+					],
+				],
+				'default' => 'flex-start',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .magic-team-social-icons' => 'align-content: {{VALUE}};',
+				],
+                'condition' => [
+                    'bt_direction' => 'column',
+                ],
+			]
+		);
+        $this->add_control(
+			'button_self_justify',
+			[
+				'label' => esc_html__( 'Justify', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'flex-start' => [
+						'title' => esc_html__( 'Start', 'magic-elements' ),
+						'icon' => 'eicon-justify-start-h',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'magic-elements' ),
+						'icon' => 'eicon-justify-center-h',
+					],
+					'flex-end' => [
+						'title' => esc_html__( 'End', 'magic-elements' ),
+						'icon' => 'eicon-justify-end-h',
+					],
+				],
+				'default' => 'flex-start',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .magic-team-social-icons' => 'justify-content: {{VALUE}};',
+				],
+                'condition' => [
+                    'bt_direction' => 'column',
+                ],
+			]
+		);
         $this->end_controls_section();
         
         $this->start_controls_section(
@@ -353,7 +506,7 @@ class Team extends Widget_Base
 					'size' => 250,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .me-team-wrapper .team-card' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .me-team-wrapper .team-card' => 'max-width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -642,7 +795,7 @@ class Team extends Widget_Base
         ]
     );
     $this->add_control(
-        'text+content_align',
+        'text_content_align',
         [
             'label' => esc_html__( 'Alignment', 'magic-elements' ),
             'type' => \Elementor\Controls_Manager::CHOOSE,
@@ -727,6 +880,8 @@ class Team extends Widget_Base
     );
     
     $this->end_controls_section();
+
+ 
 
 
     }
