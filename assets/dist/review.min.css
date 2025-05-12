@@ -1,4 +1,9 @@
 /*!**********************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/review.scss ***!
   \**********************************************************************************************************************/
+.review-wapper {
+  box-shadow: 0 3px 40px rgba(36, 36, 36, 0.1);
+  border-radius: 8px;
+}
 
+/*# sourceMappingURL=review.min.css.map*/

@@ -1,4 +1,9 @@
 /*!**********************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/review.scss ***!
   \**********************************************************************************************************************/
+.review-wapper {
+  box-shadow: 0 3px 40px rgba(36, 36, 36, 0.1);
+  border-radius: 8px;
+}
 
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicmV2aWV3LmNzcyIsIm1hcHBpbmdzIjoiOzs7QUFBQTtFQUNJO0VBQ0E7QUFDSixDIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vZWxlbWVudG9yLW1hZ2ljLWtpdC8uL2Fzc2V0cy9zcmMvc2Nzcy9yZXZpZXcuc2NzcyJdLCJzb3VyY2VzQ29udGVudCI6WyIucmV2aWV3LXdhcHBlcntcclxuICAgIGJveC1zaGFkb3c6IDAgM3B4IDQwcHggcmdiYSgzNiwgMzYsIDM2LCAuMSk7XHJcbiAgICBib3JkZXItcmFkaXVzOiA4cHg7XHJcbn0iXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=*/

@@ -187,7 +187,7 @@ class Review extends Widget_Base
             ]
         );
         $this->end_controls_section();
-		
+
         //Reviewer
         $this->start_controls_section(
             'reviewer_content_section',
@@ -417,7 +417,7 @@ class Review extends Widget_Base
 				'label' => esc_html__( 'Icon Color', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .review-wapper .review svg' => 'fill: {{VALUE}}',
+					'{{WRAPPER}} .review-wapper .review svg' => 'fill: {{VALUE}}','{{WRAPPER}} .review-wapper .review i' => 'color: {{VALUE}}'
 				],
 			]
 		);
@@ -439,7 +439,7 @@ class Review extends Widget_Base
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .review-wapper .review svg' => 'margin-top: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .review-wapper .review svg' => 'margin-top: {{SIZE}}{{UNIT}};','{{WRAPPER}} .review-wapper .review i' => 'margin-top: {{SIZE}}{{UNIT}};'
 				],
 			]
 		);
