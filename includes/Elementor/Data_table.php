@@ -170,7 +170,6 @@ class Data_table extends Widget_Base
                 'label' => __('Table Rows', 'text-domain'),
             ]
         );
-        
         $this->add_control(
             'table_rows',
             [
