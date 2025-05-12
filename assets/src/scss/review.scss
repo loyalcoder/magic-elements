@@ -1,4 +1,13 @@
 .review-wapper{
     box-shadow: 0 3px 40px rgba(36, 36, 36, .1);
     border-radius: 8px;
+    .reviewer{
+        img{
+            border-radius: 100%;
+        }
+        p{
+            font-size: 16px;
+            font-weight: 400;
+        }
+    }
 }

@@ -471,7 +471,7 @@ class Review extends Widget_Base
 				],
 				'default' => [
 					'unit' => 'px',
-					'size' => 150,
+					'size' => 80,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .reviewer img' => 'width: {{SIZE}}{{UNIT}};',
@@ -497,7 +497,7 @@ class Review extends Widget_Base
 				],
 				'default' => [
 					'unit' => 'px',
-					'size' => 100,
+					'size' => 80,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .reviewer img' => 'height: {{SIZE}}{{UNIT}};',
@@ -531,14 +531,6 @@ class Review extends Widget_Base
 				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'default' => [
-					'top' => 0,
-					'right' => 0,
-					'bottom' => 0,
-					'left' => 0,
-					'unit' => 'px',
-					'isLinked' => false,
-				],
 				'selectors' => [
 					'{{WRAPPER}} .reviewer img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
