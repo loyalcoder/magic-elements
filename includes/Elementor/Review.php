@@ -254,11 +254,24 @@ class Review extends Widget_Base
         $this->add_control(
 			'reviewer_description',
 			[
-				'label' => esc_html__( 'Description', 'magic-elements' ),
+				'label' => esc_html__( 'Review', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'rows' => 5,
 				'default' => esc_html__( 'Absolutely fantastic! Exceeded my expectations in every way', 'magic-elements' ),
 				'placeholder' => esc_html__( 'Type your description here', 'magic-elements' ),
+			]
+		);
+		$this->add_control(
+			'review_position',
+			[
+				'label' => esc_html__( 'Review Position', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'before',
+				'options' => [
+					'before' => esc_html__( 'Before Rating', 'magic-elements' ),
+					'after' => esc_html__( 'After Rating', 'magic-elements' ),
+				],
+				'style_transfer' => true,
 			]
 		);
         $this->add_control(
