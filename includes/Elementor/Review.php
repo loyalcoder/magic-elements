@@ -88,7 +88,11 @@ class Review extends Widget_Base
 
     public function get_script_depends()
     {
-        return [];
+        return ['emkit-review'];
+    }
+	    public function get_style_depends()
+    {
+        return ['emk-review'];
     }
 
         /**
@@ -118,18 +122,17 @@ class Review extends Widget_Base
             ]
         );
         $this->add_control(
-            'rating_value',
+            'rating',
             [
                 'label' => esc_html__('Rating', 'magic-elements'),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'min' => 0,
                 'max' => 5,
                 'step' => 0.5,
-                'default' => 3,
+                'default' => 3.5,
             ]
         );
-
-        $this->add_responsive_control(
+		$this->add_responsive_control(
             'star_size',
             [
                 'label' => esc_html__('Star Size', 'magic-elements'),
@@ -146,12 +149,45 @@ class Review extends Widget_Base
                     'size' => 15,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .review-wapper .review i' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .review-wapper .review svg' => 'width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
-
+        $this->add_control(
+            'full_star_icon',
+            [
+                'label' => esc_html__('Full Star Icon', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::ICONS,
+                'default' => [
+                    'value' => 'fas fa-star',
+                    'library' => 'solid',
+                ],
+            ]
+        );
+        $this->add_control(
+            'half_star_icon',
+            [
+                'label' => esc_html__('Half Star Icon', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::ICONS,
+                'default' => [
+                    'value' => 'fas fa-star-half-alt',
+                    'library' => 'solid',
+                ],
+            ]
+        );
+        $this->add_control(
+            'empty_star_icon',
+            [
+                'label' => esc_html__('Empty Star Icon', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::ICONS,
+                'default' => [
+                    'value' => 'far fa-star',
+                    'library' => 'regular',
+                ],
+            ]
+        );
         $this->end_controls_section();
+
         //Reviewer
         $this->start_controls_section(
             'reviewer_content_section',
@@ -381,7 +417,7 @@ class Review extends Widget_Base
 				'label' => esc_html__( 'Icon Color', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .review-wapper .review i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .review-wapper .review svg' => 'fill: {{VALUE}}','{{WRAPPER}} .review-wapper .review i' => 'color: {{VALUE}}'
 				],
 			]
 		);
@@ -403,7 +439,7 @@ class Review extends Widget_Base
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .review-wapper .review i' => 'margin-top: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .review-wapper .review svg' => 'margin-top: {{SIZE}}{{UNIT}};','{{WRAPPER}} .review-wapper .review i' => 'margin-top: {{SIZE}}{{UNIT}};'
 				],
 			]
 		);
@@ -435,7 +471,7 @@ class Review extends Widget_Base
 				],
 				'default' => [
 					'unit' => 'px',
-					'size' => 150,
+					'size' => 80,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .reviewer img' => 'width: {{SIZE}}{{UNIT}};',
@@ -461,7 +497,7 @@ class Review extends Widget_Base
 				],
 				'default' => [
 					'unit' => 'px',
-					'size' => 100,
+					'size' => 80,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .reviewer img' => 'height: {{SIZE}}{{UNIT}};',
@@ -495,14 +531,6 @@ class Review extends Widget_Base
 				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'default' => [
-					'top' => 0,
-					'right' => 0,
-					'bottom' => 0,
-					'left' => 0,
-					'unit' => 'px',
-					'isLinked' => false,
-				],
 				'selectors' => [
 					'{{WRAPPER}} .reviewer img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -697,11 +725,18 @@ class Review extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        $rating = floatval($settings['rating_value']);
+         $rating = (float) $settings['rating'];
+        
+        // Calculate stars
         $full_stars = floor($rating);
         $has_half_star = ($rating - $full_stars) >= 0.5;
         $empty_stars = 5 - $full_stars - ($has_half_star ? 1 : 0);
-    
+        
+        // Get icons
+        $full_star_icon = $settings['full_star_icon']['value'];
+        $half_star_icon = $settings['half_star_icon']['value'];
+        $empty_star_icon = $settings['empty_star_icon']['value'];
+
         include __DIR__ . '/layouts/Review/review.php';
         
     }

@@ -20,18 +20,20 @@
     </div>
     <div class="review">
         <?php 
-            // Full stars
-            for ($i = 0; $i < $full_stars; $i++) {
-                echo '<i class="fas fa-star active"></i>';
-            }
-            // Half star
-            if ($has_half_star) {
-                echo '<i class="fas fa-star-half-alt active"></i>';
-            }
-            // Empty stars
-            for ($i = 0; $i < $empty_stars; $i++) {
-                echo '<i class="far fa-star"></i>';
-            }
+           // Full stars
+        for ($i = 0; $i < $full_stars; $i++) {
+            \Elementor\Icons_Manager::render_icon($settings['full_star_icon'], ['class' => 'active']);
+        }
+        
+        // Half star
+        if ($has_half_star) {
+            \Elementor\Icons_Manager::render_icon($settings['half_star_icon'], ['class' => 'active']);
+        }
+        
+        // Empty stars
+        for ($i = 0; $i < $empty_stars; $i++) {
+            \Elementor\Icons_Manager::render_icon($settings['empty_star_icon'], []);
+        }
         ?>
     </div>
 </div>

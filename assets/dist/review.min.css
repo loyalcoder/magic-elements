@@ -1,0 +1,16 @@
+/*!**********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/review.scss ***!
+  \**********************************************************************************************************************/
+.review-wapper {
+  box-shadow: 0 3px 40px rgba(36, 36, 36, 0.1);
+  border-radius: 8px;
+}
+.review-wapper .reviewer img {
+  border-radius: 100%;
+}
+.review-wapper .reviewer p {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/*# sourceMappingURL=review.min.css.map*/
