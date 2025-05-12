@@ -29,11 +29,11 @@ class News_Ticker extends Widget_Base
     }
 
     public function get_style_depends() {
-        return ['emk-news-ticker', 'emk-slick'];
+        return ['emk-news-ticker', 'slick'];
     }
 
     public function get_script_depends() {
-        return ['emkit-news-ticker', 'jquery', 'emkit-slick'];
+        return ['emkit-news-ticker', 'jquery', 'slick'];
     }
 
     protected function register_controls() {
@@ -209,6 +209,18 @@ class News_Ticker extends Widget_Base
             'speed',
             [
                 'label' => esc_html__('Scroll Speed (ms)', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::NUMBER,
+                'default' => 3000,
+                'min' => 500,
+                'max' => 10000,
+                'step' => 100,
+            ]
+        );
+
+        $this->add_control(
+            'autoplay_speed',
+            [
+                'label' => esc_html__('Autoplay Speed', 'magic-elements'),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 3000,
                 'min' => 500,
@@ -411,17 +423,26 @@ class News_Ticker extends Widget_Base
     protected function render() {
         $settings = $this->get_settings_for_display();
         $id = 'mst-' . $this->get_id();
+        // echo '<pre>';
+        // print_r($id);
+        // echo '</pre>';
+        
 
         // Slider settings for JS
         $slider_settings = [
             'direction' => $settings['direction'] === 'vertical',
             'autoplay' => $settings['autoplay'] === 'yes',
             'speed' => $settings['speed'],
+            'autoplaySpeed' => $settings['autoplay_speed'],
             'pauseOnHover' => $settings['pause_on_hover'] === 'yes',
             'arrows' => $settings['show_arrows'] === 'yes',
             'infinite' => $settings['infinite_loop'] === 'yes',
             'rtl' => $settings['title_position'] === 'right' // Right-to-left for right position
         ];
+        // echo '<pre>';
+        // print_r($slider_settings);
+        // echo '</pre>';
+        
 
         $this->add_render_attribute('ticker-container', [
             'id' => $id,

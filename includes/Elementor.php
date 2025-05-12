@@ -153,7 +153,7 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/news_ticker.js'),
                 'deps'    => ['jquery']
             ],
-            'emkit-slick' => [
+            'slick' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/vendor/slick/slick.min.js',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendor/slick/slick.min.js'),
                 'deps'    => ['jquery']
@@ -238,11 +238,11 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/news_ticker.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/news_ticker.css'),
             ],
-            'emk-slick' => [
+            'slick' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/vendor/slick/slick.scss',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendor/slick/slick.scss'),
             ],
-            'emk-slick-theme' => [
+            'slick-theme' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/vendor/slick/slick-theme.scss',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendor/slick/slick-theme.scss'),
             ],

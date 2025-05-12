@@ -26,10 +26,12 @@ import "./../scss/news_ticker.scss";
             verticalSwiping: settings.direction,
             autoplay: settings.autoplay,
             autoplaySpeed: settings.speed,
+            speed: settings.autoplaySpeed,
             pauseOnHover: settings.pauseOnHover,
             arrows: settings.arrows,
             infinite: settings.infinite,
             rtl: settings.rtl,
+            cssEase: 'linear',
             prevArrow: $ticker.find('.mst-prev'),
             nextArrow: $ticker.find('.mst-next')
         });
