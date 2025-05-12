@@ -148,6 +148,11 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/light_box.js'),
                 'deps'    => ['jquery']
             ],
+            'emkit-review' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/review.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/review.js'),
+                'deps'    => ['jquery']
+            ],
         ];
     }
     /**
@@ -227,6 +232,10 @@ class Load_Elementor
             'emk-light-box' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/light_box.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/light_box.css'),
+            ],
+            'emk-review' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/review.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/review.css'),
             ],
         ];
     }
