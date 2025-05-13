@@ -293,7 +293,6 @@ class Review extends Widget_Base
 			]
 		);
         $this->end_controls_section();
-
         // Style section
         $this->start_controls_section(
             'review_box_style_section',
@@ -302,6 +301,20 @@ class Review extends Widget_Base
                  'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
              ]
          );
+		 $this->add_control(
+			'image_position',
+			[
+				'label' => esc_html__( 'Image Position', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'options' => [
+					'top' => esc_html__( 'Top', 'magic-elements' ),
+					'left' => esc_html__( 'Left', 'magic-elements' ),
+					'right' => esc_html__( 'Right', 'magic-elements' ),
+					'bottom' => esc_html__( 'Bottom', 'magic-elements' ),
+				],
+				'default' => 'top',
+			]
+		);
          //start normal hover
          $this->start_controls_tabs(
             'style_tabs'
