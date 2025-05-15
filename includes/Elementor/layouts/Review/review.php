@@ -28,7 +28,7 @@
             if ($has_half_star) {
                 \Elementor\Icons_Manager::render_icon($settings['half_star_icon'], ['class' => 'active']);
             }
-            // Empty star
+            // Empty stars
             for ($i = 0; $i < $empty_stars; $i++) {
                 \Elementor\Icons_Manager::render_icon($settings['empty_star_icon'], []);
             }
