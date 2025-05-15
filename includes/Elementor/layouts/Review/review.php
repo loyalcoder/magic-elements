@@ -14,7 +14,11 @@
                 )
             );
         ?>
-        <p><?php echo esc_html($settings['reviewer_description']); ?></p>
+        
+        <?php if ('before_name' === $settings['description_position']) : ?>
+            <p><?php echo esc_html($settings['reviewer_description']); ?></p>
+        <?php endif; ?>
+        
         <h5><?php echo esc_html($settings['reviewer_name']); ?></h5>
         <h6><?php echo esc_html($settings['reviewer_title']); ?></h6>
     </div>
@@ -34,4 +38,7 @@
             }
         ?>
     </div>
+        <?php if ('after_name' === $settings['description_position']) : ?>
+            <p class="after_rating"><?php echo esc_html($settings['reviewer_description']); ?></p>
+        <?php endif; ?>
 </div>
