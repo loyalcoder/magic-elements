@@ -201,6 +201,10 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/accordion.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/accordion.css'),
             ],
+            'emkit-team' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/team.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/team.css'),
+            ],
             'emk-tab' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/tab.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/tab.css'),
@@ -248,6 +252,7 @@ class Load_Elementor
             'Image',
             'Button',
             'Pricing_Table',
+            'Team',
             'Text_Editor',
             'Image_Accordion',
             'Flip_Card',
@@ -275,6 +280,7 @@ class Load_Elementor
             'image',
             'button',
             'pricingtable',
+            'team',
             'texteditor',
             'imageaccordion',
             'flipcard',
