@@ -153,6 +153,11 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/review.js'),
                 'deps'    => ['jquery']
             ],
+            'emkit-image-compare' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/image_compare.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/image_compare.js'),
+                'deps'    => ['jquery']
+            ],
         ];
     }
     /**
@@ -236,6 +241,10 @@ class Load_Elementor
             'emk-review' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/review.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/review.css'),
+            ],
+            'emk-image-compare' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/image_compare.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/image_compare.css'),
             ],
         ];
     }

@@ -88,7 +88,11 @@ class Image_Compare extends Widget_Base
 
     public function get_script_depends()
     {
-        return [];
+        return ['emkit-image-compare','jquery'];
+    }
+       public function get_style_depends()
+    {
+        return ['emk-image-compare'];
     }
 
         /**
@@ -110,17 +114,117 @@ class Image_Compare extends Widget_Base
      */
     protected function register_image_compare_controls()
     {
+               // Content Tab
         $this->start_controls_section(
-			'image_compare_content_section',
-			[
-				'label' => esc_html__( 'Image Compare', 'magic-elements' ),
-				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
-			]
-		);
+            'content_section',
+            [
+                'label' => __('Image Settings', 'elementor-image-compare'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'before_image',
+            [
+                'label' => __('Before Image', 'elementor-image-compare'),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'before_label',
+            [
+                'label' => __('Before Label', 'elementor-image-compare'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => __('Before', 'elementor-image-compare'),
+                'placeholder' => __('Before', 'elementor-image-compare'),
+            ]
+        );
+
+        $this->add_control(
+            'after_image',
+            [
+                'label' => __('After Image', 'elementor-image-compare'),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'after_label',
+            [
+                'label' => __('After Label', 'elementor-image-compare'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => __('After', 'elementor-image-compare'),
+                'placeholder' => __('After', 'elementor-image-compare'),
+            ]
+        );
+
+        $this->add_control(
+            'orientation',
+            [
+                'label' => __('Orientation', 'elementor-image-compare'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'horizontal',
+                'options' => [
+                    'horizontal' => __('Horizontal', 'elementor-image-compare'),
+                    'vertical' => __('Vertical', 'elementor-image-compare'),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'default_offset',
+            [
+                'label' => __('Default Offset', 'elementor-image-compare'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['%'],
+                'range' => [
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => '%',
+                    'size' => 50,
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'no_overlay',
+            [
+                'label' => __('No Overlay?', 'elementor-image-compare'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __('Yes', 'elementor-image-compare'),
+                'label_off' => __('No', 'elementor-image-compare'),
+                'return_value' => 'yes',
+                'default' => 'no',
+            ]
+        );
+
+        $this->add_control(
+            'move_slider_on_hover',
+            [
+                'label' => __('Move on Hover?', 'elementor-image-compare'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __('Yes', 'elementor-image-compare'),
+                'label_off' => __('No', 'elementor-image-compare'),
+                'return_value' => 'yes',
+                'default' => 'no',
+            ]
+        );
 
         $this->end_controls_section();
 
-            // Style section
+
+        // Style section
         $this->start_controls_section(
             'image_compare_style_section',
 			[
@@ -145,7 +249,19 @@ class Image_Compare extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+        $this->add_render_attribute('image-compare', 'class', 'image-compare-container');
+        $this->add_render_attribute('image-compare', 'data-orientation', $settings['orientation']);
+        $this->add_render_attribute('image-compare', 'data-offset', $settings['default_offset']['size'] / 100);
+        $this->add_render_attribute('image-compare', 'data-overlay', ('yes' === $settings['no_overlay']) ? 'false' : 'true');
+        $this->add_render_attribute('image-compare', 'data-hover', ('yes' === $settings['move_slider_on_hover']) ? 'true' : 'false');
+
+
         include __DIR__ . '/layouts/Image-Compare/image-compare.php';
+
+      
+
+
+        
     }
 
         /**
