@@ -330,6 +330,65 @@ class Light_Box extends Widget_Base
             'tab' => \Elementor\Controls_Manager::TAB_STYLE,
         ]
     );
+    $this->add_responsive_control(
+			'light_box_content_width',
+			[
+				'label' => esc_html__( 'Width', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 550,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .lightbox-inner .lightbox-text-content' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'light_box_content_height',
+			[
+				'label' => esc_html__( 'Height', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 350,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .lightbox-inner .lightbox-text-content' => 'height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_control(
+			'light_box_content_divider',
+			[
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
 
     $this->add_control(
         'light_box_content_color',

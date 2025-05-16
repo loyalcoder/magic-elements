@@ -303,6 +303,9 @@
   border-radius: 4px;
   max-width: 800px;
   background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .custom-lightbox-wrapper .custom-lightbox-content .lightbox-inner iframe, .custom-lightbox-wrapper .custom-lightbox-content .lightbox-inner video {
   width: 800px;
