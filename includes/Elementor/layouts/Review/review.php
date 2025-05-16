@@ -14,7 +14,6 @@
                 )
             );
         ?>
-        
         <?php if ('before_name' === $settings['description_position']) : ?>
             <p><?php echo esc_html($settings['reviewer_description']); ?></p>
         <?php endif; ?>

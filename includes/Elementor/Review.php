@@ -627,21 +627,21 @@ class Review extends Widget_Base
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'reviewer_description_typography',
-				'selector' => '{{WRAPPER}} .reviewer p',
+				'selector' => '{{WRAPPER}} .reviewer p , {{WRAPPER}} .after_rating',
 			]
 		);
         $this->add_group_control(
 			\Elementor\Group_Control_Text_Shadow::get_type(),
 			[
 				'name' => 'reviewer_description_shadow',
-				'selector' => '{{WRAPPER}} .reviewer p','{{WRAPPER}} .after_rating'
+				'selector' => '{{WRAPPER}} .reviewer p , {{WRAPPER}} .after_rating',
 			]
 		);
 		$this->add_group_control(
 			\Elementor\Group_Control_Text_Stroke::get_type(),
 			[
 				'name' => 'reviewer_description_stroke',
-				'selector' => '{{WRAPPER}} .reviewer p','{{WRAPPER}} .after_rating',
+				'selector' => '{{WRAPPER}} .reviewer p , {{WRAPPER}} .after_rating',
 			]
 		);
 
