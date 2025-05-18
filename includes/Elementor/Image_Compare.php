@@ -114,20 +114,30 @@ class Image_Compare extends Widget_Base
      */
     protected function register_image_compare_controls()
     {
-               // Content Tab
+              // Before Image
         $this->start_controls_section(
-            'content_section',
+            'section_content',
             [
-                'label' => __('Image Settings', 'elementor-image-compare'),
-                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+                'label' => esc_html__('Content', 'magicelements'),
             ]
         );
 
         $this->add_control(
             'before_image',
             [
-                'label' => __('Before Image', 'elementor-image-compare'),
-                'type' => \Elementor\Controls_Manager::MEDIA,
+                'label' => esc_html__('Before Image', 'magicelements'),
+                'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'after_image',
+            [
+                'label' => esc_html__('After Image', 'magicelements'),
+                'type' => Controls_Manager::MEDIA,
                 'default' => [
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
                 ],
@@ -137,93 +147,63 @@ class Image_Compare extends Widget_Base
         $this->add_control(
             'before_label',
             [
-                'label' => __('Before Label', 'elementor-image-compare'),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __('Before', 'elementor-image-compare'),
-                'placeholder' => __('Before', 'elementor-image-compare'),
-            ]
-        );
-
-        $this->add_control(
-            'after_image',
-            [
-                'label' => __('After Image', 'elementor-image-compare'),
-                'type' => \Elementor\Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => \Elementor\Utils::get_placeholder_image_src(),
-                ],
+                'label' => esc_html__('Before Label', 'magicelements'),
+                'type' => Controls_Manager::TEXT,
+                'default' => esc_html__('Before', 'magicelements'),
             ]
         );
 
         $this->add_control(
             'after_label',
             [
-                'label' => __('After Label', 'elementor-image-compare'),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __('After', 'elementor-image-compare'),
-                'placeholder' => __('After', 'elementor-image-compare'),
+                'label' => esc_html__('After Label', 'magicelements'),
+                'type' => Controls_Manager::TEXT,
+                'default' => esc_html__('After', 'magicelements'),
             ]
         );
 
         $this->add_control(
             'orientation',
             [
-                'label' => __('Orientation', 'elementor-image-compare'),
-                'type' => \Elementor\Controls_Manager::SELECT,
-                'default' => 'horizontal',
+                'label' => esc_html__('Orientation', 'magicelements'),
+                'type' => Controls_Manager::SELECT,
                 'options' => [
-                    'horizontal' => __('Horizontal', 'elementor-image-compare'),
-                    'vertical' => __('Vertical', 'elementor-image-compare'),
+                    'horizontal' => esc_html__('Horizontal', 'magicelements'),
+                    'vertical' => esc_html__('Vertical', 'magicelements'),
                 ],
+                'default' => 'horizontal',
             ]
         );
 
         $this->add_control(
-            'default_offset',
+            'show_overlay',
             [
-                'label' => __('Default Offset', 'elementor-image-compare'),
-                'type' => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => ['%'],
-                'range' => [
-                    '%' => [
-                        'min' => 0,
-                        'max' => 100,
-                    ],
-                ],
-                'default' => [
-                    'unit' => '%',
-                    'size' => 50,
-                ],
+                'label' => esc_html__('Show Overlay Text?', 'magicelements'),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'yes',
             ]
         );
 
         $this->add_control(
-            'no_overlay',
+            'overlay_position',
             [
-                'label' => __('No Overlay?', 'elementor-image-compare'),
-                'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => __('Yes', 'elementor-image-compare'),
-                'label_off' => __('No', 'elementor-image-compare'),
-                'return_value' => 'yes',
-                'default' => 'no',
-            ]
-        );
-
-        $this->add_control(
-            'move_slider_on_hover',
-            [
-                'label' => __('Move on Hover?', 'elementor-image-compare'),
-                'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => __('Yes', 'elementor-image-compare'),
-                'label_off' => __('No', 'elementor-image-compare'),
-                'return_value' => 'yes',
-                'default' => 'no',
+                'label' => esc_html__('Overlay Position', 'magicelements'),
+                'type' => Controls_Manager::SELECT,
+                'options' => [
+                    'top-left' => 'Top Left',
+                    'top-right' => 'Top Right',
+                    'bottom-left' => 'Bottom Left',
+                    'bottom-right' => 'Bottom Right',
+                    'center' => 'Center',
+                ],
+                'default' => 'top-left',
+                'condition' => [
+                    'show_overlay' => 'yes',
+                ],
             ]
         );
 
         $this->end_controls_section();
-
-
         // Style section
         $this->start_controls_section(
             'image_compare_style_section',
@@ -249,17 +229,14 @@ class Image_Compare extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        $this->add_render_attribute('image-compare', 'class', 'image-compare-container');
-        $this->add_render_attribute('image-compare', 'data-orientation', $settings['orientation']);
-        $this->add_render_attribute('image-compare', 'data-offset', $settings['default_offset']['size'] / 100);
-        $this->add_render_attribute('image-compare', 'data-overlay', ('yes' === $settings['no_overlay']) ? 'false' : 'true');
-        $this->add_render_attribute('image-compare', 'data-hover', ('yes' === $settings['move_slider_on_hover']) ? 'true' : 'false');
+ $orientation = $settings['orientation'] === 'vertical' ? 'vertical' : 'horizontal';
+        $before_label = esc_html($settings['before_label']);
+        $after_label = esc_html($settings['after_label']);
+        $show_overlay = $settings['show_overlay'] === 'yes';
+        $overlay_class = $show_overlay ? 'show-overlay ' . esc_attr($settings['overlay_position']) : '';
 
 
         include __DIR__ . '/layouts/Image-Compare/image-compare.php';
-
-      
-
 
         
     }
