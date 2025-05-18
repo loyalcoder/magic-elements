@@ -1,9 +1,9 @@
-jQuery(document).ready(function ($) {
-    $('.me-twentytwenty').each(function () {
-        var $this = $(this);
-        var orientation = $this.data('orientation') || 'horizontal';
-        var beforeLabel = $this.data('before-label') || 'Before';
-        var afterLabel = $this.data('after-label') || 'After';
+jQuery(function ($) {
+    $('.image-compare').each(function () {
+        let $this = $(this);
+        let orientation = $this.data('orientation') || 'horizontal';
+        let beforeLabel = $this.data('before-label') || 'Before';
+        let afterLabel = $this.data('after-label') || 'After';
 
         $this.twentytwenty({
             default_offset_pct: 0.5,
