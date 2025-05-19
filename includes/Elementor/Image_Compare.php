@@ -121,7 +121,6 @@ class Image_Compare extends Widget_Base
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
-
         //start before after
         $this->start_controls_tabs(
             'style_tabs'
@@ -151,7 +150,6 @@ class Image_Compare extends Widget_Base
                 'default' => esc_html__('Before', 'magic-elements'),
             ]
         );
-
         $this->end_controls_tab();
         
          //after
