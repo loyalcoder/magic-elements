@@ -149,7 +149,7 @@ class Review extends Widget_Base
                     'size' => 15,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .review-wapper .review svg' => 'width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .review-wapper .review svg' => 'width: {{SIZE}}{{UNIT}};','{{WRAPPER}} .review-wapper .review i' => 'font-size: {{SIZE}}{{UNIT}};'
                 ],
             ]
         );
@@ -254,11 +254,23 @@ class Review extends Widget_Base
         $this->add_control(
 			'reviewer_description',
 			[
-				'label' => esc_html__( 'Description', 'magic-elements' ),
+				'label' => esc_html__( 'Review', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'rows' => 5,
 				'default' => esc_html__( 'Absolutely fantastic! Exceeded my expectations in every way', 'magic-elements' ),
 				'placeholder' => esc_html__( 'Type your description here', 'magic-elements' ),
+			]
+		);
+		$this->add_control(
+			'description_position',
+			[
+				'label' => esc_html__('Review Position', 'magic-elements'),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'options' => [
+					'before_name' => esc_html__('Before Name', 'magic-elements'),
+					'after_name' => esc_html__('After Rating', 'magic-elements'),
+				],
+				'default' => 'after_name',
 			]
 		);
         $this->add_control(
@@ -280,7 +292,6 @@ class Review extends Widget_Base
 			]
 		);
         $this->end_controls_section();
-
         // Style section
         $this->start_controls_section(
             'review_box_style_section',
@@ -488,6 +499,14 @@ class Review extends Widget_Base
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'reviewer_image_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .reviewer img',
+			]
+		);
         $this->add_responsive_control(
 			'reviewer_image_width',
 			[
@@ -572,13 +591,24 @@ class Review extends Widget_Base
 				],
 			]
 		);
+		$this->add_responsive_control(
+			'reviewer_image_padding',
+			[
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .reviewer img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 
         $this->end_controls_section();
         //description
         $this->start_controls_section(
 			'reviewer_description_style_section',
 			[
-				'label' => esc_html__( 'Description', 'magic-elements' ),
+				'label' => esc_html__( 'Review', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -589,7 +619,7 @@ class Review extends Widget_Base
 				'label' => esc_html__( 'Text Color', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .reviewer p' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .reviewer p' => 'color: {{VALUE}}','{{WRAPPER}} .after_rating' => 'color: {{VALUE}}'
 				],
 			]
 		);
@@ -597,23 +627,24 @@ class Review extends Widget_Base
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'reviewer_description_typography',
-				'selector' => '{{WRAPPER}} .reviewer p',
+				'selector' => '{{WRAPPER}} .reviewer p , {{WRAPPER}} .after_rating',
 			]
 		);
         $this->add_group_control(
 			\Elementor\Group_Control_Text_Shadow::get_type(),
 			[
 				'name' => 'reviewer_description_shadow',
-				'selector' => '{{WRAPPER}} .reviewer p',
+				'selector' => '{{WRAPPER}} .reviewer p , {{WRAPPER}} .after_rating',
 			]
 		);
-        $this->add_group_control(
+		$this->add_group_control(
 			\Elementor\Group_Control_Text_Stroke::get_type(),
 			[
 				'name' => 'reviewer_description_stroke',
-				'selector' => '{{WRAPPER}} .reviewer p',
+				'selector' => '{{WRAPPER}} .reviewer p , {{WRAPPER}} .after_rating',
 			]
 		);
+
         $this->add_responsive_control(
 			'reviewer_description_margin',
 			[
@@ -629,7 +660,7 @@ class Review extends Widget_Base
 					'isLinked' => false,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .reviewer p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .reviewer p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};','{{WRAPPER}} .after_rating' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
 				],
 			]
 		);
@@ -681,7 +712,7 @@ class Review extends Widget_Base
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
                 'default' => [
-					'top' => 0,
+					'top' => 10,
 					'right' => 0,
 					'bottom' => 5,
 					'left' => 0,
