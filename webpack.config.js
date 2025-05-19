@@ -61,6 +61,10 @@ const baseConfig = {
       './assets/src/scss/review.scss',
       './assets/src/js/review.js',
     ],
+     progress_bar: [
+      './assets/src/scss/progress_bar.scss',
+      './assets/src/js/progress_bar.js',
+    ],
 
     // 2) SCSS ONLY (no JS file mentioned):
     flipcard: './assets/src/scss/flipcard.scss',
