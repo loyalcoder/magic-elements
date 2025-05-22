@@ -10,98 +10,56 @@
   background: #f8f8f8;
   border: 1px solid #eaeaea;
   border-radius: 3px;
+  /* Header containing title and content */
+  /* Ticker Title */
+  /* Ticker Content */
+  /* Responsive Design */
 }
-
-/* Header containing title and content */
-.mst-header {
+.multi-source-ticker .mst-header {
   display: flex;
   align-items: center;
   width: 100%;
 }
-
-/* Title positioning classes */
-.mst-title-left .mst-header {
-  flex-direction: row;
-}
-
-/* Right title specific styles */
-.mst-title-right {
-  /* Fix for RTL scrolling */
-  /* If using arrows, adjust their position */
-}
-.mst-title-right .mst-item {
-  text-align: right;
-}
-.mst-title-right .slick-slide {
-  float: right !important;
-}
-.mst-title-right .mst-arrows {
-  order: -1; /* Moves arrows to the left side */
-}
-
-/* Ticker Title */
-.mst-title {
+.multi-source-ticker .mst-title {
   padding: 8px 15px;
   font-weight: bold;
   text-transform: uppercase;
   white-space: nowrap;
   background: #ff0000;
-  color: white;
+  color: #ffffff;
   z-index: 1;
 }
-
-/* Ticker Content */
-.mst-content {
+.multi-source-ticker .mst-content {
   flex-grow: 1;
   overflow: hidden;
   position: relative;
   background: #f8f8f8;
+  /* Individual Ticker Items */
 }
-
-/* Individual Ticker Items */
-.mst-item {
+.multi-source-ticker .mst-content .mst-item {
   padding: 8px 15px;
   white-space: nowrap;
-  color: #333;
+  color: #333333;
 }
-.mst-item a {
+.multi-source-ticker .mst-content .mst-item a {
   color: inherit;
-  text-decoration: none;
+  text-decoration: none !important;
 }
-.mst-item a:hover {
+.multi-source-ticker .mst-content .mst-item a:hover {
   text-decoration: underline;
 }
-
-/* Navigation Arrows */
-.mst-arrows {
-  display: flex;
-  padding: 0 10px;
-}
-
-.mst-arrow {
-  cursor: pointer;
-  padding: 5px;
-  font-size: 18px;
-  user-select: none;
-  color: #333;
-}
-.mst-arrow:hover {
-  color: #ff0000;
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
   .multi-source-ticker {
     flex-direction: column;
   }
-  .mst-header {
+  .multi-source-ticker .mst-header {
     flex-direction: column !important;
   }
-  .mst-title {
+  .multi-source-ticker .mst-title {
     width: 100%;
     text-align: center;
   }
-  .mst-content {
+  .multi-source-ticker .mst-content {
     width: 100%;
   }
 }

@@ -22,18 +22,43 @@ import "./../scss/news_ticker.scss";
     
         // Initialize Slick slider
         $content.slick({
-            vertical: settings.direction,
-            verticalSwiping: settings.direction,
+            slidesToShow: settings.slideShow,
+            slidesToScroll: settings.slideScroll,
             autoplay: settings.autoplay,
             autoplaySpeed: settings.speed,
             speed: settings.autoplaySpeed,
             pauseOnHover: settings.pauseOnHover,
-            arrows: settings.arrows,
+            arrows: false,
             infinite: settings.infinite,
-            rtl: settings.rtl,
             cssEase: 'linear',
-            prevArrow: $ticker.find('.mst-prev'),
-            nextArrow: $ticker.find('.mst-next')
+              responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: false
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
         });
     
         // Handle window resize

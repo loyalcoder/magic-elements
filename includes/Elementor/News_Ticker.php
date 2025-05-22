@@ -51,27 +51,6 @@ class News_Ticker extends Widget_Base
             ]
         );
 
-        // Title Position
-        $this->add_control(
-            'title_position',
-            [
-                'label' => esc_html__('Title Position', 'magic-elements'),
-                'type' => \Elementor\Controls_Manager::CHOOSE,
-                'options' => [
-                    'left' => [
-                        'title' => esc_html__('Left', 'magic-elements'),
-                        'icon' => 'eicon-h-align-left',
-                    ],
-                    'right' => [
-                        'title' => esc_html__('Right', 'magic-elements'),
-                        'icon' => 'eicon-h-align-right',
-                    ],
-                ],
-                'default' => 'left',
-                'toggle' => false,
-            ]
-        );
-
         // Content Source
         $this->add_control(
             'content_source',
@@ -190,18 +169,29 @@ class News_Ticker extends Widget_Base
                 'label' => esc_html__('Settings', 'magic-elements'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
+            );
+
+        $this->add_responsive_control(
+            'slide_show',
+            [
+                'label' => esc_html__('Slide Show', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::NUMBER,
+                'default' => 2,
+                'min' => 1,
+                'max' => 10,
+                'step' => 1,
+            ]
         );
 
-        $this->add_control(
-            'direction',
+        $this->add_responsive_control(
+            'slide_scroll',
             [
-                'label' => esc_html__('Scroll Direction', 'magic-elements'),
-                'type' => \Elementor\Controls_Manager::SELECT,
-                'default' => 'horizontal',
-                'options' => [
-                    'horizontal' => esc_html__('Horizontal', 'magic-elements'),
-                    'vertical' => esc_html__('Vertical', 'magic-elements'),
-                ],
+                'label' => esc_html__('Slide Scroll', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::NUMBER,
+                'default' => 2,
+                'min' => 1,
+                'max' => 10,
+                'step' => 1,
             ]
         );
 
@@ -253,18 +243,6 @@ class News_Ticker extends Widget_Base
                 'condition' => [
                     'autoplay' => 'yes',
                 ],
-            ]
-        );
-
-        $this->add_control(
-            'show_arrows',
-            [
-                'label' => esc_html__('Show Navigation Arrows', 'magic-elements'),
-                'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('Yes', 'magic-elements'),
-                'label_off' => esc_html__('No', 'magic-elements'),
-                'return_value' => 'yes',
-                'default' => 'no',
             ]
         );
 
@@ -375,73 +353,27 @@ class News_Ticker extends Widget_Base
             ]
         );
 
-        $this->add_control(
-            'arrows_style_heading',
-            [
-                'label' => esc_html__('Arrows Style', 'magic-elements'),
-                'type' => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'before',
-                'condition' => [
-                    'show_arrows' => 'yes',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'arrows_color',
-            [
-                'label' => esc_html__('Arrows Color', 'magic-elements'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#333333',
-                'selectors' => [
-                    '{{WRAPPER}} .mst-arrow' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'show_arrows' => 'yes',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'arrows_hover_color',
-            [
-                'label' => esc_html__('Arrows Hover Color', 'magic-elements'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#ff0000',
-                'selectors' => [
-                    '{{WRAPPER}} .mst-arrow:hover' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'show_arrows' => 'yes',
-                ],
-            ]
-        );
-
+       
         $this->end_controls_section();
     }
 
     protected function render() {
         $settings = $this->get_settings_for_display();
         $id = 'mst-' . $this->get_id();
-        // echo '<pre>';
-        // print_r($id);
-        // echo '</pre>';
+        
         
 
         // Slider settings for JS
         $slider_settings = [
-            'direction' => $settings['direction'] === 'vertical',
+            'slideShow' => $settings['slide_show'] ,
+            'slideScroll' => $settings['slide_scroll'],
             'autoplay' => $settings['autoplay'] === 'yes',
             'speed' => $settings['speed'],
             'autoplaySpeed' => $settings['autoplay_speed'],
             'pauseOnHover' => $settings['pause_on_hover'] === 'yes',
-            'arrows' => $settings['show_arrows'] === 'yes',
             'infinite' => $settings['infinite_loop'] === 'yes',
-            'rtl' => $settings['title_position'] === 'right' // Right-to-left for right position
         ];
-        // echo '<pre>';
-        // print_r($slider_settings);
-        // echo '</pre>';
+        
         
 
         $this->add_render_attribute('ticker-container', [
@@ -453,24 +385,10 @@ class News_Ticker extends Widget_Base
 
         <div <?php echo $this->get_render_attribute_string('ticker-container'); ?>>
             <div class="mst-header">
-                <?php if ($settings['title_position'] === 'left') : ?>
                     <div class="mst-title"><?php echo esc_html($settings['ticker_title']); ?></div>
-                <?php endif; ?>
-                
                 <div class="mst-content">
                     <?php $this->render_content_items($settings); ?>
-                </div>
-                
-                <?php if ($settings['title_position'] === 'right') : ?>
-                    <div class="mst-title"><?php echo esc_html($settings['ticker_title']); ?></div>
-                <?php endif; ?>
-                
-                <?php if ($settings['show_arrows'] === 'yes') : ?>
-                    <div class="mst-arrows">
-                        <div class="mst-arrow mst-prev">&#10094;</div>
-                        <div class="mst-arrow mst-next">&#10095;</div>
-                    </div>
-                <?php endif; ?>
+                </div>             
             </div>
         </div>
         <?php
