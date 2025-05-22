@@ -156,6 +156,15 @@ class Load_Elementor
             'slick' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/vendor/slick/slick.min.js',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendor/slick/slick.min.js'),
+            ],
+                'emkit-review' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/review.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/review.js'),
+                'deps'    => ['jquery']
+            ],
+            'emkit-progress-bar' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/progress_bar.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/progress_bar.js'),
                 'deps'    => ['jquery']
             ],
         ];
@@ -206,6 +215,10 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/accordion.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/accordion.css'),
             ],
+            'emkit-team' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/team.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/team.css'),
+            ],
             'emk-tab' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/tab.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/tab.css'),
@@ -246,6 +259,14 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/vendor/slick/slick-theme.scss',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendor/slick/slick-theme.scss'),
             ],
+                'emk-review' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/review.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/review.css'),
+            ],
+            'emk-progress-bar' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/progress_bar.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/progress_bar.css'),
+            ],
         ];
     }
 
@@ -261,6 +282,7 @@ class Load_Elementor
             'Image',
             'Button',
             'Pricing_Table',
+            'Team',
             'Text_Editor',
             'Image_Accordion',
             'Flip_Card',
@@ -280,6 +302,8 @@ class Load_Elementor
             'Info_Box',
             'Feature_list',
             'News_Ticker',
+            'Review',
+            'Progress_Bar',
         ];
     }
     public static function defaultWidgets()
@@ -288,6 +312,7 @@ class Load_Elementor
             'image',
             'button',
             'pricingtable',
+            'team',
             'texteditor',
             'imageaccordion',
             'flipcard',
@@ -306,6 +331,8 @@ class Load_Elementor
             'infobox',
             'featurelist',
             'newsticker',
+            'review',
+            'progressbar',
         ];
     }
     /**

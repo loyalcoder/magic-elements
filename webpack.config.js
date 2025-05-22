@@ -38,6 +38,10 @@ const baseConfig = {
       './assets/src/scss/tab.scss',
       './assets/src/js/tab.js',
     ],
+    team: [
+      './assets/src/scss/team.scss',
+      './assets/src/js/team.js',
+      ],
     multiple_button: [
       './assets/src/scss/multiple_button.scss',
       './assets/src/js/multiple_button.js',
@@ -56,6 +60,14 @@ const baseConfig = {
     news_ticker: [
       './assets/src/scss/news_ticker.scss',
       './assets/src/js/news_ticker.js',
+    ],
+      review: [
+      './assets/src/scss/review.scss',
+      './assets/src/js/review.js',
+    ],
+     progress_bar: [
+      './assets/src/scss/progress_bar.scss',
+      './assets/src/js/progress_bar.js',
     ],
 
     // 2) SCSS ONLY (no JS file mentioned):
