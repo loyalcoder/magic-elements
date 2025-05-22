@@ -57,7 +57,11 @@ const baseConfig = {
       './assets/src/scss/light_box.scss',
       './assets/src/js/light_box.js',
     ],
-     review: [
+    news_ticker: [
+      './assets/src/scss/news_ticker.scss',
+      './assets/src/js/news_ticker.js',
+    ],
+      review: [
       './assets/src/scss/review.scss',
       './assets/src/js/review.js',
     ],
