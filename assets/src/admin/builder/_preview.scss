@@ -1,0 +1,142 @@
+.magic-elements-preview {
+    &-popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+    }
+
+    &-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 800px;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+
+    &-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    &-close-popup {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: #666;
+    }
+
+    &-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    &-item {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 20px;
+    }
+}
+
+.preview-item {
+    &-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    &-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+
+        a {
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+    }
+
+    &-details {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-size: 14px;
+
+        strong {
+            color: #666;
+            margin-right: 5px;
+        }
+    }
+}
+
+.preview-link {
+    background: #2271b1;
+    color: #fff;
+}
+
+.edit-link {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.edit-elementor-link {
+    background: #93003c;
+    color: #fff;
+}
+
+.delete-link {
+    background: #dc3545;
+    color: #fff;
+}
+
+.magic-elements-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+
+    .page-numbers {
+        text-decoration: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        color: #333;
+        background: #f0f0f0;
+        font-size: 14px;
+
+        &.current {
+            background: #2271b1;
+            color: #fff;
+        }
+
+        &.prev,
+        &.next {
+            background: #f0f0f0;
+            color: #333;
+        }
+    }
+}
+
