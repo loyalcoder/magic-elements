@@ -252,12 +252,12 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/news_ticker.css'),
             ],
             'slick' => [
-                'src'     => MAGIC_ELEMENTS_ASSETS . '/vendor/slick/slick.scss',
-                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendor/slick/slick.scss'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/vendor/slick/slick.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendor/slick/slick.css'),
             ],
             'slick-theme' => [
-                'src'     => MAGIC_ELEMENTS_ASSETS . '/vendor/slick/slick-theme.scss',
-                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendor/slick/slick-theme.scss'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/vendor/slick/slick-theme.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendor/slick/slick-theme.css'),
             ],
                 'emk-review' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/review.css',

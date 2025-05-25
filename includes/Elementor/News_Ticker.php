@@ -392,6 +392,7 @@ class News_Ticker extends Widget_Base
             </div>
         </div>
         <?php
+
     }
 
     protected function render_content_items($settings) {
