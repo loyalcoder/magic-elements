@@ -6,3 +6,4 @@ import "./../scss/counter.scss";
 import "./../scss/post_list.scss";
 import "./../scss/icon_box.scss";
 import "./../scss/info_box.scss";
+import "./../scss/light_box.scss";

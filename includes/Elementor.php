@@ -143,6 +143,30 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/info_box.js'),
                 'deps'    => ['jquery']
             ],
+            'emkit-light-box' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/light_box.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/light_box.js'),
+                'deps'    => ['jquery']
+            ],
+            'emkit-news-ticker' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/news_ticker.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/news_ticker.js'),
+                'deps'    => ['jquery']
+            ],
+            'slick' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/vendor/slick/slick.min.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendor/slick/slick.min.js'),
+            ],
+                'emkit-review' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/review.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/review.js'),
+                'deps'    => ['jquery']
+            ],
+            'emkit-progress-bar' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/progress_bar.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/progress_bar.js'),
+                'deps'    => ['jquery']
+            ],
         ];
     }
     /**
@@ -191,6 +215,10 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/accordion.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/accordion.css'),
             ],
+            'emkit-team' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/team.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/team.css'),
+            ],
             'emk-tab' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/tab.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/tab.css'),
@@ -215,6 +243,30 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/feature_list.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/feature_list.css'),
             ],
+            'emk-light-box' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/light_box.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/light_box.css'),
+            ],
+            'emk-news-ticker' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/news_ticker.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/news_ticker.css'),
+            ],
+            'slick' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/vendor/slick/slick.scss',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendor/slick/slick.scss'),
+            ],
+            'slick-theme' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/vendor/slick/slick-theme.scss',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendor/slick/slick-theme.scss'),
+            ],
+                'emk-review' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/review.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/review.css'),
+            ],
+            'emk-progress-bar' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/progress_bar.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/progress_bar.css'),
+            ],
         ];
     }
 
@@ -230,6 +282,7 @@ class Load_Elementor
             'Image',
             'Button',
             'Pricing_Table',
+            'Team',
             'Text_Editor',
             'Image_Accordion',
             'Flip_Card',
@@ -241,12 +294,16 @@ class Load_Elementor
             'Card',
             'Tab',
             'Post',
+            'Light_Box',
             'Post_List',
             'Page_List',
             'Multiple_Button',
             'Icon_Box',
             'Info_Box',
             'Feature_list',
+            'News_Ticker',
+            'Review',
+            'Progress_Bar',
         ];
     }
     public static function defaultWidgets()
@@ -255,6 +312,7 @@ class Load_Elementor
             'image',
             'button',
             'pricingtable',
+            'team',
             'texteditor',
             'imageaccordion',
             'flipcard',
@@ -265,12 +323,16 @@ class Load_Elementor
             'categorylist',
             'card',
             'tab',
+            'lightbox',
             'postlist',
             'pageList',
             'multiplebutton',
             'iconiox',
             'infobox',
             'featurelist',
+            'newsticker',
+            'review',
+            'progressbar',
         ];
     }
     /**
