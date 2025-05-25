@@ -16,9 +16,9 @@
     ],
     "psr-4": {
       "MagicElements\\": "includes/"
-    }
-  },
-  "files": [
+    },
+    "files": [
       "includes/functions.php"
     ]
+  }
 }

@@ -18,7 +18,31 @@
       margin: 100px auto; // centers element horizontally and provides vertical margin
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       animation: fadeIn 0.3s;
-  
+      min-height: 400px;
+      position: relative;
+
+      &.loading{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .magic-elements-close-popup {
+        position: absolute;
+        left: 100%;
+        top: 0;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #fff;
+        border: 1px solid #fff;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
       .magic-elements-addnew-header {
         display: flex;
         justify-content: space-between;
@@ -30,18 +54,6 @@
         h2 {
           margin: 0;
           font-size: 1.5rem;
-        }
-  
-        .magic-elements-close-popup {
-          background: none;
-          border: none;
-          font-size: 1.5rem;
-          cursor: pointer;
-          color: #888;
-  
-          &:hover {
-            color: #333;
-          }
         }
       }
   
@@ -102,3 +114,5 @@
       }
     }
   }
+
+  

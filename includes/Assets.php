@@ -60,6 +60,14 @@ class Assets
                 filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/builder.js'),
                 true
             );
+            wp_localize_script(
+                'magic-element-builder',
+                'me_builder_ajax_object',
+                [
+                    'ajax_url' => admin_url('admin-ajax.php'),
+                    'nonce' => wp_create_nonce('me_builder_nonce')
+                ]
+            );
         }
     }
     public function elementor_css() {

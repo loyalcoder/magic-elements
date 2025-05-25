@@ -25,6 +25,27 @@ jQuery(function(){
     $('.add-new-template-link').on('click', function(e){
         e.preventDefault();
         $('.magic-elements-addnew-popup').fadeIn();
+        $.ajax({
+            url: me_builder_ajax_object.ajax_url,
+            type: 'POST',
+            data: {
+                action: 'new_or_update_builder_template',
+                nonce: me_builder_ajax_object.nonce,
+                post_id: $(this).data('post-id')
+            },
+            success: function(response){
+                if(response.success){
+                    let html  = response.data.html;
+                    $('.magic-elements-addnew-popup .content-loader').html(html);
+                    $('.magic-elements-addnew-popup .loading').removeClass('loading');
+                }else{
+                    console.log(response);
+                }
+            },
+            error: function(error){
+                console.log(error);
+            }
+        });
     });
      $('.magic-elements-addnew-popup .magic-elements-close-popup').on('click', function(e){
         e.preventDefault();

@@ -13,6 +13,7 @@ class MBuilder {
      */
     public function __construct() {
         add_action('wp_ajax_me_insert_template', [$this, 'ajax_insert_template']);
+        add_action('wp_ajax_new_or_update_builder_template', [$this, 'ajax_new_or_update_builder_template']);
     }
 
     /**
@@ -50,5 +51,29 @@ class MBuilder {
             'message' => esc_html__('Template created successfully', 'magic-elements'),
             'template_id' => $template_id
         ]);
+    }
+
+    public function ajax_new_or_update_builder_template(): void {
+        // Verify nonce
+        if (!check_ajax_referer('me_builder_nonce', 'nonce', false)) {
+            wp_send_json_error(['message' => esc_html__('Invalid security token', 'magic-elements')]);
+        }
+
+        $post_id = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;
+        $html = '';
+        if ($post_id) {
+             ob_start();
+             magic_elements_get_template_part('admin/builder/update');
+             $html = ob_get_clean();
+        } else {
+            ob_start();
+            magic_elements_get_template_part('admin/builder/addnew');
+             $html = ob_get_clean();
+        }
+        wp_send_json_success([
+            'html' => $html,
+            'post_id' => $post_id
+        ]);
+        wp_die();
     }
 }
