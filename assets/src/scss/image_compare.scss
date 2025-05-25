@@ -3,16 +3,12 @@ img {
 }
 
 .wrapper {
-	max-width: 90%;
 	margin: 0 auto;
 	text-align: center;
 }
-
 .comparison-wrapper {
 	position: relative;
-	// width: 80%;
 	margin: 0 auto;
-	// max-width: 400px;
 	
 	img {
 		display: block;
@@ -83,7 +79,6 @@ img {
 	&.draggable {
 		background-color: #535453;
 	}
-	
 	.is-visible & {
 		opacity: 1;
 		transform: translate3d(0,0,0) scale(1);

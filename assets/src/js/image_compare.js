@@ -15,9 +15,6 @@
       },
 
       EmKitImageCompare: function ($scope) {
-
-        
-
         let dragging = false;
         let scrolling = false;
         let	resizing = false;
