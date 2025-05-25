@@ -200,7 +200,7 @@ class News_Ticker extends Widget_Base
             [
                 'label' => esc_html__('Scroll Speed (ms)', 'magic-elements'),
                 'type' => \Elementor\Controls_Manager::NUMBER,
-                'default' => 3000,
+                'default' => 0,
                 'min' => 500,
                 'max' => 10000,
                 'step' => 100,
@@ -212,7 +212,7 @@ class News_Ticker extends Widget_Base
             [
                 'label' => esc_html__('Autoplay Speed', 'magic-elements'),
                 'type' => \Elementor\Controls_Manager::NUMBER,
-                'default' => 3000,
+                'default' => 8000,
                 'min' => 500,
                 'max' => 10000,
                 'step' => 100,
