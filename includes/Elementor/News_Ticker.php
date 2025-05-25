@@ -418,13 +418,13 @@ class News_Ticker extends Widget_Base
             'post_status' => 'publish'
         ]);
 
-        foreach ($posts as $post) {
-            echo '<div class="mst-item">';
-            echo '<a href="' . esc_url(get_permalink($post->ID)) . '">';
-            echo esc_html($post->post_title);
-            echo '</a>';
-            echo '</div>';
-        }
+        foreach ($posts as $post) { ?>
+            <div class="mst-item">';
+                <a href="<?php esc_url(get_permalink($post->ID)) ?>">';
+                    <?php echo esc_html($post->post_title); ?>
+                </a>
+           </div>'
+       <?php }
     }
 
     protected function render_category_posts($category_id, $count) {
@@ -436,31 +436,31 @@ class News_Ticker extends Widget_Base
             'post_status' => 'publish'
         ]);
 
-        foreach ($cats as $cat) {
-            echo '<div class="mst-item">';
-            echo '<a href="' . esc_url(get_permalink($cat->term_id)) . '">';
-            echo esc_html($cat->name);
-            echo '</a>';
-            echo '</div>';
-        }
+        foreach ($cats as $cat) { ?>
+           <div class="mst-item">';
+                <a href=" <?php esc_url(get_permalink($cat->term_id)) ?>">';
+                    <?php  echo esc_html($cat->name); ?>
+                </a>
+            </div>
+      <?php  }
     }
 
     protected function render_custom_items($items) {
         if (empty($items)) return;
 
-        foreach ($items as $item) {
-            echo '<div class="mst-item">';
-            if (!empty($item['custom_link']['url'])) {
-                echo '<a href="' . esc_url($item['custom_link']['url']) . '"';
-                echo ' target="' . ($item['custom_link']['is_external'] ? '_blank' : '_self') . '"';
-                echo ' rel="' . ($item['custom_link']['nofollow'] ? 'nofollow' : '') . '">';
+        foreach ($items as $item) { ?>
+           <div class="mst-item">
+          <?php  if (!empty($item['custom_link']['url'])) { ?>
+               <a href="<?php esc_url($item['custom_link']['url']) ?>"
+                target="<?php ($item['custom_link']['is_external'] ? '_blank' : '_self') ?>"
+                rel="<?php ($item['custom_link']['nofollow'] ? 'nofollow' : '') ?>">
+               <?php echo esc_html($item['custom_text']); ?>
+                </a>
+          <?php  } else {
                 echo esc_html($item['custom_text']);
-                echo '</a>';
-            } else {
-                echo esc_html($item['custom_text']);
-            }
-            echo '</div>';
-        }
+            } ?>
+          </div>
+      <?php  }
     }
 
     private function get_all_posts() {
