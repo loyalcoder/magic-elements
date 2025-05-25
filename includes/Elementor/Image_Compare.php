@@ -114,89 +114,52 @@ class Image_Compare extends Widget_Base
      */
     protected function register_image_compare_controls()
     {
-        $this->start_controls_section(
-            'section_content',
-            [
-                'label' => esc_html__('Content', 'magic-elements'),
-                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-            ]
-        );
-        //start before after
-        $this->start_controls_tabs(
-            'style_tabs'
-        );
-        //before
-        $this->start_controls_tab(
-            'style_before_tab',
-            [
-                'label' => esc_html__( 'Before', 'magic-elements' ),
-            ]
-        );
-         $this->add_control(
-            'before_image',
-            [
-                'label' => esc_html__('Before Image', 'magic-elements'),
-                'type' => Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => \Elementor\Utils::get_placeholder_image_src(),
-                ],
-            ]
-        );
-         $this->add_control(
-            'before_label',
-            [
-                'label' => esc_html__('Before Label', 'magic-elements'),
-                'type' => Controls_Manager::TEXT,
-                'default' => esc_html__('Before', 'magic-elements'),
-            ]
-        );
-        $this->end_controls_tab();
-        
-         //after
-        $this->start_controls_tab(
-            'style_after_tab',
-            [
-                'label' => esc_html__( 'After', 'magic-elements' ),
-            ]
-        );
-         $this->add_control(
-            'after_image',
-            [
-                'label' => esc_html__('After Image', 'magic-elements'),
-                'type' => Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => \Elementor\Utils::get_placeholder_image_src(),
-                ],
-            ]
-        );
-         $this->add_control(
-            'after_label',
-            [
-                'label' => esc_html__('After Label', 'magic-elements'),
-                'type' => Controls_Manager::TEXT,
-                'default' => esc_html__('After', 'magic-elements'),
-            ]
-        );
+// Content Tab
+// Before Image
+$this->start_controls_section(
+    'section_images',
+    [
+        'label' => esc_html__('Images', 'magic-elements'),
+    ]
+);
 
-        $this->end_controls_tab();
+$this->add_control(
+    'before_image',
+    [
+        'label' => esc_html__('Before Image', 'magic-elements'),
+        'type' => Controls_Manager::MEDIA,
+        'default' => [
+            'url' => 'https://via.placeholder.com/600x400?text=Before',
+        ],
+    ]
+);
+$this->add_control(
+    'orientation',
+    [
+        'label' => esc_html__('Orientation', 'magic-elements'),
+        'type' => Controls_Manager::SELECT,
+        'default' => 'horizontal',
+        'options' => [
+            'horizontal' => esc_html__('Horizontal (Left/Right)', 'magic-elements'),
+            'vertical'   => esc_html__('Vertical (Top/Bottom)', 'magic-elements'),
+        ],
+    ]
+);
 
-        $this->end_controls_tabs();
-        //end before after
 
-        $this->add_control(
-            'orientation',
-            [
-                'label' => esc_html__('Orientation', 'magic-elements'),
-                'type' => Controls_Manager::SELECT,
-                'options' => [
-                    'horizontal' => esc_html__('Horizontal', 'magic-elements'),
-                    'vertical' => esc_html__('Vertical', 'magic-elements'),
-                ],
-                'default' => 'horizontal',
-            ]
-        );
+// After Image
+$this->add_control(
+    'after_image',
+    [
+        'label' => esc_html__('After Image', 'magic-elements'),
+        'type' => Controls_Manager::MEDIA,
+        'default' => [
+            'url' => 'https://via.placeholder.com/600x400?text=After',
+        ],
+    ]
+);
 
-        $this->end_controls_section();
+$this->end_controls_section();
         // Style section
         $this->start_controls_section(
             'image_compare_style_section',
@@ -303,13 +266,9 @@ class Image_Compare extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        $orientation = $settings['orientation'] === 'vertical' ? 'vertical' : 'horizontal';
-        $before_label = esc_html($settings['before_label']);
-        $after_label = esc_html($settings['after_label']);
-
         include __DIR__ . '/layouts/Image-Compare/image-compare.php';
 
-        
+
     }
 
         /**

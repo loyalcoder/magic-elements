@@ -1,40 +1,87 @@
 /*!*****************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/image_compare.scss ***!
   \*****************************************************************************************************************************/
-.me-before-after-wrapper {
-  max-width: 700px;
+img {
+  max-width: 100%;
+}
+
+.wrapper {
+  max-width: 90%;
   margin: 0 auto;
+  text-align: center;
+}
+
+.comparison-wrapper {
   position: relative;
+  margin: 0 auto;
 }
-.me-before-after-wrapper.show-overlay::before, .me-before-after-wrapper.show-overlay::after {
-  content: attr(data-label);
+.comparison-wrapper img {
+  display: block;
+}
+
+.comparison-label {
   position: absolute;
-  color: white;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 5px 10px;
-  font-size: 14px;
-  z-index: 10;
+  bottom: 0;
+  right: 0;
+  padding: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  font-weight: bold;
+  color: #fff;
 }
-.me-before-after-wrapper.top-left::before {
-  top: 10px;
-  left: 10px;
+.comparison-label.is-hidden {
+  visibility: hidden;
 }
-.me-before-after-wrapper.top-right::before {
-  top: 10px;
-  right: 10px;
+.is-visible .comparison-label {
+  opacity: 1;
+  transform: translateY(0);
 }
-.me-before-after-wrapper.bottom-left::before {
-  bottom: 10px;
-  left: 10px;
+
+.compare-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  overflow: hidden;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
-.me-before-after-wrapper.bottom-right::before {
-  bottom: 10px;
-  right: 10px;
+.compare-img img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  height: 100%;
+  width: auto;
+  max-width: none;
 }
-.me-before-after-wrapper.center::before {
-  top: 50%;
+.compare-img .comparison-label {
+  right: auto;
+  left: 0;
+}
+.is-visible .compare-img {
+  width: 50%;
+}
+
+.compare-drag {
+  position: absolute;
+  height: 3rem;
+  width: 3rem;
   left: 50%;
-  transform: translate(-50%, -50%);
+  top: 50%;
+  margin-left: -1rem;
+  margin-top: -1rem;
+  background: #000000 url("https://cdn.rawgit.com/CodyHouse/image-comparison-slider/7fb3ed73/img/cd-arrows.svg") no-repeat center center;
+  cursor: move;
+  border-radius: 2rem;
+}
+.compare-drag.draggable {
+  background-color: #535453;
+}
+.is-visible .compare-drag {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
 }
 
 /*# sourceMappingURL=image_compare.min.css.map*/
