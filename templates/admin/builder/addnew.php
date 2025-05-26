@@ -13,7 +13,16 @@
                class="regular-text" 
                required>
     </div>
-    
+    <div class="magic-elements-form-group">
+        <label for="template_status">
+            <input type="checkbox" 
+                   name="template_status" 
+                   id="template_status" 
+                   value="1" 
+                   checked>
+            <?php echo esc_html__('Active', 'magic-elements'); ?>
+        </label>
+    </div>
     <div class="magic-elements-form-group">
         <label for="template_type"><?php echo esc_html__('Template Type', 'magic-elements'); ?></label>
         <select name="template_type" id="template_type" required>
@@ -22,7 +31,9 @@
             <option value="footer"><?php echo esc_html__('Footer', 'magic-elements'); ?></option>
         </select>
     </div>
-
+    <div class="magic-elements-form-group">
+        <button type="button" class="button button-secondary" id="me-add-condition">Add Condition</button>
+    </div>
     <div class="magic-elements-form-group">
         <label for="template_condition"><?php echo esc_html__('Display Condition', 'magic-elements'); ?></label>
         <select name="template_condition" id="template_condition">
