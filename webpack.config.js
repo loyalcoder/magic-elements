@@ -65,10 +65,6 @@ const baseConfig = {
       './assets/src/scss/image_compare.scss',
       './assets/src/js/image_compare.js',
     ],
-     timeline: [
-      './assets/src/scss/timeline.scss',
-      './assets/src/js/timeline.js',
-    ],
 
     // 2) SCSS ONLY (no JS file mentioned):
     flipcard: './assets/src/scss/flipcard.scss',
