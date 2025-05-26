@@ -368,14 +368,14 @@ class Image_Compare extends Widget_Base
         $this->start_controls_section(
 			'compare_drag_style_section',
 			[
-				'label' => esc_html__( 'Compare Drag', 'textdomain' ),
+				'label' => esc_html__( 'Compare Drag', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
         $this->add_responsive_control(
 			'compare_drag_width',
 			[
-				'label' => esc_html__( 'Width', 'textdomain' ),
+				'label' => esc_html__( 'Width', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -397,7 +397,7 @@ class Image_Compare extends Widget_Base
         $this->add_responsive_control(
 			'compare_drag_hight',
 			[
-				'label' => esc_html__( 'Height', 'textdomain' ),
+				'label' => esc_html__( 'Height', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -448,7 +448,7 @@ class Image_Compare extends Widget_Base
         $this->add_responsive_control(
 			'compare_drag_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -459,7 +459,7 @@ class Image_Compare extends Widget_Base
         $this->add_responsive_control(
 			'compare_drag_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
