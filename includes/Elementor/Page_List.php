@@ -146,18 +146,6 @@ class Page_List extends Widget_Base
                     'value'   => 'fas fa-tag',
                     'library' => 'solid',
                 ],
-                'recommended' => [
-					'fa-solid' => [
-						'circle',
-						'dot-circle',
-						'square-full',
-					],
-					'fa-regular' => [
-						'circle',
-						'dot-circle',
-						'square-full',
-					],
-				],
             ]
         );
 

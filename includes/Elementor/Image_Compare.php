@@ -66,7 +66,6 @@ class Image_Compare extends Widget_Base
     {
         return 'eicon-image-before-after magicelements-editor-widgets-icon';
     }
-
         /**
      * Retrieve the list of categories the widget belongs to.
      *
