@@ -163,24 +163,39 @@ trait Builder {
 
         return false;
     }
-    public function display_condition_group(int $post_id): array {
-        $conditions = [
-            'frontpage' => esc_html__('Front Page', 'magic-elements'),
-            '404' => esc_html__('404 Page', 'magic-elements'),
-            'search' => esc_html__('Search Results', 'magic-elements'),
-            'archive' => esc_html__('Archive Pages', 'magic-elements'),
-            'single' => esc_html__('Single Posts', 'magic-elements'),
-            'singular' => esc_html__('Singular Posts', 'magic-elements'),
-            'all_page' => esc_html__('All Pages', 'magic-elements'),
-            'date' => esc_html__('Date Archive', 'magic-elements'),
+    public function display_type_list() {
+        $display_types = array(
+            'header' => 'Header',
+            'footer' => 'Footer',
+        );
+        return apply_filters('magic_elements_display_types', $display_types);
+    }
+    public function get_display_on_list() {
+        $display = [
+            'entire_website' => esc_html__('Entire Website', 'magic-elements'),
+            'front_page'     => esc_html__('Front Page', 'magic-elements'),
+            'blog_page'      => esc_html__('Blog Page', 'magic-elements'),
+            'four_0_4'       => esc_html__('404', 'magic-elements'),
+            'search_page'    => esc_html__('Search Page', 'magic-elements'),
+            'blog_archive'   => esc_html__('Blog Archive', 'magic-elements'),
+            'blog_date_archive' => esc_html__('Blog Date Archive', 'magic-elements'),
+            'blog_category_archive' => esc_html__('Blog Category Archive', 'magic-elements'),
+            'blog_tag_archive' => esc_html__('Blog Tag Archive', 'magic-elements'),
+            'blog_author_archive' => esc_html__('Author Archive', 'magic-elements'),
         ];
-
-        /**
-         * Filter the condition groups for builder templates
-         *
-         * @param array $conditions The default condition groups
-         * @param int $post_id The post ID
-         */
-        return apply_filters('magic_elements_builder_condition_groups', $conditions, $post_id);
+        // Add taxonomy groups
+        return apply_filters('magic_elements_display_on_list', $display);
+    }
+    public function get_display_condition_list($formData) {
+        $display_condition = [];
+        if(isset($formData['me_builder_condition'])){
+            $display_condition = array_map(function($condition) {
+                return array(
+                    'display_type' => sanitize_text_field($condition['display_type']),
+                    'display_on' => sanitize_text_field($condition['display_on'])
+                );
+            }, $formData['me_builder_condition']);
+        }
+        return $display_condition;
     }
 }

@@ -19,8 +19,10 @@ if (!defined('ABSPATH')) {
  * @package MagicElements\Admin
  * @since 1.0.0
  */
+use MagicElements\Traits\Builder;
 class Menu
 {
+    use Builder;
     /**
      * Initialize menu
      * 
@@ -71,6 +73,7 @@ class Menu
     public function builder_page()
     {
         // TODO: Implement builder page rendering
+        $builder_list = $this->get_builder_templates();
         $template = __DIR__ . '/views/builder.php';
 
         if (file_exists($template)) {
