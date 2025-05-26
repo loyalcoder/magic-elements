@@ -158,6 +158,11 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/image_compare.js'),
                 'deps'    => ['jquery']
             ],
+            'emkit-timeline' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/timeline.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/timeline.js'),
+                'deps'    => ['jquery']
+            ],
         ];
     }
     /**
@@ -246,6 +251,10 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/image_compare.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/image_compare.css'),
             ],
+            'emk-timeline' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/timeline.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/timeline.css'),
+            ],
         ];
     }
 
@@ -282,6 +291,7 @@ class Load_Elementor
             'Info_Box',
             'Feature_list',
             'Review',
+            'Timeline',
         ];
     }
     public static function defaultWidgets()
@@ -310,6 +320,7 @@ class Load_Elementor
             'infobox',
             'featurelist',
             'review',
+            'timeline',
         ];
     }
     /**
