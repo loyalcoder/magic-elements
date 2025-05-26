@@ -190,7 +190,7 @@ class Image_Compare extends Widget_Base
         $this->start_controls_section(
             'image_compare_style_section',
 			[
-				'label' => esc_html__( 'Brfore Label', 'magic-elements' ),
+				'label' => esc_html__( 'Before Label', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -200,7 +200,7 @@ class Image_Compare extends Widget_Base
             'label' => esc_html__( 'Text Color', 'magic-elements' ),
             'type' => \Elementor\Controls_Manager::COLOR,
             'selectors' => [
-                '{{WRAPPER}} .twentytwenty-before-label:before' => 'color: {{VALUE}}',
+                '{{WRAPPER}} .before-label' => 'color: {{VALUE}}',
             ],
         ]
 		);
@@ -208,7 +208,7 @@ class Image_Compare extends Widget_Base
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'image_compare_before_label_typography',
-				'selector' => '{{WRAPPER}} .twentytwenty-before-label:before',
+				'selector' => '{{WRAPPER}} .before-label',
 			]
 		);
 
@@ -217,21 +217,21 @@ class Image_Compare extends Widget_Base
 			[
 				'name' => 'image_compare_before_label_background',
 				'types' => [ 'classic', 'gradient', 'video' ],
-				'selector' => '{{WRAPPER}} .twentytwenty-before-label:before',
+				'selector' => '{{WRAPPER}} .before-label',
 			]
 		);
         $this->add_group_control(
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'image_compare_before_label_box_shadow',
-				'selector' => '{{WRAPPER}} .twentytwenty-before-label:before',
+				'selector' => '{{WRAPPER}} .before-label',
 			]
 		);
         	$this->add_group_control(
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name' => 'image_compare_before_label_border',
-				'selector' => '{{WRAPPER}} .twentytwenty-before-label:before',
+				'selector' => '{{WRAPPER}} .before-label',
 			]
 		);
         $this->add_control(
@@ -248,7 +248,7 @@ class Image_Compare extends Widget_Base
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
-					'{{WRAPPER}} .twentytwenty-before-label:before' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .before-label' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -259,7 +259,7 @@ class Image_Compare extends Widget_Base
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
-					'{{WRAPPER}} .twentytwenty-before-label:before' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .before-label' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -270,11 +270,205 @@ class Image_Compare extends Widget_Base
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
-					'{{WRAPPER}} .twentytwenty-before-label:before' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .before-label' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
         $this->end_controls_section();
+        //After label
+        $this->start_controls_section(
+            'image_compare_after_style_section',
+			[
+				'label' => esc_html__( 'After Label', 'magic-elements' ),
+				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+        $this->add_control(
+        'image_compare_after_label_color',
+        [
+            'label' => esc_html__( 'Text Color', 'magic-elements' ),
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .after-label' => 'color: {{VALUE}}',
+            ],
+        ]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'image_compare_after_label_typography',
+				'selector' => '{{WRAPPER}} .after-label',
+			]
+		);
+
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'image_compare_after_label_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .after-label',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'image_compare_after_label_box_shadow',
+				'selector' => '{{WRAPPER}} .after-label',
+			]
+		);
+        	$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'image_compare_after_label_border',
+				'selector' => '{{WRAPPER}} .after-label',
+			]
+		);
+        $this->add_control(
+			'image_compare_after_label_divider',
+			[
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+        	$this->add_responsive_control(
+			'image_compare_after_label_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .after-label' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'image_compare_after_label_margin',
+			[
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .after-label' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'image_compare_after_label_padding',
+			[
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .after-label' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->end_controls_section();
+        //compare-drag
+        $this->start_controls_section(
+			'compare_drag_style_section',
+			[
+				'label' => esc_html__( 'Compare Drag', 'textdomain' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+        $this->add_responsive_control(
+			'compare_drag_width',
+			[
+				'label' => esc_html__( 'Width', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 500,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .compare-drag' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'compare_drag_hight',
+			[
+				'label' => esc_html__( 'Height', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 500,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .compare-drag' => 'height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'compare_drag_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .compare-drag',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'compare_drag_box_shadow',
+				'selector' => '{{WRAPPER}} .compare-drag',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'compare_drag_border',
+				'selector' => '{{WRAPPER}} .compare-drag',
+			]
+		);
+        $this->add_control(
+			'compare_drag_more_options',
+			[
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+        $this->add_responsive_control(
+			'compare_drag_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .compare-drag' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'compare_drag_margin',
+			[
+				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .compare-drag' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->end_controls_section();
+
 
 
     }

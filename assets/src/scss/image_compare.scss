@@ -69,11 +69,11 @@ img {
 	position: absolute;
 	height: 3rem;
 	width: 3rem;
-	left: 50%;
+	left: 49.3%;
 	top: 50%;
 	margin-left: -1rem;
 	margin-top: -1rem;
-  background: #000000 url('https://cdn.rawgit.com/CodyHouse/image-comparison-slider/7fb3ed73/img/cd-arrows.svg') no-repeat center center;
+  	background: #000000 url('https://cdn.rawgit.com/CodyHouse/image-comparison-slider/7fb3ed73/img/cd-arrows.svg') no-repeat center center;
 	cursor: move;
 	border-radius: 2rem;
 	&.draggable {
