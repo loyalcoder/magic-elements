@@ -14,6 +14,7 @@ class MBuilder {
     public function __construct() {
         add_action('wp_ajax_me_insert_template', [$this, 'ajax_insert_template']);
         add_action('wp_ajax_new_or_update_builder_template', [$this, 'ajax_new_or_update_builder_template']);
+        add_action('wp_ajax_me_add_condition', [$this, 'ajax_add_condition']);
     }
 
     /**
@@ -70,6 +71,24 @@ class MBuilder {
             magic_elements_get_template_part('admin/builder/addnew');
              $html = ob_get_clean();
         }
+        wp_send_json_success([
+            'html' => $html,
+            'post_id' => $post_id
+        ]);
+        wp_die();
+    }
+    public function ajax_add_condition(): void {
+        // Verify nonce
+        if (!check_ajax_referer('me_builder_nonce', 'nonce', false)) {
+            wp_send_json_error(['message' => esc_html__('Invalid security token', 'magic-elements')]);
+        }
+        $post_id = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;
+        $html = '';
+
+            ob_start();
+            magic_elements_get_template_part('admin/builder/add-condition', '', ['post_id' => $post_id]);
+            $html = ob_get_clean();
+        
         wp_send_json_success([
             'html' => $html,
             'post_id' => $post_id

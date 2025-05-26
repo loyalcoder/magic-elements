@@ -32,7 +32,7 @@
         </select>
     </div>
     <div class="magic-elements-form-group">
-        <button type="button" class="button button-secondary" id="me-add-condition">Add Condition</button>
+        <button type="button" class="button button-secondary" id="me-add-condition"><?php echo esc_html__('Add Condition', 'magic-elements'); ?></button>
     </div>
     <div class="magic-elements-form-group">
         <label for="template_condition"><?php echo esc_html__('Display Condition', 'magic-elements'); ?></label>

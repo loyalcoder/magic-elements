@@ -51,5 +51,30 @@ jQuery(function(){
         e.preventDefault();
         $('.magic-elements-addnew-popup').fadeOut();
      });
-    
+  // add condition   
+  $(document).on('click', '.magic-elements-addnew-popup #me-add-condition', function(e){
+    e.preventDefault();
+    let this_button = $(this);
+     $.ajax({
+        url: me_builder_ajax_object.ajax_url,
+        type: 'POST',
+        data: {
+            action: 'me_add_condition',
+            nonce: me_builder_ajax_object.nonce,
+            post_id: $(this).data('post-id')
+        },
+        success: function(response){
+            console.log(response.data.html);
+            if(response.success){
+                let html  = response.data.html;
+                this_button.parent().before(html);
+            }else{
+                console.log(response);
+            }
+        },
+        error: function(error){
+            console.log(error);
+        }
+     });
+  });
 }); 
