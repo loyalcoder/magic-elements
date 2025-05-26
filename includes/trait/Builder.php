@@ -163,4 +163,24 @@ trait Builder {
 
         return false;
     }
+    public function display_condition_group(int $post_id): array {
+        $conditions = [
+            'frontpage' => esc_html__('Front Page', 'magic-elements'),
+            '404' => esc_html__('404 Page', 'magic-elements'),
+            'search' => esc_html__('Search Results', 'magic-elements'),
+            'archive' => esc_html__('Archive Pages', 'magic-elements'),
+            'single' => esc_html__('Single Posts', 'magic-elements'),
+            'singular' => esc_html__('Singular Posts', 'magic-elements'),
+            'all_page' => esc_html__('All Pages', 'magic-elements'),
+            'date' => esc_html__('Date Archive', 'magic-elements'),
+        ];
+
+        /**
+         * Filter the condition groups for builder templates
+         *
+         * @param array $conditions The default condition groups
+         * @param int $post_id The post ID
+         */
+        return apply_filters('magic_elements_builder_condition_groups', $conditions, $post_id);
+    }
 }
