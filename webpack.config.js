@@ -65,9 +65,9 @@ const baseConfig = {
       './assets/src/scss/progress_bar.scss',
       './assets/src/js/progress_bar.js',
     ],
-     step_flow: [
-      './assets/src/scss/step_flow.scss',
-      './assets/src/js/step_flow.js',
+     multi_step: [
+      './assets/src/scss/multi_step.scss',
+      './assets/src/js/multi_step.js',
     ],
 
     // 2) SCSS ONLY (no JS file mentioned):

@@ -159,8 +159,8 @@ class Load_Elementor
                 'deps'    => ['jquery']
             ],
             'emkit-multi-step' => [
-                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/step_flow.js',
-                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/step_flow.js'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/multi_step.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/multi_step.js'),
                 'deps'    => ['jquery']
             ],
         ];
@@ -252,8 +252,8 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/progress_bar.css'),
             ],
             'emk-multi-step' => [
-                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/step_flow.css',
-                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/step_flow.css'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/multi_step.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/multi_step.css'),
             ],
         ];
     }

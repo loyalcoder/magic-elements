@@ -104,7 +104,29 @@ class Multi_Step extends Widget_Base
                 ],
             ]
         );
+$repeater->add_control(
+    'show_checkbox',
+    [
+        'label' => esc_html__('Show Checkbox', 'magic-elements'),
+        'type' => Controls_Manager::SWITCHER,
+        'label_on' => esc_html__('Show', 'magic-elements'),
+        'label_off' => esc_html__('Hide', 'magic-elements'),
+        'return_value' => 'yes',
+        'default' => 'no',
+    ]
+);
 
+$repeater->add_control(
+    'checkbox_label',
+    [
+        'label' => esc_html__('Checkbox Label', 'magic-elements'),
+        'type' => Controls_Manager::TEXT,
+        'default' => esc_html__('I agree to proceed to the next step', 'magic-elements'),
+        'condition' => [
+            'show_checkbox' => 'yes',
+        ],
+    ]
+);
         $this->add_control(
             'steps',
             [
@@ -148,6 +170,53 @@ class Multi_Step extends Widget_Base
                 'default' => 1,
             ]
         );
+        $this->add_control(
+			'complete_step_alert',
+			[
+				'label' => esc_html__( 'Complete Step Alert', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'textdomain' ),
+				'label_off' => esc_html__( 'Hide', 'textdomain' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
+        $this->add_control(
+			'alert_title',
+			[
+				'label' => esc_html__( 'Alert Title', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Default Alert title', 'textdomain' ),
+				'placeholder' => esc_html__( 'Type your alert title here', 'textdomain' ),
+                'condition' => [
+                    'complete_step_alert' => 'yes',
+                ],
+			]
+		);
+        $this->add_control(
+			'alert_description',
+			[
+				'label' => esc_html__( 'Alert Description', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::WYSIWYG,
+				'default' => esc_html__( 'Default description', 'textdomain' ),
+				'placeholder' => esc_html__( 'Type your description here', 'textdomain' ),
+                'condition' => [
+                    'complete_step_alert' => 'yes',
+                ],
+			]
+		);
+        $this->add_control(
+			'alert_btn',
+			[
+				'label' => esc_html__( 'Button Text', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Ok', 'textdomain' ),
+				'placeholder' => esc_html__( 'Type your button text', 'textdomain' ),
+                'condition' => [
+                    'complete_step_alert' => 'yes',
+                ],
+			]
+		);
 
         $this->end_controls_section();
 
@@ -156,6 +225,41 @@ class Multi_Step extends Widget_Base
             'section_navigation',
             [
                 'label' => esc_html__('Navigation', 'magic-elements'),
+            ]
+        );
+        $this->add_control(
+			'show_n_button',
+			[
+				'label' => esc_html__( 'Show Navigation Button', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'textdomain' ),
+				'label_off' => esc_html__( 'Hide', 'textdomain' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+
+         $this->add_control(
+            'next_button_text',
+            [
+                'label' => esc_html__('Next Button Text', 'magic-elements'),
+                'type' => Controls_Manager::TEXT,
+                'default' => esc_html__('Next', 'magic-elements'),
+                'condition' => [
+                    'show_n_button' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'prev_button_text',
+            [
+                'label' => esc_html__('Previous Button Text', 'magic-elements'),
+                'type' => Controls_Manager::TEXT,
+                'default' => esc_html__('Previous', 'magic-elements'),
+                'condition' => [
+                    'show_n_button' => 'yes',
+                ],
             ]
         );
 
@@ -167,7 +271,7 @@ class Multi_Step extends Widget_Base
                 'label_on' => esc_html__('Show', 'magic-elements'),
                 'label_off' => esc_html__('Hide', 'magic-elements'),
                 'return_value' => 'yes',
-                'default' => 'yes',
+                'default' => 'no',
             ]
         );
 
@@ -198,24 +302,6 @@ class Multi_Step extends Widget_Base
                 'condition' => [
                     'show_arrows' => 'yes',
                 ],
-            ]
-        );
-
-        $this->add_control(
-            'next_button_text',
-            [
-                'label' => esc_html__('Next Button Text', 'magic-elements'),
-                'type' => Controls_Manager::TEXT,
-                'default' => esc_html__('Next', 'magic-elements'),
-            ]
-        );
-
-        $this->add_control(
-            'prev_button_text',
-            [
-                'label' => esc_html__('Previous Button Text', 'magic-elements'),
-                'type' => Controls_Manager::TEXT,
-                'default' => esc_html__('Previous', 'magic-elements'),
             ]
         );
 
@@ -251,6 +337,31 @@ class Multi_Step extends Widget_Base
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .em-progress-bar' => 'height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'progress_bar_width',
+            [
+                'label' => esc_html__('Width', 'magic-elements'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px','%'],
+                'range' => [
+                    'px' => [
+                        'min' => 1,
+                        'max' => 1500,
+                    ],
+                    '%' => [
+                        'min' => 1,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => '%',
+                    'size' => 95,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .em-progress-bar' => 'width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -343,6 +454,27 @@ class Multi_Step extends Widget_Base
                 ],
             ]
         );
+        $this->add_control(
+            'step_indicator_icon_size',
+            [
+                'label' => esc_html__('Icon Size', 'magic-elements'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 10,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 15,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .em-step-icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
 
         $this->add_control(
             'step_indicator_bg_color',
@@ -378,23 +510,33 @@ class Multi_Step extends Widget_Base
         );
 
         $this->add_control(
-            'step_indicator_text_color',
+            'step_indicator_icon_color',
             [
-                'label' => esc_html__('Text Color', 'magic-elements'),
+                'label' => esc_html__('Icon Color', 'magic-elements'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .em-step-indicator' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .em-step-indicator .em-step-icon svg path' => 'fill: {{VALUE}};',
                 ],
             ]
         );
 
         $this->add_control(
-            'step_indicator_active_text_color',
+            'step_indicator_active_icon_color',
             [
-                'label' => esc_html__('Active Text Color', 'magic-elements'),
+                'label' => esc_html__('Active Icon Color', 'magic-elements'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .em-step-indicator.active' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .em-step-indicator.active .em-step-icon svg path' => 'fill: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'step_indicator_completed_icon_color',
+            [
+                'label' => esc_html__('Completed Icon Color', 'magic-elements'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .em-step-indicator.completed .em-step-icon svg path' => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -585,6 +727,318 @@ class Multi_Step extends Widget_Base
         );
 
         $this->end_controls_section();
+        // alert style ======================
+        $this->start_controls_section(
+			'alert_style',
+			[
+				'label' => esc_html__( 'Alert', 'textdomain' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'complete_step_alert' => 'yes',
+                ],
+			]
+		);
+        $this->add_responsive_control(
+			'alert_width',
+			[
+				'label' => esc_html__( 'Width', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 5,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 350,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .em-step-completion-popup .em-step-popup-content' => 'max-width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'alert_position',
+			[
+				'label' => esc_html__( 'Position', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 5,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => '%',
+					'size' => 35,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .em-step-completion-popup .em-step-popup-content' => 'top: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+        	
+        $this->add_control(
+			'alert_overlay',
+			[
+				'label' => esc_html__( 'Overlay', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .em-step-popup-overlay' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_control(
+			'alert_bg',
+			[
+				'label' => esc_html__( 'Background', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .em-step-completion-popup .em-step-popup-content' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'alert_padding',
+			[
+				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 20,
+					'right' => 35,
+					'bottom' => 20,
+					'left' => 35,
+					'unit' => 'px',
+					'isLinked' => true,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .em-step-completion-popup .em-step-popup-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'alert_box_shadow',
+				'selector' => '{{WRAPPER}} .em-step-completion-popup .em-step-popup-content',
+			]
+		);
+
+        $this->add_control(
+			'text_heding',
+			[
+				'label' => esc_html__( 'Text', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+        $this->add_control(
+			'alert_title_color',
+			[
+				'label' => esc_html__( 'title Color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .em-step-completion-popup .em-step-popup-content h3' => 'color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'alert_title_typography',
+				'selector' => '{{WRAPPER}} .em-step-completion-popup .em-step-popup-content h3',
+			]
+		);
+        $this->add_responsive_control(
+			'alert_title_margin',
+			[
+				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 0,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+					'unit' => 'px',
+					'isLinked' => true,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .em-step-completion-popup .em-step-popup-content h3' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_control(
+			'alert_content_color',
+			[
+				'label' => esc_html__( 'Content Color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .em-step-completion-popup .em-step-popup-content p' => 'color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'alert_content_typography',
+				'selector' => '{{WRAPPER}} .em-step-completion-popup .em-step-popup-content p',
+			]
+		);
+        $this->add_responsive_control(
+			'alert_content_margin',
+			[
+				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 0,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+					'unit' => 'px',
+					'isLinked' => true,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .em-step-completion-popup .em-step-popup-content p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_control(
+			'button_heding',
+			[
+				'label' => esc_html__( 'Button', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'button_title_typography',
+				'selector' => '{{WRAPPER}} .em-step-completion-popup .em-step-popup-content .em-step-popup-button',
+			]
+		);
+        $this->add_control(
+			'button_text_color',
+			[
+				'label' => esc_html__( 'Active Button Color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .em-step-completion-popup .em-step-popup-content .em-step-popup-button' => 'color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_control(
+			'button_bg',
+			[
+				'label' => esc_html__( 'Active Button Backround', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .em-step-completion-popup .em-step-popup-content .em-step-popup-button' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_control(
+			'button_text_color_hover',
+			[
+				'label' => esc_html__( 'Hover Button Color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .em-step-completion-popup .em-step-popup-content .em-step-popup-button:hover' => 'color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_control(
+			'button_bg_hover',
+			[
+				'label' => esc_html__( 'Hover Button Backround', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .em-step-completion-popup .em-step-popup-content .em-step-popup-button:hover' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'button_margin',
+			[
+				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 0,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+					'unit' => 'px',
+					'isLinked' => true,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .em-step-completion-popup .em-step-popup-content .em-step-popup-button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'button_padding',
+			[
+				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 8,
+					'right' => 16,
+					'bottom' => 8,
+					'left' => 16,
+					'unit' => 'px',
+					'isLinked' => true,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .em-step-completion-popup .em-step-popup-content .em-step-popup-button' => 'Padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'button_radius',
+			[
+				'label' => esc_html__( 'Radius', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 4,
+					'right' => 4,
+					'bottom' => 4,
+					'left' => 4,
+					'unit' => 'px',
+					'isLinked' => true,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .em-step-completion-popup .em-step-popup-content .em-step-popup-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'button_box_shadow',
+				'selector' => '{{WRAPPER}} .em-step-completion-popup .em-step-popup-content .em-step-popup-button',
+			]
+		);
+
+        $this->end_controls_section();
 
         // Navigation Buttons Style
         $this->start_controls_section(
@@ -592,6 +1046,9 @@ class Multi_Step extends Widget_Base
             [
                 'label' => esc_html__('Navigation Buttons', 'magic-elements'),
                 'tab' => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'show_n_button' => 'yes',
+                ],
             ]
         );
 
@@ -602,42 +1059,57 @@ class Multi_Step extends Widget_Base
                 'selector' => '{{WRAPPER}} .em-nav-button',
             ]
         );
+       $this->add_control(
+			'button_alinment',
+			[
+				'label' => esc_html__( 'Alinment', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'flex-start' => [
+						'title' => esc_html__( 'Start', 'magic-elements' ),
+						'icon' => 'eicon-justify-start-h',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'magic-elements' ),
+						'icon' => 'eicon-justify-center-h',
+					],
+					'flex-end' => [
+						'title' => esc_html__( 'End', 'magic-elements' ),
+						'icon' => 'eicon-justify-end-h',
+					],
+					'space-between' => [
+						'title' => esc_html__( 'Space Between', 'magic-elements' ),
+						'icon' => 'eicon-justify-space-between-h',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .em-nav-buttons-container' => 'justify-content: {{VALUE}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'arbtn_padding',
+			[
+				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 8,
+					'right' => 16,
+					'bottom' => 8,
+					'left' => 16,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .em-nav-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 
-        $this->add_control(
-            'button_width',
-            [
-                'label' => esc_html__('Width', 'magic-elements'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px', '%'],
-                'range' => [
-                    'px' => [
-                        'min' => 50,
-                        'max' => 500,
-                    ],
-                    '%' => [
-                        'min' => 5,
-                        'max' => 100,
-                    ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .em-nav-button' => 'width: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'button_padding',
-            [
-                'label' => esc_html__('Padding', 'magic-elements'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em'],
-                'selectors' => [
-                    '{{WRAPPER}} .em-nav-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
+        $this->add_responsive_control(
             'button_border_radius',
             [
                 'label' => esc_html__('Border Radius', 'magic-elements'),
@@ -648,92 +1120,27 @@ class Multi_Step extends Widget_Base
                 ],
             ]
         );
+        $this->add_responsive_control(
+			'em_nav_btn_margin',
+			[
+				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 0,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 0,
+					'unit' => 'px',
+					'isLinked' => true,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .em-nav-buttons-container' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 
-        $this->start_controls_tabs('button_tabs');
-
-        $this->start_controls_tab(
-            'button_normal',
-            [
-                'label' => esc_html__('Normal', 'magic-elements'),
-            ]
-        );
-
-        $this->add_control(
-            'button_text_color',
-            [
-                'label' => esc_html__('Text Color', 'magic-elements'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .em-nav-button' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Background::get_type(),
-            [
-                'name' => 'button_background',
-                'label' => esc_html__('Background', 'magic-elements'),
-                'types' => ['classic', 'gradient'],
-                'selector' => '{{WRAPPER}} .em-nav-button',
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name' => 'button_border',
-                'label' => esc_html__('Border', 'magic-elements'),
-                'selector' => '{{WRAPPER}} .em-nav-button',
-            ]
-        );
-
-        $this->end_controls_tab();
-
-        $this->start_controls_tab(
-            'button_hover',
-            [
-                'label' => esc_html__('Hover', 'magic-elements'),
-            ]
-        );
-
-        $this->add_control(
-            'button_hover_text_color',
-            [
-                'label' => esc_html__('Text Color', 'magic-elements'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .em-nav-button:hover' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Background::get_type(),
-            [
-                'name' => 'button_hover_background',
-                'label' => esc_html__('Background', 'magic-elements'),
-                'types' => ['classic', 'gradient'],
-                'selector' => '{{WRAPPER}} .em-nav-button:hover',
-            ]
-        );
-
-        $this->add_control(
-            'button_hover_border_color',
-            [
-                'label' => esc_html__('Border Color', 'magic-elements'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .em-nav-button:hover' => 'border-color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->end_controls_tab();
-
-        $this->end_controls_tabs();
-
-        $this->add_control(
+        $this->add_responsive_control(
             'buttons_spacing',
             [
                 'label' => esc_html__('Spacing Between Buttons', 'magic-elements'),
@@ -750,7 +1157,191 @@ class Multi_Step extends Widget_Base
                 ],
             ]
         );
+        // Previous Button Style
+        $this->add_control(
+			'prev_button',
+			[
+				'label' => esc_html__( 'Previous Button', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+        $this->start_controls_tabs('prev_button_tabs');
 
+        $this->start_controls_tab(
+            'prev_button_normal',
+            [
+                'label' => esc_html__('Normal', 'magic-elements'),
+            ]
+        );
+
+        $this->add_control(
+            'prev_button_text_color',
+            [
+                'label' => esc_html__('Text Color', 'magic-elements'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .em-prev-button' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'prev_button_background',
+                'label' => esc_html__('Background', 'magic-elements'),
+                'types' => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .em-prev-button',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'prev_button_border',
+                'label' => esc_html__('Border', 'magic-elements'),
+                'selector' => '{{WRAPPER}} .em-prev-button',
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'prev_button_hover',
+            [
+                'label' => esc_html__('Hover', 'magic-elements'),
+            ]
+        );
+
+        $this->add_control(
+            'prev_button_hover_text_color',
+            [
+                'label' => esc_html__('Text Color', 'magic-elements'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .em-prev-button:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'prev_button_hover_background',
+                'label' => esc_html__('Background', 'magic-elements'),
+                'types' => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .em-prev-button:hover',
+            ]
+        );
+
+        $this->add_control(
+            'prev_button_hover_border_color',
+            [
+                'label' => esc_html__('Border Color', 'magic-elements'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .em-prev-button:hover' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+
+        // Next Button Style
+        $this->add_control(
+			'next_button',
+			[
+				'label' => esc_html__( 'Next Button', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+        $this->start_controls_tabs('next_button_tabs');
+
+        $this->start_controls_tab(
+            'next_button_normal',
+            [
+                'label' => esc_html__('Normal', 'magic-elements'),
+            ]
+        );
+
+        $this->add_control(
+            'next_button_text_color',
+            [
+                'label' => esc_html__('Text Color', 'magic-elements'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .em-next-button' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'next_button_background',
+                'label' => esc_html__('Background', 'magic-elements'),
+                'types' => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .em-next-button',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'next_button_border',
+                'label' => esc_html__('Border', 'magic-elements'),
+                'selector' => '{{WRAPPER}} .em-next-button',
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'next_button_hover',
+            [
+                'label' => esc_html__('Hover', 'magic-elements'),
+            ]
+        );
+
+        $this->add_control(
+            'next_button_hover_text_color',
+            [
+                'label' => esc_html__('Text Color', 'magic-elements'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .em-next-button:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'next_button_hover_background',
+                'label' => esc_html__('Background', 'magic-elements'),
+                'types' => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .em-next-button:hover',
+            ]
+        );
+
+        $this->add_control(
+            'next_button_hover_border_color',
+            [
+                'label' => esc_html__('Border Color', 'magic-elements'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .em-next-button:hover' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
         $this->end_controls_section();
 
         // Navigation Arrows Style
@@ -766,20 +1357,96 @@ class Multi_Step extends Widget_Base
         );
 
         $this->add_control(
-            'arrow_size',
+            'icon_arrow_size',
             [
-                'label' => esc_html__('Size', 'magic-elements'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px'],
+                'label' => esc_html__( 'Arrow Size', 'textdomain' ),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
                 'range' => [
                     'px' => [
-                        'min' => 10,
+                        'min' => 0,
+                        'max' => 200,
+                        'step' => 5,
+                    ],
+                    '%' => [
+                        'min' => 0,
                         'max' => 100,
                     ],
                 ],
-                'selectors' => [
-                    '{{WRAPPER}} .em-step-nav-arrow' => 'font-size: {{SIZE}}{{UNIT}};',
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 50,
                 ],
+                'selectors' => [
+                    '{{WRAPPER}} .em-step-navigation button' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'arrow_icon_size',
+            [
+                'label' => esc_html__('Icon Size', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 200,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 20,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .em-step-navigation button svg' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+			'arrow_alinment',
+			[
+				'label' => esc_html__( 'Alinment', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'flex-start' => [
+						'title' => esc_html__( 'Start', 'magic-elements' ),
+						'icon' => 'eicon-justify-start-h',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'magic-elements' ),
+						'icon' => 'eicon-justify-center-h',
+					],
+					'flex-end' => [
+						'title' => esc_html__( 'End', 'magic-elements' ),
+						'icon' => 'eicon-justify-end-h',
+					],
+					'space-between' => [
+						'title' => esc_html__( 'Space Between', 'magic-elements' ),
+						'icon' => 'eicon-justify-space-between-h',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .em-step-navigation' => 'justify-content: {{VALUE}};',
+				],
+			]
+		);
+
+        $this->start_controls_tabs('arrow_style_tabs');
+
+        $this->start_controls_tab(
+            'arrow_normal_tab',
+            [
+                'label' => esc_html__('Normal', 'magic-elements'),
             ]
         );
 
@@ -789,18 +1456,8 @@ class Multi_Step extends Widget_Base
                 'label' => esc_html__('Color', 'magic-elements'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .em-step-nav-arrow' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'arrow_hover_color',
-            [
-                'label' => esc_html__('Hover Color', 'magic-elements'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .em-step-nav-arrow:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .em-step-navigation button' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .em-step-navigation button svg path' => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -811,18 +1468,7 @@ class Multi_Step extends Widget_Base
                 'label' => esc_html__('Background Color', 'magic-elements'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .em-step-nav-arrow' => 'background-color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'arrow_hover_background',
-            [
-                'label' => esc_html__('Hover Background', 'magic-elements'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .em-step-nav-arrow:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .em-step-navigation button' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -832,7 +1478,7 @@ class Multi_Step extends Widget_Base
             [
                 'name' => 'arrow_border',
                 'label' => esc_html__('Border', 'magic-elements'),
-                'selector' => '{{WRAPPER}} .em-step-nav-arrow',
+                'selector' => '{{WRAPPER}} .em-step-navigation button',
             ]
         );
 
@@ -843,19 +1489,82 @@ class Multi_Step extends Widget_Base
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .em-step-nav-arrow' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .em-step-navigation button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
 
-        $this->add_responsive_control(
-            'arrow_padding',
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
             [
-                'label' => esc_html__('Padding', 'magic-elements'),
+                'name' => 'arrow_box_shadow',
+                'selector' => '{{WRAPPER}} .em-step-navigation button',
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'arrow_hover_tab',
+            [
+                'label' => esc_html__('Hover', 'magic-elements'),
+            ]
+        );
+
+        $this->add_control(
+            'arrow_hover_color',
+            [
+                'label' => esc_html__('Color', 'magic-elements'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .em-step-navigation button:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .em-step-navigation button:hover svg path' => 'fill: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'arrow_hover_background',
+            [
+                'label' => esc_html__('Background Color', 'magic-elements'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .em-step-navigation button:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'arrow_hover_border_color',
+            [
+                'label' => esc_html__('Border Color', 'magic-elements'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .em-step-navigation button:hover' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'arrow_hover_box_shadow',
+                'selector' => '{{WRAPPER}} .em-step-navigation button:hover',
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+
+        $this->add_responsive_control(
+            'arrow_margin',
+            [
+                'label' => esc_html__('Margin', 'magic-elements'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .em-step-nav-arrow' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .em-step-navigation button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -866,158 +1575,7 @@ class Multi_Step extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        $id = 'em-multi-step-wizard-' . $this->get_id();
-        $active_step = $settings['active_step'] - 1; // Convert to 0-based index
-        
-        if (empty($settings['steps'])) {
-            return;
-        }
-        ?>
-        <div class="em-multi-step-wizard-container" id="<?php echo esc_attr($id); ?>">
-            <!-- Progress Bar -->
-            <div class="em-progress-container">
-                <div class="em-progress-bar">
-                    <div class="em-progress-bar-fill" style="width: <?php echo esc_attr(($active_step / (count($settings['steps']) - 1)) * 100); ?>%"></div>
-                </div>
-            </div>
-            
-            <!-- Step Indicators -->
-            <div class="em-step-indicators-container">
-                <?php foreach ($settings['steps'] as $index => $step): ?>
-                    <div class="em-step-indicator-wrapper">
-                        <div class="em-step-indicator <?php echo ($index === $active_step) ? 'active' : ''; ?> <?php echo ($index < $active_step) ? 'completed' : ''; ?>" 
-                             data-step="<?php echo esc_attr($index); ?>">
-                            <?php if (!empty($step['step_icon'])): ?>
-                                <div class="em-step-icon">
-                                    <?php \Elementor\Icons_Manager::render_icon($step['step_icon'], ['aria-hidden' => 'true']); ?>
-                                </div>
-                            <?php else: ?>
-                                <span class="em-step-number"><?php echo esc_html($index + 1); ?></span>
-                            <?php endif; ?>
-                        </div>
-                        <div class="em-step-title"><?php echo esc_html($step['step_title']); ?></div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-            
-            <!-- Step Content -->
-            <div class="em-step-content-container">
-                <?php foreach ($settings['steps'] as $index => $step): ?>
-                    <div class="em-step-content <?php echo ($index === $active_step) ? 'active' : ''; ?>" data-step="<?php echo esc_attr($index); ?>">
-                        <?php echo wp_kses_post($step['step_content']); ?>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-            
-            <!-- Navigation Buttons -->
-            <div class="em-nav-buttons-container">
-                <button type="button" class="em-nav-button em-prev-button" <?php echo ($active_step === 0) ? 'disabled' : ''; ?>>
-                    <?php echo esc_html($settings['prev_button_text']); ?>
-                </button>
-                <button type="button" class="em-nav-button em-next-button" <?php echo ($active_step === count($settings['steps']) - 1) ? 'disabled' : ''; ?>>
-                    <?php echo esc_html($settings['next_button_text']); ?>
-                </button>
-            </div>
-            
-            <?php if ('yes' === $settings['show_arrows']): ?>
-                <div class="em-step-navigation">
-                    <button type="button" class="em-step-nav-arrow em-step-prev" <?php echo ($active_step === 0) ? 'disabled' : ''; ?>>
-                        <?php \Elementor\Icons_Manager::render_icon($settings['prev_arrow'], ['aria-hidden' => 'true']); ?>
-                    </button>
-                    <button type="button" class="em-step-nav-arrow em-step-next" <?php echo ($active_step === count($settings['steps']) - 1) ? 'disabled' : ''; ?>>
-                        <?php \Elementor\Icons_Manager::render_icon($settings['next_arrow'], ['aria-hidden' => 'true']); ?>
-                    </button>
-                </div>
-            <?php endif; ?>
-        </div>
-        
-        <script>
-            jQuery(document).ready(function($) {
-                var $container = $('#<?php echo esc_attr($id); ?>');
-                var $indicators = $container.find('.em-step-indicator');
-                var $contents = $container.find('.em-step-content');
-                var $progressFill = $container.find('.em-progress-bar-fill');
-                var $prevButton = $container.find('.em-prev-button');
-                var $nextButton = $container.find('.em-next-button');
-                var $prevArrow = $container.find('.em-step-prev');
-                var $nextArrow = $container.find('.em-step-next');
-                var totalSteps = $indicators.length;
-                var currentStep = <?php echo esc_attr($active_step); ?>;
-                
-                // Initialize
-                updateUI();
-                
-                // Click on step indicators
-                $indicators.on('click', function() {
-                    var step = $(this).data('step');
-                    if (step !== currentStep) {
-                        currentStep = step;
-                        updateUI();
-                    }
-                });
-                
-                // Navigation buttons
-                $prevButton.on('click', goToPrevStep);
-                $nextButton.on('click', goToNextStep);
-                
-                // Navigation arrows
-                $prevArrow.on('click', goToPrevStep);
-                $nextArrow.on('click', goToNextStep);
-                
-                // Keyboard navigation
-                $(document).on('keydown', function(e) {
-                    if ($container.is(':visible')) {
-                        if (e.key === 'ArrowLeft') {
-                            goToPrevStep();
-                        } else if (e.key === 'ArrowRight') {
-                            goToNextStep();
-                        }
-                    }
-                });
-                
-                function goToPrevStep() {
-                    if (currentStep > 0) {
-                        currentStep--;
-                        updateUI();
-                    }
-                }
-                
-                function goToNextStep() {
-                    if (currentStep < totalSteps - 1) {
-                        currentStep++;
-                        updateUI();
-                    }
-                }
-                
-                function updateUI() {
-                    // Update indicators
-                    $indicators.removeClass('active completed');
-                    $indicators.each(function(index) {
-                        if (index === currentStep) {
-                            $(this).addClass('active');
-                        } else if (index < currentStep) {
-                            $(this).addClass('completed');
-                        }
-                    });
-                    
-                    // Update content
-                    $contents.removeClass('active');
-                    $contents.eq(currentStep).addClass('active');
-                    
-                    // Update progress bar
-                    var progressPercent = (currentStep / (totalSteps - 1)) * 100;
-                    $progressFill.css('width', progressPercent + '%');
-                    
-                    // Update buttons state
-                    $prevButton.prop('disabled', currentStep === 0);
-                    $nextButton.prop('disabled', currentStep === totalSteps - 1);
-                    
-                    // Update arrows state
-                    $prevArrow.prop('disabled', currentStep === 0);
-                    $nextArrow.prop('disabled', currentStep === totalSteps - 1);
-                }
-            });
-        </script>
-        <?php
+
+        include __DIR__ . '/layouts/multi-step/multi_step.php';
     }
 }
