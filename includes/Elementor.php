@@ -291,7 +291,7 @@ class Load_Elementor
             'Info_Box',
             'Feature_list',
             'Review',
-            'Progress_Bar',
+            // 'Progress_Bar',
             'Timeline',
         ];
     }
@@ -321,7 +321,7 @@ class Load_Elementor
             'infobox',
             'featurelist',
             'review',
-            'progressbar',
+            // 'progressbar',
             'timeline',
         ];
     }
