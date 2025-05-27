@@ -64,7 +64,7 @@ class Timeline extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-person magicelements-editor-widgets-icon';
+        return 'eicon-time-line magicelements-editor-widgets-icon';
     }
 
         /**
