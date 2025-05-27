@@ -21,19 +21,6 @@
     flex-direction: row-reverse;
   }
   
-  /* Horizontal Layout */
-//   .ultimate-timeline.horizontal {
-//     display: flex;
-//     flex-direction: row;
-//     overflow-x: auto;
-//     scroll-snap-type: x mandatory;
-//     padding: 20px 0;
-//     scrollbar-width: none;
-//   }
-  
-//   .ultimate-timeline.horizontal::-webkit-scrollbar {
-//     display: none;
-//   }
   
   /* Timeline Items */
   .timeline-items-wrapper {
@@ -55,12 +42,6 @@
     opacity: 1;
   }
   
-//   .horizontal .timeline-item {
-//     flex: 0 0 80%;
-//     max-width: 500px;
-//     margin-right: 20px;
-//     margin-bottom: 0;
-//   }
   
   /* Timeline Connector */
   .timeline-connector {
@@ -78,13 +59,6 @@
     z-index: 0;
   }
   
-//   .horizontal .timeline-connector {
-//     height: var(--timeline-connector-width);
-//     left: 0;
-//     right: 0;
-//     top: 50%;
-//     transform: translateY(-50%);
-//   }
   
   /* Timeline Marker */
   .timeline-marker {
@@ -132,10 +106,6 @@
     margin-right: 40px;
   }
   
-//   .horizontal .timeline-content {
-//     width: 100%;
-//     margin: 20px 0 0 15px;
-//   }
   
   .timeline-date {
     color: var(--timeline-color-primary);
@@ -217,9 +187,6 @@
       align-self: flex-start;
     }
     
-    // .horizontal .timeline-item {
-    //   flex: 0 0 90%;
-    // }
   }
   
   /* Animations */
