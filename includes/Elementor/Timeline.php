@@ -323,7 +323,8 @@ class Timeline extends Widget_Base
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .ultimate-timeline.vertical .timeline-connector' => 'width: {{SIZE}}{{UNIT}}',
+                    '{{WRAPPER}} .ultimate-timeline.vertical .timeline-connector' => 'border-width: {{SIZE}}{{UNIT}}',
+                    '{{WRAPPER}} .ultimate-timeline.vertical-alternate .timeline-connector' => 'border-width: {{SIZE}}{{UNIT}}',
                 ],
             ]
         );
@@ -451,7 +452,7 @@ class Timeline extends Widget_Base
 
         $this->end_controls_section();
 
-            // কন্টেন্ট বক্স স্টাইল
+            // content box style
             $this->start_controls_section(
                 'content_style',
                 [
@@ -515,7 +516,7 @@ class Timeline extends Widget_Base
 
             $this->end_controls_section();
 
-            // টাইটেল স্টাইল
+            // title style
             $this->start_controls_section(
                 'title_style',
                 [
@@ -558,7 +559,7 @@ class Timeline extends Widget_Base
 
             $this->end_controls_section();
 
-            // তারিখ স্টাইল
+            // date style
             $this->start_controls_section(
                 'date_style',
                 [
@@ -601,7 +602,7 @@ class Timeline extends Widget_Base
 
             $this->end_controls_section();
 
-            // কন্টেন্ট টেক্সট স্টাইল
+            // content text style
             $this->start_controls_section(
                 'text_style',
                 [
@@ -632,7 +633,7 @@ class Timeline extends Widget_Base
 
             $this->end_controls_section();
 
-            // ফিল্টার বাটন স্টাইল
+            // filter button style
             $this->start_controls_section(
                 'filter_style',
                 [
