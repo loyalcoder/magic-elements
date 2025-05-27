@@ -1,0 +1,67 @@
+/*!***************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/news_ticker.scss ***!
+  \***************************************************************************************************************************/
+/* Main Ticker Container */
+.multi-source-ticker {
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  background: #f8f8f8;
+  border: 1px solid #eaeaea;
+  border-radius: 3px;
+  /* Header containing title and content */
+  /* Ticker Title */
+  /* Ticker Content */
+  /* Responsive Design */
+}
+.multi-source-ticker .mst-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.multi-source-ticker .mst-title {
+  padding: 8px 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  white-space: nowrap;
+  background: #ff0000;
+  color: #ffffff;
+  z-index: 1;
+}
+.multi-source-ticker .mst-content {
+  flex-grow: 1;
+  overflow: hidden;
+  position: relative;
+  background: #f8f8f8;
+  /* Individual Ticker Items */
+}
+.multi-source-ticker .mst-content .mst-item {
+  padding: 8px 15px;
+  white-space: nowrap;
+  color: #333333;
+}
+.multi-source-ticker .mst-content .mst-item a {
+  color: inherit;
+  text-decoration: none !important;
+}
+.multi-source-ticker .mst-content .mst-item a:hover {
+  text-decoration: underline;
+}
+@media (max-width: 768px) {
+  .multi-source-ticker {
+    flex-direction: column;
+  }
+  .multi-source-ticker .mst-header {
+    flex-direction: column !important;
+  }
+  .multi-source-ticker .mst-title {
+    width: 100%;
+    text-align: center;
+  }
+  .multi-source-ticker .mst-content {
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=news_ticker.min.css.map*/
