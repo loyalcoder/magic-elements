@@ -9,26 +9,27 @@
     margin: 0 auto;
     padding: 20px 0;
     box-sizing: border-box;
-  }
-  
-  /* Vertical Layout */
-  .ultimate-timeline.vertical {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .ultimate-timeline.vertical-alternate .timeline-item:nth-child(even) {
-    flex-direction: row-reverse;
-  }
-  
-  
-  /* Timeline Items */
-  .timeline-items-wrapper {
+
+    /* Vertical Layout */
+    &.vertical {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &.vertical-alternate {
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+    }
+}
+
+/* Timeline Items */
+.timeline-items-wrapper {
     position: relative;
     z-index: 1;
-  }
-  
-  .timeline-item {
+}
+
+.timeline-item {
     position: relative;
     display: flex;
     margin-bottom: var(--timeline-item-spacing);
@@ -36,32 +37,30 @@
     scroll-snap-align: start;
     opacity: 0;
     transition: opacity 0.3s ease;
-  }
-  
-  .timeline-item.visible {
-    opacity: 1;
-  }
-  
-  
-  /* Timeline Connector */
-  .timeline-connector {
+
+    &.visible {
+        opacity: 1;
+    }
+}
+
+/* Timeline Connector */
+.timeline-connector {
     position: absolute;
     background-color: var(--timeline-color-primary);
-  }
-  
-  .vertical .timeline-connector,
-  .vertical-alternate .timeline-connector {
-    width: var(--timeline-connector-width);
-    top: 83px;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 0;
-  }
-  
-  
-  /* Timeline Marker */
-  .timeline-marker {
+
+    .vertical &,
+    .vertical-alternate & {
+        width: var(--timeline-connector-width);
+        top: 83px;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 0;
+    }
+}
+
+/* Timeline Marker */
+.timeline-marker {
     position: relative;
     width: 30px;
     height: 30px;
@@ -76,19 +75,19 @@
     align-items: center;
     justify-content: center;
     color: white;
-  }
-  
-  .timeline-marker:hover {
-    transform: scale(1.2);
-    box-shadow: 0 0 0 6px var(--timeline-color-primary);
-  }
-  
-  .timeline-marker i {
-    font-size: 14px;
-  }
-  
-  /* Timeline Content */
-  .timeline-content {
+
+    &:hover {
+        transform: scale(1.2);
+        box-shadow: 0 0 0 6px var(--timeline-color-primary);
+    }
+
+    i {
+        font-size: 14px;
+    }
+}
+
+/* Timeline Content */
+.timeline-content {
     background: white;
     border-radius: 8px;
     padding: 20px;
@@ -96,111 +95,111 @@
     position: relative;
     width: calc(50% - 40px);
     transition: all 0.3s ease;
-  }
-  
-  .vertical-alternate .timeline-item:nth-child(odd) .timeline-content {
-    margin-left: 40px;
-  }
-  
-  .vertical-alternate .timeline-item:nth-child(even) .timeline-content {
-    margin-right: 40px;
-  }
-  
-  
-  .timeline-date {
+
+    .vertical-alternate .timeline-item:nth-child(odd) & {
+        margin-left: 40px;
+    }
+
+    .vertical-alternate .timeline-item:nth-child(even) & {
+        margin-right: 40px;
+    }
+}
+
+.timeline-date {
     color: var(--timeline-color-primary);
     font-weight: bold;
     margin-bottom: 5px;
-  }
-  
-  .timeline-title {
+}
+
+.timeline-title {
     margin: 0 0 10px 0;
     color: #333;
-  }
-  
-  .timeline-text {
+}
+
+.timeline-text {
     color: #666;
     line-height: 1.5;
-  }
-  
-  /* Filters */
-  .timeline-filters {
+}
+
+/* Filters */
+.timeline-filters {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 30px;
     justify-content: center;
-  }
-  
-  .timeline-filter-button {
+}
+
+.timeline-filter-button {
     padding: 8px 16px;
     background: #f5f5f5;
     border: none;
     border-radius: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
-  }
-  
-  .timeline-filter-button:hover,
-  .timeline-filter-button.active {
-    background: var(--timeline-color-primary);
-    color: white;
-  }
-  
-  /* 3D Effects */
-  .perspective-3d {
+
+    &:hover,
+    &.active {
+        background: var(--timeline-color-primary);
+        color: white;
+    }
+}
+
+/* 3D Effects */
+.perspective-3d {
     perspective: 1000px;
-  }
-  
-  .perspective-3d .timeline-item {
-    transform-style: preserve-3d;
-  }
-  
-  .perspective-3d .timeline-content {
-    transform: translateZ(0);
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-  }
-  
-  .perspective-3d .timeline-item:hover .timeline-content {
-    transform: translateZ(20px) rotateY(5deg);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-  }
-  
-  /* Responsive */
-  @media (max-width: 767px) {
-    .ultimate-timeline.vertical-alternate .timeline-item,
-    .ultimate-timeline.vertical-alternate .timeline-item:nth-child(even) {
-      flex-direction: column;
+
+    .timeline-item {
+        transform-style: preserve-3d;
+    }
+
+    .timeline-content {
+        transform: translateZ(0);
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .timeline-item:hover .timeline-content {
+        transform: translateZ(20px) rotateY(5deg);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .ultimate-timeline.vertical-alternate {
+        .timeline-item,
+        .timeline-item:nth-child(even) {
+            flex-direction: column;
+        }
     }
     
     .timeline-content {
-      width: 100%;
-      margin: 20px 0 0 0 !important;
+        width: 100%;
+        margin: 20px 0 0 0 !important;
     }
     
     .vertical .timeline-connector,
     .vertical-alternate .timeline-connector {
-      left: 15px;
+        left: 15px;
     }
     
     .timeline-marker {
-      align-self: flex-start;
+        align-self: flex-start;
     }
-    
-  }
-  
-  /* Animations */
-  @keyframes fadeInUp {
+}
+
+/* Animations */
+@keyframes fadeInUp {
     from {
-      opacity: 0;
-      transform: translateY(20px);
+        opacity: 0;
+        transform: translateY(20px);
     }
     to {
-      opacity: 1;
-      transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
-  }
-  
-  .timeline-item.animate-in {
+}
+
+.timeline-item.animate-in {
     animation: fadeInUp 0.6s ease forwards;
-  }
+}
