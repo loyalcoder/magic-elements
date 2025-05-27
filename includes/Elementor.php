@@ -148,14 +148,23 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/light_box.js'),
                 'deps'    => ['jquery']
             ],
-            'emkit-review' => [
+            'emkit-news-ticker' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/news_ticker.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/news_ticker.js'),
+                'deps'    => ['jquery']
+            ],
+            'slick' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/vendor/slick/slick.min.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendor/slick/slick.min.js'),
+            ],
+                'emkit-review' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/review.js',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/review.js'),
                 'deps'    => ['jquery']
             ],
-            'emkit-image-compare' => [
-                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/image_compare.js',
-                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/image_compare.js'),
+            'emkit-progress-bar' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/progress_bar.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/progress_bar.js'),
                 'deps'    => ['jquery']
             ],
             'emkit-timeline' => [
@@ -243,13 +252,25 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/light_box.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/light_box.css'),
             ],
-            'emk-review' => [
+            'emk-news-ticker' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/news_ticker.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/news_ticker.css'),
+            ],
+            'slick' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/vendor/slick/slick.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendor/slick/slick.css'),
+            ],
+            'slick-theme' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/vendor/slick/slick-theme.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendor/slick/slick-theme.css'),
+            ],
+                'emk-review' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/review.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/review.css'),
             ],
-            'emk-image-compare' => [
-                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/image_compare.css',
-                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/image_compare.css'),
+            'emk-progress-bar' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/progress_bar.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/progress_bar.css'),
             ],
             'emk-timeline' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/timeline.css',
@@ -282,7 +303,6 @@ class Load_Elementor
             'Card',
             'Tab',
             'Post',
-            'Image_Compare',
             'Light_Box',
             'Post_List',
             'Page_List',
@@ -290,8 +310,10 @@ class Load_Elementor
             'Icon_Box',
             'Info_Box',
             'Feature_list',
+            'News_Ticker',
             'Review',
             'Timeline',
+            'Progress_Bar',
         ];
     }
     public static function defaultWidgets()
@@ -311,7 +333,6 @@ class Load_Elementor
             'categorylist',
             'card',
             'tab',
-            'imagecompare',
             'lightbox',
             'postlist',
             'pageList',
@@ -319,8 +340,10 @@ class Load_Elementor
             'iconiox',
             'infobox',
             'featurelist',
+            'newsticker',
             'review',
             'timeline',
+            'progressbar',
         ];
     }
     /**

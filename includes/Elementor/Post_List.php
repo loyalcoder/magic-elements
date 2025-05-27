@@ -234,6 +234,34 @@ class Post_List extends Widget_Base
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
+
+        $this->add_control(
+			'text_align',
+			[
+				'label' => esc_html__( 'Alignment', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'magic-elements' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'magic-elements' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'magic-elements' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .magic-post-item' => 'justify-content: {{VALUE}};',
+					'{{WRAPPER}} .magic-post-item' => 'align-items: {{VALUE}};',
+				],
+			]
+		);
     
         $this->add_control(
             'layout',
@@ -650,6 +678,60 @@ class Post_List extends Widget_Base
                     '{{WRAPPER}} .magic-post-thumbnail' => 'margin-bottom: {{SIZE}}{{UNIT}}',
                     '{{WRAPPER}}.magic-post-list-style-image-left .magic-post-thumbnail' => 'margin-right: {{SIZE}}{{UNIT}}; margin-bottom: 0',
                     '{{WRAPPER}}.magic-post-list-style-image-right .magic-post-thumbnail' => 'margin-left: {{SIZE}}{{UNIT}}; margin-bottom: 0',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'image_height',
+            [
+                'label' => esc_html__('Height', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+               'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 350,
+				],
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-thumbnail img' => 'height: {{SIZE}}{{UNIT}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'image_width_',
+            [
+                'label' => esc_html__('Width', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+               'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => '%',
+					'size' => 100,
+				],
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-thumbnail img' => 'width: {{SIZE}}{{UNIT}}',
                 ],
             ]
         );
