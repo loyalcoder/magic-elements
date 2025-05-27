@@ -172,6 +172,11 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/timeline.js'),
                 'deps'    => ['jquery']
             ],
+            'emkit-testimonial' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/testimonial.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/testimonial.js'),
+                'deps'    => ['jquery']
+            ],
         ];
     }
     /**
@@ -276,6 +281,10 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/timeline.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/timeline.css'),
             ],
+            'emk-testimonial' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/testimonial.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/testimonial.css'),
+            ],
         ];
     }
 
@@ -314,6 +323,7 @@ class Load_Elementor
             'Review',
             'Timeline',
             'Progress_Bar',
+            'Testimonial',
         ];
     }
     public static function defaultWidgets()
@@ -344,6 +354,7 @@ class Load_Elementor
             'review',
             'timeline',
             'progressbar',
+            'testimonial',
         ];
     }
     /**
