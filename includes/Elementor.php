@@ -167,6 +167,11 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/progress_bar.js'),
                 'deps'    => ['jquery']
             ],
+            'emkit-timeline' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/timeline.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/timeline.js'),
+                'deps'    => ['jquery']
+            ],
         ];
     }
     /**
@@ -267,6 +272,10 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/progress_bar.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/progress_bar.css'),
             ],
+            'emk-timeline' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/timeline.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/timeline.css'),
+            ],
         ];
     }
 
@@ -303,6 +312,7 @@ class Load_Elementor
             'Feature_list',
             'News_Ticker',
             'Review',
+            'Timeline',
             'Progress_Bar',
         ];
     }
@@ -332,6 +342,7 @@ class Load_Elementor
             'featurelist',
             'newsticker',
             'review',
+            'timeline',
             'progressbar',
         ];
     }
