@@ -40,3 +40,23 @@ function magic_elements_get_template_part( $slug, $name = '', $args = array() ) 
         error_log( 'Magic Elements: Template ' . $template_dir . $templates[0] . ' not found.' );
     }
 }
+
+if(!function_exists('me_get_display_condition_html')){
+    function me_get_display_condition_html($condition) {
+        $html = '<ul class="me-display-condition-list">';
+        
+        if (!empty($condition) && is_array($condition)) {
+            foreach ($condition as $item) {
+                if (isset($item['display_type']) && isset($item['display_on'])) {
+                    $display_type = str_replace('_', ' ', $item['display_type']);
+                    $display_on = str_replace('_', ' ', $item['display_on']);
+                    $html .= '<li><strong>' . esc_html__('Display Type:', 'magic-elements') . '</strong> ' . esc_html(ucwords($display_type)) . '</li>';
+                    $html .= '<li><strong>' . esc_html__('Display On:', 'magic-elements') . '</strong> ' . esc_html(ucwords($display_on)) . '</li>';
+                }
+            }
+        }
+        
+        $html .= '</ul>';
+        return $html;
+    }
+}

@@ -35,3 +35,9 @@
 @import './preview.scss';
 // add new template
 @import './addnew.scss';
+.status-inactive{
+    color: #ff0000;
+}
+.status-active{
+    color: #00ff00;
+}

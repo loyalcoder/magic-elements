@@ -16,6 +16,7 @@ class MBuilder {
         add_action('wp_ajax_new_or_update_builder_template', [$this, 'ajax_new_or_update_builder_template']);
         add_action('wp_ajax_me_add_condition', [$this, 'ajax_add_condition']);
         add_action('wp_ajax_me_submit_template', [$this, 'ajax_submit_template']);
+        add_action('wp_ajax_me_load_preview_data', [$this, 'ajax_load_preview_data']);
     }
 
     /**
@@ -36,7 +37,7 @@ class MBuilder {
         $title = sanitize_text_field($_POST['title']);
         $type = sanitize_text_field($_POST['type']);
         $condition = isset($_POST['condition']) ? sanitize_text_field($_POST['condition']) : 'all';
-
+        
         // Additional meta data
         $meta = [
             '_me_builder_condition' => $condition
@@ -62,9 +63,13 @@ class MBuilder {
         }
 
         $post_id = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;
+        $post_data = $this->get_builder_template_by_id($post_id);
+        $display_on = $this->get_display_on_list();
         $args = [
             'post_id' => $post_id,
-            'display_type' => $this->display_type_list()
+            'display_type' => $this->display_type_list(),
+            'post_data' => $post_data,
+            'display_on' => $display_on
         ];
         $html = '';
         ob_start();
@@ -109,21 +114,61 @@ class MBuilder {
         $type = isset($_POST['type']) ? sanitize_text_field($_POST['type']) : '';
         parse_str($_POST['formData'], $formData);
         $display_condition = $this->get_display_condition_list($formData);
+
         $template_title = isset($formData['template_title']) ? sanitize_text_field($formData['template_title']) : '';
         $template_status = isset($formData['template_status']) ? intval($formData['template_status']) : 0;
         $template_type = isset($formData['template_type']) ? sanitize_text_field($formData['template_type']) : '';
+        $post_id = isset($formData['template_id']) ? intval($formData['template_id']) : 0;
         $meta = [
-            '_me_builder_condition' => $display_condition
+            '_me_builder_condition' => $display_condition,
+            '_me_builder_type' => $template_type,
+            '_me_builder_status' => $template_status
         ];
-        $template_id = $this->insert_builder_template($template_title, $type, $meta);
+        if($post_id){
+            $template_id = $this->update_builder_template($post_id, $template_title, $meta);
+            $message = esc_html__('Template updated successfully', 'magic-elements');
+        }else{
+            $template_id = $this->insert_builder_template($template_title, $type, $meta);
+            $message = esc_html__('Template created successfully', 'magic-elements');
+        }
         if($template_id){
-        wp_send_json_success([
-            'message' => esc_html__('Template submitted successfully', 'magic-elements'),
-            'post_id' => $template_id,
+            wp_send_json_success([
+                'message' => $message,
+                'post_id' => $template_id,
             ]);
         }else{
-            wp_send_json_error(['message' => esc_html__('Failed to create template', 'magic-elements')]);
+            wp_send_json_error(['message' => $message]);
         }
         wp_die();
+    }
+    public function ajax_load_preview_data(): void {
+        // Verify nonce
+        if (!check_ajax_referer('me_builder_nonce', 'nonce', false)) {
+            wp_send_json_error(['message' => esc_html__('Invalid security token', 'magic-elements')]);
+        }
+       
+       $data_type = isset($_POST['data_type']) ? sanitize_text_field($_POST['data_type']) : '';
+       $args = $this->get_builder_templates([
+        'post_type' => 'me_builder',
+        'post_status' => 'publish',
+        'posts_per_page' => 10,
+        'paged' => 1,
+        'meta_query' => [
+            [
+                'key' => '_me_builder_type',
+                'value' => $data_type,
+                'compare' => '='
+            ]
+        ],
+       ]);
+       $html = '';
+       ob_start();
+       magic_elements_get_template_part('admin/builder/builder-list', '', $args);
+       $html = ob_get_clean();
+       wp_send_json_success([
+        'message' => esc_html__('Preview data loaded successfully', 'magic-elements'),
+        'html' => $html,
+       ]);
+       wp_die();
     }
 }

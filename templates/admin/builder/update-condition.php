@@ -1,0 +1,34 @@
+<?php
+$display_on = isset($args['display_on']) ? $args['display_on'] : [];
+$condition = isset($args['post_data']['condition']) ? $args['post_data']['condition'] : [];
+
+if(!empty($condition)){
+    foreach($condition as $key => $value){
+        $display_type_value = isset($value['display_type']) ? $value['display_type'] : '';
+        $display_on_value = isset($value['display_on']) ? $value['display_on'] : '';
+?>
+<div class="magic-elements-add-condition">
+    <div class="magic-elements-add-condition-content">
+        <div class="condition-group">
+            <select name="me_builder_condition[<?php echo esc_attr($key); ?>][display_type]" id="condition_type">
+              <option value="exclude" <?php selected($display_type_value, 'exclude'); ?>><?php echo esc_html__('Exclude', 'magic-elements'); ?></option>
+              <option value="include" <?php selected($display_type_value, 'include'); ?>><?php echo esc_html__('Include', 'magic-elements'); ?></option>
+            </select>
+        </div>
+        <div class="condition-group">
+            <select name="me_builder_condition[<?php echo esc_attr($key); ?>][display_on]" id="condition_value">
+                <?php foreach ($display_on as $key => $value) { ?>
+                    <option value="<?php echo esc_attr($key); ?>" <?php selected($display_on_value, $key); ?>><?php echo esc_html($value); ?></option>
+                <?php } ?>
+            </select>
+        </div>
+    </div>
+    <button type="button" class="button button-secondary" id="remove-condition">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+    </button>
+</div>
+<?php     }
+} ?>

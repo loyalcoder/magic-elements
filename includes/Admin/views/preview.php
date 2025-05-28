@@ -16,43 +16,23 @@
         </div>
         
         <div class="magic-elements-preview-list">
-            <!-- Demo Header 1 -->
-            <?php if(!empty($lists)){ 
-                 foreach($lists as $list){
-                ?> 
-                <div class="magic-elements-preview-item">
-                    <div class="preview-item-header">
-                        <h3><?php echo esc_html($list['title']); ?></h3>
-                        <?php 
-                         $edit_with_elementor = $elementor_edit_link = add_query_arg([
-                            'post' => $list['ID'],
-                            'action' => 'elementor'
-                        ], admin_url('post.php'));
-                        $preview_link = add_query_arg([
-                            'post' => $list['ID'],
-                            'action' => 'elementor'
-                        ], admin_url('post.php'));
-                        ?> 
-                        <div class="preview-item-actions">
-                            <a href="<?php echo esc_url($preview_link); ?> " class="preview-link" target="_blank"><?php echo esc_html__('Preview', 'magic-elements'); ?></a>
-                            <a href="javascript:void(0)" class="edit-link" data-id="<?php echo esc_attr($list['ID']); ?>"><?php echo esc_html__('Edit', 'magic-elements'); ?></a>
-                            <a href="<?php echo esc_url($edit_with_elementor); ?>" class="edit-elementor-link" target="_blank"><?php echo esc_html__('Edit with Elementor', 'magic-elements'); ?></a>
-                            <a href="javascript:void(0)" class="delete-link" data-id="<?php echo esc_attr($list['ID']); ?>"><?php echo esc_html__('Delete', 'magic-elements'); ?></a>
-                        </div>
-                    </div>
-                    <div class="preview-item-details">
-                        <div class="preview-item-condition">
-                            <strong><?php echo esc_html__('Display Condition:', 'magic-elements'); ?></strong>
-                            <span><?php echo esc_html__('All Pages', 'magic-elements'); ?></span>
-                        </div>
-                        <div class="preview-item-display">
-                            <strong><?php echo esc_html__('Display On:', 'magic-elements'); ?></strong>
-                            <span><?php echo esc_html__('Desktop & Mobile', 'magic-elements'); ?></span>
-                        </div>
-                    </div>
-                </div>
-                <?php } ?>
-            <?php } ?>
+            <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+            <!-- White background -->
+                <rect width="100%" height="100%" fill="white"/>
+            <!-- Spinner -->
+                <g fill="none" fill-rule="evenodd" stroke="#2563EB" stroke-width="4">
+                    <circle cx="22" cy="22" r="16" stroke-opacity="0.3"/>
+                    <path d="M22 6 A16 16 0 0 1 38 22">
+                    <animateTransform
+                        attributeName="transform"
+                        type="rotate"
+                        from="0 22 22"
+                        to="360 22 22"
+                        dur="1s"
+                        repeatCount="indefinite"/>
+                    </path>
+                </g>
+            </svg>
         </div>
 
         <!-- Pagination -->

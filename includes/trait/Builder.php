@@ -52,6 +52,8 @@ trait Builder {
                     'title' => get_the_title(),
                     'type' => get_post_meta(get_the_ID(), '_me_builder_type', true),
                     'date' => get_the_date(),
+                    'status' => get_post_meta(get_the_ID(), '_me_builder_status', true),
+                    'condition' => get_post_meta(get_the_ID(), '_me_builder_condition', true),
                     'modified' => get_the_modified_date()
                 ];
             }
@@ -67,6 +69,32 @@ trait Builder {
         // Cache the data
         set_transient($cache_key, $data, $cache_time);
 
+        return $data;
+    }
+    public function get_builder_template_by_id(int $post_id) {
+        $cache_key = 'magic_elements_builder_template_' . $post_id;
+        $cached_data = get_transient($cache_key);
+        
+        if (false !== $cached_data) {
+            return $cached_data;
+        }
+
+        $post = get_post($post_id);
+        if (!$post || $post->post_type !== 'me_builder') {
+            return false;
+        }
+
+        $data = [
+            'ID' => $post->ID,
+            'title' => $post->post_title,
+            'type' => get_post_meta($post->ID, '_me_builder_type', true),
+            'date' => get_the_date('', $post->ID),
+            'status' => get_post_meta($post->ID, '_me_builder_status', true),
+            'condition' => get_post_meta($post->ID, '_me_builder_condition', true),
+            'modified' => get_the_modified_date('', $post->ID)
+        ];
+
+        set_transient($cache_key, $data, HOUR_IN_SECONDS);
         return $data;
     }
 
@@ -197,5 +225,39 @@ trait Builder {
             }, $formData['me_builder_condition']);
         }
         return $display_condition;
+    }
+    public function update_builder_template(int $template_id, string $title, array $meta = []): bool {
+        if (empty($template_id)) {
+            return false;
+        }
+
+        // Verify post exists and is correct type
+        $post = get_post($template_id);
+        if (!$post || $post->post_type !== 'me_builder') {
+            return false;
+        }
+
+        $post_data = [
+            'post_title' => sanitize_text_field($title),
+            'ID' => $template_id,
+            'post_type' => 'me_builder',
+            'post_status' => 'publish'
+        ];
+
+        // Update the post
+        $post_id = wp_update_post($post_data);
+        if (is_wp_error($post_id)) {
+            return false;
+        }
+
+        // Update meta data
+        foreach ($meta as $key => $value) {
+            update_post_meta($post_id, sanitize_key($key), $value);
+        }
+
+        // Clear cache after successful update
+        $this->delete_builder_cache();
+
+        return true;
     }
 }

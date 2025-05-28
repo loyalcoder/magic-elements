@@ -1,8 +1,15 @@
 <?php
 $display_type = isset($args['display_type']) ? $args['display_type'] : [];
+$post_data = isset($args['post_data']) ? $args['post_data'] : [];
+$title = isset($post_data['title']) ? $post_data['title'] : '';
+$status = isset($post_data['status']) ? $post_data['status'] : '';
+$type = isset($post_data['type']) ? $post_data['type'] : '';
+$condition = isset($post_data['condition']) ? $post_data['condition'] : [];
+$form_title = isset($post_data['ID']) ? esc_html__('Edit Template', 'magic-elements') : esc_html__('Add New Template', 'magic-elements');
+$template_id = isset($post_data['ID']) ? $post_data['ID'] : '';
 ?>
 <div class="magic-elements-addnew-header">
-    <h2><?php echo esc_html__('Add New Template', 'magic-elements'); ?></h2>
+    <h2><?php echo esc_html($form_title); ?></h2>
 </div>
 
 <form method="post" action="" id="me-add-template-form">
@@ -14,6 +21,7 @@ $display_type = isset($args['display_type']) ? $args['display_type'] : [];
                name="template_title" 
                id="template_title" 
                class="regular-text" 
+               value="<?php echo esc_attr($title); ?>"
                required>
     </div>
     <div class="magic-elements-form-group">
@@ -22,7 +30,7 @@ $display_type = isset($args['display_type']) ? $args['display_type'] : [];
                    name="template_status" 
                    id="template_status" 
                    value="1" 
-                   checked>
+                   <?php checked($status, 1); ?>>
             <?php echo esc_html__('Active', 'magic-elements'); ?>
         </label>
     </div>
@@ -32,7 +40,7 @@ $display_type = isset($args['display_type']) ? $args['display_type'] : [];
             <option value=""><?php echo esc_html__('Select Type', 'magic-elements'); ?></option>
             <?php if (!empty($display_type)) : ?>
                 <?php foreach ($display_type as $key => $value) : ?>
-                    <option value="<?php echo esc_attr($key); ?>"><?php echo esc_html($value); ?></option>
+                    <option value="<?php echo esc_attr($key); ?>" <?php selected($type, $key); ?>><?php echo esc_html($value); ?></option>
                 <?php endforeach; ?>
             <?php endif; ?>
         </select>
@@ -40,13 +48,20 @@ $display_type = isset($args['display_type']) ? $args['display_type'] : [];
     <div class="magic-elements-add-condition-header">
         <h3><?php echo esc_html__('Condition', 'magic-elements'); ?></h3>
     </div>
-
+    <?php if(!empty($condition)){ ?>
+        <?php magic_elements_get_template_part('admin/builder/update-condition', '', $args); ?>
+    <?php } ?>
     <div class="magic-elements-form-group">
         <button type="button" class="button button-secondary" id="me-add-condition"><?php echo esc_html__('Add Condition', 'magic-elements'); ?></button>
     </div>
+    <?php 
+     $button_text = isset($post_data['ID']) ? esc_html__('Update Template', 'magic-elements') : esc_html__('Create Template', 'magic-elements');
+    
+    ?>
+    <input type="hidden" name="template_id" value="<?php echo esc_attr($template_id); ?>">
     <div class="magic-elements-form-actions">
         <button type="submit" class="button button-primary" id="me-submit-template">
-            <?php echo esc_html__('Create Template', 'magic-elements'); ?>
+            <?php echo esc_html($button_text); ?>
         </button>
     </div>
 </form>

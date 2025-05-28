@@ -2,13 +2,19 @@ import $ from 'jquery';
 jQuery(function(){
     $('.magic-elements-builder-list li a').on('click', function(e){
         e.preventDefault();
-        console.log($(this).data('title'));
         $(this).addClass('active');
         $(this).siblings().removeClass('active');
         let popupTitle = $(this).data('title');
-        console.log(popupTitle);
         $('.magic-elements-preview-header h2').text(popupTitle);
         $('.magic-elements-preview-popup').fadeIn();
+        let dataType = $(this).data('type');
+        // load preview
+        let data = {
+            action: 'me_load_preview_data',
+            nonce: me_builder_ajax_object.nonce,
+            data_type: dataType
+        };
+        fire_ajax(data, '.magic-elements-preview-list');
     });
     $(document).on('click', '.magic-elements-close-popup', function(e){
         e.preventDefault();
@@ -22,7 +28,8 @@ jQuery(function(){
         $('.magic-elements-close-popup').trigger('click');
     });
     // new template
-    $('.add-new-template-link').on('click', function(e){
+
+    $(document).on('click', '.add-new-template-link, .magic-elements-preview-item .edit-link', function(e){
         e.preventDefault();
         $('.magic-elements-addnew-popup').fadeIn();
         $.ajax({
@@ -31,7 +38,7 @@ jQuery(function(){
             data: {
                 action: 'new_or_update_builder_template',
                 nonce: me_builder_ajax_object.nonce,
-                post_id: $(this).data('post-id')
+                post_id: $(this).data('id')
             },
             success: function(response){
                 if(response.success){
@@ -107,7 +114,6 @@ jQuery(function(){
             action: 'me_submit_template',
             nonce: me_builder_ajax_object.nonce,
             formData: formData,
-            template_type: 'new'
         },
         success: function(response) {
             if (response.success) {
@@ -128,4 +134,18 @@ jQuery(function(){
         }
     });
   });
+  
+  function fire_ajax (data, display_selector) {
+    $.ajax({
+      url: me_builder_ajax_object.ajax_url,
+      type: 'POST',
+      data: data,
+      success: function(response){
+        $(display_selector).html(response.data.html);
+      },
+      error: function(error){
+        console.log(error);
+      }
+    });
+  }
 }); 
