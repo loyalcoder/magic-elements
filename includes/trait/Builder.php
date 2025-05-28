@@ -24,7 +24,7 @@ trait Builder {
         $default_args = [
             'post_type' => 'me_builder',
             'post_status' => 'publish',
-            'posts_per_page' => 10,
+            'posts_per_page' => 5,
             'paged' => 1,
             'meta_query' => [],
             'orderby' => 'date',
@@ -59,11 +59,19 @@ trait Builder {
             }
         }
         wp_reset_postdata();
+        $pagination_html = paginate_links([
+            'base' => add_query_arg('paged', '%#%'),
+            'format' => '',
+            'total' => $query->max_num_pages,
+            'current' => $args['paged'],
+            'prev_text' => '&laquo;',
+        ]);
 
         $data = [
             'templates' => $templates,
             'total' => $query->found_posts,
-            'max_num_pages' => $query->max_num_pages
+            'max_num_pages' => $query->max_num_pages,
+            'pagination_html' => $pagination_html
         ];
 
         // Cache the data

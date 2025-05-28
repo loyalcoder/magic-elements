@@ -148,11 +148,12 @@ class MBuilder {
         }
        
        $data_type = isset($_POST['data_type']) ? sanitize_text_field($_POST['data_type']) : '';
+       $paged = isset($_POST['paged']) ? intval($_POST['paged']) : 1;
        $args = $this->get_builder_templates([
         'post_type' => 'me_builder',
         'post_status' => 'publish',
-        'posts_per_page' => 10,
-        'paged' => 1,
+        'posts_per_page' => 5,
+        'paged' => $paged,
         'meta_query' => [
             [
                 'key' => '_me_builder_type',
@@ -160,6 +161,11 @@ class MBuilder {
                 'compare' => '='
             ]
         ],
+        'orderby' => [
+            'meta_value' => 'DESC',
+            'date' => 'DESC'
+        ],
+        'meta_key' => '_me_builder_status'
        ]);
        $html = '';
        ob_start();
@@ -168,6 +174,7 @@ class MBuilder {
        wp_send_json_success([
         'message' => esc_html__('Preview data loaded successfully', 'magic-elements'),
         'html' => $html,
+        'pagination_html' => $args['pagination_html']
        ]);
        wp_die();
     }

@@ -3,18 +3,33 @@ jQuery(function(){
     $('.magic-elements-builder-list li a').on('click', function(e){
         e.preventDefault();
         $(this).addClass('active');
-        $(this).siblings().removeClass('active');
+        $(this).parent().siblings().find('a').removeClass('active');
         let popupTitle = $(this).data('title');
         $('.magic-elements-preview-header h2').text(popupTitle);
         $('.magic-elements-preview-popup').fadeIn();
-        let dataType = $(this).data('type');
+        let dataType = $('.magic-elements-builder-list li a.active').data('type');
         // load preview
         let data = {
             action: 'me_load_preview_data',
             nonce: me_builder_ajax_object.nonce,
             data_type: dataType
         };
-        fire_ajax(data, '.magic-elements-preview-list');
+        fire_ajax(data, '.magic-elements-preview-list', '.magic-elements-pagination');
+    });
+    // pagination 
+    $(document).on('click', '.magic-elements-pagination a', function(e){
+        e.preventDefault();
+        const url = $(this).attr('href');
+        const pageParam = new URLSearchParams(url.split('?')[1]);
+        const pageNumber = pageParam.get('paged');
+        let dataType = $(this).parents('.magic-elements-preview-popup').siblings('.magic-elements-builder-sections').find('li a.active').data('type');
+        let data = {
+            action: 'me_load_preview_data',
+            nonce: me_builder_ajax_object.nonce,
+            data_type: dataType,
+            paged: pageNumber
+        };
+        fire_ajax(data, '.magic-elements-preview-list', '.magic-elements-pagination');
     });
     $(document).on('click', '.magic-elements-close-popup', function(e){
         e.preventDefault();
@@ -135,13 +150,15 @@ jQuery(function(){
     });
   });
   
-  function fire_ajax (data, display_selector) {
+  function fire_ajax (data, display_selector, pagination_selector) {
     $.ajax({
       url: me_builder_ajax_object.ajax_url,
       type: 'POST',
       data: data,
       success: function(response){
+        console.log(data);
         $(display_selector).html(response.data.html);
+        $(pagination_selector).html(response.data.pagination_html);
       },
       error: function(error){
         console.log(error);

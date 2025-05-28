@@ -37,13 +37,6 @@
 
         <!-- Pagination -->
         <div class="magic-elements-pagination">
-            <a href="#" class="page-numbers prev"><?php echo esc_html__('Previous', 'magic-elements'); ?></a>
-            <a href="#" class="page-numbers current">1</a>
-            <a href="#" class="page-numbers">2</a>
-            <a href="#" class="page-numbers">3</a>
-            <span class="page-numbers dots">...</span>
-            <a href="#" class="page-numbers">10</a>
-            <a href="#" class="page-numbers next"><?php echo esc_html__('Next', 'magic-elements'); ?></a>
         </div>
     </div>
 </div>
