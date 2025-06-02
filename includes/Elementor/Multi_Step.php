@@ -745,7 +745,83 @@ $repeater->add_control(
                 ],
             ]
         );
+		$this->add_control(
+			'checkbox_header',
+			[
+				'label' => esc_html__( 'Checkbox', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+        $this->add_control(
+            'checkbox_size',
+            [
+                'label' => esc_html__('Checkbox Size', 'magic-elements'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 10,
+                        'max' => 50,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 20,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .em-step-checkbox input[type="checkbox"]' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
 
+        $this->add_control(
+            'checkbox_color',
+            [
+                'label' => esc_html__('Checkbox Color', 'magic-elements'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .em-step-checkbox input[type="checkbox"]' => 'accent-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'checkbox_label_color',
+            [
+                'label' => esc_html__('Label Color', 'magic-elements'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .em-step-checkbox label' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'checkbox_label_typography',
+                'selector' => '{{WRAPPER}} .em-step-checkbox label',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'checkbox_spacing',
+            [
+                'label' => esc_html__('Spacing', 'magic-elements'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 50,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .em-step-checkbox' => 'margin-top: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
         $this->end_controls_section();
         // alert style ======================
         $this->start_controls_section(

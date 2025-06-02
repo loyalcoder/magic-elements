@@ -1,0 +1,8 @@
+.feature-list .feature {
+  display: flex;
+  align-items: start;
+  gap: 15px;
+}
+.feature-list .feature .feature-icon svg {
+  width: 40px;
+}/*# sourceMappingURL=feature_list.css.map */
