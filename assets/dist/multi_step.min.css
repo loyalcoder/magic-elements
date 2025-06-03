@@ -186,10 +186,6 @@
 
 /* Responsive Adjustments */
 @media (max-width: 767px) {
-  .em-step-indicator {
-    width: 30px !important;
-    height: 30px !important;
-  }
   .em-step-title {
     font-size: 12px;
   }

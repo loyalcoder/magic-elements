@@ -181,12 +181,7 @@
 }
 
 /* Responsive Adjustments */
-@media (max-width: 767px) {
-    .em-step-indicator {
-        width: 30px !important;
-        height: 30px !important;
-    }
-    
+@media (max-width: 767px) {    
     .em-step-title {
         font-size: 12px;
     }
@@ -202,9 +197,6 @@
         font-size: 14px !important;
     }
 }
-// .em-step-checkbox {
-//     background-color: #f9f9f9;
-// }
 ::selection{
     background-color: #45a049 !important;
     color: #000 !important;

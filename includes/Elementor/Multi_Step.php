@@ -319,7 +319,7 @@ $repeater->add_control(
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'progress_bar_height',
             [
                 'label' => esc_html__('Height', 'magic-elements'),
@@ -340,7 +340,7 @@ $repeater->add_control(
                 ],
             ]
         );
-        $this->add_control(
+        $this->add_responsive_control(
             'progress_bar_width',
             [
                 'label' => esc_html__('Width', 'magic-elements'),
@@ -388,7 +388,7 @@ $repeater->add_control(
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'progress_bar_border_radius',
             [
                 'label' => esc_html__('Border Radius', 'magic-elements'),
@@ -433,7 +433,7 @@ $repeater->add_control(
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'step_indicator_size',
             [
                 'label' => esc_html__('Size', 'magic-elements'),
@@ -454,7 +454,7 @@ $repeater->add_control(
                 ],
             ]
         );
-        $this->add_control(
+        $this->add_responsive_control(
             'step_indicator_icon_size',
             [
                 'label' => esc_html__('Icon Size', 'magic-elements'),
@@ -561,7 +561,7 @@ $repeater->add_control(
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'step_indicator_border_radius',
             [
                 'label' => esc_html__('Border Radius', 'magic-elements'),
@@ -1578,7 +1578,7 @@ $repeater->add_control(
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'arrow_border_radius',
             [
                 'label' => esc_html__('Border Radius', 'magic-elements'),
