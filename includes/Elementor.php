@@ -138,6 +138,11 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/tab.js'),
                 'deps'    => ['jquery']
             ],
+            'emkit-vertical-menu' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/vertical_menu.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/vertical_menu.js'),
+                'deps'    => ['jquery']
+            ],
         ];
     }
     /**
@@ -189,6 +194,10 @@ class Load_Elementor
             'emk-tab' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/tab.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/tab.css'),
+            ],
+            'emkit-vertical-menu' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/vertical_menu.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/vertical_menu.css'),
             ]
         ];
     }
@@ -216,7 +225,9 @@ class Load_Elementor
             'Category_List',
             'Card',
             'Tab',
-            'Post'
+            'Post',
+            'Offcanvas',
+            'Vertical_Menu'
         ];
     }
     public static function defaultWidgets()

@@ -38,6 +38,10 @@ const baseConfig = {
       './assets/src/scss/tab.scss',
       './assets/src/js/tab.js',
     ],
+    vertical_menu: [
+      './assets/src/scss/vertical_menu.scss',
+      './assets/src/js/vertical_menu.js',
+    ],
 
     // 2) SCSS ONLY (no JS file mentioned):
     flipcard: './assets/src/scss/flipcard.scss',

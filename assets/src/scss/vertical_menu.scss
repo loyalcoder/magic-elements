@@ -1,0 +1,62 @@
+.vertical-menu-container{
+    .magic-vertical-menu{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        li{
+            
+            a{
+                display: inline-block;
+                padding: 10px 20px;
+                text-decoration: none;
+                color: #333;
+            }
+            > a{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 10px;
+                padding: 10px 20px;
+                text-decoration: none;
+                color: #333;
+                span{
+                    position: relative;
+                    &::after{
+                        content: '';
+                        position: absolute;
+                        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        width: 16px;
+                        height: 16px;
+                        top: 50%;
+                        right: 0;
+                        transform: translateY(-50%) rotate(90deg);
+                        transition: all .4s;
+                    }
+                }
+            }
+            &.open{
+                > a{
+                    span{
+                        transform: translateY(-50%) rotate(270deg);
+                    }
+                }
+            }
+            .sub-menu{
+                display: none;
+                list-style: none;
+                margin: 0;
+                padding: 0 0 0 30px;
+                a{
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: #333;
+                    text-decoration: none;
+                    padding: 4px 0;
+                    display: block;
+                }
+            }
+        }
+    }
+}

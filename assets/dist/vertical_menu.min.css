@@ -1,0 +1,58 @@
+/*!*****************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/vertical_menu.scss ***!
+  \*****************************************************************************************************************************/
+.vertical-menu-container .magic-vertical-menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.vertical-menu-container .magic-vertical-menu li a {
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #333;
+}
+.vertical-menu-container .magic-vertical-menu li > a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #333;
+}
+.vertical-menu-container .magic-vertical-menu li > a span {
+  position: relative;
+}
+.vertical-menu-container .magic-vertical-menu li > a span::after {
+  content: "";
+  position: absolute;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27currentColor%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpolyline points=%276 9 12 15 18 9%27%3E%3C/polyline%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%) rotate(90deg);
+  transition: all 0.4s;
+}
+.vertical-menu-container .magic-vertical-menu li.open > a span {
+  transform: translateY(-50%) rotate(270deg);
+}
+.vertical-menu-container .magic-vertical-menu li .sub-menu {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 30px;
+}
+.vertical-menu-container .magic-vertical-menu li .sub-menu a {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+  padding: 4px 0;
+  display: block;
+}
+
+/*# sourceMappingURL=vertical_menu.min.css.map*/
