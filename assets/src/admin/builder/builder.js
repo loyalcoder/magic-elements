@@ -105,6 +105,7 @@ jQuery(function(){
             data: data,
             success: function(response){
                 if(response.success){
+                    $('.magic-elements-builder-list li a.active').trigger('click');
                     this_button.parents('.magic-elements-preview-item').remove();
                 }else{
                     console.log(response);
@@ -113,9 +114,11 @@ jQuery(function(){
         });
     });
 
-     $('.magic-elements-addnew-popup .magic-elements-close-popup').on('click', function(e){
+     $(document).on('click', '.magic-elements-addnew-popup .magic-elements-close-popup', function(e){
         e.preventDefault();
+        $('.magic-elements-builder-list li a.active').trigger('click');
         $('.magic-elements-addnew-popup').fadeOut();
+
      });
   // add condition   
   $(document).on('click', '.magic-elements-addnew-popup #me-add-condition', function(e){
