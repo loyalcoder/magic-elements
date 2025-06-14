@@ -31,7 +31,6 @@ class Admin
     {
         new Admin\Menu();
         new Admin\Ajax();
-        new MBuilder\Ctp();
         new MBuilder\MBuilder();
     }
 }

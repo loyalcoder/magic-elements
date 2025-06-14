@@ -7,8 +7,8 @@ if(!empty($condition)){
         $display_type_value = isset($value['display_type']) ? $value['display_type'] : '';
         $display_on_value = isset($value['display_on']) ? $value['display_on'] : '';
 ?>
-<div class="magic-elements-add-condition">
-    <div class="magic-elements-add-condition-content">
+<div class="magic-elements-add-condition d-flex">
+    <div class="magic-elements-add-condition-content d-flex">
         <div class="condition-group">
             <select name="me_builder_condition[<?php echo esc_attr($key); ?>][display_type]" id="condition_type">
               <option value="exclude" <?php selected($display_type_value, 'exclude'); ?>><?php echo esc_html__('Exclude', 'magic-elements'); ?></option>

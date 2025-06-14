@@ -131,14 +131,18 @@ class MBuilder {
             $template_id = $this->insert_builder_template($template_title, $type, $meta);
             $message = esc_html__('Template created successfully', 'magic-elements');
         }
-        if($template_id){
-            wp_send_json_success([
-                'message' => $message,
-                'post_id' => $template_id,
-            ]);
-        }else{
-            wp_send_json_error(['message' => $message]);
+        $edit_with_elementor = add_query_arg([
+            'post' => $template_id,
+            'action' => 'elementor'
+        ], admin_url('post.php'));
+        if($template_id != ''){
+            $edit_elementor_html = '<a href="'.esc_url($edit_with_elementor).'" class="button button-primary" target="_blank">'.esc_html__('Edit with Elementor', 'magic-elements').'</a>';
         }
+        wp_send_json_success([
+            'message' => $message,
+            'edit_link' => $edit_elementor_html
+        ]);
+        
         wp_die();
     }
     public function ajax_load_preview_data(): void {

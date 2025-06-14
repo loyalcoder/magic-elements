@@ -1,5 +1,6 @@
 import $ from 'jquery';
 jQuery(function(){
+    // select2
     $('.magic-elements-builder-list li a').on('click', function(e){
         e.preventDefault();
         $(this).addClass('active');
@@ -56,12 +57,17 @@ jQuery(function(){
                 post_id: $(this).data('id')
             },
             success: function(response){
-                if(response.success){
-                    let html  = response.data.html;
-                    $('.magic-elements-addnew-popup .content-loader').html(html);
+                if(response.success){                    
+                    $('.magic-elements-addnew-popup .content-loader').html(response.data.html);
                     $('.magic-elements-addnew-popup .loading').removeClass('loading');
+                    // Initialize select2 after content is loaded
+                    setTimeout(function() {
+                        $('#template_type').select2({
+                            width: '100%',
+                            dropdownParent: $('.magic-elements-addnew-popup')
+                        });
+                    }, 100);
                 }else{
-                    console.log(response);
                 }
             },
             error: function(error){
@@ -93,6 +99,13 @@ jQuery(function(){
                 // Replace index numbers in the HTML
                 html = html.replace(/\[0\]/g, `[${conditionCount}]`);
                 this_button.parent().before(html);
+                // Initialize select2 after adding new condition
+                setTimeout(function() {
+                    $('.magic-elements-add-condition select').select2({
+                        width: '100%',
+                        dropdownParent: $('.magic-elements-addnew-popup')
+                    });
+                }, 100);
             }else{
                 console.log(response);
             }
@@ -133,7 +146,10 @@ jQuery(function(){
         success: function(response) {
             if (response.success) {
                 // Handle successful submission
-                console.log('Template submitted successfully:', response.data);
+                console.log('Template submitted successfully:', response.data.edit_link);
+                 if(response.data.edit_link){
+                    $('.magic-elements-form-actions').append(response.data.edit_link);
+                 }
                 // Optionally close popup or redirect
                 
             } else {
@@ -156,8 +172,9 @@ jQuery(function(){
       type: 'POST',
       data: data,
       success: function(response){
-        console.log(data);
+        
         $(display_selector).html(response.data.html);
+        
         $(pagination_selector).html(response.data.pagination_html);
       },
       error: function(error){

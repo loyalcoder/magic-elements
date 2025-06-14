@@ -4,13 +4,13 @@ $display_on = isset($args['display_on']) ? $args['display_on'] : [];
 <div class="magic-elements-add-condition">
     <div class="magic-elements-add-condition-content">
         <div class="condition-group">
-            <select name="me_builder_condition[0][display_type]" id="condition_type">
+            <select name="me_builder_condition[0][display_type]">
               <option value="exclude"><?php echo esc_html__('Exclude', 'magic-elements'); ?></option>
               <option value="include"><?php echo esc_html__('Include', 'magic-elements'); ?></option>
             </select>
         </div>
         <div class="condition-group">
-            <select name="me_builder_condition[0][display_on]" id="condition_value">
+            <select name="me_builder_condition[0][display_on]">
                 <?php foreach ($display_on as $key => $value) { ?>
                     <option value="<?php echo esc_attr($key); ?>"><?php echo esc_html($value); ?></option>
                 <?php } ?>

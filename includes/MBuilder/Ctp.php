@@ -31,20 +31,19 @@ class Ctp {
 
         $args = [
             'labels'              => $labels,
-            'public'              => false,
-            'show_ui'             => false,
-            'show_in_menu'        => false,
-            'show_in_admin_bar'   => false,
-            'show_in_nav_menus'   => false,
-            'publicly_queryable'  => false,
+            'public'              => true,
+            'show_ui'             => true,
+            'show_in_menu'        => true,
+            'show_in_admin_bar'   => true,
+            'show_in_nav_menus'   => true,
+            'publicly_queryable'  => true,
             'exclude_from_search' => true,
             'has_archive'         => false,
-            'query_var'           => false,
-            'rewrite'             => false,
+            'query_var'           => true,
+            'rewrite'             => ['slug' => 'me-builder'],
             'capability_type'     => 'post',
             'hierarchical'        => false,
             'supports'            => ['title', 'editor', 'elementor'],
-            'menu_position'       => null,
         ];
 
         register_post_type('me_builder', $args);
