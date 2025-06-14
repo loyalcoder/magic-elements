@@ -17,6 +17,7 @@ class MBuilder {
         add_action('wp_ajax_me_add_condition', [$this, 'ajax_add_condition']);
         add_action('wp_ajax_me_submit_template', [$this, 'ajax_submit_template']);
         add_action('wp_ajax_me_load_preview_data', [$this, 'ajax_load_preview_data']);
+        add_action('wp_ajax_me_delete_template', [$this, 'ajax_delete_template']);
     }
 
     /**
@@ -181,5 +182,22 @@ class MBuilder {
         'pagination_html' => $args['pagination_html']
        ]);
        wp_die();
+    }
+    public function ajax_delete_template(): void {
+        // Verify nonce
+        if (!check_ajax_referer('me_builder_nonce', 'nonce', false)) {
+            wp_send_json_error(['message' => esc_html__('Invalid security token', 'magic-elements')]);
+        }
+        $post_id = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;    
+        if($this->delete_builder_template($post_id)){
+            wp_send_json_success([
+                'message' => esc_html__('Template deleted successfully', 'magic-elements')
+            ]);
+        }else{
+            wp_send_json_error([
+                'message' => esc_html__('Template deletion failed', 'magic-elements')
+            ]);
+        }
+        wp_die();
     }
 }

@@ -183,11 +183,6 @@ trait Builder {
      */
     public function delete_builder_template(int $template_id, bool $force_delete = true): bool {
         // Verify the post exists and is of the correct type
-        $post = get_post($template_id);
-        if (!$post || $post->post_type !== 'me_builder') {
-            return false;
-        }
-
         // Delete the post
         $result = wp_delete_post($template_id, $force_delete);
 

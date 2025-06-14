@@ -75,6 +75,44 @@ jQuery(function(){
             }
         });
     });
+    // preview link 
+    $(document).on('click', '.add-new-template-link, .magic-elements-preview-item .preview-link', function(e){
+        e.preventDefault();
+    });
+    $(document).on('click', '.magic-elements-preview-item .preview-link, .magic-elements-preview-item .edit-elementor-link', function(e){
+        e.preventDefault();
+       let  previewLInk = $(this).attr('href');
+        window.open(previewLInk, '_blank'); 
+    });
+    $(document).on('click', '.magic-elements-preview-item .delete-link', function(e){
+        e.preventDefault();
+        let this_button = $(this);
+        let post_id = $(this).data('id');
+        
+        // Show confirmation dialog
+        if (!confirm('Are you sure you want to delete this template?')) {
+            return;
+        }
+
+        let data = {
+            action: 'me_delete_template',
+            nonce: me_builder_ajax_object.nonce,
+            post_id: post_id
+        };
+        $.ajax({
+            url: me_builder_ajax_object.ajax_url,
+            type: 'POST',
+            data: data,
+            success: function(response){
+                if(response.success){
+                    this_button.parents('.magic-elements-preview-item').remove();
+                }else{
+                    console.log(response);
+                }
+            }
+        });
+    });
+
      $('.magic-elements-addnew-popup .magic-elements-close-popup').on('click', function(e){
         e.preventDefault();
         $('.magic-elements-addnew-popup').fadeOut();
@@ -148,7 +186,7 @@ jQuery(function(){
                 // Handle successful submission
                 console.log('Template submitted successfully:', response.data.edit_link);
                  if(response.data.edit_link){
-                    $('.magic-elements-form-actions').append(response.data.edit_link);
+                    $('.magic-elements-form-actions').prepend(response.data.edit_link);
                  }
                 // Optionally close popup or redirect
                 

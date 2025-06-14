@@ -16,7 +16,7 @@
                         ?> 
                         <div class="preview-item-actions">
                             <a href="<?php echo esc_url($preview_link); ?> " class="preview-link" target="_blank"><?php echo esc_html__('Preview', 'magic-elements'); ?></a>
-                            <a href="javascript:void(0)" class="edit-link" data-id="<?php echo esc_attr($list['ID']); ?>"><?php echo esc_html__('Edit', 'magic-elements'); ?></a>
+                            <a href="javascript:void(0)" class="edit-link" data-id="<?php echo esc_attr($list['ID']); ?>"><?php echo esc_html__('Edit Condition', 'magic-elements'); ?></a>
                             <a href="<?php echo esc_url($edit_with_elementor); ?>" class="edit-elementor-link" target="_blank"><?php echo esc_html__('Edit with Elementor', 'magic-elements'); ?></a>
                             <a href="javascript:void(0)" class="delete-link" data-id="<?php echo esc_attr($list['ID']); ?>"><?php echo esc_html__('Delete', 'magic-elements'); ?></a>
                         </div>
