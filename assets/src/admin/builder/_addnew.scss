@@ -137,6 +137,23 @@
     outline: none;
   }
  }
+ .add-new-template + button{
+  background: transparent;
+  border: 0;
+  color: #a50000;
+  font-size: 1.2rem;
+  cursor: pointer;
+  &:focus{
+    outline: none;
+  }
+ }
+ .preview-item-actions{
+  a:not(:nth-child(2)){
+    &:hover{
+      color: #fff;
+    }
+  }
+ }
   // Flex properties
   .d-flex { display: flex !important; }
   .d-inline-flex { display: inline-flex !important; }

@@ -190,18 +190,9 @@ jQuery(function(){
         },
         success: function(response) {
             if (response.success) {
-                // Handle successful submission
-                $('.magic-elements-form-actions button').after('<span class="success-message">'+response.data.message+'</span>');
-                if(response.data.edit_link){
-                    $('.magic-elements-form-actions button').before(response.data.edit_link);
-                 }
-                // Optionally close popup or redirect
-                
+                handleSuccess(response.data);
             } else {
-                // Handle error message from server
-                console.error('Error:', response.data.message);
-                // Display error message to user
-              
+                handleError(response.data);
             }
         },
         error: function(xhr, status, error) {
@@ -227,4 +218,30 @@ jQuery(function(){
       }
     });
   }
+  function handleSuccess(data) {
+    // Clean up old messages first to avoid duplicate entries
+    $('.magic-elements-form-actions .success-message, .edit-link').remove();
+
+    // Append the success message
+    $('.magic-elements-form-actions button').after(
+        `<span class="success-message">${data.message}</span>`
+    );
+
+    // Prepend an edit link if available
+    if (data.edit_link) {
+        $('.magic-elements-form-actions button').before(
+            `<span class="edit-link">${data.edit_link}</span>`
+        );
+    }
+
+    // Optionally close the popup or redirect
+
+    // Add logic here, e.g., set a timeout to close or redirect
+}
+
+function handleError(data) {
+    console.error('Error:', data.message);
+    // You could also display this error to the user in the UI as needed
+}
+
 }); 
