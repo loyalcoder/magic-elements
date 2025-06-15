@@ -16,14 +16,14 @@ if(!empty($condition)){
             </select>
         </div>
         <div class="condition-group">
-            <select name="me_builder_condition[<?php echo esc_attr($key); ?>][display_on]" id="condition_value">
+            <select name="me_builder_condition[<?php echo esc_attr($key); ?>][display_on]">
                 <?php foreach ($display_on as $key => $value) { ?>
                     <option value="<?php echo esc_attr($key); ?>" <?php selected($display_on_value, $key); ?>><?php echo esc_html($value); ?></option>
                 <?php } ?>
             </select>
         </div>
     </div>
-    <button type="button" class="button button-secondary" id="remove-condition">
+    <button type="button" class="remove-condition">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>

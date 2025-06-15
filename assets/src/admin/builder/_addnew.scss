@@ -114,6 +114,29 @@
       }
     }
   }
+  .magic-elements-form-group{
+    margin-top: 10px;
+    .button.button-secondary{
+      background-color: #a50000;
+      color: #fff;
+      border: 0;
+      border-radius: 5px;
+      padding: 5px 20px;
+      &:focus{
+        outline: none;
+      }
+    }
+  }
+ .remove-condition{
+  background: transparent;
+  border: 0;
+  color: #a50000;
+  font-size: 1.2rem;
+  cursor: pointer;
+  &:focus{
+    outline: none;
+  }
+ }
   // Flex properties
   .d-flex { display: flex !important; }
   .d-inline-flex { display: inline-flex !important; }

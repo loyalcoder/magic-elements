@@ -8,7 +8,7 @@
         <div class="magic-elements-preview-header">
             <h2><?php echo esc_html__('Header Templates', 'magic-elements'); ?></h2>
             <div class="add-new-template">
-                <a href="#" class="add-new-template-link">
+                <a href="#" class="add-new-template-link button button-primary">
                     <?php echo esc_html__('Add New Template', 'magic-elements'); ?>
                 </a>
             </div>

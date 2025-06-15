@@ -110,7 +110,7 @@ class Mbuilder_Frontend {
             return false;
         }        
         if (class_exists('\Elementor\Plugin')) {
-            echo \Elementor\Plugin::instance()->frontend->get_builder_content_for_display($active_header_id, false);
+            echo \Elementor\Plugin::instance()->frontend->get_builder_content_for_display($active_header_id, false); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped by Elementor\Plugin::instance()->frontend->get_builder_content_for_display() method
         }
     }
     public function footer_builder_put_content()
@@ -120,7 +120,7 @@ class Mbuilder_Frontend {
             return false;
         }
         if (class_exists('\Elementor\Plugin')) {
-             echo \Elementor\Plugin::instance()->frontend->get_builder_content_for_display($active_footer_id, false);
+             echo \Elementor\Plugin::instance()->frontend->get_builder_content_for_display($active_footer_id, false); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped by Elementor\Plugin::instance()->frontend->get_builder_content_for_display() method
         }
     }
     /**

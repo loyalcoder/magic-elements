@@ -261,6 +261,31 @@
   }
 }
 
+.magic-elements-form-group {
+  margin-top: 10px;
+}
+.magic-elements-form-group .button.button-secondary {
+  background-color: #a50000;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+  padding: 5px 20px;
+}
+.magic-elements-form-group .button.button-secondary:focus {
+  outline: none;
+}
+
+.remove-condition {
+  background: transparent;
+  border: 0;
+  color: #a50000;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.remove-condition:focus {
+  outline: none;
+}
+
 .d-flex {
   display: flex !important;
 }

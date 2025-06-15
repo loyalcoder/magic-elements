@@ -67,6 +67,10 @@ jQuery(function(){
                             width: '100%',
                             dropdownParent: $('.magic-elements-addnew-popup')
                         });
+                        $('.magic-elements-add-condition select').select2({
+                            width: '100%',
+                            dropdownParent: $('.magic-elements-add-condition')
+                        });
                     }, 100);
                 }
             },
@@ -157,7 +161,7 @@ jQuery(function(){
      });
   });
   // remove condition
-  $(document).on('click', '.magic-elements-addnew-popup #remove-condition', function(e){
+  $(document).on('click', '.magic-elements-addnew-popup .remove-condition', function(e){
     e.preventDefault();
     $(this).parent().remove();
   });
