@@ -139,4 +139,12 @@
         }
     }
 }
-
+.magic-elements-form-actions{
+    position: relative;
+    .success-message{
+        position: absolute;
+        top: 0;
+        left: 0;
+        color:green;
+    }
+}

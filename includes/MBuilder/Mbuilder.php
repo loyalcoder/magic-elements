@@ -134,7 +134,7 @@ class MBuilder {
             $message = esc_html__('Template created successfully', 'magic-elements');
         }
         $edit_with_elementor = add_query_arg([
-            'post' => $template_id,
+            'post' => $post_id,
             'action' => 'elementor'
         ], admin_url('post.php'));
         if($template_id != ''){
