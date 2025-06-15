@@ -123,7 +123,8 @@ class MBuilder {
         $meta = [
             '_me_builder_condition' => $display_condition,
             '_me_builder_type' => $template_type,
-            '_me_builder_status' => $template_status
+            '_me_builder_status' => $template_status,
+            '_wp_page_template' => 'elementor_canvas'
         ];
         if($post_id){
             $template_id = $this->update_builder_template($post_id, $template_title, $meta);

@@ -41,7 +41,8 @@ jQuery(function(){
         if(e.target !== e.currentTarget){
             return;
         }
-        $('.magic-elements-close-popup').trigger('click');
+        $(this).fadeOut();
+        //$('.magic-elements-close-popup').trigger('click');
     });
     // new template
 
@@ -67,7 +68,6 @@ jQuery(function(){
                             dropdownParent: $('.magic-elements-addnew-popup')
                         });
                     }, 100);
-                }else{
                 }
             },
             error: function(error){
@@ -187,9 +187,9 @@ jQuery(function(){
         success: function(response) {
             if (response.success) {
                 // Handle successful submission
-                console.log('Template submitted successfully:', response.data.edit_link);
-                 if(response.data.edit_link){
-                    $('.magic-elements-form-actions').prepend(response.data.edit_link);
+                $('.magic-elements-form-actions button').after('<span class="success-message">'+response.data.message+'</span>');
+                if(response.data.edit_link){
+                    $('.magic-elements-form-actions button').before(response.data.edit_link);
                  }
                 // Optionally close popup or redirect
                 
