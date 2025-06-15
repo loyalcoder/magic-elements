@@ -148,7 +148,16 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/light_box.js'),
                 'deps'    => ['jquery']
             ],
-            'emkit-review' => [
+            'emkit-news-ticker' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/news_ticker.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/news_ticker.js'),
+                'deps'    => ['jquery']
+            ],
+            'slick' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/vendor/slick/slick.min.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendor/slick/slick.min.js'),
+            ],
+                'emkit-review' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/review.js',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/review.js'),
                 'deps'    => ['jquery']
@@ -161,6 +170,11 @@ class Load_Elementor
             'emkit-multi-step' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/multi_step.js',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/multi_step.js'),
+                'deps'    => ['jquery']
+            ],
+            'emkit-timeline' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/timeline.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/timeline.js'),
                 'deps'    => ['jquery']
             ],
         ];
@@ -243,7 +257,19 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/light_box.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/light_box.css'),
             ],
-            'emk-review' => [
+            'emk-news-ticker' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/news_ticker.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/news_ticker.css'),
+            ],
+            'slick' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/vendor/slick/slick.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendor/slick/slick.css'),
+            ],
+            'slick-theme' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/vendor/slick/slick-theme.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendor/slick/slick-theme.css'),
+            ],
+                'emk-review' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/review.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/review.css'),
             ],
@@ -254,6 +280,10 @@ class Load_Elementor
             'emk-multi-step' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/multi_step.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/multi_step.css'),
+            ],
+            'emk-timeline' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/timeline.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/timeline.css'),
             ],
         ];
     }
@@ -289,7 +319,9 @@ class Load_Elementor
             'Icon_Box',
             'Info_Box',
             'Feature_list',
+            'News_Ticker',
             'Review',
+            'Timeline',
             'Progress_Bar',
             'Multi_Step',
         ];
@@ -318,7 +350,9 @@ class Load_Elementor
             'iconiox',
             'infobox',
             'featurelist',
+            'newsticker',
             'review',
+            'timeline',
             'progressbar',
             'multi_step',
         ];
