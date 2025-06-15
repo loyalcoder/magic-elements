@@ -183,7 +183,7 @@ trait Builder {
      */
     public function delete_builder_template(int $template_id, bool $force_delete = true): bool {
         // Verify the post exists and is of the correct type
-        // Delete the post
+        
         $result = wp_delete_post($template_id, $force_delete);
 
         if ($result) {

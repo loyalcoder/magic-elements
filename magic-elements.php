@@ -103,6 +103,8 @@ final class Magic_Elements
         new MagicElements\Assets();
         new MagicElements\Load_Elementor();
         new MagicElements\MBuilder\Ctp();
+        $builder_frontend = new MagicElements\MBuilder\Mbuilder_Frontend();
+        $builder_frontend->init();
         if (is_admin()) {
             new MagicElements\Admin();
         }
