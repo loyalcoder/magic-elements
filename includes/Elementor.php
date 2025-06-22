@@ -154,8 +154,8 @@ class Load_Elementor
                 'deps'    => ['jquery']
             ],
             'slick' => [
-                'src'     => MAGIC_ELEMENTS_ASSETS . '/vendor/slick/slick.min.js',
-                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendor/slick/slick.min.js'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/vendors/slick/slick.min.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendors/slick/slick.min.js'),
             ],
                 'emkit-review' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/review.js',
@@ -262,12 +262,12 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/news_ticker.css'),
             ],
             'slick' => [
-                'src'     => MAGIC_ELEMENTS_ASSETS . '/vendor/slick/slick.css',
-                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendor/slick/slick.css'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/vendors/slick/slick.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendors/slick/slick.css'),
             ],
             'slick-theme' => [
-                'src'     => MAGIC_ELEMENTS_ASSETS . '/vendor/slick/slick-theme.css',
-                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendor/slick/slick-theme.css'),
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/vendors/slick/slick-theme.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendors/slick/slick-theme.css'),
             ],
                 'emk-review' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/review.css',
