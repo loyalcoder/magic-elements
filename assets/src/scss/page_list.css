@@ -1,0 +1,20 @@
+.page-list-widget {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.page-list-widget li {
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+.page-list-widget li i {
+  margin-right: 10px;
+}
+.page-list-widget li a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+}/*# sourceMappingURL=page_list.css.map */

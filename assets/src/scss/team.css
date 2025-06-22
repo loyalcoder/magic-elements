@@ -1,0 +1,28 @@
+.team-card .img-part {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+.team-card .magic-team-social-icons {
+  display: flex;
+}
+.team-card .magic-team-social-icons a {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.team-card .style-two-img-part {
+  position: relative;
+  overflow: hidden;
+}
+.team-card .style-two-img-part .img-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+.team-card .style-two-img-part .icon-part {
+  position: absolute;
+}/*# sourceMappingURL=team.css.map */

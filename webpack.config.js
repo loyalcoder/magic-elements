@@ -65,6 +65,10 @@ const baseConfig = {
       './assets/src/scss/image_compare.scss',
       './assets/src/js/image_compare.js',
     ],
+     multi_step: [
+      './assets/src/scss/multi_step.scss',
+      './assets/src/js/multi_step.js',
+    ],
 
     // 2) SCSS ONLY (no JS file mentioned):
     flipcard: './assets/src/scss/flipcard.scss',
