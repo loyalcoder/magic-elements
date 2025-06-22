@@ -163,6 +163,11 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/timeline.js'),
                 'deps'    => ['jquery']
             ],
+            'emkit-timeline' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/timeline.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/timeline.js'),
+                'deps'    => ['jquery']
+            ],
         ];
     }
     /**
@@ -250,6 +255,10 @@ class Load_Elementor
             'emk-image-compare' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/image_compare.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/image_compare.css'),
+            ],
+            'emk-timeline' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/timeline.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/timeline.css'),
             ],
             'emk-timeline' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/timeline.css',
