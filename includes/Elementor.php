@@ -331,6 +331,7 @@ class Load_Elementor
             'categorylist',
             'card',
             'tab',
+            'post',
             'imagecompare',
             'lightbox',
             'postlist',
