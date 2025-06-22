@@ -148,7 +148,16 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/light_box.js'),
                 'deps'    => ['jquery']
             ],
-            'emkit-review' => [
+            'emkit-news-ticker' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/news_ticker.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/news_ticker.js'),
+                'deps'    => ['jquery']
+            ],
+            'slick' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/vendors/slick/slick.min.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendors/slick/slick.min.js'),
+            ],
+                'emkit-review' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/review.js',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/review.js'),
                 'deps'    => ['jquery']
@@ -253,7 +262,19 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/light_box.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/light_box.css'),
             ],
-            'emk-review' => [
+            'emk-news-ticker' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/news_ticker.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/news_ticker.css'),
+            ],
+            'slick' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/vendors/slick/slick.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendors/slick/slick.css'),
+            ],
+            'slick-theme' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/vendors/slick/slick-theme.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendors/slick/slick-theme.css'),
+            ],
+                'emk-review' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/review.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/review.css'),
             ],
