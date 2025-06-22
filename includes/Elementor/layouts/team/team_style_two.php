@@ -50,9 +50,9 @@
       <h3 class="team-title">
         <?php echo esc_html($settings['team_title']); ?>
       </h3>
-      <p class="team-des">
-        <?php echo esc_html($settings['team_description']); ?>
-      </p>
+      <div class="team-des">
+        <?php echo wp_kses_post($settings['team_description']); ?>
+      </div>
     </div>
   </div>
 </div>
