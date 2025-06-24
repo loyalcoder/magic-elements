@@ -324,6 +324,7 @@ class Load_Elementor
             'Timeline',
             'Progress_Bar',
             'Multi_Step',
+            'Search_Popup',
         ];
     }
     public static function defaultWidgets()
@@ -356,6 +357,7 @@ class Load_Elementor
             'timeline',
             'progressbar',
             'multi_step',
+            'search_popup',
         ];
     }
     /**
