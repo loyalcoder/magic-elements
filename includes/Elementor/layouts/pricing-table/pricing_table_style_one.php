@@ -4,7 +4,7 @@
         exit;
     }
 ?>
-<div class="pricing-table-container position-relative">
+<div class="pricing-table-container position-relative mx-auto">
     <!-- ribbon start -->
      <?php 
      if ( 'yes' === $settings['ribbon_control'] ) {
@@ -50,7 +50,7 @@
         }?>
     </div>
     <div class="emk-button d-flex">
-    <a href="<?php echo esc_url( $settings['btn_link']['url'] ); ?>" class="d-inline-flex align-items-center"><?php echo esc_html($settings['pricing_btn']); ?><?php \Elementor\Icons_Manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true', 'class' => 'btn-icon' ] ); ?></a>
+    <a href="<?php echo esc_url( $settings['btn_link']['url'] ); ?>" class="d-inline-flex align-items-center text-decoration-none"><?php echo esc_html($settings['pricing_btn']); ?><?php \Elementor\Icons_Manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true', 'class' => 'btn-icon' ] ); ?></a>
     </div>
 </div>
 

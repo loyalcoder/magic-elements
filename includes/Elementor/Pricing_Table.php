@@ -394,11 +394,11 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'ribbon_text',
 			[
-    'label'       => esc_html__( 'Ribbon Text', 'magic-elements' ),
-    'type'        => \Elementor\Controls_Manager::TEXT,
-    'default'     => esc_html__( 'Ribbon', 'magic-elements' ),
-    'placeholder' => esc_html__( 'Type your title here', 'magic-elements' ),
-    'condition'   => [
+				'label'       => esc_html__( 'Ribbon Text', 'magic-elements' ),
+				'type'        => \Elementor\Controls_Manager::TEXT,
+				'default'     => esc_html__( 'Ribbon', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your title here', 'magic-elements' ),
+				'condition'   => [
                     'ribbon_control' => 'yes',   // Only show this control when switch is ON
                 ]
 			]
@@ -417,6 +417,32 @@ class Pricing_Table extends Widget_Base
 				]
             ]
         );
+		$this->add_responsive_control(
+			'priching_table_width',
+			[
+				'label' => esc_html__( 'Width', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 5,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 500,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .pricing-table-container' => 'max-width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
         $this->add_control(
 			'card_body_bg',
 			[
@@ -497,6 +523,32 @@ class Pricing_Table extends Widget_Base
 				]
             ]
         );
+		$this->add_responsive_control(
+			'priching_table_width_style_two',
+			[
+				'label' => esc_html__( 'Width', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 5,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 500,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .pricing-table-container' => 'max-width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
 		$this->add_control(
 			'table_reverse',
 			[
