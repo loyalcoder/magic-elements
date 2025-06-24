@@ -1241,6 +1241,32 @@ class Pricing_Table extends Widget_Base
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
+		$this->add_responsive_control(
+			'feature_width',
+			[
+				'label' => esc_html__( 'Item Width', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 5,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => '%',
+					'size' => 100,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .content ul' => 'max-width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
         $this->add_responsive_control(
 			'content_margin',
 			[

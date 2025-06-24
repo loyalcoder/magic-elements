@@ -39,7 +39,7 @@
     <div class="content">
         <?php 
             if ( ! empty( $settings['features_items'] ) ) {
-            ?><ul><?php
+            ?><ul class="mx-auto"><?php
             foreach ( $settings['features_items'] as $item ) {
                 ?><li class="f-item d-flex align-items-center"><?php
                 \Elementor\Icons_Manager::render_icon( $item['features_icon'], [ 'aria-hidden' => 'true', 'class' => 'list-icon' ] ); 

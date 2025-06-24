@@ -41,7 +41,7 @@
         <h3 class="sub-title"><?php echo esc_html($settings['pricing_table_subtitle']); ?></h3>
         <?php 
             if ( ! empty( $settings['features_items'] ) ) {
-            ?><ul><?php
+            ?><ul class="mx-auto"><?php
             foreach ( $settings['features_items'] as $item ) {
                 ?><li class="f-item d-flex align-items-center"><?php
                 \Elementor\Icons_Manager::render_icon( $item['features_icon'], [ 'aria-hidden' => 'true', 'class' => 'list-icon' ] ); 
