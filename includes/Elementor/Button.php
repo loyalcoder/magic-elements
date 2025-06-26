@@ -207,11 +207,11 @@ class Button extends Widget_Base
 				'type'    => \Elementor\Controls_Manager::SELECT,
 				'default' => 'sm',
 				'options' => [
-     'xs' => esc_html__( 'Extra Small', 'magic-elements' ),
-     'sm' => esc_html__( 'Small', 'magic-elements' ),
-     'md' => esc_html__( 'Medium', 'magic-elements' ),
-     'lg' => esc_html__( 'Large', 'magic-elements' ),
-     'xl' => esc_html__( 'Extra Large', 'magic-elements' ),
+				'xs' => esc_html__( 'Extra Small', 'magic-elements' ),
+				'sm' => esc_html__( 'Small', 'magic-elements' ),
+				'md' => esc_html__( 'Medium', 'magic-elements' ),
+				'lg' => esc_html__( 'Large', 'magic-elements' ),
+				'xl' => esc_html__( 'Extra Large', 'magic-elements' ),
 				],
 			]
 		);
@@ -234,7 +234,7 @@ class Button extends Widget_Base
 			[
 				'label'   => esc_html__( 'Icon Position', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::SELECT,
-				'default' => 'left',
+				'default' => 'right',
 				'options' => [
 					'left'  => esc_html__( 'Before', 'magic-elements' ),
 					'right' => esc_html__( 'After', 'magic-elements' ),
@@ -292,7 +292,7 @@ class Button extends Widget_Base
 			\Elementor\Group_Control_Text_Shadow::get_type(),
 			[
 				'name'     => 'text_shadow',
-				'selector' => '{{WRAPPER}} .emk-button-text',
+				'selector' => '{{WRAPPER}} .emk-button .emk-button-text',
 			]
 		);
 
@@ -308,12 +308,12 @@ class Button extends Widget_Base
 		);
 
         $this->add_control(
-			$this->get_name() . 'button_text_color',
+			'button_text_color',
 			[
 				'label'     => esc_html__( 'Text Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .emk-button-text' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .emk-button-content-wrapper emk-button-text' => 'color: {{VALUE}}',
 				],
 			]
 		);
