@@ -313,7 +313,7 @@ class Button extends Widget_Base
 				'label'     => esc_html__( 'Text Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .emk-button-content-wrapper emk-button-text' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .emk-button-content-wrapper .emk-button-text' => 'color: {{VALUE}}',
 				],
 			]
 		);

@@ -10,7 +10,7 @@
         <span class="<?php echo esc_attr($span_class); ?>" <?php echo $this->get_render_attribute_string( 'span'); ?>>
           <?php \Elementor\Icons_Manager::render_icon( $settings['selected_icon'], [ 'aria-hidden' => 'true' ] );?>
         </span> 
-        <span <?php echo $text_class;?>>
+        <span <?php echo esc_attr($text_class);?>>
           <?php echo esc_html($settings['text']) ?>
         </span>
     </span>
