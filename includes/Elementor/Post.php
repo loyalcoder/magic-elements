@@ -280,7 +280,7 @@ class Post extends Widget_Base
 
         $query = $this->get_posts_data($args);
         
-        include __DIR__ . '/layouts/post.php';
+        include __DIR__ . '/layouts/post/post.php';
     }
 
     /**
