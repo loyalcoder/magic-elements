@@ -366,7 +366,7 @@ class Post_Category_Tab extends Widget_Base
 		$query = new \WP_Query($args);
        
 
-        include __DIR__ . '/layouts/post/post-category-tab.php';
+        include __DIR__ . '/layouts/post-category/post-category-tab.php';
     }
 
         /**
