@@ -1,0 +1,16 @@
+/*!**********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/review.scss ***!
+  \**********************************************************************************************************************/
+.review-wapper {
+  box-shadow: 0 3px 40px rgba(36, 36, 36, 0.1);
+  border-radius: 8px;
+}
+.review-wapper .reviewer img {
+  border-radius: 100%;
+}
+.review-wapper .reviewer p {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicmV2aWV3LmNzcyIsIm1hcHBpbmdzIjoiOzs7QUFBQTtFQUNJO0VBQ0E7QUFDSjtBQUNRO0VBQ0k7QUFDWjtBQUNRO0VBQ0k7RUFDQTtBQUNaLEMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9lbGVtZW50b3ItbWFnaWMta2l0Ly4vYXNzZXRzL3NyYy9zY3NzL3Jldmlldy5zY3NzIl0sInNvdXJjZXNDb250ZW50IjpbIi5yZXZpZXctd2FwcGVye1xyXG4gICAgYm94LXNoYWRvdzogMCAzcHggNDBweCByZ2JhKDM2LCAzNiwgMzYsIC4xKTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDhweDtcclxuICAgIC5yZXZpZXdlcntcclxuICAgICAgICBpbWd7XHJcbiAgICAgICAgICAgIGJvcmRlci1yYWRpdXM6IDEwMCU7XHJcbiAgICAgICAgfVxyXG4gICAgICAgIHB7XHJcbiAgICAgICAgICAgIGZvbnQtc2l6ZTogMTZweDtcclxuICAgICAgICAgICAgZm9udC13ZWlnaHQ6IDQwMDtcclxuICAgICAgICB9XHJcbiAgICB9XHJcbn1cclxuIl0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9*/

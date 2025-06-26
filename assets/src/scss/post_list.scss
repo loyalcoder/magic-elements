@@ -1,0 +1,113 @@
+/* Base List Styles */
+.magic-post-list {
+    display: grid;
+    gap: 30px;
+
+    &.list-layout {
+        display: block !important;
+        grid-template-columns: none !important;
+    }
+
+    .magic-post-item {
+        margin-bottom: 30px;
+    }
+}
+
+/* Layout Styles */
+.magic-post-layout {
+    &-grid .magic-post-item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &-list .magic-post-list {
+        display: block;
+        grid-template-columns: none !important;
+
+        .magic-post-item {
+            display: grid;
+            align-items: center;
+        }
+    }
+}
+
+/* Image Position Mixins (for reuse) */
+@mixin image-position-left {
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    gap: 20px;
+    align-items: center;
+}
+
+@mixin image-position-top {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Image Position Styles */
+.magic-post-imgpos {
+    &-left .magic-post-item {
+        @include image-position-left;
+    }
+
+    &-top .magic-post-item {
+        @include image-position-top;
+    }
+
+}
+
+/* List Style Variations */
+.magic-post-list-style {
+    &-image-left .magic-post-item {
+        @include image-position-left;
+    }
+
+    &-image-top .magic-post-item {
+        @include image-position-top;
+    }
+    
+}
+
+/* Thumbnail Styles */
+.magic-post-thumbnail {
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+}
+
+/* Read More Button Styles */
+.magic-post-read-more {
+    margin-top: 15px;
+
+    a {
+        display: inline-block;
+        padding: 8px 15px;
+        background-color: #0073aa;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 3px;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #005177;
+        }
+    }
+}
+
+/* Meta Data Styles */
+.magic-post-meta {
+    margin: 10px 0;
+    font-size: 0.9em;
+    color: #666;
+}
