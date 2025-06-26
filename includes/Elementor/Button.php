@@ -207,11 +207,11 @@ class Button extends Widget_Base
 				'type'    => \Elementor\Controls_Manager::SELECT,
 				'default' => 'sm',
 				'options' => [
-     'xs' => esc_html__( 'Extra Small', 'magic-elements' ),
-     'sm' => esc_html__( 'Small', 'magic-elements' ),
-     'md' => esc_html__( 'Medium', 'magic-elements' ),
-     'lg' => esc_html__( 'Large', 'magic-elements' ),
-     'xl' => esc_html__( 'Extra Large', 'magic-elements' ),
+				'xs' => esc_html__( 'Extra Small', 'magic-elements' ),
+				'sm' => esc_html__( 'Small', 'magic-elements' ),
+				'md' => esc_html__( 'Medium', 'magic-elements' ),
+				'lg' => esc_html__( 'Large', 'magic-elements' ),
+				'xl' => esc_html__( 'Extra Large', 'magic-elements' ),
 				],
 			]
 		);
@@ -234,7 +234,7 @@ class Button extends Widget_Base
 			[
 				'label'   => esc_html__( 'Icon Position', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::SELECT,
-				'default' => 'left',
+				'default' => 'right',
 				'options' => [
 					'left'  => esc_html__( 'Before', 'magic-elements' ),
 					'right' => esc_html__( 'After', 'magic-elements' ),
