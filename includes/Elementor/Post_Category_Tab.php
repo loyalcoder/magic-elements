@@ -137,7 +137,7 @@ class Post_Category_Tab extends Widget_Base
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
             'emk__post_per_page',
             [
                 'label'   => esc_html__('Posts per page', 'magic-elements'),
@@ -237,17 +237,6 @@ class Post_Category_Tab extends Widget_Base
                         'selector' => '{{WRAPPER}} .nav-tabs .nav-item .nav-link',
                     ]
 		        );
-            $this->add_responsive_control(
-                'tab_normal_border_radius',
-                [
-                    'label' => esc_html__( 'Border Radius', 'magic-elements' ),
-                    'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                    'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-                    'selectors' => [
-                        '{{WRAPPER}} .nav-tabs .nav-item .nav-link' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    ],
-                ]
-		    );
             $this->end_controls_tab();
             //Hover
             $this->start_controls_tab(
@@ -256,6 +245,55 @@ class Post_Category_Tab extends Widget_Base
                     'label' => esc_html__( 'Hover', 'magic-elements' ),
                 ]
             );
+            $this->add_control(
+                'tab_hover_color',
+                [
+                    'label'     => esc_html__( 'Text Color', 'magic-elements' ),
+                    'type'      => \Elementor\Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .nav-tabs .nav-item .nav-link:hover' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
+            $this->add_group_control(
+                \Elementor\Group_Control_Background::get_type(),
+                [
+                    'name' => 'tab_hover_bg_color',
+                    'types' => [ 'classic', 'gradient', 'video' ],
+                    'selector' => '{{WRAPPER}} .nav-tabs .nav-item .nav-link:hover',
+                ]
+		    );
+            $this->add_responsive_control(
+                'tab_hover_transition',
+                [
+                    'label' => esc_html__( 'Transition Duration', 'magic-elements' ) . ' (s)',
+                    'type'  => \Elementor\Controls_Manager::SLIDER,
+                    'range' => [
+                        'px' => [
+                            'min'  => 0,
+                            'max'  => 3,
+                            'step' => 0.1,
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .nav-tabs .nav-item .nav-link:hover' => 'transition-duration: {{SIZE}}s',
+                    ],
+                ]
+		    );
+            $this->add_group_control(
+                \Elementor\Group_Control_Border::get_type(),
+                [
+                    'name' => 'tab_hover_border',
+                    'selector' => '{{WRAPPER}} .nav-tabs .nav-item .nav-link:hover',
+                ]
+		    );
+            	$this->add_group_control(
+                    \Elementor\Group_Control_Box_Shadow::get_type(),
+                    [
+                        'name' => 'tab_hover_box_shadow',
+                        'selector' => '{{WRAPPER}} .nav-tabs .nav-item .nav-link:hover',
+                    ]
+		        );
 
             $this->end_controls_tab();
             //Active
@@ -266,27 +304,37 @@ class Post_Category_Tab extends Widget_Base
                 ]
             );
             $this->add_control(
-                'active_tab_color',
+                'tab_active_color',
                 [
-                    'label'     => esc_html__( 'Active Tab Text Color', 'magic-elements' ),
+                    'label'     => esc_html__( 'Text Color', 'magic-elements' ),
                     'type'      => \Elementor\Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .nav-tabs .nav-item .nav-link.active' => 'color: {{VALUE}};',
                     ],
                 ]
             );
-    
-            $this->add_control(
-                'active_tab_bg_color',
+            $this->add_group_control(
+                \Elementor\Group_Control_Background::get_type(),
                 [
-                    'label'     => esc_html__( 'Active Tab Background Color', 'magic-elements' ),
-                    'type'      => \Elementor\Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .nav-tabs .nav-item .nav-link.active' => 'background-color: {{VALUE}};',
-                    ],
+                    'name' => 'tab_active_bg_color',
+                    'types' => [ 'classic', 'gradient', 'video' ],
+                    'selector' => '{{WRAPPER}} .nav-tabs .nav-item .nav-link.active',
+                ]
+		    );
+            $this->add_group_control(
+                \Elementor\Group_Control_Border::get_type(),
+                [
+                    'name' => 'tab_active_border',
+                    'selector' => '{{WRAPPER}} .nav-tabs .nav-item .nav-link.active',
+                ]
+		    );
+            $this->add_group_control(
+                \Elementor\Group_Control_Box_Shadow::get_type(),
+                [
+                    'name' => 'tab_active_box_shadow',
+                    'selector' => '{{WRAPPER}} .nav-tabs .nav-item .nav-link.active',
                 ]
             );
-
             $this->end_controls_tab();
 
             $this->end_controls_tabs();
@@ -296,6 +344,39 @@ class Post_Category_Tab extends Widget_Base
                 [
                     'type' => \Elementor\Controls_Manager::HEADING,
                     'separator' => 'before',
+                ]
+		    );
+            $this->add_responsive_control(
+                'tab_gap',
+                [
+                    'label' => esc_html__( 'Gap', 'magic-elements' ),
+                    'type' => \Elementor\Controls_Manager::SLIDER,
+                    'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 100,
+                            'step' => 1,
+                        ],
+                        '%' => [
+                            'min' => 0,
+                            'max' => 100,
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .nav-tabs' => 'gap: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+		    );
+             $this->add_responsive_control(
+                'tab_normal_border_radius',
+                [
+                    'label' => esc_html__( 'Border Radius', 'magic-elements' ),
+                    'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .nav-tabs .nav-item .nav-link' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
                 ]
 		    );
             $this->add_responsive_control(
@@ -315,7 +396,7 @@ class Post_Category_Tab extends Widget_Base
             $this->start_controls_section(
                 'post_styles_section',
                 [
-                    'label' => esc_html__( 'Post Styles', 'magic-elements' ),
+                    'label' => esc_html__( 'Post', 'magic-elements' ),
                     'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
                 ]
             );
