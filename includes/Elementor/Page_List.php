@@ -160,7 +160,6 @@ class Page_List extends Widget_Base
 				],
             ]
         );
-
         $this->add_control(
             'page_items',
             [

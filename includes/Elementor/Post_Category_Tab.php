@@ -240,7 +240,7 @@ class Post_Category_Tab extends Widget_Base
             $this->add_responsive_control(
                 'tab_normal_border_radius',
                 [
-                    'label' => esc_html__( 'Border Radius', 'textdomain' ),
+                    'label' => esc_html__( 'Border Radius', 'magic-elements' ),
                     'type' => \Elementor\Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
                     'selectors' => [
@@ -301,7 +301,7 @@ class Post_Category_Tab extends Widget_Base
             $this->add_responsive_control(
                 'tab_normal_padding',
                 [
-                    'label' => esc_html__( 'Padding', 'textdomain' ),
+                    'label' => esc_html__( 'Padding', 'magic-elements' ),
                     'type' => \Elementor\Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
                     'selectors' => [
