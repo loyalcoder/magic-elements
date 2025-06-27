@@ -528,6 +528,45 @@ class Post_Category_Tab extends Widget_Base
 		    );
 
 		    $this->end_controls_section();
+            //Author
+            $this->start_controls_section(
+                'tab_post_author_section',
+                [
+                    'label' => esc_html__( 'Author', 'magic-elements' ),
+                    'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                ]
+		    );
+
+            $this->add_control(
+                'post_author_color',
+                [
+                    'label' => esc_html__( 'Text Color', 'magic-elements' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .author' => 'color: {{VALUE}}',
+                    ],
+                ]
+            );
+            $this->add_group_control(
+                \Elementor\Group_Control_Typography::get_type(),
+                [
+                    'name' => 'post_author_typography',
+                    'selector' => '{{WRAPPER}} .author',
+                ]
+		    );
+            $this->add_responsive_control(
+                'post_author_margin',
+                [
+                    'label' => esc_html__( 'Margin', 'magic-elements' ),
+                    'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .author' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+		    );
+
+		    $this->end_controls_section();
 
     }
 
