@@ -154,8 +154,8 @@ class Counter extends Widget_Base
         $this->add_control(
 			'more_options',
 			[
-    'type'      => \Elementor\Controls_Manager::HEADING,
-    'separator' => 'before',
+    			'type'      => \Elementor\Controls_Manager::HEADING,
+    			'separator' => 'before',
 			]
 		);
         $this->add_control(
@@ -235,7 +235,7 @@ class Counter extends Widget_Base
 			]
 		);
         $this->end_controls_section();
-
+		//Title
         $this->start_controls_section(
 			'title_style_section',
 			[
