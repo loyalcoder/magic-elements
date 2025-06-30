@@ -235,7 +235,7 @@ class Post_List extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
 			'text_align',
 			[
 				'label' => esc_html__( 'Alignment', 'magic-elements' ),
@@ -263,7 +263,7 @@ class Post_List extends Widget_Base
 			]
 		);
     
-        $this->add_control(
+        $this->add_responsive_control(
             'layout',
             [
                 'label' => esc_html__('Layout Style', 'magic-elements'),
@@ -299,7 +299,7 @@ class Post_List extends Widget_Base
         );
     
         // image position control ( Top, Left, Bottom)
-        $this->add_control(
+        $this->add_responsive_control(
             'image_position',
             [
                 'label' => esc_html__('Image Position', 'magic-elements'),
@@ -313,7 +313,7 @@ class Post_List extends Widget_Base
             ]
         );
     
-        $this->add_control(
+        $this->add_responsive_control(
             'image_width',
             [
                 'label' => esc_html__('Image Width (for Left position)', 'magic-elements'),
@@ -337,8 +337,7 @@ class Post_List extends Widget_Base
                 ],
             ]
         );
-    
-        $this->add_control(
+        $this->add_responsive_control(
             'gap_between_posts',
             [
                 'label' => esc_html__('Gap Between Posts', 'magic-elements'),
