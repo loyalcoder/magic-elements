@@ -340,6 +340,118 @@ class Post_Category_Tab extends Widget_Base
             $this->end_controls_tabs();
             //normal-active end
             $this->add_control(
+                'tab_divider_options',
+                [
+                    'label' => esc_html__( 'Tab Line Style', 'magic-elements' ),
+                    'type' => \Elementor\Controls_Manager::HEADING,
+                    'separator' => 'before',
+                ]
+		    );
+            $this->add_responsive_control(
+                'tab_line_align',
+                [
+                    'label' => esc_html__( 'Alignment', 'magic-elements' ),
+                    'type' => \Elementor\Controls_Manager::CHOOSE,
+                    'options' => [
+                        'left' => [
+                            'title' => esc_html__( 'Left', 'magic-elements' ),
+                            'icon' => 'eicon-text-align-left',
+                        ],
+                        'center' => [
+                            'title' => esc_html__( 'Center', 'magic-elements' ),
+                            'icon' => 'eicon-text-align-center',
+                        ],
+                        'right' => [
+                            'title' => esc_html__( 'Right', 'magic-elements' ),
+                            'icon' => 'eicon-text-align-right',
+                        ],
+                    ],
+                    'default' => 'center',
+                    'toggle' => true,
+                    'selectors' => [
+                        '{{WRAPPER}} .line' => 'justify-self: {{VALUE}};',
+                    ],
+                ]
+		    );
+            $this->add_group_control(
+                \Elementor\Group_Control_Background::get_type(),
+                [
+                    'name' => 'background',
+                    'types' => [ 'classic', 'gradient', 'video' ],
+                    'selector' => '{{WRAPPER}} .line',
+                ]
+		    );
+            $this->add_responsive_control(
+                'tab_line_height',
+                [
+                    'label' => esc_html__( 'Height', 'magic-elements' ),
+                    'type' => \Elementor\Controls_Manager::SLIDER,
+                    'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 50,
+                            'step' => 1,
+                        ],
+                        '%' => [
+                            'min' => 0,
+                            'max' => 100,
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .line' => 'height: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+		    );
+             $this->add_responsive_control(
+                'tab_line_width',
+                [
+                    'label' => esc_html__( 'Width', 'magic-elements' ),
+                    'type' => \Elementor\Controls_Manager::SLIDER,
+                    'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 1200,
+                            'step' => 1,
+                        ],
+                        '%' => [
+                            'min' => 0,
+                            'max' => 100,
+                        ],
+                        'default' => [
+                        'unit' => '%',
+                        'size' => 100,
+                    ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .line' => 'width: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+		    );
+            $this->add_responsive_control(
+                'tab_line_border_radius',
+                [
+                    'label' => esc_html__( 'Border Radius', 'magic-elements' ),
+                    'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .line' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+            $this->add_responsive_control(
+                'tab_line_margin',
+                [
+                    'label' => esc_html__( 'Margin', 'magic-elements' ),
+                    'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .line' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+            $this->add_control(
                 'tab_divider',
                 [
                     'type' => \Elementor\Controls_Manager::HEADING,

@@ -5988,9 +5988,6 @@
 }
 
 /* Tab styles */
-.tabs .nav-tabs {
-  border-bottom: 2px solid #ddd;
-}
 .tabs .nav-tabs .nav-item .nav-link {
   color: #555;
   border: 1px solid transparent;
@@ -6004,6 +6001,17 @@
   background-color: #007bff;
   color: #fff;
   border-color: #007bff;
+}
+.tabs .nav-tabs .nav-item .nav-link:hover {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+.tabs .line {
+  background-color: #e8e8e8;
+  width: 100%;
+  height: 2px;
+  display: flex;
 }
 .tabs .post {
   border: 1px solid #ddd;
