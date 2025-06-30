@@ -168,7 +168,7 @@ class Post_List extends Widget_Base
             ]
         );
     
-        $this->add_control(
+        $this->add_responsive_control(
             'posts_per_page',
             [
                 'label' => esc_html__('Number of Posts', 'magic-elements'),

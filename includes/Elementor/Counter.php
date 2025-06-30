@@ -325,7 +325,7 @@ class Counter extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        include __DIR__ . '/layouts/counter.php';
+        include __DIR__ . '/layouts/Counter/counter.php';
     }
 
         /**

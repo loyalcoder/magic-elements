@@ -633,7 +633,7 @@ class Tab extends Widget_Base
 
         $tabs = $settings['tabs'];
        
-        include __DIR__ . '/layouts/tab.php';
+        include __DIR__ . '/layouts/Tab/tab.php';
     }
 
         /**

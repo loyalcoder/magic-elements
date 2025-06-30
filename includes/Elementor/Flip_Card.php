@@ -1302,7 +1302,7 @@ class Flip_Card extends Widget_Base
     {
         $settings            = $this->get_settings_for_display();
         $flip_card_icon_list = $settings['front_icon_list'];
-        include __DIR__ . '/layouts/flip-card.php';
+        include __DIR__ . '/layouts/Flip-Card/flip-card.php';
     }
 
         /**

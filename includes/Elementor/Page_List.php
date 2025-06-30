@@ -381,7 +381,7 @@ class Page_List extends Widget_Base
         $flex_direction = $layout === 'flex' ? 'row' : 'column';
         $align_property = $layout === 'flex' ? 'justify-content' : 'align-items';
 
-        include __DIR__ . '/layouts/page-list.php';
+        include __DIR__ . '/layouts/Page-List/page-list.php';
     }
 
         /**
