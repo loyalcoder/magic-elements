@@ -264,46 +264,31 @@ class News_Ticker extends Widget_Base
     protected function register_style_controls() {
         // Style Tab
         $this->start_controls_section(
-            'style_section',
+            'news_title_section',
             [
-                'label' => esc_html__('Style', 'magic-elements'),
+                'label' => esc_html__('News Title', 'magic-elements'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
-
-        $this->add_control(
-            'title_style_heading',
+        $this->add_group_control(
+            \Elementor\Group_Control_Background::get_type(),
             [
-                'label' => esc_html__('Title Style', 'magic-elements'),
-                'type' => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'before',
+                'name' => 'news_title_background',
+                'types' => [ 'classic', 'gradient', 'video' ],
+                'selector' => '{{WRAPPER}} .mst-title',
             ]
         );
-
+       
         $this->add_control(
-            'title_background',
-            [
-                'label' => esc_html__('Title Background', 'magic-elements'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#ff0000',
-                'selectors' => [
-                    '{{WRAPPER}} .mst-title' => 'background-color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'title_color',
-            [
-                'label' => esc_html__('Title Text Color', 'magic-elements'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#ffffff',
-                'selectors' => [
-                    '{{WRAPPER}} .mst-title' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
+			'news_title_color',
+			[
+				'label' => esc_html__( 'Text Color', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .mst-title' => 'color: {{VALUE}}',
+				],
+			]
+		);
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
@@ -311,48 +296,105 @@ class News_Ticker extends Widget_Base
                 'selector' => '{{WRAPPER}} .mst-title',
             ]
         );
-
-        $this->add_control(
-            'items_style_heading',
+        	$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'news_title_border',
+				'selector' => '{{WRAPPER}} .mst-title',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'news_title_box_shadow',
+				'selector' => '{{WRAPPER}} .mst-title',
+			]
+		);
+        $this->add_responsive_control(
+			'news_title_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .mst-title' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'news_title_padding',
+			[
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .mst-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->end_controls_section();
+        //Content
+        $this->start_controls_section(
+            'news_content_section',
             [
-                'label' => esc_html__('Items Style', 'magic-elements'),
-                'type' => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'before',
+                'label' => esc_html__('News Content', 'magic-elements'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
-
-        $this->add_control(
-            'items_background',
+        $this->add_group_control(
+            \Elementor\Group_Control_Background::get_type(),
             [
-                'label' => esc_html__('Items Background', 'magic-elements'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#f8f8f8',
-                'selectors' => [
-                    '{{WRAPPER}} .mst-content' => 'background-color: {{VALUE}}',
-                ],
+                'name' => 'news_content_background',
+                'types' => [ 'classic', 'gradient', 'video' ],
+                'selector' => '{{WRAPPER}} .mst-content',
             ]
         );
-
         $this->add_control(
-            'items_color',
-            [
-                'label' => esc_html__('Items Text Color', 'magic-elements'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#333333',
-                'selectors' => [
-                    '{{WRAPPER}} .mst-item' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
+			'news_content_color',
+			[
+				'label' => esc_html__( 'Text Color', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .mst-item' => 'color: {{VALUE}}',
+				],
+			]
+		);
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
-                'name' => 'items_typography',
+                'name' => 'content_typography',
                 'selector' => '{{WRAPPER}} .mst-item',
             ]
         );
-
+        	$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'news_content_border',
+				'selector' => '{{WRAPPER}} .mst-item',
+			]
+		);
+        $this->add_responsive_control(
+			'news_content_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .mst-content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'news_content_padding',
+			[
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .mst-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
        
         $this->end_controls_section();
     }
