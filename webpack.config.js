@@ -69,6 +69,10 @@ const baseConfig = {
       './assets/src/scss/multi_step.scss',
       './assets/src/js/multi_step.js',
     ],
+     search_popup: [
+      './assets/src/scss/search_popup.scss',
+      './assets/src/js/search_popup.js',
+    ],
 
     // 2) SCSS ONLY (no JS file mentioned):
     flipcard: './assets/src/scss/flipcard.scss',

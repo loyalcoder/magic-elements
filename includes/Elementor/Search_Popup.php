@@ -90,7 +90,11 @@ class Search_Popup extends Widget_Base
     }
     public function get_style_depends()
     {
-        return ['emkit-multiple-button'];
+        return ['emk-search-popup'];
+    }
+    public function get_script_depends()
+    {
+        return ['emkit-search-popup'];
     }
 
     /**
