@@ -395,7 +395,6 @@ class News_Ticker extends Widget_Base
 				],
 			]
 		);
-       
         $this->end_controls_section();
     }
 
