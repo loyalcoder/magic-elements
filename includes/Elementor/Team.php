@@ -1130,14 +1130,6 @@ class Team extends Widget_Base
             'label' => esc_html__( 'Margin', 'magic-elements' ),
             'type' => \Elementor\Controls_Manager::DIMENSIONS,
             'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-            'default' => [
-                'top' => 0,
-                'right' => 0,
-                'bottom' => 0,
-                'left' => 0,
-                'unit' => 'px',
-                'isLinked' => false,
-            ],
             'selectors' => [
                 '{{WRAPPER}} .content-part p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
