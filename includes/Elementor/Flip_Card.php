@@ -467,6 +467,13 @@ class Flip_Card extends Widget_Base
 			]
 		);
 		$this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'front_box_shadow',
+				'selector' => '{{WRAPPER}} .flip-card-front',
+			]
+		);
+		$this->add_group_control(
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name'     => 'front_border',
