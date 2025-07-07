@@ -368,7 +368,7 @@ class Category_List extends Widget_Base
         $flex_direction = $layout === 'flex' ? 'row' : 'column';
         $align_property = $layout === 'flex' ? 'justify-content' : 'align-items';
 
-        include __DIR__ . '/layouts/category-list.php';
+        include __DIR__ . '/layouts/Category-List/category-list.php';
     }
 
         /**

@@ -137,7 +137,7 @@ class Post_Category_Tab extends Widget_Base
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
             'emk__post_per_page',
             [
                 'label'   => esc_html__('Posts per page', 'magic-elements'),
@@ -179,82 +179,370 @@ class Post_Category_Tab extends Widget_Base
 		$this->end_controls_section();
 
             // Style section
-            // Tabs Style Section
             $this->start_controls_section(
                 'tab_styles_section',
                 [
-                    'label' => esc_html__( 'Tab Styles', 'magic-elements' ),
+                    'label' => esc_html__( 'Tab', 'magic-elements' ),
                     'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
                 ]
             );
-    
+             $this->add_group_control(
+                \Elementor\Group_Control_Typography::get_type(),
+                [
+                    'name' => 'tab_normal_typography',
+                    'selector' => '{{WRAPPER}} .nav-tabs .nav-item .nav-link',
+                ]
+		    );
+            //normal-active start
+            $this->start_controls_tabs(
+                'style_tabs'
+            );
+            //normal
+            $this->start_controls_tab(
+                'style_normal_tab',
+                [
+                    'label' => esc_html__( 'Normal', 'magic-elements' ),
+                ]
+            );
+                
             $this->add_control(
                 'tab_color',
                 [
-                    'label'     => esc_html__( 'Tab Text Color', 'magic-elements' ),
+                    'label'     => esc_html__( 'Text Color', 'magic-elements' ),
                     'type'      => \Elementor\Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .nav-tabs .nav-item .nav-link' => 'color: {{VALUE}};',
                     ],
                 ]
             );
-    
-            $this->add_control(
-                'tab_bg_color',
+            $this->add_group_control(
+                \Elementor\Group_Control_Background::get_type(),
                 [
-                    'label'     => esc_html__( 'Tab Background Color', 'magic-elements' ),
+                    'name' => 'tab_bg_color',
+                    'types' => [ 'classic', 'gradient', 'video' ],
+                    'selector' => '{{WRAPPER}} .nav-tabs .nav-item .nav-link',
+                ]
+		    );
+            $this->add_group_control(
+                \Elementor\Group_Control_Border::get_type(),
+                [
+                    'name' => 'tab_normal_border',
+                    'selector' => '{{WRAPPER}} .nav-tabs .nav-item .nav-link',
+                ]
+		    );
+            	$this->add_group_control(
+                    \Elementor\Group_Control_Box_Shadow::get_type(),
+                    [
+                        'name' => 'tab_normal_box_shadow',
+                        'selector' => '{{WRAPPER}} .nav-tabs .nav-item .nav-link',
+                    ]
+		        );
+            $this->end_controls_tab();
+            //Hover
+            $this->start_controls_tab(
+                'style_hover_tab',
+                [
+                    'label' => esc_html__( 'Hover', 'magic-elements' ),
+                ]
+            );
+            $this->add_control(
+                'tab_hover_color',
+                [
+                    'label'     => esc_html__( 'Text Color', 'magic-elements' ),
                     'type'      => \Elementor\Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .nav-tabs .nav-item .nav-link' => 'background-color: {{VALUE}};',
+                        '{{WRAPPER}} .nav-tabs .nav-item .nav-link:hover' => 'color: {{VALUE}};',
                     ],
                 ]
             );
-    
-            $this->add_control(
-                'active_tab_color',
+            $this->add_group_control(
+                \Elementor\Group_Control_Background::get_type(),
                 [
-                    'label'     => esc_html__( 'Active Tab Text Color', 'magic-elements' ),
+                    'name' => 'tab_hover_bg_color',
+                    'types' => [ 'classic', 'gradient', 'video' ],
+                    'selector' => '{{WRAPPER}} .nav-tabs .nav-item .nav-link:hover',
+                ]
+		    );
+            $this->add_responsive_control(
+                'tab_hover_transition',
+                [
+                    'label' => esc_html__( 'Transition Duration', 'magic-elements' ) . ' (s)',
+                    'type'  => \Elementor\Controls_Manager::SLIDER,
+                    'range' => [
+                        'px' => [
+                            'min'  => 0,
+                            'max'  => 3,
+                            'step' => 0.1,
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .nav-tabs .nav-item .nav-link:hover' => 'transition-duration: {{SIZE}}s',
+                    ],
+                ]
+		    );
+            $this->add_group_control(
+                \Elementor\Group_Control_Border::get_type(),
+                [
+                    'name' => 'tab_hover_border',
+                    'selector' => '{{WRAPPER}} .nav-tabs .nav-item .nav-link:hover',
+                ]
+		    );
+            	$this->add_group_control(
+                    \Elementor\Group_Control_Box_Shadow::get_type(),
+                    [
+                        'name' => 'tab_hover_box_shadow',
+                        'selector' => '{{WRAPPER}} .nav-tabs .nav-item .nav-link:hover',
+                    ]
+		        );
+
+            $this->end_controls_tab();
+            //Active
+            $this->start_controls_tab(
+                'style_active_tab',
+                [
+                    'label' => esc_html__( 'Active', 'magic-elements' ),
+                ]
+            );
+            $this->add_control(
+                'tab_active_color',
+                [
+                    'label'     => esc_html__( 'Text Color', 'magic-elements' ),
                     'type'      => \Elementor\Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .nav-tabs .nav-item .nav-link.active' => 'color: {{VALUE}};',
                     ],
                 ]
             );
-    
-            $this->add_control(
-                'active_tab_bg_color',
+            $this->add_group_control(
+                \Elementor\Group_Control_Background::get_type(),
                 [
-                    'label'     => esc_html__( 'Active Tab Background Color', 'magic-elements' ),
-                    'type'      => \Elementor\Controls_Manager::COLOR,
+                    'name' => 'tab_active_bg_color',
+                    'types' => [ 'classic', 'gradient', 'video' ],
+                    'selector' => '{{WRAPPER}} .nav-tabs .nav-item .nav-link.active',
+                ]
+		    );
+            $this->add_group_control(
+                \Elementor\Group_Control_Border::get_type(),
+                [
+                    'name' => 'tab_active_border',
+                    'selector' => '{{WRAPPER}} .nav-tabs .nav-item .nav-link.active',
+                ]
+		    );
+            $this->add_group_control(
+                \Elementor\Group_Control_Box_Shadow::get_type(),
+                [
+                    'name' => 'tab_active_box_shadow',
+                    'selector' => '{{WRAPPER}} .nav-tabs .nav-item .nav-link.active',
+                ]
+            );
+            $this->end_controls_tab();
+
+            $this->end_controls_tabs();
+            //normal-active end
+            $this->add_control(
+                'tab_divider_options',
+                [
+                    'label' => esc_html__( 'Tab Line Style', 'magic-elements' ),
+                    'type' => \Elementor\Controls_Manager::HEADING,
+                    'separator' => 'before',
+                ]
+		    );
+            $this->add_responsive_control(
+                'tab_line_align',
+                [
+                    'label' => esc_html__( 'Alignment', 'magic-elements' ),
+                    'type' => \Elementor\Controls_Manager::CHOOSE,
+                    'options' => [
+                        'left' => [
+                            'title' => esc_html__( 'Left', 'magic-elements' ),
+                            'icon' => 'eicon-text-align-left',
+                        ],
+                        'center' => [
+                            'title' => esc_html__( 'Center', 'magic-elements' ),
+                            'icon' => 'eicon-text-align-center',
+                        ],
+                        'right' => [
+                            'title' => esc_html__( 'Right', 'magic-elements' ),
+                            'icon' => 'eicon-text-align-right',
+                        ],
+                    ],
+                    'default' => 'center',
+                    'toggle' => true,
                     'selectors' => [
-                        '{{WRAPPER}} .nav-tabs .nav-item .nav-link.active' => 'background-color: {{VALUE}};',
+                        '{{WRAPPER}} .line' => 'justify-self: {{VALUE}};',
+                    ],
+                ]
+		    );
+            $this->add_group_control(
+                \Elementor\Group_Control_Background::get_type(),
+                [
+                    'name' => 'background',
+                    'types' => [ 'classic', 'gradient', 'video' ],
+                    'selector' => '{{WRAPPER}} .line',
+                ]
+		    );
+            $this->add_responsive_control(
+                'tab_line_height',
+                [
+                    'label' => esc_html__( 'Height', 'magic-elements' ),
+                    'type' => \Elementor\Controls_Manager::SLIDER,
+                    'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 50,
+                            'step' => 1,
+                        ],
+                        '%' => [
+                            'min' => 0,
+                            'max' => 100,
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .line' => 'height: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+		    );
+             $this->add_responsive_control(
+                'tab_line_width',
+                [
+                    'label' => esc_html__( 'Width', 'magic-elements' ),
+                    'type' => \Elementor\Controls_Manager::SLIDER,
+                    'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 1200,
+                            'step' => 1,
+                        ],
+                        '%' => [
+                            'min' => 0,
+                            'max' => 100,
+                        ],
+                        'default' => [
+                        'unit' => '%',
+                        'size' => 100,
+                    ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .line' => 'width: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+		    );
+            $this->add_responsive_control(
+                'tab_line_border_radius',
+                [
+                    'label' => esc_html__( 'Border Radius', 'magic-elements' ),
+                    'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .line' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
             );
-    
+            $this->add_responsive_control(
+                'tab_line_margin',
+                [
+                    'label' => esc_html__( 'Margin', 'magic-elements' ),
+                    'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .line' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+            $this->add_control(
+                'tab_divider',
+                [
+                    'type' => \Elementor\Controls_Manager::HEADING,
+                    'separator' => 'before',
+                ]
+		    );
+            $this->add_responsive_control(
+                'tab_gap',
+                [
+                    'label' => esc_html__( 'Gap', 'magic-elements' ),
+                    'type' => \Elementor\Controls_Manager::SLIDER,
+                    'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 100,
+                            'step' => 1,
+                        ],
+                        '%' => [
+                            'min' => 0,
+                            'max' => 100,
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .nav-tabs' => 'gap: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+		    );
+             $this->add_responsive_control(
+                'tab_normal_border_radius',
+                [
+                    'label' => esc_html__( 'Border Radius', 'magic-elements' ),
+                    'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .nav-tabs .nav-item .nav-link' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+		    );
+            $this->add_responsive_control(
+                'tab_normal_padding',
+                [
+                    'label' => esc_html__( 'Padding', 'magic-elements' ),
+                    'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .nav-tabs .nav-item .nav-link' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+		    );
             $this->end_controls_section();
     
-                // Post Style Section
+            // Post Style Section
             $this->start_controls_section(
                 'post_styles_section',
                 [
-                    'label' => esc_html__( 'Post Styles', 'magic-elements' ),
+                    'label' => esc_html__( 'Post', 'magic-elements' ),
                     'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
                 ]
             );
-    
-            $this->add_control(
-                'post_border_color',
+            $this->add_responsive_control(
+                'tab_post_gap',
                 [
-                    'label'     => esc_html__( 'Post Border Color', 'magic-elements' ),
-                    'type'      => \Elementor\Controls_Manager::COLOR,
+                    'label' => esc_html__( 'Post Gap', 'magic-elements' ),
+                    'type' => \Elementor\Controls_Manager::SLIDER,
+                    'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 100,
+                            'step' => 1,
+                        ],
+                        '%' => [
+                            'min' => 0,
+                            'max' => 100,
+                        ],
+                    ],
                     'selectors' => [
-                        '{{WRAPPER}} .post' => 'border-color: {{VALUE}};',
+                        '{{WRAPPER}} .posts-container' => 'gap: {{SIZE}}{{UNIT}};',
                     ],
                 ]
-            );
+		    );
+            $this->add_group_control(
+                \Elementor\Group_Control_Border::get_type(),
+                [
+                    'name' => 'tab_post_border',
+                    'selector' => '{{WRAPPER}} .post',
+                ]
+		    );
     
-            $this->add_control(
+            $this->add_responsive_control(
                 'img_height',
                 [
                     'label'      => esc_html__( 'Image Height', 'magic-elements' ),
@@ -264,7 +552,7 @@ class Post_Category_Tab extends Widget_Base
                         'px' => [
                             'min'  => 50,
                             'max'  => 500,
-                            'step' => 5,
+                            'step' => 1,
                         ],
                     ],
                     'selectors' => [
@@ -272,69 +560,126 @@ class Post_Category_Tab extends Widget_Base
                     ],
                 ]
             );
+            $this->add_responsive_control(
+                'tab_img_width',
+                [
+                    'label'      => esc_html__( 'Image Width', 'magic-elements' ),
+                    'type'       => \Elementor\Controls_Manager::SLIDER,
+                    'size_units' => [ 'px', '%' ],
+                    'range'      => [
+                        'px' => [
+                            'min'  => 50,
+                            'max'  => 500,
+                            'step' => 1,
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .img-container img' => 'width: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+            );
+            $this->add_responsive_control(
+                'tab_post_border_radius',
+                [
+                    'label' => esc_html__( 'Border Radius', 'magic-elements' ),
+                    'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .post' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+		    );
+            $this->add_responsive_control(
+                'tab_post_padding',
+                [
+                    'label' => esc_html__( 'Padding', 'magic-elements' ),
+                    'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .post' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+		    );
+            $this->end_controls_section();
+            //Title
+            $this->start_controls_section(
+                'tab_post_title_section',
+                [
+                    'label' => esc_html__( 'Title', 'magic-elements' ),
+                    'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                ]
+		    );
 
             $this->add_control(
                 'post_title_color',
                 [
-                    'label'     => esc_html__( 'Post Title Color', 'magic-elements' ),
-                    'type'      => \Elementor\Controls_Manager::COLOR,
+                    'label' => esc_html__( 'Text Color', 'magic-elements' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .post-title' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .post-title' => 'color: {{VALUE}}',
                     ],
                 ]
             );
-    
             $this->add_group_control(
                 \Elementor\Group_Control_Typography::get_type(),
                 [
-                    'name'     => 'post_title_typography',
-                    'label'    => esc_html__( 'Post Title Typography', 'magic-elements' ),
+                    'name' => 'post_title_typography',
                     'selector' => '{{WRAPPER}} .post-title',
                 ]
-            );
+		    );
             $this->add_responsive_control(
-                'post_tab_margin',
+                'post_title_margin',
                 [
                     'label' => esc_html__( 'Margin', 'magic-elements' ),
-                    'type' => \Elementor\Controls_Manager::SLIDER,
+                    'type' => \Elementor\Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-                    'range' => [
-                        'px' => [
-                            'min' => 0,
-                            'max' => 1000,
-                            'step' => 1,
-                        ],
-                        '%' => [
-                            'min' => 0,
-                            'max' => 100,
-                        ],
-                    ],
                     'selectors' => [
-                        '{{WRAPPER}} .post-content' => 'margin-top: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .post-content' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
-            );
+		    );
+
+		    $this->end_controls_section();
+            //Author
+            $this->start_controls_section(
+                'tab_post_author_section',
+                [
+                    'label' => esc_html__( 'Author', 'magic-elements' ),
+                    'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                ]
+		    );
+
             $this->add_control(
                 'post_author_color',
                 [
-                    'label'     => esc_html__( 'Post Author Color', 'magic-elements' ),
-                    'type'      => \Elementor\Controls_Manager::COLOR,
+                    'label' => esc_html__( 'Text Color', 'magic-elements' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .author' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .author' => 'color: {{VALUE}}',
                     ],
                 ]
             );
-    
             $this->add_group_control(
                 \Elementor\Group_Control_Typography::get_type(),
                 [
-                    'name'     => 'post_author_typography',
-                    'label'    => esc_html__( 'Post Author Typography', 'magic-elements' ),
+                    'name' => 'post_author_typography',
                     'selector' => '{{WRAPPER}} .author',
                 ]
-            );
-    
-            $this->end_controls_section();
+		    );
+            $this->add_responsive_control(
+                'post_author_margin',
+                [
+                    'label' => esc_html__( 'Margin', 'magic-elements' ),
+                    'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .author' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+		    );
+
+		    $this->end_controls_section();
+
     }
 
         /**

@@ -512,7 +512,7 @@ class Card extends Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
-        include __DIR__ . '/layouts/card.php';
+        include __DIR__ . '/layouts/Card/card.php';
     }
 
         /**

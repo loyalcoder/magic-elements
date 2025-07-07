@@ -467,6 +467,13 @@ class Flip_Card extends Widget_Base
 			]
 		);
 		$this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'front_box_shadow',
+				'selector' => '{{WRAPPER}} .flip-card-front',
+			]
+		);
+		$this->add_group_control(
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name'     => 'front_border',
@@ -865,6 +872,13 @@ class Flip_Card extends Widget_Base
 			[
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'flipcard_back_box_shadow',
+				'selector' => '{{WRAPPER}} .flip-card-back',
 			]
 		);
 		$this->add_group_control(
@@ -1302,7 +1316,7 @@ class Flip_Card extends Widget_Base
     {
         $settings            = $this->get_settings_for_display();
         $flip_card_icon_list = $settings['front_icon_list'];
-        include __DIR__ . '/layouts/flip-card.php';
+        include __DIR__ . '/layouts/Flip-Card/flip-card.php';
     }
 
         /**

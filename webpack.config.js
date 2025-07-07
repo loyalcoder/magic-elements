@@ -38,6 +38,37 @@ const baseConfig = {
       './assets/src/scss/tab.scss',
       './assets/src/js/tab.js',
     ],
+    team: [
+      './assets/src/scss/team.scss',
+      './assets/src/js/team.js',
+      ],
+    multiple_button: [
+      './assets/src/scss/multiple_button.scss',
+      './assets/src/js/multiple_button.js',
+    ],
+    icon_box: [
+      './assets/src/scss/icon_box.scss',
+    ],
+    info_box: [
+      './assets/src/scss/info_box.scss',
+      './assets/src/js/info_box.js',
+    ],
+    light_box: [
+      './assets/src/scss/light_box.scss',
+      './assets/src/js/light_box.js',
+    ],
+     review: [
+      './assets/src/scss/review.scss',
+      './assets/src/js/review.js',
+    ],
+       image_compare: [
+      './assets/src/scss/image_compare.scss',
+      './assets/src/js/image_compare.js',
+    ],
+     multi_step: [
+      './assets/src/scss/multi_step.scss',
+      './assets/src/js/multi_step.js',
+    ],
 
     // 2) SCSS ONLY (no JS file mentioned):
     flipcard: './assets/src/scss/flipcard.scss',

@@ -12,5 +12,4 @@ if (!defined('ABSPATH')) {
         </div>
     <?php endif; ?>
     <h2><a href="<?php echo esc_url($post['permalink']); ?>"><?php echo esc_html($post['title']); ?></a></h2>
-
 </div>

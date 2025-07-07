@@ -23,6 +23,8 @@
             <?php }
         } ?>
     </ul>
+    <div class="line"></div>
+
     <!-- Posts Container -->
     <div class="row mt-5 posts-container">
         <?php if (!empty($query->have_posts())) {
