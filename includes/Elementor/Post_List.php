@@ -508,17 +508,6 @@ class Post_List extends Widget_Base
             ]
         );
 
-        $this->add_control(
-            'container_background',
-            [
-                'label' => esc_html__('Background Color', 'magic-elements'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .magic-post-list' => 'background-color: {{VALUE}};',
-                ],
-            ]
-        );
-
         $this->add_group_control(
             \Elementor\Group_Control_Border::get_type(),
             [
@@ -527,8 +516,15 @@ class Post_List extends Widget_Base
                 'selector' => '{{WRAPPER}} .magic-post-list',
             ]
         );
-
-        $this->add_control(
+         $this->add_group_control(
+            \Elementor\Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'container_box_shadow',
+                'label' => esc_html__('Box Shadow', 'magic-elements'),
+                'selector' => '{{WRAPPER}} .magic-post-list',
+            ]
+        );
+        $this->add_responsive_control(
             'container_border_radius',
             [
                 'label' => esc_html__('Border Radius', 'magic-elements'),
@@ -539,16 +535,6 @@ class Post_List extends Widget_Base
                 ],
             ]
         );
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Box_Shadow::get_type(),
-            [
-                'name' => 'container_box_shadow',
-                'label' => esc_html__('Box Shadow', 'magic-elements'),
-                'selector' => '{{WRAPPER}} .magic-post-list',
-            ]
-        );
-
         $this->add_responsive_control(
             'container_padding',
             [
@@ -583,18 +569,14 @@ class Post_List extends Widget_Base
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
-
-        $this->add_control(
-            'post_item_background',
-            [
-                'label' => esc_html__('Background Color', 'magic-elements'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .magic-post-item' => 'background-color: {{VALUE}};',
-                ],
-            ]
-        );
-
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'post_item_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .magic-post-item',
+			]
+		);
         $this->add_group_control(
             \Elementor\Group_Control_Border::get_type(),
             [
@@ -603,8 +585,15 @@ class Post_List extends Widget_Base
                 'selector' => '{{WRAPPER}} .magic-post-item',
             ]
         );
-
-        $this->add_control(
+        $this->add_group_control(
+            \Elementor\Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'post_item_box_shadow',
+                'label' => esc_html__('Box Shadow', 'magic-elements'),
+                'selector' => '{{WRAPPER}} .magic-post-item',
+            ]
+        );
+        $this->add_responsive_control(
             'post_item_border_radius',
             [
                 'label' => esc_html__('Border Radius', 'magic-elements'),
@@ -615,16 +604,6 @@ class Post_List extends Widget_Base
                 ],
             ]
         );
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Box_Shadow::get_type(),
-            [
-                'name' => 'post_item_box_shadow',
-                'label' => esc_html__('Box Shadow', 'magic-elements'),
-                'selector' => '{{WRAPPER}} .magic-post-item',
-            ]
-        );
-
         $this->add_responsive_control(
             'post_item_padding',
             [
@@ -660,8 +639,15 @@ class Post_List extends Widget_Base
                 'condition' => ['show_image' => 'yes'],
             ]
         );
-
-        $this->add_control(
+        $this->add_group_control(
+            \Elementor\Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'image_box_shadow',
+                'label' => esc_html__('Box Shadow', 'magic-elements'),
+                'selector' => '{{WRAPPER}} .magic-post-thumbnail img',
+            ]
+        );
+        $this->add_responsive_control(
             'image_spacing',
             [
                 'label' => esc_html__('Spacing', 'magic-elements'),
@@ -681,7 +667,7 @@ class Post_List extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'image_height',
             [
                 'label' => esc_html__('Height', 'magic-elements'),
@@ -708,8 +694,8 @@ class Post_List extends Widget_Base
             ]
         );
 
-        $this->add_control(
-            'image_width_',
+        $this->add_responsive_control(
+            'post_image_width',
             [
                 'label' => esc_html__('Width', 'magic-elements'),
                 'type' => \Elementor\Controls_Manager::SLIDER,
@@ -735,7 +721,7 @@ class Post_List extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'image_border_radius',
             [
                 'label' => esc_html__('Border Radius', 'magic-elements'),
@@ -746,13 +732,15 @@ class Post_List extends Widget_Base
                 ],
             ]
         );
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Box_Shadow::get_type(),
+        $this->add_responsive_control(
+            'image_padding',
             [
-                'name' => 'image_box_shadow',
-                'label' => esc_html__('Box Shadow', 'magic-elements'),
-                'selector' => '{{WRAPPER}} .magic-post-thumbnail img',
+                'label' => esc_html__('Padding', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .magic-post-thumbnail img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
             ]
         );
 
@@ -812,7 +800,7 @@ class Post_List extends Widget_Base
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .magic-post-title' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                    '{{WRAPPER}} .magic-post-title' => 'margin-top: {{SIZE}}{{UNIT}}',
                 ],
             ]
         );
@@ -924,7 +912,7 @@ class Post_List extends Widget_Base
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .magic-post-meta' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                    '{{WRAPPER}} .magic-post-meta' => 'margin-top: {{SIZE}}{{UNIT}}',
                 ],
             ]
         );
