@@ -231,8 +231,22 @@ class Progress_Bar extends Widget_Base
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-
-        $this->add_control(
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'bar_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .magic-progress-bar-container',
+			]
+		);
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'bar_box_shadow',
+                'selector' => '{{WRAPPER}} .magic-progress-bar-container',
+            ]
+        );
+        $this->add_responsive_control(
             'bar_height',
             [
                 'label' => esc_html__('Height', 'magic-elements'),
@@ -256,7 +270,7 @@ class Progress_Bar extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'bar_border_radius',
             [
                 'label' => esc_html__('Border Radius', 'magic-elements'),
@@ -266,25 +280,6 @@ class Progress_Bar extends Widget_Base
                     '{{WRAPPER}} .magic-progress-bar-container' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     '{{WRAPPER}} .magic-progress-bar-fill' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
-            ]
-        );
-
-        $this->add_control(
-            'bar_bg_color',
-            [
-                'label' => esc_html__('Background Color', 'magic-elements'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .magic-progress-bar-container' => 'background-color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Box_Shadow::get_type(),
-            [
-                'name' => 'bar_box_shadow',
-                'selector' => '{{WRAPPER}} .magic-progress-bar-container',
             ]
         );
 
@@ -307,7 +302,13 @@ class Progress_Bar extends Widget_Base
                 'selector' => '{{WRAPPER}} .magic-progress-bar-fill',
             ]
         );
-
+         $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'fill_box_shadow',
+                'selector' => '{{WRAPPER}} .magic-progress-bar-fill',
+            ]
+        );
         $this->add_control(
             'fill_stripe',
             [
@@ -318,7 +319,7 @@ class Progress_Bar extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'stripe_size',
             [
                 'label' => esc_html__( 'Stripe Size', 'magic-elements' ),
@@ -357,7 +358,7 @@ class Progress_Bar extends Widget_Base
             ]
         );
      
-        $this->add_control(
+        $this->add_responsive_control(
             'animation_speed',
             [
                 'label' => esc_html__( 'Animation Speed (s)', 'magic-elements' ),
@@ -383,15 +384,6 @@ class Progress_Bar extends Widget_Base
                 ],
             ]
         );
-
-        $this->add_group_control(
-            Group_Control_Box_Shadow::get_type(),
-            [
-                'name' => 'fill_box_shadow',
-                'selector' => '{{WRAPPER}} .magic-progress-bar-fill',
-            ]
-        );
-
         $this->end_controls_section();
 
         // Title Style
@@ -500,8 +492,18 @@ class Progress_Bar extends Widget_Base
                 ],
             ]
         );
-
-        $this->add_control(
+         $this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'box_shadow_tooltip',
+				'selector' => '{{WRAPPER}} .magic-progress-bar-percentage-tooltip',
+                'condition' => [
+                    'percentage_position' => 'tooltip',
+                ],
+			]
+            
+		);
+        $this->add_responsive_control(
             'percentage_tooltip_border_radius',
             [
                 'label' => esc_html__('Border Radius', 'magic-elements'),
@@ -531,7 +533,7 @@ class Progress_Bar extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
 			'tooltip_margin',
 			[
 				'label' => esc_html__( 'Margin', 'magic-elements' ),
@@ -554,19 +556,7 @@ class Progress_Bar extends Widget_Base
 			]
 		);
 
-        $this->add_group_control(
-			\Elementor\Group_Control_Box_Shadow::get_type(),
-			[
-				'name' => 'box_shadow_tooltip',
-				'selector' => '{{WRAPPER}} .magic-progress-bar-percentage-tooltip',
-                'condition' => [
-                    'percentage_position' => 'tooltip',
-                ],
-			]
-            
-		);
-
-        $this->add_control(
+        $this->add_responsive_control(
             'percentage_outside_spacing',
             [
                 'label' => esc_html__('Spacing', 'magic-elements'),
@@ -613,7 +603,7 @@ class Progress_Bar extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
 			'icon_size',
 			[
 				'label' => esc_html__( 'Size', 'magic-elements' ),
