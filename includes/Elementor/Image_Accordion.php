@@ -261,32 +261,10 @@ class Image_Accordion extends Widget_Base
         $this->start_controls_section(
             'section_caption_style',
             [
-                'label' => esc_html__('Content', 'magic-elements'),
+                'label' => esc_html__('Title', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
-
-        $this->add_control(
-			'content_margin',
-			[
-				'label'      => esc_html__( 'Margin', 'magic-elements' ),
-				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'selectors'  => [
-					'{{WRAPPER}} .caption' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-
-        $this->add_control(
-			'section_title_style',
-			[
-				'label'     => esc_html__( 'Title', 'magic-elements' ),
-				'type'      => \Elementor\Controls_Manager::HEADING,
-				'separator' => 'before',
-			]
-		);
-
         $this->add_control(
             'title_color',
             [
@@ -297,6 +275,14 @@ class Image_Accordion extends Widget_Base
                 ],
             ]
         );
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'image_accordion_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} h2',
+			]
+		);
 
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
@@ -305,41 +291,71 @@ class Image_Accordion extends Widget_Base
                 'selector' => '{{WRAPPER}} h2',
             ]
         );
-
-        $this->add_responsive_control(
-            'title_spacing',
-            [
-                'label'      => esc_html__('Spacing', 'magic-elements'),
-                'type'       => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => ['px', 'em'],
-                'range'      => [
-                    'px' => [
-                        'min'  => 0,
-                        'max'  => 100,
-                        'step' => 1,
-                    ],
-                    'em' => [
-                        'min'  => 0,
-                        'max'  => 10,
-                        'step' => 0.1,
-                    ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} h2' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-			'section_description_style',
+        $this->add_group_control(
+			\Elementor\Group_Control_Text_Shadow::get_type(),
 			[
-				'label'     => esc_html__( 'Description', 'magic-elements' ),
-				'type'      => \Elementor\Controls_Manager::HEADING,
+				'name' => 'title_shadow',
+				'selector' => '{{WRAPPER}} h2',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'title_border',
+				'selector' => '{{WRAPPER}} h2',
+			]
+		);
+        	$this->add_control(
+			'title_more_options',
+			[
+				'type' => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
 		);
+        $this->add_responsive_control(
+			'content_border_radius',
+			[
+				'label'      => esc_html__( 'Border Radius', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors'  => [
+					'{{WRAPPER}} h2' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'content_margin',
+			[
+				'label'      => esc_html__( 'Margin', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors'  => [
+					'{{WRAPPER}} h2' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'content_padding',
+			[
+				'label'      => esc_html__( 'Padding', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors'  => [
+					'{{WRAPPER}} h2' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 
-        $this->add_control(
+        $this->end_controls_section();
+        //content
+        $this->start_controls_section(
+			'content_style_section',
+			[
+				'label' => esc_html__( 'Content', 'magic-elements' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+                $this->add_control(
             'description_color',
             [
                 'label'     => esc_html__('Color', 'magic-elements'),
@@ -349,6 +365,14 @@ class Image_Accordion extends Widget_Base
                 ],
             ]
         );
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'description_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} p',
+			]
+		);
 
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
@@ -357,8 +381,63 @@ class Image_Accordion extends Widget_Base
                 'selector' => '{{WRAPPER}} p',
             ]
         );
-
+        $this->add_group_control(
+			\Elementor\Group_Control_Text_Shadow::get_type(),
+			[
+				'name' => 'description_shadow',
+				'selector' => '{{WRAPPER}} p',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'description_border',
+				'selector' => '{{WRAPPER}} p',
+			]
+		);
+        $this->add_control(
+			'content_more_options',
+			[
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+        $this->add_responsive_control(
+			'description_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} p' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'description_margin',
+			[
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'description_padding',
+			[
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} p' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
         $this->end_controls_section();
+
+
 
 
     }

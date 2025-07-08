@@ -169,38 +169,7 @@ class Button extends Widget_Base
 			]
 		);
 
-        $this->add_control(
-			'align',
-			[
-				'label'   => esc_html__( 'Alignment', 'magic-elements' ),
-				'type'    => \Elementor\Controls_Manager::CHOOSE,
-				'options' => [
-					'left' => [
-						'title' => esc_html__( 'Left', 'magic-elements' ),
-						'icon'  => 'eicon-text-align-left',
-					],
-					'center' => [
-						'title' => esc_html__( 'Center', 'magic-elements' ),
-						'icon'  => 'eicon-text-align-center',
-					],
-					'right' => [
-						'title' => esc_html__( 'Right', 'magic-elements' ),
-						'icon'  => 'eicon-text-align-right',
-					],
-                    'justify' => [
-						'title' => esc_html__( 'Justified', 'magic-elements' ),
-						'icon'  => 'eicon-text-align-justify',
-					],
-				],
-				'default'   => 'center',
-				'toggle'    => true,
-				'selectors' => [
-					'{{WRAPPER}} .emk-button-wrapper' => 'text-align: {{VALUE}};',
-				],
-			]
-		);
-
-        $this->add_control(
+        $this->add_responsive_control(
 			'size',
 			[
 				'label'   => esc_html__( 'Size', 'magic-elements' ),
@@ -243,7 +212,7 @@ class Button extends Widget_Base
 			]
 		);
 
-        $this->add_control(
+        $this->add_responsive_control(
 			'icon_indent',
 			[
 				'label'      => esc_html__( 'Icon Spacing', 'magic-elements' ),
@@ -279,20 +248,38 @@ class Button extends Widget_Base
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
+		$this->add_responsive_control(
+			'button_align',
+			[
+				'label'   => esc_html__( 'Alignment', 'magic-elements' ),
+				'type'    => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'magic-elements' ),
+						'icon'  => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'magic-elements' ),
+						'icon'  => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'magic-elements' ),
+						'icon'  => 'eicon-text-align-right',
+					],
+				],
+				'default'   => 'center',
+				'toggle'    => true,
+				'selectors' => [
+					'{{WRAPPER}} .emk-button-wrapper' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
 
         $this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name'     => 'typography',
 				'selector' => '{{WRAPPER}} .emk-button',
-			]
-		);
-
-        $this->add_group_control(
-			\Elementor\Group_Control_Text_Shadow::get_type(),
-			[
-				'name'     => 'text_shadow',
-				'selector' => '{{WRAPPER}} .emk-button-text',
 			]
 		);
 
@@ -313,7 +300,7 @@ class Button extends Widget_Base
 				'label'     => esc_html__( 'Text Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .emk-button-text' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .emk-button' => 'color: {{VALUE}}','{{WRAPPER}} .emk-button-icon' => 'fill: {{VALUE}}'
 				],
 			]
 		);
@@ -342,7 +329,7 @@ class Button extends Widget_Base
 				'label'     => esc_html__( 'Text Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .emk-button-text:hover' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .emk-button:hover' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -355,28 +342,7 @@ class Button extends Widget_Base
 				'selector' => '{{WRAPPER}} .emk-button:hover',
 			]
 		);
-
-        $this->add_control(
-			$this->get_name() . 'button_hover_border_color',
-			[
-				'label'     => esc_html__( 'Border Color', 'magic-elements' ),
-				'type'      => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .emk-button-text:hover, {{WRAPPER}} .emk-button-text:focus' => 'border-color: {{VALUE}};',
-				],
-			]
-		);
-
-        $this->add_control(
-			'hover_animation',
-			[
-				'label'     => esc_html__( 'Hover Animation', 'magic-elements' ),
-				'type'      => \Elementor\Controls_Manager::HOVER_ANIMATION,
-				'condition' => $args['section_condition'],
-			]
-		);
-
-		
+	
 		$this->end_controls_tab();
 
 		$this->end_controls_tabs();
@@ -410,13 +376,24 @@ class Button extends Widget_Base
 		);
 
         $this->add_responsive_control(
-			$this->get_name() . 'text_padding',
+			'text_padding',
 			[
 				'label'      => esc_html__( 'Padding', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'vw', 'custom' ],
 				'selectors'  => [
 					'{{WRAPPER}} .emk-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'button_text_margin',
+			[
+				'label'      => esc_html__( 'Margin', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'vw', 'custom' ],
+				'selectors'  => [
+					'{{WRAPPER}} .emk-button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);

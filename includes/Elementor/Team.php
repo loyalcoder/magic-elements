@@ -277,7 +277,7 @@ class Team extends Widget_Base
         );
 
         // Continue with other controls
-        $repeater->add_control(
+        $repeater->add_responsive_control(
             'icon_size',
             [
                 'label' => esc_html__('Size', 'magic-elements'),
@@ -303,7 +303,7 @@ class Team extends Widget_Base
             ]
         );
 
-        $repeater->add_control(
+        $repeater->add_responsive_control(
             'icon_body_width',
             [
                 'label' => esc_html__('Width', 'magic-elements'),
@@ -329,7 +329,7 @@ class Team extends Widget_Base
             ]
         );
 
-        $repeater->add_control(
+        $repeater->add_responsive_control(
             'icon_body_height',
             [
                 'label' => esc_html__('Height', 'magic-elements'),
@@ -363,7 +363,7 @@ class Team extends Widget_Base
             ]
         );
         
-        $repeater->add_control(
+        $repeater->add_responsive_control(
             'icon_border_radius',
             [
                 'label' => esc_html__('Border Radius', 'magic-elements'),
@@ -408,7 +408,7 @@ class Team extends Widget_Base
         );
         
         // Add this after the hover animation control in your repeater
-        $repeater->add_control(
+        $repeater->add_responsive_control(
             'hover_duration',
             [
                 'label' => esc_html__('Hover Duration', 'magic-elements'),
@@ -458,7 +458,7 @@ class Team extends Widget_Base
             ]
         );
         
-        $repeater->add_control(
+        $repeater->add_responsive_control(
             'icon_border_radius_hover',
             [
                 'label' => esc_html__('Border Radius', 'magic-elements'),
@@ -504,7 +504,7 @@ class Team extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'bt_direction',
             [
                 'label' => esc_html__('Direction', 'magic-elements'),
@@ -527,7 +527,7 @@ class Team extends Widget_Base
             ]
         );
         
-        $this->add_control(
+        $this->add_responsive_control(
             'button_justify',
             [
                 'label' => esc_html__('Justify', 'magic-elements'),
@@ -566,7 +566,7 @@ class Team extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'button_alinment',
             [
                 'label' => esc_html__('Alinment', 'magic-elements'),
@@ -598,7 +598,7 @@ class Team extends Widget_Base
         );
         
         // style two =========
-        $this->add_control(
+        $this->add_responsive_control(
             'button_justify_two',
             [
                 'label' => esc_html__('Justify', 'magic-elements'),
@@ -628,7 +628,7 @@ class Team extends Widget_Base
             ]
         );
         
-        $this->add_control(
+        $this->add_responsive_control(
             'button_alinment_two',
             [
                 'label' => esc_html__('Alinment', 'magic-elements'),
@@ -658,7 +658,7 @@ class Team extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'icon_gap',
             [
                 'label' => esc_html__('Gap', 'magic-elements'),
@@ -899,7 +899,7 @@ class Team extends Widget_Base
         $this->add_responsive_control(
             'image_border_radius',
             [
-                'label' => __('Border Radius', 'magic-elements'),
+                'label' => esc_html__('Border Radius', 'magic-elements'),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors' => [
@@ -927,7 +927,7 @@ class Team extends Widget_Base
         $this->add_responsive_control(
             'image_padding',
             [
-                'label' => __('Padding', 'magic-elements'),
+                'label' => esc_html__('Padding', 'magic-elements'),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -939,7 +939,7 @@ class Team extends Widget_Base
         $this->add_responsive_control(
             'image_margin',
             [
-                'label' => __('Margin', 'magic-elements'),
+                'label' => esc_html__('Margin', 'magic-elements'),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -975,7 +975,7 @@ class Team extends Widget_Base
             ]
         );
         
-        $this->add_control(
+        $this->add_responsive_control(
             'text_align',
             [
                 'label' => esc_html__('Alignment', 'magic-elements'),
@@ -1078,7 +1078,7 @@ class Team extends Widget_Base
             'selector' => '{{WRAPPER}} .content-part p',
         ]
     );
-    $this->add_control(
+    $this->add_responsive_control(
         'text_content_align',
         [
             'label' => esc_html__( 'Alignment', 'magic-elements' ),
@@ -1186,7 +1186,7 @@ class Team extends Widget_Base
             ],
         ]
     );
-    $this->add_control(
+    $this->add_responsive_control(
         'icos_opacity',
         [
             'label' => esc_html__( 'Icons Opacity', 'magic-elements' ),
@@ -1208,7 +1208,7 @@ class Team extends Widget_Base
     );
 
 
-    $this->add_control(
+    $this->add_responsive_control(
         'icons_container_margin',
         [
             'label' => esc_html__( 'Margin', 'magic-elements' ),
@@ -1227,7 +1227,7 @@ class Team extends Widget_Base
             ],
         ]
     );
-    $this->add_control(
+    $this->add_responsive_control(
         'icons_container_padding',
         [
             'label' => esc_html__( 'Padding', 'magic-elements' ),
@@ -1253,10 +1253,10 @@ class Team extends Widget_Base
             'selector' => '{{WRAPPER}} .icon-part',
         ]
     );
-    $this->add_control(
+    $this->add_responsive_control(
         'icons_container_radius',
         [
-            'label' => esc_html__( 'Radius', 'magic-elements' ),
+            'label' => esc_html__( 'Border Radius', 'magic-elements' ),
             'type' => \Elementor\Controls_Manager::DIMENSIONS,
             'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
             'default' => [
@@ -1288,7 +1288,7 @@ class Team extends Widget_Base
             'label' => esc_html__( 'Hover', 'magic-elements' ),
         ]
     );
-    $this->add_control(
+    $this->add_responsive_control(
         'icos_opacity_hover',
         [
             'label' => esc_html__( 'Icons Opacity', 'magic-elements' ),
@@ -1308,7 +1308,7 @@ class Team extends Widget_Base
             ],
         ]
     );
-    $this->add_control(
+    $this->add_responsive_control(
         'icons_container_margin_hover',
         [
             'label' => esc_html__( 'Margin', 'magic-elements' ),
@@ -1327,7 +1327,7 @@ class Team extends Widget_Base
             ],
         ]
     );
-    $this->add_control(
+    $this->add_responsive_control(
         'img_overlay',
         [
             'label' => esc_html__( 'Img Overlay', 'magic-elements' ),
@@ -1337,7 +1337,7 @@ class Team extends Widget_Base
             ],
         ]
     );
-    $this->add_control(
+    $this->add_responsive_control(
         'img_hover_duration',
         [
             'label' => esc_html__('Hover Duration', 'magic-elements'),
@@ -1363,9 +1363,6 @@ class Team extends Widget_Base
 
     $this->end_controls_tabs();
     $this->end_controls_section();
-
- 
-
 
     }
 
