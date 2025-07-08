@@ -148,11 +148,6 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/light_box.js'),
                 'deps'    => ['jquery']
             ],
-            'emkit-news-ticker' => [
-                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/news_ticker.js',
-                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/news_ticker.js'),
-                'deps'    => ['jquery']
-            ],
             'slick' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/vendors/slick/slick.min.js',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendors/slick/slick.min.js'),
@@ -257,10 +252,6 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/light_box.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/light_box.css'),
             ],
-            'emk-news-ticker' => [
-                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/news_ticker.css',
-                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/news_ticker.css'),
-            ],
             'slick' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/vendors/slick/slick.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendors/slick/slick.css'),
@@ -311,8 +302,6 @@ class Load_Elementor
             'Category_List',
             'Card',
             'Tab',
-            'Post',
-            'Image_Compare',
             'Light_Box',
             'Post_List',
             'Page_List',
@@ -320,7 +309,6 @@ class Load_Elementor
             'Icon_Box',
             'Info_Box',
             'Feature_list',
-            'News_Ticker',
             'Review',
             'Timeline',
             'Progress_Bar',
@@ -344,8 +332,6 @@ class Load_Elementor
             'categorylist',
             'card',
             'tab',
-            'post',
-            'imagecompare',
             'lightbox',
             'postlist',
             'pageList',
@@ -353,7 +339,6 @@ class Load_Elementor
             'iconiox',
             'infobox',
             'featurelist',
-            'newsticker',
             'review',
             'timeline',
             'progressbar',

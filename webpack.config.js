@@ -61,10 +61,6 @@ const baseConfig = {
       './assets/src/scss/review.scss',
       './assets/src/js/review.js',
     ],
-       image_compare: [
-      './assets/src/scss/image_compare.scss',
-      './assets/src/js/image_compare.js',
-    ],
      multi_step: [
       './assets/src/scss/multi_step.scss',
       './assets/src/js/multi_step.js',
