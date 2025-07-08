@@ -116,8 +116,117 @@ class Search_Popup extends Widget_Base
      */
     protected function register_search_poopup_controls()
     {
-    
+        $this->start_controls_section(
+            'content_section',
+            [
+                'label' => esc_html__('Content', 'magic-elements'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
 
+        $this->add_control(
+            'button_text',
+            [
+                'label' => esc_html__('Button Text', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__('Search', 'magic-elements'),
+                'placeholder' => esc_html__('Type your Text here', 'magic-elements'),
+            ]
+        );
+        
+        $this->add_control(
+            'show_icon',
+            [
+                'label' => esc_html__('Show Icon', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Show', 'magic-elements'),
+                'label_off' => esc_html__('Hide', 'magic-elements'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
+        
+        $this->add_control(
+            'selected_icon',
+            [
+                'label' => esc_html__('Icon', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::ICONS,
+                'fa4compatibility' => 'icon',
+                'default' => [
+                    'value' => 'fas fa-search',
+                    'library' => 'fa-solid',
+                ],
+                'condition' => [
+                    'show_icon' => 'yes',
+                ],
+            ]
+        );
+        $this->add_control(
+			'icon_size',
+            [
+                'label' => esc_html__( 'Icon Size', 'textdomain' ),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => [ 'px', 'em', 'rem', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 10,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                    'em' => [
+                        'min' => 0.5,
+                        'max' => 5,
+                        'step' => 0.1,
+                    ],
+                ],
+                'default' => [
+                    'size' => 16,
+                    'unit' => 'px',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .magic-icon-left i, {{WRAPPER}} .magic-icon-right i' => 'font-size: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+        
+        $this->add_control(
+            'icon_position',
+            [
+                'label' => esc_html__('Icon Position', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'left',
+                'options' => [
+                    'left' => esc_html__('Left', 'magic-elements'),
+                    'right' => esc_html__('Right', 'magic-elements'),
+                ],
+                'condition' => [
+                    'show_icon' => 'yes',
+                ],
+            ]
+        );
+        
+        $this->add_control(
+            'icon_spacing',
+            [
+                'label' => esc_html__('Icon Spacing', 'magic-elements'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 50,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .emk-search-button .magic-icon-left' => 'margin-right: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .emk-search-button .magic-icon-right' => 'margin-left: {{SIZE}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'show_icon' => 'yes',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
     }
 
     /**
