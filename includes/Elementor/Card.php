@@ -50,7 +50,7 @@ class Card extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Magic Card', 'magic-elements');
+        return esc_html__('Card', 'magic-elements');
     }
 
         /**
@@ -215,11 +215,18 @@ class Card extends Widget_Base
                 ],
             ]
         );
-
-        $this->add_control(
+         $this->add_group_control(
+            \Elementor\Group_Control_Background::get_type(),
+            [
+                'name'     => 'card_background',
+                'types'    => ['classic', 'gradient', 'video'],
+                'selector' => '{{WRAPPER}} .card-widget',
+            ]
+        );
+        $this->add_responsive_control(
             'card_width',
             [
-                'label'      => esc_html__('Card Width', 'magic-elements'),
+                'label'      => esc_html__('Width', 'magic-elements'),
                 'type'       => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range'      => [
@@ -242,10 +249,10 @@ class Card extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'card_height',
             [
-                'label'      => esc_html__('Card Height', 'magic-elements'),
+                'label'      => esc_html__('Height', 'magic-elements'),
                 'type'       => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range'      => [
@@ -259,56 +266,32 @@ class Card extends Widget_Base
                 ],
             ]
         );
-
-        $this->add_control(
-            'card_border_color',
-            [
-                'label'     => esc_html__('Border Color', 'magic-elements'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .card-widget' => 'border-color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'card_border_width',
-            [
-                'label'      => esc_html__('Border Width', 'magic-elements'),
-                'type'       => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => ['px', 'em', '%'],
-                'range'      => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 20,
-                    ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .card-widget' => 'border-width: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
+        $this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'card_border',
+				'selector' => '{{WRAPPER}} .card-widget',
+			]
+		);
+        	$this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'card_shadow',
+				'selector' => '{{WRAPPER}} .card-widget',
+			]
+		);
+        $this->add_responsive_control(
             'card_border_radius',
             [
                 'label'      => esc_html__('Border Radius', 'magic-elements'),
-                'type'       => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => ['px', 'em'],
-                'range'      => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 50,
-                    ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .card-widget' => 'border-radius: {{SIZE}}{{UNIT}};',
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors'  => [
+                    '{{WRAPPER}} .card-widget' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
-
-            // Card Padding Control
-        $this->add_control(
+        $this->add_responsive_control(
             'card_padding',
             [
                 'label'      => esc_html__('Padding', 'magic-elements'),
@@ -319,17 +302,6 @@ class Card extends Widget_Base
                 ],
             ]
         );
-
-            // Card Background Color
-        $this->add_group_control(
-            \Elementor\Group_Control_Background::get_type(),
-            [
-                'name'     => 'background',
-                'types'    => ['classic', 'gradient', 'video'],
-                'selector' => '{{WRAPPER}} .card-widget',
-            ]
-        );
-
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -369,8 +341,6 @@ class Card extends Widget_Base
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
-
-            // Card Description Settings
         $this->add_control(
             'card_description_color',
             [
@@ -389,7 +359,17 @@ class Card extends Widget_Base
                 'selector' => '{{WRAPPER}} .card-description',
             ]
         );
-
+        $this->add_responsive_control(
+			'card_margin',
+			[
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .card-description' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -399,10 +379,22 @@ class Card extends Widget_Base
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
-
-            // Start Tabs
+        // Start Tabs
+         $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'button_typography',
+                'selector' => '{{WRAPPER}} .card-button',
+            ]
+        );
+        $this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'box_shadow',
+				'selector' => '{{WRAPPER}} .card-button',
+			]
+		);
         $this->start_controls_tabs('button_tabs');
-
             // Normal Tab
         $this->start_controls_tab(
             'button_normal_tab',
@@ -410,21 +402,7 @@ class Card extends Widget_Base
                 'label' => esc_html__('Normal', 'magic-elements'),
             ]
         );
-
-            // Button Background Color
-        $this->add_control(
-            'card_button_background_color',
-            [
-                'label'     => esc_html__('Background Color', 'magic-elements'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .card-button' => 'background-color: {{VALUE}};',
-                ],
-            ]
-        );
-
-            // Button Text Color
-        $this->add_control(
+         $this->add_control(
             'card_button_color',
             [
                 'label'     => esc_html__('Text Color', 'magic-elements'),
@@ -434,18 +412,78 @@ class Card extends Widget_Base
                 ],
             ]
         );
-
-            // Button Typography
         $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'card_button_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .card-button',
+			]
+		);
+        
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'card_button_border',
+				'selector' => '{{WRAPPER}} .card-button',
+			]
+		);
+        $this->end_controls_tab();  // End Normal Tab
+
+            // Hover Tab
+        $this->start_controls_tab(
+            'button_hover_tab',
             [
-                'name'     => 'button_typography',
-                'selector' => '{{WRAPPER}} .card-button',
+                'label' => esc_html__('Hover', 'magic-elements'),
             ]
         );
-
-            // Button Padding
         $this->add_control(
+            'card_button_hover_text_color',
+            [
+                'label'     => esc_html__('Color', 'magic-elements'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .card-button:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'card_button_hover_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .card-button:hover',
+			]
+		);
+       $this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'card_button_hover_border',
+				'selector' => '{{WRAPPER}} .card-button:hover',
+			]
+		);
+        $this->end_controls_tab();  
+        // End Hover Tab
+        $this->end_controls_tabs();  
+                	$this->add_control(
+			'card_button_more_options',
+			[
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+        $this->add_responsive_control(
+            'card_button_border_radius',
+            [
+                'label'      => esc_html__('Border Radius', 'magic-elements'),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors'  => [
+                    '{{WRAPPER}} .card-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
             'card_button_padding',
             [
                 'label'      => esc_html__('Padding', 'magic-elements'),
@@ -456,43 +494,17 @@ class Card extends Widget_Base
                 ],
             ]
         );
-
-        $this->end_controls_tab();  // End Normal Tab
-
-            // Hover Tab
-        $this->start_controls_tab(
-            'button_hover_tab',
+        $this->add_responsive_control(
+            'card_button_margin',
             [
-                'label' => esc_html__('Hover', 'magic-elements'),
-            ]
-        );
-
-            // Button Hover Background Color
-        $this->add_control(
-            'card_button_hover_color',
-            [
-                'label'     => esc_html__('Background Hover Color', 'magic-elements'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .card-button:hover' => 'background-color: {{VALUE}};',
+                'label'      => esc_html__('Margin', 'magic-elements'),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors'  => [
+                    '{{WRAPPER}} .card-button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
-
-        $this->add_control(
-            'card_button_hover_text_color',
-            [
-                'label'     => esc_html__('Text Hover Color', 'magic-elements'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .card-button:hover' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->end_controls_tab();  // End Hover Tab
-
-        $this->end_controls_tabs();  // End Tabs
 
         $this->end_controls_section();
 
