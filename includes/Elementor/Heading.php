@@ -180,7 +180,14 @@ class Heading extends Widget_Base
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
-
+          $this->add_control(
+			'emk_title',
+			[
+				'label'     => esc_html__( 'Title', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
         $this->add_responsive_control(
 			'align',
 			[
@@ -199,10 +206,6 @@ class Heading extends Widget_Base
 						'title' => esc_html__( 'Right', 'magic-elements' ),
 						'icon'  => 'eicon-text-align-right',
 					],
-					'justify' => [
-						'title' => esc_html__( 'Justified', 'magic-elements' ),
-						'icon'  => 'eicon-text-align-justify',
-					],
 				],
 				'default'   => '',
 				'selectors' => [
@@ -210,16 +213,6 @@ class Heading extends Widget_Base
 				],
 			]
 		);
-
-        $this->add_control(
-			'emk_title',
-			[
-				'label'     => esc_html__( 'Title', 'magic-elements' ),
-				'type'      => \Elementor\Controls_Manager::HEADING,
-				'separator' => 'before',
-			]
-		);
-
 		$this->add_control(
 			'title_color_',
 			[
@@ -252,6 +245,50 @@ class Heading extends Widget_Base
 			[
 				'name'     => 'text_shadow',
 				'selector' => '{{WRAPPER}} .emk-heading-title',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'heading_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .emk-heading-title',
+			]
+		);
+        $this->add_responsive_control(
+			'heading_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				
+				'selectors' => [
+					'{{WRAPPER}} .emk-heading-title' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'heading_margin',
+			[
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				
+				'selectors' => [
+					'{{WRAPPER}} .emk-heading-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'heading_padding',
+			[
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				
+				'selectors' => [
+					'{{WRAPPER}} .emk-heading-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
 			]
 		);
         $this->add_control(

@@ -549,7 +549,7 @@ class Pricing_Table extends Widget_Base
 				],
 			]
 		);
-		$this->add_control(
+		$this->add_responsive_control(
 			'table_reverse',
 			[
 				'label'   => esc_html__( 'Reverse', 'magic-elements' ),
@@ -630,7 +630,7 @@ class Pricing_Table extends Widget_Base
 				],
 			]
 		);
-		$this->add_control(
+		$this->add_responsive_control(
 			'left_price_align',
 			[
 				'label'   => esc_html__( 'Vertical Alignment', 'magic-elements' ),
@@ -659,7 +659,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_responsive_control(
 			'left_part_radius',
 			[
-				'label'      => esc_html__( 'Radius', 'magic-elements' ),
+				'label'      => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -762,7 +762,7 @@ class Pricing_Table extends Widget_Base
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
-        $this->add_control(
+		 $this->add_control(
 			'title_options',
 			[
 				'label'     => esc_html__( 'Title', 'magic-elements' ),
@@ -770,24 +770,7 @@ class Pricing_Table extends Widget_Base
 				'separator' => 'before',
 			]
 		);
-        $this->add_group_control(
-			\Elementor\Group_Control_Typography::get_type(),
-			[
-				'name'     => 'title_typography',
-				'selector' => '{{WRAPPER}} .title',
-			]
-		);
-        $this->add_control(
-			'title_color',
-			[
-				'label'     => esc_html__( 'Title Color', 'magic-elements' ),
-				'type'      => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .title' => 'color: {{VALUE}}',
-				],
-			]
-		);
-        $this->add_control(
+		 $this->add_responsive_control(
 			'title_text_align',
 			[
 				'label'   => esc_html__( 'Alignment', 'magic-elements' ),
@@ -810,6 +793,23 @@ class Pricing_Table extends Widget_Base
 				'toggle'    => true,
 				'selectors' => [
 					'{{WRAPPER}} .title' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name'     => 'title_typography',
+				'selector' => '{{WRAPPER}} .title',
+			]
+		);
+        $this->add_control(
+			'title_color',
+			[
+				'label'     => esc_html__( 'Title Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .title' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -848,6 +848,32 @@ class Pricing_Table extends Widget_Base
 				'separator' => 'before',
 			]
 		);
+		$this->add_responsive_control(
+			'sub-title_text_align',
+			[
+				'label'   => esc_html__( 'Alignment', 'magic-elements' ),
+				'type'    => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'magic-elements' ),
+						'icon'  => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'magic-elements' ),
+						'icon'  => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'magic-elements' ),
+						'icon'  => 'eicon-text-align-right',
+					],
+				],
+				'default'   => 'center',
+				'toggle'    => true,
+				'selectors' => [
+					'{{WRAPPER}} .sub-title' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
         $this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
@@ -865,7 +891,7 @@ class Pricing_Table extends Widget_Base
 				],
 			]
 		);
-        $this->add_control(
+        $this->add_responsive_control(
 			'sub-title_text_align',
 			[
 				'label'   => esc_html__( 'Alignment', 'magic-elements' ),
@@ -926,7 +952,7 @@ class Pricing_Table extends Widget_Base
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
-        $this->add_control(
+        $this->add_responsive_control(
 			'price_text_align',
 			[
 				'label'   => esc_html__( 'Alignment', 'magic-elements' ),
@@ -996,7 +1022,7 @@ class Pricing_Table extends Widget_Base
 				'selector' => '{{WRAPPER}} .cp',
 			]
 		);
-        $this->add_control(
+        $this->add_responsive_control(
 			'price_align',
 			[
 				'label'   => esc_html__( 'Vertical Alignment', 'magic-elements' ),
@@ -1037,7 +1063,7 @@ class Pricing_Table extends Widget_Base
 				'selector' => '{{WRAPPER}} .cp-symble',
 			]
 		);
-        $this->add_control(
+        $this->add_responsive_control(
 			'currency_symbol_align',
 			[
 				'label'   => esc_html__( 'Vertical Alignment', 'magic-elements' ),
@@ -1066,10 +1092,10 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'original_price_options',
 			[
-    'label'     => esc_html__( 'Original Price', 'magic-elements' ),
-    'type'      => \Elementor\Controls_Manager::HEADING,
-    'separator' => 'before',
-    'condition' => [
+				'label'     => esc_html__( 'Original Price', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+				'condition' => [
                     'show_sale' => 'yes',
                 ]
 			]
@@ -1090,14 +1116,14 @@ class Pricing_Table extends Widget_Base
         $this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
-    'name'      => 'original_price_typography',
-    'selector'  => '{{WRAPPER}} .original-price',
-    'condition' => [
+				'name'      => 'original_price_typography',
+				'selector'  => '{{WRAPPER}} .original-price',
+				'condition' => [
                     'show_sale' => 'yes',
                 ]
 			]
 		);
-        $this->add_control(
+        $this->add_responsive_control(
 			'original_price_align',
 			[
 				'label'   => esc_html__( 'Vertical Alignment', 'magic-elements' ),
@@ -1126,7 +1152,7 @@ class Pricing_Table extends Widget_Base
                 ]
 			]
 		);
-        $this->add_control(
+        $this->add_responsive_control(
 			'original_price_gap',
 			[
 				'label'      => esc_html__( 'Gap', 'magic-elements' ),
@@ -1180,7 +1206,7 @@ class Pricing_Table extends Widget_Base
 				'selector' => '{{WRAPPER}} .period',
 			]
 		);
-        $this->add_control(
+        $this->add_responsive_control(
 			'period_align',
 			[
 				'label'   => esc_html__( 'Vertical Alignment', 'magic-elements' ),
@@ -1206,7 +1232,7 @@ class Pricing_Table extends Widget_Base
 				],
 			]
 		);
-        $this->add_control(
+        $this->add_responsive_control(
 			'period_gap',
 			[
 				'label'      => esc_html__( 'Gap', 'magic-elements' ),
@@ -1294,7 +1320,7 @@ class Pricing_Table extends Widget_Base
 				'separator' => 'before',
 			]
 		);
-        $this->add_control(
+        $this->add_responsive_control(
 			'features_align',
 			[
 				'label'   => esc_html__( 'Alignment', 'magic-elements' ),
@@ -1390,7 +1416,7 @@ class Pricing_Table extends Widget_Base
 				'separator' => 'before',
 			]
 		);
-        $this->add_control(
+        $this->add_responsive_control(
 			'icon_size',
 			[
 				'label'      => esc_html__( 'Icon Size', 'magic-elements' ),
@@ -1416,7 +1442,7 @@ class Pricing_Table extends Widget_Base
 				],
 			]
 		);
-        $this->add_control(
+        $this->add_responsive_control(
 			'icon_gap',
 			[
 				'label'      => esc_html__( 'Icon Gap', 'magic-elements' ),
@@ -1493,7 +1519,7 @@ class Pricing_Table extends Widget_Base
 				'selector' => '{{WRAPPER}} .emk-button a',
 			]
 		);
-		$this->add_control(
+		$this->add_responsive_control(
 			'btn_direction',
 			[
 				'label'   => esc_html__( 'Direction', 'magic-elements' ),
@@ -1604,7 +1630,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_responsive_control(
 			'btn_radius',
 			[
-				'label'      => esc_html__( 'Radius', 'magic-elements' ),
+				'label'      => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -1638,7 +1664,7 @@ class Pricing_Table extends Widget_Base
 				]
 			]
 		);
-		$this->add_control(
+		$this->add_responsive_control(
 			'btn_icon_direction',
 			[
 				'label'   => esc_html__( 'Icon Direction', 'magic-elements' ),
@@ -1663,7 +1689,7 @@ class Pricing_Table extends Widget_Base
 				]
 			]
 		);
-		$this->add_control(
+		$this->add_responsive_control(
 			'btn_icon_gap',
 			[
 				'label'      => esc_html__( 'Gap', 'magic-elements' ),
@@ -1689,7 +1715,7 @@ class Pricing_Table extends Widget_Base
 				]
 			]
 		);
-		$this->add_control(
+		$this->add_responsive_control(
 			'btn_icon_gap_reverse',
 			[
 				'label'      => esc_html__( 'Gap', 'magic-elements' ),
@@ -1715,7 +1741,7 @@ class Pricing_Table extends Widget_Base
 				]
 			]
 		);
-		$this->add_control(
+		$this->add_responsive_control(
 			'btn_icon_size',
 			[
 				'label'      => esc_html__( 'Size', 'magic-elements' ),
@@ -1795,7 +1821,7 @@ class Pricing_Table extends Widget_Base
 		$this->add_responsive_control(
 			'btn_radius_hover',
 			[
-				'label'      => esc_html__( 'Radius', 'magic-elements' ),
+				'label'      => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
@@ -1858,7 +1884,7 @@ class Pricing_Table extends Widget_Base
                 ]
             ]
         );
-        $this->add_control(
+        $this->add_responsive_control(
 			'ribbon_direction',
 			[
 				'label'   => esc_html__( 'Direction', 'magic-elements' ),
@@ -1891,7 +1917,7 @@ class Pricing_Table extends Widget_Base
 				'label'     => esc_html__( 'Ribbon Before After', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}}   .pricing-table-container .ribbon::before, .pricing-table-container .ribbon::after ' => 'border-color: {{VALUE}}',
+					'{{WRAPPER}} .pricing-table-container .ribbon::before, .pricing-table-container .ribbon::after ' => 'border-color: {{VALUE}}',
 				],
 			]
 		);
@@ -1908,7 +1934,7 @@ class Pricing_Table extends Widget_Base
 				'label'     => esc_html__( 'Ribbon Text', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}}   .ribbon-bar span' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .ribbon-bar span' => 'color: {{VALUE}}',
 				],
 			]
 		);

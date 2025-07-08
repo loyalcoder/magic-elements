@@ -165,14 +165,12 @@ class Category_List extends Widget_Base
         $this->start_controls_section(
             'layout_section',
             [
-                'label' => esc_html__( 'Layout', 'magic-elements' ),
+                'label' => esc_html__( 'Category Box', 'magic-elements' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
-
-
             // Layout Control
-        $this->add_control(
+        $this->add_responsive_control(
             'layout',
             [
                 'label'   => esc_html__( 'Layout', 'magic-elements' ),
@@ -215,6 +213,14 @@ class Category_List extends Widget_Base
                 'default' => 'flex-start',
             ]
         );
+        	$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'category_box_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .category-list-widget',
+			]
+		);
 
             // Space Control
         $this->add_responsive_control(
@@ -234,12 +240,21 @@ class Category_List extends Widget_Base
                 ],
             ]
         );
-
-
+        $this->add_responsive_control(
+            'list_border_radius',
+            [
+                'label'      => esc_html__( 'Border Radius', 'magic-elements' ),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors'  => [
+                    '{{WRAPPER}} .category-list-widget' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
         $this->add_responsive_control(
             'list_padding',
             [
-                'label'      => esc_html__( 'List Padding', 'magic-elements' ),
+                'label'      => esc_html__( 'Padding', 'magic-elements' ),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors'  => [

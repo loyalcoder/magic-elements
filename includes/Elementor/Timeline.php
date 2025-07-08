@@ -255,7 +255,7 @@ class Timeline extends Widget_Base
         $this->start_controls_section(
             'container_style',
             [
-                'label' => esc_html__('Container Style', 'magic-elements'),
+                'label' => esc_html__('Container', 'magic-elements'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -305,7 +305,7 @@ class Timeline extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'connector_line_width',
             [
                 'label' => esc_html__('Line Width', 'magic-elements'),
@@ -438,7 +438,7 @@ class Timeline extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'marker_border_radius',
             [
                 'label' => esc_html__('Border Radius', 'magic-elements'),
@@ -460,19 +460,21 @@ class Timeline extends Widget_Base
                     'tab' => \Elementor\Controls_Manager::TAB_STYLE,
                 ]
             );
-
-            $this->add_control(
-                'content_bg_color',
+            $this->add_group_control(
+                \Elementor\Group_Control_Background::get_type(),
                 [
-                    'label' => esc_html__('Background Color', 'magic-elements'),
-                    'type' => \Elementor\Controls_Manager::COLOR,
-                    'default' => '#ffffff',
-                    'selectors' => [
-                        '{{WRAPPER}} .timeline-content' => 'background-color: {{VALUE}}',
-                    ],
+                    'name' => 'content_background',
+                    'types' => [ 'classic', 'gradient', 'video' ],
+                    'selector' => '{{WRAPPER}} .timeline-content',
+                ]
+		    );
+            $this->add_group_control(
+                \Elementor\Group_Control_Box_Shadow::get_type(),
+                [
+                    'name' => 'content_box_shadow',
+                    'selector' => '{{WRAPPER}} .timeline-content',
                 ]
             );
-
             $this->add_group_control(
                 \Elementor\Group_Control_Border::get_type(),
                 [
@@ -482,7 +484,7 @@ class Timeline extends Widget_Base
                 ]
             );
 
-            $this->add_control(
+            $this->add_responsive_control(
                 'content_border_radius',
                 [
                     'label' => esc_html__('Border Radius', 'magic-elements'),
@@ -493,15 +495,6 @@ class Timeline extends Widget_Base
                     ],
                 ]
             );
-
-            $this->add_group_control(
-                \Elementor\Group_Control_Box_Shadow::get_type(),
-                [
-                    'name' => 'content_box_shadow',
-                    'selector' => '{{WRAPPER}} .timeline-content',
-                ]
-            );
-
             $this->add_responsive_control(
                 'content_padding',
                 [

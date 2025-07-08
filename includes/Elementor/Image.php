@@ -177,7 +177,6 @@ class Image extends Widget_Base
 				'default' => 'none',
 				'options' => [
 					'none' => esc_html__( 'None', 'magic-elements' ),
-							  // 'file' => esc_html__( 'Media File', 'magic-elements' ),
 					'custom' => esc_html__( 'Custom URL', 'magic-elements' ),
 				],
 				'condition' => [
@@ -412,7 +411,7 @@ class Image extends Widget_Base
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors'  => [
-					'{{WRAPPER}} .main_img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .main_img img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -500,17 +499,7 @@ class Image extends Widget_Base
 				'selector' => '{{WRAPPER}}:hover .main_img a img',
 			]
 		);
-        $this->add_responsive_control(
-			'border_radius_hover',
-			[
-				'label'      => esc_html__( 'Border Radius', 'magic-elements' ),
-				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'selectors'  => [
-					'{{WRAPPER}}:hover .main_img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
+        
         $this->add_group_control(
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
