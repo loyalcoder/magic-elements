@@ -50,7 +50,7 @@ class Tab extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Tab', 'magic-elements');
+        return esc_html__('Tabs', 'magic-elements');
     }
 
         /**
@@ -91,6 +91,10 @@ class Tab extends Widget_Base
         return ['emk-tab'];
     }
 
+        public function get_keywords()
+    {
+        return ['tabs', 'tab', 'accordion'];
+    }
     public function get_script_depends()
     {
         return ['emkit-tab', 'jquery'];
