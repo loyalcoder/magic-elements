@@ -192,7 +192,7 @@ class Tab extends Widget_Base
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'tabs_column gap',
 			[
 				'label'      => esc_html__( 'Gap Between Tabs', 'magic-elements' ),
@@ -201,7 +201,7 @@ class Tab extends Widget_Base
 				'range'      => [
 					'px' => [
 						'min'  => 0,
-						'max'  => 1000,
+						'max'  => 100,
 						'step' => 1,
 					],
 					'%' => [
@@ -210,12 +210,12 @@ class Tab extends Widget_Base
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .tabs' => 'column-gap: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .tabs' => 'gap: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
         
-		$this->add_control(
+		$this->add_responsive_control(
 			'tabs_distance_from_content',
 			[
 				'label'      => esc_html__( 'Distance From Content', 'magic-elements' ),
@@ -224,7 +224,7 @@ class Tab extends Widget_Base
 				'range'      => [
 					'px' => [
 						'min'  => 0,
-						'max'  => 1000,
+						'max'  => 300,
 						'step' => 1,
 					],
 					'%' => [
@@ -237,6 +237,23 @@ class Tab extends Widget_Base
 				],
 			]
 		); 
+
+        $this->add_control(
+			'tabs__options',
+			[
+				'label' => esc_html__( 'Tab Style', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+         $this->add_group_control(
+        \Elementor\Group_Control_Typography::get_type(),
+        [
+            'name'     => 'tab_titles_typography',
+            'selector' => '{{WRAPPER}} .tab',
+        ]
+    );
 
         // control for tab
 
@@ -261,7 +278,24 @@ class Tab extends Widget_Base
         ]
     );
 
-    
+    $this->add_control(
+        'normal_tab_titles_color',
+        [
+            'label'     => esc_html__( 'Color', 'magic-elements' ),
+            'type'      => \Elementor\Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .tab' => 'color: {{VALUE}}',
+            ],
+        ]
+    );
+
+    $this->add_group_control(
+        \Elementor\Group_Control_Text_Stroke::get_type(),
+        [
+            'name'     => 'normal_tab_titles_stroke',
+            'selector' => '{{WRAPPER}} .tab',
+        ]
+    );
 
         // Box Shadow Control
     $this->add_group_control(
@@ -294,150 +328,6 @@ class Tab extends Widget_Base
     );
 
     
-
-        // Box Shadow Control
-    $this->add_group_control(
-        \Elementor\Group_Control_Box_Shadow::get_type(),
-        [
-            'name'     => 'tab_box_hover_shadow',
-            'label'    => esc_html__('Shadow', 'magic-elements'),
-            'selector' => '{{WRAPPER}} .tab:hover',
-        ]
-    ); 
-    
-    $this->end_controls_tab();
-        // active tab
-    $this->start_controls_tab(
-        'style_active_tab',
-        [
-            'label' => esc_html__( 'Active', 'magic-elements' ),
-        ]
-    );
-
-         // Background Color Control
-     $this->add_group_control(
-        \Elementor\Group_Control_Background::get_type(),
-        [
-            'name'     => 'active_background',
-            'types'    => [ 'classic', 'gradient', 'video' ],
-            'selector' => '{{WRAPPER}} .tab.active',
-        ]
-    );
-
-    
-
-        // Box Shadow Control
-    $this->add_group_control(
-        \Elementor\Group_Control_Box_Shadow::get_type(),
-        [
-            'name'     => 'active_tab_box_shadow',
-            'label'    => esc_html__('Shadow', 'magic-elements'),
-            'selector' => '{{WRAPPER}} .tab.active',
-        ]
-    ); 
-    
-    $this->end_controls_tab();
-    
-    $this->end_controls_tabs();
-
-        // Border Radius Control
-    $this->add_control(
-        'tab_border_radius',
-        [
-            'label'      => esc_html__('Border Radius', 'magic-elements'),
-            'type'       => \Elementor\Controls_Manager::DIMENSIONS,
-            'size_units' => ['px', '%', 'em'],
-            'selectors'  => [
-                '{{WRAPPER}} .tab' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-            ],
-        ]
-    );
-
-        // Margin Control
-    $this->add_responsive_control(
-        'tab_padding',
-        [
-            'label'      => esc_html__('Padding', 'magic-elements'),
-            'type'       => \Elementor\Controls_Manager::DIMENSIONS,
-            'size_units' => ['px', '%', 'em'],
-            'selectors'  => [
-                '{{WRAPPER}} .tab' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-            ],
-        ]
-    );
-
-	$this->end_controls_section();
-
-        // title
-    $this->start_controls_section(
-        'tab_title_style_section',
-        [
-            'label' => esc_html__( 'Titles', 'magic-elements' ),
-            'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
-        ]
-    );
-
-    $this->add_group_control(
-        \Elementor\Group_Control_Typography::get_type(),
-        [
-            'name'     => 'tab_titles_typography',
-            'selector' => '{{WRAPPER}} .tab',
-        ]
-    );
-
-         // control for tab
-
-     $this->start_controls_tabs(
-        'tab_titles_style_tabs'
-    );
-        // normal tab
-    $this->start_controls_tab(
-        'tab_titles_style_normal_tab',
-        [
-            'label' => esc_html__( 'Normal', 'magic-elements' ),
-        ]
-    );
-
-    $this->add_control(
-        'normal_tab_titles_color',
-        [
-            'label'     => esc_html__( 'Color', 'magic-elements' ),
-            'type'      => \Elementor\Controls_Manager::COLOR,
-            'selectors' => [
-                '{{WRAPPER}} .tab' => 'color: {{VALUE}}',
-            ],
-        ]
-    );
-
-        // Box Shadow Control
-    $this->add_group_control(
-        \Elementor\Group_Control_Box_Shadow::get_type(),
-        [
-            'name'     => 'normal_tab_titles_box_shadow',
-            'label'    => esc_html__('Shadow', 'magic-elements'),
-            'selector' => '{{WRAPPER}} .tab',
-        ]
-    ); 
-
-    $this->add_group_control(
-        \Elementor\Group_Control_Text_Stroke::get_type(),
-        [
-            'name'     => 'normal_tab_titles_stroke',
-            'selector' => '{{WRAPPER}} .tab',
-        ]
-    );
-
-    
-    $this->end_controls_tab();
-
-        // hover tab
-    $this->start_controls_tab(
-        'tab_titles_style_hover_tab',
-        [
-            'label' => esc_html__( 'Hover', 'magic-elements' ),
-        ]
-    );
-
     $this->add_control(
         'hover_tab_titles_color',
         [
@@ -466,14 +356,23 @@ class Tab extends Widget_Base
             'selector' => '{{WRAPPER}} .tab:hover',
         ]
     );
-
     
     $this->end_controls_tab();
         // active tab
     $this->start_controls_tab(
-        'tab_titles_style_active_tab',
+        'style_active_tab',
         [
             'label' => esc_html__( 'Active', 'magic-elements' ),
+        ]
+    );
+
+         // Background Color Control
+     $this->add_group_control(
+        \Elementor\Group_Control_Background::get_type(),
+        [
+            'name'     => 'active_background',
+            'types'    => [ 'classic', 'gradient', 'video' ],
+            'selector' => '{{WRAPPER}} .tab.active',
         ]
     );
 
@@ -511,7 +410,33 @@ class Tab extends Widget_Base
     
     $this->end_controls_tabs();
 
-    $this->end_controls_section();
+        // Border Radius Control
+    $this->add_control(
+        'tab_border_radius',
+        [
+            'label'      => esc_html__('Border Radius', 'magic-elements'),
+            'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+            'size_units' => ['px', '%', 'em'],
+            'selectors'  => [
+                '{{WRAPPER}} .tab' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
+
+        // Margin Control
+    $this->add_responsive_control(
+        'tab_padding',
+        [
+            'label'      => esc_html__('Padding', 'magic-elements'),
+            'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+            'size_units' => ['px', '%', 'em'],
+            'selectors'  => [
+                '{{WRAPPER}} .tab' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
+
+	$this->end_controls_section();
 
         // content
     $this->start_controls_section(
@@ -520,7 +445,15 @@ class Tab extends Widget_Base
             'label' => esc_html__( 'Content', 'magic-elements' ),
             'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
         ]
-    );
+
+    );	$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'content_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .tab-content',
+			]
+		);
 
     $this->add_control(
         'text_align',
