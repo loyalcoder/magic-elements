@@ -172,11 +172,6 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/timeline.js'),
                 'deps'    => ['jquery']
             ],
-            'emkit-search-popup' => [
-                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/search_popup.min.js',
-                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/search_popup.min.js'),
-                'deps'    => ['jquery']
-            ],
         ];
     }
     /**
@@ -281,10 +276,6 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/timeline.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/timeline.css'),
             ],
-            'emk-search-popup' => [
-                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/search_popup.css',
-                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/search_popup.css'),
-            ],
         ];
     }
 
@@ -322,7 +313,6 @@ class Load_Elementor
             'Timeline',
             'Progress_Bar',
             'Multi_Step',
-            'Search_Popup',
         ];
     }
     public static function defaultWidgets()
@@ -353,7 +343,6 @@ class Load_Elementor
             'timeline',
             'progressbar',
             'multi_step',
-            'search_popup',
         ];
     }
     /**
