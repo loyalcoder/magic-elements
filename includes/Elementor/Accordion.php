@@ -156,15 +156,12 @@ class Accordion extends Widget_Base
 				'show_label' => false,
 			]
 		);
-
-		$repeater->add_control(
-			'accordion_list_color',
+        $repeater->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
 			[
-				'label'     => esc_html__( 'Color', 'magic-elements' ),
-				'type'      => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} {{CURRENT_ITEM}}' => 'color: {{VALUE}}'
-				],
+				'name'     => 'item_background',
+				'types'    => ['classic', 'gradient'],
+				'selector' => '{{WRAPPER}} {{CURRENT_ITEM}}',
 			]
 		);
         $this->add_control(
@@ -374,16 +371,6 @@ class Accordion extends Widget_Base
 				'selector' => '{{WRAPPER}} .emk-accordion-container .emk-accordion-item',
 			]
 		);
-
-		$this->add_group_control(
-			\Elementor\Group_Control_Background::get_type(),
-			[
-				'name'     => 'item_background',
-				'types'    => ['classic', 'gradient'],
-				'selector' => '{{WRAPPER}} .emk-accordion-container .emk-accordion-item',
-			]
-		);
-
 		$this->end_controls_tab();
 
 				  // Hover tab
