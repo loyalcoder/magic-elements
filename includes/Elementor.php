@@ -183,15 +183,6 @@ class Load_Elementor
     public function getStyles()
     {
         return [
-
-            'emkit-button' => [
-                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/button.css',
-                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/button.css'),
-            ],
-            'emkit-multiple-button' => [
-                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/multiple_button.css',
-                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/multiple_button.css'),
-            ],
             'emk-pricingtable' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/pricingtable.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/pricingtable.css'),
@@ -289,7 +280,6 @@ class Load_Elementor
     {
         return [
             'Image',
-            'Button',
             'Pricing_Table',
             'Team',
             'Text_Editor',
@@ -305,7 +295,6 @@ class Load_Elementor
             'Light_Box',
             'Post_List',
             'Page_List',
-            'Multiple_Button',
             'Icon_Box',
             'Info_Box',
             'Feature_list',
@@ -319,7 +308,6 @@ class Load_Elementor
     {
         return [
             'image',
-            'button',
             'pricingtable',
             'team',
             'texteditor',
@@ -335,7 +323,6 @@ class Load_Elementor
             'lightbox',
             'postlist',
             'pageList',
-            'multiplebutton',
             'iconiox',
             'infobox',
             'featurelist',
