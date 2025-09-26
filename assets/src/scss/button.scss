@@ -1,0 +1,617 @@
+// Magic Elements Button Widget Styles
+
+.magic-button-wrapper {
+    display: inline-block;
+    
+    .magic-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        font-family: inherit;
+        font-weight: 500;
+        text-align: center;
+        line-height: 1.2;
+        
+        // Button sizes
+        &.magic-button-xs {
+            padding: 8px 16px;
+            font-size: 12px;
+            min-height: 32px;
+        }
+        
+        &.magic-button-sm {
+            padding: 10px 20px;
+            font-size: 14px;
+            min-height: 36px;
+        }
+        
+        &.magic-button-md {
+            padding: 12px 24px;
+            font-size: 16px;
+            min-height: 44px;
+        }
+        
+        &.magic-button-lg {
+            padding: 14px 28px;
+            font-size: 18px;
+            min-height: 52px;
+        }
+        
+        &.magic-button-xl {
+            padding: 16px 32px;
+            font-size: 20px;
+            min-height: 60px;
+        }
+        
+        // Button types
+        &.magic-button-filled {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            color: #ffffff !important;
+            border: 2px solid transparent !important;
+            
+            &:hover {
+                background: linear-gradient(135deg, #764ba2 0%, #667eea 100%) !important;
+                color: #ffffff !important;
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            }
+        }
+        
+        &.magic-button-outline {
+            background: transparent !important;
+            color: #667eea !important;
+            border: 2px solid #667eea !important;
+            
+            &:hover {
+                background: #667eea !important;
+                color: #ffffff !important;
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            }
+        }
+        
+        &.magic-button-ghost {
+            background: transparent !important;
+            color: #667eea !important;
+            border: 2px solid transparent !important;
+            
+            &:hover {
+                background: rgba(102, 126, 234, 0.1) !important;
+                border-color: #667eea !important;
+                color: #667eea !important;
+                transform: translateY(-2px);
+            }
+        }
+        
+        &.magic-button-gradient {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4) !important;
+            background-size: 300% 300% !important;
+            color: #ffffff !important;
+            border: none !important;
+            animation: gradientShift 3s ease infinite;
+            
+            &:hover {
+                background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4) !important;
+                background-size: 300% 300% !important;
+                color: #ffffff !important;
+                animation: gradientShift 1s ease infinite;
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+            }
+        }
+        
+        // Button shapes
+        &.magic-button-square {
+            border-radius: 0;
+        }
+        
+        &.magic-button-rounded {
+            border-radius: 8px;
+        }
+        
+        &.magic-button-pill {
+            border-radius: 50px;
+        }
+        
+        &.magic-button-circle {
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            padding: 0;
+            
+            .button-text {
+                display: none;
+            }
+            
+            .icon {
+                margin: 0 !important;
+            }
+        }
+        
+        // Button widths
+        &.magic-button-width-full {
+            width: 100%;
+        }
+        
+        // Icon positioning
+        .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            
+            &.icon-left {
+                order: -1;
+                margin-right: 8px;
+            }
+            
+            &.icon-right {
+                order: 1;
+                margin-left: 8px;
+            }
+        }
+        
+        .button-text {
+            flex: 1;
+        }
+        
+        // Custom styles override
+        &.magic-button-custom-styles {
+            background: inherit !important;
+            color: inherit !important;
+            border: inherit !important;
+            
+            &:hover {
+                background: inherit !important;
+                color: inherit !important;
+                border: inherit !important;
+            }
+        }
+        
+        // Icon hover behaviors
+        &.magic-button-icon-hide-hover {
+            .icon {
+                opacity: 1;
+                transform: translateX(0);
+                transition: all 0.3s ease;
+            }
+            
+            &:hover {
+                .icon {
+                    opacity: 0;
+                    transform: translateX(-10px);
+                }
+            }
+        }
+        
+        &.magic-button-icon-show-hover {
+            .icon {
+                opacity: 0;
+                transform: translateX(-10px);
+                transition: all 0.3s ease;
+            }
+            
+            &:hover {
+                .icon {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+        }
+        
+        // Icon hover movement
+        &.magic-button-icon-move-hover {
+            .icon {
+                transition: all 0.3s ease;
+            }
+            
+            &:hover {
+                .icon {
+                    transform: translateX(5px);
+                }
+                
+                &.icon-left {
+                    .icon {
+                        transform: translateX(-5px);
+                    }
+                }
+            }
+        }
+        
+        // Hover effects
+        &.magic-button-hover-slide {
+            &:hover {
+                transform: translateX(5px);
+            }
+        }
+        
+        &.magic-button-hover-push {
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+        
+        &.magic-button-hover-shutter {
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: rgba(255, 255, 255, 0.2);
+                transition: left 0.3s ease;
+            }
+            
+            &:hover:before {
+                left: 100%;
+            }
+        }
+        
+        &.magic-button-hover-flash {
+            &:hover {
+                animation: flash 0.5s ease;
+            }
+        }
+        
+        &.magic-button-hover-pulse {
+            &:hover {
+                animation: pulse 1s infinite;
+            }
+        }
+        
+        &.magic-button-hover-rubber {
+            &:hover {
+                animation: rubberBand 0.8s ease;
+            }
+        }
+        
+        &.magic-button-hover-swing {
+            &:hover {
+                animation: swing 0.6s ease;
+            }
+        }
+        
+        &.magic-button-hover-tada {
+            &:hover {
+                animation: tada 0.8s ease;
+            }
+        }
+        
+        &.magic-button-hover-wobble {
+            &:hover {
+                animation: wobble 0.8s ease;
+            }
+        }
+        
+        &.magic-button-hover-jello {
+            &:hover {
+                animation: jello 0.8s ease;
+            }
+        }
+        
+        &.magic-button-hover-bounce {
+            &:hover {
+                animation: bounce 0.8s ease;
+            }
+        }
+        
+        &.magic-button-hover-flip {
+            &:hover {
+                animation: flip 0.8s ease;
+            }
+        }
+        
+        &.magic-button-hover-rotate {
+            &:hover {
+                animation: rotate 0.8s ease;
+            }
+        }
+        
+        &.magic-button-hover-scale {
+            &:hover {
+                animation: scale 0.8s ease;
+            }
+        }
+        
+        // Entrance animations
+        &.magic-button-animate-fadeIn {
+            animation: fadeIn 0.8s ease;
+        }
+        
+        &.magic-button-animate-fadeInUp {
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        &.magic-button-animate-fadeInDown {
+            animation: fadeInDown 0.8s ease;
+        }
+        
+        &.magic-button-animate-fadeInLeft {
+            animation: fadeInLeft 0.8s ease;
+        }
+        
+        &.magic-button-animate-fadeInRight {
+            animation: fadeInRight 0.8s ease;
+        }
+        
+        &.magic-button-animate-slideInUp {
+            animation: slideInUp 0.8s ease;
+        }
+        
+        &.magic-button-animate-slideInDown {
+            animation: slideInDown 0.8s ease;
+        }
+        
+        &.magic-button-animate-slideInLeft {
+            animation: slideInLeft 0.8s ease;
+        }
+        
+        &.magic-button-animate-slideInRight {
+            animation: slideInRight 0.8s ease;
+        }
+        
+        &.magic-button-animate-zoomIn {
+            animation: zoomIn 0.8s ease;
+        }
+        
+        &.magic-button-animate-bounceIn {
+            animation: bounceIn 0.8s ease;
+        }
+        
+        &.magic-button-animate-rotateIn {
+            animation: rotateIn 0.8s ease;
+        }
+    }
+}
+
+// Animations
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes flash {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes rubberBand {
+    0% { transform: scale(1); }
+    30% { transform: scaleX(1.25) scaleY(0.75); }
+    40% { transform: scaleX(0.75) scaleY(1.25); }
+    60% { transform: scaleX(1.15) scaleY(0.85); }
+    100% { transform: scale(1); }
+}
+
+@keyframes swing {
+    20% { transform: rotate(15deg); }
+    40% { transform: rotate(-10deg); }
+    60% { transform: rotate(5deg); }
+    80% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes tada {
+    0% { transform: scale(1); }
+    10%, 20% { transform: scale(0.9) rotate(-3deg); }
+    30%, 50%, 70%, 90% { transform: scale(1.1) rotate(3deg); }
+    40%, 60%, 80% { transform: scale(1.1) rotate(-3deg); }
+    100% { transform: scale(1) rotate(0); }
+}
+
+@keyframes wobble {
+    0% { transform: translateX(0%); }
+    15% { transform: translateX(-25%) rotate(-5deg); }
+    30% { transform: translateX(20%) rotate(3deg); }
+    45% { transform: translateX(-15%) rotate(-3deg); }
+    60% { transform: translateX(10%) rotate(2deg); }
+    75% { transform: translateX(-5%) rotate(-1deg); }
+    100% { transform: translateX(0%); }
+}
+
+@keyframes jello {
+    0%, 11.1% { transform: none; }
+    22.2% { transform: skewX(-12.5deg) skewY(-12.5deg); }
+    33.3% { transform: skewX(6.25deg) skewY(6.25deg); }
+    44.4% { transform: skewX(-3.125deg) skewY(-3.125deg); }
+    55.5% { transform: skewX(1.5625deg) skewY(1.5625deg); }
+    66.6% { transform: skewX(-0.78125deg) skewY(-0.78125deg); }
+    77.7% { transform: skewX(0.390625deg) skewY(0.390625deg); }
+    88.8% { transform: skewX(-0.1953125deg) skewY(-0.1953125deg); }
+    100% { transform: none; }
+}
+
+@keyframes bounce {
+    0%, 20%, 53%, 80%, 100% { transform: translate3d(0,0,0); }
+    40%, 43% { transform: translate3d(0,-30px,0); }
+    70% { transform: translate3d(0,-15px,0); }
+    90% { transform: translate3d(0,-4px,0); }
+}
+
+@keyframes flip {
+    0% { transform: perspective(400px) rotateY(0); }
+    40% { transform: perspective(400px) translateZ(150px) rotateY(170deg); }
+    50% { transform: perspective(400px) translateZ(150px) rotateY(190deg); }
+    80% { transform: perspective(400px) rotateY(360deg) scale(.95); }
+    100% { transform: perspective(400px) scale(1); }
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes scale {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+// Entrance animations
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translate3d(-100%, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translate3d(100%, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translate3d(0, 100%, 0);
+        visibility: visible;
+    }
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translate3d(0, -100%, 0);
+        visibility: visible;
+    }
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+    }
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale3d(.3, .3, .3);
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes rotateIn {
+    from {
+        transform-origin: center;
+        transform: rotate3d(0, 0, 1, -200deg);
+        opacity: 0;
+    }
+    to {
+        transform-origin: center;
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+// Responsive styles
+@media (max-width: 768px) {
+    .magic-button-wrapper {
+        .magic-button {
+            &.magic-button-lg,
+            &.magic-button-xl {
+                padding: 12px 20px;
+                font-size: 16px;
+                min-height: 44px;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .magic-button-wrapper {
+        .magic-button {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+} 

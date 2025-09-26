@@ -1,25 +1,3 @@
-/*!*************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/page_list.scss ***!
-  \*************************************************************************************************************************/
-.page-list-widget {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-}
-.page-list-widget li {
-  display: flex;
-  align-items: center;
-  transition: all 0.3s ease;
-}
-.page-list-widget li i {
-  margin-right: 10px;
-}
-.page-list-widget li a {
-  text-decoration: none;
-  color: inherit;
-  font-weight: bold;
-}
+.page-list-widget{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap}.page-list-widget li{display:flex;align-items:center;transition:all .3s ease}.page-list-widget li i{margin-right:10px}.page-list-widget li a{text-decoration:none;color:inherit;font-weight:bold}
 
 /*# sourceMappingURL=page_list.min.css.map*/
