@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 
 /**
  * Load elementor class
- */
+ */ 
 class Load_Elementor
 {
     /**
@@ -182,6 +182,11 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/timeline.js'),
                 'deps'    => ['jquery']
             ],
+            // 'emkit-nav-menu' => [
+            //     'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/nav_menu.js',
+            //     'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/nav_menu.js'),
+            //     'deps'    => ['jquery']
+            // ],
         ];
     }
     /**
@@ -294,6 +299,10 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/timeline.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/timeline.css'),
             ],
+            // 'emk-nav-menu' => [
+            //     'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/nav_menu.css',
+            //     'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/nav_menu.css'),
+            // ],
         ];
     }
 
@@ -333,6 +342,8 @@ class Load_Elementor
             'Timeline',
             'Progress_Bar',
             'Multi_Step',
+            'Nav_Menu',
+        
         ];
     }
     public static function defaultWidgets()
@@ -365,6 +376,7 @@ class Load_Elementor
             'timeline',
             'progressbar',
             'multi_step',
+            'navmenu',
         ];
     }
     /**
