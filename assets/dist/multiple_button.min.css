@@ -1,0 +1,29 @@
+/*!*******************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/multiple_button.scss ***!
+  \*******************************************************************************************************************************/
+.multiple-button-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.multiple-button-wrapper .bt-item {
+  display: flex;
+}
+.multiple-button-wrapper .bt-item .btn-item-wrapper {
+  display: inline-block;
+}
+.multiple-button-wrapper .bt-item .btn-item-wrapper .magic-button {
+  display: flex;
+  color: white;
+  align-items: center;
+  background-color: burlywood;
+  text-decoration: none;
+}
+.multiple-button-wrapper .bt-item .btn-item-wrapper .magic-button .btn-icon {
+  display: flex;
+}
+.multiple-button-wrapper .bt-item:first-child .btn-item-wrapper .magic-button {
+  background-color: rgb(190, 61, 61);
+  color: white;
+}
+
+/*# sourceMappingURL=multiple_button.min.css.map*/

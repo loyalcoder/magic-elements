@@ -1,0 +1,298 @@
+.em-multi-step-wizard-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+/* Progress Bar Styles */
+.em-progress-container {
+    width: 100%;
+    margin-bottom: -20px;
+}
+
+.em-progress-bar {
+    position: relative;
+    width: 100%;
+    background-color: #e0e0e0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-inline: auto;
+}
+
+.em-progress-bar-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: #4CAF50;
+    transition: width 0.4s ease;
+}
+
+/* Step Indicators */
+.em-step-indicators-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.em-step-indicator-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.em-step-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.em-step-indicator.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.em-step-indicator.completed {
+    background-color: #8BC34A;
+    color: white;
+}
+
+.em-step-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.em-step-number {
+    display: block;
+}
+
+.em-step-title {
+    text-align: center;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+/* Step Content */
+.em-step-content-container {
+    position: relative;
+}
+
+.em-step-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    margin: 0 !important;
+}
+.em-step-content p{
+    margin: 0;
+}
+
+.em-step-content.active {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Navigation Buttons */
+.em-nav-buttons-container {
+    display: flex;
+}
+
+.em-nav-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.em-nav-button:hover {
+    background-color: #45a049;
+}
+
+.em-nav-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.em-prev-button {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.em-prev-button:hover {
+    background-color: #e0e0e0;
+}
+
+/* Navigation Arrows */
+.em-step-navigation {
+    display: flex;
+    pointer-events: none;
+}
+
+.em-step-nav-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ddd;
+    cursor: pointer;
+    pointer-events: all;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.em-step-nav-arrow:hover {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+}
+
+.em-step-nav-arrow:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {    
+    .em-step-title {
+        font-size: 12px;
+    }
+    
+    .em-nav-button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+    
+    .em-step-nav-arrow {
+        width: 30px;
+        height: 30px;
+        font-size: 14px !important;
+    }
+}
+// ::selection{
+//     background-color: #45a049 !important;
+//     color: #000 !important;
+//     border: #f5f5f5 !important;
+// }
+
+.em-step-checkbox label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.em-step-checkbox input[type="checkbox"] {
+    margin: 0;
+}
+
+.em-step-indicator.completed {
+    cursor: pointer;
+    background-color: #8BC34A;
+    color: white;
+}
+
+.em-step-indicator.completed:hover {
+    background-color: #7CB342;
+    transform: scale(1.05);
+    transition: all 0.2s ease;
+}
+
+
+
+/* Completion Popup Styles */
+.em-step-completion-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+
+}
+
+.em-step-popup-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.em-step-popup-content {
+    position: relative;
+    background-color: #fff;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 1;
+    animation: popupFadeIn 0.3s ease;
+}
+
+@keyframes popupFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.em-step-popup-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    &:hover {
+        color: #000;
+    }
+}
+
+.em-step-popup-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    
+    &:hover {
+        background-color: #45a049;
+    }
+}
