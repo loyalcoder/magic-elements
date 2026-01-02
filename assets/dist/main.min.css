@@ -319,6 +319,10 @@ body.lightbox-open {
 /*!************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/nav_menu.scss ***!
   \************************************************************************************************************************/
-
+.magic-menu .nav-menu-left ul, .magic-menu .nav-menu-right ul {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
 
 /*# sourceMappingURL=main.min.css.map*/

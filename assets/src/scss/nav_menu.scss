@@ -1,0 +1,9 @@
+.magic-menu{
+    .nav-menu-left,.nav-menu-right{
+        ul{
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+    }
+}

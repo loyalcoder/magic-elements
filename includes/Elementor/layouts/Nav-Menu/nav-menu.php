@@ -1,14 +1,14 @@
 <?php  if( $header_layout == 'layout-one' ) { ?>
 <header>
-    <div class="cnw-container" style="display:flex;justify-content:space-between;align-items:center;padding:10px 20px;">
+    <div class="container magic-menu" style="display:flex;justify-content:space-between;align-items:center;padding:20px 0;">
         <!-- Search -->
         <?php if($settings['show_search']=='yes'): ?>
-            <button class="cnw-search">
+            <button class="menu-search">
                 <?php \Elementor\Icons_Manager::render_icon( $settings['search_icon'], [ 'aria-hidden' => 'true' ] ); ?>
             </button>
-        <?php endif; ?>
+        <?php endif; ?> 
         <!-- Left Menu -->
-        <nav class="cnw-menu-left">
+        <nav class="nav-menu-left">
             <?php
             if(!empty($settings['menu_select'])){
                 wp_nav_menu([
@@ -18,16 +18,15 @@
                 ]);
             }
             ?>
-        </nav>
+        </nav> 
             <!-- Logo -->
         <?php if(!empty($settings['logo']['url'])): ?>
-            <a class="cnw-logo" href="<?php echo esc_url(home_url()); ?>">
-                <img src="<?php echo esc_url($settings['logo']['url']); ?>" style="height:50px;">
+            <a class="menu-logo" href="<?php echo esc_url(home_url()); ?>">
+                <img src="<?php echo esc_url($settings['logo']['url']); ?>">
             </a>
         <?php endif; ?>
-
         <!-- Right Menu -->
-        <nav class="cnw-menu-right">
+        <nav class="nav-menu-right">
             <?php
             if(!empty($settings['menu_select_right'])){
                 wp_nav_menu([

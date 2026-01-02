@@ -282,7 +282,7 @@ class Nav_Menu extends Widget_Base
 			[
 				'name' => 'header_background',
 				'types' => [ 'classic', 'gradient', 'video' ],
-				'selector' => '{{WRAPPER}} .your-class',
+				'selector' => '{{WRAPPER}} .magic-menu',
 			]
 		);
 		$this->end_controls_section();
@@ -316,7 +316,7 @@ class Nav_Menu extends Widget_Base
 					'size' => 50,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .your-class' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .menu-logo' => 'width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -342,7 +342,7 @@ class Nav_Menu extends Widget_Base
 					'size' => 50,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .your-class' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .menu-logo' => 'height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -364,6 +364,31 @@ class Nav_Menu extends Widget_Base
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
+		// $this->add_control(
+		// 	'menu_search_icon_color',
+		// 	[
+		// 		'label' => esc_html__( 'Icon Color', 'textdomain' ),
+		// 		'type' => \Elementor\Controls_Manager::COLOR,
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} .menu-search svg' => 'fill: {{VALUE}}',
+		// 		],
+		// 	]
+		// );
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'menu_search_icon_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .menu-search',
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'menu_search_icon_border',
+				'selector' => '{{WRAPPER}} .menu-search',
+			]
+		);
         $this->add_responsive_control(
 			'search_icon_width',
 			[
@@ -383,10 +408,10 @@ class Nav_Menu extends Widget_Base
 				],
 				'default' => [
 					'unit' => 'px',
-					'size' => 50,
+					'size' => 20,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .cnw-search' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .menu-search svg' => 'width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -409,10 +434,50 @@ class Nav_Menu extends Widget_Base
 				],
 				'default' => [
 					'unit' => 'px',
-					'size' => 50,
+					'size' => 20,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .cnw-search' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .menu-search svg' => 'height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_control(
+			'search_icon_more_options',
+			[
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+		$this->add_responsive_control(
+			'search_icon_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .menu-search' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'search_icon_margin',
+			[
+				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .menu-search' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'search_icon_padding',
+			[
+				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .menu-search' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -423,6 +488,21 @@ class Nav_Menu extends Widget_Base
 			[
 				'label' => esc_html__( 'Mobile Menu', 'textdomain' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'mobile_menu_icon_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .mobile-menu',
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'mobile_menu_icon_border',
+				'selector' => '{{WRAPPER}} .mobile-menu',
 			]
 		);
         $this->add_responsive_control(
@@ -444,10 +524,10 @@ class Nav_Menu extends Widget_Base
 				],
 				'default' => [
 					'unit' => 'px',
-					'size' => 50,
+					'size' => 20,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .mobile-menu' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .mobile-menu svg' => 'width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -470,10 +550,50 @@ class Nav_Menu extends Widget_Base
 				],
 				'default' => [
 					'unit' => 'px',
-					'size' => 50,
+					'size' => 20,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .mobile-menu' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .mobile-menu svg' => 'height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_control(
+			'mobile_menu_icon_more_options',
+			[
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+		$this->add_responsive_control(
+			'mobile_menu_icon_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .mobile-menu' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'mobile_menu_icon_margin',
+			[
+				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .mobile-menu' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'mobile_menu_icon_padding',
+			[
+				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .mobile-menu' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);

@@ -1,0 +1,10 @@
+/*!************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/nav_menu.scss ***!
+  \************************************************************************************************************************/
+.magic-menu .nav-menu-left ul, .magic-menu .nav-menu-right ul {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibmF2X21lbnUuY3NzIiwibWFwcGluZ3MiOiI7OztBQUVRO0VBQ0k7RUFDQTtFQUNBO0FBRFosQyIsInNvdXJjZXMiOlsid2VicGFjazovL2VsZW1lbnRvci1tYWdpYy1raXQvLi9hc3NldHMvc3JjL3Njc3MvbmF2X21lbnUuc2NzcyJdLCJzb3VyY2VzQ29udGVudCI6WyIubWFnaWMtbWVudXtcclxuICAgIC5uYXYtbWVudS1sZWZ0LC5uYXYtbWVudS1yaWdodHtcclxuICAgICAgICB1bHtcclxuICAgICAgICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgICAgICAgICAgZ2FwOiAyNXB4O1xyXG4gICAgICAgIH1cclxuICAgIH1cclxufSJdLCJuYW1lcyI6W10sImlnbm9yZUxpc3QiOltdLCJzb3VyY2VSb290IjoiIn0=*/

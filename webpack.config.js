@@ -42,6 +42,10 @@ const baseConfig = {
       './assets/src/admin/builder/builder.scss',
       './assets/src/admin/builder/builder.js',
     ],
+    nav_menu: [
+        './assets/src/scss/nav_menu.scss',
+        './assets/src/js/nav_menu.js',
+    ],
 
     // 2) SCSS ONLY (no JS file mentioned):
     flipcard: './assets/src/scss/flipcard.scss',
