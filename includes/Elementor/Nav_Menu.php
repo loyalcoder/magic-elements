@@ -230,7 +230,7 @@ class Nav_Menu extends Widget_Base
         $this->start_controls_section(
 			'mobile_menu_section',
 			[
-				'label' => esc_html__( 'Mobile Menu', 'textdomain' ),
+				'label' => esc_html__( 'Mobile Menu Icon', 'textdomain' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -266,6 +266,34 @@ class Nav_Menu extends Widget_Base
 						'square-full',
 					],
 				],
+			]
+		);
+        $this->end_controls_section();
+		//Offcanvas Section
+		    $this->start_controls_section(
+			'offcanvas_section',
+			[
+				'label' => esc_html__( 'Offcanvas', 'textdomain' ),
+				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+		$this->add_control(
+			'offcanvas_title',
+			[
+				'label' => esc_html__( 'Title', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Magical title is here', 'textdomain' ),
+				'placeholder' => esc_html__( 'Type your title here', 'textdomain' ),
+			]
+		);
+		$this->add_control(
+			'offcanvas_description',
+			[
+				'label' => esc_html__( 'Description', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'rows' => 5,
+				'default' => esc_html__( 'Default description', 'textdomain' ),
+				'placeholder' => esc_html__( 'Type your description here', 'textdomain' ),
 			]
 		);
         $this->end_controls_section();
@@ -364,16 +392,6 @@ class Nav_Menu extends Widget_Base
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
-		// $this->add_control(
-		// 	'menu_search_icon_color',
-		// 	[
-		// 		'label' => esc_html__( 'Icon Color', 'textdomain' ),
-		// 		'type' => \Elementor\Controls_Manager::COLOR,
-		// 		'selectors' => [
-		// 			'{{WRAPPER}} .menu-search svg' => 'fill: {{VALUE}}',
-		// 		],
-		// 	]
-		// );
 		$this->add_group_control(
 			\Elementor\Group_Control_Background::get_type(),
 			[
@@ -486,7 +504,7 @@ class Nav_Menu extends Widget_Base
         $this->start_controls_section(
 			'mobile_menu_style_section',
 			[
-				'label' => esc_html__( 'Mobile Menu', 'textdomain' ),
+				'label' => esc_html__( 'Mobile Menu Icon', 'textdomain' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -594,6 +612,125 @@ class Nav_Menu extends Widget_Base
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
 					'{{WRAPPER}} .mobile-menu' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->end_controls_section();
+		//Offcanvas Section
+		    $this->start_controls_section(
+			'offcanvas_style_section',
+			[
+				'label' => esc_html__( 'Offcanvas', 'textdomain' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+		$this->add_responsive_control(
+			'offcanvas_width',
+			[
+				'label' => esc_html__( 'Offcanvas Width', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 3000,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .offcanvas' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'offcanvas_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .offcanvas',
+			]
+		);
+		$this->add_control(
+			'title_more_options',
+			[
+				'label' => esc_html__( 'Title', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+		$this->add_control(
+			'offcanvas_title_color',
+			[
+				'label' => esc_html__( 'Text Color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .offcanvas-header h3' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'offcanvas_title_typography',
+				'selector' => '{{WRAPPER}} .offcanvas-header h3',
+			]
+		);
+		$this->add_responsive_control(
+			'offcanvas_title_margin',
+			[
+				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .offcanvas-header h3' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_control(
+			'description_more_options',
+			[
+				'label' => esc_html__( 'Description', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+		$this->add_control(
+			'offcanvas_description_color',
+			[
+				'label' => esc_html__( ' Color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .offcanvas_description' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'offcanvas_description_typography',
+				'selector' => '{{WRAPPER}} .offcanvas_description',
+			]
+		);
+		$this->add_responsive_control(
+			'offcanvas_description_margin',
+			[
+				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 0,
+					'right' => 0,
+					'bottom' => 0,
+					'left' => 15,
+					'unit' => 'px',
+					'isLinked' => false,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .offcanvas_description' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);

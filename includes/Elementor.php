@@ -182,6 +182,11 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/timeline.js'),
                 'deps'    => ['jquery']
             ],
+            'emkit-nav-menu' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/nav_menu.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/nav_menu.js'),
+                'deps'    => ['jquery']
+            ],
          
         ];
     }

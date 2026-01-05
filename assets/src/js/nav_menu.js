@@ -16,7 +16,9 @@ import "./../scss/nav_menu.scss"
       },
 
         EmKitNavMenu: function ($scope) {   
-            alert('Nav Menu Loaded');
+            // alert('Nav Menu Loaded');
+
+
 
         },
     };
