@@ -297,6 +297,24 @@ class Nav_Menu extends Widget_Base
 			]
 		);
         $this->end_controls_section();
+		//Search Bar
+		$this->start_controls_section(
+			'search_bar_content_section',
+			[
+				'label' => esc_html__( 'Search Bar', 'textdomain' ),
+				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+		$this->add_control(
+			'search_button_title',
+			[
+				'label' => esc_html__( 'Button Title', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Search', 'textdomain' ),
+				'placeholder' => esc_html__( 'Type your title here', 'textdomain' ),
+			]
+		);
+		$this->end_controls_section();
         //Header Style Section
         $this->start_controls_section(
 			'header_style_section',
@@ -388,7 +406,7 @@ class Nav_Menu extends Widget_Base
         $this->start_controls_section(
 			'search_style_section',
 			[
-				'label' => esc_html__( 'Search', 'textdomain' ),
+				'label' => esc_html__( 'Search Icon', 'textdomain' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -617,7 +635,7 @@ class Nav_Menu extends Widget_Base
 		);
         $this->end_controls_section();
 		//Offcanvas Section
-		    $this->start_controls_section(
+		$this->start_controls_section(
 			'offcanvas_style_section',
 			[
 				'label' => esc_html__( 'Offcanvas', 'textdomain' ),
@@ -731,6 +749,45 @@ class Nav_Menu extends Widget_Base
 				],
 				'selectors' => [
 					'{{WRAPPER}} .offcanvas_description' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->end_controls_section();
+		//Search Bar Style Section
+		$this->start_controls_section(
+			'search_bar_style_section',
+			[
+				'label' => esc_html__( 'Search Bar', 'textdomain' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+		$this->add_control(
+			'search_bar_more_options',
+			[
+				'label' => esc_html__( 'Search Bar', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+		$this->add_responsive_control(
+			'search_bar_width',
+			[
+				'label' => esc_html__( 'Width', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .your-class' => 'width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);

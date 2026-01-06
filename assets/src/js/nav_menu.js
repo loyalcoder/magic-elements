@@ -15,12 +15,30 @@ import "./../scss/nav_menu.scss"
         });
       },
 
-        EmKitNavMenu: function ($scope) {   
-            // alert('Nav Menu Loaded');
+      EmKitNavMenu: function ($scope) {   
+          // alert('nav menu loaded');
+          $('.open_search').on('click', function(event){
+          event.stopPropagation();
+            $('.search_block').toggleClass('visible');
+            $('.search_block .search_input').focus();
+          });
 
+          $('body').on('click', function(){
+            $('.search_block').removeClass('visible');
+          });
 
+          $('.search_box').on('click', function(event){
+            event.stopPropagation();
+          });
 
-        },
+          $('.search_input').on('keyup', function(event){
+            if($(this).val() !== ''){
+              $(this).addClass('typing');
+            } else {
+              $(this).removeClass('typing');
+            }
+          });
+      },
     };
   
     $window.on("elementor/frontend/init", emkElementor.onInit);

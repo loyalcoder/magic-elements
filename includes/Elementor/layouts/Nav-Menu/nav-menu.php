@@ -2,10 +2,24 @@
 <header>
     <div class="container magic-menu" style="display:flex;justify-content:space-between;align-items:center;padding:20px 0;">
         <!-- Search -->
+
         <?php if($settings['show_search']=='yes'): ?>
-            <button class="menu-search">
+            <button class="menu-search open_search">
                 <?php \Elementor\Icons_Manager::render_icon( $settings['search_icon'], [ 'aria-hidden' => 'true' ] ); ?>
             </button>
+            <div class="search_block">
+                <div class="search_box">
+                    <div class="inner">
+                        <form action="<?php echo esc_url( home_url('/') ); ?>" method="get">
+                            <input type="search" name="s" id="search" class="search_input" autocomplete="off" placeholder="Search Here ..." value="<?php echo get_search_query(); ?>" />
+                            <button type="submit">
+                                <?php echo esc_html($settings['search_button_title']); ?>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="overlayer"></div>
+            </div>
         <?php endif; ?> 
         <!-- Left Menu -->
         <nav class="nav-menu-left">
