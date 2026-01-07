@@ -24,7 +24,7 @@
     position: fixed;
     top: 0;
     width: 100%;
-    animation: stickyFade 0.3s ease;
+    animation: stickyFade 0.35s cubic-bezier(0.4,0,0.2,1);
 }
 
 @keyframes stickyFade {
