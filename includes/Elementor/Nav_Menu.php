@@ -360,6 +360,17 @@ class Nav_Menu extends Widget_Base
 				],
 			]
 		);
+		$this->add_responsive_control(
+			'header_margin',
+			[
+				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .magic-menu' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 		$this->end_controls_section();
         //Logo Style Section
         $this->start_controls_section(
@@ -478,6 +489,69 @@ class Nav_Menu extends Widget_Base
 			[
 				'name' => 'nav_menu_item_typography',
 				'selector' => '{{WRAPPER}} nav ul li',
+			]
+		);
+		$this->add_control(
+			'menu_dropdown_more_options',
+			[
+				'label' => esc_html__( 'Dropdown Menu', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'dropdown_menu_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .sub-menu',
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'dropdown_menu_border',
+				'selector' => '{{WRAPPER}} .sub-menu',
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'dropdown_menu_box_shadow',
+				'selector' => '{{WRAPPER}} .sub-menu',
+			]
+		);
+		$this->add_responsive_control(
+			'dropdown_menu_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .sub-menu' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'dropdown_menu_padding',
+			[
+				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .sub-menu' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'dropdown_menu_margin',
+			[
+				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .sub-menu' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
 			]
 		);
         $this->end_controls_section();

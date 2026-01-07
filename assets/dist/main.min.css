@@ -321,7 +321,6 @@ body.lightbox-open {
   \************************************************************************************************************************/
 @charset "UTF-8";
 .magic-header {
-  width: 100%;
   position: relative;
   z-index: 999;
 }
@@ -382,6 +381,12 @@ body.lightbox-open {
     display: none;
   }
 }
+.magic-menu .menu-search {
+  border: 1px solid #121212;
+  border-radius: 16px;
+  padding: 15px;
+}
+
 .open_search {
   cursor: pointer;
   display: inline-block;
@@ -549,6 +554,12 @@ nav .cnw-nav > li.menu-item-has-children:hover > .sub-menu {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+}
+
+.mobile-menu {
+  border: 1px solid #121212;
+  border-radius: 16px;
+  padding: 15px;
 }
 
 .offcanvas .offcanvas-header h3 {

@@ -1,6 +1,6 @@
 //Sticky Header SCSS
 .magic-header {
-    width: 100%;
+    // width: 100%;
     position: relative;
     z-index: 999;
 
@@ -12,11 +12,10 @@
         transition: all 0.3s ease;
 
         .magic-menu {
-            padding: 12px 0; // sticky হলে padding একটু কম
+            padding: 12px 0;
         }
     }
 }
-
 /* Optional: Scroll effect (CSS only) */
 .magic-header.is-sticky {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
@@ -71,6 +70,15 @@
         }
     }
 }
+//Search icon SCSS
+.magic-menu{
+    .menu-search{
+        border: 1px solid #121212;
+        border-radius: 16px;
+        padding: 15px;
+    }
+}
+
 // Search popup scss
 .open_search {
     cursor: pointer;
@@ -274,6 +282,12 @@ nav {
             }
         }
     }
+}
+//Mobile menu icon SCSS
+.mobile-menu{
+    border: 1px solid #121212;
+    border-radius: 16px;
+    padding: 15px;
 }
 //Offcanvas Menu SCSS
 .offcanvas {
