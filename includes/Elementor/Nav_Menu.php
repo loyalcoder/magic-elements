@@ -112,14 +112,14 @@ class Nav_Menu extends Widget_Base
 			]
 		);
         $this->add_control(
-			'sticky_switch',
+			'enable_sticky',
 			[
 				'label' => esc_html__( 'Sticky Header', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label_on' => esc_html__( 'Enable', 'textdomain' ),
 				'label_off' => esc_html__( 'Disable', 'textdomain' ),
-				'return_value' => 'no',
-				'default' => 'no',
+				'return_value' => 'yes',
+				'default' => '',
 			]
 		);
          $this->add_control(
@@ -207,7 +207,7 @@ class Nav_Menu extends Widget_Base
 				'label' => esc_html__( 'Icon', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
 				'default' => [
-					'value' => 'fas fa-circle',
+					'value' => 'fas fa-search',
 					'library' => 'fa-solid',
 				],
 				'recommended' => [
@@ -251,7 +251,7 @@ class Nav_Menu extends Widget_Base
 				'label' => esc_html__( 'Mobile Menu Icon', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
 				'default' => [
-					'value' => 'fas fa-circle',
+					'value' => 'fas fa-align-left',
 					'library' => 'fa-solid',
 				],
 				'recommended' => [
@@ -292,7 +292,7 @@ class Nav_Menu extends Widget_Base
 				'label' => esc_html__( 'Description', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'rows' => 5,
-				'default' => esc_html__( 'Default description', 'textdomain' ),
+				'default' => esc_html__( 'Magic Elements enhances Elementor with powerful widgets and flexible design controls.', 'textdomain' ),
 				'placeholder' => esc_html__( 'Type your description here', 'textdomain' ),
 			]
 		);
@@ -388,7 +388,7 @@ class Nav_Menu extends Widget_Base
 				],
 				'default' => [
 					'unit' => 'px',
-					'size' => 50,
+					'size' => 234,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .menu-logo' => 'width: {{SIZE}}{{UNIT}};',
@@ -414,7 +414,7 @@ class Nav_Menu extends Widget_Base
 				],
 				'default' => [
 					'unit' => 'px',
-					'size' => 50,
+					'size' => 80,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .menu-logo' => 'height: {{SIZE}}{{UNIT}};',
@@ -831,6 +831,86 @@ class Nav_Menu extends Widget_Base
 				],
 			]
 		);
+		$this->add_control(
+			'offcanvas_menu_more_options',
+			[
+				'label' => esc_html__( 'Offcanvas Menu', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+		$this->add_control(
+			'offcanvas_menu_item_color',
+			[
+				'label' => esc_html__( 'Menu Item Color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .offcanvas-body ul li a' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'offcanvas_menu_item_typography',
+				'selector' => '{{WRAPPER}} .offcanvas-body ul li a',
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'offcanvas_menu_item_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .offcanvas-body ul li a',
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'offcanvas_menu_item_border',
+				'selector' => '{{WRAPPER}} .offcanvas-body ul li a',
+			]
+		);
+		$this->add_control(
+			'offcanvas_divider_more_options',
+			[
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+		$this->add_responsive_control(
+			'offcanvas_menu_item_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .offcanvas-body ul li a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'offcanvas_menu_item_padding',
+			[
+				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .offcanvas-body ul li a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'offcanvas_menu_item_margin',
+			[
+				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .offcanvas-body ul li' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
         $this->end_controls_section();
 		//Search Bar Style Section
 		$this->start_controls_section(
@@ -865,6 +945,10 @@ class Nav_Menu extends Widget_Base
 						'max' => 100,
 					],
 				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 550,
+				],
 				'selectors' => [
 					'{{WRAPPER}} .search_input' => 'width: {{SIZE}}{{UNIT}};',
 				],
@@ -886,6 +970,10 @@ class Nav_Menu extends Widget_Base
 						'min' => 0,
 						'max' => 100,
 					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 60,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .search_input' => 'height: {{SIZE}}{{UNIT}};',

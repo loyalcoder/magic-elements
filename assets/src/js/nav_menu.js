@@ -38,6 +38,13 @@ import "./../scss/nav_menu.scss"
               $(this).removeClass('typing');
             }
           });
+          //offcanvas dropdown mwnu
+
+
+
+
+
+
       },
     };
   

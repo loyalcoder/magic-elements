@@ -1,3 +1,44 @@
+//Sticky Header SCSS
+.magic-header {
+    width: 100%;
+    position: relative;
+    z-index: 999;
+
+    &.is-sticky {
+        position: sticky;
+        top: 0;
+        left: 0;
+        background: #fff;
+        transition: all 0.3s ease;
+
+        .magic-menu {
+            padding: 12px 0; // sticky হলে padding একটু কম
+        }
+    }
+}
+
+/* Optional: Scroll effect (CSS only) */
+.magic-header.is-sticky {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+.magic-header.is-sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    animation: stickyFade 0.3s ease;
+}
+
+@keyframes stickyFade {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+
+// Navigation Menu SCSS
 .magic-menu{
     .nav-menu-left{
         z-index: 30;
@@ -19,16 +60,7 @@
         z-index: 99;
     }
 }
-// @media screen and (max-width: 480px) {
-//     .magic-menu{
-//         .nav-menu-left{
-//             display: none;
-//         }
-//         .nav-menu-right{
-//             display: none;
-//         }
-//     }
-// }
+
 @media screen and (max-width: 1023px) {
     .magic-menu{
         .nav-menu-left{
@@ -54,7 +86,7 @@
   height: 0;
   position: absolute;
   top: 50%;
-  left: 25%;
+  left: 33%;
   &.visible{
     opacity: 1;
     height: auto;
@@ -63,6 +95,7 @@
       top: 0;
       transform: scale(1);
       margin-top: 40%;
+      z-index: 99999;
     }
   }
   .overlayer {
@@ -72,6 +105,7 @@
     left: 0;
     height: 100%;
     width: 100%;
+    z-index: 9999;
   }
 }
 
@@ -88,7 +122,7 @@
     font-size: 18px;
     display: inline-block;
     height: 60px;
-    max-width: 80%;
+    max-width: 550px;
     outline: medium none;
     padding: 15px 20px;
     transition: all 0.45s ease 0s;
@@ -171,8 +205,103 @@ nav {
                 }
             }
         }
-        // ul{
-        //     display: block;
-        // }
+    }
+}
+//Offcanvas Menu Dropdown SCSS
+.offcanvas-body {
+    .cnw-nav {
+        gap: 25px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        > li {
+            position: relative;
+
+            > a {
+                display: block;
+                padding: 10px 0;
+                text-decoration: none;
+            }
+
+            &.menu-item-has-children {
+
+                > a::after {
+                    content: "▾";
+                    margin-left: 6px;
+                    font-size: 12px;
+                }
+
+                .sub-menu {
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    min-width: 150px;
+                    background: #fff;
+                    list-style: none;
+                    padding: 10px 0;
+                    margin: 0;
+                    opacity: 0;
+                    visibility: hidden;
+                    transform: translateY(10px);
+                    transition: all .25s ease;
+                    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+                    display: block;
+                    z-index: 10;
+                    margin-left: 20%;
+
+                    li {
+                        a {
+                            display: block;
+                            padding: 8px 15px;
+                            text-decoration: none;
+                            white-space: nowrap;
+
+                            &:hover {
+                                background: #f5f5f5;
+                            }
+                        }
+                    }
+                }
+
+                &:hover {
+                    > .sub-menu {
+                        opacity: 1;
+                        visibility: visible;
+                        transform: translateY(0);
+                    }
+                }
+            }
+        }
+    }
+}
+//Offcanvas Menu SCSS
+.offcanvas {
+    .offcanvas-header{
+        h3{
+            color: #EA4E1B;
+            font-size: 32px;
+        }
+        .offcanvas_description{
+            color: black;
+            font-size: 18px;
+            line-height: 24px;
+        }
+    }
+    .offcanvas-body{
+        ul{
+            li{
+                margin-top: 15px;
+                a{
+                    color: black;
+                    font-size: 18px;
+                    // line-height: 26px;
+                    padding: 8px 24px;
+                }
+                a:hover{
+                    background-color: rgb(234, 236, 238);
+                }
+            }
+        }
     }
 }
