@@ -38,13 +38,14 @@ import "./../scss/nav_menu.scss"
               $(this).removeClass('typing');
             }
           });
-          //offcanvas dropdown mwnu
-
-
-
-
-
-
+          //offcanvas dropdown menu js
+          document.querySelectorAll('.cnw-nav .menu-item-has-children > a')
+          .forEach(link => {
+              link.addEventListener('click', e => {
+                  e.preventDefault();
+                  link.parentElement.classList.toggle('active');
+              });
+          });
       },
     };
   

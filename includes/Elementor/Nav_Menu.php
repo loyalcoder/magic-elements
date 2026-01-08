@@ -142,6 +142,9 @@ class Nav_Menu extends Widget_Base
 			[
 				'label' => esc_html__( 'Logo', 'textdomain' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+				'condition' => [
+                    'header_layout_type' => ['layout-one']
+                ],
 			]
 		);
         $this->add_control(
