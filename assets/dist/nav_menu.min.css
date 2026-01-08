@@ -268,4 +268,24 @@ nav .cnw-nav > li.menu-item-has-children:hover > .sub-menu {
   background-color: rgb(234, 236, 238);
 }
 
+.book-button a {
+  color: white;
+  background-color: #EA4E1B;
+  font-size: 18px;
+  border-radius: 4px;
+  padding: 12px;
+}
+
+.right-side {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+@media screen and (max-width: 448px) {
+  .right-side {
+    display: block;
+  }
+}
+
 /*# sourceMappingURL=nav_menu.min.css.map*/

@@ -107,17 +107,17 @@ class Nav_Menu extends Widget_Base
            $this->start_controls_section(
 			'header_section',
 			[
-				'label' => esc_html__( 'Header', 'textdomain' ),
+				'label' => esc_html__( 'Header', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
         $this->add_control(
 			'enable_sticky',
 			[
-				'label' => esc_html__( 'Sticky Header', 'textdomain' ),
+				'label' => esc_html__( 'Sticky Header', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Enable', 'textdomain' ),
-				'label_off' => esc_html__( 'Disable', 'textdomain' ),
+				'label_on' => esc_html__( 'Enable', 'magic-elements' ),
+				'label_off' => esc_html__( 'Disable', 'magic-elements' ),
 				'return_value' => 'yes',
 				'default' => '',
 			]
@@ -125,13 +125,13 @@ class Nav_Menu extends Widget_Base
          $this->add_control(
             'header_layout_type',
             [
-                'label' => esc_html__( 'Choose Layout', 'textdomain' ),
+                'label' => esc_html__( 'Choose Layout', 'magic-elements' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'layout-one',
                 'options' => [
-                    'layout-one' => esc_html__( 'Layout One', 'textdomain' ),
-                    'layout-two' => esc_html__( 'Layout Two', 'textdomain' ),
-                    'layout-three' => esc_html__( 'Layout Three', 'textdomain' ),
+                    'layout-one' => esc_html__( 'Layout One', 'magic-elements' ),
+                    'layout-two' => esc_html__( 'Layout Two', 'magic-elements' ),
+                    'layout-three' => esc_html__( 'Layout Three', 'magic-elements' ),
                 ],
             ]
         );
@@ -140,17 +140,14 @@ class Nav_Menu extends Widget_Base
         $this->start_controls_section(
 			'logo_section',
 			[
-				'label' => esc_html__( 'Logo', 'textdomain' ),
+				'label' => esc_html__( 'Logo', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-				'condition' => [
-                    'header_layout_type' => ['layout-one']
-                ],
 			]
 		);
         $this->add_control(
 			'logo',
 			[
-				'label' => esc_html__( 'Upload Logo', 'textdomain' ),
+				'label' => esc_html__( 'Upload Logo', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::MEDIA,
                 'media_types' => [ 'image', 'svg'],
 				'default' => [
@@ -164,24 +161,87 @@ class Nav_Menu extends Widget_Base
         $this->start_controls_section(
 			'menu_section',
 			[
-				'label' => esc_html__( 'Menu', 'textdomain' ),
+				'label' => esc_html__( 'Menu', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
         $this->add_control(
 			'menu_select',
 			[
-				'label' => esc_html__( 'Left Menu', 'textdomain' ),
+				'label' => esc_html__( 'Left Menu', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
-				'options'=> cnw_get_menus()
+				'options'=> cnw_get_menus(),
+				'condition' => [
+                    'header_layout_type' => ['layout-one','layout-two','layout-three']
+                ],
 			]
-		);
+		); 
         $this->add_control(
 			'menu_select_right',
 			[
-				'label' => esc_html__( 'Right Menu', 'textdomain' ),
+				'label' => esc_html__( 'Right Menu', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
-				'options'=> cnw_get_menus()
+				'options'=> cnw_get_menus(),
+				'condition' => [
+                    'header_layout_type' => ['layout-one','layout-two']
+                ],
+			]
+		);
+        $this->end_controls_section();
+		//Layout-Three-call-us-Button
+		$this->start_controls_section(
+			'call_us_section',
+			[
+				'label' => esc_html__( 'Call Us', 'magic-elements' ),
+				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+				'condition' => [
+                    'header_layout_type' => ['layout-three']
+                ],
+			]
+		);
+		$this->add_control(
+			'call_us_text',
+			[
+				'label' => esc_html__( 'Title', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Call Us: 123 4567 8904', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your title here', 'magic-elements' ),
+			]
+		);
+
+		$this->end_controls_section();
+		//Layout-two-book-button
+		$this->start_controls_section(
+			'book_button_section',
+			[
+				'label' => esc_html__( 'Book Button', 'magic-elements' ),
+				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+				'condition' => [
+                    'header_layout_type' => ['layout-two', 'layout-three']
+                ],
+			]
+		);
+		$this->add_control(
+			'book_button_title',
+			[
+				'label' => esc_html__( 'Title', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Book a Tour', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your title here', 'magic-elements' ),
+			]
+		);
+		$this->add_control(
+			'book_button_link',
+			[
+				'label' => esc_html__( 'Link', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::URL,
+				'options' => [ 'url', 'is_external', 'nofollow' ],
+				'default' => [
+					'url' => '',
+					'is_external' => true,
+					'nofollow' => true,
+				],
+				'label_block' => true,
 			]
 		);
         $this->end_controls_section();
@@ -189,17 +249,20 @@ class Nav_Menu extends Widget_Base
          $this->start_controls_section(
 			'search_section',
 			[
-				'label' => esc_html__( 'Search Icon', 'textdomain' ),
+				'label' => esc_html__( 'Search Icon', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+				'condition' => [
+                    'header_layout_type' => ['layout-one']
+                ],
 			]
 		);
         $this->add_control(
 			'show_search',
 			[
-				'label' => esc_html__( 'Show Search Icon', 'textdomain' ),
+				'label' => esc_html__( 'Show Search Icon', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'textdomain' ),
-				'label_off' => esc_html__( 'Hide', 'textdomain' ),
+				'label_on' => esc_html__( 'Show', 'magic-elements' ),
+				'label_off' => esc_html__( 'Hide', 'magic-elements' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -207,7 +270,7 @@ class Nav_Menu extends Widget_Base
         $this->add_control(
 			'search_icon',
 			[
-				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'label' => esc_html__( 'Icon', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
 				'default' => [
 					'value' => 'fas fa-search',
@@ -233,17 +296,17 @@ class Nav_Menu extends Widget_Base
         $this->start_controls_section(
 			'mobile_menu_section',
 			[
-				'label' => esc_html__( 'Mobile Menu Icon', 'textdomain' ),
+				'label' => esc_html__( 'Mobile Menu Icon', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
-        $this->add_control(
+        $this->add_responsive_control(
 			'show_mobile_menu_icon',
 			[
-				'label' => esc_html__( 'Show Mobile Menu Icon', 'textdomain' ),
+				'label' => esc_html__( 'Show Mobile Menu Icon', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'textdomain' ),
-				'label_off' => esc_html__( 'Hide', 'textdomain' ),
+				'label_on' => esc_html__( 'Show', 'magic-elements' ),
+				'label_off' => esc_html__( 'Hide', 'magic-elements' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -251,7 +314,7 @@ class Nav_Menu extends Widget_Base
         $this->add_control(
 			'mobile_menu_icon',
 			[
-				'label' => esc_html__( 'Mobile Menu Icon', 'textdomain' ),
+				'label' => esc_html__( 'Mobile Menu Icon', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
 				'default' => [
 					'value' => 'fas fa-align-left',
@@ -276,27 +339,27 @@ class Nav_Menu extends Widget_Base
 		    $this->start_controls_section(
 			'offcanvas_section',
 			[
-				'label' => esc_html__( 'Offcanvas', 'textdomain' ),
+				'label' => esc_html__( 'Offcanvas', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 		$this->add_control(
 			'offcanvas_title',
 			[
-				'label' => esc_html__( 'Title', 'textdomain' ),
+				'label' => esc_html__( 'Title', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Magical title is here', 'textdomain' ),
-				'placeholder' => esc_html__( 'Type your title here', 'textdomain' ),
+				'default' => esc_html__( 'Magical title is here', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your title here', 'magic-elements' ),
 			]
 		);
 		$this->add_control(
 			'offcanvas_description',
 			[
-				'label' => esc_html__( 'Description', 'textdomain' ),
+				'label' => esc_html__( 'Description', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'rows' => 5,
-				'default' => esc_html__( 'Magic Elements enhances Elementor with powerful widgets and flexible design controls.', 'textdomain' ),
-				'placeholder' => esc_html__( 'Type your description here', 'textdomain' ),
+				'default' => esc_html__( 'Magic Elements enhances Elementor with powerful widgets and flexible design controls.', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your description here', 'magic-elements' ),
 			]
 		);
         $this->end_controls_section();
@@ -304,17 +367,20 @@ class Nav_Menu extends Widget_Base
 		$this->start_controls_section(
 			'search_bar_content_section',
 			[
-				'label' => esc_html__( 'Search Bar', 'textdomain' ),
+				'label' => esc_html__( 'Search Bar', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+				'condition' => [
+                    'header_layout_type' => ['layout-one']
+                ],
 			]
 		);
 		$this->add_control(
 			'search_button_title',
 			[
-				'label' => esc_html__( 'Button Title', 'textdomain' ),
+				'label' => esc_html__( 'Button Title', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Search', 'textdomain' ),
-				'placeholder' => esc_html__( 'Type your title here', 'textdomain' ),
+				'default' => esc_html__( 'Search', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your title here', 'magic-elements' ),
 			]
 		);
 		$this->end_controls_section();
@@ -322,7 +388,7 @@ class Nav_Menu extends Widget_Base
         $this->start_controls_section(
 			'header_style_section',
 			[
-				'label' => esc_html__( 'Header', 'textdomain' ),
+				'label' => esc_html__( 'Header', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -342,9 +408,35 @@ class Nav_Menu extends Widget_Base
 			]
 		);
 		$this->add_responsive_control(
+			'header_width',
+			[
+				'label' => esc_html__( 'Header Width', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 2000,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 1290,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .magic-menu' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
 			'header_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -355,7 +447,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_responsive_control(
 			'header_padding',
 			[
-				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -366,7 +458,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_responsive_control(
 			'header_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -379,14 +471,14 @@ class Nav_Menu extends Widget_Base
         $this->start_controls_section(
 			'logo_style_section',
 			[
-				'label' => esc_html__( 'Logo', 'textdomain' ),
+				'label' => esc_html__( 'Logo', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
         $this->add_responsive_control(
 			'header_logo_width',
 			[
-				'label' => esc_html__( 'Width', 'textdomain' ),
+				'label' => esc_html__( 'Width', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -412,7 +504,7 @@ class Nav_Menu extends Widget_Base
         $this->add_responsive_control(
 			'header_logo_height',
 			[
-				'label' => esc_html__( 'Height', 'textdomain' ),
+				'label' => esc_html__( 'Height', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -438,7 +530,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_responsive_control(
 			'header_logo_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -451,14 +543,14 @@ class Nav_Menu extends Widget_Base
         $this->start_controls_section(
 			'menu_style_section',
 			[
-				'label' => esc_html__( 'Menu', 'textdomain' ),
+				'label' => esc_html__( 'Menu', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
 		$this->add_responsive_control(
 			'nav_menu_item_gap',
 			[
-				'label' => esc_html__( 'Item Gap', 'textdomain' ),
+				'label' => esc_html__( 'Item Gap', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -480,7 +572,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_control(
 			'nav_menu_text_color',
 			[
-				'label' => esc_html__( 'Item Color', 'textdomain' ),
+				'label' => esc_html__( 'Item Color', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} nav ul li' => 'color: {{VALUE}}',
@@ -497,7 +589,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_control(
 			'menu_dropdown_more_options',
 			[
-				'label' => esc_html__( 'Dropdown Menu', 'textdomain' ),
+				'label' => esc_html__( 'Dropdown Menu', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -527,7 +619,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_responsive_control(
 			'dropdown_menu_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -538,7 +630,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_responsive_control(
 			'dropdown_menu_padding',
 			[
-				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -549,7 +641,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_responsive_control(
 			'dropdown_menu_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -558,12 +650,139 @@ class Nav_Menu extends Widget_Base
 			]
 		);
         $this->end_controls_section();
+		//Layout-Three-call-us-Button Style Section
+		$this->start_controls_section(
+			'call_us_style_section',
+			[
+				'label' => esc_html__( 'Call Us', 'magic-elements' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'condition' => [
+                    'header_layout_type' => ['layout-three']
+                ],
+			]
+		);
+		$this->add_control(
+			'call_us_text_color',
+			[
+				'label' => esc_html__( 'Text Color', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .call-us p' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'call_us_typography',
+				'selector' => '{{WRAPPER}} .call-us p',
+			]
+		);
+		$this->add_responsive_control(
+			'call_us_margin',
+			[
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .call-us p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->end_controls_section();
+		//Layout-two-book-button Style Section
+		$this->start_controls_section(
+			'book_button_style_section',
+			[
+				'label' => esc_html__( 'Book Button', 'magic-elements' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'condition' => [
+                    'header_layout_type' => ['layout-two', 'layout-three']
+                ],
+			]
+		);
+		$this->add_control(
+			'book_button_color',
+			[
+				'label' => esc_html__( 'Text Color', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .book-button a' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'book_button_typography',
+				'selector' => '{{WRAPPER}} .book-button a',
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'book_button_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .book-button a',
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'book_button_border',
+				'selector' => '{{WRAPPER}} .book-button a',
+			]
+		);
+		$this->add_control(
+			'book_button_more_options',
+			[
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+		$this->add_responsive_control(
+			'book_button_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .book-button a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'book_button_margin',
+			[
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .book-button a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'book_button_padding',
+			[
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .book-button a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->end_controls_section();
         //Search Style Section
         $this->start_controls_section(
 			'search_style_section',
 			[
-				'label' => esc_html__( 'Search Icon', 'textdomain' ),
+				'label' => esc_html__( 'Search Icon', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'condition' => [
+                    'header_layout_type' => ['layout-one']
+                ],
 			]
 		);
 		$this->add_group_control(
@@ -584,7 +803,7 @@ class Nav_Menu extends Widget_Base
         $this->add_responsive_control(
 			'search_icon_width',
 			[
-				'label' => esc_html__( 'Width', 'textdomain' ),
+				'label' => esc_html__( 'Width', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -610,7 +829,7 @@ class Nav_Menu extends Widget_Base
         $this->add_responsive_control(
 			'search_icon_height',
 			[
-				'label' => esc_html__( 'Height', 'textdomain' ),
+				'label' => esc_html__( 'Height', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -643,7 +862,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_responsive_control(
 			'search_icon_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -654,7 +873,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_responsive_control(
 			'search_icon_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -665,7 +884,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_responsive_control(
 			'search_icon_padding',
 			[
-				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -678,7 +897,7 @@ class Nav_Menu extends Widget_Base
         $this->start_controls_section(
 			'mobile_menu_style_section',
 			[
-				'label' => esc_html__( 'Mobile Menu Icon', 'textdomain' ),
+				'label' => esc_html__( 'Mobile Menu Icon', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -700,7 +919,7 @@ class Nav_Menu extends Widget_Base
         $this->add_responsive_control(
 			'mobile_menu_icon_width',
 			[
-				'label' => esc_html__( 'Width', 'textdomain' ),
+				'label' => esc_html__( 'Width', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -726,7 +945,7 @@ class Nav_Menu extends Widget_Base
         $this->add_responsive_control(
 			'mobile_menu_icon_height',
 			[
-				'label' => esc_html__( 'Height', 'textdomain' ),
+				'label' => esc_html__( 'Height', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -759,7 +978,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_responsive_control(
 			'mobile_menu_icon_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -770,7 +989,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_responsive_control(
 			'mobile_menu_icon_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -781,7 +1000,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_responsive_control(
 			'mobile_menu_icon_padding',
 			[
-				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -794,14 +1013,14 @@ class Nav_Menu extends Widget_Base
 		$this->start_controls_section(
 			'offcanvas_style_section',
 			[
-				'label' => esc_html__( 'Offcanvas', 'textdomain' ),
+				'label' => esc_html__( 'Offcanvas', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
 		$this->add_responsive_control(
 			'offcanvas_width',
 			[
-				'label' => esc_html__( 'Offcanvas Width', 'textdomain' ),
+				'label' => esc_html__( 'Offcanvas Width', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -831,7 +1050,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_control(
 			'title_more_options',
 			[
-				'label' => esc_html__( 'Title', 'textdomain' ),
+				'label' => esc_html__( 'Title', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -839,7 +1058,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_control(
 			'offcanvas_title_color',
 			[
-				'label' => esc_html__( 'Text Color', 'textdomain' ),
+				'label' => esc_html__( 'Text Color', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .offcanvas-header h3' => 'color: {{VALUE}}',
@@ -856,7 +1075,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_responsive_control(
 			'offcanvas_title_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -867,7 +1086,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_control(
 			'description_more_options',
 			[
-				'label' => esc_html__( 'Description', 'textdomain' ),
+				'label' => esc_html__( 'Description', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -875,7 +1094,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_control(
 			'offcanvas_description_color',
 			[
-				'label' => esc_html__( ' Color', 'textdomain' ),
+				'label' => esc_html__( ' Color', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .offcanvas_description' => 'color: {{VALUE}}',
@@ -892,7 +1111,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_responsive_control(
 			'offcanvas_description_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
@@ -911,7 +1130,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_control(
 			'offcanvas_menu_more_options',
 			[
-				'label' => esc_html__( 'Offcanvas Menu', 'textdomain' ),
+				'label' => esc_html__( 'Offcanvas Menu', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -919,7 +1138,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_control(
 			'offcanvas_menu_item_color',
 			[
-				'label' => esc_html__( 'Menu Item Color', 'textdomain' ),
+				'label' => esc_html__( 'Menu Item Color', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .offcanvas-body ul li a' => 'color: {{VALUE}}',
@@ -958,7 +1177,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_responsive_control(
 			'offcanvas_menu_item_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -969,7 +1188,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_responsive_control(
 			'offcanvas_menu_item_padding',
 			[
-				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -980,7 +1199,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_responsive_control(
 			'offcanvas_menu_item_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -993,14 +1212,17 @@ class Nav_Menu extends Widget_Base
 		$this->start_controls_section(
 			'search_bar_style_section',
 			[
-				'label' => esc_html__( 'Search Bar', 'textdomain' ),
+				'label' => esc_html__( 'Search Bar', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'condition' => [
+                    'header_layout_type' => ['layout-one']
+                ],
 			]
 		);
 		$this->add_control(
 			'search_bar_more_options',
 			[
-				'label' => esc_html__( 'Search Bar', 'textdomain' ),
+				'label' => esc_html__( 'Search Bar', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -1008,7 +1230,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_responsive_control(
 			'search_bar_width',
 			[
-				'label' => esc_html__( 'Width', 'textdomain' ),
+				'label' => esc_html__( 'Width', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -1034,7 +1256,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_responsive_control(
 			'search_bar_height',
 			[
-				'label' => esc_html__( 'Height', 'textdomain' ),
+				'label' => esc_html__( 'Height', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -1068,7 +1290,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_control(
 			'search_bar_input_color',
 			[
-				'label' => esc_html__( 'Text Color', 'textdomain' ),
+				'label' => esc_html__( 'Text Color', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .search_input' => 'color: {{VALUE}}',
@@ -1085,7 +1307,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_responsive_control(
 			'search_bar_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -1096,7 +1318,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_responsive_control(
 			'search_bar_padding',
 			[
-				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -1107,7 +1329,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_responsive_control(
 			'search_bar_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -1118,7 +1340,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_control(
 			'search_button_more_options',
 			[
-				'label' => esc_html__( 'Search Button', 'textdomain' ),
+				'label' => esc_html__( 'Search Button', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -1126,7 +1348,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_control(
 			'search_bar_button_color',
 			[
-				'label' => esc_html__( 'Button Color', 'textdomain' ),
+				'label' => esc_html__( 'Button Color', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .inner button' => 'color: {{VALUE}}',
@@ -1158,7 +1380,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_responsive_control(
 			'search_bar_button_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'textdomain' ),
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -1169,7 +1391,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_responsive_control(
 			'search_bar_button_padding',
 			[
-				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
@@ -1180,7 +1402,7 @@ class Nav_Menu extends Widget_Base
 		$this->add_responsive_control(
 			'search_bar_button_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
