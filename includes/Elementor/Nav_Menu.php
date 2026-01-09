@@ -300,7 +300,7 @@ class Nav_Menu extends Widget_Base
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
-        $this->add_responsive_control(
+        $this->add_control(
 			'show_mobile_menu_icon',
 			[
 				'label' => esc_html__( 'Show Mobile Menu Icon', 'magic-elements' ),
