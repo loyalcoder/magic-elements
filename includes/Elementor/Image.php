@@ -237,19 +237,19 @@ class Image extends Widget_Base
 				'options' => [
 					'left' => [
 						'title' => esc_html__( 'Left', 'magic-elements' ),
-						'icon'  => 'eicon-text-align-left',
+						'icon'  => 'eicon-justify-content-left',
 					],
 					'center' => [
 						'title' => esc_html__( 'Center', 'magic-elements' ),
-						'icon'  => 'eicon-text-align-center',
+						'icon'  => 'eicon-justify-content-center',
 					],
 					'right' => [
 						'title' => esc_html__( 'Right', 'magic-elements' ),
-						'icon'  => 'eicon-text-align-right',
+						'icon'  => 'eicon-justify-content-right',
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .main_img' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .main_img' => 'justify-content: {{VALUE}};',
 				],
 			]
 		);

@@ -5,7 +5,7 @@
     }
 ?>
 <div>
-    <div class="main_img">
+    <div class="main_img d-flex">
         <?php
             if ( ! empty( $settings['link']['url'] ) ) {
                 $this->add_link_attributes( 'link', $settings['link'] );
@@ -41,7 +41,7 @@
                     default: echo "";
                 }
             }
-        ?>
+        ?> 
     </div>
     <?php
         if ( 'custom' !== $settings['link_to'] ) {
