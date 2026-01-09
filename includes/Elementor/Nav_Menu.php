@@ -1424,12 +1424,12 @@ class Nav_Menu extends Widget_Base
     protected function register_nav_menu_controls()
     {
         function cnw_get_menus(){
-            $menus = wp_get_nav_menus();
-            $options = [];
-            foreach($menus as $m){
-                $options[$m->slug] = $m->name;
-            }
-            return $options;
+           $menus = wp_get_nav_menus();
+    	   $options = [];
+		foreach ( $menus as $m ) {
+			$options[ $m->slug ] = $m->name;
+		}
+		return $options;
         }
 		
     }

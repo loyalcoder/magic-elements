@@ -230,26 +230,26 @@ class Image extends Widget_Base
 		);
 
         $this->add_responsive_control(
-			$this->get_name() .'text_align',
+			'image_text_align',
 			[
 				'label'   => esc_html__( 'Alignment', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
 						'title' => esc_html__( 'Left', 'magic-elements' ),
-						'icon'  => 'eicon-text-align-left',
+						'icon'  => 'eicon-justify-content-left',
 					],
 					'center' => [
 						'title' => esc_html__( 'Center', 'magic-elements' ),
-						'icon'  => 'eicon-text-align-center',
+						'icon'  => 'eicon-justify-content-center',
 					],
 					'right' => [
 						'title' => esc_html__( 'Right', 'magic-elements' ),
-						'icon'  => 'eicon-text-align-right',
+						'icon'  => 'eicon-justify-content-right',
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .main_img a' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .main_img' => 'justify-content: {{VALUE}};',
 				],
 			]
 		);
