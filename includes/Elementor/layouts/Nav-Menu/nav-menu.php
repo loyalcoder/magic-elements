@@ -248,4 +248,6 @@
         <!-- Mobile Menu End-->
     </div>
 </header>
+<?php }else{ ?>
+    <h3>Any Layout not Found</h3>
 <?php }?>  
