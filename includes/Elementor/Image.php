@@ -237,15 +237,15 @@ class Image extends Widget_Base
 				'options' => [
 					'left' => [
 						'title' => esc_html__( 'Left', 'magic-elements' ),
-						'icon'  => 'eicon-justify-content-left',
+						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
 						'title' => esc_html__( 'Center', 'magic-elements' ),
-						'icon'  => 'eicon-justify-content-center',
+						'icon'  => 'eicon-text-align-center',
 					],
 					'right' => [
 						'title' => esc_html__( 'Right', 'magic-elements' ),
-						'icon'  => 'eicon-justify-content-right',
+						'icon'  => 'eicon-text-align-right',
 					],
 				],
 				'selectors' => [

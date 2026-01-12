@@ -449,7 +449,7 @@ $repeater->add_group_control(
     ]
 );
 $repeater->add_control(
-    'icon_border_radius',
+    'team_icon_border_radius',
     [
         'label' => esc_html__('Border Radius', 'magic-elements'),
         'type' => Controls_Manager::DIMENSIONS,
@@ -705,7 +705,7 @@ $this->end_controls_section();
             ]
         );
          $this->add_control(
-            'card_layout_style',
+            'card_layout_styles',
             [
                 'label'   => esc_html__('Style', 'magic-elements'),
                 'type'    => \Elementor\Controls_Manager::SELECT,

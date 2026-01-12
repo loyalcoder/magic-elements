@@ -634,17 +634,6 @@ $repeater->add_control(
                 ],
             ]
         );
-
-        $this->add_control(
-            'step_title_active_color',
-            [
-                'label' => esc_html__('Active Color', 'magic-elements'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .em-step-indicator.active + .em-step-title' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
         $this->add_control(
             'step_title_completed_color',
             [
