@@ -712,7 +712,7 @@ class Post_List extends Widget_Base
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
-                'name' => 'title_typography',
+                'name' => 'post_list_title_typography',
                 'label' => esc_html__('Typography', 'magic-elements'),
                 'selector' => '{{WRAPPER}} .magic-post-title',
             ]

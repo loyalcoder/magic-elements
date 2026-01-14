@@ -526,7 +526,7 @@ class Timeline extends Widget_Base
             );
 
             $this->add_control(
-                'title_color',
+                'timeline_title_color',
                 [
                     'label' => esc_html__('Color', 'magic-elements'),
                     'type' => \Elementor\Controls_Manager::COLOR,
@@ -540,7 +540,7 @@ class Timeline extends Widget_Base
             $this->add_group_control(
                 \Elementor\Group_Control_Typography::get_type(),
                 [
-                    'name' => 'title_typography',
+                    'name' => 'timeline_title_typography',
                     'selector' => '{{WRAPPER}} .timeline-title',
                 ]
             );

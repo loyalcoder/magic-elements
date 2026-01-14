@@ -513,7 +513,7 @@ class Accordion extends Widget_Base
 
             // Title Style Section
         $this->start_controls_section(
-            'title_style_section',
+            'accordion_title_style_section',
             [
                 'label' => esc_html__('Title Style', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
@@ -523,7 +523,7 @@ class Accordion extends Widget_Base
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
-                'name'     => 'title_typography',
+                'name'     => 'accordion_title_typography',
                 'label'    => esc_html__('Typography', 'magic-elements'),
                 'selector' => '{{WRAPPER}} .emk-accordion-title h3',
             ]
@@ -540,7 +540,7 @@ class Accordion extends Widget_Base
         );
 
         $this->add_control(
-            'title_color',
+            'accordion_title_color',
             [
                 'label'     => esc_html__('Color', 'magic-elements'),
                 'type'      => \Elementor\Controls_Manager::COLOR,

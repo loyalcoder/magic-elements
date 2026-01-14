@@ -118,7 +118,7 @@ class Team extends Widget_Base
 		);
 
         $this->add_control(
-            'card_layout_style',
+            'team_card_layout_style',
             [
                 'label'   => esc_html__('Style', 'magic-elements'),
                 'type'    => \Elementor\Controls_Manager::SELECT,
@@ -358,7 +358,7 @@ $repeater->add_group_control(
     ]
 );
 $repeater->add_control(
-    'icon_border_radius',
+    'team_icon_border_radius',
     [
         'label' => esc_html__('Border Radius', 'magic-elements'),
         'type' => Controls_Manager::DIMENSIONS,
@@ -449,7 +449,7 @@ $repeater->add_group_control(
     ]
 );
 $repeater->add_control(
-    'team_icon_border_radius',
+    'team_icon_border_radius_hover',
     [
         'label' => esc_html__('Border Radius', 'magic-elements'),
         'type' => Controls_Manager::DIMENSIONS,
@@ -550,7 +550,7 @@ $this->add_control(
 				],
                 'condition' => [
                     'bt_direction' => 'row',
-                    'card_layout_style' => 'style_one',
+                    'team_card_layout_style' => 'style_one',
                 ],
 			]
 		);
@@ -581,7 +581,7 @@ $this->add_control(
 				],
                 'condition' => [
                     'bt_direction' => 'column',
-                    'card_layout_style' => 'style_one',
+                    'team_card_layout_style' => 'style_one',
                 ],
 			]
 		);
@@ -612,7 +612,7 @@ $this->add_control(
 				],
                 'condition' => [
                     // 'bt_direction' => 'row',
-                    'card_layout_style' => 'style_two',
+                    'team_card_layout_style' => 'style_two',
                 ],
 			]
 		);
@@ -642,7 +642,7 @@ $this->add_control(
 				],
                 'condition' => [
                     // 'bt_direction' => 'row',
-                    'card_layout_style' => 'style_two',
+                    'team_card_layout_style' => 'style_two',
                 ],
 			]
 		);
@@ -1375,7 +1375,7 @@ $this->end_controls_section();
     {
         $settings = $this->get_settings_for_display();
 		
-        $layout_style = $settings['card_layout_style'];
+        $layout_style = $settings['team_card_layout_style'];
         $file_path    = __DIR__ . '/layouts/team/';
 
         switch ($layout_style) {

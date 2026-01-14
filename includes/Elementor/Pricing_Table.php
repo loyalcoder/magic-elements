@@ -721,12 +721,12 @@ class Pricing_Table extends Widget_Base
         $this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
-				'name'     => 'title_typography',
+				'name'     => 'pricing_table_title_typography',
 				'selector' => '{{WRAPPER}} .title',
 			]
 		);
         $this->add_control(
-			'title_color',
+			'pricing_table_title_color',
 			[
 				'label'     => esc_html__( 'Title Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,

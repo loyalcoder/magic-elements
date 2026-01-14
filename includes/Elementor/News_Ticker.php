@@ -307,7 +307,7 @@ class News_Ticker extends Widget_Base
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
-                'name' => 'title_typography',
+                'name' => 'news_ticker_title_typography',
                 'selector' => '{{WRAPPER}} .mst-title',
             ]
         );

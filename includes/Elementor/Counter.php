@@ -237,7 +237,7 @@ class Counter extends Widget_Base
         $this->end_controls_section();
 
         $this->start_controls_section(
-			'title_style_section',
+			'counter_title_style_section',
 			[
 				'label' => esc_html__( 'Title', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,

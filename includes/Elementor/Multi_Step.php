@@ -645,7 +645,7 @@ $repeater->add_control(
             ]
         );
         $this->add_control(
-            'step_title_active_color',
+            'multi_step_title_active_color',
             [
                 'label' => esc_html__('Active Color', 'magic-elements'),
                 'type' => Controls_Manager::COLOR,

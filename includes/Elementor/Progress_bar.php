@@ -417,7 +417,7 @@ class Progress_Bar extends Widget_Base
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name' => 'title_typography',
+                'name' => 'progress_bar_title_typography',
                 'selector' => '{{WRAPPER}} .magic-progress-bar-title',
             ]
         );

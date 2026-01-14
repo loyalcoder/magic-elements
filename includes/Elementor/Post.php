@@ -215,7 +215,7 @@ class Post extends Widget_Base
 
         // Title Style Section
         $this->start_controls_section(
-            'title_style_section',
+            'post_title_style_section',
             [
                 'label' => esc_html__('Title Style', 'magic-elements'),
                 'tab'   => Controls_Manager::TAB_STYLE,
@@ -225,13 +225,13 @@ class Post extends Widget_Base
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
-                'name'     => 'title_typography',
+                'name'     => 'post_title_typography',
                 'selector' => '{{WRAPPER}} .post-title',
             ]
         );
 
         $this->add_control(
-            'title_color',
+            'post_title_color',
             [
                 'label'     => esc_html__('Color', 'magic-elements'),
                 'type'      => Controls_Manager::COLOR,

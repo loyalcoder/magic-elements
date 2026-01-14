@@ -301,7 +301,7 @@ class Image_Accordion extends Widget_Base
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
-                'name'     => 'title_typography',
+                'name'     => 'image_accordion_title_typography',
                 'selector' => '{{WRAPPER}} h2',
             ]
         );
