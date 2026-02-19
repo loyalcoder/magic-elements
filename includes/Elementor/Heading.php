@@ -219,7 +219,6 @@ class Heading extends Widget_Base
 				'separator' => 'before',
 			]
 		);
-
 		$this->add_control(
 			'title_color_',
 			[
@@ -230,7 +229,14 @@ class Heading extends Widget_Base
 				],
 			]
 		);
-
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'magic_heading_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .emk-heading-title, {{WRAPPER}} .emk-heading-title a',
+			]
+		);
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
@@ -252,6 +258,46 @@ class Heading extends Widget_Base
 			[
 				'name'     => 'text_shadow',
 				'selector' => '{{WRAPPER}} .emk-heading-title',
+			]
+		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'magic_heading_border',
+				'selector' => '{{WRAPPER}} .emk-heading-title, {{WRAPPER}} .emk-heading-title a',
+			]
+		);
+        $this->add_responsive_control(
+			'magic_heading_border-radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .emk-heading-title, {{WRAPPER}} .emk-heading-title a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'magic_heading_margin',
+			[
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .emk-heading-title, {{WRAPPER}} .emk-heading-title a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'magic_heading_padding',
+			[
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .emk-heading-title, {{WRAPPER}} .emk-heading-title a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
 			]
 		);
         $this->add_control(
