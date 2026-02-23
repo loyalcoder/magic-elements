@@ -5,7 +5,7 @@
  *
  * @package Nav Menu Magic Elements
  */
-
+ 
 namespace MagicElements\Elementor;
 use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
@@ -300,7 +300,7 @@ class Nav_Menu extends Widget_Base
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
-        $this->add_control(
+        $this->add_responsive_control(
 			'show_mobile_menu_icon',
 			[
 				'label' => esc_html__( 'Show Mobile Menu Icon', 'magic-elements' ),
@@ -311,7 +311,7 @@ class Nav_Menu extends Widget_Base
 				'default' => 'yes',
 			]
 		);
-        $this->add_control(
+        $this->add_responsive_control(
 			'mobile_menu_icon',
 			[
 				'label' => esc_html__( 'Mobile Menu Icon', 'magic-elements' ),
@@ -430,6 +430,32 @@ class Nav_Menu extends Widget_Base
 				],
 				'selectors' => [
 					'{{WRAPPER}} .magic-menu' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'header_height',
+			[
+				'label' => esc_html__( 'Header Height', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 500,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 100,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .magic-menu' => 'height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
