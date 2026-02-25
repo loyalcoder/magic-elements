@@ -35,14 +35,16 @@ function magic_elements_get_template_part( $slug, $name = '', $args = array() ) 
         }
     }
     
-    // Optional: Log missing template if in debug mode
+    // Optional: Log missing template if in debug mode (development only).
     if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+        // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- Intentional debug logging when WP_DEBUG is enabled.
         error_log( 'Magic Elements: Template ' . $template_dir . $templates[0] . ' not found.' );
     }
 }
 
-if(!function_exists('me_get_display_condition_html')){
-    function me_get_display_condition_html($condition) {
+if ( ! function_exists( 'me_get_display_condition_html' ) ) {
+    // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- Plugin uses me_ prefix for global functions.
+    function me_get_display_condition_html( $condition ) {
         $html = '<ul class="me-display-condition-list">';
         
         if (!empty($condition) && is_array($condition)) {

@@ -114,14 +114,16 @@ trait Builder {
      */
     public function delete_builder_cache(array $args = []): void {
         if (empty($args)) {
-            // Delete all builder caches
+            // Delete all builder caches (no WP API for bulk transient delete by prefix).
             global $wpdb;
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Bulk transient delete by option_name prefix; no caching for delete.
             $wpdb->query(
                 $wpdb->prepare(
                     "DELETE FROM $wpdb->options WHERE option_name LIKE %s",
                     $wpdb->esc_like('_transient_magic_elements_builder_') . '%'
                 )
             );
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Bulk transient timeout delete by prefix.
             $wpdb->query(
                 $wpdb->prepare(
                     "DELETE FROM $wpdb->options WHERE option_name LIKE %s",

@@ -78,8 +78,9 @@ trait Data {
      */
     public function clear_posts_cache(array $args = []): bool {
         if (empty($args)) {
-            // Clear all magic elements posts cache
+            // Clear all magic elements posts cache (no WP API for bulk transient delete by prefix).
             global $wpdb;
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Bulk transient delete by option_name prefix.
             $wpdb->query(
                 $wpdb->prepare(
                     "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s",
@@ -176,8 +177,9 @@ trait Data {
      */
     public function clear_products_cache(array $args = []): bool {
         if (empty($args)) {
-            // Clear all magic elements products cache
+            // Clear all magic elements products cache (no WP API for bulk transient delete by prefix).
             global $wpdb;
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Bulk transient delete by option_name prefix.
             $wpdb->query(
                 $wpdb->prepare(
                     "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s",
