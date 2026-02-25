@@ -40,7 +40,7 @@ class Ajax {
      */
     public function save_settings() {
         // Sanitize and verify nonce
-        $nonce = isset($_POST['nonce']) ? sanitize_key($_POST['nonce']) : '';
+        $nonce = isset( $_POST['nonce'] ) ? sanitize_key( wp_unslash( $_POST['nonce'] ) ) : '';
         if (!wp_verify_nonce($nonce, 'magic_elements_settings_nonce')) {
             wp_send_json_error([
                 'message' => esc_html__('Security check failed', 'magic-elements')

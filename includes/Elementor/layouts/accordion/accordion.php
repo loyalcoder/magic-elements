@@ -26,7 +26,7 @@ $cursor_class = $settings['enable_cursor_pointer'] === 'yes' ? 'cursor-pointer' 
                             </div>
                         </div>
                     </div>
-                    <div class="emk-accordion-content" style="<?php echo $settings['accordion_style'] === 'style_three' ? 'display: block;' : 'display: none;'; ?>">
+                    <div class="emk-accordion-content" style="<?php echo esc_attr( $settings['accordion_style'] === 'style_three' ? 'display: block;' : 'display: none;' ); ?>">
                         <?php echo wp_kses_post($item['accordion_list_content']); ?>
                     </div>
                 </div>
