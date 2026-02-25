@@ -1,8 +1,9 @@
-<?php 
+<?php
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Layout template variables from widget settings/loop.
 // Prevent direct access to the file
-    if (!defined('ABSPATH')) {
-        exit;
-    }
+if (!defined('ABSPATH')) {
+    exit;
+}
 ?>
 <div class="flip-card">
     <div class="flip-card-inner">

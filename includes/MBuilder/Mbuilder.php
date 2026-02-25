@@ -3,6 +3,10 @@ declare(strict_types=1);
 
 namespace MagicElements\MBuilder;
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 use MagicElements\Traits\Builder;
 
 class MBuilder {

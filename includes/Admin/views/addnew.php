@@ -1,3 +1,8 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+?>
 <div class="magic-elements-addnew-popup hidden">
     <div class="magic-elements-addnew-content loading">
     <button class="magic-elements-close-popup">×</button>

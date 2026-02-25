@@ -1,3 +1,9 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- View variables from parent scope.
+?>
 <div class="magic-elements-builder-sections">
     <h1><?php echo esc_html__('Magic Elements Builder', 'magic-elements'); ?></h1>
     <hr>

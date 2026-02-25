@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Template variables from passed $args.
 $display_on = isset($args['display_on']) ? $args['display_on'] : [];
 ?>
 <div class="magic-elements-add-condition d-flex">

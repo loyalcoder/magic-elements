@@ -1,8 +1,9 @@
-<?php 
-    // Prevent direct access to the file
-    if (!defined('ABSPATH')) {
-        exit;
-    }
+<?php
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Layout template variables from query/loop scope.
+// Prevent direct access to the file
+if (!defined('ABSPATH')) {
+    exit;
+}
 ?>
 <div class="tabs">
     <!-- Tab Navigation -->

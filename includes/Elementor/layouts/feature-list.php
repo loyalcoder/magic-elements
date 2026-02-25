@@ -1,8 +1,9 @@
-<?php 
+<?php
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Layout template variables from widget settings/loop.
 // Prevent direct access to the file
-    if (!defined('ABSPATH')) {
-        exit;
-    }
+if (!defined('ABSPATH')) {
+    exit;
+}
 ?>
 <div class="feature_list">
     <h2><?php echo esc_html($settings['feature_list_title']); ?></h2>

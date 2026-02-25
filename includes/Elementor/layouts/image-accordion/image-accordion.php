@@ -1,9 +1,10 @@
- <?php 
-  // Prevent direct access to the file
-  if (!defined('ABSPATH')) {
+<?php
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Layout template variables from widget settings/loop.
+// Prevent direct access to the file
+if (!defined('ABSPATH')) {
     exit;
-  }
- ?>
+}
+?>
  <div class="accordion <?php echo esc_attr($behavior_class) ?>">
     <?php  if(!empty($image_accordion)){
         foreach ($image_accordion as $index=> $item){ ?>

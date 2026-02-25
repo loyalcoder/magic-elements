@@ -1,4 +1,8 @@
-<?php 
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- View variables from parent scope.
 
   $lists = isset($builder_list['templates']) ? $builder_list['templates'] : [];
 

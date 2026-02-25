@@ -1,4 +1,9 @@
-<?php if(!empty($lists)){ 
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- View variables from parent scope.
+if(!empty($lists)){ 
                  foreach($lists as $list){
                 ?> 
                 <div class="magic-elements-preview-item">
