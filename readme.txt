@@ -4,7 +4,7 @@ Tags: elementor, elementor widgets, elementor templates, page builder, addons
 Requires at least: 5.0  
 Tested up to: 6.7  
 Requires PHP: 7.2  
-Stable tag: 1.0.2  
+Stable tag: 1.0.3  
 License: GPL v3 or later  
 License URI: https://www.gnu.org/licenses/gpl-3.0.html  
 
@@ -16,6 +16,7 @@ Enhance Elementor with advanced widgets, templates, and features for customizabl
 
 ### Features:
 - A collection of unique and powerful Elementor widgets.
+- Header & Footer Builder for full-site layout control.
 - Pre-designed templates to kickstart your designs.
 - Easy-to-use interface with seamless integration.
 - Fully responsive and optimized for performance.
@@ -64,10 +65,16 @@ You can reach out via our [support page](https://loyalcoder.com/support).
 
 == Changelog ==
 
+= 1.0.3 =
+* Added Header & Footer Builder to feature set.
+
 = 1.0.0 =  
 * Initial release with core features.
 
 == Upgrade Notice ==
+
+= 1.0.3 =
+Header & Footer Builder and version sync.
 
 = 1.0.0 =  
 Initial release.
