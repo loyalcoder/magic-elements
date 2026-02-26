@@ -1,4 +1,9 @@
-<?php if (isset($args['templates']) && !empty($args['templates'])) { 
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Template variables from passed $args.
+if (isset($args['templates']) && !empty($args['templates'])) { 
     foreach ($args['templates'] as $list) { 
          $status = $list['status'] == 1 ? 'active' : 'inactive';
         ?> 

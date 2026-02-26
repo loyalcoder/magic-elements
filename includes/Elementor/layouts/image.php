@@ -1,8 +1,9 @@
-<?php 
+<?php
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Layout template variables from widget settings.
 // Prevent direct access to the file
-    if (!defined('ABSPATH')) {
-        exit;
-    }
+if (!defined('ABSPATH')) {
+    exit;
+}
 ?>
 <div>
     <div class="main_img flex">

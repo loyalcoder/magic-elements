@@ -1,10 +1,11 @@
-<?php 
-    // Prevent direct access to the file
-    if (!defined('ABSPATH')) {
-        exit;
-    }
-    $cursor_class = $settings['enable_cursor_pointer'] === 'yes' ? 'cursor-pointer' : 'cursor-default';
- ?>
+<?php
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Layout template variables from widget settings/loop.
+// Prevent direct access to the file
+if (!defined('ABSPATH')) {
+    exit;
+}
+$cursor_class = $settings['enable_cursor_pointer'] === 'yes' ? 'cursor-pointer' : 'cursor-default';
+?>
 <div class="emk-accordion-wrapper <?php echo esc_attr($settings['accordion_style']); ?> " data-animation-duration="<?php echo esc_attr($settings['toggle_animation_duration']); ?>">
     <div class="emk-accordion-container">
         <?php if (!empty($settings['accordion_list'])) : ?>
@@ -25,7 +26,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="emk-accordion-content" style="<?php echo $settings['accordion_style'] === 'style_three' ? 'display: block;' : 'display: none;'; ?>">
+                    <div class="emk-accordion-content" style="<?php echo esc_attr( $settings['accordion_style'] === 'style_three' ? 'display: block;' : 'display: none;' ); ?>">
                         <?php echo wp_kses_post($item['accordion_list_content']); ?>
                     </div>
                 </div>

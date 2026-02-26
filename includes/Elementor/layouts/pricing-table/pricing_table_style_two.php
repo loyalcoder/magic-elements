@@ -1,8 +1,9 @@
-<?php 
-    // Prevent direct access to the file
-    if (!defined('ABSPATH')) {
-        exit;
-    }
+<?php
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Layout template variables from widget settings/loop.
+// Prevent direct access to the file
+if (!defined('ABSPATH')) {
+    exit;
+}
 ?>
 <div class="pricing-table-container position-relative d-flex">
     <!-- ribbon start -->

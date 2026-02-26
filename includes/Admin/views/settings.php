@@ -13,6 +13,8 @@
  * @since 1.0.0
  */
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- View variables in template scope.
+
 // Exit if accessed directly
 if (!defined('ABSPATH')) {
     exit;

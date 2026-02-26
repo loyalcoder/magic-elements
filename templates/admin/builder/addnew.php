@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Template variables from passed $args.
 $display_type = isset($args['display_type']) ? $args['display_type'] : [];
 $post_data = isset($args['post_data']) ? $args['post_data'] : [];
 $title = isset($post_data['title']) ? $post_data['title'] : '';

@@ -1,9 +1,9 @@
-<?php 
-
+<?php
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Layout template variables from widget settings/loop.
 // Prevent direct access to the file
-    if (!defined('ABSPATH')) {
-        exit;
-    }
+if (!defined('ABSPATH')) {
+    exit;
+}
     
     if ( ! empty( $settings['category_items'] ) ) {
         // Initialize an empty variable to store the HTML

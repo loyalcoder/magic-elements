@@ -3,6 +3,10 @@ declare(strict_types=1);
 
 namespace MagicElements\MBuilder;
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 use MagicElements\Traits\Builder;
 
 class MBuilder {
@@ -25,7 +29,7 @@ class MBuilder {
      */
     public function ajax_insert_template(): void {
         // Verify nonce
-        if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'me_insert_template')) {
+        if (!isset($_POST['nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'me_insert_template')) {
             wp_send_json_error(['message' => esc_html__('Invalid security token', 'magic-elements')]);
         }
 
@@ -35,9 +39,9 @@ class MBuilder {
         }
 
         // Sanitize input
-        $title = sanitize_text_field($_POST['title']);
-        $type = sanitize_text_field($_POST['type']);
-        $condition = isset($_POST['condition']) ? sanitize_text_field($_POST['condition']) : 'all';
+        $title = sanitize_text_field(wp_unslash($_POST['title']));
+        $type = sanitize_text_field(wp_unslash($_POST['type']));
+        $condition = isset($_POST['condition']) ? sanitize_text_field(wp_unslash($_POST['condition'])) : 'all';
         
         // Additional meta data
         $meta = [
@@ -111,9 +115,14 @@ class MBuilder {
         }
         
         $post_id = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;
-        $title = isset($_POST['title']) ? sanitize_text_field($_POST['title']) : '';
-        $type = isset($_POST['type']) ? sanitize_text_field($_POST['type']) : '';
-        parse_str($_POST['formData'], $formData);
+        $title = isset($_POST['title']) ? sanitize_text_field(wp_unslash($_POST['title'])) : '';
+        $type = isset($_POST['type']) ? sanitize_text_field(wp_unslash($_POST['type'])) : '';
+        $formData = [];
+        if (isset($_POST['formData']) && is_string($_POST['formData'])) {
+            // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Query string for parse_str(); parsed values are sanitized when used below.
+            $form_data_raw = wp_unslash( $_POST['formData'] );
+            parse_str( $form_data_raw, $formData );
+        }
         $display_condition = $this->get_display_condition_list($formData);
 
         $template_title = isset($formData['template_title']) ? sanitize_text_field($formData['template_title']) : '';
@@ -153,7 +162,7 @@ class MBuilder {
             wp_send_json_error(['message' => esc_html__('Invalid security token', 'magic-elements')]);
         }
        
-       $data_type = isset($_POST['data_type']) ? sanitize_text_field($_POST['data_type']) : '';
+       $data_type = isset($_POST['data_type']) ? sanitize_text_field(wp_unslash($_POST['data_type'])) : '';
        $paged = isset($_POST['paged']) ? intval($_POST['paged']) : 1;
        $args = $this->get_builder_templates([
         'post_type' => 'me_builder',
