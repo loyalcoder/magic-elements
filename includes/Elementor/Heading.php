@@ -318,7 +318,14 @@ class Heading extends Widget_Base
                 ],
             ]
         );
-
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'emk_replace_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} span.ornaments',
+			]
+		);
         $this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
@@ -334,7 +341,36 @@ class Heading extends Widget_Base
                 'selector' => '{{WRAPPER}} span.ornaments',
             ]
         );
-		
+        $this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'emk_replace_border',
+				'selector' => '{{WRAPPER}} span.ornaments',
+			]
+		);
+
+        $this->add_responsive_control(
+			'emk_replace_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} span.ornaments' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'emk_replace_padding',
+			[
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} span.ornaments' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
         $this->end_controls_section();
     }
 

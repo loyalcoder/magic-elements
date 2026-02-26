@@ -578,7 +578,7 @@ class Pricing_Table extends Widget_Base
 				],
 			]
 		);
-		$this->add_control(
+		$this->add_responsive_control(
 			'left_price_align',
 			[
 				'label'   => esc_html__( 'Vertical Alignment', 'magic-elements' ),
@@ -735,7 +735,7 @@ class Pricing_Table extends Widget_Base
 				],
 			]
 		);
-        $this->add_control(
+        $this->add_responsive_control(
 			'title_text_align',
 			[
 				'label'   => esc_html__( 'Alignment', 'magic-elements' ),
@@ -813,7 +813,7 @@ class Pricing_Table extends Widget_Base
 				],
 			]
 		);
-        $this->add_control(
+        $this->add_responsive_control(
 			'sub-title_text_align',
 			[
 				'label'   => esc_html__( 'Alignment', 'magic-elements' ),
@@ -874,7 +874,7 @@ class Pricing_Table extends Widget_Base
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
-        $this->add_control(
+        $this->add_responsive_control(
 			'price_text_align',
 			[
 				'label'   => esc_html__( 'Alignment', 'magic-elements' ),
@@ -944,7 +944,7 @@ class Pricing_Table extends Widget_Base
 				'selector' => '{{WRAPPER}} .cp',
 			]
 		);
-        $this->add_control(
+        $this->add_responsive_control(
 			'price_align',
 			[
 				'label'   => esc_html__( 'Vertical Alignment', 'magic-elements' ),
@@ -985,7 +985,7 @@ class Pricing_Table extends Widget_Base
 				'selector' => '{{WRAPPER}} .cp-symble',
 			]
 		);
-        $this->add_control(
+        $this->add_responsive_control(
 			'currency_symbol_align',
 			[
 				'label'   => esc_html__( 'Vertical Alignment', 'magic-elements' ),
@@ -1014,10 +1014,10 @@ class Pricing_Table extends Widget_Base
         $this->add_control(
 			'original_price_options',
 			[
-    'label'     => esc_html__( 'Original Price', 'magic-elements' ),
-    'type'      => \Elementor\Controls_Manager::HEADING,
-    'separator' => 'before',
-    'condition' => [
+				'label'     => esc_html__( 'Original Price', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+    			'condition' => [
                     'show_sale' => 'yes',
                 ]
 			]
@@ -1045,7 +1045,7 @@ class Pricing_Table extends Widget_Base
                 ]
 			]
 		);
-        $this->add_control(
+        $this->add_responsive_control(
 			'original_price_align',
 			[
 				'label'   => esc_html__( 'Vertical Alignment', 'magic-elements' ),
@@ -1128,7 +1128,7 @@ class Pricing_Table extends Widget_Base
 				'selector' => '{{WRAPPER}} .period',
 			]
 		);
-        $this->add_control(
+        $this->add_responsive_control(
 			'period_align',
 			[
 				'label'   => esc_html__( 'Vertical Alignment', 'magic-elements' ),
@@ -1216,7 +1216,7 @@ class Pricing_Table extends Widget_Base
 				'separator' => 'before',
 			]
 		);
-        $this->add_control(
+        $this->add_responsive_control(
 			'features_align',
 			[
 				'label'   => esc_html__( 'Alignment', 'magic-elements' ),

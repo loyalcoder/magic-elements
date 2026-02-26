@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 ?>
- <div class="accordion <?php echo esc_attr($behavior_class) ?>">
+ <div class="accordion <?php echo esc_attr($behavior_class) ?>" data-active-behavior="<?php echo esc_attr( $active_behavior ); ?>">
     <?php  if(!empty($image_accordion)){
         foreach ($image_accordion as $index=> $item){ ?>
         <div class="tab">

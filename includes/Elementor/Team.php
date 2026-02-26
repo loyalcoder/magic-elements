@@ -9,7 +9,7 @@
 
 namespace MagicElements\Elementor;
 
-use Elementor\Controls_Manager;
+use Elementor\Controls_Manager; 
 use Elementor\Widget_Base;
 
 if (!defined('ABSPATH')) {
@@ -165,7 +165,7 @@ class Team extends Widget_Base
 			[
 				'label' => esc_html__( 'Title', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Default title', 'magic-elements' ),
+				'default' => esc_html__( 'Arison Booker', 'magic-elements' ),
 				'placeholder' => esc_html__( 'Type your title here', 'magic-elements' ),
 			]
 		);
@@ -173,11 +173,13 @@ class Team extends Widget_Base
 			'team_description',
 			[
 				'label' => esc_html__( 'Description', 'magic-elements' ),
-				'type' => \Elementor\Controls_Manager::WYSIWYG,
-				'default' => esc_html__( 'Default description', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'rows' => 5,
+				'default' => esc_html__( 'Math Teacher', 'magic-elements' ),
 				'placeholder' => esc_html__( 'Type your description here', 'magic-elements' ),
 			]
 		);
+
         $this->end_controls_section();
 
 
@@ -555,7 +557,7 @@ $this->add_control(
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'button_alinment',
 			[
 				'label' => esc_html__( 'Alinment', 'magic-elements' ),
@@ -964,7 +966,7 @@ $this->end_controls_section();
             'selector' => '{{WRAPPER}} .content-part .team-title',
         ]
     );
-    $this->add_control(
+    $this->add_responsive_control(
         'text_align',
         [
             'label' => esc_html__( 'Alignment', 'magic-elements' ),
@@ -1063,7 +1065,7 @@ $this->end_controls_section();
             'selector' => '{{WRAPPER}} .content-part p',
         ]
     );
-    $this->add_control(
+    $this->add_responsive_control(
         'text_content_align',
         [
             'label' => esc_html__( 'Alignment', 'magic-elements' ),

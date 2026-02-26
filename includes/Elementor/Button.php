@@ -243,7 +243,7 @@ class Button extends Widget_Base
 			]
 		);
 
-        $this->add_control(
+		$this->add_responsive_control(
 			'icon_indent',
 			[
 				'label'      => esc_html__( 'Icon Spacing', 'magic-elements' ),
@@ -260,9 +260,39 @@ class Button extends Widget_Base
 						'max' => 5,
 					],
 				],
+				// Match the actual CSS classes used in button.scss so spacing works.
 				'selectors' => [
-					'{{WRAPPER}} .emk-button-wrapper .emk-button .emk-button-content-wrapper .magicelements-align-icon-left'  => 'margin-right: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .emk-button-wrapper .emk-button .emk-button-content-wrapper .magicelements-align-icon-right' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .emk-button-wrapper .emk-button .emk-button-content-wrapper .emk-align-icon-left'  => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .emk-button-wrapper .emk-button .emk-button-content-wrapper .emk-align-icon-right' => 'margin-left: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => array_merge( $args['section_condition'], [ 'selected_icon[value]!' => '' ] ),
+			]
+		);
+
+		$this->add_responsive_control(
+			'icon_size',
+			[
+				'label'      => esc_html__( 'Icon Size', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em', 'rem' ],
+				'range'      => [
+					'px'  => [
+						'min' => 5,
+						'max' => 100,
+					],
+					'em'  => [
+						'min' => 0.2,
+						'max' => 5,
+						'step' => 0.1,
+					],
+					'rem' => [
+						'min' => 0.2,
+						'max' => 5,
+						'step' => 0.1,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .emk-button-wrapper .emk-button .emk-button-content-wrapper .emk-button-icon' => 'font-size: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => array_merge( $args['section_condition'], [ 'selected_icon[value]!' => '' ] ),
 			]
@@ -458,8 +488,12 @@ class Button extends Widget_Base
 
 		if ( ! empty( $settings['hover_animation'] ) ) {
 			$button_class[] = 'emk-animation-' . $settings['hover_animation'];
-		}if ( ! empty( $settings['icon_align'] ) ) {
-			$span_class[] = 'magicelements-align-icon-' . $settings['icon_align'];
+		}
+
+		// Add icon alignment classes that match the SCSS:
+		// .emk-button-icon.emk-align-icon-left / .emk-button-icon.emk-align-icon-right
+		if ( ! empty( $settings['icon_align'] ) ) {
+			$span_class[] = 'emk-align-icon-' . $settings['icon_align'];
 		}
         $wrapper_class= join(' ', $wrapper_class);
         $button_class= join(' ', $button_class);

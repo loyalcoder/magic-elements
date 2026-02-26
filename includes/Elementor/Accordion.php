@@ -515,7 +515,7 @@ class Accordion extends Widget_Base
         $this->start_controls_section(
             'accordion_title_style_section',
             [
-                'label' => esc_html__('Title Style', 'magic-elements'),
+                'label' => esc_html__('Title', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -656,7 +656,7 @@ class Accordion extends Widget_Base
         $this->start_controls_section(
             'content_style_section',
             [
-                'label' => esc_html__('Content Style', 'magic-elements'),
+                'label' => esc_html__('Content', 'magic-elements'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -669,7 +669,7 @@ class Accordion extends Widget_Base
                 'selector' => '{{WRAPPER}} .emk-accordion-content',
             ]
         );
-        $this->add_control(
+        $this->add_responsive_control(
 			'content_text_align',
 			[
 				'label'   => esc_html__( 'Alignment', 'magic-elements' ),

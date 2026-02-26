@@ -412,7 +412,7 @@ class Image extends Widget_Base
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors'  => [
-					'{{WRAPPER}} .main_img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .main_img a img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -420,7 +420,7 @@ class Image extends Widget_Base
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'image_box_shadow',
-				'selector' => '{{WRAPPER}} .main_img',
+				'selector' => '{{WRAPPER}} .main_img a img',
 			]
 		);
 
@@ -507,7 +507,7 @@ class Image extends Widget_Base
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors'  => [
-					'{{WRAPPER}}:hover .main_img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}}:hover .main_img a img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -515,7 +515,7 @@ class Image extends Widget_Base
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'image_box_shadow_hover',
-				'selector' => '{{WRAPPER}}:hover img',
+				'selector' => '{{WRAPPER}}:hover .main_img a img',
 			]
 		);
 
@@ -628,7 +628,7 @@ class Image extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        include __DIR__ . '/layouts/image.php';
+        include __DIR__ . '/layouts/Image/image.php';
     }
 
         /**

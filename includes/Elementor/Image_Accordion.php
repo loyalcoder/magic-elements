@@ -255,6 +255,34 @@ class Image_Accordion extends Widget_Base
                 ],
             ]
         );
+        $this->add_responsive_control(
+            'image_accordion_width',
+            [
+                'label'      => esc_html__('Width', 'magic-elements'),
+                'type'       => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', 'vh'],
+                'range'      => [
+                    'px' => [
+                        'min'  => 100,
+                        'max'  => 1500,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min'  => 20,
+                        'max'  => 100,
+                        'step' => 1,
+                    ],
+                    'vh' => [
+                        'min'  => 10,
+                        'max'  => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .accordion' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
 
         $this->end_controls_section();
 
@@ -266,7 +294,7 @@ class Image_Accordion extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
 			'content_margin',
 			[
 				'label'      => esc_html__( 'Margin', 'magic-elements' ),
@@ -357,6 +385,7 @@ class Image_Accordion extends Widget_Base
                 'selector' => '{{WRAPPER}} p',
             ]
         );
+   
 
         $this->end_controls_section();
 

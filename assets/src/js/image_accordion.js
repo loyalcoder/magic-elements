@@ -20,7 +20,14 @@ import "./../scss/image_accordion.scss"
     
         image_accordion.each(function () {
             const $accordion = $(this);
-            const behavior = $accordion.hasClass('emk-image-accordion-hover') ? 'hover' : 'click';
+
+            // Prefer explicit data attribute from PHP, fallback to class check.
+            const behaviorAttr = $accordion.attr('data-active-behavior');
+            const behavior = behaviorAttr === 'hover'
+              ? 'hover'
+              : (behaviorAttr === 'click'
+                  ? 'click'
+                  : ($accordion.hasClass('emk-image-accordion-hover') ? 'hover' : 'click'));
     
             if (!$accordion.find('.tab.active').length) {
                 $accordion.find('.tab').first().addClass('active');
