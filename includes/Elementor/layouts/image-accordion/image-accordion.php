@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
 ?>
  <div class="accordion <?php echo esc_attr($behavior_class) ?>" data-active-behavior="<?php echo esc_attr( $active_behavior ); ?>">
     <?php  if(!empty($image_accordion)){
-        foreach ($image_accordion as $index=> $item){ ?>
+        foreach ($image_accordion as $index=> $item){ ?> 
         <div class="tab">
           <?php
             $this->add_render_attribute('image', 'src', $item['background_image']['url']);
@@ -30,8 +30,11 @@ if (!defined('ABSPATH')) {
           
             ?>
             <div class="caption">
-            <h2><?php  echo esc_html( $item['title']); ?>  </h2>
-            <p><?php  echo esc_html( $item['description']); ?> </p>
+                <h2><?php  echo esc_html( $item['title']); ?>  </h2>
+                <p><?php  echo esc_html( $item['description']); ?> </p>
+                <a class="image-accordion-button" href="<?php echo esc_url($item['image_accordion_button_link']['url']); ?>">
+                    <?php echo esc_html($item['image_accordion_button_text']); ?> 
+                </a>
             </div>
         </div>
    <?php } } ?>  
