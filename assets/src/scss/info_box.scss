@@ -36,3 +36,29 @@
         }
     }
   }
+
+// Alignment classes from info_box_align choose control (prefix_class => me-info-box-align-)
+.me-info-box-align-center{
+  // icon left/right (row) -> horizontal center
+  .info-box--icon-left,
+  .info-box--icon-right{
+    justify-content: center;
+  }
+  // icon top/bottom (column) -> horizontal center
+  .info-box--icon-top,
+  .info-box--icon-bottom{
+    align-items: center;
+  }
+}
+.me-info-box-align-right{
+  // icon left/right (row) -> horizontal right
+  .info-box--icon-left,
+  .info-box--icon-right{
+    justify-content: flex-end;
+  }
+  // icon top/bottom (column) -> horizontal right
+  .info-box--icon-top,
+  .info-box--icon-bottom{
+    align-items: flex-end;
+  }
+}

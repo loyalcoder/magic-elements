@@ -12,7 +12,7 @@
             <div class="icon-box-content">
                 <h3><?php echo esc_html($settings['icon_box_title']); ?></h3>
                 <p><?php echo esc_html($settings['icon_box_description']); ?></p>
-            </div>
+            </div> 
         </div>
     </a>
 </div>

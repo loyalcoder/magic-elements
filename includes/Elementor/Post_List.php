@@ -3,7 +3,7 @@
  * Elementor Classes.
  *
  * @package Post List Magic Elements
- */
+ */ 
 
 namespace MagicElements\Elementor;
 
@@ -285,7 +285,7 @@ class Post_List extends Widget_Base
             ]
         );
     
-        $this->add_control(
+        $this->add_responsive_control(
             'image_width',
             [
                 'label' => esc_html__('Image Width (for Left position)', 'magic-elements'),
@@ -501,7 +501,7 @@ class Post_List extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'container_border_radius',
             [
                 'label' => esc_html__('Border Radius', 'magic-elements'),
@@ -577,7 +577,7 @@ class Post_List extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'post_item_border_radius',
             [
                 'label' => esc_html__('Border Radius', 'magic-elements'),
@@ -634,7 +634,7 @@ class Post_List extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'image_spacing',
             [
                 'label' => esc_html__('Spacing', 'magic-elements'),
@@ -654,7 +654,7 @@ class Post_List extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'image_border_radius',
             [
                 'label' => esc_html__('Border Radius', 'magic-elements'),

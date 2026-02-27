@@ -225,7 +225,7 @@ class Multiple_Button extends Widget_Base
 				],
 			]
 		);
-        $repeater->add_control(
+        $repeater->add_responsive_control(
 			'icon_gap',
 			[
 				'label' => esc_html__( 'Icon Gap', 'magic-elements' ),
@@ -291,7 +291,7 @@ class Multiple_Button extends Widget_Base
                 ],
             ]
         );
-        $repeater->add_control(
+        $repeater->add_responsive_control(
 			'btn_padding',
 			[
 				'label' => esc_html__( 'Padding', 'magic-elements' ),
@@ -310,7 +310,7 @@ class Multiple_Button extends Widget_Base
 				],
 			]
 		);
-        $repeater->add_control(
+        $repeater->add_responsive_control(
 			'btn_margin',
 			[
 				'label' => esc_html__( 'Margin', 'magic-elements' ),
@@ -343,7 +343,7 @@ class Multiple_Button extends Widget_Base
 				'selector' => '{{WRAPPER}} {{CURRENT_ITEM}}',
 			]
 		);
-        $repeater->add_control(
+        $repeater->add_responsive_control(
 			'btn_radius',
 			[
 				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
@@ -447,7 +447,7 @@ class Multiple_Button extends Widget_Base
 				'selector' => '{{WRAPPER}} {{CURRENT_ITEM}}:hover',
 			]
 		);
-        $repeater->add_control(
+        $repeater->add_responsive_control(
 			'btn_radius_hover',
 			[
 				'label' => esc_html__( 'Border Radius', 'magic-elements' ),
@@ -486,7 +486,7 @@ class Multiple_Button extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
 			'bt_direction',
 			[
 				'label' => esc_html__( 'Direction', 'magic-elements' ),
@@ -508,7 +508,7 @@ class Multiple_Button extends Widget_Base
 				],
 			]
 		);
-		$this->add_control(
+		$this->add_responsive_control(
 			'button_justify',
 			[
 				'label' => esc_html__( 'Justify', 'magic-elements' ),
@@ -545,7 +545,7 @@ class Multiple_Button extends Widget_Base
                 ],
 			]
 		);
-		$this->add_control(
+		$this->add_responsive_control(
 			'button_alinment',
 			[
 				'label' => esc_html__( 'Alinment', 'magic-elements' ),
@@ -574,7 +574,7 @@ class Multiple_Button extends Widget_Base
                 ],
 			]
 		);
-        $this->add_control(
+        $this->add_responsive_control(
 			'button_self_justify',
 			[
 				'label' => esc_html__( 'Justify', 'magic-elements' ),
@@ -603,7 +603,7 @@ class Multiple_Button extends Widget_Base
                 ],
 			]
 		);
-        $this->add_control(
+        $this->add_responsive_control(
 			'btn_clmn_gap',
 			[
 				'label' => esc_html__( 'Button Column Gap', 'magic-elements' ),
@@ -629,7 +629,7 @@ class Multiple_Button extends Widget_Base
 				],
 			]
 		);
-        $this->add_control(
+        $this->add_responsive_control(
 			'btn_row_gap',
 			[
 				'label' => esc_html__( 'Button Row Gap', 'magic-elements' ),

@@ -9,7 +9,7 @@ $this->add_render_attribute('container', 'class', 'magic-progress-bar-container'
 
 $this->add_render_attribute('fill', [
     'class' => ['magic-progress-bar-fill'],
-    'data-percent' => $settings['percent']['size'],
+    'data-percent' => $settings['percent']['size'], 
     'data-duration' => $settings['duration'],
     'data-delay' => $settings['animation_delay'],
 ]);

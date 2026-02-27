@@ -177,6 +177,11 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/multi_step.js'),
                 'deps'    => ['jquery']
             ],
+            'emkit-progress-bar' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/progress_bar.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/progress_bar.js'),
+                'deps'    => ['jquery'],
+            ],
             'emkit-timeline' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/timeline.js',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/timeline.js'),
@@ -295,6 +300,10 @@ class Load_Elementor
             'emk-multi-step' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/multi_step.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/multi_step.css'),
+            ],
+            'emk-progress-bar' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/progress_bar.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/progress_bar.css'),
             ],
             'emk-timeline' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/timeline.css',

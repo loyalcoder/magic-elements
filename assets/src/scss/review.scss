@@ -11,3 +11,31 @@
         }
     }
 }
+
+// Alignment classes from review_wapper_align choose control (prefix_class => me-review-align-)
+.me-review-align-center{
+  .review-wapper,
+  .review-wapper .reviewer,
+  .review-wapper .review{
+    text-align: center;
+  }
+  // ensure image itself centers even if it's block-level
+  .review-wapper .reviewer img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.me-review-align-right{
+  .review-wapper,
+  .review-wapper .reviewer,
+  .review-wapper .review{
+    text-align: right;
+  }
+  // push image to the right
+  .review-wapper .reviewer img{
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+  }
+}

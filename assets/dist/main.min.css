@@ -236,6 +236,24 @@
 .icon-box-wapper .icon-box--icon-bottom {
   flex-direction: column-reverse;
 }
+
+.me-icon-box-align-center .icon-box--icon-left,
+.me-icon-box-align-center .icon-box--icon-right {
+  justify-content: center;
+}
+.me-icon-box-align-center .icon-box--icon-top,
+.me-icon-box-align-center .icon-box--icon-bottom {
+  align-items: center;
+}
+
+.me-icon-box-align-right .icon-box--icon-left,
+.me-icon-box-align-right .icon-box--icon-right {
+  justify-content: flex-end;
+}
+.me-icon-box-align-right .icon-box--icon-top,
+.me-icon-box-align-right .icon-box--icon-bottom {
+  align-items: flex-end;
+}
 /*!************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/info_box.scss ***!
   \************************************************************************************************************************/
@@ -268,6 +286,24 @@
   text-decoration: none;
   border-radius: 4px;
   font-size: 14px;
+}
+
+.me-info-box-align-center .info-box--icon-left,
+.me-info-box-align-center .info-box--icon-right {
+  justify-content: center;
+}
+.me-info-box-align-center .info-box--icon-top,
+.me-info-box-align-center .info-box--icon-bottom {
+  align-items: center;
+}
+
+.me-info-box-align-right .info-box--icon-left,
+.me-info-box-align-right .info-box--icon-right {
+  justify-content: flex-end;
+}
+.me-info-box-align-right .info-box--icon-top,
+.me-info-box-align-right .info-box--icon-bottom {
+  align-items: flex-end;
 }
 /*!*************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/light_box.scss ***!

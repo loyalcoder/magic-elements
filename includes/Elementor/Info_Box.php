@@ -9,7 +9,7 @@
 namespace MagicElements\Elementor;
 use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
-
+ 
 if (!defined('ABSPATH')) {
     exit;
 }
@@ -199,24 +199,25 @@ class Info_Box extends Widget_Base
 			'info_box_align',
 			[
 				'label' => esc_html__( 'Alignment', 'magic-elements' ),
-				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'type'  => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
 						'title' => esc_html__( 'Left', 'magic-elements' ),
-						'icon' => 'eicon-text-align-left',
+						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
 						'title' => esc_html__( 'Center', 'magic-elements' ),
-						'icon' => 'eicon-text-align-center',
+						'icon'  => 'eicon-text-align-center',
 					],
 					'right' => [
 						'title' => esc_html__( 'Right', 'magic-elements' ),
-						'icon' => 'eicon-text-align-right',
+						'icon'  => 'eicon-text-align-right',
 					],
 				],
-				'default' => 'center',
-				'toggle' => true,
-				'selectors' => [
+				'default'      => 'center',
+				'toggle'       => true,
+				'prefix_class' => 'me-info-box-align-',
+				'selectors'    => [
 					'{{WRAPPER}} .info-box' => 'text-align: {{VALUE}};',
 				],
 			]

@@ -8,7 +8,7 @@ use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
-use Elementor\Group_Control_Box_Shadow;
+use Elementor\Group_Control_Box_Shadow; 
 use Elementor\Group_Control_Typography;
 use Elementor\Core\Schemes\Color;
 use Elementor\Core\Schemes\Typography;
@@ -232,7 +232,7 @@ class Progress_Bar extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'bar_height',
             [
                 'label' => esc_html__('Height', 'magic-elements'),
@@ -256,7 +256,7 @@ class Progress_Bar extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'bar_border_radius',
             [
                 'label' => esc_html__('Border Radius', 'magic-elements'),
@@ -318,7 +318,7 @@ class Progress_Bar extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'stripe_size',
             [
                 'label' => esc_html__( 'Stripe Size', 'magic-elements' ),

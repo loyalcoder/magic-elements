@@ -300,6 +300,30 @@ class Review extends Widget_Base
                  'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
              ]
          );
+		 $this->add_responsive_control(
+			'review_wapper_align',
+			[
+				'label' => esc_html__( 'Alignment', 'magic-elements' ),
+				'type'  => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'magic-elements' ),
+						'icon'  => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'magic-elements' ),
+						'icon'  => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'magic-elements' ),
+						'icon'  => 'eicon-text-align-right',
+					],
+				],
+				'default'      => 'center',
+				'toggle'       => true,
+				'prefix_class' => 'me-review-align-',
+			]
+		);
          //start normal hover
          $this->start_controls_tabs(
             'style_tabs'
@@ -430,32 +454,6 @@ class Review extends Widget_Base
 			[
 				'label' => esc_html__( 'Rating', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
-			]
-		);
-        $this->add_responsive_control(
-			'review_wapper_align',
-			[
-				'label' => esc_html__( 'Alignment', 'magic-elements' ),
-				'type' => \Elementor\Controls_Manager::CHOOSE,
-				'options' => [
-					'left' => [
-						'title' => esc_html__( 'Left', 'magic-elements' ),
-						'icon' => 'eicon-text-align-left',
-					],
-					'center' => [
-						'title' => esc_html__( 'Center', 'magic-elements' ),
-						'icon' => 'eicon-text-align-center',
-					],
-					'right' => [
-						'title' => esc_html__( 'Right', 'magic-elements' ),
-						'icon' => 'eicon-text-align-right',
-					],
-				],
-				'default' => 'center',
-				'toggle' => true,
-				'selectors' => [
-					'{{WRAPPER}} .review-wapper' => 'text-align: {{VALUE}};',
-				],
 			]
 		);
         $this->add_control(
