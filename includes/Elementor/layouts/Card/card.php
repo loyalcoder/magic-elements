@@ -13,7 +13,7 @@
             'img' => array(
                 'src'    => true,
                 'alt'    => true,
-                'class'  => true,
+                'class'  => true, 
                 'width'  => true,
                 'height' => true,
                 'srcset' => true,

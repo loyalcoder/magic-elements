@@ -9,7 +9,7 @@
 
 namespace MagicElements\Elementor;
 
-use Elementor\Controls_Manager;
+use Elementor\Controls_Manager; 
 use Elementor\Widget_Base;
 
 if (!defined('ABSPATH')) {
@@ -142,20 +142,40 @@ class Tab extends Widget_Base
                 'default' => 'Content for this tab.',
             ]
         );
-
         $repeater->add_control(
-            'tab_content',
-            [
-                'label'   => esc_html__( 'Tab Content', 'magic-elements' ),
-                'type'    => \Elementor\Controls_Manager::WYSIWYG,
-                'default' => 'Content for this tab.',
-            ]
-        );
+			'tab_content',
+			[
+				'label' => esc_html__( 'Tab Content', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'rows' => 10,
+				'default' => esc_html__( 'Content for this tab.', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your content here', 'magic-elements' ),
+			]
+		);
+        $repeater->add_control(
+			'tab_button_text',
+			[
+				'label' => esc_html__( 'Button Text', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Click Here', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your button text here', 'magic-elements' ),
+			]
+		);
+        $repeater->add_control(
+			'tab_button_link',
+			[
+				'label' => esc_html__( 'Link', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::URL,
+				'options' => [ 'url', 'is_external', 'nofollow' ],
+				'label_block' => true,
+			]
+		);
+
 
         $this->add_control(
             'tabs',
             [
-                'label'   => esc_html__( 'Tabs', 'magic-elements' ),
+                'label'   => esc_html__( 'Tab', 'magic-elements' ),
                 'type'    => \Elementor\Controls_Manager::REPEATER,
                 'fields'  => $repeater->get_controls(),
                 'default' => [
@@ -171,14 +191,13 @@ class Tab extends Widget_Base
                 'title_field' => '{{{ tab_title }}}',
             ]
         );
-
         $this->end_controls_section(); 
 
             // style section
         $this->start_controls_section(
 			'tabs_style_section',
 			[
-				'label' => esc_html__( 'Tabs', 'magic-elements' ),
+				'label' => esc_html__( 'Tab', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -192,7 +211,7 @@ class Tab extends Widget_Base
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'tabs_column gap',
 			[
 				'label'      => esc_html__( 'Gap Between Tabs', 'magic-elements' ),
@@ -215,7 +234,7 @@ class Tab extends Widget_Base
 			]
 		);
         
-		$this->add_control(
+		$this->add_responsive_control(
 			'tabs_distance_from_content',
 			[
 				'label'      => esc_html__( 'Distance From Content', 'magic-elements' ),
@@ -341,7 +360,7 @@ class Tab extends Widget_Base
     $this->end_controls_tabs();
 
         // Border Radius Control
-    $this->add_control(
+    $this->add_responsive_control(
         'tab_border_radius',
         [
             'label'      => esc_html__('Border Radius', 'magic-elements'),
@@ -372,7 +391,7 @@ class Tab extends Widget_Base
     $this->start_controls_section(
         'tab_title_style_section',
         [
-            'label' => esc_html__( 'Titles', 'magic-elements' ),
+            'label' => esc_html__( 'Tab Title', 'magic-elements' ),
             'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
         ]
     );
@@ -522,10 +541,10 @@ class Tab extends Widget_Base
         ]
     );
 
-    $this->add_control(
-        'text_align',
+    $this->add_responsive_control(
+        'tab_content_alignment',
         [
-            'label'   => esc_html__( 'Alignment', 'magic-elements' ),
+            'label'   => esc_html__( 'Content Alignment', 'magic-elements' ),
             'type'    => \Elementor\Controls_Manager::CHOOSE,
             'options' => [
                 'left' => [
@@ -557,6 +576,18 @@ class Tab extends Widget_Base
             'selector' => '{{WRAPPER}} .tab-content',
         ]
     );
+    $this->add_responsive_control(
+        'tab_content_padding',
+        [
+            'label' => esc_html__( 'Padding', 'magic-elements' ),
+            'type' => \Elementor\Controls_Manager::DIMENSIONS,
+            'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+            'selectors' => [
+                '{{WRAPPER}} .tab-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
+
 
     $this->add_control(
         'tab_content_title_heading',
@@ -583,6 +614,17 @@ class Tab extends Widget_Base
         [
             'name'     => 'tab_content_title_typography',
             'selector' => '{{WRAPPER}} .tab-content .content h2',
+        ]
+    );
+    $this->add_responsive_control(
+        'tab_content_title_margin',
+        [
+            'label' => esc_html__( 'Margin', 'magic-elements' ),
+            'type' => \Elementor\Controls_Manager::DIMENSIONS,
+            'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+            'selectors' => [
+                '{{WRAPPER}} .tab-content .content h2' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
         ]
     );
 
@@ -613,8 +655,160 @@ class Tab extends Widget_Base
             'selector' => '{{WRAPPER}} .tab-content .content p',
         ]
     );
-
+    $this->add_responsive_control(
+        'tab_content_margin',
+        [
+            'label' => esc_html__( 'Margin', 'magic-elements' ),
+            'type' => \Elementor\Controls_Manager::DIMENSIONS,
+            'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+            'selectors' => [
+                '{{WRAPPER}} .tab-content .content p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
     $this->end_controls_section();
+    //Button Style Section
+    $this->start_controls_section(
+        'button_style_section',
+        [
+            'label' => esc_html__( 'Button', 'magic-elements' ),
+            'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+        ]
+    );
+
+    $this->add_group_control(
+        \Elementor\Group_Control_Typography::get_type(),
+        [
+            'name' => 'tab_button_typography',
+            'selector' => '{{WRAPPER}} .tab-content .content .tab-button',
+        ]
+    );
+    //start normal-hover-tab
+    $this->start_controls_tabs(
+        'tab_button_style_tabs'
+    );
+    //normal tab
+    $this->start_controls_tab(
+        'style_tab_button_normal_tab',
+        [
+            'label' => esc_html__( 'Normal', 'magic-elements' ),
+        ]
+    );
+    $this->add_control(
+        'tab_button_normal_color',
+        [
+            'label' => esc_html__( 'Text Color', 'magic-elements' ),
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .tab-content .content .tab-button' => 'color: {{VALUE}}',
+            ],
+        ]
+    );
+    $this->add_group_control(
+        \Elementor\Group_Control_Background::get_type(),
+        [
+            'name' => 'tab_button_normal_background',
+            'types' => [ 'classic', 'gradient', 'video' ],
+            'selector' => '{{WRAPPER}} .tab-content .content .tab-button',
+        ]
+    );
+    
+    $this->end_controls_tab();
+    //hover tab
+    $this->start_controls_tab(
+        'style_tab_button_hover_tab',
+        [
+            'label' => esc_html__( 'Hover', 'magic-elements' ),
+        ]
+    );
+    $this->add_control(
+        'tab_button_hover_color',
+        [
+            'label' => esc_html__( 'Text Color', 'magic-elements' ),
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .tab-content .content .tab-button:hover' => 'color: {{VALUE}}',
+            ],
+        ]
+    );
+    $this->add_group_control(
+        \Elementor\Group_Control_Background::get_type(),
+        [
+            'name' => 'tab_button_hover_background',
+            'types' => [ 'classic', 'gradient', 'video' ],
+            'selector' => '{{WRAPPER}} .tab-content .content .tab-button:hover',
+        ]
+    );
+    $this->add_responsive_control(
+        'tab_button_hover_transition',
+        [
+            'label' => esc_html__( 'Transition Duration', 'magic-elements' ) . ' (s)',
+            'type'  => \Elementor\Controls_Manager::SLIDER,
+            'range' => [
+                'px' => [
+                    'min'  => 0,
+                    'max'  => 3,
+                    'step' => 0.1,
+                ],
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .tab-content .content .tab-button:hover' => 'transition-duration: {{SIZE}}s',
+            ],
+        ]
+    );
+    $this->end_controls_tab();
+    
+    $this->end_controls_tabs();
+    //end normal-hover-tab
+    $this->add_control(
+        'button_style_options',
+        [
+            'type' => \Elementor\Controls_Manager::HEADING,
+            'separator' => 'before',
+        ]
+    );
+    $this->add_group_control(
+        \Elementor\Group_Control_Border::get_type(),
+        [
+            'name' => 'tab_button_border',
+            'selector' => '{{WRAPPER}} .tab-content .content .tab-button',
+        ]
+    );
+    $this->add_responsive_control(
+        'tab_button_border_radius',
+        [
+            'label' => esc_html__( 'Border Radius', 'magic-elements' ),
+            'type' => \Elementor\Controls_Manager::DIMENSIONS,
+            'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+            'selectors' => [
+                '{{WRAPPER}} .tab-content .content .tab-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
+    $this->add_responsive_control(
+        'tab_button_padding',
+        [
+            'label' => esc_html__( 'Padding', 'magic-elements' ),
+            'type' => \Elementor\Controls_Manager::DIMENSIONS,
+            'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+            'selectors' => [
+                '{{WRAPPER}} .tab-content .content .tab-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
+    $this->add_responsive_control(
+        'tab_button_margin',
+        [
+            'label' => esc_html__( 'Margin', 'magic-elements' ),
+            'type' => \Elementor\Controls_Manager::DIMENSIONS,
+            'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+            'selectors' => [
+                '{{WRAPPER}} .tab-content .content .tab-button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
+    $this->end_controls_section();
+
 
       
     }
@@ -633,7 +827,7 @@ class Tab extends Widget_Base
 
         $tabs = $settings['tabs'];
        
-        include __DIR__ . '/layouts/tab.php';
+        include __DIR__ . '/layouts/Tab/tab.php';
     }
 
         /**

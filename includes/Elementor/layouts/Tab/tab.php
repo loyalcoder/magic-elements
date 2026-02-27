@@ -19,7 +19,10 @@ if (!defined('ABSPATH')) {
       ?> 
       <div class="content" id="tab-<?php echo esc_attr($data_tab_id); ?>">
         <h2><?php echo esc_html( $tab['tab_content_title'] ); ?></h2>
-        <p><?php echo wp_kses_post( $tab['tab_content'] ); ?></p>
+        <p><?php echo esc_html( $tab['tab_content'] ); ?></p>
+        <a class="tab-button" href="<?php echo esc_url($tab['tab_button_link']['url']); ?>">
+          <?php echo esc_html($tab['tab_button_text']); ?> <!-- Only button text -->
+      </a>
       </div> 
     <?php } ?>
   </div>

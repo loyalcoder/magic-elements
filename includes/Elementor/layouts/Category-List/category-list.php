@@ -3,7 +3,7 @@
 // Prevent direct access to the file
 if (!defined('ABSPATH')) {
     exit;
-}
+} 
     
     if ( ! empty( $settings['category_items'] ) ) {
         // Initialize an empty variable to store the HTML

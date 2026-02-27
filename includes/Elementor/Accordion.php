@@ -142,29 +142,18 @@ class Accordion extends Widget_Base
 			[
 				'label'       => esc_html__( 'Title', 'magic-elements' ),
 				'type'        => \Elementor\Controls_Manager::TEXT,
-				'default'     => esc_html__( 'List Title' , 'magic-elements' ),
+				'default'     => esc_html__( 'Our best academic result you want to khow ?' , 'magic-elements' ),
 				'label_block' => true,
 			]
 		);
-
-		$repeater->add_control(
+        $repeater->add_control(
 			'accordion_list_content',
 			[
-				'label'      => esc_html__( 'Content', 'magic-elements' ),
-				'type'       => \Elementor\Controls_Manager::WYSIWYG,
-				'default'    => esc_html__( 'List Content' , 'magic-elements' ),
-				'show_label' => false,
-			]
-		);
-
-		$repeater->add_control(
-			'accordion_list_color',
-			[
-				'label'     => esc_html__( 'Color', 'magic-elements' ),
-				'type'      => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} {{CURRENT_ITEM}}' => 'color: {{VALUE}}'
-				],
+				'label' => esc_html__( 'Description', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'rows' => 10,
+				'default' => esc_html__( 'Nulla venenatis condimentum nunc vitae blandit. Donec augue lacus, vulputate vulputate lacus bibendum, accumsan tempus ante. Curabitur a augue id purus euismod venenatis vel id arcu.', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your description here', 'magic-elements' ),
 			]
 		);
         $this->add_control(
@@ -175,16 +164,16 @@ class Accordion extends Widget_Base
 				'fields'  => $repeater->get_controls(),
 				'default' => [
 					[
-						'accordion_list_title'   => esc_html__( 'Title #1', 'magic-elements' ),
-						'accordion_list_content' => esc_html__( 'Item content. Click the edit button to change this text.', 'magic-elements' ),
+						'accordion_list_title'   => esc_html__( 'Why you like us for your children education?', 'magic-elements' ),
+						'accordion_list_content' => esc_html__( 'Nulla venenatis condimentum nunc vitae blandit. Donec augue lacus, vulputate vulputate lacus bibendum, accumsan tempus ante. Curabitur a augue id purus euismod venenatis vel id arcu.', 'magic-elements' ),
 					],
 					[
-						'accordion_list_title'   => esc_html__( 'Title #2', 'magic-elements' ),
-						'accordion_list_content' => esc_html__( 'Item content. Click the edit button to change this text.', 'magic-elements' ),
+						'accordion_list_title'   => esc_html__( 'What about our best feature you want to know ?', 'magic-elements' ),
+						'accordion_list_content' => esc_html__( 'Nulla venenatis condimentum nunc vitae blandit. Donec augue lacus, vulputate vulputate lacus bibendum, accumsan tempus ante. Curabitur a augue id purus euismod venenatis vel id arcu.', 'magic-elements' ),
 					],
 					[
-						'accordion_list_title'   => esc_html__( 'Title #3', 'magic-elements' ),
-						'accordion_list_content' => esc_html__( 'Item content. Click the edit button to change this text.', 'magic-elements' ),
+						'accordion_list_title'   => esc_html__( 'Is it our best admission process for others ?', 'magic-elements' ),
+						'accordion_list_content' => esc_html__( 'Nulla venenatis condimentum nunc vitae blandit. Donec augue lacus, vulputate vulputate lacus bibendum, accumsan tempus ante. Curabitur a augue id purus euismod venenatis vel id arcu.', 'magic-elements' ),
 					],
 				],
 				'accordion_title_field' => '{{{ accordion_list_title }}}',
@@ -348,6 +337,14 @@ class Accordion extends Widget_Base
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'accordion_list_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .emk-accordion-item',
+			]
+		);
 
 		$this->start_controls_tabs('accordion_item_style_tabs');
 
@@ -371,15 +368,6 @@ class Accordion extends Widget_Base
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'item_box_shadow',
-				'selector' => '{{WRAPPER}} .emk-accordion-container .emk-accordion-item',
-			]
-		);
-
-		$this->add_group_control(
-			\Elementor\Group_Control_Background::get_type(),
-			[
-				'name'     => 'item_background',
-				'types'    => ['classic', 'gradient'],
 				'selector' => '{{WRAPPER}} .emk-accordion-container .emk-accordion-item',
 			]
 		);
@@ -409,16 +397,6 @@ class Accordion extends Widget_Base
 				'selector' => '{{WRAPPER}} .emk-accordion-container .emk-accordion-item:hover',
 			]
 		);
-
-		$this->add_group_control(
-			\Elementor\Group_Control_Background::get_type(),
-			[
-				'name'     => 'item_background_hover',
-				'types'    => ['classic', 'gradient'],
-				'selector' => '{{WRAPPER}} .emk-accordion-container .emk-accordion-item:hover',
-			]
-		);
-
 		$this->add_control(
 			'item_hover_transition',
 			[
@@ -528,17 +506,6 @@ class Accordion extends Widget_Base
                 'selector' => '{{WRAPPER}} .emk-accordion-title h3',
             ]
         );
-
-        $this->start_controls_tabs('title_style_tabs');
-
-            // Normal State
-        $this->start_controls_tab(
-            'title_style_normal',
-            [
-                'label' => esc_html__('Normal', 'magic-elements'),
-            ]
-        );
-
         $this->add_control(
             'accordion_title_color',
             [
@@ -547,6 +514,16 @@ class Accordion extends Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .emk-accordion-title .emk-heading' => 'color: {{VALUE}};',
                 ],
+            ]
+        );
+
+        $this->start_controls_tabs('title_style_tabs');
+
+            // Normal State
+        $this->start_controls_tab(
+            'title_style_normal',
+            [
+                'label' => esc_html__('Normal', 'magic-elements'),
             ]
         );
 
@@ -570,18 +547,6 @@ class Accordion extends Widget_Base
                 'label' => esc_html__('Hover', 'magic-elements'),
             ]
         );
-
-        $this->add_control(
-            'title_hover_color',
-            [
-                'label'     => esc_html__('Color', 'magic-elements'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .emk-accordion-title:hover .emk-heading' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
         $this->add_control(
             'title_hover_background',
             [
@@ -760,7 +725,7 @@ class Accordion extends Widget_Base
         $this->start_controls_section(
             'icon_style_section',
             [
-				'label'     => esc_html__('Icon Style', 'magic-elements'),
+				'label'     => esc_html__('Icon', 'magic-elements'),
 				'tab'       => \Elementor\Controls_Manager::TAB_STYLE,
 				'condition' => [
                     'show_accordion_icon' => 'yes'

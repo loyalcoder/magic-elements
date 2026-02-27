@@ -301,7 +301,7 @@
 }
 .custom-lightbox-wrapper .custom-lightbox-content .lightbox-inner .lightbox-close {
   position: absolute;
-  top: -20px;
+  top: 20px;
   right: 0px;
   font-size: 50px;
   cursor: pointer;

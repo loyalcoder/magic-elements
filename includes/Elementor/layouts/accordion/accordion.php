@@ -6,8 +6,8 @@ if (!defined('ABSPATH')) {
 }
 $cursor_class = $settings['enable_cursor_pointer'] === 'yes' ? 'cursor-pointer' : 'cursor-default';
 ?>
-<div class="emk-accordion-wrapper <?php echo esc_attr($settings['accordion_style']); ?> " data-animation-duration="<?php echo esc_attr($settings['toggle_animation_duration']); ?>">
-    <div class="emk-accordion-container">
+<div class="emk-accordion-wrapper <?php echo esc_attr($settings['accordion_style']); ?>">
+    <div class="emk-accordion-container ">
         <?php if (!empty($settings['accordion_list'])) : ?>
             <?php foreach ($settings['accordion_list'] as $item) : ?>
                 <div class="emk-accordion-item">

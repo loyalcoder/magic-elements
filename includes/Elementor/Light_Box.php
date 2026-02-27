@@ -9,7 +9,7 @@
 
 namespace MagicElements\Elementor;
 
-use Elementor\Controls_Manager;
+use Elementor\Controls_Manager; 
 use Elementor\Widget_Base;
 
 if (!defined('ABSPATH')) {
@@ -474,6 +474,17 @@ class Light_Box extends Widget_Base
             'type' => \Elementor\Controls_Manager::COLOR,
             'selectors' => [
                 '{{WRAPPER}} .lightbox-inner .lightbox-close' => 'color: {{VALUE}}',
+            ],
+        ]
+    );
+    $this->add_responsive_control(
+        'lightbox_close_icon_margin',
+        [
+            'label' => esc_html__( 'Margin', 'magic-elements' ),
+            'type' => \Elementor\Controls_Manager::DIMENSIONS,
+            'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+            'selectors' => [
+                '{{WRAPPER}} .lightbox-inner .lightbox-close' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]
     );

@@ -12,7 +12,7 @@ namespace MagicElements\Elementor;
 use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
 
-if (!defined('ABSPATH')) {
+if (!defined('ABSPATH')) { 
     exit;
 } 
 
@@ -296,7 +296,7 @@ class Category_List extends Widget_Base
         $this->start_controls_section(
             'icon_style_section',
             [
-                'label' => esc_html__( 'Icon Style', 'magic-elements' ),
+                'label' => esc_html__( 'Icon', 'magic-elements' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -368,7 +368,7 @@ class Category_List extends Widget_Base
         $flex_direction = $layout === 'flex' ? 'row' : 'column';
         $align_property = $layout === 'flex' ? 'justify-content' : 'align-items';
 
-        include __DIR__ . '/layouts/category-list.php';
+        include __DIR__ . '/layouts/Category-List/category-list.php';
     }
 
         /**
