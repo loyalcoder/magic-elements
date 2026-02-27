@@ -1,0 +1,54 @@
+.icon-box-wapper{
+  border: 1px solid rgb(205, 205, 200);
+  .icon-box {
+    display: flex;
+    gap: 16px;
+    border-radius: 4px;
+    padding: 20px;
+    .icon{
+        svg{
+            width: 100px;
+        }
+    }
+    &--icon-left {
+      flex-direction: row;
+      
+    }
+    &--icon-right {
+      flex-direction: row-reverse;
+    }
+    &--icon-top {
+      flex-direction: column;
+      
+    }
+    &--icon-bottom {
+      flex-direction: column-reverse;
+    }
+  }
+}
+
+// Alignment classes from icon_box_align choose control (prefix_class => me-icon-box-align-)
+.me-icon-box-align-center{
+  // icon left/right (row) -> horizontal center
+  .icon-box--icon-left,
+  .icon-box--icon-right{
+    justify-content: center;
+  }
+  // icon top/bottom (column) -> horizontal center
+  .icon-box--icon-top,
+  .icon-box--icon-bottom{
+    align-items: center;
+  }
+}
+.me-icon-box-align-right{
+  // icon left/right (row) -> horizontal right
+  .icon-box--icon-left,
+  .icon-box--icon-right{
+    justify-content: flex-end;
+  }
+  // icon top/bottom (column) -> horizontal right
+  .icon-box--icon-top,
+  .icon-box--icon-bottom{
+    align-items: flex-end;
+  }
+}

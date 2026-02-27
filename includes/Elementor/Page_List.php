@@ -1,0 +1,415 @@
+<?php
+
+    /**
+ * Elementor Classes.
+ *
+ * @package Category List Magic Elements
+ */
+
+
+namespace MagicElements\Elementor;
+
+use Elementor\Controls_Manager;
+use Elementor\Widget_Base;
+
+if (!defined('ABSPATH')) { 
+    exit;
+} 
+
+    /**
+ * Magic Elements for Elementor Extension
+ *
+ * Elementor widget for Category List.
+ *
+ * @since 1.0.0
+ */
+class Page_List extends Widget_Base
+{
+        /**
+     * Retrieve the widget name.
+     *
+     * @since 1.0.0
+     *
+     * @access public
+     *
+     * @return string Widget name.
+     */
+    public function get_name()
+    {
+        return 'em_kit_page_list';
+    }
+
+        /**
+     * Retrieve the widget title.
+     *
+     * @since 1.0.0
+     *
+     * @access public
+     *
+     * @return string Widget title.
+     */
+    public function get_title()
+    {
+        return esc_html__('Page List', 'magic-elements');
+    }
+
+        /**
+     * Retrieve the widget icon.
+     *
+     * @since 1.0.0
+     *
+     * @access public
+     *
+     * @return string Widget icon.
+     */
+    public function get_icon()
+    {
+        return 'eicon-single-page magicelements-editor-widgets-icon';
+    }
+
+        /**
+     * Retrieve the list of categories the widget belongs to.
+     *
+     * Used to determine where to display the widget in the editor.
+     *
+     * Note that currently Elementor supports only one category.
+     * When multiple categories passed, Elementor uses the first one.
+     *
+     * @since 1.0.0
+     *
+     * @access public
+     *
+     * @return array Widget categories.
+     */
+    public function get_categories()
+    {
+        return ['magicelements-widgets'];
+    }
+
+    public function get_style_depends()
+    {
+        return ['emk-page-list'];
+    }
+
+    public function get_script_depends()
+    {
+        return [];
+    }
+
+        /**
+     * Register Copyright controls.
+     *
+     * @since 1.0.0
+     * @access protected
+     */
+    protected function register_controls()
+    {
+        $this->register_page_list_controls();
+    }
+
+        /**
+     * Register Copyright General Controls.
+     *
+     * @since 1.0.0
+     * @access protected
+     */
+    protected function register_page_list_controls()
+    {
+        $this->start_controls_section(
+            'content_section',
+            [
+                'label' => esc_html__( 'Page list', 'magic-elements' ),
+                'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $repeater = new \Elementor\Repeater();
+
+            // Category Select Control
+        $repeater->add_control(
+            'selected_page',
+            [
+                'label'   => esc_html__( 'Select Page', 'magic-elements' ),
+                'type'    => \Elementor\Controls_Manager::SELECT,
+                'options' => $this->get_all_pages(),
+                'default' => '',
+            ]
+        );
+
+            // Icon Control
+        $repeater->add_control(
+            'icon',
+            [
+                'label'   => esc_html__( 'Icon', 'magic-elements' ),
+                'type'    => \Elementor\Controls_Manager::ICONS,
+                'default' => [
+                    'value'   => 'fas fa-tag',
+                    'library' => 'solid',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'page_items',
+            [
+                'label'       => esc_html__( 'Page List', 'magic-elements' ),
+                'type'        => \Elementor\Controls_Manager::REPEATER,
+                'fields'      => $repeater->get_controls(),
+                'title_field' => '{{{ selected_page }}}',
+            ]
+        );
+
+        $this->end_controls_section();
+
+            // Style Controls: Layout
+        $this->start_controls_section(
+            'layout_section',
+            [
+                'label' => esc_html__( 'Layout', 'magic-elements' ),
+                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+
+            // Layout Control
+        $this->add_control(
+            'layout',
+            [
+                'label'   => esc_html__( 'Layout', 'magic-elements' ),
+                'type'    => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'flex' => [
+                        'title' => esc_html__( 'Flex', 'magic-elements' ),
+                        'icon'  => 'eicon-gallery-grid',
+                    ],
+                    'column' => [
+                        'title' => esc_html__( 'Column', 'magic-elements' ),
+                        'icon'  => 'eicon-editor-list-ul',
+                    ],
+                ],
+                'default' => 'column',
+                'toggle'  => true,
+            ]
+        );
+
+            // Alignment Control
+        $this->add_responsive_control(
+            'alignment',
+            [
+                'label'   => esc_html__( 'Alignment', 'magic-elements' ),
+                'type'    => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'flex-start' => [
+                        'title' => esc_html__( 'Start', 'magic-elements' ),
+                        'icon'  => 'eicon-text-align-left',
+                    ],
+                    'center' => [
+                        'title' => esc_html__( 'Center', 'magic-elements' ),
+                        'icon'  => 'eicon-text-align-center',
+                    ],
+                    'flex-end' => [
+                        'title' => esc_html__( 'End', 'magic-elements' ),
+                        'icon'  => 'eicon-text-align-right',
+                    ],
+                ],
+                'default' => 'flex-start',
+            ]
+        );
+
+            // Space Control
+        $this->add_responsive_control(
+            'category_spacing',
+            [
+                'label' => esc_html__( 'Spacing Between Items', 'magic-elements' ),
+                'type'  => \Elementor\Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min'  => 0,
+                        'max'  => 50,
+                        'step' => 1,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .page-list-widget li' => 'margin: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+
+        $this->add_responsive_control(
+            'list_padding',
+            [
+                'label'      => esc_html__( 'List Padding', 'magic-elements' ),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors'  => [
+                    '{{WRAPPER}} .page-list-widget' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+            // Style Controls: Typography
+        $this->start_controls_section(
+            'typography_section',
+            [
+                'label' => esc_html__( 'Typography', 'magic-elements' ),
+                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'page_typography',
+                'label'    => esc_html__( 'Typography', 'magic-elements' ),
+                'selector' => '{{WRAPPER}} .page-list-widget li a',
+            ]
+        );
+
+        $this->add_control(
+            'text_color',
+            [
+                'label'     => esc_html__( 'Text Color', 'magic-elements' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .page-list-widget li a' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'text_hover_color',
+            [
+                'label'     => esc_html__( 'Text Hover Color', 'magic-elements' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .page-list-widget li a:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+            // Style Controls: Icon Styling
+        $this->start_controls_section(
+            'icon_style_section',
+            [
+                'label' => esc_html__( 'Icon', 'magic-elements' ),
+                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+    
+        $this->add_control(
+            'icon_color',
+            [
+                'label'     => esc_html__( 'Icon Color', 'magic-elements' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#0073aa',
+                'selectors' => [
+                    '{{WRAPPER}} .page-list-widget li i' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+    
+        $this->add_control(
+            'icon_hover_color',
+            [
+                'label'     => esc_html__( 'Icon Hover Color', 'magic-elements' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#005177',
+                'selectors' => [
+                    '{{WRAPPER}} .page-list-widget li:hover i' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+    
+        $this->add_responsive_control(
+            'icon_size',
+            [
+                'label' => esc_html__( 'Icon Size', 'magic-elements' ),
+                'type'  => \Elementor\Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 10,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'size' => 20,
+                    'unit' => 'px',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .page-list-widget li i' => 'font-size: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+}
+
+        /**
+     * Render Copyright output on the frontend.
+     *
+     * Written in PHP and used to generate the final HTML.
+     *
+     * @since 1.0.0
+     * @access protected
+     */
+    protected function render()
+    {
+        $settings = $this->get_settings_for_display();
+      
+
+        $layout   = $settings['layout'];
+            // $limit = $settings['category_limit'];
+        $alignment = isset( $settings['alignment'] ) ? $settings['alignment'] : 'flex-start';
+
+            // Determine Flex or Column Layout Properties
+        $flex_direction = $layout === 'flex' ? 'row' : 'column';
+        $align_property = $layout === 'flex' ? 'justify-content' : 'align-items';
+
+        include __DIR__ . '/layouts/Page-List/page-list.php';
+    }
+
+        /**
+     * Render shortcode widget as plain content.
+     *
+     * Override the default behavior by printing the shortcode instead of rendering it.
+     *
+     * @since 1.0.0
+     * @access public
+     */
+    public function render_plain_content()
+    {
+            // In plain mode, render without shortcode.
+        echo esc_attr($this->get_settings('shortcode'));
+    }
+
+        /**
+     * Render shortcode widget output in the editor.
+     *
+     * Written as a Backbone JavaScript template and used to generate the live preview.
+     *
+     * @since 1.3.0
+     * @access protected
+     */
+    protected function content_template()
+    {
+    }
+        // Helper function to fetch all categories
+    protected function get_all_pages() {
+        $pages = get_pages();
+
+        $options_pages = [];
+
+        if(!empty($pages)){
+            foreach($pages as $page){
+                $options_pages[$page->ID] = $page->post_title;
+            }
+        }
+
+        return $options_pages;
+    }
+}

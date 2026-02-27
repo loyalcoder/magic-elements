@@ -9,7 +9,7 @@
 
 namespace MagicElements\Elementor;
 
-use Elementor\Controls_Manager;
+use Elementor\Controls_Manager; 
 use Elementor\Widget_Base;
 
 if (!defined('ABSPATH')) {
@@ -199,7 +199,7 @@ class Counter extends Widget_Base
 				'default'   => 'center',
 				'toggle'    => true,
 				'selectors' => [
-					'{{WRAPPER}} .counter h3' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .counter-wrapper h3' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
@@ -209,7 +209,7 @@ class Counter extends Widget_Base
 				'label'     => esc_html__( 'Text Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .counter h3' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .counter-wrapper h3' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -217,27 +217,27 @@ class Counter extends Widget_Base
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name'     => 'number_content_typography',
-				'selector' => '{{WRAPPER}} .counter h3',
+				'selector' => '{{WRAPPER}} .counter-wrapper h3',
 			]
 		);
         $this->add_group_control(
 			\Elementor\Group_Control_Text_Stroke::get_type(),
 			[
 				'name'     => 'number_text_stroke',
-				'selector' => '{{WRAPPER}} .counter h3',
+				'selector' => '{{WRAPPER}} .counter-wrapper h3',
 			]
 		);
         $this->add_group_control(
 			\Elementor\Group_Control_Text_Shadow::get_type(),
 			[
 				'name'     => 'number_text_shadow',
-				'selector' => '{{WRAPPER}} .counter h3',
+				'selector' => '{{WRAPPER}} .counter-wrapper h3',
 			]
 		);
         $this->end_controls_section();
 
         $this->start_controls_section(
-			'title_style_section',
+			'counter_title_style_section',
 			[
 				'label' => esc_html__( 'Title', 'magic-elements' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
@@ -265,7 +265,7 @@ class Counter extends Widget_Base
 				'default'   => 'center',
 				'toggle'    => true,
 				'selectors' => [
-					'{{WRAPPER}} .counter p' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .counter-wrapper p' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
@@ -275,7 +275,7 @@ class Counter extends Widget_Base
 				'label'     => esc_html__( 'Text Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .counter p' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .counter-wrapper p' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -283,21 +283,21 @@ class Counter extends Widget_Base
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name'     => 'title_content_typography',
-				'selector' => '{{WRAPPER}} .counter p',
+				'selector' => '{{WRAPPER}} .counter-wrapper p',
 			]
 		);
         $this->add_group_control(
 			\Elementor\Group_Control_Text_Stroke::get_type(),
 			[
 				'name'     => 'title_text_stroke',
-				'selector' => '{{WRAPPER}} .counter p',
+				'selector' => '{{WRAPPER}} .counter-wrapper p',
 			]
 		);
         $this->add_group_control(
 			\Elementor\Group_Control_Text_Shadow::get_type(),
 			[
 				'name'     => 'title_text_shadow',
-				'selector' => '{{WRAPPER}} .counter p',
+				'selector' => '{{WRAPPER}} .counter-wrapper p',
 			]
 		);
         $this->add_responsive_control(
@@ -307,7 +307,7 @@ class Counter extends Widget_Base
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors'  => [
-					'{{WRAPPER}} .counter p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .counter-wrapper p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -325,7 +325,7 @@ class Counter extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        include __DIR__ . '/layouts/counter.php';
+        include __DIR__ . '/layouts/Counter/counter.php';
     }
 
         /**
@@ -352,5 +352,20 @@ class Counter extends Widget_Base
      */
     protected function content_template()
     {
+        ?>
+        <#
+        var counterId = 'counters_' + view.getID();
+        var endNumber = settings.counter_number || 100;
+        var speed = 2000;
+        var suffix = settings.counter_suffix_one || '';
+        var title = settings.counter_title || '';
+        #>
+        <div class="counter-wrapper">
+            <h3 id="{{{ counterId }}}">
+                <span class="counter" data-TargetNum="{{{ endNumber }}}" data-Speed="{{{ speed }}}">{{{ endNumber }}}</span>{{{ suffix }}}
+            </h3>
+            <p>{{{ title }}}</p>
+        </div>
+        <?php
     }
 }

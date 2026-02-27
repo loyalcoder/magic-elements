@@ -216,7 +216,7 @@ class Card extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'card_width',
             [
                 'label'      => esc_html__('Card Width', 'magic-elements'),
@@ -242,7 +242,7 @@ class Card extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'card_height',
             [
                 'label'      => esc_html__('Card Height', 'magic-elements'),
@@ -271,7 +271,7 @@ class Card extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'card_border_width',
             [
                 'label'      => esc_html__('Border Width', 'magic-elements'),
@@ -289,7 +289,7 @@ class Card extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'card_border_radius',
             [
                 'label'      => esc_html__('Border Radius', 'magic-elements'),
@@ -308,7 +308,7 @@ class Card extends Widget_Base
         );
 
             // Card Padding Control
-        $this->add_control(
+        $this->add_responsive_control(
             'card_padding',
             [
                 'label'      => esc_html__('Padding', 'magic-elements'),
@@ -355,8 +355,19 @@ class Card extends Widget_Base
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
-                'name'     => 'title_typography',
+                'name'     => 'card_title_typography',
                 'selector' => '{{WRAPPER}} .card-title',
+            ]
+        );
+        $this->add_responsive_control(
+            'card_title_margin',
+            [
+                'label'      => esc_html__('Margin', 'magic-elements'),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors'  => [
+                    '{{WRAPPER}} .card-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
             ]
         );
 
@@ -387,6 +398,17 @@ class Card extends Widget_Base
             [
                 'name'     => 'description_typography',
                 'selector' => '{{WRAPPER}} .card-description',
+            ]
+        );
+        $this->add_responsive_control(
+            'card_description_margin',
+            [
+                'label'      => esc_html__('Margin', 'magic-elements'),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors'  => [
+                    '{{WRAPPER}} .card-description' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
             ]
         );
 
@@ -445,7 +467,7 @@ class Card extends Widget_Base
         );
 
             // Button Padding
-        $this->add_control(
+        $this->add_responsive_control(
             'card_button_padding',
             [
                 'label'      => esc_html__('Padding', 'magic-elements'),
@@ -453,6 +475,17 @@ class Card extends Widget_Base
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
                     '{{WRAPPER}} .card-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'card_button_margin',
+            [
+                'label'      => esc_html__('Margin', 'magic-elements'),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors'  => [
+                    '{{WRAPPER}} .card-button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -512,7 +545,7 @@ class Card extends Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
-        include __DIR__ . '/layouts/card.php';
+        include __DIR__ . '/layouts/Card/card.php';
     }
 
         /**

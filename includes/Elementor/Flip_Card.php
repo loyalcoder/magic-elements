@@ -12,7 +12,7 @@ namespace MagicElements\Elementor;
 use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
 
-if (!defined('ABSPATH')) {
+if (!defined('ABSPATH')) { 
     exit;
 }
 
@@ -703,6 +703,11 @@ class Flip_Card extends Widget_Base
 				],
 				'default'   => 'center',
 				'toggle'    => true,
+				'selectors_dictionary' => [
+					'left'   => 'flex-start',
+					'center' => 'center',
+					'right'  => 'flex-end',
+				],
 				'selectors' => [
 					'{{WRAPPER}} .flip-card-front .flip_card_icon' => 'justify-content: {{VALUE}};',
 				],
@@ -1056,7 +1061,7 @@ class Flip_Card extends Widget_Base
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default'    => [
-					'top'      => -25,
+					'top'      => 25,
 					'right'    => 0,
 					'bottom'   => 0,
 					'left'     => 0,
@@ -1302,7 +1307,7 @@ class Flip_Card extends Widget_Base
     {
         $settings            = $this->get_settings_for_display();
         $flip_card_icon_list = $settings['front_icon_list'];
-        include __DIR__ . '/layouts/flip-card.php';
+        include __DIR__ . '/layouts/Flip-Card/flip-card.php';
     }
 
         /**

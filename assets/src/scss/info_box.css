@@ -1,0 +1,30 @@
+.info-box {
+  display: flex;
+  gap: 16px;
+  border: 1px solid rgb(205, 205, 200);
+  border-radius: 4px;
+  padding: 30px;
+}
+.info-box .info-icon svg {
+  width: 100px;
+}
+.info-box--icon-left {
+  flex-direction: row;
+}
+.info-box--icon-right {
+  flex-direction: row-reverse;
+}
+.info-box--icon-top {
+  flex-direction: column;
+}
+.info-box--icon-bottom {
+  flex-direction: column-reverse;
+}
+.info-box .info-content .info-button a {
+  padding: 10px 18px;
+  background-color: #0D0C1D;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+}/*# sourceMappingURL=info_box.css.map */

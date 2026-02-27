@@ -1,0 +1,339 @@
+//Sticky Header SCSS
+.magic-header {
+    position: relative;
+    z-index: 999;
+
+    &.is-sticky {
+        position: sticky;
+        top: 0;
+        left: 0;
+        background: #fff;
+        transition: all 0.3s ease;
+
+        .magic-menu {
+            padding: 12px 0;
+        }
+    }
+}
+/* Optional: Scroll effect (CSS only) */
+.magic-header.is-sticky {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+.magic-header.is-sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    animation: stickyFade 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+
+@keyframes stickyFade {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+
+// Navigation Menu SCSS
+.magic-menu{
+    .nav-menu-left{
+        z-index: 30;
+    }
+    .menu-logo{
+        z-index: 30;
+    }
+    .nav-menu-right{
+        z-index: 30;
+    }
+    .nav-menu-left,.nav-menu-right{
+        ul{
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+    }
+    .mobile-menu{
+        z-index: 99;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .magic-menu{
+        .nav-menu-left{
+            display: none;
+        }
+        .nav-menu-right{
+            display: none;
+        }
+    }
+}
+//Search icon SCSS
+.magic-menu{
+    .menu-search{
+        border: 1px solid #121212;
+        border-radius: 16px;
+        padding: 15px;
+    }
+}
+
+// Search popup scss
+.open_search {
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px;
+    position: relative;
+    z-index: 20;
+}
+
+.search_block {
+  opacity: 0;
+  text-align: center;
+  height: 0;
+  position: absolute;
+  top: 50%;
+  left: 33%;
+  &.visible{
+    opacity: 1;
+    height: auto;
+    .search_box {
+      opacity: 1;
+      top: 0;
+      transform: scale(1);
+      margin-top: 40%;
+      z-index: 99999;
+    }
+  }
+  .overlayer {
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999;
+  }
+}
+
+.search_box {
+  display: inline-block;
+  opacity: 0;
+  position: relative;
+  text-align: center;
+  transform: scale(1.05);
+  transition: all 0.4s ease 0s;
+  z-index: 10;
+  
+  .search_input {
+    font-size: 18px;
+    display: inline-block;
+    height: 60px;
+    max-width: 550px;
+    outline: medium none;
+    padding: 15px 20px;
+    transition: all 0.45s ease 0s;
+    border-radius: 20px 0 0 20px;
+  }
+  .inner{
+    button{
+        color: #fff;
+        height: 60px;
+        padding: 12px 24px;
+        border-radius: 0 20px 20px 0;
+        margin-left: -8px;
+        font-size: 18px;
+        background-color: #EA4E1B;
+    }
+  }
+}
+//dropdown menu scss
+nav {
+    .cnw-nav {
+        display: flex;
+        gap: 25px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        > li {
+            position: relative;
+
+            > a {
+                display: block;
+                padding: 10px 0;
+                text-decoration: none;
+            }
+
+            &.menu-item-has-children {
+
+                > a::after {
+                    content: "▾";
+                    margin-left: 6px;
+                    font-size: 12px;
+                }
+
+                .sub-menu {
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    min-width: 150px;
+                    background: #fff;
+                    list-style: none;
+                    padding: 10px 0;
+                    margin: 0;
+                    opacity: 0;
+                    visibility: hidden;
+                    transform: translateY(10px);
+                    transition: all .25s ease;
+                    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+                    display: block;
+
+                    li {
+                        a {
+                            display: block;
+                            padding: 8px 15px;
+                            text-decoration: none;
+                            white-space: nowrap;
+
+                            &:hover {
+                                background: #f5f5f5;
+                            }
+                        }
+                    }
+                }
+
+                &:hover {
+                    > .sub-menu {
+                        opacity: 1;
+                        visibility: visible;
+                        transform: translateY(0);
+                    }
+                }
+            }
+        }
+    }
+}
+//Offcanvas Menu Dropdown SCSS
+.offcanvas-body {
+    .cnw-nav {
+        gap: 25px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        > li {
+            position: relative;
+
+            > a {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 0;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            &.menu-item-has-children {
+
+                > a::after {
+                    content: "▾";
+                    margin-left: 6px;
+                    font-size: 12px;
+                    transition: transform .25s ease;
+                }
+
+                /* submenu default hidden */
+                .sub-menu {
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    min-width: 150px;
+                    background: #fff;
+                    list-style: none;
+                    padding: 10px 0;
+                    margin: 0;
+                    opacity: 0;
+                    visibility: hidden;
+                    transform: translateY(10px);
+                    transition: all .25s ease;
+                    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+                    z-index: 10;
+                    margin-left: 20%;
+                }
+
+                /* ACTIVE STATE (click হলে) */
+                &.active {
+                    > a::after {
+                        transform: rotate(180deg);
+                    }
+
+                    > .sub-menu {
+                        opacity: 1;
+                        visibility: visible;
+                        transform: translateY(0);
+                    }
+                }
+            }
+        }
+    }
+}
+
+//Mobile menu icon SCSS
+.mobile-menu{
+    border: 1px solid #121212;
+    border-radius: 16px;
+    padding: 15px;
+}
+//Offcanvas Menu SCSS
+.offcanvas {
+    .offcanvas-header{
+        h3{
+            color: #EA4E1B;
+            font-size: 32px;
+        }
+        .offcanvas_description{
+            color: black;
+            font-size: 18px;
+            line-height: 24px;
+        }
+    }
+    .offcanvas-body{
+        ul{
+            li{
+                margin-top: 15px;
+                a{
+                    color: black;
+                    font-size: 18px;
+                    // line-height: 26px;
+                    padding: 8px 24px;
+                }
+                a:hover{
+                    background-color: rgb(234, 236, 238);
+                }
+            }
+        }
+    }
+}
+//Layout Two Book Button scss
+.book-button{
+    a{
+        color: white;
+        background-color: #EA4E1B;
+        font-size: 18px;
+        border-radius: 4px;
+        padding: 12px;
+    }
+}
+//Layout Three call us scss
+.right-side{
+    display: flex;
+    align-items: center;
+    gap:30px;
+}
+@media screen and (max-width: 448px) {
+   .right-side{
+    display: block;
+   
+}
+}

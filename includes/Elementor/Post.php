@@ -159,13 +159,65 @@ class Post extends Widget_Base
             ]
         );
 
+        // Meta & Content visibility controls.
+        $this->add_control(
+            'show_post_date',
+            [
+                'label'        => esc_html__('Show Date', 'magic-elements'),
+                'type'         => Controls_Manager::SWITCHER,
+                'label_on'     => esc_html__('Yes', 'magic-elements'),
+                'label_off'    => esc_html__('No', 'magic-elements'),
+                'return_value' => 'yes',
+                'default'      => 'yes',
+            ]
+        );
+
+        $this->add_control(
+            'show_post_author',
+            [
+                'label'        => esc_html__('Show Author', 'magic-elements'),
+                'type'         => Controls_Manager::SWITCHER,
+                'label_on'     => esc_html__('Yes', 'magic-elements'),
+                'label_off'    => esc_html__('No', 'magic-elements'),
+                'return_value' => 'yes',
+                'default'      => 'yes',
+            ]
+        );
+
+        $this->add_control(
+            'show_post_excerpt',
+            [
+                'label'        => esc_html__('Show Excerpt', 'magic-elements'),
+                'type'         => Controls_Manager::SWITCHER,
+                'label_on'     => esc_html__('Yes', 'magic-elements'),
+                'label_off'    => esc_html__('No', 'magic-elements'),
+                'return_value' => 'yes',
+                'default'      => 'yes',
+            ]
+        );
+
+        $this->add_control(
+            'post_excerpt_length',
+            [
+                'label'     => esc_html__('Excerpt Length (words)', 'magic-elements'),
+                'type'      => Controls_Manager::NUMBER,
+                'min'       => 5,
+                'max'       => 100,
+                'step'      => 1,
+                'default'   => 25,
+                'condition' => [
+                    'show_post_excerpt' => 'yes',
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
         // Style Section
         $this->start_controls_section(
             'post_style_section',
             [
-                'label' => esc_html__('Post Style', 'magic-elements'),
+                'label' => esc_html__('Post', 'magic-elements'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -215,9 +267,9 @@ class Post extends Widget_Base
 
         // Title Style Section
         $this->start_controls_section(
-            'title_style_section',
+            'post_title_style_section',
             [
-                'label' => esc_html__('Title Style', 'magic-elements'),
+                'label' => esc_html__('Title', 'magic-elements'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -225,18 +277,136 @@ class Post extends Widget_Base
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
-                'name'     => 'title_typography',
-                'selector' => '{{WRAPPER}} .post-title',
+                'name'     => 'post_title_typography',
+                'selector' => '{{WRAPPER}} .post-title, {{WRAPPER}} .post-title a',
             ]
         );
 
         $this->add_control(
-            'title_color',
+            'post_title_color',
             [
                 'label'     => esc_html__('Color', 'magic-elements'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .post-title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .post-title, {{WRAPPER}} .post-title a' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'post_title_hover_color',
+            [
+                'label'     => esc_html__('Hover Color', 'magic-elements'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .post-title a:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'post_title_margin',
+            [
+                'label'      => esc_html__('Margin', 'magic-elements'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .post-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // Meta Style Section (Date & Author)
+        $this->start_controls_section(
+            'post_meta_style_section',
+            [
+                'label' => esc_html__('Meta (Date & Author)', 'magic-elements'),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'post_meta_typography',
+                'selector' => '{{WRAPPER}} .post-meta, {{WRAPPER}} .post-meta .post-date, {{WRAPPER}} .post-meta .post-author',
+            ]
+        );
+
+        $this->add_control(
+            'post_meta_color',
+            [
+                'label'     => esc_html__('Text Color', 'magic-elements'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .post-meta, {{WRAPPER}} .post-meta .post-date, {{WRAPPER}} .post-meta .post-author' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'post_meta_spacing',
+            [
+                'label'      => esc_html__('Top Spacing', 'magic-elements'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em'],
+                'range'      => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 50,
+                    ],
+                    'em' => [
+                        'min' => 0,
+                        'max' => 5,
+                        'step'=> 0.1,
+                    ],
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .post-meta' => 'margin-top: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // Excerpt / Content Style Section
+        $this->start_controls_section(
+            'post_excerpt_style_section',
+            [
+                'label' => esc_html__('Excerpt / Content', 'magic-elements'),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'post_excerpt_typography',
+                'selector' => '{{WRAPPER}} .post-excerpt',
+            ]
+        );
+
+        $this->add_control(
+            'post_excerpt_color',
+            [
+                'label'     => esc_html__('Text Color', 'magic-elements'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .post-excerpt' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'post_excerpt_margin',
+            [
+                'label'      => esc_html__('Margin', 'magic-elements'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .post-excerpt' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -280,7 +450,7 @@ class Post extends Widget_Base
 
         $query = $this->get_posts_data($args);
         
-        include __DIR__ . '/layouts/post.php';
+        include __DIR__ . '/layouts/post/post.php';
     }
 
     /**
