@@ -1,3 +1,9 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Template variables from widget settings.
+?>
 <div class="feature-list">
     <?php if ( ! empty( $feature_list ) ) : ?>
         <?php foreach ( $feature_list as $list ) : ?>

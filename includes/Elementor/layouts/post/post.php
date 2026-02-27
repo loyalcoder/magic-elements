@@ -6,16 +6,15 @@
  * @var array $query    Posts data from MagicElements\Traits\Data::get_posts_data().
  */
 
-if (!defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
-?>
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Template variables from widget settings/query.
 
-<?php
-$show_date    = !empty($settings['show_post_date']) && 'yes' === $settings['show_post_date'];
-$show_author  = !empty($settings['show_post_author']) && 'yes' === $settings['show_post_author'];
-$show_excerpt = !empty($settings['show_post_excerpt']) && 'yes' === $settings['show_post_excerpt'];
-$excerpt_len  = !empty($settings['post_excerpt_length']) ? absint($settings['post_excerpt_length']) : 25;
+$show_date    = ! empty( $settings['show_post_date'] ) && 'yes' === $settings['show_post_date'];
+$show_author  = ! empty( $settings['show_post_author'] ) && 'yes' === $settings['show_post_author'];
+$show_excerpt = ! empty( $settings['show_post_excerpt'] ) && 'yes' === $settings['show_post_excerpt'];
+$excerpt_len  = ! empty( $settings['post_excerpt_length'] ) ? absint( $settings['post_excerpt_length'] ) : 25;
 ?>
 
 <?php if (!empty($query) && is_array($query)) : ?>

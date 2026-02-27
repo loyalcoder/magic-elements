@@ -4,6 +4,7 @@
     if (!defined('ABSPATH')) {
         exit;
     }
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Template variables from widget settings.
     
     if ( ! empty( $settings['page_items'] ) ) {
         // Initialize an empty variable to store the HTML
