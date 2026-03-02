@@ -1,3 +1,9 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Template variables from widget settings.
+?>
 <div class="info-box info-box--icon-<?php echo esc_attr($icon_position); ?>">
     <div class="info-icon">
         <?php \Elementor\Icons_Manager::render_icon( $settings['info_box_icon'], [ 'aria-hidden' => 'true' ] ); ?>

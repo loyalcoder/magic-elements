@@ -1117,7 +1117,7 @@ class Post_List extends Widget_Base
                 
                 <?php if ('yes' === $settings['show_excerpt']) : ?>
                     <div class="magic-post-excerpt">
-                        <?php echo wp_trim_words($post['excerpt'], $settings['excerpt_length']); ?>
+                        <?php echo wp_kses_post( wp_trim_words( $post['excerpt'], $settings['excerpt_length'] ) ); ?>
                     </div>
                 <?php endif; ?>
                 
@@ -1148,18 +1148,25 @@ protected function render_meta_data($post, $meta_data) {
                 
             case 'categories':
                 if (!empty($post['categories'])) {
-                    echo '<span class="post-categories">' . implode(', ', $post['categories']) . '</span>';
+                    $categories_list = implode( ', ', (array) $post['categories'] );
+                    echo '<span class="post-categories">' . esc_html( $categories_list ) . '</span>';
                 }
                 break;
                 
             case 'comments':
-                $comments_number = get_comments_number($post['ID']);
-                echo '<span class="post-comments">';
-                printf(
-                    _n('%s Comment', '%s Comments', $comments_number, 'magic-elements'),
-                    number_format_i18n($comments_number)
-                );
-                echo '</span>';
+                $comments_number = (int) get_comments_number($post['ID']);
+                ?>
+                <span class="post-comments">
+                    <?php
+                    /* translators: %s: number of comments. */
+                    $comments_text = _n('%s Comment', '%s Comments', $comments_number, 'magic-elements');
+                    printf(
+                        esc_html($comments_text),
+                        esc_html(number_format_i18n($comments_number))
+                    );
+                    ?>
+                </span>
+                <?php
                 break;
         }
     }

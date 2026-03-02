@@ -1,3 +1,9 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Template variables from widget settings.
+?>
 <div class="icon-box-wapper">
     <?php
         if ( ! empty( $settings['icon_box_link']['url'] ) ) {
