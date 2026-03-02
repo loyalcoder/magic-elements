@@ -154,8 +154,7 @@ class Mbuilder_Frontend {
         if(empty($header_post)){
             return false;
         }
-        $post_id = isset($header_post['templates'][0]['ID']) ? $header_post['templates'][0]['ID'] : 0;        
-        return $this->should_display($post_id);         
+         return isset($header_post['templates'][0]['ID']) ? $header_post['templates'][0]['ID'] : 0;        
     }
 
     /**
