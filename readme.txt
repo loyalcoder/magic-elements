@@ -21,6 +21,39 @@ Enhance Elementor with advanced widgets, templates, and features for customizabl
 - Easy-to-use interface with seamless integration.
 - Fully responsive and optimized for performance.
 
+### Elementor Widgets Included
+
+Magic Elements ships with a focused library of **28 Elementor widgets**, covering content, marketing, navigation, and layout use‑cases:
+
+- ✅ **Image** – Flexible image widget with full style controls.
+- ✅ **Button** – Modern buttons with icon, hover, and alignment options.
+- ✅ **Pricing Table** – Create pricing / plan tables with badges and CTA.
+- ✅ **Team** – Showcase team members with image, name, role, and socials.
+- ✅ **Text Editor** – Enhanced text/content block with styling controls.
+- ✅ **Image Accordion** – Interactive image accordion with hover/click reveal.
+- ✅ **Flip Card** – Front/back card with animated flip interaction.
+- ✅ **Heading** – Advanced headings with typography and decorative styles.
+- ✅ **Post Category Tab** – Filter posts by category in a tabbed layout.
+- ✅ **Accordion** – FAQ/accordion content with icons and animations.
+- ✅ **Counter** – Animated number counters for stats and milestones.
+- ✅ **Category List** – List blog categories with icons and links.
+- ✅ **Card** – Content card with image, title, text, and button.
+- ✅ **Tab** – Horizontal tabs for organizing content sections.
+- ✅ **Post** – Blog posts grid with thumbnail, meta, and excerpt.
+- ✅ **Image Compare** – Before/after image comparison slider.
+- ✅ **Light Box** – Custom lightbox for images, text, or video content.
+- ✅ **Post List** – List style blog layout with meta and read more.
+- ✅ **Page List** – List of selected pages with icons and links.
+- ✅ **Multiple Button** – Repeater-based multi-button layout (button groups).
+- ✅ **Icon Box** – Icon + title + description info boxes.
+- ✅ **Info Box** – Content/info box with icon and call-to-action button.
+- ✅ **Feature List** – Feature rows with icons, titles, and descriptions.
+- ✅ **Review** – Testimonial/review block with rating stars.
+- ✅ **Timeline** – Vertical timeline with dates, titles, and content.
+- ✅ **Progress Bar** – Animated progress/skill bars with percentage.
+- ✅ **Multi Step** – Multi-step wizard/flow with steps, content, and completion popup.
+- ✅ **Nav Menu** – Custom header navigation menu with logo, search, and mega-menu ready structure.
+
 Elevate your Elementor experience and create visually stunning websites with ease.
 
 
