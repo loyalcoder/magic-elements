@@ -71,8 +71,8 @@ class Mbuilder_Frontend {
     public function replace_header()
     {
         $header_id = $this->get_active_id('header');
-        
-        if ($header_id == '') {
+
+        if ( ! $header_id ) {
             return false;
         }
         include __DIR__. '/templates/header.php';
@@ -151,6 +151,7 @@ class Mbuilder_Frontend {
             ],
         ];
         $result = $this->get_builder_templates($args);
+
         if ( empty( $result['templates'] ) ) {
             return false;
         }
@@ -182,15 +183,7 @@ class Mbuilder_Frontend {
         $query_object = get_queried_object();
         $current_page = $this->get_current_page( $query_object );
         $current_id   = is_numeric( $current_page ) ? (int) $current_page : 0;
-        if ( ! $current_id ) {
-            return false;
-        }
-        $current_post_type = '';
-        $current_post      = get_post( $current_id );
-        if ( $current_post ) {
-            $current_post_type = $current_post->post_type;
-        }
-        $conditions = get_post_meta( $template_id, '_me_builder_condition', true );
+        $conditions   = get_post_meta( $template_id, '_me_builder_condition', true );
         if ( ! is_array( $conditions ) ) {
             return false;
         }
@@ -200,16 +193,74 @@ class Mbuilder_Frontend {
             if ( $display_on !== 'selective_singular' || $display_type !== 'include' ) {
                 continue;
             }
-            $post_type  = isset( $condition['post_type'] ) ? $condition['post_type'] : '';
-            $all_posts  = ! empty( $condition['all_posts'] );
-            $post_ids   = isset( $condition['post_ids'] ) && is_array( $condition['post_ids'] ) ? array_map( 'intval', $condition['post_ids'] ) : [];
-            if ( $post_type && $post_type !== $current_post_type ) {
-                continue;
-            }
-            // If marked as all_posts or no IDs, treat as \"all posts\" of this post type.
-            if ( $all_posts || empty( $post_ids ) || in_array( $current_id, $post_ids, true ) ) {
+            if ( $this->selective_singular_condition_matches( $condition, $current_id, $query_object ) ) {
                 return true;
             }
+        }
+        return false;
+    }
+
+    /**
+     * Check if a single selective_singular condition matches current request.
+     *
+     * @param array  $condition   Condition row (post_type, selective_mode, post_ids, taxonomy).
+     * @param int    $current_id  Current post ID (0 if not singular).
+     * @param object $query_object Queried object.
+     * @return bool
+     */
+    private function selective_singular_condition_matches( array $condition, $current_id, $query_object ) {
+        $post_type       = isset( $condition['post_type'] ) ? $condition['post_type'] : '';
+        $mode            = isset( $condition['selective_mode'] ) ? $condition['selective_mode'] : 'all_posts';
+        $post_ids        = isset( $condition['post_ids'] ) && is_array( $condition['post_ids'] ) ? array_map( 'intval', $condition['post_ids'] ) : [];
+        $taxonomy        = isset( $condition['taxonomy'] ) ? $condition['taxonomy'] : '';
+        $taxonomy_terms  = isset( $condition['taxonomy_terms'] ) && is_array( $condition['taxonomy_terms'] ) ? array_map( 'intval', $condition['taxonomy_terms'] ) : [];
+        // Backward compat: old data may have all_posts flag or empty post_ids meaning "all".
+        if ( ! in_array( $mode, [ 'all_posts', 'custom', 'taxonomy' ], true ) ) {
+            $mode = ! empty( $condition['all_posts'] ) || ( $post_type && empty( $post_ids ) && ! $taxonomy ) ? 'all_posts' : 'custom';
+        }
+
+        // Taxonomy scope: match by taxonomy (and optionally specific terms).
+        if ( $mode === 'taxonomy' && $taxonomy ) {
+            // Term archive: current term must match (if terms specified, current term must be in list).
+            if ( is_tax( $taxonomy ) && $query_object instanceof \WP_Term ) {
+                $term_id = (int) $query_object->term_id;
+                if ( empty( $taxonomy_terms ) ) {
+                    return true;
+                }
+                return in_array( $term_id, $taxonomy_terms, true );
+            }
+            // Singular post: post must have a term in this taxonomy; if terms specified, must be in list.
+            if ( $current_id ) {
+                $terms = get_the_terms( $current_id, $taxonomy );
+                if ( empty( $terms ) || is_wp_error( $terms ) ) {
+                    return false;
+                }
+                if ( empty( $taxonomy_terms ) ) {
+                    return true;
+                }
+                foreach ( $terms as $term ) {
+                    if ( in_array( (int) $term->term_id, $taxonomy_terms, true ) ) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        if ( ! $current_id ) {
+            return false;
+        }
+        $current_post      = get_post( $current_id );
+        $current_post_type = $current_post ? $current_post->post_type : '';
+        if ( $post_type && $post_type !== $current_post_type ) {
+            return false;
+        }
+
+        if ( $mode === 'all_posts' ) {
+            return true;
+        }
+        if ( $mode === 'custom' ) {
+            return in_array( $current_id, $post_ids, true );
         }
         return false;
     }
@@ -235,8 +286,11 @@ class Mbuilder_Frontend {
             $conditions = [];
         }
         $query_object = get_queried_object();
+        if ( null === $query_object ) {
+            $query_object = (object) [];
+        }
         $current_page = $this->get_current_page( $query_object );
-        $current_id  = is_numeric( $current_page ) ? (int) $current_page : 0;
+        $current_id   = is_numeric( $current_page ) ? (int) $current_page : 0;
 
         $include_list      = [];
         $exclude_list      = [];
@@ -247,11 +301,13 @@ class Mbuilder_Frontend {
             $display_type = isset( $condition['display_type'] ) ? $condition['display_type'] : 'include';
             $display_on   = isset( $condition['display_on'] ) ? $condition['display_on'] : '';
             if ( $display_on === 'selective_singular' ) {
-                $entry = array(
-                    'post_type' => isset( $condition['post_type'] ) ? $condition['post_type'] : '',
-                    'post_ids'  => isset( $condition['post_ids'] ) && is_array( $condition['post_ids'] ) ? array_map( 'intval', $condition['post_ids'] ) : array(),
-                    'all_posts' => ! empty( $condition['all_posts'] ),
-                );
+                $entry = [
+                    'post_type'       => isset( $condition['post_type'] ) ? $condition['post_type'] : '',
+                    'selective_mode'  => isset( $condition['selective_mode'] ) ? $condition['selective_mode'] : 'all_posts',
+                    'post_ids'        => isset( $condition['post_ids'] ) && is_array( $condition['post_ids'] ) ? array_map( 'intval', $condition['post_ids'] ) : [],
+                    'taxonomy'        => isset( $condition['taxonomy'] ) ? $condition['taxonomy'] : '',
+                    'taxonomy_terms'  => isset( $condition['taxonomy_terms'] ) && is_array( $condition['taxonomy_terms'] ) ? array_map( 'intval', $condition['taxonomy_terms'] ) : [],
+                ];
                 if ( $display_type === 'include' ) {
                     $include_selective[] = $entry;
                 } else {
@@ -275,20 +331,10 @@ class Mbuilder_Frontend {
                 return false;
             }
         }
-        // Exclude: selective singular — current post ID (or all posts of post_type when marked/all IDs empty)
-        if ( $current_id && ! empty( $exclude_selective ) ) {
-            $current_post      = get_post( $current_id );
-            $current_post_type = $current_post ? $current_post->post_type : '';
-            foreach ( $exclude_selective as $entry ) {
-                $pt        = isset( $entry['post_type'] ) ? $entry['post_type'] : '';
-                $ids       = isset( $entry['post_ids'] ) && is_array( $entry['post_ids'] ) ? $entry['post_ids'] : array();
-                $all_posts = ! empty( $entry['all_posts'] );
-                if ( $pt && $pt !== $current_post_type ) {
-                    continue;
-                }
-                if ( $all_posts || empty( $ids ) || in_array( $current_id, $ids, true ) ) {
-                    return false;
-                }
+        // Exclude: selective singular (all_posts / custom / taxonomy)
+        foreach ( $exclude_selective as $entry ) {
+            if ( $this->selective_singular_condition_matches( $entry, $current_id, $query_object ) ) {
+                return false;
             }
         }
 
@@ -301,20 +347,10 @@ class Mbuilder_Frontend {
                 return $header_id;
             }
         }
-        // Include: selective singular — current post ID in any include list, or any post for post_type when marked/all IDs empty
-        if ( $current_id && ! empty( $include_selective ) ) {
-            $current_post      = get_post( $current_id );
-            $current_post_type = $current_post ? $current_post->post_type : '';
-            foreach ( $include_selective as $entry ) {
-                $pt        = isset( $entry['post_type'] ) ? $entry['post_type'] : '';
-                $ids       = isset( $entry['post_ids'] ) && is_array( $entry['post_ids'] ) ? $entry['post_ids'] : array();
-                $all_posts = ! empty( $entry['all_posts'] );
-                if ( $pt && $pt !== $current_post_type ) {
-                    continue;
-                }
-                if ( $all_posts || empty( $ids ) || in_array( $current_id, $ids, true ) ) {
-                    return $header_id;
-                }
+        // Include: selective singular (all_posts / custom / taxonomy)
+        foreach ( $include_selective as $entry ) {
+            if ( $this->selective_singular_condition_matches( $entry, $current_id, $query_object ) ) {
+                return $header_id;
             }
         }
 

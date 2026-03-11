@@ -242,6 +242,28 @@ trait Builder {
         }
         return apply_filters('magic_elements_builder_post_types', $list);
     }
+
+    /**
+     * Get taxonomies for a post type (for Selective Singular → Taxonomy scope).
+     *
+     * @param string $post_type Post type slug.
+     * @return array Associative array taxonomy_slug => label.
+     */
+    public function get_builder_taxonomies( $post_type ) {
+        if ( ! $post_type ) {
+            return [];
+        }
+        $taxonomies = get_object_taxonomies( $post_type, 'objects' );
+        $list = [];
+        foreach ( $taxonomies as $tax ) {
+            if ( empty( $tax->public ) ) {
+                continue;
+            }
+            $list[ $tax->name ] = $tax->labels->singular_name;
+        }
+        return apply_filters( 'magic_elements_builder_taxonomies', $list, $post_type );
+    }
+
     public function get_display_condition_list($formData) {
         $display_condition = [];
         if (isset($formData['me_builder_condition']) && is_array($formData['me_builder_condition'])) {
@@ -251,24 +273,26 @@ trait Builder {
                     'display_on'   => isset($condition['display_on']) ? sanitize_text_field($condition['display_on']) : 'entire_website',
                 ];
                 if ($item['display_on'] === 'selective_singular') {
-                    $item['post_type'] = isset($condition['post_type']) ? sanitize_text_field($condition['post_type']) : 'post';
-                    $item['post_ids']  = [];
-                    $item['all_posts'] = false;
-                    if (!empty($condition['post_ids']) && is_array($condition['post_ids'])) {
-                        $raw_ids   = $condition['post_ids'];
-                        $has_all   = false;
-                        $clean_ids = [];
-                        foreach ($raw_ids as $raw) {
-                            $raw = is_string($raw) ? trim($raw) : $raw;
-                            if ($raw === '__all__') {
-                                $has_all = true;
-                                continue;
-                            }
-                            $clean_ids[] = absint($raw);
+                    $item['post_type']      = isset($condition['post_type']) ? sanitize_text_field($condition['post_type']) : 'post';
+                    $item['selective_mode'] = isset($condition['selective_mode']) ? sanitize_text_field($condition['selective_mode']) : 'all_posts';
+                    $item['post_ids']       = [];
+                    $item['taxonomy']       = '';
+                    if ( in_array( $item['selective_mode'], [ 'all_posts', 'custom', 'taxonomy' ], true ) ) {
+                        // no change
+                    } else {
+                        $item['selective_mode'] = 'all_posts';
+                    }
+                    if ( $item['selective_mode'] === 'taxonomy' && ! empty( $condition['taxonomy'] ) ) {
+                        $item['taxonomy'] = sanitize_text_field( $condition['taxonomy'] );
+                        $item['taxonomy_terms'] = [];
+                        if ( ! empty( $condition['taxonomy_terms'] ) && is_array( $condition['taxonomy_terms'] ) ) {
+                            $item['taxonomy_terms'] = array_map( 'absint', $condition['taxonomy_terms'] );
+                            $item['taxonomy_terms'] = array_filter( $item['taxonomy_terms'] );
                         }
-                        $clean_ids         = array_filter($clean_ids);
-                        $item['post_ids']  = $clean_ids;
-                        $item['all_posts'] = $has_all;
+                    }
+                    if ( $item['selective_mode'] === 'custom' && ! empty( $condition['post_ids'] ) && is_array( $condition['post_ids'] ) ) {
+                        $item['post_ids'] = array_map( 'absint', $condition['post_ids'] );
+                        $item['post_ids'] = array_filter( $item['post_ids'] );
                     }
                 }
                 $display_condition[] = $item;
