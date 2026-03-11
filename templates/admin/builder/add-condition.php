@@ -3,8 +3,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Template variables from passed $args.
-$display_on = isset( $args['display_on'] ) ? $args['display_on'] : [];
-$post_types = isset( $args['post_types'] ) ? $args['post_types'] : [];
+$display_on  = isset( $args['display_on'] ) ? $args['display_on'] : [];
+$post_types  = isset( $args['post_types'] ) ? $args['post_types'] : [];
 ?>
 <div class="magic-elements-add-condition d-flex flex-wrap align-items-start">
     <div class="magic-elements-add-condition-content d-flex flex-wrap">
@@ -29,27 +29,9 @@ $post_types = isset( $args['post_types'] ) ? $args['post_types'] : [];
                 <?php } ?>
             </select>
         </div>
-        <div class="condition-group me-builder-condition-selective me-builder-scope-wrap" style="display:none;">
-            <label class="me-condition-label"><?php echo esc_html__( 'Scope', 'magic-elements' ); ?></label>
-            <select name="me_builder_condition[0][selective_mode]" class="me-builder-selective-mode">
-                <option value="all_posts"><?php echo esc_html__( 'All posts (of this type)', 'magic-elements' ); ?></option>
-                <option value="custom"><?php echo esc_html__( 'Custom (select posts)', 'magic-elements' ); ?></option>
-                <option value="taxonomy"><?php echo esc_html__( 'Taxonomy', 'magic-elements' ); ?></option>
-            </select>
-        </div>
         <div class="condition-group me-builder-condition-selective me-builder-post-select-wrap" style="display:none;">
             <label class="me-condition-label"><?php echo esc_html__( 'Select posts', 'magic-elements' ); ?></label>
             <select name="me_builder_condition[0][post_ids][]" class="me-builder-post-select" multiple="multiple" data-placeholder="<?php echo esc_attr__( 'Search or select…', 'magic-elements' ); ?>"></select>
-        </div>
-        <div class="condition-group me-builder-condition-selective me-builder-taxonomy-wrap" style="display:none;">
-            <label class="me-condition-label"><?php echo esc_html__( 'Taxonomy', 'magic-elements' ); ?></label>
-            <select name="me_builder_condition[0][taxonomy]" class="me-builder-taxonomy">
-                <option value=""><?php echo esc_html__( '— Select taxonomy —', 'magic-elements' ); ?></option>
-            </select>
-        </div>
-        <div class="condition-group me-builder-condition-selective me-builder-taxonomy-terms-wrap" style="display:none;">
-            <label class="me-condition-label"><?php echo esc_html__( 'Select terms', 'magic-elements' ); ?></label>
-            <select name="me_builder_condition[0][taxonomy_terms][]" class="me-builder-taxonomy-terms" multiple="multiple" data-placeholder="<?php echo esc_attr__( 'Select terms (optional)', 'magic-elements' ); ?>"></select>
         </div>
     </div>
     <button type="button" class="remove-condition">

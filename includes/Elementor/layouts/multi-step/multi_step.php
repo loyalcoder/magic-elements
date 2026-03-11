@@ -1,12 +1,8 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-    exit;
-}
-// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Template variables from widget settings.
 $id = 'em-multi-step-wizard-' . $this->get_id();
 $active_step = $settings['active_step'] - 1; // Convert to 0-based index
 
-if ( empty( $settings['steps'] ) ) {
+if (empty($settings['steps'])) {
     return;
 }
 ?>
@@ -86,9 +82,9 @@ if ( empty( $settings['steps'] ) ) {
                 <div class="em-step-popup-overlay"></div>
                 <div class="em-step-popup-content">
                     <div class="em-step-popup-close">&times;</div>
-                    <h3><?php echo esc_html( $settings['alert_title'] ); ?></h3>
-                    <?php echo wp_kses_post( $settings['alert_description'] ); ?>
-                    <button class="em-step-popup-button"><?php echo esc_html( $settings['alert_btn'] ); ?></button>
+                    <h3><?php echo $settings['alert_title']; ?></h3>
+                    <?php echo $settings['alert_description']; ?>
+                    <button class="em-step-popup-button"><?php echo $settings['alert_btn']; ?></button>
                 </div>
             </div>
             <?php 
