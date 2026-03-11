@@ -50,14 +50,33 @@ if ( ! function_exists( 'me_get_display_condition_html' ) ) {
     function me_get_display_condition_html( $condition ) {
         $html = '<ul class="me-display-condition-list">';
         
-        if (!empty($condition) && is_array($condition)) {
-            foreach ($condition as $item) {
-                if (isset($item['display_type']) && isset($item['display_on'])) {
-                    $display_type = str_replace('_', ' ', $item['display_type']);
-                    $display_on = str_replace('_', ' ', $item['display_on']);
-                    $html .= '<li><strong>' . esc_html__('Display Type:', 'magic-elements') . '</strong> ' . esc_html(ucwords($display_type)) . '</li>';
-                    $html .= '<li><strong>' . esc_html__('Display On:', 'magic-elements') . '</strong> ' . esc_html(ucwords($display_on)) . '</li>';
+        if ( ! empty( $condition ) && is_array( $condition ) ) {
+            foreach ( $condition as $item ) {
+                if ( ! isset( $item['display_type'] ) || ! isset( $item['display_on'] ) ) {
+                    continue;
                 }
+                $display_type = str_replace( '_', ' ', $item['display_type'] );
+                $display_on   = $item['display_on'];
+                $display_on_label = ( $display_on === 'selective_singular' )
+                    ? esc_html__( 'Selective Singular', 'magic-elements' )
+                    : esc_html( ucwords( str_replace( '_', ' ', $display_on ) ) );
+                $html .= '<li><strong>' . esc_html__( 'Display Type:', 'magic-elements' ) . '</strong> ' . esc_html( ucwords( $display_type ) ) . '</li>';
+                $html .= '<li><strong>' . esc_html__( 'Display On:', 'magic-elements' ) . '</strong> ' . $display_on_label;
+                if ( $display_on === 'selective_singular' ) {
+                    $post_type = isset( $item['post_type'] ) ? $item['post_type'] : 'post';
+                    $post_type_obj = get_post_type_object( $post_type );
+                    $post_type_label = $post_type_obj ? $post_type_obj->labels->singular_name : $post_type;
+                    $html .= ' <span class="me-condition-meta">(' . esc_html( $post_type_label ) . ')';
+                    $post_ids = isset( $item['post_ids'] ) && is_array( $item['post_ids'] ) ? array_map( 'intval', $item['post_ids'] ) : [];
+                    if ( ! empty( $post_ids ) ) {
+                        $titles = array_filter( array_map( function ( $id ) {
+                            return $id ? get_the_title( $id ) : '';
+                        }, $post_ids ) );
+                        $html .= ' — ' . esc_html( implode( ', ', $titles ) );
+                    }
+                    $html .= '</span>';
+                }
+                $html .= '</li>';
             }
         }
         

@@ -22,6 +22,7 @@ class MBuilder {
         add_action('wp_ajax_me_submit_template', [$this, 'ajax_submit_template']);
         add_action('wp_ajax_me_load_preview_data', [$this, 'ajax_load_preview_data']);
         add_action('wp_ajax_me_delete_template', [$this, 'ajax_delete_template']);
+        add_action('wp_ajax_me_builder_search_posts', [$this, 'ajax_builder_search_posts']);
     }
 
     /**
@@ -74,7 +75,8 @@ class MBuilder {
             'post_id' => $post_id,
             'display_type' => $this->display_type_list(),
             'post_data' => $post_data,
-            'display_on' => $display_on
+            'display_on' => $display_on,
+            'post_types' => $this->get_builder_post_types(),
         ];
         $html = '';
         ob_start();
@@ -96,7 +98,8 @@ class MBuilder {
         $display_on  = $this->get_display_on_list();
         $args = [
             'post_id' => $post_id,
-            'display_on' => $display_on
+            'display_on' => $display_on,
+            'post_types' => $this->get_builder_post_types(),
         ];
         ob_start();
         magic_elements_get_template_part('admin/builder/add-condition', '', $args);
@@ -209,5 +212,55 @@ class MBuilder {
             ]);
         }
         wp_die();
+    }
+
+    /**
+     * AJAX: Search posts for Selective Singular condition (Select2).
+     * Returns up to 10 posts per page; supports search and pagination.
+     */
+    public function ajax_builder_search_posts(): void {
+        if (!check_ajax_referer('me_builder_nonce', 'nonce', false)) {
+            wp_send_json_error(['message' => esc_html__('Invalid security token', 'magic-elements')]);
+        }
+        if (!current_user_can('edit_posts')) {
+            wp_send_json_error(['message' => esc_html__('Permission denied', 'magic-elements')]);
+        }
+        $post_type = isset($_POST['post_type']) ? sanitize_text_field(wp_unslash($_POST['post_type'])) : 'post';
+        $search    = isset($_POST['search']) ? sanitize_text_field(wp_unslash($_POST['search'])) : '';
+        $page      = isset($_POST['page']) ? max(1, (int) $_POST['page']) : 1;
+        $per_page  = 10;
+
+        $allowed_types = array_keys($this->get_builder_post_types());
+        if (!in_array($post_type, $allowed_types, true)) {
+            wp_send_json_error(['message' => esc_html__('Invalid post type', 'magic-elements')]);
+        }
+
+        $query_args = [
+            'post_type'      => $post_type,
+            'post_status'    => 'publish',
+            'posts_per_page' => $per_page,
+            'paged'          => $page,
+            'orderby'        => 'title',
+            'order'          => 'ASC',
+        ];
+        if ($search !== '') {
+            $query_args['s'] = $search;
+        }
+
+        $query = new \WP_Query($query_args);
+        $results = [];
+        foreach ($query->posts as $post) {
+            $results[] = [
+                'id'   => (string) $post->ID,
+                'text' => $post->post_title,
+            ];
+        }
+        $total_pages = $query->max_num_pages;
+        wp_send_json_success([
+            'results'    => $results,
+            'pagination' => [
+                'more' => $page < $total_pages,
+            ],
+        ]);
     }
 }

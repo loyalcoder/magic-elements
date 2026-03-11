@@ -145,7 +145,7 @@ trait Builder {
      * @param array $meta Additional meta data
      * @return int|false The post ID on success, false on failure
      */
-    public function insert_builder_template(string $title, string $type, array $meta = []): int|false {
+    public function insert_builder_template(string $title, string $type, array $meta = []) {
         // Prepare post data
         $post_data = [
             'post_title'   => sanitize_text_field($title),
@@ -205,29 +205,74 @@ trait Builder {
     }
     public function get_display_on_list() {
         $display = [
-            'entire_website' => esc_html__('Entire Website', 'magic-elements'),
-            'front_page'     => esc_html__('Front Page', 'magic-elements'),
-            'blog_page'      => esc_html__('Blog Page', 'magic-elements'),
-            'four_0_4'       => esc_html__('404', 'magic-elements'),
-            'search_page'    => esc_html__('Search Page', 'magic-elements'),
-            'blog_archive'   => esc_html__('Blog Archive', 'magic-elements'),
-            'blog_date_archive' => esc_html__('Blog Date Archive', 'magic-elements'),
-            'blog_category_archive' => esc_html__('Blog Category Archive', 'magic-elements'),
-            'blog_tag_archive' => esc_html__('Blog Tag Archive', 'magic-elements'),
-            'blog_author_archive' => esc_html__('Author Archive', 'magic-elements'),
+            'entire_website'           => esc_html__('Entire Website', 'magic-elements'),
+            'front_page'               => esc_html__('Front Page', 'magic-elements'),
+            'blog_page'                => esc_html__('Blog Page', 'magic-elements'),
+            'four_0_4'                 => esc_html__('404', 'magic-elements'),
+            'search_page'              => esc_html__('Search Page', 'magic-elements'),
+            'blog_archive'             => esc_html__('Blog Archive', 'magic-elements'),
+            'blog_date_archive'        => esc_html__('Blog Date Archive', 'magic-elements'),
+            'blog_category_archive'    => esc_html__('Blog Category Archive', 'magic-elements'),
+            'blog_tag_archive'         => esc_html__('Blog Tag Archive', 'magic-elements'),
+            'blog_author_archive'       => esc_html__('Author Archive', 'magic-elements'),
+            'selective_singular'       => esc_html__('Selective Singular', 'magic-elements'),
         ];
-        // Add taxonomy groups
         return apply_filters('magic_elements_display_on_list', $display);
+    }
+
+    /**
+     * Get public post types for builder condition dropdown.
+     *
+     * @return array Associative array post_type => label.
+     */
+    /**
+     * Get post types for Selective Singular condition (excludes attachment, me_builder).
+     *
+     * @return array Associative array post_type => label.
+     */
+    public function get_builder_post_types() {
+        $types = get_post_types([ 'public' => true ], 'objects');
+        $exclude = [ 'attachment', 'me_builder' ];
+        $list = [];
+        foreach ( $types as $post_type ) {
+            if ( in_array( $post_type->name, $exclude, true ) ) {
+                continue;
+            }
+            $list[ $post_type->name ] = $post_type->labels->singular_name;
+        }
+        return apply_filters('magic_elements_builder_post_types', $list);
     }
     public function get_display_condition_list($formData) {
         $display_condition = [];
-        if(isset($formData['me_builder_condition'])){
-            $display_condition = array_map(function($condition) {
-                return array(
-                    'display_type' => sanitize_text_field($condition['display_type']),
-                    'display_on' => sanitize_text_field($condition['display_on'])
-                );
-            }, $formData['me_builder_condition']);
+        if (isset($formData['me_builder_condition']) && is_array($formData['me_builder_condition'])) {
+            foreach ($formData['me_builder_condition'] as $condition) {
+                $item = [
+                    'display_type' => isset($condition['display_type']) ? sanitize_text_field($condition['display_type']) : 'include',
+                    'display_on'   => isset($condition['display_on']) ? sanitize_text_field($condition['display_on']) : 'entire_website',
+                ];
+                if ($item['display_on'] === 'selective_singular') {
+                    $item['post_type'] = isset($condition['post_type']) ? sanitize_text_field($condition['post_type']) : 'post';
+                    $item['post_ids']  = [];
+                    $item['all_posts'] = false;
+                    if (!empty($condition['post_ids']) && is_array($condition['post_ids'])) {
+                        $raw_ids   = $condition['post_ids'];
+                        $has_all   = false;
+                        $clean_ids = [];
+                        foreach ($raw_ids as $raw) {
+                            $raw = is_string($raw) ? trim($raw) : $raw;
+                            if ($raw === '__all__') {
+                                $has_all = true;
+                                continue;
+                            }
+                            $clean_ids[] = absint($raw);
+                        }
+                        $clean_ids         = array_filter($clean_ids);
+                        $item['post_ids']  = $clean_ids;
+                        $item['all_posts'] = $has_all;
+                    }
+                }
+                $display_condition[] = $item;
+            }
         }
         return $display_condition;
     }

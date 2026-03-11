@@ -61,16 +61,9 @@ jQuery(function(){
                 if(response.success){                    
                     $('.magic-elements-addnew-popup .content-loader').html(response.data.html);
                     $('.magic-elements-addnew-popup .loading').removeClass('loading');
-                    // Initialize select2 after content is loaded
+                    // Initialize select2 and condition UI after content is loaded
                     setTimeout(function() {
-                        $('#template_type').select2({
-                            width: '100%',
-                            dropdownParent: $('.magic-elements-addnew-popup')
-                        });
-                        $('.magic-elements-add-condition select').select2({
-                            width: '100%',
-                            dropdownParent: $('.magic-elements-add-condition')
-                        });
+                        meBuilderInitConditionUI($('.magic-elements-addnew-popup'));
                     }, 100);
                 }
             },
@@ -144,12 +137,9 @@ jQuery(function(){
                 // Replace index numbers in the HTML
                 html = html.replace(/\[0\]/g, `[${conditionCount}]`);
                 this_button.parent().before(html);
-                // Initialize select2 after adding new condition
+                // Initialize select2 and condition UI for new row
                 setTimeout(function() {
-                    $('.magic-elements-add-condition select').select2({
-                        width: '100%',
-                        dropdownParent: $('.magic-elements-addnew-popup')
-                    });
+                    meBuilderInitConditionUI($('.magic-elements-addnew-popup'));
                 }, 100);
             }else{
                 console.log(response);
@@ -160,6 +150,28 @@ jQuery(function(){
         }
      });
   });
+  // Display-on change: show/hide selective singular fields
+  $(document).on('change', '.magic-elements-addnew-popup .me-condition-display-on', function() {
+    var v = $(this).val();
+    var $row = $(this).closest('.magic-elements-add-condition');
+    $row.find('.me-builder-condition-selective').toggle(v === 'selective_singular');
+    if (v !== 'selective_singular') {
+      var $sel = $row.find('.me-builder-post-select');
+      if ($sel.length && $sel.hasClass('select2-hidden-accessible')) {
+        $sel.val(null).trigger('change');
+      }
+    }
+  });
+
+  // Post type change: clear post select (selected items may be from another type)
+  $(document).on('change', '.magic-elements-addnew-popup .me-builder-post-type', function() {
+    var $row = $(this).closest('.magic-elements-add-condition');
+    var $sel = $row.find('.me-builder-post-select');
+    if ($sel.length && $sel.hasClass('select2-hidden-accessible')) {
+      $sel.val(null).trigger('change');
+    }
+  });
+
   // remove condition
   $(document).on('click', '.magic-elements-addnew-popup .remove-condition', function(e){
     e.preventDefault();
@@ -202,6 +214,61 @@ jQuery(function(){
     });
   });
   
+  function meBuilderInitConditionUI($popup) {
+    if (!$popup || !$popup.length) return;
+    $popup.find('#template_type').each(function() {
+      var $el = $(this);
+      if ($el.hasClass('select2-hidden-accessible')) $el.select2('destroy');
+      $el.select2({ width: '100%', dropdownParent: $popup });
+    });
+    $popup.find('.magic-elements-add-condition').each(function() {
+      var $row = $(this);
+      var $displayType = $row.find('.me-condition-display-type');
+      var $displayOn = $row.find('.me-condition-display-on');
+      var $postType = $row.find('.me-builder-post-type');
+      var $postSelect = $row.find('.me-builder-post-select');
+      [$displayType, $displayOn, $postType].forEach(function($sel) {
+        if ($sel.length && $sel.hasClass('select2-hidden-accessible')) $sel.select2('destroy');
+        if ($sel.length) $sel.select2({ width: '100%', dropdownParent: $popup });
+      });
+      var showSelective = $displayOn.val() === 'selective_singular';
+      $row.find('.me-builder-condition-selective').toggle(showSelective);
+      if ($postSelect.length) {
+        if ($postSelect.hasClass('select2-hidden-accessible')) $postSelect.select2('destroy');
+        $postSelect.select2({
+          width: '100%',
+          dropdownParent: $popup,
+          placeholder: $postSelect.data('placeholder') || 'Search or select…',
+          minimumInputLength: 0,
+          allowClear: true,
+          ajax: {
+            url: me_builder_ajax_object.ajax_url,
+            dataType: 'json',
+            delay: 250,
+            data: function(params) {
+              return {
+                action: 'me_builder_search_posts',
+                nonce: me_builder_ajax_object.nonce,
+                search: params.term || '',
+                page: params.page || 1,
+                post_type: $postType.val() || 'post'
+              };
+            },
+            processResults: function(data) {
+              if (data.success && data.data && data.data.results) {
+                return {
+                  results: data.data.results,
+                  pagination: data.data.pagination
+                };
+              }
+              return { results: [] };
+            }
+          }
+        });
+      }
+    });
+  }
+
   function fire_ajax (data, display_selector, pagination_selector) {
     $.ajax({
       url: me_builder_ajax_object.ajax_url,

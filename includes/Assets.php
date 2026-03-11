@@ -73,6 +73,19 @@ class Assets
                 filemtime(MAGIC_ELEMENTS_PATH . '/assets/vendors/select2/select2.min.js'),
                 true
             );
+            wp_enqueue_script(
+                'magic-element-builder-conditions',
+                MAGIC_ELEMENTS_ASSETS . '/js/builder-conditions.js',
+                ['jquery', 'magic-element-builder-select2'],
+                filemtime(MAGIC_ELEMENTS_PATH . '/assets/js/builder-conditions.js'),
+                true
+            );
+            wp_enqueue_style(
+                'magic-element-builder-conditions',
+                MAGIC_ELEMENTS_ASSETS . '/css/builder-conditions.css',
+                ['magic-element-builder'],
+                filemtime(MAGIC_ELEMENTS_PATH . '/assets/css/builder-conditions.css')
+            );
             wp_localize_script(
                 'magic-element-builder',
                 'me_builder_ajax_object',
