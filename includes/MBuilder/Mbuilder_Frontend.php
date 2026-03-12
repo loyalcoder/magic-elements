@@ -86,9 +86,6 @@ class Mbuilder_Frontend {
     public function replace_footer()
     {
         $footer_id = $this->get_active_id('footer');
-        echo '<pre>';
-        print_r($footer_id);
-        echo '</pre>';
         
         if ($footer_id == '') {
             return false;
@@ -123,8 +120,7 @@ class Mbuilder_Frontend {
 
         if ( ! $active_footer_id ) {
             return false;
-        }
-
+        }        
         if (class_exists('\Elementor\Plugin')) {
             // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor get_builder_content_for_display() returns safe builder HTML.
             echo \Elementor\Plugin::instance()->frontend->get_builder_content_for_display($active_footer_id, false);
@@ -155,7 +151,6 @@ class Mbuilder_Frontend {
                 ],
             ],
         ];
-
         $result = $this->get_builder_templates($args);
         
         if ( empty( $result['templates'] ) ) {
@@ -163,73 +158,39 @@ class Mbuilder_Frontend {
         }
 
         $current_page = $this->get_current_page();
+        echo '<pre>';
+        print_r( $current_page);
+        echo '</pre>';
+        
 
-        // Split templates into "specific" and "global" (entire_website) groups.
-        $specific_templates = [];
-        $global_templates   = [];
+         if(isset($result['templates'])){
+             foreach($result['templates'] as $templates){
+                $template_id = ($templates['ID']) ? $templates['ID'] : '';
+                if(isset($templates['condition'])){
+                    foreach($templates['condition'] as $condition){
+                        if(isset($condition['display_type']) && $condition['display_type'] == 'include'){
+                            echo '<pre>';
+                            print_r($condition);
+                            echo '</pre>';
+                            
+                            if(isset($condition['selective_mode']) && $condition['selective_mode'] == 'custom'){
+                                if(is_array($condition['post_ids']) && !empty($condition['post_ids']) && in_array($current_page['post_id'], $condition['post_ids'])){
+                                    return $template_id;
+                                }
+                            }
+                            if(isset($condition['selective_mode']) && $condition['selective_mode'] == 'all_posts'){
+                                $post_type = $condition['post_type'];
+                                if($current_page['post_type'] == $post_type){                                    
+                                    return $template_id;
+                                }
+                                
+                            }
 
-        foreach ( $result['templates'] as $template ) {
-            $has_global_condition = false;
-
-            // If no conditions are set at all, treat as global (entire website) fallback.
-            if ( empty( $template['condition'] ) || ! is_array( $template['condition'] ) ) {
-                $has_global_condition = true;
-            } else {
-                foreach ( $template['condition'] as $condition ) {
-                    $display_on   = isset( $condition['display_on'] ) ? $condition['display_on'] : '';
-                    $display_type = isset( $condition['display_type'] ) ? $condition['display_type'] : 'include';
-
-                    if ( 'entire_website' === $display_on && 'exclude' !== $display_type ) {
-                        $has_global_condition = true;
-                        break;
+                        }
                     }
-                }
-            }
-
-            if ( $has_global_condition ) {
-                $global_templates[] = $template;
-            } else {
-                $specific_templates[] = $template;
-            }
-        }
-
-        // Evaluate specific templates first so they can override global ones.
-        $ordered_templates = array_merge( $specific_templates, $global_templates );
-
-        // Evaluate each template's own conditions separately and return the first match.
-        foreach ( $ordered_templates as $template ) {
-            if ( empty( $template['ID'] ) ) {
-                continue;
-            }
-
-            $builder_template_id = (int) $template['ID'];
-
-            $include_list = [];
-            $exclude_list = [];
-
-            if ( ! empty( $template['condition'] ) && is_array( $template['condition'] ) ) {
-                foreach ( $template['condition'] as $condition ) {
-                    if ( isset( $condition['display_type'] ) && 'exclude' === $condition['display_type'] ) {
-                        $exclude_list[] = $condition;
-                    } else {
-                        $include_list[] = $condition;
-                    }
-                }
-            } else {
-                // No explicit conditions: default to entire website include.
-                $include_list[] = [
-                    'display_type' => 'include',
-                    'display_on'   => 'entire_website',
-                ];
-            }
-
-            $matched_id = $this->get_display_id( $builder_template_id, $include_list, $exclude_list, $current_page );
-
-            if ( $matched_id ) {
-                return $matched_id;
-            }
-        }
-
+                }                
+             }
+         }
         return false;
     }
     protected function get_display_id($template_id, $include_list, $exclude_list, $current_page){
@@ -380,35 +341,47 @@ class Mbuilder_Frontend {
                 return $data;
     
             case is_category():
-            case is_tag():
-            case is_tax():
-    
-                $term = get_queried_object();
-    
-                $data['type']      = 'taxonomy_archive';
+                $term              = get_queried_object();
+                $data['type']      = 'blog_category_archive';
                 $data['taxonomy']  = $term->taxonomy ?? null;
                 $data['term_id']   = $term->term_id ?? null;
                 $data['term_slug'] = $term->slug ?? null;
-    
                 return $data;
-    
+
+            case is_tag():
+                $term              = get_queried_object();
+                $data['type']      = 'blog_tag_archive';
+                $data['taxonomy']  = $term->taxonomy ?? null;
+                $data['term_id']   = $term->term_id ?? null;
+                $data['term_slug'] = $term->slug ?? null;
+                return $data;
+
+            case is_tax():
+                $term              = get_queried_object();
+                // For custom taxonomies, treat as generic blog archive.
+                $data['type']      = 'blog_archive';
+                $data['taxonomy']  = $term->taxonomy ?? null;
+                $data['term_id']   = $term->term_id ?? null;
+                $data['term_slug'] = $term->slug ?? null;
+                return $data;
+
             case is_author():
-                $data['type'] = 'author_page';
+                $data['type'] = 'blog_author_archive';
                 return $data;
     
             case is_date():
-                $data['type'] = 'date_page';
+                $data['type'] = 'blog_date_archive';
                 return $data;
     
             case is_post_type_archive():
-    
-                $data['type']       = 'post_type_archive';
+                // Generic blog archive (e.g. CPT archives) unless more specific conditions are added later.
+                $data['type']       = 'blog_archive';
                 $data['archive_pt'] = get_query_var('post_type');
     
                 return $data;
     
             case is_archive():
-                $data['type'] = 'archive_page';
+                $data['type'] = 'blog_archive';
                 return $data;
         }
     
