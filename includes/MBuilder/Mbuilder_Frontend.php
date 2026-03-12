@@ -71,7 +71,7 @@ class Mbuilder_Frontend {
     public function replace_header()
     {
         $header_id = $this->get_active_id('header');
-
+        
         if ( ! $header_id ) {
             return false;
         }
@@ -86,7 +86,10 @@ class Mbuilder_Frontend {
     public function replace_footer()
     {
         $footer_id = $this->get_active_id('footer');
-        $header_id = $this->get_active_id('header');
+        echo '<pre>';
+        print_r($footer_id);
+        echo '</pre>';
+        
         if ($footer_id == '') {
             return false;
         }
@@ -117,9 +120,11 @@ class Mbuilder_Frontend {
     public function footer_builder_put_content()
     {
         $active_footer_id = $this->get_active_id('footer');
-        if($active_footer_id == ''){
+
+        if ( ! $active_footer_id ) {
             return false;
         }
+
         if (class_exists('\Elementor\Plugin')) {
             // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor get_builder_content_for_display() returns safe builder HTML.
             echo \Elementor\Plugin::instance()->frontend->get_builder_content_for_display($active_footer_id, false);
@@ -134,9 +139,9 @@ class Mbuilder_Frontend {
     public function get_active_id($type = 'header'){
         $args = [
             'post_type'      => 'me_builder',
-            'post_status'   => 'publish',
+            'post_status'    => 'publish',
             'posts_per_page' => 50,
-            'meta_query'    => [
+            'meta_query'     => [
                 'relation' => 'AND',
                 [
                     'key'     => '_me_builder_type',
@@ -150,40 +155,82 @@ class Mbuilder_Frontend {
                 ],
             ],
         ];
+
         $result = $this->get_builder_templates($args);
         
         if ( empty( $result['templates'] ) ) {
             return false;
         }
-        $builder_template_id = '';
-        $exclude_list = [];
-        $include_list = [];
+
+        $current_page = $this->get_current_page();
+
+        // Split templates into "specific" and "global" (entire_website) groups.
+        $specific_templates = [];
+        $global_templates   = [];
+
         foreach ( $result['templates'] as $template ) {
-            if(isset($template['ID'])){
-                $builder_template_id = (int) $template['ID'];
-            }
-            if(isset($template['condition'])){
-                foreach($template['condition'] as $condition){
-                    if($condition['display_type'] == 'exclude'){
-                        $exclude_list[] = $condition;
-                    }else{
-                        $include_list[] = $condition;
+            $has_global_condition = false;
+
+            // If no conditions are set at all, treat as global (entire website) fallback.
+            if ( empty( $template['condition'] ) || ! is_array( $template['condition'] ) ) {
+                $has_global_condition = true;
+            } else {
+                foreach ( $template['condition'] as $condition ) {
+                    $display_on   = isset( $condition['display_on'] ) ? $condition['display_on'] : '';
+                    $display_type = isset( $condition['display_type'] ) ? $condition['display_type'] : 'include';
+
+                    if ( 'entire_website' === $display_on && 'exclude' !== $display_type ) {
+                        $has_global_condition = true;
+                        break;
                     }
                 }
             }
+
+            if ( $has_global_condition ) {
+                $global_templates[] = $template;
+            } else {
+                $specific_templates[] = $template;
+            }
         }
-        // echo '<pre>';
-        // print_r($builder_template_id);
-        // echo '</pre>';
-        
-        // echo '<pre>';
-        // print_r( $include_list);
-        // echo '</pre>';
-        // echo '<pre>';
-        // print_r($exclude_list);
-        // echo '</pre>';
-        $template_id = $this->get_display_id($builder_template_id, $include_list, $exclude_list, $this->get_current_page());
-        return $template_id;
+
+        // Evaluate specific templates first so they can override global ones.
+        $ordered_templates = array_merge( $specific_templates, $global_templates );
+
+        // Evaluate each template's own conditions separately and return the first match.
+        foreach ( $ordered_templates as $template ) {
+            if ( empty( $template['ID'] ) ) {
+                continue;
+            }
+
+            $builder_template_id = (int) $template['ID'];
+
+            $include_list = [];
+            $exclude_list = [];
+
+            if ( ! empty( $template['condition'] ) && is_array( $template['condition'] ) ) {
+                foreach ( $template['condition'] as $condition ) {
+                    if ( isset( $condition['display_type'] ) && 'exclude' === $condition['display_type'] ) {
+                        $exclude_list[] = $condition;
+                    } else {
+                        $include_list[] = $condition;
+                    }
+                }
+            } else {
+                // No explicit conditions: default to entire website include.
+                $include_list[] = [
+                    'display_type' => 'include',
+                    'display_on'   => 'entire_website',
+                ];
+            }
+
+            $matched_id = $this->get_display_id( $builder_template_id, $include_list, $exclude_list, $current_page );
+
+            if ( $matched_id ) {
+                return $matched_id;
+            }
+        }
+
+        return false;
     }
     protected function get_display_id($template_id, $include_list, $exclude_list, $current_page){
 
@@ -196,7 +243,11 @@ class Mbuilder_Frontend {
         | EXCLUDE CONDITIONS (priority)
         |------------------------------------------------
         */
-    
+        // echo '<pre>';
+        // print_r($include_list);
+        // echo '</pre>';
+        // wp_die();
+        
         if (!empty($exclude_list)) {
     
             foreach ($exclude_list as $condition) {
