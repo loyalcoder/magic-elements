@@ -162,11 +162,64 @@ class Mbuilder_Frontend {
          if(isset($result['templates'])){
              foreach($result['templates'] as $templates){
                 $template_id = ($templates['ID']) ? $templates['ID'] : '';
-                if(isset($templates['condition'])){   
+                // echo '<pre>';
+                // print_r($templates);
+                // echo '</pre>';
+                
+                if(isset($templates['condition'])){ 
                     foreach($templates['condition'] as $condition){
+                        echo '<pre>';
+                        print_r($condition);
+                        echo '</pre>';
+                    }
+                      
+                    foreach($templates['condition'] as $condition){
+                        // exclude
+                        
+                        if(isset($condition['display_type']) && $condition['display_type'] == 'exclude'){
+                            echo '<pre>';
+                            print_r($condition);
+                            echo '</pre>';
+                            
+                            if(isset($condition['selective_mode']) && $condition['selective_mode'] == 'custom'){
+                                if(is_array($condition['post_ids']) && !empty($condition['post_ids']) && in_array($current_page['post_id'], $condition['post_ids'])){
+                                    return '';
+                                }
+                            }
+                            if(isset($condition['selective_mode']) && $condition['selective_mode'] == 'taxonomy'){
+                                if(isset($condition['taxonomy_terms']) && !empty($condition['taxonomy_terms'])){
+                                    if($condition['taxonomy'] == $current_page['taxonomy'] && in_array($current_page['term_id'], $condition['taxonomy_terms']) ){
+                                        return '';
+                                    }
+                                }
+                                if(isset($condition['taxonomy_terms']) && empty($condition['taxonomy_terms']))  {
+                                    if($condition['taxonomy'] == $current_page['taxonomy']){
+                                        return '';
+                                    }
+                                }                           
+                            }
+                            //  all post 
+                            if(isset($condition['selective_mode']) && $condition['selective_mode'] == 'all_posts'){
+                                if($current_page['post_type'] == $condition['post_type']){
+                                    return '';
+                                }
+                            }
+                            // all other header
+                            
+                            if(isset($condition['display_on']) && $condition['display_on'] != 'selective_singular'){    
+                                if($current_page['type'] == $condition['display_on']){
+                                    return '';
+                                }
+                            }                            
+                            if(isset($condition['display_on']) && $condition['display_on'] == 'entire_website'){    
+                                return '';
+                            }
+                        }
+                        //  include 
                         if(isset($condition['display_type']) && $condition['display_type'] == 'include'){
                             
                             if(isset($condition['selective_mode']) && $condition['selective_mode'] == 'custom'){
+                                
                                 if(is_array($condition['post_ids']) && !empty($condition['post_ids']) && in_array($current_page['post_id'], $condition['post_ids'])){
                                     return $template_id;
                                 }
@@ -190,10 +243,14 @@ class Mbuilder_Frontend {
                                 }
                             }
                             // all other header
-                            if(isset($condition['display_on']) && $condition['display_on'] != 'selective_singular'){
+                            
+                            if(isset($condition['display_on']) && $condition['display_on'] != 'selective_singular'){    
                                 if($current_page['type'] == $condition['display_on']){
                                     return $template_id;
                                 }
+                            }                            
+                            if(isset($condition['display_on']) && $condition['display_on'] == 'entire_website'){    
+                                return $template_id;
                             }
                         }
                     }
