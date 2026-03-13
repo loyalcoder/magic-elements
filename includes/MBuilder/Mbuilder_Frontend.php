@@ -158,34 +158,43 @@ class Mbuilder_Frontend {
         }
 
         $current_page = $this->get_current_page();
-        echo '<pre>';
-        print_r( $current_page);
-        echo '</pre>';
-        
 
          if(isset($result['templates'])){
              foreach($result['templates'] as $templates){
                 $template_id = ($templates['ID']) ? $templates['ID'] : '';
-                if(isset($templates['condition'])){
+                if(isset($templates['condition'])){   
                     foreach($templates['condition'] as $condition){
                         if(isset($condition['display_type']) && $condition['display_type'] == 'include'){
-                            echo '<pre>';
-                            print_r($condition);
-                            echo '</pre>';
                             
                             if(isset($condition['selective_mode']) && $condition['selective_mode'] == 'custom'){
                                 if(is_array($condition['post_ids']) && !empty($condition['post_ids']) && in_array($current_page['post_id'], $condition['post_ids'])){
                                     return $template_id;
                                 }
                             }
+                            if(isset($condition['selective_mode']) && $condition['selective_mode'] == 'taxonomy'){
+                                if(isset($condition['taxonomy_terms']) && !empty($condition['taxonomy_terms'])){
+                                    if($condition['taxonomy'] == $current_page['taxonomy'] && in_array($current_page['term_id'], $condition['taxonomy_terms']) ){
+                                        return $template_id;
+                                    }
+                                }
+                                if(isset($condition['taxonomy_terms']) && empty($condition['taxonomy_terms']))  {
+                                    if($condition['taxonomy'] == $current_page['taxonomy']){
+                                        return $template_id;
+                                    }
+                                }                           
+                            }
+                            //  all post 
                             if(isset($condition['selective_mode']) && $condition['selective_mode'] == 'all_posts'){
-                                $post_type = $condition['post_type'];
-                                if($current_page['post_type'] == $post_type){                                    
+                                if($current_page['post_type'] == $condition['post_type']){
                                     return $template_id;
                                 }
-                                
                             }
-
+                            // all other header
+                            if(isset($condition['display_on']) && $condition['display_on'] != 'selective_singular'){
+                                if($current_page['type'] == $condition['display_on']){
+                                    return $template_id;
+                                }
+                            }
                         }
                     }
                 }                
