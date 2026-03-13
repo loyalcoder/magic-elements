@@ -168,19 +168,7 @@ class Mbuilder_Frontend {
                 
                 if(isset($templates['condition'])){ 
                     foreach($templates['condition'] as $condition){
-                        echo '<pre>';
-                        print_r($condition);
-                        echo '</pre>';
-                    }
-                      
-                    foreach($templates['condition'] as $condition){
-                        // exclude
-                        
                         if(isset($condition['display_type']) && $condition['display_type'] == 'exclude'){
-                            echo '<pre>';
-                            print_r($condition);
-                            echo '</pre>';
-                            
                             if(isset($condition['selective_mode']) && $condition['selective_mode'] == 'custom'){
                                 if(is_array($condition['post_ids']) && !empty($condition['post_ids']) && in_array($current_page['post_id'], $condition['post_ids'])){
                                     return '';
@@ -215,6 +203,11 @@ class Mbuilder_Frontend {
                                 return '';
                             }
                         }
+                        
+                    }
+                      
+                    foreach($templates['condition'] as $condition){
+                        
                         //  include 
                         if(isset($condition['display_type']) && $condition['display_type'] == 'include'){
                             
