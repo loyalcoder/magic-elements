@@ -4,7 +4,7 @@ Tags: elementor, elementor widgets, elementor templates, page builder, addons
 Requires at least: 5.0  
 Tested up to: 6.9  
 Requires PHP: 7.0  
-Stable tag: 1.0.3  
+Stable tag: 1.0.5  
 License: GPL v3 or later  
 License URI: https://www.gnu.org/licenses/gpl-3.0.html  
 
@@ -98,14 +98,20 @@ You can reach out via our [support page](https://loyalcoder.com/support).
 
 == Changelog ==
 
+= 1.0.5 =
+* Improved header/footer builder condition priority (selective singular, include vs exclude, entire site).
+* Internal code cleanup and cache handling for builder templates.
+
 = 1.0.3 =
 * Added Header & Footer Builder to feature set.
 * Security and guideline compliance (sanitization, escaping, direct file access protection).
 
 = 1.0.0 =  
 * Initial release with core features.
-
 == Upgrade Notice ==
+
+= 1.0.5 =
+Improved builder template condition logic (selective singular and include/exclude priority). Tested with WordPress 6.9.
 
 = 1.0.3 =
 Header & Footer Builder, security and guideline compliance. Tested with WordPress 6.9.
