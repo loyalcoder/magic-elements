@@ -89,6 +89,8 @@
 
 .search_block {
   opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
   text-align: center;
   height: 0;
   position: absolute;
@@ -96,6 +98,8 @@
   left: 33%;
   &.visible{
     opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
     height: auto;
     .search_box {
       opacity: 1;
@@ -113,6 +117,10 @@
     height: 100%;
     width: 100%;
     z-index: 9999;
+    pointer-events: none;
+  }
+  &.visible .overlayer {
+    pointer-events: auto;
   }
 }
 
@@ -285,6 +293,16 @@ nav {
     border-radius: 16px;
     padding: 15px;
 }
+.mobile-menu-fallback-trigger {
+    display: none;
+}
+@media screen and (max-width: 1023px) {
+    .mobile-menu-fallback-trigger {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
 //Offcanvas Menu SCSS
 .offcanvas {
     .offcanvas-header{
@@ -331,9 +349,8 @@ nav {
     align-items: center;
     gap:30px;
 }
-@media screen and (max-width: 448px) {
-   .right-side{
-    display: block;
-   
-}
+@media screen and (max-width: 1023px) {
+    .right-side{
+        display: none;
+    }
 }

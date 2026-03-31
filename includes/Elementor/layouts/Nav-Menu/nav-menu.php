@@ -1,9 +1,12 @@
-<?php  if( $header_layout == 'layout-one' ) { ?>
+<?php
+$show_custom_mobile_menu_icon = isset( $settings['show_mobile_menu_icon'] ) && 'yes' === $settings['show_mobile_menu_icon'];
+$mobile_menu_button_classes   = $show_custom_mobile_menu_icon ? 'btn btn-primary mobile-menu' : 'btn btn-primary mobile-menu mobile-menu-fallback-trigger';
+if( $header_layout == 'layout-one' ) { ?>
 <header class="magic-header <?php echo ($settings['enable_sticky'] === 'yes') ? 'is-sticky' : ''; ?>">
     <div class="container magic-menu" style="display:flex;justify-content:space-between;align-items:center;padding:20px 0;">
         <!-- Search -->
 
-        <?php if($settings['show_search']=='yes'): ?>
+        <?php if($settings['show_search']=='yes'): ?> 
             <button class="menu-search open_search">
                 <?php \Elementor\Icons_Manager::render_icon( $settings['search_icon'], [ 'aria-hidden' => 'true' ] ); ?>
             </button>
@@ -53,11 +56,14 @@
         </nav>
         <!-- Mobile Menu -->
         <!-- Icon -->
-        <?php if($settings['show_mobile_menu_icon']=='yes'): ?>
-        <button class="btn btn-primary mobile-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-            <?php \Elementor\Icons_Manager::render_icon( $settings['mobile_menu_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+        <button class="<?php echo esc_attr( $mobile_menu_button_classes ); ?>" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            <?php if ( $show_custom_mobile_menu_icon ) : ?>
+                <?php \Elementor\Icons_Manager::render_icon( $settings['mobile_menu_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+            <?php else : ?>
+                <span class="mobile-menu-fallback-icon" aria-hidden="true">&#9776;</span>
+                <span class="screen-reader-text"><?php echo esc_html__( 'Open menu', 'magic-elements' ); ?></span>
+            <?php endif; ?>
         </button>
-        <?php endif; ?>
         <!-- Offcanvas -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
@@ -136,11 +142,14 @@
         <!-- Book Button  End-->
           <!-- Mobile Menu -->
         <!-- Icon -->
-        <?php if($settings['show_mobile_menu_icon']=='yes'): ?>
-        <button class="btn btn-primary mobile-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-            <?php \Elementor\Icons_Manager::render_icon( $settings['mobile_menu_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+        <button class="<?php echo esc_attr( $mobile_menu_button_classes ); ?>" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            <?php if ( $show_custom_mobile_menu_icon ) : ?>
+                <?php \Elementor\Icons_Manager::render_icon( $settings['mobile_menu_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+            <?php else : ?>
+                <span class="mobile-menu-fallback-icon" aria-hidden="true">&#9776;</span>
+                <span class="screen-reader-text"><?php echo esc_html__( 'Open menu', 'magic-elements' ); ?></span>
+            <?php endif; ?>
         </button>
-        <?php endif; ?>
         <!-- Offcanvas -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
@@ -196,7 +205,7 @@
         <!-- Book Button -->
         <div class="right-side">
             <div class="call-us">
-                <p><?php echo esc_html($settings['call_us_text']); ?></p>
+                <p><?php echo esc_html( $settings['call_us_text'] ); ?></p>
             </div>
             <div class="book-button">
                 <?php 
@@ -212,11 +221,14 @@
         <!-- Book Button  End-->
           <!-- Mobile Menu -->
         <!-- Icon -->
-        <?php if($settings['show_mobile_menu_icon']=='yes'): ?>
-        <button class="btn btn-primary mobile-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-            <?php \Elementor\Icons_Manager::render_icon( $settings['mobile_menu_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+        <button class="<?php echo esc_attr( $mobile_menu_button_classes ); ?>" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            <?php if ( $show_custom_mobile_menu_icon ) : ?>
+                <?php \Elementor\Icons_Manager::render_icon( $settings['mobile_menu_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+            <?php else : ?>
+                <span class="mobile-menu-fallback-icon" aria-hidden="true">&#9776;</span>
+                <span class="screen-reader-text"><?php echo esc_html__( 'Open menu', 'magic-elements' ); ?></span>
+            <?php endif; ?>
         </button>
-        <?php endif; ?>
         <!-- Offcanvas -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
