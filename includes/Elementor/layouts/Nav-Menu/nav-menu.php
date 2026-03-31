@@ -3,7 +3,7 @@
     <div class="container magic-menu" style="display:flex;justify-content:space-between;align-items:center;padding:20px 0;">
         <!-- Search -->
 
-        <?php if($settings['show_search']=='yes'): ?>
+        <?php if($settings['show_search']=='yes'): ?> 
             <button class="menu-search open_search">
                 <?php \Elementor\Icons_Manager::render_icon( $settings['search_icon'], [ 'aria-hidden' => 'true' ] ); ?>
             </button>

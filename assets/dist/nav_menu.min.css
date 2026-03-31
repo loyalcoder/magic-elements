@@ -79,6 +79,8 @@
 
 .search_block {
   opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
   text-align: center;
   height: 0;
   position: absolute;
@@ -87,6 +89,8 @@
 }
 .search_block.visible {
   opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
   height: auto;
 }
 .search_block.visible .search_box {
@@ -104,6 +108,10 @@
   height: 100%;
   width: 100%;
   z-index: 9999;
+  pointer-events: none;
+}
+.search_block.visible .overlayer {
+  pointer-events: auto;
 }
 
 .search_box {
