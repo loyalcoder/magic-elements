@@ -293,6 +293,16 @@ nav {
     border-radius: 16px;
     padding: 15px;
 }
+.mobile-menu-fallback-trigger {
+    display: none;
+}
+@media screen and (max-width: 1023px) {
+    .mobile-menu-fallback-trigger {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
 //Offcanvas Menu SCSS
 .offcanvas {
     .offcanvas-header{
@@ -339,9 +349,8 @@ nav {
     align-items: center;
     gap:30px;
 }
-@media screen and (max-width: 448px) {
-   .right-side{
-    display: block;
-   
-}
+@media screen and (max-width: 1023px) {
+    .right-side{
+        display: none;
+    }
 }

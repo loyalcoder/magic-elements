@@ -683,7 +683,7 @@ class Nav_Menu extends Widget_Base
 				'label' => esc_html__( 'Call Us', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 				'condition' => [
-                    'header_layout_type' => ['layout-three']
+                    'header_layout_type' => ['layout-three'],
                 ],
 			]
 		);
