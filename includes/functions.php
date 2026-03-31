@@ -66,30 +66,13 @@ if ( ! function_exists( 'me_get_display_condition_html' ) ) {
                     $post_type = isset( $item['post_type'] ) ? $item['post_type'] : 'post';
                     $post_type_obj = get_post_type_object( $post_type );
                     $post_type_label = $post_type_obj ? $post_type_obj->labels->singular_name : $post_type;
-                    $mode = isset( $item['selective_mode'] ) ? $item['selective_mode'] : 'all_posts';
                     $html .= ' <span class="me-condition-meta">(' . esc_html( $post_type_label ) . ')';
-                    if ( $mode === 'all_posts' ) {
-                        $html .= ' — ' . esc_html__( 'All posts', 'magic-elements' );
-                    } elseif ( $mode === 'taxonomy' && ! empty( $item['taxonomy'] ) ) {
-                        $tax_obj = get_taxonomy( $item['taxonomy'] );
-                        $tax_label = $tax_obj ? $tax_obj->labels->singular_name : $item['taxonomy'];
-                        $html .= ' — ' . esc_html__( 'Taxonomy:', 'magic-elements' ) . ' ' . esc_html( $tax_label );
-                        $term_ids = isset( $item['taxonomy_terms'] ) && is_array( $item['taxonomy_terms'] ) ? $item['taxonomy_terms'] : [];
-                        if ( ! empty( $term_ids ) ) {
-                            $term_names = array_filter( array_map( function ( $id ) {
-                                $t = get_term( $id );
-                                return ( $t && ! is_wp_error( $t ) ) ? $t->name : '';
-                            }, $term_ids ) );
-                            $html .= ' (' . esc_html( implode( ', ', $term_names ) ) . ')';
-                        }
-                    } elseif ( $mode === 'custom' ) {
-                        $post_ids = isset( $item['post_ids'] ) && is_array( $item['post_ids'] ) ? array_map( 'intval', $item['post_ids'] ) : [];
-                        if ( ! empty( $post_ids ) ) {
-                            $titles = array_filter( array_map( function ( $id ) {
-                                return $id ? get_the_title( $id ) : '';
-                            }, $post_ids ) );
-                            $html .= ' — ' . esc_html( implode( ', ', $titles ) );
-                        }
+                    $post_ids = isset( $item['post_ids'] ) && is_array( $item['post_ids'] ) ? array_map( 'intval', $item['post_ids'] ) : [];
+                    if ( ! empty( $post_ids ) ) {
+                        $titles = array_filter( array_map( function ( $id ) {
+                            return $id ? get_the_title( $id ) : '';
+                        }, $post_ids ) );
+                        $html .= ' — ' . esc_html( implode( ', ', $titles ) );
                     }
                     $html .= '</span>';
                 }

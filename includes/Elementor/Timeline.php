@@ -787,10 +787,10 @@ class Timeline extends Widget_Base
                 }
                 ?>
                 
-                <div id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
+                <div id="<?php echo esc_attr($id); ?>" class="<?php echo implode(' ', $classes); ?>">
                     <?php if ($settings['enable_filtering'] === 'yes' && !empty($categories)) : ?>
                         <div class="timeline-filters">
-                            <button class="timeline-filter-button active" data-filter="all"><?php esc_html_e('All', 'magic-elements'); ?></button>
+                            <button class="timeline-filter-button active" data-filter="all"><?php esc_html_e('All', 'ultimate-timeline'); ?></button>
                             <?php foreach ($categories as $category) : ?>
                                 <button class="timeline-filter-button" data-filter="<?php echo esc_attr($category); ?>">
                                     <?php echo esc_html($category); ?>

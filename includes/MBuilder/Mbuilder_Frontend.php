@@ -71,8 +71,8 @@ class Mbuilder_Frontend {
     public function replace_header()
     {
         $header_id = $this->get_active_id('header');
-
-        if ( ! $header_id ) {
+        
+        if ($header_id == '') {
             return false;
         }
         include __DIR__. '/templates/header.php';
@@ -126,29 +126,30 @@ class Mbuilder_Frontend {
         }
     }
     /**
-     * Get active header/footer ID for current request (respects display conditions).
+     * Get active header ID
      *
-     * @param string $type 'header' or 'footer'.
-     * @return int|false Template post ID or false.
+     * @return int|bool
      */
     public function get_active_id($type = 'header'){
         $args = [
-            'post_type'      => 'me_builder',
-            'post_status'   => 'publish',
-            'posts_per_page' => 50,
-            'meta_query'    => [
+            'post_type' => 'me_builder',
+            'post_status' => 'publish',
+            'posts_per_page' => -1,
+            'orderby' => 'ID',
+            'order' => 'ASC',
+            'meta_query' => [
                 'relation' => 'AND',
                 [
-                    'key'     => '_me_builder_type',
-                    'value'   => $type,
-                    'compare' => '=',
+                    'key' => '_me_builder_type',
+                    'value' => $type,
+                    'compare' => '='
                 ],
                 [
-                    'key'     => '_me_builder_status',
-                    'value'   => '1',
-                    'compare' => '=',
-                ],
-            ],
+                    'key' => '_me_builder_status', 
+                    'value' => '1',
+                    'compare' => '='
+                ]
+            ]
         ];
         $result = $this->get_builder_templates($args);
         

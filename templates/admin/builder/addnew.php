@@ -69,9 +69,3 @@ $template_id = isset($post_data['ID']) ? $post_data['ID'] : '';
         </button>
     </div>
 </form>
-<?php
-$taxonomies_by_post_type = isset( $args['taxonomies_by_post_type'] ) ? $args['taxonomies_by_post_type'] : [];
-?>
-<script type="text/javascript">
-window.me_builder_taxonomies_by_post_type = <?php echo wp_json_encode( $taxonomies_by_post_type ); ?>;
-</script>
