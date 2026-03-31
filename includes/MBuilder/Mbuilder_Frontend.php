@@ -108,7 +108,7 @@ class Mbuilder_Frontend {
         $active_header_id = $this->get_active_id('header');
         if($active_header_id == ''){
             return false;
-        }
+        } 
         if (class_exists('\Elementor\Plugin')) {
             // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor get_builder_content_for_display() returns safe builder HTML.
             echo \Elementor\Plugin::instance()->frontend->get_builder_content_for_display($active_header_id, true);
@@ -151,251 +151,169 @@ class Mbuilder_Frontend {
                 ]
             ]
         ];
-        $result = $this->get_builder_templates($args);
-        
-        if ( empty( $result['templates'] ) ) {
-            return false;
-        }
-        $builder_template_id = '';
-        $exclude_list = [];
-        $include_list = [];
-        foreach ( $result['templates'] as $template ) {
-            if(isset($template['ID'])){
-                $builder_template_id = (int) $template['ID'];
-            }
-            if(isset($template['condition'])){
-                foreach($template['condition'] as $condition){
-                    if($condition['display_type'] == 'exclude'){
-                        $exclude_list[] = $condition;
-                    }else{
-                        $include_list[] = $condition;
-                    }
-                }
-            }
-        }
-        // echo '<pre>';
-        // print_r($builder_template_id);
-        // echo '</pre>';
-        
-        // echo '<pre>';
-        // print_r( $include_list);
-        // echo '</pre>';
-        // echo '<pre>';
-        // print_r($exclude_list);
-        // echo '</pre>';
-        $template_id = $this->get_display_id($builder_template_id, $include_list, $exclude_list, $this->get_current_page());
-        return $template_id;
-    }
-    protected function get_display_id($template_id, $include_list, $exclude_list, $current_page){
+        $header_post = $this->get_builder_templates($args);
 
-        if (empty($template_id)) {
+        if (empty($header_post['templates'])) {
             return false;
         }
-    
-        /*
-        |------------------------------------------------
-        | EXCLUDE CONDITIONS (priority)
-        |------------------------------------------------
-        */
-    
-        if (!empty($exclude_list)) {
-    
-            foreach ($exclude_list as $condition) {
-    
-                if (!isset($condition['display_on'])) {
-                    continue;
-                }
-    
-                // match simple page types (front_page, blog_page, etc)
-                if ($condition['display_on'] === $current_page['type']) {
-                    return '';
-                }
-    
-                // selective singular logic
-                if ($condition['display_on'] === 'selective_singular') {
-    
-                    if ($current_page['post_type'] !== $condition['post_type']) {
-                        continue;
+
+        $selected_id = false;
+        $selected_priority = PHP_INT_MAX;
+
+        foreach ($header_post['templates'] as $template) {
+            $post_id = isset($template['ID']) ? (int) $template['ID'] : 0;
+            if (!$post_id) {
+                continue;
+            }
+
+            $priority = $this->get_match_priority($post_id, isset($template['condition']) ? $template['condition'] : []);
+            if ($priority === false) {
+                continue;
+            }
+
+            if ($priority < $selected_priority) {
+                $selected_priority = $priority;
+                $selected_id = $post_id;
+            }
+        }
+
+        return $selected_id;
+    }
+
+    /**
+     * Check if header should be displayed based on conditions
+     *
+     * @param int $header_id Header ID
+     * @return int|bool
+     */
+    public function should_display($header_id) {
+        return $this->get_match_priority((int) $header_id) !== false ? (int) $header_id : false;
+    }
+
+    /**
+     * Get match priority for a template.
+     * Lower number means higher priority.
+     *
+     * Priority order:
+     * 1) selective_singular exact current page match
+     * 2) specific display_on current context match
+     * 3) entire_website fallback
+     *
+     * @param int $header_id Template ID
+     * @param array $conditions Optional preloaded conditions
+     * @return int|false
+     */
+    private function get_match_priority(int $header_id, array $conditions = [])
+    {
+        if (!$header_id) {
+            return false;
+        }
+
+        $get_display_condition = !empty($conditions)
+            ? $conditions
+            : get_post_meta($header_id, '_me_builder_condition', true);
+
+        $include = [];
+        $exclude = [];
+        $has_entire_website = false;
+        $has_current_context = false;
+        $has_selective_singular = false;
+
+        $query_object = get_queried_object();
+        $current_page = $this->get_current_page($query_object);
+        $current_object_id = (int) get_queried_object_id();
+
+        if (!empty($get_display_condition)) {
+            foreach ($get_display_condition as $condition) {
+                $display_type = isset($condition['display_type']) ? (string) $condition['display_type'] : '';
+                $display_on = isset($condition['display_on']) ? (string) $condition['display_on'] : '';
+
+                if ($display_type === 'include') {
+                    $include[] = $display_on;
+
+                    if ($display_on === 'entire_website') {
+                        $has_entire_website = true;
                     }
-    
-                    if ($condition['selective_mode'] === 'all_posts') {
-                        return '';
-                    }
-    
-                    if ($condition['selective_mode'] === 'custom') {
-    
-                        if (!empty($condition['post_ids']) &&
-                            in_array($current_page['post_id'], $condition['post_ids'])
-                        ) {
-                            return '';
+
+                    if ($display_on === 'selective_singular' && $current_object_id > 0 && !empty($condition['post_ids']) && is_array($condition['post_ids'])) {
+                        $post_ids = array_map('intval', $condition['post_ids']);
+                        if (in_array($current_object_id, $post_ids, true)) {
+                            $has_selective_singular = true;
                         }
                     }
+
+                    if ($current_page !== false && $display_on === (string) $current_page) {
+                        $has_current_context = true;
+                    }
+                } else {
+                    $exclude[] = $display_on;
                 }
             }
         }
-    
-    
-        /*
-        |------------------------------------------------
-        | INCLUDE CONDITIONS
-        |------------------------------------------------
-        */
-    
-        if (!empty($include_list)) {
-    
-            foreach ($include_list as $condition) {
-    
-                if (!isset($condition['display_on'])) {
-                    continue;
-                }
-    
-                // entire website
-                if ($condition['display_on'] === 'entire_website') {
-                    return $template_id;
-                }
-    
-                // match page type (front_page, blog_page etc)
-                if ($condition['display_on'] === $current_page['type']) {
-                    return $template_id;
-                }
-    
-                // selective singular
-                if ($condition['display_on'] === 'selective_singular') {
-    
-                    if ($current_page['post_type'] !== $condition['post_type']) {
-                        continue;
-                    }
-    
-                    if ($condition['selective_mode'] === 'all_posts') {
-                        return $template_id;
-                    }
-    
-                    if ($condition['selective_mode'] === 'custom') {
-    
-                        if (!empty($condition['post_ids']) &&
-                            in_array($current_page['post_id'], $condition['post_ids'])
-                        ) {
-                            return $template_id;
-                        }
-                    }
-                }
+
+        // Include rules have higher priority than exclude rules.
+        if ($has_selective_singular) {
+            return 1;
+        }
+
+        if ($has_current_context) {
+            return 2;
+        }
+
+        if ($has_entire_website) {
+            return 3;
+        }
+
+        // Keep previous behavior for ID-based include condition values.
+        if ($current_object_id > 0 && in_array((string) $current_object_id, $include, true)) {
+            return 2;
+        }
+
+        // Exclude rules apply only when no include matched.
+        if (!empty($exclude)) {
+            if (in_array('entire_website', $exclude, true) || ($current_page !== false && in_array((string) $current_page, $exclude, true))) {
+                return false;
+            }
+            if ($current_object_id > 0 && in_array((string) $current_object_id, $exclude, true)) {
+                return false;
             }
         }
-    
+
         return false;
     }
+
     /**
      * Get current page type
      *
      * @param object $obj Query object
      * @return string|int|bool
      */
-    /**
-     * Get current page identifier for condition matching (string or singular post ID).
-     *
-     * @param object $obj Queried object.
-     * @return string|int|false
-     */
-    public function get_current_page(){
-
-        global $post;
-    
-        $data = [
-            'type'        => '',
-            'post_id'     => null,
-            'post_type'   => null,
-            'taxonomy'    => null,
-            'term_id'     => null,
-            'term_slug'   => null,
-            'archive_pt'  => null,
-        ];
-    
-        // Special contexts
-        switch ( true ) {
-    
-            case is_404():
-                $data['type'] = 'four_0_4';
-                return $data;
-    
+    public function get_current_page($obj){
+        switch (true) {
             case is_search():
-                $data['type'] = 'search_page';
-                return $data;
-    
+                return 'search_page';
+            case is_404():
+                return 'four_0_4'; 
             case is_front_page():
-                $data['type'] = 'front_page';
-                return $data;
-    
+                return 'front_page';
             case is_home():
-                $data['type'] = 'blog_page';
-                return $data;
-    
+                return 'blog_page';
             case is_category():
+                return 'blog_category_archive';
             case is_tag():
-            case is_tax():
-    
-                $term = get_queried_object();
-    
-                $data['type']      = 'taxonomy_archive';
-                $data['taxonomy']  = $term->taxonomy ?? null;
-                $data['term_id']   = $term->term_id ?? null;
-                $data['term_slug'] = $term->slug ?? null;
-    
-                return $data;
-    
+                return 'tag_page';
             case is_author():
-                $data['type'] = 'author_page';
-                return $data;
-    
+                return 'author_page';
             case is_date():
-                $data['type'] = 'date_page';
-                return $data;
-    
-            case is_post_type_archive():
-    
-                $data['type']       = 'post_type_archive';
-                $data['archive_pt'] = get_query_var('post_type');
-    
-                return $data;
-    
+                return 'date_page';
             case is_archive():
-                $data['type'] = 'archive_page';
-                return $data;
+                return 'archive_page';
+            case is_single():
+                return 'single_page';
+            case isset($obj->ID) :
+                return $obj->ID;
+            default:
+                return false;
         }
-    
-        // Singular (post, page, custom post type)
-        if ( is_singular() ) {
-    
-            $data['type']      = 'singular';
-            $data['post_id']   = $post->ID ?? null;
-            $data['post_type'] = get_post_type( $post );
-    
-            // Get taxonomy terms
-            $taxonomies = get_object_taxonomies( $data['post_type'] );
-    
-            if ( ! empty( $taxonomies ) ) {
-    
-                foreach ( $taxonomies as $tax ) {
-    
-                    $terms = get_the_terms( $post->ID, $tax );
-    
-                    if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
-    
-                        foreach ( $terms as $term ) {
-    
-                            $data['terms'][] = [
-                                'taxonomy' => $tax,
-                                'term_id'  => $term->term_id,
-                                'slug'     => $term->slug,
-                                'name'     => $term->name,
-                            ];
-                        }
-                    }
-                }
-            }
-    
-            return $data;
-        }
-    
-        return $data;
     }
 }
