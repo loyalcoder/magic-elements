@@ -102,6 +102,22 @@ if( $header_layout == 'layout-one' ) { ?>
                                 <p><?php echo esc_html( $settings['offcanvas_address'] ); ?></p>
                             <?php endif; ?>
                         </div>
+                        <div class="fullscreen-left-footer">
+                            <div class="fullscreen-copyright">
+                                <span><?php echo esc_html__( '© All rights reserved', 'magic-elements' ); ?></span>
+                                <span><?php echo esc_html__( 'by', 'magic-elements' ); ?> <?php echo esc_html( get_bloginfo( 'name' ) ); ?></span>
+                            </div>
+                            <form class="fullscreen-search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
+                                <input type="search" name="s" class="fullscreen-search-input" autocomplete="off" placeholder="<?php echo esc_attr__( 'Search here', 'magic-elements' ); ?>" value="<?php echo esc_attr( get_search_query() ); ?>" />
+                                <button type="submit" class="fullscreen-search-btn" aria-label="<?php echo esc_attr__( 'Search', 'magic-elements' ); ?>">
+                                    <?php if ( ! empty( $settings['offcanvas_search_icon']['url'] ) ) : ?>
+                                        <img src="<?php echo esc_url( $settings['offcanvas_search_icon']['url'] ); ?>" alt="<?php echo esc_attr__( 'Search', 'magic-elements' ); ?>">
+                                    <?php else : ?>
+                                        <span class="fullscreen-search-btn-fallback" aria-hidden="true"><?php echo esc_html__( 'Go', 'magic-elements' ); ?></span>
+                                    <?php endif; ?>
+                                </button>
+                            </form>
+                        </div>
                     </div>
                     <div class="fullscreen-right">
                         <!-- Title/Description only for sidebar; intentionally omitted here -->
@@ -261,6 +277,22 @@ if( $header_layout == 'layout-one' ) { ?>
                                 <p><?php echo esc_html( $settings['offcanvas_address'] ); ?></p>
                             <?php endif; ?>
                         </div>
+                        <div class="fullscreen-left-footer">
+                            <div class="fullscreen-copyright">
+                                <span><?php echo esc_html__( '© All rights reserved', 'magic-elements' ); ?></span>
+                                <span><?php echo esc_html__( 'by', 'magic-elements' ); ?> <?php echo esc_html( get_bloginfo( 'name' ) ); ?></span>
+                            </div>
+                            <form class="fullscreen-search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
+                                <input type="search" name="s" class="fullscreen-search-input" autocomplete="off" placeholder="<?php echo esc_attr__( 'Search here', 'magic-elements' ); ?>" value="<?php echo esc_attr( get_search_query() ); ?>" />
+                                <button type="submit" class="fullscreen-search-btn" aria-label="<?php echo esc_attr__( 'Search', 'magic-elements' ); ?>">
+                                    <?php if ( ! empty( $settings['offcanvas_search_icon']['url'] ) ) : ?>
+                                        <img src="<?php echo esc_url( $settings['offcanvas_search_icon']['url'] ); ?>" alt="<?php echo esc_attr__( 'Search', 'magic-elements' ); ?>">
+                                    <?php else : ?>
+                                        <span class="fullscreen-search-btn-fallback" aria-hidden="true"><?php echo esc_html__( 'Go', 'magic-elements' ); ?></span>
+                                    <?php endif; ?>
+                                </button>
+                            </form>
+                        </div>
                     </div>
                     <div class="fullscreen-right">
                         <!-- Title/Description only for sidebar; intentionally omitted here -->
@@ -408,6 +440,22 @@ if( $header_layout == 'layout-one' ) { ?>
                             <?php if ( ! empty( $settings['offcanvas_address'] ) ) : ?>
                                 <p><?php echo esc_html( $settings['offcanvas_address'] ); ?></p>
                             <?php endif; ?>
+                        </div>
+                        <div class="fullscreen-left-footer">
+                            <div class="fullscreen-copyright">
+                                <span><?php echo esc_html__( '© All rights reserved', 'magic-elements' ); ?></span>
+                                <span><?php echo esc_html__( 'by', 'magic-elements' ); ?> <?php echo esc_html( get_bloginfo( 'name' ) ); ?></span>
+                            </div>
+                            <form class="fullscreen-search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
+                                <input type="search" name="s" class="fullscreen-search-input" autocomplete="off" placeholder="<?php echo esc_attr__( 'Search here', 'magic-elements' ); ?>" value="<?php echo esc_attr( get_search_query() ); ?>" />
+                                <button type="submit" class="fullscreen-search-btn" aria-label="<?php echo esc_attr__( 'Search', 'magic-elements' ); ?>">
+                                    <?php if ( ! empty( $settings['offcanvas_search_icon']['url'] ) ) : ?>
+                                        <img src="<?php echo esc_url( $settings['offcanvas_search_icon']['url'] ); ?>" alt="<?php echo esc_attr__( 'Search', 'magic-elements' ); ?>">
+                                    <?php else : ?>
+                                        <span class="fullscreen-search-btn-fallback" aria-hidden="true"><?php echo esc_html__( 'Go', 'magic-elements' ); ?></span>
+                                    <?php endif; ?>
+                                </button>
+                            </form>
                         </div>
                     </div>
                     <div class="fullscreen-right">

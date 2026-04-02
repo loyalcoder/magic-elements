@@ -436,6 +436,17 @@ class Nav_Menu extends Widget_Base
 				],
 			]
 		);
+		$this->add_control(
+			'offcanvas_search_icon',
+			[
+				'label' => esc_html__( 'Search Icon (Fullscreen)', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::MEDIA,
+				'media_types' => [ 'image', 'svg' ],
+				'condition' => [
+					'offcanvas_style' => 'fullscreen',
+				],
+			]
+		);
         $this->end_controls_section();
 		//Search Bar
 		$this->start_controls_section(
@@ -1326,6 +1337,42 @@ class Nav_Menu extends Widget_Base
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
 					'{{WRAPPER}} .fullscreen-left .contact-block p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_control(
+			'more_options_fullscreen_copyright',
+			[
+				'label' => esc_html__( 'Copyright', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+		$this->add_control(
+			'fullscreen_copyright_color',
+			[
+				'label' => esc_html__( 'Copyright Color', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .fullscreen-left-footer .fullscreen-copyright span' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'fullscreen_copyright_typography',
+				'selector' => '{{WRAPPER}} .fullscreen-left-footer .fullscreen-copyright span',
+			]
+		);
+		$this->add_responsive_control(
+			'fullscreen_copyright_margin',
+			[
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .fullscreen-left-footer' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
