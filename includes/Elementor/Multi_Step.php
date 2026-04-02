@@ -173,10 +173,10 @@ $repeater->add_control(
         $this->add_control(
 			'complete_step_alert',
 			[
-				'label' => esc_html__( 'Complete Step Alert', 'textdomain' ),
+				'label' => esc_html__( 'Complete Step Alert', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'textdomain' ),
-				'label_off' => esc_html__( 'Hide', 'textdomain' ),
+				'label_on' => esc_html__( 'Show', 'magic-elements' ),
+				'label_off' => esc_html__( 'Hide', 'magic-elements' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 			]
@@ -184,10 +184,10 @@ $repeater->add_control(
         $this->add_control(
 			'alert_title',
 			[
-				'label' => esc_html__( 'Alert Title', 'textdomain' ),
+				'label' => esc_html__( 'Alert Title', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Default Alert title', 'textdomain' ),
-				'placeholder' => esc_html__( 'Type your alert title here', 'textdomain' ),
+				'default' => esc_html__( 'Default Alert title', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your alert title here', 'magic-elements' ),
                 'condition' => [
                     'complete_step_alert' => 'yes',
                 ],
@@ -196,10 +196,10 @@ $repeater->add_control(
         $this->add_control(
 			'alert_description',
 			[
-				'label' => esc_html__( 'Alert Description', 'textdomain' ),
+				'label' => esc_html__( 'Alert Description', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::WYSIWYG,
-				'default' => esc_html__( 'Default description', 'textdomain' ),
-				'placeholder' => esc_html__( 'Type your description here', 'textdomain' ),
+				'default' => esc_html__( 'Default description', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your description here', 'magic-elements' ),
                 'condition' => [
                     'complete_step_alert' => 'yes',
                 ],
@@ -208,10 +208,10 @@ $repeater->add_control(
         $this->add_control(
 			'alert_btn',
 			[
-				'label' => esc_html__( 'Button Text', 'textdomain' ),
+				'label' => esc_html__( 'Button Text', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Ok', 'textdomain' ),
-				'placeholder' => esc_html__( 'Type your button text', 'textdomain' ),
+				'default' => esc_html__( 'Ok', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type your button text', 'magic-elements' ),
                 'condition' => [
                     'complete_step_alert' => 'yes',
                 ],
@@ -230,10 +230,10 @@ $repeater->add_control(
         $this->add_control(
 			'show_n_button',
 			[
-				'label' => esc_html__( 'Show Navigation Button', 'textdomain' ),
+				'label' => esc_html__( 'Show Navigation Button', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'textdomain' ),
-				'label_off' => esc_html__( 'Hide', 'textdomain' ),
+				'label_on' => esc_html__( 'Show', 'magic-elements' ),
+				'label_off' => esc_html__( 'Hide', 'magic-elements' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -737,7 +737,7 @@ $repeater->add_control(
 		$this->add_control(
 			'checkbox_header',
 			[
-				'label' => esc_html__( 'Checkbox', 'textdomain' ),
+				'label' => esc_html__( 'Checkbox', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -816,7 +816,7 @@ $repeater->add_control(
         $this->start_controls_section(
 			'alert_style',
 			[
-				'label' => esc_html__( 'Alert', 'textdomain' ),
+				'label' => esc_html__( 'Alert', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
                 'condition' => [
                     'complete_step_alert' => 'yes',
@@ -826,7 +826,7 @@ $repeater->add_control(
         $this->add_responsive_control(
 			'alert_width',
 			[
-				'label' => esc_html__( 'Width', 'textdomain' ),
+				'label' => esc_html__( 'Width', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -852,7 +852,7 @@ $repeater->add_control(
         $this->add_responsive_control(
 			'alert_position',
 			[
-				'label' => esc_html__( 'Position', 'textdomain' ),
+				'label' => esc_html__( 'Position', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -879,7 +879,7 @@ $repeater->add_control(
         $this->add_control(
 			'alert_overlay',
 			[
-				'label' => esc_html__( 'Overlay', 'textdomain' ),
+				'label' => esc_html__( 'Overlay', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .em-step-popup-overlay' => 'background-color: {{VALUE}}',
@@ -889,7 +889,7 @@ $repeater->add_control(
         $this->add_control(
 			'alert_bg',
 			[
-				'label' => esc_html__( 'Background', 'textdomain' ),
+				'label' => esc_html__( 'Background', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .em-step-completion-popup .em-step-popup-content' => 'background-color: {{VALUE}}',
@@ -899,7 +899,7 @@ $repeater->add_control(
         $this->add_responsive_control(
 			'alert_padding',
 			[
-				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
@@ -926,7 +926,7 @@ $repeater->add_control(
         $this->add_control(
 			'text_heding',
 			[
-				'label' => esc_html__( 'Text', 'textdomain' ),
+				'label' => esc_html__( 'Text', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -934,7 +934,7 @@ $repeater->add_control(
         $this->add_control(
 			'alert_title_color',
 			[
-				'label' => esc_html__( 'title Color', 'textdomain' ),
+				'label' => esc_html__( 'title Color', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .em-step-completion-popup .em-step-popup-content h3' => 'color: {{VALUE}}',
@@ -951,7 +951,7 @@ $repeater->add_control(
         $this->add_responsive_control(
 			'alert_title_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
@@ -970,7 +970,7 @@ $repeater->add_control(
         $this->add_control(
 			'alert_content_color',
 			[
-				'label' => esc_html__( 'Content Color', 'textdomain' ),
+				'label' => esc_html__( 'Content Color', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .em-step-completion-popup .em-step-popup-content p' => 'color: {{VALUE}}',
@@ -987,7 +987,7 @@ $repeater->add_control(
         $this->add_responsive_control(
 			'alert_content_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
@@ -1006,7 +1006,7 @@ $repeater->add_control(
         $this->add_control(
 			'button_heding',
 			[
-				'label' => esc_html__( 'Button', 'textdomain' ),
+				'label' => esc_html__( 'Button', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -1021,7 +1021,7 @@ $repeater->add_control(
         $this->add_control(
 			'button_text_color',
 			[
-				'label' => esc_html__( 'Active Button Color', 'textdomain' ),
+				'label' => esc_html__( 'Active Button Color', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .em-step-completion-popup .em-step-popup-content .em-step-popup-button' => 'color: {{VALUE}}',
@@ -1031,7 +1031,7 @@ $repeater->add_control(
         $this->add_control(
 			'button_bg',
 			[
-				'label' => esc_html__( 'Active Button Backround', 'textdomain' ),
+				'label' => esc_html__( 'Active Button Backround', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .em-step-completion-popup .em-step-popup-content .em-step-popup-button' => 'background-color: {{VALUE}}',
@@ -1041,7 +1041,7 @@ $repeater->add_control(
         $this->add_control(
 			'button_text_color_hover',
 			[
-				'label' => esc_html__( 'Hover Button Color', 'textdomain' ),
+				'label' => esc_html__( 'Hover Button Color', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .em-step-completion-popup .em-step-popup-content .em-step-popup-button:hover' => 'color: {{VALUE}}',
@@ -1051,7 +1051,7 @@ $repeater->add_control(
         $this->add_control(
 			'button_bg_hover',
 			[
-				'label' => esc_html__( 'Hover Button Backround', 'textdomain' ),
+				'label' => esc_html__( 'Hover Button Backround', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .em-step-completion-popup .em-step-popup-content .em-step-popup-button:hover' => 'background-color: {{VALUE}}',
@@ -1061,7 +1061,7 @@ $repeater->add_control(
         $this->add_responsive_control(
 			'button_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
@@ -1080,7 +1080,7 @@ $repeater->add_control(
         $this->add_responsive_control(
 			'button_padding',
 			[
-				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
@@ -1099,7 +1099,7 @@ $repeater->add_control(
         $this->add_responsive_control(
 			'button_radius',
 			[
-				'label' => esc_html__( 'Radius', 'textdomain' ),
+				'label' => esc_html__( 'Radius', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
@@ -1177,7 +1177,7 @@ $repeater->add_control(
         $this->add_responsive_control(
 			'arbtn_padding',
 			[
-				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'label' => esc_html__( 'Padding', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
@@ -1208,7 +1208,7 @@ $repeater->add_control(
         $this->add_responsive_control(
 			'em_nav_btn_margin',
 			[
-				'label' => esc_html__( 'Margin', 'textdomain' ),
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
@@ -1246,7 +1246,7 @@ $repeater->add_control(
         $this->add_control(
 			'prev_button',
 			[
-				'label' => esc_html__( 'Previous Button', 'textdomain' ),
+				'label' => esc_html__( 'Previous Button', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -1339,7 +1339,7 @@ $repeater->add_control(
         $this->add_control(
 			'next_button',
 			[
-				'label' => esc_html__( 'Next Button', 'textdomain' ),
+				'label' => esc_html__( 'Next Button', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -1444,7 +1444,7 @@ $repeater->add_control(
         $this->add_control(
             'icon_arrow_size',
             [
-                'label' => esc_html__( 'Arrow Size', 'textdomain' ),
+                'label' => esc_html__( 'Arrow Size', 'magic-elements' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
                 'range' => [
