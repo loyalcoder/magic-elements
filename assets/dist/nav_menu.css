@@ -322,7 +322,7 @@ nav .cnw-nav > li.menu-item-has-children:hover > .sub-menu {
   filter: invert(1);
   opacity: 1;
   background: none;
-  border: 2px solid rgba(255, 255, 255, 0.6);
+  border: 2px solid rgba(20, 20, 20, 0.6);
   border-radius: 50%;
   margin-right:50px;
   margin-top:20Px !important;
