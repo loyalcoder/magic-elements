@@ -275,16 +275,9 @@ nav .cnw-nav > li.menu-item-has-children:hover > .sub-menu {
   font-size: 18px;
   line-height: 24px;
 }
-.offcanvas .offcanvas-body ul li {
-  margin-top: 15px;
-}
 .offcanvas .offcanvas-body ul li a {
   color: black;
   font-size: 18px;
-  padding: 8px 24px;
-}
-.offcanvas .offcanvas-body ul li a:hover {
-  background-color: rgb(234, 236, 238);
 }
 
 .book-button a {
@@ -322,7 +315,7 @@ nav .cnw-nav > li.menu-item-has-children:hover > .sub-menu {
   filter: invert(1);
   opacity: 1;
   background: none;
-  border: 2px solid rgba(20, 20, 20, 0.6);
+  border: 2px solid rgba(82, 82, 82, 0.6);
   border-radius: 50%;
   margin-right:50px;
   margin-top:20Px !important;
@@ -374,12 +367,23 @@ nav .cnw-nav > li.menu-item-has-children:hover > .sub-menu {
   width: min(1750px, 100%);
   min-height: calc(100vh - 60px);
 }
+.offcanvas-fullscreen .offcanvas-body {
+  overflow-y: auto;
+}
 @media screen and (max-width: 1023px) {
   .offcanvas-fullscreen .fullscreen-wrapper {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    /* stack with MENU first, then left content */
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-height: auto;
+  }
+  .offcanvas-fullscreen .fullscreen-right {
+    order: 1;
+    padding: 0 20px;
   }
   .offcanvas-fullscreen .fullscreen-left {
+    order: 2;
     padding: 0 20px 20px;
   }
   .offcanvas-fullscreen .fullscreen-left-footer {
@@ -505,6 +509,19 @@ nav .cnw-nav > li.menu-item-has-children:hover > .sub-menu {
 .offcanvas-fullscreen .fullscreen-menus .cnw-nav-fullscreen > li > a:hover {
   color: #ffffff;
   background: transparent;
+}
+.offcanvas-fullscreen .fullscreen-menus .cnw-nav-fullscreen .sub-menu li a{
+  color: #ffffff !important;
+  font-size: 20px !important;
+  padding: 8px 24px;
+}
+.offcanvas-fullscreen .fullscreen-menus .cnw-nav-fullscreen .sub-menu li{
+  padding: 8px 24px;
+}
+.offcanvas-fullscreen .fullscreen-menus .cnw-nav-fullscreen .sub-menu li:hover {
+  background-color: #545454;
+  color: #ffffff !important;
+  padding: 8px 24px;
 }
 .offcanvas .me-close img {
   width: 100%;

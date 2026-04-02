@@ -1120,7 +1120,35 @@ class Nav_Menu extends Widget_Base
 			]
 		);
         $this->end_controls_section();
-		// Offcanvas style controls (close btn, menu hover)
+		// Fullscreen Offcanvas dropdown menu 
+		$this->start_controls_section(
+			'fullscreen_dropdown_menu_style_section',
+			[
+				'label' => esc_html__( 'Fullscreen Dropdown Menu', 'magic-elements' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'offcanvas_style' => 'fullscreen',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'fullscreen_dropdown_menu_background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .offcanvas-fullscreen .cnw-nav-fullscreen .menu-item .sub-menu',
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'fullscreen_dropdown_menu_typography',
+				'selector' => '{{WRAPPER}} .offcanvas-fullscreen .fullscreen-menus .cnw-nav-fullscreen .sub-menu li a',
+			]
+		);
+        $this->end_controls_section();
+
+		// Offcanvas style controls 
 		$this->start_controls_section(
 			'offcanvas_controls_style_section',
 			[
