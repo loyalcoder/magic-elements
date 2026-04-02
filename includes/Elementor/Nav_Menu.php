@@ -344,13 +344,28 @@ class Nav_Menu extends Widget_Base
 			]
 		);
 		$this->add_control(
+			'offcanvas_style',
+			[
+				'label' => esc_html__( 'Style', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'sidebar',
+				'options' => [
+					'sidebar' => esc_html__( 'Sidebar (current)', 'magic-elements' ),
+					'fullscreen' => esc_html__( 'Fullscreen', 'magic-elements' ),
+				],
+			]
+		);
+		$this->add_control(
 			'offcanvas_title',
 			[
 				'label' => esc_html__( 'Title', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
 				'default' => esc_html__( 'Magical title is here', 'magic-elements' ),
 				'placeholder' => esc_html__( 'Type your title here', 'magic-elements' ),
-			]
+				'condition' => [
+					'offcanvas_style' => 'sidebar',
+				],
+			]	
 		);
 		$this->add_control(
 			'offcanvas_description',
@@ -360,6 +375,65 @@ class Nav_Menu extends Widget_Base
 				'rows' => 5,
 				'default' => esc_html__( 'Magic Elements enhances Elementor with powerful widgets and flexible design controls.', 'magic-elements' ),
 				'placeholder' => esc_html__( 'Type your description here', 'magic-elements' ),
+				'condition' => [
+					'offcanvas_style' => 'sidebar',
+				],
+			]
+		);
+		$this->add_control(
+			'offcanvas_fullscreen_logo',
+			[
+				'label' => esc_html__( 'Fullscreen Logo', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::MEDIA,
+				'media_types' => [ 'image', 'svg'],
+				'condition' => [
+					'offcanvas_style' => 'fullscreen',
+				],
+			]
+		);
+		$this->add_control(
+			'offcanvas_close_icon_picker',
+			[
+				'label' => esc_html__( 'Close Icon', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::ICONS,
+				'default' => [
+					'value' => '',
+					'library' => 'fa-solid',
+				],
+			]
+		);
+		$this->add_control(
+			'offcanvas_email',
+			[
+				'label' => esc_html__( 'Email (Fullscreen)', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => '',
+				'condition' => [
+					'offcanvas_style' => 'fullscreen',
+				],
+			]
+		);
+		$this->add_control(
+			'offcanvas_phone',
+			[
+				'label' => esc_html__( 'Phone (Fullscreen)', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => '',
+				'condition' => [
+					'offcanvas_style' => 'fullscreen',
+				],
+			]
+		);
+		$this->add_control(
+			'offcanvas_address',
+			[
+				'label' => esc_html__( 'Address (Fullscreen)', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'rows' => 3,
+				'default' => '',
+				'condition' => [
+					'offcanvas_style' => 'fullscreen',
+				],
 			]
 		);
         $this->end_controls_section();
@@ -1035,11 +1109,232 @@ class Nav_Menu extends Widget_Base
 			]
 		);
         $this->end_controls_section();
-		//Offcanvas Section
+		// Offcanvas style controls (close btn, menu hover)
+		$this->start_controls_section(
+			'offcanvas_controls_style_section',
+			[
+				'label' => esc_html__( 'Fullscreen Offcanvas', 'magic-elements' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+		$this->add_control(
+			'offcanvas_close_color',
+			[
+				'label' => esc_html__( 'Close Button Color', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .offcanvas-fullscreen .btn-close' => 'filter: invert(0); color: {{VALUE}};',
+					'{{WRAPPER}} .offcanvas .btn-close' => 'color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'offcanvas_close_size',
+			[
+				'label' => esc_html__( 'Close Button Size', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'range' => [
+					'px' => [
+						'min' => 12,
+						'max' => 64,
+						'step' => 1,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .offcanvas-fullscreen .btn-close' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; background-size: {{SIZE}}{{UNIT}} {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .offcanvas .btn-close' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; background-size: {{SIZE}}{{UNIT}} {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_control(
+			'offcanvas_menu_hover_color',
+			[
+				'label' => esc_html__( 'Menu Hover Color (Fullscreen)', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .offcanvas-fullscreen .cnw-nav-fullscreen > li > a:hover' => 'color: {{VALUE}};',
+				],
+				'condition' => [
+					'offcanvas_style' => 'fullscreen',
+				],
+			]
+		);
+		$this->add_control(
+			'offcanvas_menu_hover_bg',
+			[
+				'label' => esc_html__( 'Menu Hover Background (Fullscreen)', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .offcanvas-fullscreen .cnw-nav-fullscreen > li > a:hover' => 'background-color: {{VALUE}};',
+				],
+				'condition' => [
+					'offcanvas_style' => 'fullscreen',
+				],
+			]
+		);
+		$this->add_control(
+			'offcanvas_menu_hover_underline',
+			[
+				'label' => esc_html__( 'Menu Hover Underline (Fullscreen)', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'magic-elements' ),
+				'label_off' => esc_html__( 'Hide', 'magic-elements' ),
+				'return_value' => 'yes',
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} .offcanvas-fullscreen .cnw-nav-fullscreen > li > a:hover' => 'text-decoration: underline;',
+				],
+				'condition' => [
+					'offcanvas_style' => 'fullscreen',
+				],
+			]
+		);
+		$this->add_control(
+			'offcanvas_fs_logo_heading',
+			[
+				'label' => esc_html__( 'Fullscreen Logo', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+				'condition' => [
+					'offcanvas_style' => 'fullscreen',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'offcanvas_fs_logo_width',
+			[
+				'label' => esc_html__( 'Logo Width', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 500,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'PX',
+					'size' => 150,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .offcanvas-fs-logo' => 'width: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => [
+					'offcanvas_style' => 'fullscreen',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'offcanvas_fs_logo_margin',
+			[
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .offcanvas-fs-logo' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition' => [
+					'offcanvas_style' => 'fullscreen',
+				],
+			]
+		);
+		$this->end_controls_section();
+		//Fullscreen Offcanvas Content 
+		$this->start_controls_section(
+			'fullscreen_offcanvas_content_style_section',
+			[
+				'label' => esc_html__( 'Fullscreen Offcanvas Content ', 'magic-elements' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'offcanvas_style' => 'fullscreen',
+				],
+			]
+		);
+		$this->add_control(
+			'more_options_fullscreen_title',
+			[
+				'label' => esc_html__( 'Title', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'fullscreen_title_color',
+			[
+				'label' => esc_html__( 'Title Color', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .fullscreen-left .contact-block h6' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'fullscreen_title_typography',
+				'selector' => '{{WRAPPER}} .fullscreen-left .contact-block h6',
+			]
+		);
+		$this->add_responsive_control(
+			'fullscreen_title_margin',
+			[
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .fullscreen-left .contact-block' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_control(
+			'more_options_fullscreen_content',
+			[
+				'label' => esc_html__( 'Content', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+		$this->add_control(
+			'fullscreen_content_color',
+			[
+				'label' => esc_html__( 'Content Color', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .fullscreen-left .contact-block p' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'fullscreen_content_typography',
+				'selector' => '{{WRAPPER}} .fullscreen-left .contact-block p',
+			]
+		);
+		$this->add_responsive_control(
+			'fullscreen_content_margin',
+			[
+				'label' => esc_html__( 'Margin', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .fullscreen-left .contact-block p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->end_controls_section();
+		//Sidebar Offcanvas Section
 		$this->start_controls_section(
 			'offcanvas_style_section',
 			[
-				'label' => esc_html__( 'Offcanvas', 'magic-elements' ),
+				'label' => esc_html__( 'Sidebar Offcanvas', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -1433,6 +1728,41 @@ class Nav_Menu extends Widget_Base
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
 					'{{WRAPPER}} .inner button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_control(
+			'offcanvas_fs_columns_heading',
+			[
+				'label' => esc_html__( 'Fullscreen Columns Background', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+				'condition' => [
+					'offcanvas_style' => 'fullscreen',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'offcanvas_fs_left_bg',
+				'label' => esc_html__( 'Left Column Background', 'magic-elements' ),
+				'types' => [ 'classic', 'gradient' ],
+				'selector' => '{{WRAPPER}} .offcanvas-fullscreen .fullscreen-left',
+				'condition' => [
+					'offcanvas_style' => 'fullscreen',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'offcanvas_fs_right_bg',
+				'label' => esc_html__( 'Right Column Background', 'magic-elements' ),
+				'types' => [ 'classic', 'gradient' ],
+				'selector' => '{{WRAPPER}} .offcanvas-fullscreen .fullscreen-right',
+				'condition' => [
+					'offcanvas_style' => 'fullscreen',
 				],
 			]
 		);
