@@ -1,0 +1,16 @@
+/* Frontend styles for Magic Elements */
+
+/* Sidebar offcanvas logo */
+.offcanvas-sidebar-logo img { display: block; max-width: 100%; height: auto; }
+
+/* Fullscreen offcanvas - mobile logo at top, menus next, then details */
+.offcanvas-fullscreen .fs-mobile-logo { display: none; }
+@media (max-width: 991.98px) {
+	.offcanvas-fullscreen .offcanvas-body.fullscreen-wrapper { display: flex; flex-direction: column; }
+	.offcanvas-fullscreen .fullscreen-right { order: 1; }
+	.offcanvas-fullscreen .fullscreen-left { order: 2; }
+	.offcanvas-fullscreen .offcanvas-fs-logo { display: none; }
+	.offcanvas-fullscreen .fs-mobile-logo { display: block; text-align: center; margin: 0 0 20px; }
+	.offcanvas-fullscreen .fs-mobile-logo img { max-width: 160px; height: auto; display: inline-block; }
+}
+

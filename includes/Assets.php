@@ -25,7 +25,7 @@ class Assets
          /**
           * Enqueue editor styles
           */
-        
+        add_action('wp_enqueue_scripts', [$this, 'enqueue_front_assets']);
     }
 
     public function register_admin_assets() {
@@ -98,5 +98,21 @@ class Assets
     }
     public function elementor_css() {
         wp_enqueue_style( 'magic-elements-editor', MAGIC_ELEMENTS_ASSETS . '/css/editor.css', [], MAGIC_ELEMENTS_VERSION );
+    }
+
+    /**
+     * Frontend assets
+     */
+    public function enqueue_front_assets() {
+        $front_css = MAGIC_ELEMENTS_PATH . '/assets/css/frontend.css';
+        $front_css_url = MAGIC_ELEMENTS_ASSETS . '/css/frontend.css';
+        if (file_exists($front_css)) {
+            wp_enqueue_style(
+                'magic-elements-frontend',
+                $front_css_url,
+                [],
+                filemtime($front_css)
+            );
+        }
     }
 }

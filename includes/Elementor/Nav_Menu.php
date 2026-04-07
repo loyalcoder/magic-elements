@@ -356,25 +356,11 @@ class Nav_Menu extends Widget_Base
 			]
 		);
 		$this->add_control(
-			'offcanvas_title',
+			'offcanvas_sidebar_logo',
 			[
-				'label' => esc_html__( 'Title', 'magic-elements' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Magical title is here', 'magic-elements' ),
-				'placeholder' => esc_html__( 'Type your title here', 'magic-elements' ),
-				'condition' => [
-					'offcanvas_style' => 'sidebar',
-				],
-			]	
-		);
-		$this->add_control(
-			'offcanvas_description',
-			[
-				'label' => esc_html__( 'Description', 'magic-elements' ),
-				'type' => \Elementor\Controls_Manager::TEXTAREA,
-				'rows' => 5,
-				'default' => esc_html__( 'Magic Elements enhances Elementor with powerful widgets and flexible design controls.', 'magic-elements' ),
-				'placeholder' => esc_html__( 'Type your description here', 'magic-elements' ),
+				'label' => esc_html__( 'Sidebar Logo', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::MEDIA,
+				'media_types' => [ 'image', 'svg' ],
 				'condition' => [
 					'offcanvas_style' => 'sidebar',
 				],
@@ -1444,82 +1430,43 @@ class Nav_Menu extends Widget_Base
 			]
 		);
 		$this->add_control(
-			'title_more_options',
+			'sidebar_logo_more_options',
 			[
-				'label' => esc_html__( 'Title', 'magic-elements' ),
+				'label' => esc_html__( 'Sidebar Logo', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
 		);
-		$this->add_control(
-			'offcanvas_title_color',
+		$this->add_responsive_control(
+			'offcanvas_sidebar_logo_width',
 			[
-				'label' => esc_html__( 'Text Color', 'magic-elements' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .offcanvas-header h3' => 'color: {{VALUE}}',
+				'label' => esc_html__( 'Logo Width', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 20,
+						'max' => 600,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 10,
+						'max' => 100,
+					],
 				],
-			]
-		);
-		$this->add_group_control(
-			\Elementor\Group_Control_Typography::get_type(),
-			[
-				'name' => 'offcanvas_title_typography',
-				'selector' => '{{WRAPPER}} .offcanvas-header h3',
+				'selectors' => [
+					'{{WRAPPER}} .offcanvas-sidebar-logo img' => 'width: {{SIZE}}{{UNIT}};',
+				],
 			]
 		);
 		$this->add_responsive_control(
-			'offcanvas_title_margin',
+			'offcanvas_sidebar_logo_margin',
 			[
-				'label' => esc_html__( 'Margin', 'magic-elements' ),
+				'label' => esc_html__( 'Logo Margin', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
-					'{{WRAPPER}} .offcanvas-header h3' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-		$this->add_control(
-			'description_more_options',
-			[
-				'label' => esc_html__( 'Description', 'magic-elements' ),
-				'type' => \Elementor\Controls_Manager::HEADING,
-				'separator' => 'before',
-			]
-		);
-		$this->add_control(
-			'offcanvas_description_color',
-			[
-				'label' => esc_html__( ' Color', 'magic-elements' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .offcanvas_description' => 'color: {{VALUE}}',
-				],
-			]
-		);
-		$this->add_group_control(
-			\Elementor\Group_Control_Typography::get_type(),
-			[
-				'name' => 'offcanvas_description_typography',
-				'selector' => '{{WRAPPER}} .offcanvas_description',
-			]
-		);
-		$this->add_responsive_control(
-			'offcanvas_description_margin',
-			[
-				'label' => esc_html__( 'Margin', 'magic-elements' ),
-				'type' => \Elementor\Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'default' => [
-					'top' => 0,
-					'right' => 0,
-					'bottom' => 0,
-					'left' => 15,
-					'unit' => 'px',
-					'isLinked' => false,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .offcanvas_description' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .offcanvas-sidebar-logo' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);

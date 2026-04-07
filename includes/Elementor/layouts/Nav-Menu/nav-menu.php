@@ -120,6 +120,11 @@ if( $header_layout == 'layout-one' ) { ?>
                         </div>
                     </div>
                     <div class="fullscreen-right">
+                        <?php if ( ! empty( $settings['offcanvas_fullscreen_logo']['url'] ) ) : ?>
+                            <div class="fs-mobile-logo">
+                                <img src="<?php echo esc_url( $settings['offcanvas_fullscreen_logo']['url'] ); ?>" alt="<?php echo esc_attr( get_bloginfo('name') ); ?>">
+                            </div>
+                        <?php endif; ?>
                         <!-- Title/Description only for sidebar; intentionally omitted here -->
                         <div class="fullscreen-menus">
                             <?php
@@ -147,7 +152,11 @@ if( $header_layout == 'layout-one' ) { ?>
         <?php else : ?>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header">
-                    <h3 id="offcanvasRightLabel"><?php echo esc_html($settings['offcanvas_title']); ?></h3>
+                    <?php if ( ! empty( $settings['offcanvas_sidebar_logo']['url'] ) ) : ?>
+                        <div class="offcanvas-sidebar-logo" id="offcanvasRightLabel">
+                            <img src="<?php echo esc_url( $settings['offcanvas_sidebar_logo']['url'] ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+                        </div>
+                    <?php endif; ?>
                     <button type="button" class="btn-close text-reset me-close" data-bs-dismiss="offcanvas" aria-label="Close">
                         <?php if ( ! empty( $settings['offcanvas_close_icon']['url'] ) ) : ?>
                             <img src="<?php echo esc_url( $settings['offcanvas_close_icon']['url'] ); ?>" alt="<?php echo esc_attr__( 'Close', 'magic-elements' ); ?>">
@@ -158,7 +167,6 @@ if( $header_layout == 'layout-one' ) { ?>
                         <?php endif; ?>
                     </button>
                 </div>
-                <div><p class="offcanvas_description"><?php echo esc_html($settings['offcanvas_description']); ?></p></div>
                 <div class="offcanvas-body">
                     <?php
                         if(!empty($settings['menu_select'])){
@@ -295,6 +303,11 @@ if( $header_layout == 'layout-one' ) { ?>
                         </div>
                     </div>
                     <div class="fullscreen-right">
+                        <?php if ( ! empty( $settings['offcanvas_fullscreen_logo']['url'] ) ) : ?>
+                            <div class="fs-mobile-logo">
+                                <img src="<?php echo esc_url( $settings['offcanvas_fullscreen_logo']['url'] ); ?>" alt="<?php echo esc_attr( get_bloginfo('name') ); ?>">
+                            </div>
+                        <?php endif; ?>
                         <!-- Title/Description only for sidebar; intentionally omitted here -->
                         <div class="fullscreen-menus">
                             <?php
@@ -322,7 +335,11 @@ if( $header_layout == 'layout-one' ) { ?>
         <?php else : ?>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header">
-                    <h3 id="offcanvasRightLabel"><?php echo esc_html($settings['offcanvas_title']); ?></h3>
+                    <?php if ( ! empty( $settings['offcanvas_sidebar_logo']['url'] ) ) : ?>
+                        <div class="offcanvas-sidebar-logo" id="offcanvasRightLabel">
+                            <img src="<?php echo esc_url( $settings['offcanvas_sidebar_logo']['url'] ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+                        </div>
+                    <?php endif; ?>
                     <button type="button" class="btn-close text-reset me-close" data-bs-dismiss="offcanvas" aria-label="Close">
                         <?php if ( ! empty( $settings['offcanvas_close_icon']['url'] ) ) : ?>
                             <img src="<?php echo esc_url( $settings['offcanvas_close_icon']['url'] ); ?>" alt="<?php echo esc_attr__( 'Close', 'magic-elements' ); ?>">
@@ -333,7 +350,6 @@ if( $header_layout == 'layout-one' ) { ?>
                         <?php endif; ?>
                     </button>
                 </div>
-                <div><p class="offcanvas_description"><?php echo esc_html($settings['offcanvas_description']); ?></p></div>
                 <div class="offcanvas-body">
                     <?php
                         if(!empty($settings['menu_select'])){
@@ -459,6 +475,11 @@ if( $header_layout == 'layout-one' ) { ?>
                         </div>
                     </div>
                     <div class="fullscreen-right">
+                        <?php if ( ! empty( $settings['offcanvas_fullscreen_logo']['url'] ) ) : ?>
+                            <div class="fs-mobile-logo">
+                                <img src="<?php echo esc_url( $settings['offcanvas_fullscreen_logo']['url'] ); ?>" alt="<?php echo esc_attr( get_bloginfo('name') ); ?>">
+                            </div>
+                        <?php endif; ?>
                         <!-- Title/Description only for sidebar; intentionally omitted here -->
                         <div class="fullscreen-menus">
                             <?php
@@ -486,14 +507,17 @@ if( $header_layout == 'layout-one' ) { ?>
         <?php else : ?>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header">
-                    <h3 id="offcanvasRightLabel"><?php echo esc_html($settings['offcanvas_title']); ?></h3>
+                    <?php if ( ! empty( $settings['offcanvas_sidebar_logo']['url'] ) ) : ?>
+                        <div class="offcanvas-sidebar-logo" id="offcanvasRightLabel">
+                            <img src="<?php echo esc_url( $settings['offcanvas_sidebar_logo']['url'] ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+                        </div>
+                    <?php endif; ?>
                     <button type="button" class="btn-close text-reset me-close" data-bs-dismiss="offcanvas" aria-label="Close">
                         <?php if ( ! empty( $settings['offcanvas_close_icon']['url'] ) ) : ?>
                             <img src="<?php echo esc_url( $settings['offcanvas_close_icon']['url'] ); ?>" alt="<?php echo esc_attr__( 'Close', 'magic-elements' ); ?>">
                         <?php endif; ?>
                     </button>
                 </div>
-                <div><p class="offcanvas_description"><?php echo esc_html($settings['offcanvas_description']); ?></p></div>
                 <div class="offcanvas-body">
                     <?php
                         if(!empty($settings['menu_select'])){
