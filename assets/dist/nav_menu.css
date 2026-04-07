@@ -386,6 +386,26 @@ nav .cnw-nav > li.menu-item-has-children:hover > .sub-menu {
     order: 2;
     padding: 0 20px 20px;
   }
+  .offcanvas-fullscreen .fullscreen-right,
+  .offcanvas-fullscreen .fullscreen-left,
+  .offcanvas-fullscreen .fullscreen-menus,
+  .offcanvas-fullscreen .cnw-nav-fullscreen,
+  .offcanvas-fullscreen .cnw-nav-fullscreen > li,
+  .offcanvas-fullscreen .contact-block,
+  .offcanvas-fullscreen .fullscreen-left-footer,
+  .offcanvas-fullscreen .fullscreen-copyright,
+  .offcanvas-fullscreen .fs-mobile-logo {
+    text-align: left !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+  }
+  .offcanvas-fullscreen .fs-mobile-logo img,
+  .offcanvas-fullscreen .cnw-nav-fullscreen > li > a,
+  .offcanvas-fullscreen .cnw-nav-fullscreen .sub-menu li a {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    text-align: left !important;
+  }
   .offcanvas-fullscreen .fullscreen-left-footer {
     margin-top: 12px;
     flex-direction: column;
