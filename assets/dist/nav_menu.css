@@ -237,6 +237,19 @@ nav .cnw-nav > li.menu-item-has-children:hover > .sub-menu {
   z-index: 10;
   margin-left: 20%;
 }
+.offcanvas.offcanvas-end:not(.offcanvas-fullscreen) .offcanvas-body .cnw-nav > li.menu-item-has-children > .sub-menu {
+  padding: 8px 0 8px 14px;
+}
+.offcanvas.offcanvas-end:not(.offcanvas-fullscreen) .offcanvas-body .cnw-nav > li.menu-item-has-children > .sub-menu > li > a {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 12px;
+}
+.offcanvas.offcanvas-end:not(.offcanvas-fullscreen) .offcanvas-body .cnw-nav > li.menu-item-has-children > .sub-menu > li:hover > a,
+.offcanvas.offcanvas-end:not(.offcanvas-fullscreen) .offcanvas-body .cnw-nav > li.menu-item-has-children > .sub-menu > li > a:hover {
+  background-color: #eaecee;
+}
 .offcanvas-body .cnw-nav > li.menu-item-has-children {
   /* ACTIVE STATE (click হলে) */
 }
