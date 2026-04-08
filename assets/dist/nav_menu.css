@@ -545,8 +545,8 @@ nav .cnw-nav > li.menu-item-has-children:hover > .sub-menu {
 }
 .offcanvas-fullscreen .fullscreen-menus .cnw-nav-fullscreen .sub-menu li a{
   color: #ffffff !important;
-  font-size: 20px !important;
-  padding: 8px 24px;
+  font-size: 18px !important;
+  padding: 8px 0;
 }
 .offcanvas-fullscreen .fullscreen-menus .cnw-nav-fullscreen .sub-menu li{
   padding: 8px 24px;
