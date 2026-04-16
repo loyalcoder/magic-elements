@@ -16,6 +16,17 @@ import "./../scss/nav_menu.scss"
       },
 
       EmKitNavMenu: function ($scope) {   
+          const toggleStickyShadow = () => {
+              const hasScrolled = window.scrollY > 0;
+
+              document.querySelectorAll('.magic-header.is-sticky').forEach((header) => {
+                  header.classList.toggle('is-scrolled', hasScrolled);
+              });
+          };
+
+          $(window).off('scroll.magicElementsStickyShadow').on('scroll.magicElementsStickyShadow', toggleStickyShadow);
+          toggleStickyShadow();
+
           // alert('nav menu loaded');
           $('.open_search').on('click', function(event){
           event.stopPropagation();
