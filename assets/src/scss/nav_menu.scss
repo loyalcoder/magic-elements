@@ -15,11 +15,8 @@
         }
     }
 }
-
-.magic-header.is-sticky:not(.is-scrolled) {
-    box-shadow: none;
-}
-.magic-header.is-sticky.is-scrolled {
+/* Optional: Scroll effect (CSS only) */
+.magic-header.is-sticky {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 .magic-header.is-sticky {

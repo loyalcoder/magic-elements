@@ -500,7 +500,7 @@ class Nav_Menu extends Widget_Base
 					'size' => 1290,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .magic-menu' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .magic-menu' => 'max-width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
