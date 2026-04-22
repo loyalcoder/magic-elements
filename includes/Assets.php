@@ -21,11 +21,13 @@ class Assets
     
 
          add_action( 'elementor/editor/after_enqueue_styles', [$this, 'elementor_css'] );
+         add_action( 'elementor/preview/enqueue_styles', [$this, 'enqueue_front_assets'], 999 );
+         add_action( 'elementor/frontend/after_enqueue_styles', [$this, 'enqueue_front_assets'], 999 );
 
          /**
           * Enqueue editor styles
           */
-        add_action('wp_enqueue_scripts', [$this, 'enqueue_front_assets']);
+        add_action('wp_enqueue_scripts', [$this, 'enqueue_front_assets'], 999);
     }
 
     public function register_admin_assets() {
@@ -97,6 +99,16 @@ class Assets
         }
     }
     public function elementor_css() {
+        $front_css = MAGIC_ELEMENTS_PATH . '/assets/css/frontend.css';
+        if (file_exists($front_css)) {
+            wp_enqueue_style(
+                'magic-elements-frontend-editor',
+                MAGIC_ELEMENTS_ASSETS . '/css/frontend.css',
+                [],
+                filemtime($front_css)
+            );
+        }
+
         wp_enqueue_style( 'magic-elements-editor', MAGIC_ELEMENTS_ASSETS . '/css/editor.css', [], MAGIC_ELEMENTS_VERSION );
     }
 
