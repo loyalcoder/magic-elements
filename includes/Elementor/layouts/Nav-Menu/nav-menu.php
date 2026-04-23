@@ -1,6 +1,8 @@
 <?php
 $show_custom_mobile_menu_icon = isset( $settings['show_mobile_menu_icon'] ) && 'yes' === $settings['show_mobile_menu_icon'];
 $mobile_menu_button_classes   = $show_custom_mobile_menu_icon ? 'btn btn-primary mobile-menu' : 'btn btn-primary mobile-menu mobile-menu-fallback-trigger';
+$offcanvas_id                 = 'offcanvas-right-' . $this->get_id();
+$offcanvas_label_id           = 'offcanvas-right-label-' . $this->get_id();
 if( $header_layout == 'layout-one' ) { ?>
 <header class="magic-header <?php echo ($settings['enable_sticky'] === 'yes') ? 'is-sticky' : ''; ?>">
     <div class="container magic-menu" style="display:flex;justify-content:space-between;align-items:center;padding:20px 0;">
@@ -24,63 +26,28 @@ if( $header_layout == 'layout-one' ) { ?>
                 <div class="overlayer"></div>
             </div>
         <?php endif; ?> 
-        <!-- Left Menu -->
-        <nav class="nav-menu-left">
-            <?php
-            if(!empty($settings['menu_select'])){
-                wp_nav_menu([
-                    'menu' => $settings['menu_select'],
-                    'container' => false,
-                    'menu_class' => 'cnw-nav'
-                ]);
-            }
-            ?>
-        </nav> 
-            <!-- Logo -->
-        <?php if(!empty($settings['logo']['url'])): ?>
-            <a class="menu-logo" href="<?php echo esc_url(home_url()); ?>">
-                <img src="<?php echo esc_url($settings['logo']['url']); ?>">
-            </a>
-        <?php endif; ?>
-        <!-- Right Menu -->
-        <nav class="nav-menu-right">
-            <?php
-                if(!empty($settings['menu_select_right'])){
+        <!-- middle point -->
+         <div class="mid-point flex items-center justify-center">
+            <!-- Left Menu -->
+            <nav class="nav-menu-left">
+                <?php
+                if(!empty($settings['menu_select'])){
                     wp_nav_menu([
-                        'menu' => $settings['menu_select_right'],
+                        'menu' => $settings['menu_select'],
                         'container' => false,
                         'menu_class' => 'cnw-nav'
                     ]);
                 }
-            ?>
-        </nav>
-        <!-- Mobile Menu -->
-        <!-- Icon -->
-        <button class="<?php echo esc_attr( $mobile_menu_button_classes ); ?>" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-            <?php if ( $show_custom_mobile_menu_icon ) : ?>
-                <?php \Elementor\Icons_Manager::render_icon( $settings['mobile_menu_icon'], [ 'aria-hidden' => 'true' ] ); ?>
-            <?php else : ?>
-                <span class="mobile-menu-fallback-icon" aria-hidden="true">&#9776;</span>
-                <span class="screen-reader-text"><?php echo esc_html__( 'Open menu', 'magic-elements' ); ?></span>
-            <?php endif; ?>
-        </button>
-        <!-- Offcanvas -->
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-            <div class="offcanvas-header">
-                <h3 id="offcanvasRightLabel"><?php echo esc_html($settings['offcanvas_title']); ?></h3>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">X</button>
-            </div>
-            <div><p class="offcanvas_description"><?php echo esc_html($settings['offcanvas_description']); ?></p></div>
-            <div class="offcanvas-body">
-                <?php
-                    if(!empty($settings['menu_select'])){
-                        wp_nav_menu([
-                            'menu' => $settings['menu_select'],
-                            'container' => false,
-                            'menu_class' => 'cnw-nav'
-                        ]);
-                    }
                 ?>
+            </nav> 
+            <!-- Logo -->
+            <?php if(!empty($settings['logo']['url'])): ?>
+                <a class="menu-logo menu-logo-desktop-gap" href="<?php echo esc_url(home_url()); ?>">
+                    <img src="<?php echo esc_url($settings['logo']['url']); ?>">
+                </a>
+            <?php endif; ?>
+            <!-- Right Menu -->
+            <nav class="nav-menu-right">
                 <?php
                     if(!empty($settings['menu_select_right'])){
                         wp_nav_menu([
@@ -90,8 +57,140 @@ if( $header_layout == 'layout-one' ) { ?>
                         ]);
                     }
                 ?>
+            </nav>
+         </div>
+        
+        <!-- Mobile Menu -->
+        <!-- Icon -->
+        <button class="<?php echo esc_attr( $mobile_menu_button_classes ); ?>" type="button" data-bs-toggle="offcanvas" data-bs-target="#<?php echo esc_attr( $offcanvas_id ); ?>" aria-controls="<?php echo esc_attr( $offcanvas_id ); ?>">
+            <?php if ( $show_custom_mobile_menu_icon ) : ?>
+                <?php \Elementor\Icons_Manager::render_icon( $settings['mobile_menu_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+            <?php else : ?>
+                <span class="mobile-menu-fallback-icon" aria-hidden="true">&#9776;</span>
+                <span class="screen-reader-text"><?php echo esc_html__( 'Open menu', 'magic-elements' ); ?></span>
+            <?php endif; ?>
+        </button>
+        <!-- Offcanvas -->
+        <?php $offcanvas_style = isset($settings['offcanvas_style']) ? $settings['offcanvas_style'] : 'sidebar'; ?>
+        <?php if ( $offcanvas_style === 'fullscreen' ) : ?>
+            <div class="offcanvas offcanvas-end offcanvas-fullscreen" tabindex="-1" id="<?php echo esc_attr( $offcanvas_id ); ?>" aria-labelledby="<?php echo esc_attr( $offcanvas_label_id ); ?>">
+                <div class="offcanvas-header">
+                    <h2 id="<?php echo esc_attr( $offcanvas_label_id ); ?>" class="screen-reader-text"><?php echo esc_html__( 'Menu', 'magic-elements' ); ?></h2>
+                    <?php if ( ! empty( $settings['offcanvas_fullscreen_logo']['url'] ) ) : ?>
+                        <div class="offcanvas-header-logo">
+                            <img src="<?php echo esc_url( $settings['offcanvas_fullscreen_logo']['url'] ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+                        </div>
+                    <?php endif; ?>
+                    <button type="button" class="btn-close text-reset me-close" data-bs-dismiss="offcanvas" aria-label="Close">
+                        <?php if ( ! empty( $settings['offcanvas_close_icon']['url'] ) ) : ?>
+                            <img src="<?php echo esc_url( $settings['offcanvas_close_icon']['url'] ); ?>" alt="<?php echo esc_attr__( 'Close', 'magic-elements' ); ?>">
+                        <?php elseif ( ! empty( $settings['offcanvas_close_icon_picker']['value'] ) ) : ?>
+                            <?php \Elementor\Icons_Manager::render_icon( $settings['offcanvas_close_icon_picker'], [ 'aria-hidden' => 'true' ] ); ?>
+                        <?php else : ?>
+                            <span aria-hidden="true">&times;</span>
+                        <?php endif; ?>
+                    </button>
+                </div>
+                <div class="offcanvas-body fullscreen-wrapper">
+                    <div class="fullscreen-left">
+                        <div class="contact-block">
+                            <h6><?php echo esc_html__( 'Email', 'magic-elements' ); ?></h6>
+                            <?php if ( ! empty( $settings['offcanvas_email'] ) ) : ?>
+                                <p><?php echo esc_html( $settings['offcanvas_email'] ); ?></p>
+                            <?php endif; ?>
+                        </div>
+                        <div class="contact-block">
+                            <h6><?php echo esc_html__( 'Phone', 'magic-elements' ); ?></h6>
+                            <?php if ( ! empty( $settings['offcanvas_phone'] ) ) : ?>
+                                <p><?php echo esc_html( $settings['offcanvas_phone'] ); ?></p>
+                            <?php endif; ?>
+                        </div>
+                        <div class="contact-block">
+                            <h6><?php echo esc_html__( 'Address', 'magic-elements' ); ?></h6>
+                            <?php if ( ! empty( $settings['offcanvas_address'] ) ) : ?>
+                                <p><?php echo esc_html( $settings['offcanvas_address'] ); ?></p>
+                            <?php endif; ?>
+                        </div>
+                        <div class="fullscreen-left-footer">
+                            <form class="fullscreen-search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
+                                <input type="search" name="s" class="fullscreen-search-input" autocomplete="off" placeholder="<?php echo esc_attr__( 'Search here', 'magic-elements' ); ?>" value="<?php echo esc_attr( get_search_query() ); ?>" />
+                                <button type="submit" class="fullscreen-search-btn" aria-label="<?php echo esc_attr__( 'Search', 'magic-elements' ); ?>">
+                                    <span class="fullscreen-search-btn-fallback" aria-hidden="true"><?php echo esc_html__( 'Go', 'magic-elements' ); ?></span>
+                                </button>
+                            </form>
+                            <div class="fullscreen-copyright">
+                                <span><?php echo esc_html__( '© All rights reserved', 'magic-elements' ); ?></span>
+                                <span><?php echo esc_html__( 'by', 'magic-elements' ); ?> <?php echo esc_html( get_bloginfo( 'name' ) ); ?></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fullscreen-right">
+                        <!-- Title/Description only for sidebar; intentionally omitted here -->
+                        <div class="fullscreen-menus">
+                            <?php
+                                if(!empty($settings['menu_select'])){
+                                    wp_nav_menu([
+                                        'menu' => $settings['menu_select'],
+                                        'container' => false,
+                                        'menu_class' => 'cnw-nav cnw-nav-fullscreen'
+                                    ]);
+                                }
+                            ?>
+                            <?php
+                                if(!empty($settings['menu_select_right'])){
+                                    wp_nav_menu([
+                                        'menu' => $settings['menu_select_right'],
+                                        'container' => false,
+                                        'menu_class' => 'cnw-nav cnw-nav-fullscreen'
+                                    ]);
+                                }
+                            ?>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        <?php else : ?>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="<?php echo esc_attr( $offcanvas_id ); ?>" aria-labelledby="<?php echo esc_attr( $offcanvas_label_id ); ?>">
+                <div class="offcanvas-header">
+                    <?php if ( ! empty( $settings['offcanvas_sidebar_logo']['url'] ) ) : ?>
+                        <div class="offcanvas-sidebar-logo" id="<?php echo esc_attr( $offcanvas_label_id ); ?>">
+                            <img src="<?php echo esc_url( $settings['offcanvas_sidebar_logo']['url'] ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+                        </div>
+                    <?php else : ?>
+                        <h2 id="<?php echo esc_attr( $offcanvas_label_id ); ?>" class="screen-reader-text"><?php echo esc_html__( 'Menu', 'magic-elements' ); ?></h2>
+                    <?php endif; ?>
+                    <button type="button" class="btn-close text-reset me-close" data-bs-dismiss="offcanvas" aria-label="Close">
+                        <?php if ( ! empty( $settings['offcanvas_close_icon']['url'] ) ) : ?>
+                            <img src="<?php echo esc_url( $settings['offcanvas_close_icon']['url'] ); ?>" alt="<?php echo esc_attr__( 'Close', 'magic-elements' ); ?>">
+                        <?php elseif ( ! empty( $settings['offcanvas_close_icon_picker']['value'] ) ) : ?>
+                            <?php \Elementor\Icons_Manager::render_icon( $settings['offcanvas_close_icon_picker'], [ 'aria-hidden' => 'true' ] ); ?>
+                        <?php else : ?>
+                            <span aria-hidden="true">&times;</span>
+                        <?php endif; ?>
+                    </button>
+                </div>
+                <div class="offcanvas-body">
+                    <?php
+                        if(!empty($settings['menu_select'])){
+                            wp_nav_menu([
+                                'menu' => $settings['menu_select'],
+                                'container' => false,
+                                'menu_class' => 'cnw-nav'
+                            ]);
+                        }
+                    ?>
+                    <?php
+                        if(!empty($settings['menu_select_right'])){
+                            wp_nav_menu([
+                                'menu' => $settings['menu_select_right'],
+                                'container' => false,
+                                'menu_class' => 'cnw-nav'
+                            ]);
+                        }
+                    ?>
+                </div>
+            </div>
+        <?php endif; ?>
         <!-- Mobile Menu End-->
     </div>
 </header>
@@ -142,7 +241,7 @@ if( $header_layout == 'layout-one' ) { ?>
         <!-- Book Button  End-->
           <!-- Mobile Menu -->
         <!-- Icon -->
-        <button class="<?php echo esc_attr( $mobile_menu_button_classes ); ?>" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+        <button class="<?php echo esc_attr( $mobile_menu_button_classes ); ?>" type="button" data-bs-toggle="offcanvas" data-bs-target="#<?php echo esc_attr( $offcanvas_id ); ?>" aria-controls="<?php echo esc_attr( $offcanvas_id ); ?>">
             <?php if ( $show_custom_mobile_menu_icon ) : ?>
                 <?php \Elementor\Icons_Manager::render_icon( $settings['mobile_menu_icon'], [ 'aria-hidden' => 'true' ] ); ?>
             <?php else : ?>
@@ -151,33 +250,126 @@ if( $header_layout == 'layout-one' ) { ?>
             <?php endif; ?>
         </button>
         <!-- Offcanvas -->
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-            <div class="offcanvas-header">
-                <h3 id="offcanvasRightLabel"><?php echo esc_html($settings['offcanvas_title']); ?></h3>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">X</button>
+        <?php $offcanvas_style = isset($settings['offcanvas_style']) ? $settings['offcanvas_style'] : 'sidebar'; ?>
+        <?php if ( $offcanvas_style === 'fullscreen' ) : ?>
+            <div class="offcanvas offcanvas-end offcanvas-fullscreen" tabindex="-1" id="<?php echo esc_attr( $offcanvas_id ); ?>" aria-labelledby="<?php echo esc_attr( $offcanvas_label_id ); ?>">
+                <div class="offcanvas-header">
+                    <h2 id="<?php echo esc_attr( $offcanvas_label_id ); ?>" class="screen-reader-text"><?php echo esc_html__( 'Menu', 'magic-elements' ); ?></h2>
+                    <?php if ( ! empty( $settings['offcanvas_fullscreen_logo']['url'] ) ) : ?>
+                        <div class="offcanvas-header-logo">
+                            <img src="<?php echo esc_url( $settings['offcanvas_fullscreen_logo']['url'] ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+                        </div>
+                    <?php endif; ?>
+                    <button type="button" class="btn-close text-reset me-close" data-bs-dismiss="offcanvas" aria-label="Close">
+                        <?php if ( ! empty( $settings['offcanvas_close_icon']['url'] ) ) : ?>
+                            <img src="<?php echo esc_url( $settings['offcanvas_close_icon']['url'] ); ?>" alt="<?php echo esc_attr__( 'Close', 'magic-elements' ); ?>">
+                        <?php elseif ( ! empty( $settings['offcanvas_close_icon_picker']['value'] ) ) : ?>
+                            <?php \Elementor\Icons_Manager::render_icon( $settings['offcanvas_close_icon_picker'], [ 'aria-hidden' => 'true' ] ); ?>
+                        <?php else : ?>
+                            <span aria-hidden="true">&times;</span>
+                        <?php endif; ?>
+                    </button>
+                </div>
+                <div class="offcanvas-body fullscreen-wrapper">
+                    <div class="fullscreen-left">
+                        <div class="contact-block">
+                            <h6><?php echo esc_html__( 'Email', 'magic-elements' ); ?></h6>
+                            <?php if ( ! empty( $settings['offcanvas_email'] ) ) : ?>
+                                <p><?php echo esc_html( $settings['offcanvas_email'] ); ?></p>
+                            <?php endif; ?>
+                        </div>
+                        <div class="contact-block">
+                            <h6><?php echo esc_html__( 'Phone', 'magic-elements' ); ?></h6>
+                            <?php if ( ! empty( $settings['offcanvas_phone'] ) ) : ?>
+                                <p><?php echo esc_html( $settings['offcanvas_phone'] ); ?></p>
+                            <?php endif; ?>
+                        </div>
+                        <div class="contact-block">
+                            <h6><?php echo esc_html__( 'Address', 'magic-elements' ); ?></h6>
+                            <?php if ( ! empty( $settings['offcanvas_address'] ) ) : ?>
+                                <p><?php echo esc_html( $settings['offcanvas_address'] ); ?></p>
+                            <?php endif; ?>
+                        </div>
+                        <div class="fullscreen-left-footer">
+                            <form class="fullscreen-search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
+                                <input type="search" name="s" class="fullscreen-search-input" autocomplete="off" placeholder="<?php echo esc_attr__( 'Search here', 'magic-elements' ); ?>" value="<?php echo esc_attr( get_search_query() ); ?>" />
+                                <button type="submit" class="fullscreen-search-btn" aria-label="<?php echo esc_attr__( 'Search', 'magic-elements' ); ?>">
+                                    <span class="fullscreen-search-btn-fallback" aria-hidden="true"><?php echo esc_html__( 'Go', 'magic-elements' ); ?></span>
+                                </button>
+                            </form>
+                            <div class="fullscreen-copyright">
+                                <span><?php echo esc_html__( '© All rights reserved', 'magic-elements' ); ?></span>
+                                <span><?php echo esc_html__( 'by', 'magic-elements' ); ?> <?php echo esc_html( get_bloginfo( 'name' ) ); ?></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fullscreen-right">
+                        <!-- Title/Description only for sidebar; intentionally omitted here -->
+                        <div class="fullscreen-menus">
+                            <?php
+                                if(!empty($settings['menu_select'])){
+                                    wp_nav_menu([
+                                        'menu' => $settings['menu_select'],
+                                        'container' => false,
+                                        'menu_class' => 'cnw-nav cnw-nav-fullscreen'
+                                    ]);
+                                }
+                            ?>
+                            <?php
+                                if(!empty($settings['menu_select_right'])){
+                                    wp_nav_menu([
+                                        'menu' => $settings['menu_select_right'],
+                                        'container' => false,
+                                        'menu_class' => 'cnw-nav cnw-nav-fullscreen'
+                                    ]);
+                                }
+                            ?>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div><p class="offcanvas_description"><?php echo esc_html($settings['offcanvas_description']); ?></p></div>
-            <div class="offcanvas-body">
-                <?php
-                    if(!empty($settings['menu_select'])){
-                        wp_nav_menu([
-                            'menu' => $settings['menu_select'],
-                            'container' => false,
-                            'menu_class' => 'cnw-nav'
-                        ]);
-                    }
-                ?>
-                <?php
-                    if(!empty($settings['menu_select_right'])){
-                        wp_nav_menu([
-                            'menu' => $settings['menu_select_right'],
-                            'container' => false,
-                            'menu_class' => 'cnw-nav'
-                        ]);
-                    }
-                ?>
+        <?php else : ?>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="<?php echo esc_attr( $offcanvas_id ); ?>" aria-labelledby="<?php echo esc_attr( $offcanvas_label_id ); ?>">
+                <div class="offcanvas-header">
+                    <?php if ( ! empty( $settings['offcanvas_sidebar_logo']['url'] ) ) : ?>
+                        <div class="offcanvas-sidebar-logo" id="<?php echo esc_attr( $offcanvas_label_id ); ?>">
+                            <img src="<?php echo esc_url( $settings['offcanvas_sidebar_logo']['url'] ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+                        </div>
+                    <?php else : ?>
+                        <h2 id="<?php echo esc_attr( $offcanvas_label_id ); ?>" class="screen-reader-text"><?php echo esc_html__( 'Menu', 'magic-elements' ); ?></h2>
+                    <?php endif; ?>
+                    <button type="button" class="btn-close text-reset me-close" data-bs-dismiss="offcanvas" aria-label="Close">
+                        <?php if ( ! empty( $settings['offcanvas_close_icon']['url'] ) ) : ?>
+                            <img src="<?php echo esc_url( $settings['offcanvas_close_icon']['url'] ); ?>" alt="<?php echo esc_attr__( 'Close', 'magic-elements' ); ?>">
+                        <?php elseif ( ! empty( $settings['offcanvas_close_icon_picker']['value'] ) ) : ?>
+                            <?php \Elementor\Icons_Manager::render_icon( $settings['offcanvas_close_icon_picker'], [ 'aria-hidden' => 'true' ] ); ?>
+                        <?php else : ?>
+                            <span aria-hidden="true">&times;</span>
+                        <?php endif; ?>
+                    </button>
+                </div>
+                <div class="offcanvas-body">
+                    <?php
+                        if(!empty($settings['menu_select'])){
+                            wp_nav_menu([
+                                'menu' => $settings['menu_select'],
+                                'container' => false,
+                                'menu_class' => 'cnw-nav'
+                            ]);
+                        }
+                    ?>
+                    <?php
+                        if(!empty($settings['menu_select_right'])){
+                            wp_nav_menu([
+                                'menu' => $settings['menu_select_right'],
+                                'container' => false,
+                                'menu_class' => 'cnw-nav'
+                            ]);
+                        }
+                    ?>
+                </div>
             </div>
-        </div>
+        <?php endif; ?>
         <!-- Mobile Menu End-->
     </div>
 </header>
@@ -203,7 +395,7 @@ if( $header_layout == 'layout-one' ) { ?>
             ?>
         </nav> 
         <!-- Book Button -->
-        <div class="right-side">
+        <div class="right-side"> 
             <div class="call-us">
                 <p><?php echo esc_html( $settings['call_us_text'] ); ?></p>
             </div>
@@ -221,7 +413,7 @@ if( $header_layout == 'layout-one' ) { ?>
         <!-- Book Button  End-->
           <!-- Mobile Menu -->
         <!-- Icon -->
-        <button class="<?php echo esc_attr( $mobile_menu_button_classes ); ?>" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+        <button class="<?php echo esc_attr( $mobile_menu_button_classes ); ?>" type="button" data-bs-toggle="offcanvas" data-bs-target="#<?php echo esc_attr( $offcanvas_id ); ?>" aria-controls="<?php echo esc_attr( $offcanvas_id ); ?>">
             <?php if ( $show_custom_mobile_menu_icon ) : ?>
                 <?php \Elementor\Icons_Manager::render_icon( $settings['mobile_menu_icon'], [ 'aria-hidden' => 'true' ] ); ?>
             <?php else : ?>
@@ -230,33 +422,126 @@ if( $header_layout == 'layout-one' ) { ?>
             <?php endif; ?>
         </button>
         <!-- Offcanvas -->
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-            <div class="offcanvas-header">
-                <h3 id="offcanvasRightLabel"><?php echo esc_html($settings['offcanvas_title']); ?></h3>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">X</button>
+        <?php $offcanvas_style = isset($settings['offcanvas_style']) ? $settings['offcanvas_style'] : 'sidebar'; ?>
+        <?php if ( $offcanvas_style === 'fullscreen' ) : ?>
+            <div class="offcanvas offcanvas-end offcanvas-fullscreen" tabindex="-1" id="<?php echo esc_attr( $offcanvas_id ); ?>" aria-labelledby="<?php echo esc_attr( $offcanvas_label_id ); ?>">
+                <div class="offcanvas-header">
+                    <h2 id="<?php echo esc_attr( $offcanvas_label_id ); ?>" class="screen-reader-text"><?php echo esc_html__( 'Menu', 'magic-elements' ); ?></h2>
+                    <?php if ( ! empty( $settings['offcanvas_fullscreen_logo']['url'] ) ) : ?>
+                        <div class="offcanvas-header-logo">
+                            <img src="<?php echo esc_url( $settings['offcanvas_fullscreen_logo']['url'] ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+                        </div>
+                    <?php endif; ?>
+                    <button type="button" class="btn-close text-reset me-close" data-bs-dismiss="offcanvas" aria-label="Close">
+                        <?php if ( ! empty( $settings['offcanvas_close_icon']['url'] ) ) : ?>
+                            <img src="<?php echo esc_url( $settings['offcanvas_close_icon']['url'] ); ?>" alt="<?php echo esc_attr__( 'Close', 'magic-elements' ); ?>">
+                        <?php elseif ( ! empty( $settings['offcanvas_close_icon_picker']['value'] ) ) : ?>
+                            <?php \Elementor\Icons_Manager::render_icon( $settings['offcanvas_close_icon_picker'], [ 'aria-hidden' => 'true' ] ); ?>
+                        <?php else : ?>
+                            <span aria-hidden="true">&times;</span>
+                        <?php endif; ?>
+                    </button>
+                </div>
+                <div class="offcanvas-body fullscreen-wrapper">
+                    <div class="fullscreen-left">
+                        <div class="contact-block">
+                            <h6><?php echo esc_html__( 'Email', 'magic-elements' ); ?></h6>
+                            <?php if ( ! empty( $settings['offcanvas_email'] ) ) : ?>
+                                <p><?php echo esc_html( $settings['offcanvas_email'] ); ?></p>
+                            <?php endif; ?>
+                        </div>
+                        <div class="contact-block">
+                            <h6><?php echo esc_html__( 'Phone', 'magic-elements' ); ?></h6>
+                            <?php if ( ! empty( $settings['offcanvas_phone'] ) ) : ?>
+                                <p><?php echo esc_html( $settings['offcanvas_phone'] ); ?></p>
+                            <?php endif; ?>
+                        </div>
+                        <div class="contact-block">
+                            <h6><?php echo esc_html__( 'Address', 'magic-elements' ); ?></h6>
+                            <?php if ( ! empty( $settings['offcanvas_address'] ) ) : ?>
+                                <p><?php echo esc_html( $settings['offcanvas_address'] ); ?></p>
+                            <?php endif; ?>
+                        </div>
+                        <div class="fullscreen-left-footer">
+                            <form class="fullscreen-search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
+                                <input type="search" name="s" class="fullscreen-search-input" autocomplete="off" placeholder="<?php echo esc_attr__( 'Search here', 'magic-elements' ); ?>" value="<?php echo esc_attr( get_search_query() ); ?>" />
+                                <button type="submit" class="fullscreen-search-btn" aria-label="<?php echo esc_attr__( 'Search', 'magic-elements' ); ?>">
+                                    <span class="fullscreen-search-btn-fallback" aria-hidden="true"><?php echo esc_html__( 'Go', 'magic-elements' ); ?></span>
+                                </button>
+                            </form>
+                            <div class="fullscreen-copyright">
+                                <span><?php echo esc_html__( '© All rights reserved', 'magic-elements' ); ?></span>
+                                <span><?php echo esc_html__( 'by', 'magic-elements' ); ?> <?php echo esc_html( get_bloginfo( 'name' ) ); ?></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fullscreen-right">
+                        <!-- Title/Description only for sidebar; intentionally omitted here -->
+                        <div class="fullscreen-menus">
+                            <?php
+                                if(!empty($settings['menu_select'])){
+                                    wp_nav_menu([
+                                        'menu' => $settings['menu_select'],
+                                        'container' => false,
+                                        'menu_class' => 'cnw-nav cnw-nav-fullscreen'
+                                    ]);
+                                }
+                            ?>
+                            <?php
+                                if(!empty($settings['menu_select_right'])){
+                                    wp_nav_menu([
+                                        'menu' => $settings['menu_select_right'],
+                                        'container' => false,
+                                        'menu_class' => 'cnw-nav cnw-nav-fullscreen'
+                                    ]);
+                                }
+                            ?>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div><p class="offcanvas_description"><?php echo esc_html($settings['offcanvas_description']); ?></p></div>
-            <div class="offcanvas-body">
-                <?php
-                    if(!empty($settings['menu_select'])){
-                        wp_nav_menu([
-                            'menu' => $settings['menu_select'],
-                            'container' => false,
-                            'menu_class' => 'cnw-nav'
-                        ]);
-                    }
-                ?>
-                <?php
-                    if(!empty($settings['menu_select_right'])){
-                        wp_nav_menu([
-                            'menu' => $settings['menu_select_right'],
-                            'container' => false,
-                            'menu_class' => 'cnw-nav'
-                        ]);
-                    }
-                ?>
+        <?php else : ?>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="<?php echo esc_attr( $offcanvas_id ); ?>" aria-labelledby="<?php echo esc_attr( $offcanvas_label_id ); ?>">
+                <div class="offcanvas-header">
+                    <?php if ( ! empty( $settings['offcanvas_sidebar_logo']['url'] ) ) : ?>
+                        <div class="offcanvas-sidebar-logo" id="<?php echo esc_attr( $offcanvas_label_id ); ?>">
+                            <img src="<?php echo esc_url( $settings['offcanvas_sidebar_logo']['url'] ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+                        </div>
+                    <?php else : ?>
+                        <h2 id="<?php echo esc_attr( $offcanvas_label_id ); ?>" class="screen-reader-text"><?php echo esc_html__( 'Menu', 'magic-elements' ); ?></h2>
+                    <?php endif; ?>
+                    <button type="button" class="btn-close text-reset me-close" data-bs-dismiss="offcanvas" aria-label="Close">
+                        <?php if ( ! empty( $settings['offcanvas_close_icon']['url'] ) ) : ?>
+                            <img src="<?php echo esc_url( $settings['offcanvas_close_icon']['url'] ); ?>" alt="<?php echo esc_attr__( 'Close', 'magic-elements' ); ?>">
+                        <?php elseif ( ! empty( $settings['offcanvas_close_icon_picker']['value'] ) ) : ?>
+                            <?php \Elementor\Icons_Manager::render_icon( $settings['offcanvas_close_icon_picker'], [ 'aria-hidden' => 'true' ] ); ?>
+                        <?php else : ?>
+                            <span aria-hidden="true">&times;</span>
+                        <?php endif; ?>
+                    </button>
+                </div>
+                <div class="offcanvas-body">
+                    <?php
+                        if(!empty($settings['menu_select'])){
+                            wp_nav_menu([
+                                'menu' => $settings['menu_select'],
+                                'container' => false,
+                                'menu_class' => 'cnw-nav'
+                            ]);
+                        }
+                    ?>
+                    <?php
+                        if(!empty($settings['menu_select_right'])){
+                            wp_nav_menu([
+                                'menu' => $settings['menu_select_right'],
+                                'container' => false,
+                                'menu_class' => 'cnw-nav'
+                            ]);
+                        }
+                    ?>
+                </div>
             </div>
-        </div>
+        <?php endif; ?>
         <!-- Mobile Menu End-->
     </div>
 </header>
