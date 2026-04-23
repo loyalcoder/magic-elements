@@ -42,7 +42,7 @@ if( $header_layout == 'layout-one' ) { ?>
             </nav> 
             <!-- Logo -->
             <?php if(!empty($settings['logo']['url'])): ?>
-                <a class="menu-logo" href="<?php echo esc_url(home_url()); ?>" style="margin: 0 60px;">
+                <a class="menu-logo menu-logo-desktop-gap" href="<?php echo esc_url(home_url()); ?>">
                     <img src="<?php echo esc_url($settings['logo']['url']); ?>">
                 </a>
             <?php endif; ?>

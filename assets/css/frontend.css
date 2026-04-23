@@ -3,6 +3,16 @@
 /* Sidebar offcanvas logo */
 .offcanvas-sidebar-logo img { display: block; max-width: 100%; height: auto; }
 
+.menu-logo-desktop-gap {
+	margin: 0;
+}
+
+@media (min-width: 992px) {
+	.menu-logo-desktop-gap {
+		margin: 0 60px;
+	}
+}
+
 /* Fullscreen offcanvas - mobile logo at top, menus next, then details */
 .offcanvas-fullscreen .fs-mobile-logo { display: none; }
 
@@ -16,7 +26,7 @@
 }
 
 .offcanvas-fullscreen .offcanvas-header {
-	padding: 40px 24px 0 60px;
+	padding: 40px 60px 0;
 	min-height: 56px;
 	border: 0;
 	background: #1c1f2b;
@@ -39,6 +49,30 @@
 .offcanvas-fullscreen .offcanvas-header .btn-close.me-close {
 	border: 0 !important;
 	box-shadow: none !important;
+	margin: 0;
+}
+
+.offcanvas:not(.offcanvas-fullscreen) .offcanvas-header .btn-close.me-close {
+	border: 0 !important;
+	box-shadow: none !important;
+}
+
+@media (min-width: 992px) {
+	.offcanvas-fullscreen .offcanvas-header .btn-close.me-close {
+		padding: 0 !important;
+		width: 24px;
+		height: 24px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex: 0 0 24px;
+	}
+
+	.offcanvas-fullscreen .offcanvas-header .btn-close.me-close img {
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
 }
 
 /* Keep only one logo in fullscreen header */
@@ -151,6 +185,11 @@
 .offcanvas-fullscreen .fullscreen-left .contact-block p,
 .offcanvas-fullscreen .fullscreen-left-footer span {
 	color: #fff;
+}
+
+.offcanvas-fullscreen .fullscreen-menus .cnw-nav-fullscreen .sub-menu li a:hover,
+.offcanvas-fullscreen .fullscreen-menus .cnw-nav-fullscreen .sub-menu li:hover > a {
+	background-color: transparent !important;
 }
 
 .offcanvas-fullscreen .fullscreen-left .contact-block {
@@ -269,12 +308,8 @@
 
 @media (max-width: 991.98px) {
 	.offcanvas-fullscreen .offcanvas-body.fullscreen-wrapper {
-		row-gap: 30px !important;
+		row-gap: 0 !important;
 	}
-
-	/* .offcanvas-fullscreen .fullscreen-left {
-		margin-top: 30px !important;
-	} */
 
 	.offcanvas.offcanvas-fullscreen {
 		overflow: hidden !important;
@@ -284,6 +319,7 @@
 		min-height: 56px !important;
 		height: 56px !important;
 		padding: 0 20px !important;
+		margin-bottom: 40px !important;
 		display: flex !important;
 		align-items: center !important;
 		justify-content: space-between !important;
@@ -292,7 +328,7 @@
 	.offcanvas.offcanvas-fullscreen .offcanvas-body.fullscreen-wrapper {
 		display: flex !important;
 		flex-direction: column !important;
-		row-gap: 30px !important;
+		row-gap: 0 !important;
 		height: calc(100% - 56px) !important;
 		padding-top: 0 !important;
 		margin-top: 0 !important;
@@ -311,15 +347,26 @@
 	.offcanvas.offcanvas-fullscreen .fullscreen-right {
 		order: 1 !important;
 		justify-content: flex-start !important;
-		padding: 0 20px 8px !important;
-		margin-top: 40px !important;
+		flex: 0 0 auto !important;
+		height: auto !important;
+		min-height: 0 !important;
+		padding: 0 20px 0 !important;
+		margin-top: 0 !important;
+		margin-bottom: 0 !important;
 		overflow: visible !important;
 	}
 
 	.offcanvas.offcanvas-fullscreen .fullscreen-left {
 		order: 2 !important;
+		flex: 0 0 auto !important;
+		height: auto !important;
+		min-height: 0 !important;
 		padding: 0 20px 24px !important;
-		margin-top: -250px !important;
+		margin-top: 40px !important;
+	}
+
+	.offcanvas.offcanvas-fullscreen .fullscreen-right + .fullscreen-left {
+		margin-top: 0 !important;
 	}
 
 	.offcanvas.offcanvas-fullscreen .fullscreen-menus,
@@ -372,14 +419,6 @@
 
 	.offcanvas.offcanvas-fullscreen .fullscreen-left-footer {
 		margin-top: 30px !important;
-	}
-}
-
-/* Final tablet override (768px - 1024px) */
-@media (max-width: 1024px) and (min-width: 768px) {
-	.offcanvas-fullscreen .fullscreen-left,
-	.offcanvas.offcanvas-fullscreen .fullscreen-left {
-		margin-top: -200px !important;
 	}
 }
 

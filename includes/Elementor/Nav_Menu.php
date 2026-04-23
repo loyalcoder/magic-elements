@@ -1248,7 +1248,7 @@ class Nav_Menu extends Widget_Base
 					'size' => 150,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .offcanvas-fs-logo' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .offcanvas-header-logo img' => 'width: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'offcanvas_style' => 'fullscreen',
@@ -1262,7 +1262,7 @@ class Nav_Menu extends Widget_Base
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
-					'{{WRAPPER}} .offcanvas-fs-logo' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .offcanvas-header-logo img' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition' => [
 					'offcanvas_style' => 'fullscreen',
