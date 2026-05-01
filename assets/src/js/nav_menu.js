@@ -46,6 +46,78 @@ import "./../scss/nav_menu.scss"
                   link.parentElement.classList.toggle('active');
               });
           });
+
+          const getFallbackBackdrop = function () {
+            let backdrop = document.querySelector('.emkit-offcanvas-backdrop');
+            if (!backdrop) {
+              backdrop = document.createElement('div');
+              backdrop.className = 'emkit-offcanvas-backdrop';
+              backdrop.style.position = 'fixed';
+              backdrop.style.top = '0';
+              backdrop.style.right = '0';
+              backdrop.style.bottom = '0';
+              backdrop.style.left = '0';
+              backdrop.style.background = 'rgba(0, 0, 0, 0.5)';
+              backdrop.style.zIndex = '1040';
+              backdrop.style.display = 'none';
+              document.body.appendChild(backdrop);
+            }
+
+            return backdrop;
+          };
+
+          const closeFallbackOffcanvas = function (offcanvasEl) {
+            offcanvasEl.classList.remove('show', 'showing', 'hiding');
+            offcanvasEl.setAttribute('aria-hidden', 'true');
+
+            const backdrop = document.querySelector('.emkit-offcanvas-backdrop');
+            if (backdrop) {
+              backdrop.style.display = 'none';
+            }
+          };
+
+          // Ensure offcanvas opens reliably on trigger click.
+          $scope.find('.mobile-menu').off('click.emkitOffcanvas').on('click.emkitOffcanvas', function () {
+            const targetSelector = this.getAttribute('data-bs-target');
+            if (!targetSelector) {
+              return;
+            }
+
+            const offcanvasEl = document.querySelector(targetSelector);
+            if (!offcanvasEl) {
+              return;
+            }
+
+            if (window.bootstrap && window.bootstrap.Offcanvas) {
+              window.bootstrap.Offcanvas.getOrCreateInstance(offcanvasEl).show();
+              return;
+            }
+
+            // Bootstrap JS fallback
+            offcanvasEl.classList.add('show');
+            offcanvasEl.classList.remove('showing', 'hiding');
+            offcanvasEl.setAttribute('aria-modal', 'true');
+            offcanvasEl.setAttribute('role', 'dialog');
+
+            const backdrop = getFallbackBackdrop();
+            backdrop.style.display = 'block';
+            backdrop.onclick = function () {
+              closeFallbackOffcanvas(offcanvasEl);
+            };
+          });
+
+          $scope.find('[data-bs-dismiss="offcanvas"]').off('click.emkitOffcanvasDismiss').on('click.emkitOffcanvasDismiss', function () {
+            if (window.bootstrap && window.bootstrap.Offcanvas) {
+              return;
+            }
+
+            const offcanvasEl = this.closest('.offcanvas');
+            if (!offcanvasEl) {
+              return;
+            }
+
+            closeFallbackOffcanvas(offcanvasEl);
+          });
       },
     };
   

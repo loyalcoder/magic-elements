@@ -13,6 +13,75 @@
 	}
 }
 
+/* Layout one desktop alignment */
+.magic-header-layout-one .mid-point {
+	display: flex;
+	flex: 1 1 auto;
+	align-items: center;
+	justify-content: center;
+	min-width: 0;
+}
+
+.magic-header-layout-one .nav-menu-left,
+.magic-header-layout-one .nav-menu-right {
+	flex: 1 1 0;
+}
+
+.magic-header-layout-one .nav-menu-left .cnw-nav {
+	justify-content: flex-end;
+}
+
+.magic-header-layout-one .nav-menu-right .cnw-nav {
+	justify-content: flex-start;
+}
+
+.magic-header-layout-one .menu-logo-desktop-gap {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	margin: 0 44px;
+}
+
+.magic-header-layout-one .menu-logo-desktop-gap img {
+	display: block;
+	max-width: 100%;
+	object-fit: contain;
+}
+
+.magic-header-layout-one .menu-search,
+.magic-header-layout-one .mobile-menu {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	padding: 0;
+	border-radius: 12px;
+}
+
+/* Layout two desktop: single centered menu */
+.magic-header-layout-two .magic-menu {
+	gap: 28px;
+}
+
+.magic-header-layout-two .nav-menu-center {
+	flex: 1 1 auto;
+	display: flex;
+	justify-content: center;
+	min-width: 0;
+}
+
+.magic-header-layout-two .nav-menu-center .cnw-nav {
+	justify-content: center;
+}
+
+/* Remove Bootstrap default blue look from nav buttons */
+.magic-menu .mobile-menu {
+	background-color: transparent !important;
+	color: inherit;
+}
+
 /* Fullscreen offcanvas - mobile logo at top, menus next, then details */
 .offcanvas-fullscreen .fs-mobile-logo { display: none; }
 
@@ -91,6 +160,14 @@
 	background: #1c1f2b;
 }
 
+.offcanvas.offcanvas-fullscreen {
+	background: #1c1f2b !important;
+}
+
+.offcanvas.offcanvas-fullscreen .offcanvas-header {
+	background: #1c1f2b !important;
+}
+
 .offcanvas-fullscreen .offcanvas-body.fullscreen-wrapper::after {
 	content: "";
 	grid-column: 3;
@@ -109,9 +186,10 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	padding: 130px 60px 40px;
+	padding: 70px 60px 16px;
 	background: #1c1f2b;
 	color: #fff;
+	min-height: 100%;
 }
 
 .offcanvas-fullscreen .offcanvas-fs-logo {
@@ -126,8 +204,8 @@
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	justify-content: center;
-	padding: 40px 60px;
+	justify-content: flex-start;
+	padding: 70px 60px 40px;
 	background: #1c1f2b;
 	color: #fff;
 	overflow-y: auto;
@@ -201,11 +279,11 @@
 }
 
 .offcanvas-fullscreen .fullscreen-left .contact-block:first-of-type {
-	margin-top: auto;
+	margin-top: 0;
 }
 
 .offcanvas-fullscreen .fullscreen-left .contact-block:nth-of-type(3) {
-	margin-bottom: auto;
+	margin-bottom: 0;
 }
 
 .offcanvas-fullscreen .fullscreen-left .contact-block h6 {
@@ -226,7 +304,9 @@
 }
 
 .offcanvas-fullscreen .fullscreen-left-footer {
-	margin-top: 0;
+	margin-top: auto;
+	padding-top: 40px;
+	transform: translateY(300px);
 }
 
 .offcanvas-fullscreen .fullscreen-left-footer .fullscreen-copyright {
@@ -246,6 +326,8 @@
 .offcanvas-fullscreen .fullscreen-search-input {
 	flex: 1 1 auto;
 	min-width: 0;
+	appearance: none;
+	-webkit-appearance: none;
 	border: 0;
 	outline: 0;
 	background: transparent;
@@ -256,6 +338,31 @@
 	line-height: 1.2;
 	padding: 0;
 	height: auto;
+}
+
+.offcanvas-fullscreen .fullscreen-search-input:focus,
+.offcanvas-fullscreen .fullscreen-search-input:active {
+	background: transparent !important;
+	color: #fff !important;
+	border: 0 !important;
+	outline: 0 !important;
+	box-shadow: none !important;
+}
+
+.offcanvas-fullscreen .fullscreen-search-input::-webkit-search-decoration,
+.offcanvas-fullscreen .fullscreen-search-input::-webkit-search-cancel-button,
+.offcanvas-fullscreen .fullscreen-search-input::-webkit-search-results-button,
+.offcanvas-fullscreen .fullscreen-search-input::-webkit-search-results-decoration {
+	-webkit-appearance: none;
+	display: none;
+}
+
+.offcanvas-fullscreen .fullscreen-search-input:-webkit-autofill,
+.offcanvas-fullscreen .fullscreen-search-input:-webkit-autofill:hover,
+.offcanvas-fullscreen .fullscreen-search-input:-webkit-autofill:focus {
+	-webkit-text-fill-color: #fff !important;
+	-webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+	transition: background-color 9999s ease-in-out 0s;
 }
 
 .offcanvas-fullscreen .fullscreen-search-btn {
@@ -273,6 +380,7 @@
 	text-transform: uppercase;
 	line-height: 1;
 	cursor: pointer;
+	white-space: nowrap;
 }
 
 .offcanvas-fullscreen .fullscreen-search-input::placeholder {
@@ -319,7 +427,7 @@
 		min-height: 56px !important;
 		height: 56px !important;
 		padding: 0 20px !important;
-		margin-bottom: 40px !important;
+		margin-bottom: 0 !important;
 		display: flex !important;
 		align-items: center !important;
 		justify-content: space-between !important;

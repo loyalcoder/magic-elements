@@ -1,10 +1,10 @@
 <?php
 $show_custom_mobile_menu_icon = isset( $settings['show_mobile_menu_icon'] ) && 'yes' === $settings['show_mobile_menu_icon'];
-$mobile_menu_button_classes   = $show_custom_mobile_menu_icon ? 'btn btn-primary mobile-menu' : 'btn btn-primary mobile-menu mobile-menu-fallback-trigger';
+$mobile_menu_button_classes   = $show_custom_mobile_menu_icon ? 'mobile-menu' : 'mobile-menu mobile-menu-fallback-trigger';
 $offcanvas_id                 = 'offcanvas-right-' . $this->get_id();
 $offcanvas_label_id           = 'offcanvas-right-label-' . $this->get_id();
 if( $header_layout == 'layout-one' ) { ?>
-<header class="magic-header <?php echo ($settings['enable_sticky'] === 'yes') ? 'is-sticky' : ''; ?>">
+<header class="magic-header magic-header-layout-one <?php echo ($settings['enable_sticky'] === 'yes') ? 'is-sticky' : ''; ?>">
     <div class="container magic-menu" style="display:flex;justify-content:space-between;align-items:center;padding:20px 0;">
         <!-- Search -->
 
@@ -81,11 +81,11 @@ if( $header_layout == 'layout-one' ) { ?>
                             <img src="<?php echo esc_url( $settings['offcanvas_fullscreen_logo']['url'] ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
                         </div>
                     <?php endif; ?>
-                    <button type="button" class="btn-close text-reset me-close" data-bs-dismiss="offcanvas" aria-label="Close">
-                        <?php if ( ! empty( $settings['offcanvas_close_icon']['url'] ) ) : ?>
-                            <img src="<?php echo esc_url( $settings['offcanvas_close_icon']['url'] ); ?>" alt="<?php echo esc_attr__( 'Close', 'magic-elements' ); ?>">
-                        <?php elseif ( ! empty( $settings['offcanvas_close_icon_picker']['value'] ) ) : ?>
+                    <button type="button" class="btn-close text-reset me-close" data-bs-dismiss="offcanvas" aria-label="<?php echo esc_attr__( 'Close', 'magic-elements' ); ?>">
+                        <?php if ( ! empty( $settings['offcanvas_close_icon_picker']['value'] ) ) : ?>
                             <?php \Elementor\Icons_Manager::render_icon( $settings['offcanvas_close_icon_picker'], [ 'aria-hidden' => 'true' ] ); ?>
+                        <?php elseif ( ! empty( $settings['offcanvas_close_icon']['url'] ) ) : ?>
+                            <img src="<?php echo esc_url( $settings['offcanvas_close_icon']['url'] ); ?>" alt="<?php echo esc_attr__( 'Close', 'magic-elements' ); ?>">
                         <?php else : ?>
                             <span aria-hidden="true">&times;</span>
                         <?php endif; ?>
@@ -159,7 +159,7 @@ if( $header_layout == 'layout-one' ) { ?>
                     <?php else : ?>
                         <h2 id="<?php echo esc_attr( $offcanvas_label_id ); ?>" class="screen-reader-text"><?php echo esc_html__( 'Menu', 'magic-elements' ); ?></h2>
                     <?php endif; ?>
-                    <button type="button" class="btn-close text-reset me-close" data-bs-dismiss="offcanvas" aria-label="Close">
+                    <button type="button" class="btn-close text-reset me-close" data-bs-dismiss="offcanvas" aria-label="<?php echo esc_attr__( 'Close', 'magic-elements' ); ?>">
                         <?php if ( ! empty( $settings['offcanvas_close_icon']['url'] ) ) : ?>
                             <img src="<?php echo esc_url( $settings['offcanvas_close_icon']['url'] ); ?>" alt="<?php echo esc_attr__( 'Close', 'magic-elements' ); ?>">
                         <?php elseif ( ! empty( $settings['offcanvas_close_icon_picker']['value'] ) ) : ?>
@@ -195,10 +195,16 @@ if( $header_layout == 'layout-one' ) { ?>
     </div>
 </header>
 <?php }elseif( $header_layout == 'layout-two' ){ ?>
-<header class="magic-header <?php echo ($settings['enable_sticky'] === 'yes') ? 'is-sticky' : ''; ?>">
+<header class="magic-header magic-header-layout-two <?php echo ($settings['enable_sticky'] === 'yes') ? 'is-sticky' : ''; ?>">
     <div class="container magic-menu" style="display:flex;justify-content:space-between;align-items:center;padding:20px 0;">
-        <!-- Left Menu -->
-        <nav class="nav-menu-left">
+            <!-- Logo -->
+        <?php if(!empty($settings['logo']['url'])): ?>
+            <a class="menu-logo" href="<?php echo esc_url(home_url()); ?>">
+                <img src="<?php echo esc_url($settings['logo']['url']); ?>">
+            </a>
+        <?php endif; ?>
+        <!-- Center Menu -->
+        <nav class="nav-menu-center">
             <?php
             if(!empty($settings['menu_select'])){
                 wp_nav_menu([
@@ -207,24 +213,6 @@ if( $header_layout == 'layout-one' ) { ?>
                     'menu_class' => 'cnw-nav'
                 ]);
             }
-            ?>
-        </nav> 
-            <!-- Logo -->
-        <?php if(!empty($settings['logo']['url'])): ?>
-            <a class="menu-logo" href="<?php echo esc_url(home_url()); ?>">
-                <img src="<?php echo esc_url($settings['logo']['url']); ?>">
-            </a>
-        <?php endif; ?>
-        <!-- Right Menu -->
-        <nav class="nav-menu-right">
-            <?php
-                if(!empty($settings['menu_select_right'])){
-                    wp_nav_menu([
-                        'menu' => $settings['menu_select_right'],
-                        'container' => false,
-                        'menu_class' => 'cnw-nav'
-                    ]);
-                }
             ?>
         </nav>
         <!-- Book Button -->
@@ -260,7 +248,7 @@ if( $header_layout == 'layout-one' ) { ?>
                             <img src="<?php echo esc_url( $settings['offcanvas_fullscreen_logo']['url'] ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
                         </div>
                     <?php endif; ?>
-                    <button type="button" class="btn-close text-reset me-close" data-bs-dismiss="offcanvas" aria-label="Close">
+                    <button type="button" class="btn-close text-reset me-close" data-bs-dismiss="offcanvas" aria-label="<?php echo esc_attr__( 'Close', 'magic-elements' ); ?>">
                         <?php if ( ! empty( $settings['offcanvas_close_icon']['url'] ) ) : ?>
                             <img src="<?php echo esc_url( $settings['offcanvas_close_icon']['url'] ); ?>" alt="<?php echo esc_attr__( 'Close', 'magic-elements' ); ?>">
                         <?php elseif ( ! empty( $settings['offcanvas_close_icon_picker']['value'] ) ) : ?>
@@ -338,7 +326,7 @@ if( $header_layout == 'layout-one' ) { ?>
                     <?php else : ?>
                         <h2 id="<?php echo esc_attr( $offcanvas_label_id ); ?>" class="screen-reader-text"><?php echo esc_html__( 'Menu', 'magic-elements' ); ?></h2>
                     <?php endif; ?>
-                    <button type="button" class="btn-close text-reset me-close" data-bs-dismiss="offcanvas" aria-label="Close">
+                    <button type="button" class="btn-close text-reset me-close" data-bs-dismiss="offcanvas" aria-label="<?php echo esc_attr__( 'Close', 'magic-elements' ); ?>">
                         <?php if ( ! empty( $settings['offcanvas_close_icon']['url'] ) ) : ?>
                             <img src="<?php echo esc_url( $settings['offcanvas_close_icon']['url'] ); ?>" alt="<?php echo esc_attr__( 'Close', 'magic-elements' ); ?>">
                         <?php elseif ( ! empty( $settings['offcanvas_close_icon_picker']['value'] ) ) : ?>
@@ -432,7 +420,7 @@ if( $header_layout == 'layout-one' ) { ?>
                             <img src="<?php echo esc_url( $settings['offcanvas_fullscreen_logo']['url'] ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
                         </div>
                     <?php endif; ?>
-                    <button type="button" class="btn-close text-reset me-close" data-bs-dismiss="offcanvas" aria-label="Close">
+                    <button type="button" class="btn-close text-reset me-close" data-bs-dismiss="offcanvas" aria-label="<?php echo esc_attr__( 'Close', 'magic-elements' ); ?>">
                         <?php if ( ! empty( $settings['offcanvas_close_icon']['url'] ) ) : ?>
                             <img src="<?php echo esc_url( $settings['offcanvas_close_icon']['url'] ); ?>" alt="<?php echo esc_attr__( 'Close', 'magic-elements' ); ?>">
                         <?php elseif ( ! empty( $settings['offcanvas_close_icon_picker']['value'] ) ) : ?>
@@ -510,7 +498,7 @@ if( $header_layout == 'layout-one' ) { ?>
                     <?php else : ?>
                         <h2 id="<?php echo esc_attr( $offcanvas_label_id ); ?>" class="screen-reader-text"><?php echo esc_html__( 'Menu', 'magic-elements' ); ?></h2>
                     <?php endif; ?>
-                    <button type="button" class="btn-close text-reset me-close" data-bs-dismiss="offcanvas" aria-label="Close">
+                    <button type="button" class="btn-close text-reset me-close" data-bs-dismiss="offcanvas" aria-label="<?php echo esc_attr__( 'Close', 'magic-elements' ); ?>">
                         <?php if ( ! empty( $settings['offcanvas_close_icon']['url'] ) ) : ?>
                             <img src="<?php echo esc_url( $settings['offcanvas_close_icon']['url'] ); ?>" alt="<?php echo esc_attr__( 'Close', 'magic-elements' ); ?>">
                         <?php elseif ( ! empty( $settings['offcanvas_close_icon_picker']['value'] ) ) : ?>
