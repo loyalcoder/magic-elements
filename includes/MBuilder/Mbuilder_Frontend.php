@@ -71,7 +71,7 @@ class Mbuilder_Frontend {
     public function replace_header()
     {
         $header_id = $this->get_active_id('header');
-
+        
         if ( ! $header_id ) {
             return false;
         }
@@ -86,7 +86,7 @@ class Mbuilder_Frontend {
     public function replace_footer()
     {
         $footer_id = $this->get_active_id('footer');
-        $header_id = $this->get_active_id('header');
+        
         if ($footer_id == '') {
             return false;
         }
@@ -117,9 +117,10 @@ class Mbuilder_Frontend {
     public function footer_builder_put_content()
     {
         $active_footer_id = $this->get_active_id('footer');
-        if($active_footer_id == ''){
+
+        if ( ! $active_footer_id ) {
             return false;
-        }
+        }        
         if (class_exists('\Elementor\Plugin')) {
             // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor get_builder_content_for_display() returns safe builder HTML.
             echo \Elementor\Plugin::instance()->frontend->get_builder_content_for_display($active_footer_id, false);
@@ -134,9 +135,9 @@ class Mbuilder_Frontend {
     public function get_active_id($type = 'header'){
         $args = [
             'post_type'      => 'me_builder',
-            'post_status'   => 'publish',
+            'post_status'    => 'publish',
             'posts_per_page' => 50,
-            'meta_query'    => [
+            'meta_query'     => [
                 'relation' => 'AND',
                 [
                     'key'     => '_me_builder_type',
@@ -155,35 +156,101 @@ class Mbuilder_Frontend {
         if ( empty( $result['templates'] ) ) {
             return false;
         }
-        $builder_template_id = '';
-        $exclude_list = [];
-        $include_list = [];
-        foreach ( $result['templates'] as $template ) {
-            if(isset($template['ID'])){
-                $builder_template_id = (int) $template['ID'];
-            }
-            if(isset($template['condition'])){
-                foreach($template['condition'] as $condition){
-                    if($condition['display_type'] == 'exclude'){
-                        $exclude_list[] = $condition;
-                    }else{
-                        $include_list[] = $condition;
+
+        $current_page = $this->get_current_page();
+
+         if(isset($result['templates'])){
+             foreach($result['templates'] as $templates){
+                $template_id = ($templates['ID']) ? $templates['ID'] : '';
+                // echo '<pre>';
+                // print_r($templates);
+                // echo '</pre>';
+                
+                if(isset($templates['condition'])){ 
+                    foreach($templates['condition'] as $condition){
+                        if(isset($condition['display_type']) && $condition['display_type'] == 'exclude'){
+                            if(isset($condition['selective_mode']) && $condition['selective_mode'] == 'custom'){
+                                if(is_array($condition['post_ids']) && !empty($condition['post_ids']) && in_array($current_page['post_id'], $condition['post_ids'])){
+                                    return '';
+                                }
+                            }
+                            if(isset($condition['selective_mode']) && $condition['selective_mode'] == 'taxonomy'){
+                                if(isset($condition['taxonomy_terms']) && !empty($condition['taxonomy_terms'])){
+                                    if($condition['taxonomy'] == $current_page['taxonomy'] && in_array($current_page['term_id'], $condition['taxonomy_terms']) ){
+                                        return '';
+                                    }
+                                }
+                                if(isset($condition['taxonomy_terms']) && empty($condition['taxonomy_terms']))  {
+                                    if($condition['taxonomy'] == $current_page['taxonomy']){
+                                        return '';
+                                    }
+                                }                           
+                            }
+                            //  all post 
+                            if(isset($condition['selective_mode']) && $condition['selective_mode'] == 'all_posts'){
+                                if($current_page['post_type'] == $condition['post_type']){
+                                    return '';
+                                }
+                            }
+                            // all other header
+                            
+                            if(isset($condition['display_on']) && $condition['display_on'] != 'selective_singular'){    
+                                if($current_page['type'] == $condition['display_on']){
+                                    return '';
+                                }
+                            }                            
+                            if(isset($condition['display_on']) && $condition['display_on'] == 'entire_website'){    
+                                return '';
+                            }
+                        }
+                        
                     }
-                }
-            }
-        }
-        // echo '<pre>';
-        // print_r($builder_template_id);
-        // echo '</pre>';
-        
-        // echo '<pre>';
-        // print_r( $include_list);
-        // echo '</pre>';
-        // echo '<pre>';
-        // print_r($exclude_list);
-        // echo '</pre>';
-        $template_id = $this->get_display_id($builder_template_id, $include_list, $exclude_list, $this->get_current_page());
-        return $template_id;
+                      
+                    foreach($templates['condition'] as $condition){
+                        
+                        //  include 
+                        if(isset($condition['display_type']) && $condition['display_type'] == 'include'){
+                            
+                            if(isset($condition['selective_mode']) && $condition['selective_mode'] == 'custom'){
+                                
+                                if(is_array($condition['post_ids']) && !empty($condition['post_ids']) && in_array($current_page['post_id'], $condition['post_ids'])){
+                                    return $template_id;
+                                }
+                            }
+                            if(isset($condition['selective_mode']) && $condition['selective_mode'] == 'taxonomy'){
+                                if(isset($condition['taxonomy_terms']) && !empty($condition['taxonomy_terms'])){
+                                    if($condition['taxonomy'] == $current_page['taxonomy'] && in_array($current_page['term_id'], $condition['taxonomy_terms']) ){
+                                        return $template_id;
+                                    }
+                                }
+                                if(isset($condition['taxonomy_terms']) && empty($condition['taxonomy_terms']))  {
+                                    if($condition['taxonomy'] == $current_page['taxonomy']){
+                                        return $template_id;
+                                    }
+                                }                           
+                            }
+                            //  all post 
+                            if(isset($condition['selective_mode']) && $condition['selective_mode'] == 'all_posts'){
+                                if($current_page['post_type'] == $condition['post_type']){
+                                    return $template_id;
+                                }
+                            }
+                            // all other header
+                            
+                            if(isset($condition['display_on']) && $condition['display_on'] != 'selective_singular'){    
+                                if($current_page['type'] == $condition['display_on']){
+                                    return $template_id;
+                                }
+                            }                            
+                            if(isset($condition['display_on']) && $condition['display_on'] == 'entire_website'){    
+                                return $template_id;
+                            }
+                        }
+                    }
+                }                
+             }
+         }
+        return false;
     }
     protected function get_display_id($template_id, $include_list, $exclude_list, $current_page){
 
@@ -196,7 +263,11 @@ class Mbuilder_Frontend {
         | EXCLUDE CONDITIONS (priority)
         |------------------------------------------------
         */
-    
+        // echo '<pre>';
+        // print_r($include_list);
+        // echo '</pre>';
+        // wp_die();
+        
         if (!empty($exclude_list)) {
     
             foreach ($exclude_list as $condition) {
@@ -329,35 +400,47 @@ class Mbuilder_Frontend {
                 return $data;
     
             case is_category():
-            case is_tag():
-            case is_tax():
-    
-                $term = get_queried_object();
-    
-                $data['type']      = 'taxonomy_archive';
+                $term              = get_queried_object();
+                $data['type']      = 'blog_category_archive';
                 $data['taxonomy']  = $term->taxonomy ?? null;
                 $data['term_id']   = $term->term_id ?? null;
                 $data['term_slug'] = $term->slug ?? null;
-    
                 return $data;
-    
+
+            case is_tag():
+                $term              = get_queried_object();
+                $data['type']      = 'blog_tag_archive';
+                $data['taxonomy']  = $term->taxonomy ?? null;
+                $data['term_id']   = $term->term_id ?? null;
+                $data['term_slug'] = $term->slug ?? null;
+                return $data;
+
+            case is_tax():
+                $term              = get_queried_object();
+                // For custom taxonomies, treat as generic blog archive.
+                $data['type']      = 'blog_archive';
+                $data['taxonomy']  = $term->taxonomy ?? null;
+                $data['term_id']   = $term->term_id ?? null;
+                $data['term_slug'] = $term->slug ?? null;
+                return $data;
+
             case is_author():
-                $data['type'] = 'author_page';
+                $data['type'] = 'blog_author_archive';
                 return $data;
     
             case is_date():
-                $data['type'] = 'date_page';
+                $data['type'] = 'blog_date_archive';
                 return $data;
     
             case is_post_type_archive():
-    
-                $data['type']       = 'post_type_archive';
+                // Generic blog archive (e.g. CPT archives) unless more specific conditions are added later.
+                $data['type']       = 'blog_archive';
                 $data['archive_pt'] = get_query_var('post_type');
     
                 return $data;
     
             case is_archive():
-                $data['type'] = 'archive_page';
+                $data['type'] = 'blog_archive';
                 return $data;
         }
     

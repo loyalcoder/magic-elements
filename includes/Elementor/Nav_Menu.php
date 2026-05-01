@@ -170,7 +170,7 @@ class Nav_Menu extends Widget_Base
 			[
 				'label' => esc_html__( 'Left Menu', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
-				'options'=> cnw_get_menus(),
+				'options'=> $this->get_menus_options(),
 				'condition' => [
                     'header_layout_type' => ['layout-one','layout-two','layout-three']
                 ],
@@ -181,7 +181,7 @@ class Nav_Menu extends Widget_Base
 			[
 				'label' => esc_html__( 'Right Menu', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
-				'options'=> cnw_get_menus(),
+				'options'=> $this->get_menus_options(),
 				'condition' => [
                     'header_layout_type' => ['layout-one','layout-two']
                 ],
@@ -1449,15 +1449,25 @@ class Nav_Menu extends Widget_Base
      */
     protected function register_nav_menu_controls()
     {
-        function cnw_get_menus(){
-           $menus = wp_get_nav_menus();
-    	   $options = [];
-		foreach ( $menus as $m ) {
-			$options[ $m->slug ] = $m->name;
-		}
-		return $options;
+        // Reserved for future shared controls.
+    }
+
+    /**
+     * Get available nav menus as options for controls.
+     *
+     * @return array
+     */
+    protected function get_menus_options() {
+        $menus   = wp_get_nav_menus();
+        $options = [];
+
+        if ( ! empty( $menus ) && ! is_wp_error( $menus ) ) {
+            foreach ( $menus as $m ) {
+                $options[ $m->slug ] = $m->name;
+            }
         }
-		
+
+        return $options;
     }
 
         /**
