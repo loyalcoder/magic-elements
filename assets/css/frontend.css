@@ -60,6 +60,28 @@
 	border-radius: 12px;
 }
 
+/* Layout two desktop: single centered menu */
+.magic-header-layout-two .magic-menu {
+	gap: 28px;
+}
+
+.magic-header-layout-two .nav-menu-center {
+	flex: 1 1 auto;
+	display: flex;
+	justify-content: center;
+	min-width: 0;
+}
+
+.magic-header-layout-two .nav-menu-center .cnw-nav {
+	justify-content: center;
+}
+
+/* Remove Bootstrap default blue look from nav buttons */
+.magic-menu .mobile-menu {
+	background-color: transparent !important;
+	color: inherit;
+}
+
 /* Fullscreen offcanvas - mobile logo at top, menus next, then details */
 .offcanvas-fullscreen .fs-mobile-logo { display: none; }
 

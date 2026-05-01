@@ -1,6 +1,6 @@
 <?php
 $show_custom_mobile_menu_icon = isset( $settings['show_mobile_menu_icon'] ) && 'yes' === $settings['show_mobile_menu_icon'];
-$mobile_menu_button_classes   = $show_custom_mobile_menu_icon ? 'btn btn-primary mobile-menu' : 'btn btn-primary mobile-menu mobile-menu-fallback-trigger';
+$mobile_menu_button_classes   = $show_custom_mobile_menu_icon ? 'mobile-menu' : 'mobile-menu mobile-menu-fallback-trigger';
 $offcanvas_id                 = 'offcanvas-right-' . $this->get_id();
 $offcanvas_label_id           = 'offcanvas-right-label-' . $this->get_id();
 if( $header_layout == 'layout-one' ) { ?>
@@ -195,10 +195,16 @@ if( $header_layout == 'layout-one' ) { ?>
     </div>
 </header>
 <?php }elseif( $header_layout == 'layout-two' ){ ?>
-<header class="magic-header <?php echo ($settings['enable_sticky'] === 'yes') ? 'is-sticky' : ''; ?>">
+<header class="magic-header magic-header-layout-two <?php echo ($settings['enable_sticky'] === 'yes') ? 'is-sticky' : ''; ?>">
     <div class="container magic-menu" style="display:flex;justify-content:space-between;align-items:center;padding:20px 0;">
-        <!-- Left Menu -->
-        <nav class="nav-menu-left">
+            <!-- Logo -->
+        <?php if(!empty($settings['logo']['url'])): ?>
+            <a class="menu-logo" href="<?php echo esc_url(home_url()); ?>">
+                <img src="<?php echo esc_url($settings['logo']['url']); ?>">
+            </a>
+        <?php endif; ?>
+        <!-- Center Menu -->
+        <nav class="nav-menu-center">
             <?php
             if(!empty($settings['menu_select'])){
                 wp_nav_menu([
@@ -207,24 +213,6 @@ if( $header_layout == 'layout-one' ) { ?>
                     'menu_class' => 'cnw-nav'
                 ]);
             }
-            ?>
-        </nav> 
-            <!-- Logo -->
-        <?php if(!empty($settings['logo']['url'])): ?>
-            <a class="menu-logo" href="<?php echo esc_url(home_url()); ?>">
-                <img src="<?php echo esc_url($settings['logo']['url']); ?>">
-            </a>
-        <?php endif; ?>
-        <!-- Right Menu -->
-        <nav class="nav-menu-right">
-            <?php
-                if(!empty($settings['menu_select_right'])){
-                    wp_nav_menu([
-                        'menu' => $settings['menu_select_right'],
-                        'container' => false,
-                        'menu_class' => 'cnw-nav'
-                    ]);
-                }
             ?>
         </nav>
         <!-- Book Button -->
