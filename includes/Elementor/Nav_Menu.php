@@ -183,7 +183,7 @@ class Nav_Menu extends Widget_Base
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'options'=> cnw_get_menus(),
 				'condition' => [
-                    'header_layout_type' => ['layout-one','layout-two']
+                    'header_layout_type' => ['layout-one']
                 ],
 			]
 		);

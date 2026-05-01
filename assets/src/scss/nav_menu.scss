@@ -1,7 +1,7 @@
 //Sticky Header SCSS
 .magic-header {
     position: relative;
-    z-index: 999;
+    z-index: 2002;
 
     &.is-sticky {
         position: sticky;
@@ -67,6 +67,9 @@
         .nav-menu-right{
             display: none;
         }
+        .nav-menu-center{
+            display: none;
+        }
     }
 }
 //Search icon SCSS
@@ -75,6 +78,8 @@
         border: 1px solid #121212;
         border-radius: 16px;
         padding: 15px;
+        background: transparent;
+        appearance: none;
     }
 }
 
@@ -289,14 +294,22 @@ nav {
 
 //Mobile menu icon SCSS
 .mobile-menu{
+    display: none;
     border: 1px solid #121212;
     border-radius: 16px;
     padding: 15px;
+    background: transparent;
+    appearance: none;
 }
 .mobile-menu-fallback-trigger {
     display: none;
 }
 @media screen and (max-width: 1023px) {
+    .mobile-menu{
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
     .mobile-menu-fallback-trigger {
         display: inline-flex;
         align-items: center;
@@ -305,15 +318,98 @@ nav {
 }
 //Offcanvas Menu SCSS
 .offcanvas {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    z-index: 2001 !important;
+    background-color: #fff;
+    box-shadow: -8px 0 30px rgba(0, 0, 0, 0.18);
+    max-width: 100%;
+    transform: translateX(100%);
+    transition: transform .3s ease;
+    &.show,
+    &.showing{
+        transform: translateX(0);
+    }
+    &.hiding{
+        transform: translateX(100%);
+    }
+    &.offcanvas-fullscreen{
+        width: 100vw;
+        .offcanvas-header{
+            padding: 80px !important;
+        }
+        .offcanvas-body{
+            padding-top: 0 !important;
+        }
+        .fullscreen-wrapper{
+            margin-top: -20px;
+        }
+        .fullscreen-left{
+            padding-right: 30px !important;
+            justify-content: flex-start !important;
+            padding-top: 80px !important;
+        }
+        .fullscreen-right{
+            padding-left: 30px !important;
+            justify-content: flex-start !important;
+            padding-top: 80px !important;
+        }
+        .fullscreen-left-footer{
+            margin-top: 20px !important;
+        }
+    }
     .offcanvas-header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 25px !important;
+        .offcanvas-header-logo,
+        .offcanvas-sidebar-logo{
+            margin-right: auto;
+        }
+        .btn-close{
+            margin-left: auto;
+            background: transparent !important;
+            background-color: transparent !important;
+            border: 0;
+            box-shadow: none;
+            opacity: 1;
+            width: 32px;
+            height: 32px;
+            padding: 4px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-close:focus{
+            box-shadow: none;
+            outline: none;
+        }
+        .btn-close img,
+        .btn-close i,
+        .btn-close svg,
+        .btn-close span{
+            background: transparent !important;
+        }
+        .btn-close i,
+        .btn-close svg,
+        .btn-close span{
+            color: #121212 !important;
+            fill: currentColor !important;
+            font-size: 18px;
+            line-height: 1;
+        }
+        .btn-close img{
+            max-width: 24px;
+            height: auto;
+            display: block;
+        }
         h3{
             color: #EA4E1B;
             font-size: 32px;
-        }
-        .offcanvas_description{
-            color: black;
-            font-size: 18px;
-            line-height: 24px;
         }
     }
     .offcanvas-body{
@@ -323,7 +419,6 @@ nav {
                 a{
                     color: black;
                     font-size: 18px;
-                    // line-height: 26px;
                     padding: 8px 24px;
                 }
                 a:hover{
@@ -333,6 +428,17 @@ nav {
         }
     }
 }
+
+.offcanvas-backdrop.show {
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    z-index: 2000 !important;
+}
+
+.emkit-offcanvas-backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000 !important;
+}
 //Layout Two Book Button scss
 .book-button{
     a{
@@ -341,6 +447,9 @@ nav {
         font-size: 18px;
         border-radius: 4px;
         padding: 12px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
     }
 }
 //Layout Three call us scss
