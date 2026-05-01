@@ -160,6 +160,14 @@
 	background: #1c1f2b;
 }
 
+.offcanvas.offcanvas-fullscreen {
+	background: #1c1f2b !important;
+}
+
+.offcanvas.offcanvas-fullscreen .offcanvas-header {
+	background: #1c1f2b !important;
+}
+
 .offcanvas-fullscreen .offcanvas-body.fullscreen-wrapper::after {
 	content: "";
 	grid-column: 3;
@@ -318,6 +326,8 @@
 .offcanvas-fullscreen .fullscreen-search-input {
 	flex: 1 1 auto;
 	min-width: 0;
+	appearance: none;
+	-webkit-appearance: none;
 	border: 0;
 	outline: 0;
 	background: transparent;
@@ -328,6 +338,31 @@
 	line-height: 1.2;
 	padding: 0;
 	height: auto;
+}
+
+.offcanvas-fullscreen .fullscreen-search-input:focus,
+.offcanvas-fullscreen .fullscreen-search-input:active {
+	background: transparent !important;
+	color: #fff !important;
+	border: 0 !important;
+	outline: 0 !important;
+	box-shadow: none !important;
+}
+
+.offcanvas-fullscreen .fullscreen-search-input::-webkit-search-decoration,
+.offcanvas-fullscreen .fullscreen-search-input::-webkit-search-cancel-button,
+.offcanvas-fullscreen .fullscreen-search-input::-webkit-search-results-button,
+.offcanvas-fullscreen .fullscreen-search-input::-webkit-search-results-decoration {
+	-webkit-appearance: none;
+	display: none;
+}
+
+.offcanvas-fullscreen .fullscreen-search-input:-webkit-autofill,
+.offcanvas-fullscreen .fullscreen-search-input:-webkit-autofill:hover,
+.offcanvas-fullscreen .fullscreen-search-input:-webkit-autofill:focus {
+	-webkit-text-fill-color: #fff !important;
+	-webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+	transition: background-color 9999s ease-in-out 0s;
 }
 
 .offcanvas-fullscreen .fullscreen-search-btn {
@@ -345,6 +380,7 @@
 	text-transform: uppercase;
 	line-height: 1;
 	cursor: pointer;
+	white-space: nowrap;
 }
 
 .offcanvas-fullscreen .fullscreen-search-input::placeholder {
@@ -391,7 +427,7 @@
 		min-height: 56px !important;
 		height: 56px !important;
 		padding: 0 20px !important;
-		margin-bottom: 40px !important;
+		margin-bottom: 0 !important;
 		display: flex !important;
 		align-items: center !important;
 		justify-content: space-between !important;

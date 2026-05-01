@@ -400,6 +400,12 @@ body.lightbox-open {
     transform: translateY(0);
   }
 }
+.magic-menu {
+  width: 100%;
+  max-width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
+}
 .magic-menu .nav-menu-left {
   z-index: 30;
 }
