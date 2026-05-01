@@ -594,7 +594,7 @@ class Nav_Menu extends Widget_Base
 					'size' => 234,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .menu-logo' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .menu-logo img' => 'width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -620,7 +620,7 @@ class Nav_Menu extends Widget_Base
 					'size' => 80,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .menu-logo' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .menu-logo img' => 'height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);

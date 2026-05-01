@@ -4,7 +4,7 @@ $mobile_menu_button_classes   = $show_custom_mobile_menu_icon ? 'btn btn-primary
 $offcanvas_id                 = 'offcanvas-right-' . $this->get_id();
 $offcanvas_label_id           = 'offcanvas-right-label-' . $this->get_id();
 if( $header_layout == 'layout-one' ) { ?>
-<header class="magic-header <?php echo ($settings['enable_sticky'] === 'yes') ? 'is-sticky' : ''; ?>">
+<header class="magic-header magic-header-layout-one <?php echo ($settings['enable_sticky'] === 'yes') ? 'is-sticky' : ''; ?>">
     <div class="container magic-menu" style="display:flex;justify-content:space-between;align-items:center;padding:20px 0;">
         <!-- Search -->
 
