@@ -3,12 +3,16 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Template variables from passed $args.
-$display_type = isset($args['display_type']) ? $args['display_type'] : [];
-$post_data = isset($args['post_data']) ? $args['post_data'] : [];
+$template_args = ( isset( $args ) && is_array( $args ) ) ? $args : [];
+$display_type = isset($template_args['display_type']) ? $template_args['display_type'] : [];
+$post_data = isset($template_args['post_data']) ? $template_args['post_data'] : [];
 $title = isset($post_data['title']) ? $post_data['title'] : '';
 $status = isset($post_data['status']) ? $post_data['status'] : '';
 $type = isset($post_data['type']) ? $post_data['type'] : '';
 $condition = isset($post_data['condition']) ? $post_data['condition'] : [];
+$selected_type = isset( $template_args['selected_type'] ) ? sanitize_text_field( (string) $template_args['selected_type'] ) : '';
+$resolved_type = ! empty( $type ) ? $type : $selected_type;
+$is_mega_menu = ( $resolved_type === 'mega_menu' );
 $form_title = isset($post_data['ID']) ? esc_html__('Edit Template', 'magic-elements') : esc_html__('Add New Template', 'magic-elements');
 $template_id = isset($post_data['ID']) ? $post_data['ID'] : '';
 ?>
@@ -44,19 +48,21 @@ $template_id = isset($post_data['ID']) ? $post_data['ID'] : '';
             <option value=""><?php echo esc_html__('Select Type', 'magic-elements'); ?></option>
             <?php if (!empty($display_type)) : ?>
                 <?php foreach ($display_type as $key => $value) : ?>
-                    <option value="<?php echo esc_attr($key); ?>" <?php selected($type, $key); ?>><?php echo esc_html($value); ?></option>
+                    <option value="<?php echo esc_attr($key); ?>" <?php selected($resolved_type, $key); ?>><?php echo esc_html($value); ?></option>
                 <?php endforeach; ?>
             <?php endif; ?>
         </select>
     </div>
-    <div class="magic-elements-add-condition-header">
+    <div class="magic-elements-add-condition-header" <?php echo $is_mega_menu ? 'style="display:none;"' : ''; ?>>
         <h3><?php echo esc_html__('Condition', 'magic-elements'); ?></h3>
     </div>
+    <div class="magic-elements-condition-wrap" <?php echo $is_mega_menu ? 'style="display:none;"' : ''; ?>>
     <?php if(!empty($condition)){ ?>
-        <?php magic_elements_get_template_part('admin/builder/update-condition', '', $args); ?>
+        <?php magic_elements_get_template_part('admin/builder/update-condition', '', $template_args); ?>
     <?php } ?>
     <div class="magic-elements-form-group">
         <button type="button" class="button button-secondary" id="me-add-condition"><?php echo esc_html__('Add Condition', 'magic-elements'); ?></button>
+    </div>
     </div>
     <?php 
      $button_text = isset($post_data['ID']) ? esc_html__('Update Template', 'magic-elements') : esc_html__('Create Template', 'magic-elements');
@@ -69,3 +75,9 @@ $template_id = isset($post_data['ID']) ? $post_data['ID'] : '';
         </button>
     </div>
 </form>
+<?php
+$taxonomies_by_post_type = isset( $template_args['taxonomies_by_post_type'] ) ? $template_args['taxonomies_by_post_type'] : [];
+?>
+<script type="text/javascript">
+window.me_builder_taxonomies_by_post_type = <?php echo wp_json_encode( $taxonomies_by_post_type ); ?>;
+</script>

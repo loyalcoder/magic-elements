@@ -23,6 +23,57 @@ class MBuilder {
         add_action('wp_ajax_me_load_preview_data', [$this, 'ajax_load_preview_data']);
         add_action('wp_ajax_me_delete_template', [$this, 'ajax_delete_template']);
         add_action('wp_ajax_me_builder_search_posts', [$this, 'ajax_builder_search_posts']);
+        add_action('wp_ajax_me_builder_get_taxonomies', [$this, 'ajax_builder_get_taxonomies']);
+        add_action('wp_ajax_me_builder_get_terms', [$this, 'ajax_builder_get_terms']);
+    }
+
+    /**
+     * AJAX: Get terms for a taxonomy (Selective Singular → Taxonomy → term list).
+     */
+    public function ajax_builder_get_terms(): void {
+        if (!check_ajax_referer('me_builder_nonce', 'nonce', false)) {
+            wp_send_json_error(['message' => esc_html__('Invalid security token', 'magic-elements')]);
+        }
+        if (!current_user_can('edit_posts')) {
+            wp_send_json_error(['message' => esc_html__('Permission denied', 'magic-elements')]);
+        }
+        $taxonomy = isset($_POST['taxonomy']) ? sanitize_text_field(wp_unslash($_POST['taxonomy'])) : '';
+        if (!taxonomy_exists($taxonomy)) {
+            wp_send_json_success(['terms' => []]);
+        }
+        $terms = get_terms([
+            'taxonomy'   => $taxonomy,
+            'hide_empty' => false,
+            'orderby'    => 'name',
+            'order'      => 'ASC',
+        ]);
+        if (is_wp_error($terms)) {
+            wp_send_json_success(['terms' => []]);
+        }
+        $list = [];
+        foreach ($terms as $term) {
+            $list[] = ['id' => (string) $term->term_id, 'text' => $term->name];
+        }
+        wp_send_json_success(['terms' => $list]);
+    }
+
+    /**
+     * AJAX: Get taxonomies for a post type (Selective Singular → Taxonomy scope).
+     */
+    public function ajax_builder_get_taxonomies(): void {
+        if (!check_ajax_referer('me_builder_nonce', 'nonce', false)) {
+            wp_send_json_error(['message' => esc_html__('Invalid security token', 'magic-elements')]);
+        }
+        if (!current_user_can('edit_posts')) {
+            wp_send_json_error(['message' => esc_html__('Permission denied', 'magic-elements')]);
+        }
+        $post_type = isset($_POST['post_type']) ? sanitize_text_field(wp_unslash($_POST['post_type'])) : '';
+        $allowed   = array_keys($this->get_builder_post_types());
+        if (!in_array($post_type, $allowed, true)) {
+            wp_send_json_success(['taxonomies' => []]);
+        }
+        $taxonomies = $this->get_builder_taxonomies($post_type);
+        wp_send_json_success(['taxonomies' => $taxonomies]);
     }
 
     /**
@@ -69,14 +120,25 @@ class MBuilder {
         }
 
         $post_id = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;
+        $selected_type = isset($_POST['selected_type']) ? sanitize_text_field(wp_unslash($_POST['selected_type'])) : '';
         $post_data = $this->get_builder_template_by_id($post_id);
+        if ($post_data && isset($post_data['type'])) {
+            $selected_type = (string) $post_data['type'];
+        }
         $display_on = $this->get_display_on_list();
+        $post_types = $this->get_builder_post_types();
+        $taxonomies_by_post_type = [];
+        foreach ( array_keys( $post_types ) as $pt ) {
+            $taxonomies_by_post_type[ $pt ] = $this->get_builder_taxonomies( $pt );
+        }
         $args = [
-            'post_id' => $post_id,
-            'display_type' => $this->display_type_list(),
-            'post_data' => $post_data,
-            'display_on' => $display_on,
-            'post_types' => $this->get_builder_post_types(),
+            'post_id'                  => $post_id,
+            'display_type'             => $this->display_type_list(),
+            'post_data'                => $post_data,
+            'display_on'               => $display_on,
+            'post_types'               => $post_types,
+            'taxonomies_by_post_type'  => $taxonomies_by_post_type,
+            'selected_type'            => $selected_type,
         ];
         $html = '';
         ob_start();
@@ -95,11 +157,17 @@ class MBuilder {
         }
         $post_id = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;
         $html = '';
-        $display_on  = $this->get_display_on_list();
+        $display_on = $this->get_display_on_list();
+        $post_types = $this->get_builder_post_types();
+        $taxonomies_by_post_type = [];
+        foreach ( array_keys( $post_types ) as $pt ) {
+            $taxonomies_by_post_type[ $pt ] = $this->get_builder_taxonomies( $pt );
+        }
         $args = [
-            'post_id' => $post_id,
-            'display_on' => $display_on,
-            'post_types' => $this->get_builder_post_types(),
+            'post_id'                 => $post_id,
+            'display_on'               => $display_on,
+            'post_types'               => $post_types,
+            'taxonomies_by_post_type' => $taxonomies_by_post_type,
         ];
         ob_start();
         magic_elements_get_template_part('admin/builder/add-condition', '', $args);
@@ -132,12 +200,16 @@ class MBuilder {
         $template_status = isset($formData['template_status']) ? intval($formData['template_status']) : 0;
         $template_type = isset($formData['template_type']) ? sanitize_text_field($formData['template_type']) : '';
         $post_id = isset($formData['template_id']) ? intval($formData['template_id']) : 0;
+        if ($template_type === 'mega_menu') {
+            $display_condition = [];
+        }
         $meta = [
             '_me_builder_condition' => $display_condition,
             '_me_builder_type' => $template_type,
             '_me_builder_status' => $template_status,
             '_wp_page_template' => 'elementor_canvas'
         ];
+        $edit_elementor_html = '';
         if($post_id){
             $template_id = $this->update_builder_template($post_id, $template_title, $meta);
             $message = esc_html__('Template updated successfully', 'magic-elements');
