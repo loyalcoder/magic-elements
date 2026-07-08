@@ -1,5 +1,6 @@
 import $ from 'jquery';
 jQuery(function(){
+    let selectedBuilderType = '';
     // select2
     $('.magic-elements-builder-list li a').on('click', function(e){
         e.preventDefault();
@@ -9,6 +10,7 @@ jQuery(function(){
         $('.magic-elements-preview-header h2').text(popupTitle);
         $('.magic-elements-preview-popup').fadeIn();
         let dataType = $('.magic-elements-builder-list li a.active').data('type');
+        selectedBuilderType = dataType;
         // load preview
         let data = {
             action: 'me_load_preview_data',
@@ -55,7 +57,8 @@ jQuery(function(){
             data: {
                 action: 'new_or_update_builder_template',
                 nonce: me_builder_ajax_object.nonce,
-                post_id: $(this).data('id')
+                post_id: $(this).data('id'),
+                selected_type: selectedBuilderType
             },
             success: function(response){
                 if(response.success){                    
@@ -220,6 +223,10 @@ jQuery(function(){
       var $el = $(this);
       if ($el.hasClass('select2-hidden-accessible')) $el.select2('destroy');
       $el.select2({ width: '100%', dropdownParent: $popup });
+      toggleConditionFields($el.val(), $popup);
+      $el.on('change', function() {
+        toggleConditionFields($(this).val(), $popup);
+      });
     });
     $popup.find('.magic-elements-add-condition').each(function() {
       var $row = $(this);
@@ -267,6 +274,12 @@ jQuery(function(){
         });
       }
     });
+  }
+
+  function toggleConditionFields(templateType, $popup) {
+    var isMegaMenu = templateType === 'mega_menu';
+    $popup.find('.magic-elements-add-condition-header').toggle(!isMegaMenu);
+    $popup.find('.magic-elements-condition-wrap').toggle(!isMegaMenu);
   }
 
   function fire_ajax (data, display_selector, pagination_selector) {

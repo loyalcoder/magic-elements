@@ -120,7 +120,11 @@ class MBuilder {
         }
 
         $post_id = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;
+        $selected_type = isset($_POST['selected_type']) ? sanitize_text_field(wp_unslash($_POST['selected_type'])) : '';
         $post_data = $this->get_builder_template_by_id($post_id);
+        if ($post_data && isset($post_data['type'])) {
+            $selected_type = (string) $post_data['type'];
+        }
         $display_on = $this->get_display_on_list();
         $post_types = $this->get_builder_post_types();
         $taxonomies_by_post_type = [];
@@ -134,6 +138,7 @@ class MBuilder {
             'display_on'               => $display_on,
             'post_types'               => $post_types,
             'taxonomies_by_post_type'  => $taxonomies_by_post_type,
+            'selected_type'            => $selected_type,
         ];
         $html = '';
         ob_start();
@@ -195,12 +200,16 @@ class MBuilder {
         $template_status = isset($formData['template_status']) ? intval($formData['template_status']) : 0;
         $template_type = isset($formData['template_type']) ? sanitize_text_field($formData['template_type']) : '';
         $post_id = isset($formData['template_id']) ? intval($formData['template_id']) : 0;
+        if ($template_type === 'mega_menu') {
+            $display_condition = [];
+        }
         $meta = [
             '_me_builder_condition' => $display_condition,
             '_me_builder_type' => $template_type,
             '_me_builder_status' => $template_status,
             '_wp_page_template' => 'elementor_canvas'
         ];
+        $edit_elementor_html = '';
         if($post_id){
             $template_id = $this->update_builder_template($post_id, $template_title, $meta);
             $message = esc_html__('Template updated successfully', 'magic-elements');

@@ -49,6 +49,10 @@ class Mbuilder_Frontend {
         add_action('magic_builder_footer_content', [$this,'footer_builder_put_content']);
         // Clear cache on builder updates
         add_action('save_post_me_builder', [$this, 'clear_builder_cache']);
+        add_action('wp_nav_menu_item_custom_fields', [$this, 'add_mega_menu_nav_fields'], 10, 5);
+        add_action('wp_update_nav_menu_item', [$this, 'save_mega_menu_nav_fields'], 10, 3);
+        add_filter('wp_setup_nav_menu_item', [$this, 'setup_mega_menu_nav_item']);
+        add_filter('walker_nav_menu_start_el', [$this, 'render_mega_menu_content'], 10, 4);
     }
 
     /**
@@ -251,6 +255,142 @@ class Mbuilder_Frontend {
              }
          }
         return false;
+    }
+    /**
+     * Get active mega menu templates list.
+     *
+     * @return array
+     */
+    protected function get_active_mega_menu_templates(): array {
+        $result = $this->get_builder_templates([
+            'post_type'      => 'me_builder',
+            'post_status'    => 'publish',
+            'posts_per_page' => 100,
+            'meta_query'     => [
+                'relation' => 'AND',
+                [
+                    'key'     => '_me_builder_type',
+                    'value'   => 'mega_menu',
+                    'compare' => '=',
+                ],
+                [
+                    'key'     => '_me_builder_status',
+                    'value'   => '1',
+                    'compare' => '=',
+                ],
+            ],
+            'orderby'        => 'title',
+            'order'          => 'ASC',
+        ]);
+
+        return isset($result['templates']) && is_array($result['templates']) ? $result['templates'] : [];
+    }
+
+    /**
+     * Add Mega Menu selector field for each nav menu item.
+     *
+     * @param int    $item_id Menu item DB ID.
+     * @param object $item    Menu item data.
+     * @param int    $depth   Item depth.
+     * @param array  $args    Args.
+     * @param int    $id      Nav menu ID.
+     * @return void
+     */
+    public function add_mega_menu_nav_fields($item_id, $item, $depth, $args, $id): void {
+        if ($depth > 0) {
+            return;
+        }
+        $templates = $this->get_active_mega_menu_templates();
+        $selected_template = (int) get_post_meta($item_id, '_me_mega_menu_template_id', true);
+        ?>
+        <p class="description-wide me-mega-menu-field">
+            <label for="edit-menu-item-mega-template-<?php echo esc_attr((string) $item_id); ?>">
+                <?php echo esc_html__('Mega Menu Template', 'magic-elements'); ?><br>
+                <select id="edit-menu-item-mega-template-<?php echo esc_attr((string) $item_id); ?>" class="widefat code edit-menu-item-custom" name="menu-item-mega-template[<?php echo esc_attr((string) $item_id); ?>]">
+                    <option value="0"><?php echo esc_html__('Default submenu', 'magic-elements'); ?></option>
+                    <?php foreach ($templates as $template) { ?>
+                        <option value="<?php echo esc_attr((string) $template['ID']); ?>" <?php selected($selected_template, (int) $template['ID']); ?>>
+                            <?php echo esc_html($template['title']); ?>
+                        </option>
+                    <?php } ?>
+                </select>
+            </label>
+        </p>
+        <?php
+    }
+
+    /**
+     * Save menu item mega menu template field.
+     *
+     * @param int   $menu_id         Menu ID.
+     * @param int   $menu_item_db_id Menu item DB ID.
+     * @param array $menu_item_args  Menu item args.
+     * @return void
+     */
+    public function save_mega_menu_nav_fields($menu_id, $menu_item_db_id, $menu_item_args): void {
+        if (!current_user_can('edit_theme_options')) {
+            return;
+        }
+
+        $template_id = 0;
+        if (isset($_POST['menu-item-mega-template'][$menu_item_db_id])) {
+            $template_id = absint(wp_unslash($_POST['menu-item-mega-template'][$menu_item_db_id]));
+        }
+
+        $valid_template_ids = array_map(
+            static function ($template): int {
+                return (int) $template['ID'];
+            },
+            $this->get_active_mega_menu_templates()
+        );
+
+        if ($template_id > 0 && in_array($template_id, $valid_template_ids, true)) {
+            update_post_meta($menu_item_db_id, '_me_mega_menu_template_id', $template_id);
+            return;
+        }
+
+        delete_post_meta($menu_item_db_id, '_me_mega_menu_template_id');
+    }
+
+    /**
+     * Add mega menu template ID to nav menu item object.
+     *
+     * @param object $menu_item Menu item object.
+     * @return object
+     */
+    public function setup_mega_menu_nav_item($menu_item) {
+        $menu_item->me_mega_menu_template_id = (int) get_post_meta($menu_item->ID, '_me_mega_menu_template_id', true);
+        return $menu_item;
+    }
+
+    /**
+     * Render Mega Menu content after menu item link.
+     *
+     * @param string   $item_output Item output.
+     * @param \WP_Post $item        Menu item.
+     * @param int      $depth       Depth.
+     * @param array    $args        Menu args.
+     * @return string
+     */
+    public function render_mega_menu_content($item_output, $item, $depth, $args): string {
+        if (is_admin() || $depth > 0 || !class_exists('\Elementor\Plugin')) {
+            return $item_output;
+        }
+        $template_id = isset($item->me_mega_menu_template_id) ? (int) $item->me_mega_menu_template_id : 0;
+        if ($template_id <= 0) {
+            return $item_output;
+        }
+        $template_type = (string) get_post_meta($template_id, '_me_builder_type', true);
+        $template_status = (string) get_post_meta($template_id, '_me_builder_status', true);
+        if ($template_type !== 'mega_menu' || $template_status !== '1') {
+            return $item_output;
+        }
+        $mega_content = \Elementor\Plugin::instance()->frontend->get_builder_content_for_display($template_id, true);
+        if (empty($mega_content)) {
+            return $item_output;
+        }
+
+        return $item_output . '<div class="magic-elements-mega-menu-content">' . $mega_content . '</div>';
     }
     protected function get_display_id($template_id, $include_list, $exclude_list, $current_page){
 

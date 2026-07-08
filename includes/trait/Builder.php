@@ -198,8 +198,9 @@ trait Builder {
     }
     public function display_type_list() {
         $display_types = array(
-            'header' => 'Header',
-            'footer' => 'Footer',
+            'header'    => esc_html__( 'Header', 'magic-elements' ),
+            'footer'    => esc_html__( 'Footer', 'magic-elements' ),
+            'mega_menu' => esc_html__( 'Mega Menu', 'magic-elements' ),
         );
         return apply_filters('magic_elements_display_types', $display_types);
     }

@@ -28,6 +28,17 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <?php echo esc_html__('Footer', 'magic-elements'); ?>
             </a>
         </li>
+        <li>
+            <a href="#mega-menu" data-title="<?php echo esc_html__('Mega Menu Template', 'magic-elements'); ?>" data-type="mega_menu">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="3" width="16" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                    <line x1="5" y1="7" x2="15" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    <line x1="5" y1="11" x2="10" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    <line x1="12" y1="11" x2="15" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <?php echo esc_html__('Mega Menu', 'magic-elements'); ?>
+            </a>
+        </li>
     </ul>
 </div>
 <?php 
