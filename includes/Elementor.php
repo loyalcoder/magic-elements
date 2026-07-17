@@ -192,6 +192,11 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/nav_menu.js'),
                 'deps'    => ['jquery']
             ],
+            'emkit-hero-slider' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/hero_slider.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/hero_slider.js'),
+                'deps'    => ['jquery']
+            ],
          
         ];
     }
@@ -313,6 +318,10 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/nav_menu.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/nav_menu.css'),
             ],
+            'emk-hero-slider' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/hero_slider.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/hero_slider.css'),
+            ],
         ];
     }
 
@@ -353,6 +362,7 @@ class Load_Elementor
             'Progress_Bar',
             'Multi_Step',
             'Nav_Menu',
+            'Hero_Slider',
         
         ];
     }
@@ -387,6 +397,7 @@ class Load_Elementor
             'progressbar',
             'multi_step',
             'navmenu',
+            'heroslider',
         ];
     }
     /**
