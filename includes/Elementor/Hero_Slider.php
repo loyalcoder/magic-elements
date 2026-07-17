@@ -496,27 +496,80 @@ class Hero_Slider extends Widget_Base {
 		);
 
 		$this->add_responsive_control(
-			'content_max_width',
+			'content_position_left',
 			array(
-				'label'      => esc_html__( 'Content Box Max Width', 'magic-elements' ),
+				'label'      => esc_html__( 'Content Position (Left)', 'magic-elements' ),
 				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px', '%' ),
+				'size_units' => array( '%', 'px' ),
 				'range'      => array(
-					'px' => array(
-						'min' => 200,
-						'max' => 900,
-					),
 					'%'  => array(
-						'min' => 20,
-						'max' => 100,
+						'min' => 5,
+						'max' => 40,
+					),
+					'px' => array(
+						'min' => 40,
+						'max' => 400,
 					),
 				),
 				'default'    => array(
-					'unit' => 'px',
-					'size' => 520,
+					'unit' => '%',
+					'size' => 15,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .emk-hero-slide__content' => 'max-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .emk-hero-slide__inner' => 'padding-left: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'content_position_right',
+			array(
+				'label'      => esc_html__( 'Content Space (Right)', 'magic-elements' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( '%', 'px' ),
+				'range'      => array(
+					'%'  => array(
+						'min' => 5,
+						'max' => 50,
+					),
+					'px' => array(
+						'min' => 40,
+						'max' => 400,
+					),
+				),
+				'default'    => array(
+					'unit' => '%',
+					'size' => 10,
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .emk-hero-slide__inner' => 'padding-right: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'content_horizontal_align',
+			array(
+				'label'   => esc_html__( 'Content Horizontal Align', 'magic-elements' ),
+				'type'    => Controls_Manager::CHOOSE,
+				'options' => array(
+					'flex-start' => array(
+						'title' => esc_html__( 'Left', 'magic-elements' ),
+						'icon'  => 'eicon-h-align-left',
+					),
+					'center'     => array(
+						'title' => esc_html__( 'Center', 'magic-elements' ),
+						'icon'  => 'eicon-h-align-center',
+					),
+					'flex-end'   => array(
+						'title' => esc_html__( 'Right', 'magic-elements' ),
+						'icon'  => 'eicon-h-align-right',
+					),
+				),
+				'default'   => 'flex-start',
+				'toggle'    => false,
+				'selectors' => array(
+					'{{WRAPPER}} .emk-hero-slide__inner' => 'justify-content: {{VALUE}};',
 				),
 			)
 		);
@@ -625,18 +678,6 @@ class Hero_Slider extends Widget_Base {
 			)
 		);
 
-		$this->add_control(
-			'bg_overlay_color',
-			array(
-				'label'     => esc_html__( 'Overlay Color', 'magic-elements' ),
-				'type'      => Controls_Manager::COLOR,
-				'default'   => 'rgba(0, 0, 0, 0.45)',
-				'selectors' => array(
-					'{{WRAPPER}} .emk-hero-slide__overlay' => 'background-color: {{VALUE}};',
-				),
-			)
-		);
-
 		$this->add_group_control(
 			Group_Control_Border::get_type(),
 			array(
@@ -717,7 +758,7 @@ class Hero_Slider extends Widget_Base {
 					),
 					'%'  => array(
 						'min' => 10,
-						'max' => 80,
+						'max' => 100,
 					),
 				),
 				'default'    => array(
@@ -829,6 +870,45 @@ class Hero_Slider extends Widget_Base {
 			array(
 				'label' => esc_html__( 'Content Box', 'magic-elements' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		$this->add_responsive_control(
+			'content_max_width',
+			array(
+				'label'      => esc_html__( 'Width', 'magic-elements' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', '%', 'vw' ),
+				'range'      => array(
+					'px' => array(
+						'min'  => 200,
+						'max'  => 1200,
+						'step' => 1,
+					),
+					'%'  => array(
+						'min' => 20,
+						'max' => 100,
+					),
+					'vw' => array(
+						'min' => 20,
+						'max' => 100,
+					),
+				),
+				'default'    => array(
+					'unit' => 'px',
+					'size' => 410,
+				),
+				'tablet_default' => array(
+					'unit' => 'px',
+					'size' => 360,
+				),
+				'mobile_default' => array(
+					'unit' => '%',
+					'size' => 100,
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .emk-hero-slide__content' => 'width: {{SIZE}}{{UNIT}} !important; max-width: {{SIZE}}{{UNIT}} !important; flex: 0 1 auto;',
+				),
 			)
 		);
 
@@ -1384,6 +1464,28 @@ class Hero_Slider extends Widget_Base {
 		);
 
 		$this->add_responsive_control(
+			'credit_divider_height',
+			array(
+				'label'      => esc_html__( 'Divider Width', 'magic-elements' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array(
+						'min' => 8,
+						'max' => 60,
+					),
+				),
+				'default'    => array(
+					'size' => 18,
+					'unit' => 'px',
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .emk-hero-credits__item:not(:last-child)::after' => 'width: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
 			'credits_offset_x',
 			array(
 				'label'      => esc_html__( 'Left Offset', 'magic-elements' ),
@@ -1396,7 +1498,7 @@ class Hero_Slider extends Widget_Base {
 					),
 				),
 				'default'    => array(
-					'size' => 24,
+					'size' => 28,
 					'unit' => 'px',
 				),
 				'selectors'  => array(
@@ -1412,15 +1514,15 @@ class Hero_Slider extends Widget_Base {
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array(
 					'px' => array(
-						'min' => 10,
-						'max' => 80,
+						'min' => 20,
+						'max' => 100,
 					),
 				),
 				'default'   => array(
 					'size' => 40,
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .emk-hero-credits' => 'gap: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .emk-hero-credits__item:not(:last-child)' => 'padding-bottom: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);

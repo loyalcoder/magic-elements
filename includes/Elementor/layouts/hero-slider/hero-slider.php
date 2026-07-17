@@ -46,14 +46,21 @@ $total_slides    = count( $slides );
 			?>
 			<div class="<?php echo esc_attr( implode( ' ', $slide_classes ) ); ?>" data-index="<?php echo esc_attr( (string) $index ); ?>"<?php echo $is_active ? '' : ' aria-hidden="true"'; ?>>
 				<div class="emk-hero-slide__bg" style="<?php echo $bg_url ? 'background-image:url(' . esc_url( $bg_url ) . ');' : ''; ?>"></div>
-				<div class="emk-hero-slide__overlay"></div>
 				<div class="emk-hero-slide__gradient"></div>
 
 				<div class="emk-hero-slide__inner">
 					<?php if ( $show_credits && ! empty( $credits ) ) : ?>
 						<aside class="emk-hero-credits" aria-label="<?php echo esc_attr__( 'Credits', 'magic-elements' ); ?>">
-							<?php foreach ( $credits as $credit ) : ?>
-								<?php if ( empty( $credit['name'] ) ) { continue; } ?>
+							<?php
+							$credit_items = array();
+							foreach ( $credits as $credit ) {
+								if ( empty( $credit['name'] ) ) {
+									continue;
+								}
+								$credit_items[] = $credit;
+							}
+							foreach ( $credit_items as $credit ) :
+								?>
 								<div class="emk-hero-credits__item">
 									<span class="emk-hero-credits__name"><?php echo esc_html( $credit['name'] ); ?></span>
 									<?php if ( ! empty( $credit['role'] ) ) : ?>
