@@ -100,6 +100,8 @@ final class Magic_Elements
      */
     public function init_plugin()
     {
+        $this->migrate_youtube_feed();
+
         new MagicElements\Assets();
         new MagicElements\Load_Elementor();
         new MagicElements\MBuilder\Ctp();
@@ -107,7 +109,42 @@ final class Magic_Elements
         $builder_frontend->init();
         if (is_admin()) {
             new MagicElements\Admin();
+            new MagicElements\YouTube\Settings();
         }
+    }
+
+    /**
+     * Migrate data from the former standalone YouTube feed plugin.
+     *
+     * @return void
+     */
+    private function migrate_youtube_feed()
+    {
+        if (get_option('magic_elements_youtube_integrated')) {
+            return;
+        }
+
+        $legacy_settings = get_option('myf_settings', false);
+
+        if (
+            false === get_option(MagicElements\YouTube\Settings::OPTION_NAME, false)
+            && is_array($legacy_settings)
+        ) {
+            update_option(MagicElements\YouTube\Settings::OPTION_NAME, $legacy_settings);
+        }
+
+        $enabled_widgets = get_option('magic_elements_enabled_widgets', []);
+
+        if (!is_array($enabled_widgets)) {
+            $enabled_widgets = MagicElements\Load_Elementor::defaultWidgets();
+        }
+
+        if (!in_array('youtubefeed', $enabled_widgets, true)) {
+            $enabled_widgets[] = 'youtubefeed';
+            update_option('magic_elements_enabled_widgets', $enabled_widgets);
+        }
+
+        update_option('magic_elements_youtube_integrated', MAGIC_ELEMENTS_VERSION);
     }
 }
 

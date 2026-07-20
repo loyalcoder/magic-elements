@@ -192,7 +192,15 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/nav_menu.js'),
                 'deps'    => ['jquery']
             ],
-         
+            'emkit-image-slider' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/image_slider.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/image_slider.js'),
+                'deps'    => ['jquery', 'slick']
+            ],
+            'magic-elements-youtube-feed' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/js/youtube-feed.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/js/youtube-feed.js'),
+            ],
         ];
     }
     /**
@@ -313,6 +321,14 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/nav_menu.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/nav_menu.css'),
             ],
+            'emk-image-slider' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/image_slider.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/image_slider.css'),
+            ],
+            'magic-elements-youtube-feed' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/css/youtube-feed.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/css/youtube-feed.css'),
+            ],
         ];
     }
 
@@ -353,7 +369,8 @@ class Load_Elementor
             'Progress_Bar',
             'Multi_Step',
             'Nav_Menu',
-        
+            'YouTube_Feed',
+            'Image_Slider',
         ];
     }
     public static function defaultWidgets()
@@ -387,6 +404,8 @@ class Load_Elementor
             'progressbar',
             'multi_step',
             'navmenu',
+            'youtubefeed',
+            'imageslider',
         ];
     }
     /**
