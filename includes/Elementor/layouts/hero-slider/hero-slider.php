@@ -59,12 +59,16 @@ $total_slides    = count( $slides );
 								}
 								$credit_items[] = $credit;
 							}
-							foreach ( $credit_items as $credit ) :
+							$credit_count = count( $credit_items );
+							foreach ( $credit_items as $credit_index => $credit ) :
 								?>
 								<div class="emk-hero-credits__item">
 									<span class="emk-hero-credits__name"><?php echo esc_html( $credit['name'] ); ?></span>
 									<?php if ( ! empty( $credit['role'] ) ) : ?>
 										<span class="emk-hero-credits__role"><?php echo esc_html( $credit['role'] ); ?></span>
+									<?php endif; ?>
+									<?php if ( $credit_index < $credit_count - 1 ) : ?>
+										<span class="emk-hero-credits__divider" aria-hidden="true"></span>
 									<?php endif; ?>
 								</div>
 							<?php endforeach; ?>
@@ -94,17 +98,30 @@ $total_slides    = count( $slides );
 							<p class="emk-hero-slide__description"><?php echo esc_html( $slide['slide_description'] ); ?></p>
 						<?php endif; ?>
 
-						<div class="emk-hero-slide__info">
-							<?php if ( ! empty( $slide['slide_runtime'] ) ) : ?>
-								<span class="emk-hero-slide__runtime"><?php echo esc_html( $slide['slide_runtime'] ); ?></span>
-							<?php endif; ?>
-							<?php if ( ! empty( $slide['slide_rating'] ) ) : ?>
-								<span class="emk-hero-slide__rating"><?php echo esc_html( $slide['slide_rating'] ); ?></span>
-							<?php endif; ?>
-							<?php if ( ! empty( $slide['slide_button_text'] ) ) : ?>
-								<a <?php $this->print_render_attribute_string( $btn_key ); ?>><?php echo esc_html( $slide['slide_button_text'] ); ?></a>
-							<?php endif; ?>
-						</div>
+						<?php
+						$has_runtime = ! empty( $slide['slide_runtime'] );
+						$has_rating  = ! empty( $slide['slide_rating'] );
+						$has_button  = ! empty( $slide['slide_button_text'] );
+						?>
+						<?php if ( $has_runtime || $has_rating || $has_button ) : ?>
+							<div class="emk-hero-slide__info">
+								<?php if ( $has_runtime ) : ?>
+									<span class="emk-hero-slide__runtime"><?php echo esc_html( $slide['slide_runtime'] ); ?></span>
+								<?php endif; ?>
+								<?php if ( $has_runtime && ( $has_rating || $has_button ) ) : ?>
+									<span class="emk-hero-slide__info-sep" aria-hidden="true"></span>
+								<?php endif; ?>
+								<?php if ( $has_rating ) : ?>
+									<span class="emk-hero-slide__rating"><?php echo esc_html( $slide['slide_rating'] ); ?></span>
+								<?php endif; ?>
+								<?php if ( $has_rating && $has_button ) : ?>
+									<span class="emk-hero-slide__info-sep" aria-hidden="true"></span>
+								<?php endif; ?>
+								<?php if ( $has_button ) : ?>
+									<a <?php $this->print_render_attribute_string( $btn_key ); ?>><?php echo esc_html( $slide['slide_button_text'] ); ?></a>
+								<?php endif; ?>
+							</div>
+						<?php endif; ?>
 					</div>
 
 					<?php if ( $show_foreground && $fg_url ) : ?>

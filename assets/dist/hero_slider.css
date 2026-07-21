@@ -149,6 +149,14 @@
   font-weight: 600;
 }
 
+.emk-hero-slide__info-sep {
+  display: inline-block;
+  width: 2px;
+  height: 14px;
+  background-color: #e31c23;
+  flex-shrink: 0;
+}
+
 .emk-hero-slide__btn {
   color: #fff;
   text-decoration: none;
@@ -208,29 +216,26 @@
 }
 
 .emk-hero-credits__item {
-  position: relative;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 10px;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 0 0 44px;
+  justify-items: center;
+  padding: 0;
 }
 
-.emk-hero-credits__item:last-child {
-  padding-bottom: 0;
+.emk-hero-credits__item:not(:last-child) {
+  padding-bottom: 20px;
 }
 
-/* Horizontal red divider centered between credit groups */
-.emk-hero-credits__item:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 14px;
+/* Divider aligned under the name column */
+.emk-hero-credits__divider {
+  grid-column: 1;
+  display: block;
   width: 18px;
   height: 2px;
+  margin-top: 20px;
   background-color: #e31c23;
-  transform: translateX(-50%);
   pointer-events: none;
 }
 

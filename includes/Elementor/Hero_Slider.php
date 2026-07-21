@@ -1188,21 +1188,48 @@ class Hero_Slider extends Widget_Base {
 		);
 
 		$this->add_responsive_control(
-			'description_spacing',
+			'description_width',
 			array(
-				'label'     => esc_html__( 'Bottom Spacing', 'magic-elements' ),
-				'type'      => Controls_Manager::SLIDER,
-				'range'     => array(
+				'label'      => esc_html__( 'Width', 'magic-elements' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', '%', 'em' ),
+				'range'      => array(
 					'px' => array(
-						'min' => 0,
-						'max' => 60,
+						'min'  => 50,
+						'max'  => 1000,
+						'step' => 1,
+					),
+					'%'  => array(
+						'min' => 10,
+						'max' => 100,
+					),
+					'em' => array(
+						'min' => 1,
+						'max' => 50,
 					),
 				),
-				'default'   => array(
-					'size' => 22,
+				'selectors'  => array(
+					'{{WRAPPER}} .emk-hero-slide__description' => 'width: {{SIZE}}{{UNIT}}; max-width: 100%;',
 				),
-				'selectors' => array(
-					'{{WRAPPER}} .emk-hero-slide__description' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+			)
+		);
+
+		$this->add_responsive_control(
+			'description_spacing',
+			array(
+				'label'      => esc_html__( 'Margin', 'magic-elements' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%', 'em' ),
+				'default'    => array(
+					'top'      => 0,
+					'right'    => 0,
+					'bottom'   => 22,
+					'left'     => 0,
+					'unit'     => 'px',
+					'isLinked' => false,
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .emk-hero-slide__description' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -1241,6 +1268,60 @@ class Hero_Slider extends Widget_Base {
 			array(
 				'name'     => 'info_typography',
 				'selector' => '{{WRAPPER}} .emk-hero-slide__info',
+			)
+		);
+
+		$this->add_control(
+			'info_separator_color',
+			array(
+				'label'     => esc_html__( 'Divider Color', 'magic-elements' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#e31c23',
+				'selectors' => array(
+					'{{WRAPPER}} .emk-hero-slide__info-sep' => 'background-color: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'info_separator_width',
+			array(
+				'label'      => esc_html__( 'Divider Width', 'magic-elements' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array(
+						'min' => 1,
+						'max' => 8,
+					),
+				),
+				'default'    => array(
+					'size' => 2,
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .emk-hero-slide__info-sep' => 'width: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'info_separator_height',
+			array(
+				'label'      => esc_html__( 'Divider Height', 'magic-elements' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array(
+						'min' => 8,
+						'max' => 40,
+					),
+				),
+				'default'    => array(
+					'size' => 14,
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .emk-hero-slide__info-sep' => 'height: {{SIZE}}{{UNIT}};',
+				),
 			)
 		);
 
@@ -1458,7 +1539,7 @@ class Hero_Slider extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#e31c23',
 				'selectors' => array(
-					'{{WRAPPER}} .emk-hero-credits__item:not(:last-child)::after' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .emk-hero-credits__divider' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -1480,7 +1561,7 @@ class Hero_Slider extends Widget_Base {
 					'unit' => 'px',
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .emk-hero-credits__item:not(:last-child)::after' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .emk-hero-credits__divider' => 'width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1519,7 +1600,7 @@ class Hero_Slider extends Widget_Base {
 					),
 				),
 				'default'   => array(
-					'size' => 40,
+					'size' => 20,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .emk-hero-credits__item:not(:last-child)' => 'padding-bottom: {{SIZE}}{{UNIT}};',
