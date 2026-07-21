@@ -339,8 +339,6 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/css/youtube-feed.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/css/youtube-feed.css'),
             ],
-        
-            ],
         ];
     }
 
