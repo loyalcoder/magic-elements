@@ -197,7 +197,16 @@ class Load_Elementor
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/hero_slider.js'),
                 'deps'    => ['jquery']
             ],
-         
+            'emkit-image-slider' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/image_slider.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/image_slider.js'),
+                'deps'    => ['jquery', 'slick']
+            ],
+            'magic-elements-youtube-feed' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/js/youtube-feed.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/js/youtube-feed.js'),
+            ],
+        
         ];
     }
     /**
@@ -322,6 +331,16 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/hero_slider.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/hero_slider.css'),
             ],
+            'emk-image-slider' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/image_slider.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/image_slider.css'),
+            ],
+            'magic-elements-youtube-feed' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/css/youtube-feed.css',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/css/youtube-feed.css'),
+            ],
+        
+            ],
         ];
     }
 
@@ -363,6 +382,8 @@ class Load_Elementor
             'Multi_Step',
             'Nav_Menu',
             'Hero_Slider',
+            'YouTube_Feed',
+            'Image_Slider',
         
         ];
     }
@@ -398,6 +419,9 @@ class Load_Elementor
             'multi_step',
             'navmenu',
             'heroslider',
+            'youtubefeed',
+            'imageslider',
+        
         ];
     }
     /**
