@@ -77,7 +77,7 @@ class Hero_Slider extends Widget_Base {
 	 * @return array
 	 */
 	public function get_script_depends() {
-		return array( 'emkit-hero-slider', 'jquery' );
+		return array( 'emkit-hero-slider', 'jquery', 'slick' );
 	}
 
 	/**
@@ -86,7 +86,7 @@ class Hero_Slider extends Widget_Base {
 	 * @return array
 	 */
 	public function get_style_depends() {
-		return array( 'emk-hero-slider' );
+		return array( 'emk-hero-slider', 'slick' );
 	}
 
 	/**
@@ -503,17 +503,21 @@ class Hero_Slider extends Widget_Base {
 				'size_units' => array( '%', 'px' ),
 				'range'      => array(
 					'%'  => array(
-						'min' => 5,
+						'min' => 0,
 						'max' => 40,
 					),
 					'px' => array(
-						'min' => 40,
+						'min' => 0,
 						'max' => 400,
 					),
 				),
 				'default'    => array(
 					'unit' => '%',
 					'size' => 15,
+				),
+				'mobile_default' => array(
+					'unit' => 'px',
+					'size' => 16,
 				),
 				'selectors'  => array(
 					'{{WRAPPER}} .emk-hero-slide__inner' => 'padding-left: {{SIZE}}{{UNIT}};',
@@ -529,17 +533,21 @@ class Hero_Slider extends Widget_Base {
 				'size_units' => array( '%', 'px' ),
 				'range'      => array(
 					'%'  => array(
-						'min' => 5,
+						'min' => 0,
 						'max' => 50,
 					),
 					'px' => array(
-						'min' => 40,
+						'min' => 0,
 						'max' => 400,
 					),
 				),
 				'default'    => array(
 					'unit' => '%',
 					'size' => 10,
+				),
+				'mobile_default' => array(
+					'unit' => 'px',
+					'size' => 52,
 				),
 				'selectors'  => array(
 					'{{WRAPPER}} .emk-hero-slide__inner' => 'padding-right: {{SIZE}}{{UNIT}};',
@@ -1655,11 +1663,23 @@ class Hero_Slider extends Widget_Base {
 		$this->add_control(
 			'pagination_ring_color',
 			array(
-				'label'     => esc_html__( 'Active Ring Color', 'magic-elements' ),
+				'label'     => esc_html__( 'Progress Ring Color', 'magic-elements' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#e31c23',
 				'selectors' => array(
-					'{{WRAPPER}} .emk-hero-pagination__btn.is-active' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .emk-hero-slider' => '--emk-ring-color: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'pagination_ring_track_color',
+			array(
+				'label'     => esc_html__( 'Ring Track Color', 'magic-elements' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => 'rgba(255,255,255,0.25)',
+				'selectors' => array(
+					'{{WRAPPER}} .emk-hero-slider' => '--emk-ring-track: {{VALUE}};',
 				),
 			)
 		);
@@ -1716,10 +1736,10 @@ class Hero_Slider extends Widget_Base {
 					),
 				),
 				'default'   => array(
-					'size' => 1,
+					'size' => 2,
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .emk-hero-pagination__btn.is-active' => 'border-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .emk-hero-slider' => '--emk-ring-width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);

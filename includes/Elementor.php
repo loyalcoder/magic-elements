@@ -195,7 +195,7 @@ class Load_Elementor
             'emkit-hero-slider' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/hero_slider.js',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/hero_slider.js'),
-                'deps'    => ['jquery']
+                'deps'    => ['jquery', 'slick']
             ],
             'emkit-image-slider' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/image_slider.js',

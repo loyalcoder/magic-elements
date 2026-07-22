@@ -55,8 +55,6 @@ const baseConfig = {
         './assets/src/js/image_slider.js',
     ],
 
-    ],
-
     // 2) SCSS ONLY (no JS file mentioned):
     flipcard: './assets/src/scss/flipcard.scss',
     category_list: './assets/src/scss/category_list.scss',

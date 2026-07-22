@@ -3,6 +3,10 @@
  * Hero Slider layout template.
  *
  * @package MagicElements
+ *
+ * @var array                                $settings Widget settings.
+ * @var array                                $slides   Slide items from Hero_Slider::render().
+ * @var \MagicElements\Elementor\Hero_Slider $this     Widget instance.
  */
 
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Layout template variables from widget settings.
@@ -20,13 +24,12 @@ $total_slides    = count( $slides );
 	<div class="emk-hero-slider__track">
 		<?php
 		foreach ( $slides as $index => $slide ) :
-			$is_active     = ( 0 === $index );
-			$bg_url        = ! empty( $slide['slide_background']['url'] ) ? $slide['slide_background']['url'] : '';
-			$fg_url        = ! empty( $slide['slide_foreground']['url'] ) ? $slide['slide_foreground']['url'] : '';
-			$fg_alt        = ! empty( $slide['slide_foreground']['alt'] ) ? $slide['slide_foreground']['alt'] : ( ! empty( $slide['slide_title'] ) ? $slide['slide_title'] : '' );
-			$credits       = $this->parse_credits( isset( $slide['slide_credits'] ) ? $slide['slide_credits'] : '' );
-			$btn_key       = 'btn_' . $index;
-			$link          = isset( $slide['slide_button_link'] ) ? $slide['slide_button_link'] : array();
+			$bg_url  = ! empty( $slide['slide_background']['url'] ) ? $slide['slide_background']['url'] : '';
+			$fg_url  = ! empty( $slide['slide_foreground']['url'] ) ? $slide['slide_foreground']['url'] : '';
+			$fg_alt  = ! empty( $slide['slide_foreground']['alt'] ) ? $slide['slide_foreground']['alt'] : ( ! empty( $slide['slide_title'] ) ? $slide['slide_title'] : '' );
+			$credits = $this->parse_credits( isset( $slide['slide_credits'] ) ? $slide['slide_credits'] : '' );
+			$btn_key = 'btn_' . $index;
+			$link    = isset( $slide['slide_button_link'] ) ? $slide['slide_button_link'] : array();
 
 			$this->add_render_attribute(
 				$btn_key,
@@ -38,13 +41,8 @@ $total_slides    = count( $slides );
 			if ( ! empty( $link['url'] ) ) {
 				$this->add_link_attributes( $btn_key, $link );
 			}
-
-			$slide_classes = array( 'emk-hero-slide' );
-			if ( $is_active ) {
-				$slide_classes[] = 'is-active';
-			}
 			?>
-			<div class="<?php echo esc_attr( implode( ' ', $slide_classes ) ); ?>" data-index="<?php echo esc_attr( (string) $index ); ?>"<?php echo $is_active ? '' : ' aria-hidden="true"'; ?>>
+			<div class="emk-hero-slide" data-index="<?php echo esc_attr( (string) $index ); ?>">
 				<div class="emk-hero-slide__bg" style="<?php echo $bg_url ? 'background-image:url(' . esc_url( $bg_url ) . ');' : ''; ?>"></div>
 				<div class="emk-hero-slide__gradient"></div>
 
@@ -144,7 +142,11 @@ $total_slides    = count( $slides );
 					aria-label="<?php echo esc_attr( sprintf( /* translators: %d: slide number */ __( 'Go to slide %d', 'magic-elements' ), $i + 1 ) ); ?>"
 					aria-current="<?php echo ( 0 === $i ) ? 'true' : 'false'; ?>"
 				>
-					<?php echo esc_html( str_pad( (string) ( $i + 1 ), 2, '0', STR_PAD_LEFT ) ); ?>
+					<svg class="emk-hero-pagination__ring" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+						<circle class="emk-hero-pagination__ring-bg" cx="18" cy="18" r="16" fill="none" />
+						<circle class="emk-hero-pagination__ring-progress" cx="18" cy="18" r="16" fill="none" />
+					</svg>
+					<span class="emk-hero-pagination__num"><?php echo esc_html( str_pad( (string) ( $i + 1 ), 2, '0', STR_PAD_LEFT ) ); ?></span>
 				</button>
 			<?php endfor; ?>
 		</nav>

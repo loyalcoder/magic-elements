@@ -16,165 +16,179 @@ import "../scss/hero_slider.scss";
     },
 
     initWidget: function ($scope) {
-      var $slider = $scope.find(".emk-hero-slider");
-      if (!$slider.length) {
+      var $root = $scope.find(".emk-hero-slider");
+      var $track = $root.find(".emk-hero-slider__track");
+      var $pagers = $root.find(".emk-hero-pagination__btn");
+
+      if (!$root.length || !$track.length || typeof $.fn.slick !== "function") {
         return;
       }
 
-      // Re-init safe for Elementor editor re-renders.
-      $slider.off(".emkHero");
-      if ($slider.data("emkHeroTimer")) {
-        clearInterval($slider.data("emkHeroTimer"));
-        $slider.removeData("emkHeroTimer");
+      if ($track.hasClass("slick-initialized")) {
+        $track.off(".emkHero");
+        $track.slick("unslick");
       }
 
-      var $slides = $slider.find(".emk-hero-slide");
-      var $pagers = $slider.find(".emk-hero-pagination__btn");
-      var total = $slides.length;
-      var current = 0;
-      var isAnimating = false;
-      var autoplay = $slider.data("autoplay") === true || $slider.data("autoplay") === "true";
-      var autoplaySpeed = parseInt($slider.data("autoplay-speed"), 10) || 5000;
-      var loop = $slider.data("loop") === true || $slider.data("loop") === "true";
-      var pauseOnHover = $slider.data("pause-on-hover") === true || $slider.data("pause-on-hover") === "true";
-      var speed = parseInt($slider.data("transition-speed"), 10) || 700;
-      var parallax = $slider.data("parallax") === true || $slider.data("parallax") === "true";
-      var timer = null;
+      $root.off(".emkHero");
+      $pagers.off(".emkHero");
 
-      if (total < 1) {
-        return;
+      var autoplay = $root.data("autoplay") === true || $root.data("autoplay") === "true";
+      var autoplaySpeed = parseInt($root.data("autoplay-speed"), 10) || 5000;
+      var loop = $root.data("loop") === true || $root.data("loop") === "true";
+      var pauseOnHover = $root.data("pause-on-hover") === true || $root.data("pause-on-hover") === "true";
+      var speed = parseInt($root.data("transition-speed"), 10) || 700;
+      var effect = $root.data("effect") || "fade";
+      var parallax = $root.data("parallax") === true || $root.data("parallax") === "true";
+      var useFade = effect === "fade";
+      var isPaused = false;
+
+      $root.css("--emk-progress-duration", autoplaySpeed + "ms");
+
+      function clearProgress() {
+        $pagers.removeClass("is-progressing is-paused");
+        $pagers.find(".emk-hero-pagination__ring-progress").off("animationend.emkHero");
       }
 
-      $slides.css("transition-duration", speed + "ms");
+      function syncPager(index) {
+        $pagers.removeClass("is-active is-progressing is-paused").attr("aria-current", "false");
 
-      function goTo(index) {
-        if (isAnimating || index === current || index < 0 || index >= total) {
+        var $active = $pagers.filter('[data-index="' + index + '"]');
+        if (!$active.length) {
+          $active = $pagers.eq(index);
+        }
+
+        $active.addClass("is-active").attr("aria-current", "true");
+
+        if (!autoplay || $pagers.length < 2) {
           return;
         }
 
-        isAnimating = true;
+        var $progress = $active.find(".emk-hero-pagination__ring-progress");
 
-        var $current = $slides.eq(current);
-        var $next = $slides.eq(index);
+        // Restart CSS progress so ring fill drives the next slide.
+        $progress.css("animation", "none");
+        void $progress[0].offsetWidth;
+        $progress.css("animation", "");
 
-        $current.addClass("is-leaving").removeClass("is-active").attr("aria-hidden", "true");
-        $next.addClass("is-active").attr("aria-hidden", "false");
+        $active.addClass("is-progressing");
+        if (isPaused) {
+          $active.addClass("is-paused");
+        }
 
-        $pagers.removeClass("is-active").attr("aria-current", "false");
-        $pagers.eq(index).addClass("is-active").attr("aria-current", "true");
-
-        setTimeout(function () {
-          $current.removeClass("is-leaving");
-          current = index;
-          isAnimating = false;
-        }, speed);
-      }
-
-      function next() {
-        var target = current + 1;
-        if (target >= total) {
-          if (!loop) {
+        $progress.off("animationend.emkHero").on("animationend.emkHero", function (e) {
+          if (e.originalEvent && e.originalEvent.animationName !== "emk-hero-progress") {
             return;
           }
-          target = 0;
-        }
-        goTo(target);
-      }
-
-      function prev() {
-        var target = current - 1;
-        if (target < 0) {
-          if (!loop) {
+          if (!$track.hasClass("slick-initialized")) {
             return;
           }
-          target = total - 1;
-        }
-        goTo(target);
+          $track.slick("slickNext");
+        });
       }
 
-      function startAutoplay() {
-        stopAutoplay();
-        if (!autoplay || total < 2) {
+      function pauseProgress() {
+        isPaused = true;
+        $pagers.filter(".is-progressing").addClass("is-paused");
+      }
+
+      function resumeProgress() {
+        isPaused = false;
+        $pagers.filter(".is-progressing").removeClass("is-paused");
+      }
+
+      function animateContent($slide) {
+        if (!$slide || !$slide.length) {
           return;
         }
-        timer = setInterval(next, autoplaySpeed);
-        $slider.data("emkHeroTimer", timer);
+
+        var $content = $slide.find(".emk-hero-slide__content");
+        if (!$content.length) {
+          return;
+        }
+
+        $content.removeClass("is-animated");
+        // Force reflow so fadeInUp restarts on every slide.
+        void $content[0].offsetWidth;
+        $content.addClass("is-animated");
       }
 
-      function stopAutoplay() {
-        if (timer) {
-          clearInterval(timer);
-          timer = null;
-          $slider.removeData("emkHeroTimer");
+      function resetContent($slide) {
+        if (!$slide || !$slide.length) {
+          return;
         }
+        $slide.find(".emk-hero-slide__content").removeClass("is-animated");
       }
+
+      $track.on("init.emkHero", function (event, slick) {
+        syncPager(slick.currentSlide);
+        animateContent($(slick.$slides.get(slick.currentSlide)));
+      });
+
+      $track.on("beforeChange.emkHero", function (event, slick, currentSlide) {
+        clearProgress();
+        resetContent($(slick.$slides.get(currentSlide)));
+      });
+
+      $track.on("afterChange.emkHero", function (event, slick, currentSlide) {
+        syncPager(currentSlide);
+        animateContent($(slick.$slides.get(currentSlide)));
+      });
+
+      $track.slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        // Progress ring controls autoplay timing.
+        autoplay: false,
+        speed: speed,
+        fade: useFade,
+        cssEase: useFade ? "ease-in-out" : "ease",
+        infinite: loop,
+        pauseOnHover: false,
+        arrows: false,
+        dots: false,
+        adaptiveHeight: true,
+        waitForAnimate: true,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              adaptiveHeight: true,
+              fade: useFade,
+            },
+          },
+        ],
+      });
 
       $pagers.on("click.emkHero", function (e) {
         e.preventDefault();
         var index = parseInt($(this).data("index"), 10);
-        if (!isNaN(index)) {
-          goTo(index);
-          startAutoplay();
+        if (isNaN(index) || !$track.hasClass("slick-initialized")) {
+          return;
         }
-      });
-
-      $slider.on("keydown.emkHero", function (e) {
-        if (e.key === "ArrowRight" || e.key === "ArrowDown") {
-          e.preventDefault();
-          next();
-          startAutoplay();
-        } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
-          e.preventDefault();
-          prev();
-          startAutoplay();
-        }
+        $track.slick("slickGoTo", index);
       });
 
       if (pauseOnHover && autoplay) {
-        $slider.on("mouseenter.emkHero", stopAutoplay);
-        $slider.on("mouseleave.emkHero", startAutoplay);
+        $root.on("mouseenter.emkHero", pauseProgress);
+        $root.on("mouseleave.emkHero", resumeProgress);
       }
 
       if (parallax) {
-        $slider.on("mousemove.emkHero", function (e) {
-          var $activeBg = $slider.find(".emk-hero-slide.is-active .emk-hero-slide__bg");
+        $root.on("mousemove.emkHero", function (e) {
+          var $activeBg = $track.find(".slick-current .emk-hero-slide__bg");
           if (!$activeBg.length) {
             return;
           }
-          var offset = $slider.offset();
-          var x = (e.pageX - offset.left) / $slider.outerWidth() - 0.5;
-          var y = (e.pageY - offset.top) / $slider.outerHeight() - 0.5;
+          var offset = $root.offset();
+          var x = (e.pageX - offset.left) / $root.outerWidth() - 0.5;
+          var y = (e.pageY - offset.top) / $root.outerHeight() - 0.5;
           $activeBg.css("transform", "translate(" + x * 20 + "px, " + y * 12 + "px) scale(1.05)");
         });
 
-        $slider.on("mouseleave.emkHeroParallax", function () {
-          $slider.find(".emk-hero-slide__bg").css("transform", "");
+        $root.on("mouseleave.emkHeroParallax", function () {
+          $track.find(".emk-hero-slide__bg").css("transform", "");
         });
       }
-
-      // Touch swipe
-      var touchStartX = 0;
-      var touchEndX = 0;
-
-      $slider.on("touchstart.emkHero", function (e) {
-        touchStartX = e.originalEvent.changedTouches[0].screenX;
-      });
-
-      $slider.on("touchend.emkHero", function (e) {
-        touchEndX = e.originalEvent.changedTouches[0].screenX;
-        var diff = touchStartX - touchEndX;
-        if (Math.abs(diff) > 50) {
-          if (diff > 0) {
-            next();
-          } else {
-            prev();
-          }
-          startAutoplay();
-        }
-      });
-
-      $slider.attr("tabindex", "0");
-      startAutoplay();
     },
   };
 
