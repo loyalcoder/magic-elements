@@ -125,25 +125,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php } elseif ( 'layout-three' === $header_layout ) { ?>
 <header class="magic-header magic-header-layout-three <?php echo ( 'yes' === $settings['enable_sticky'] ) ? 'is-sticky' : ''; ?>">
 	<div class="container magic-menu">
-		<?php if ( ! empty( $settings['logo']['url'] ) ) : ?>
-			<a class="menu-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-				<img src="<?php echo esc_url( $settings['logo']['url'] ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
-			</a>
-		<?php endif; ?>
+		<div class="layout-three-left">
+			<?php if ( ! empty( $settings['logo']['url'] ) ) : ?>
+				<a class="menu-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+					<img src="<?php echo esc_url( $settings['logo']['url'] ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+				</a>
+			<?php endif; ?>
 
-		<nav class="nav-menu-left">
-			<?php
-			if ( ! empty( $settings['menu_select'] ) ) {
-				wp_nav_menu(
-					[
-						'menu'       => $settings['menu_select'],
-						'container'  => false,
-						'menu_class' => 'cnw-nav',
-					]
-				);
-			}
-			?>
-		</nav>
+			<nav class="nav-menu-left">
+				<?php
+				if ( ! empty( $settings['menu_select'] ) ) {
+					wp_nav_menu(
+						[
+							'menu'       => $settings['menu_select'],
+							'container'  => false,
+							'menu_class' => 'cnw-nav',
+						]
+					);
+				}
+				?>
+			</nav>
+		</div>
 
 		<div class="right-side">
 			<div class="call-us">

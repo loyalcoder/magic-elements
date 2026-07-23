@@ -10,8 +10,8 @@ $post_types  = isset( $args['post_types'] ) ? $args['post_types'] : [];
     <div class="magic-elements-add-condition-content d-flex flex-wrap">
         <div class="condition-group">
             <select name="me_builder_condition[0][display_type]" class="me-condition-display-type">
+                <option value="include" selected="selected"><?php echo esc_html__( 'Include', 'magic-elements' ); ?></option>
                 <option value="exclude"><?php echo esc_html__( 'Exclude', 'magic-elements' ); ?></option>
-                <option value="include"><?php echo esc_html__( 'Include', 'magic-elements' ); ?></option>
             </select>
         </div>
         <div class="condition-group">
