@@ -15,108 +15,140 @@ import "./../scss/nav_menu.scss"
         });
       },
 
-      EmKitNavMenu: function ($scope) {   
-          // alert('nav menu loaded');
-          $('.open_search').on('click', function(event){
-          event.stopPropagation();
-            $('.search_block').toggleClass('visible');
-            $('.search_block .search_input').focus();
+      EmKitNavMenu: function ($scope) {
+          const $root = $scope.find('.magic-header').first().length
+            ? $scope.find('.magic-header').first()
+            : $scope;
+          const $toggle = $root.find('.mobile-menu-toggle');
+          const $panel = $root.find('.mobile-menu-panel');
+          const $backdrop = $root.find('.mobile-menu-backdrop');
+          const $close = $root.find('.mobile-menu-close');
+          const $desktopSearchSlot = $root.find('[data-desktop-search-slot]');
+          const $mobileSearchSlot = $root.find('[data-mobile-search-slot]');
+          const $searchButton = $root.find('.menu-search.open_search').first();
+
+          const moveSearchToMobile = function () {
+            if (!$searchButton.length || !$mobileSearchSlot.length) {
+              return;
+            }
+            $mobileSearchSlot.append($searchButton);
+          };
+
+          const moveSearchToDesktop = function () {
+            if (!$searchButton.length || !$desktopSearchSlot.length) {
+              return;
+            }
+            // Keep search before the mobile toggle inside desktop actions.
+            const $toggleInSlot = $desktopSearchSlot.find('.mobile-menu-toggle');
+            if ($toggleInSlot.length) {
+              $searchButton.insertBefore($toggleInSlot);
+            } else {
+              $desktopSearchSlot.prepend($searchButton);
+            }
+          };
+
+          const openMobileMenu = function () {
+            $panel.addClass('is-open').attr('aria-hidden', 'false');
+            $backdrop.addClass('is-open').prop('hidden', false);
+            $toggle.attr('aria-expanded', 'true');
+            document.body.classList.add('magic-mobile-menu-open');
+            moveSearchToMobile();
+          };
+
+          const closeMobileMenu = function () {
+            $panel.removeClass('is-open').attr('aria-hidden', 'true');
+            $backdrop.removeClass('is-open').prop('hidden', true);
+            $toggle.attr('aria-expanded', 'false');
+            document.body.classList.remove('magic-mobile-menu-open');
+            moveSearchToDesktop();
+            $panel.find('.menu-item-has-children.active').removeClass('active');
+          };
+
+          $toggle.off('click.emkitMobileMenu').on('click.emkitMobileMenu', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            if ($panel.hasClass('is-open')) {
+              closeMobileMenu();
+            } else {
+              openMobileMenu();
+            }
           });
 
-          $('body').on('click', function(){
+          $close.off('click.emkitMobileMenu').on('click.emkitMobileMenu', function (event) {
+            event.preventDefault();
+            closeMobileMenu();
+          });
+
+          $backdrop.off('click.emkitMobileMenu').on('click.emkitMobileMenu', function () {
+            closeMobileMenu();
+          });
+
+          $(document).off('keyup.emkitMobileMenu').on('keyup.emkitMobileMenu', function (event) {
+            if (event.key === 'Escape' && $panel.hasClass('is-open')) {
+              closeMobileMenu();
+            }
+          });
+
+          $(window).off('resize.emkitMobileMenu').on('resize.emkitMobileMenu', function () {
+            if (window.matchMedia('(min-width: 1024px)').matches && $panel.hasClass('is-open')) {
+              closeMobileMenu();
+            }
+          });
+
+          $root.find('.open_search').off('click.emkitSearch').on('click.emkitSearch', function(event){
+            event.stopPropagation();
+            $root.find('.search_block').toggleClass('visible');
+            $root.find('.search_block .search_input').focus();
+          });
+
+          $root.find('.search_close').off('click.emkitSearchClose').on('click.emkitSearchClose', function(event){
+            event.preventDefault();
+            event.stopPropagation();
+            $root.find('.search_block').removeClass('visible');
+          });
+
+          $('body').off('click.emkitSearch').on('click.emkitSearch', function(){
             $('.search_block').removeClass('visible');
           });
 
-          $('.search_box').on('click', function(event){
+          $root.find('.search_box').off('click.emkitSearch').on('click.emkitSearch', function(event){
             event.stopPropagation();
           });
 
-          $('.search_input').on('keyup', function(event){
+          $root.find('.search_input').off('keyup.emkitSearch').on('keyup.emkitSearch', function(){
             if($(this).val() !== ''){
               $(this).addClass('typing');
             } else {
               $(this).removeClass('typing');
             }
           });
-          //offcanvas dropdown menu js
-          document.querySelectorAll('.cnw-nav .menu-item-has-children > a')
-          .forEach(link => {
-              link.addEventListener('click', e => {
+
+          $root.find('.cnw-nav .menu-item-has-children > a, .cnw-nav-mobile .menu-item-has-children > a')
+          .off('click.emkitSubmenu')
+          .on('click.emkitSubmenu', function (e) {
+              const link = this;
+              const parent = link.parentElement;
+              const hasSubMenu = parent.querySelector(':scope > .sub-menu');
+              const href = link.getAttribute('href');
+              const isPlaceholder = !href || href === '#' || href === '';
+              const inMobilePanel = !!link.closest('.mobile-menu-panel');
+
+              if (!hasSubMenu) {
+                  return;
+              }
+
+              if (isPlaceholder || inMobilePanel || window.matchMedia('(max-width: 1023px)').matches) {
                   e.preventDefault();
-                  link.parentElement.classList.toggle('active');
-              });
-          });
+                  parent.classList.toggle('active');
 
-          const getFallbackBackdrop = function () {
-            let backdrop = document.querySelector('.emkit-offcanvas-backdrop');
-            if (!backdrop) {
-              backdrop = document.createElement('div');
-              backdrop.className = 'emkit-offcanvas-backdrop';
-              backdrop.style.position = 'fixed';
-              backdrop.style.top = '0';
-              backdrop.style.right = '0';
-              backdrop.style.bottom = '0';
-              backdrop.style.left = '0';
-              backdrop.style.background = 'rgba(0, 0, 0, 0.5)';
-              backdrop.style.zIndex = '1040';
-              backdrop.style.display = 'none';
-              document.body.appendChild(backdrop);
-            }
-
-            return backdrop;
-          };
-
-          const closeFallbackOffcanvas = function (offcanvasEl) {
-            offcanvasEl.classList.remove('show', 'showing', 'hiding');
-            offcanvasEl.setAttribute('aria-hidden', 'true');
-
-            const backdrop = document.querySelector('.emkit-offcanvas-backdrop');
-            if (backdrop) {
-              backdrop.style.display = 'none';
-            }
-          };
-
-          // Ensure offcanvas opens reliably on trigger click.
-          $scope.find('.mobile-menu').off('click.emkitOffcanvas').on('click.emkitOffcanvas', function () {
-            const targetSelector = this.getAttribute('data-bs-target');
-            if (!targetSelector) {
-              return;
-            }
-
-            const offcanvasEl = document.querySelector(targetSelector);
-            if (!offcanvasEl) {
-              return;
-            }
-
-            if (window.bootstrap && window.bootstrap.Offcanvas) {
-              window.bootstrap.Offcanvas.getOrCreateInstance(offcanvasEl).show();
-              return;
-            }
-
-            // Bootstrap JS fallback
-            offcanvasEl.classList.add('show');
-            offcanvasEl.classList.remove('showing', 'hiding');
-            offcanvasEl.setAttribute('aria-modal', 'true');
-            offcanvasEl.setAttribute('role', 'dialog');
-
-            const backdrop = getFallbackBackdrop();
-            backdrop.style.display = 'block';
-            backdrop.onclick = function () {
-              closeFallbackOffcanvas(offcanvasEl);
-            };
-          });
-
-          $scope.find('[data-bs-dismiss="offcanvas"]').off('click.emkitOffcanvasDismiss').on('click.emkitOffcanvasDismiss', function () {
-            if (window.bootstrap && window.bootstrap.Offcanvas) {
-              return;
-            }
-
-            const offcanvasEl = this.closest('.offcanvas');
-            if (!offcanvasEl) {
-              return;
-            }
-
-            closeFallbackOffcanvas(offcanvasEl);
+                  parent.parentElement
+                      ?.querySelectorAll(':scope > .menu-item-has-children.active')
+                      .forEach(sibling => {
+                          if (sibling !== parent) {
+                              sibling.classList.remove('active');
+                          }
+                      });
+              }
           });
       },
     };
