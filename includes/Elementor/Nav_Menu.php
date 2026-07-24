@@ -650,6 +650,18 @@ class Nav_Menu extends Widget_Base
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} nav ul li' => 'color: {{VALUE}}',
+					'{{WRAPPER}} nav ul li > a' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_control(
+			'nav_menu_text_hover_color',
+			[
+				'label' => esc_html__( 'Item Hover Color', 'magic-elements' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} nav ul li > a:hover' => 'color: {{VALUE}}',
+					'{{WRAPPER}} nav ul li:hover > a' => 'color: {{VALUE}}',
 				],
 			]
 		);
