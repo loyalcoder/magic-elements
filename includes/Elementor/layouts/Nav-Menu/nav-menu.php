@@ -86,25 +86,41 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php } elseif ( 'layout-two' === $header_layout ) { ?>
 <header class="magic-header magic-header-layout-two <?php echo ( 'yes' === $settings['enable_sticky'] ) ? 'is-sticky' : ''; ?>">
 	<div class="container magic-menu">
-		<?php if ( ! empty( $settings['logo']['url'] ) ) : ?>
-			<a class="menu-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-				<img src="<?php echo esc_url( $settings['logo']['url'] ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
-			</a>
-		<?php endif; ?>
+		<div class="mid-point flex items-center justify-center">
+			<nav class="nav-menu-left">
+				<?php
+				if ( ! empty( $settings['menu_select'] ) ) {
+					wp_nav_menu(
+						[
+							'menu'       => $settings['menu_select'],
+							'container'  => false,
+							'menu_class' => 'cnw-nav',
+						]
+					);
+				}
+				?>
+			</nav>
 
-		<nav class="nav-menu-center">
-			<?php
-			if ( ! empty( $settings['menu_select'] ) ) {
-				wp_nav_menu(
-					[
-						'menu'       => $settings['menu_select'],
-						'container'  => false,
-						'menu_class' => 'cnw-nav',
-					]
-				);
-			}
-			?>
-		</nav>
+			<?php if ( ! empty( $settings['logo']['url'] ) ) : ?>
+				<a class="menu-logo menu-logo-desktop-gap" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+					<img src="<?php echo esc_url( $settings['logo']['url'] ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+				</a>
+			<?php endif; ?>
+
+			<nav class="nav-menu-right">
+				<?php
+				if ( ! empty( $settings['menu_select_right'] ) ) {
+					wp_nav_menu(
+						[
+							'menu'       => $settings['menu_select_right'],
+							'container'  => false,
+							'menu_class' => 'cnw-nav',
+						]
+					);
+				}
+				?>
+			</nav>
+		</div>
 
 		<div class="book-button">
 			<?php

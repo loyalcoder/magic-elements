@@ -58,20 +58,54 @@
 	border-radius: 12px;
 }
 
-/* Layout two desktop: single centered menu */
+/* Layout two desktop: left menu | logo center | right menu | button */
 .magic-header-layout-two .magic-menu {
 	gap: 28px;
 }
 
-.magic-header-layout-two .nav-menu-center {
-	flex: 1 1 auto;
+.magic-header-layout-two .mid-point {
 	display: flex;
+	flex: 1 1 auto;
+	align-items: center;
 	justify-content: center;
 	min-width: 0;
+	overflow: visible;
 }
 
-.magic-header-layout-two .nav-menu-center .cnw-nav {
+.magic-header-layout-two .nav-menu-left,
+.magic-header-layout-two .nav-menu-right {
+	flex: 1 1 0;
+	overflow: visible;
+}
+
+.magic-header-layout-two .nav-menu-left .cnw-nav {
+	justify-content: flex-end;
+}
+
+.magic-header-layout-two .nav-menu-right .cnw-nav {
+	justify-content: flex-start;
+}
+
+.magic-header-layout-two .menu-logo-desktop-gap {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
 	justify-content: center;
+	margin: 0 44px;
+}
+
+.magic-header-layout-two .menu-logo-desktop-gap img {
+	display: block;
+	max-width: 100%;
+	object-fit: contain;
+}
+
+.magic-header-layout-two .book-button {
+	flex: 0 0 auto;
+}
+
+.magic-header-layout-two .magic-menu-actions {
+	margin-left: 0;
 }
 
 /* Layout three: logo + menu left, phone + button right */
@@ -121,8 +155,22 @@
 		margin: 0;
 	}
 
-	.magic-header-layout-two .nav-menu-center {
+	.magic-header-layout-two .mid-point {
+		flex: 0 0 auto;
+		justify-content: flex-start;
+	}
+
+	.magic-header-layout-two .nav-menu-left,
+	.magic-header-layout-two .nav-menu-right {
 		display: none;
+	}
+
+	.magic-header-layout-two .menu-logo-desktop-gap {
+		margin: 0;
+	}
+
+	.magic-header-layout-two .magic-menu-actions {
+		margin-left: auto;
 	}
 
 	.magic-header-layout-three .layout-three-left .nav-menu-left {

@@ -81,7 +81,7 @@ $mobile_menu_close_icon = ! empty( $settings['mobile_menu_close_icon']['value'] 
 				);
 			}
 
-			if ( ! empty( $settings['menu_select_right'] ) && 'layout-one' === $header_layout ) {
+			if ( ! empty( $settings['menu_select_right'] ) && in_array( $header_layout, [ 'layout-one', 'layout-two' ], true ) ) {
 				wp_nav_menu(
 					[
 						'menu'       => $settings['menu_select_right'],
