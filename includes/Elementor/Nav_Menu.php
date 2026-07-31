@@ -453,7 +453,7 @@ class Nav_Menu extends Widget_Base
 			[
 				'name'      => 'header_scroll_box_shadow',
 				'label'     => esc_html__( 'Scroll Box Shadow', 'magic-elements' ),
-				'selector'  => '{{WRAPPER}} .magic-header.is-scrolled',
+				'selector'  => '{{WRAPPER}} .magic-header.is-sticky.is-scrolled',
 				'condition' => [
 					'enable_sticky' => 'yes',
 				],

@@ -2,6 +2,34 @@ import "./../scss/nav_menu.scss"
 (function ($, elementor) {
     "use strict";
     let $window = $(elementor);
+
+    const getScrollY = function () {
+      return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    };
+
+    const bindStickyShadow = function ($header, scopeId) {
+      if (!$header || !$header.length || !$header.hasClass('is-sticky')) {
+        return;
+      }
+      if ($header.data('meStickyShadowBound')) {
+        return;
+      }
+      $header.data('meStickyShadowBound', true);
+
+      const scrollThreshold = 10;
+      const scrollNs = 'scroll.emkitStickyShadow.' + (scopeId || $header[0].id || 'global');
+      const updateStickyShadow = function () {
+        if (getScrollY() > scrollThreshold) {
+          $header.addClass('is-scrolled');
+        } else {
+          $header.removeClass('is-scrolled');
+        }
+      };
+
+      $(window).off(scrollNs).on(scrollNs, updateStickyShadow);
+      document.addEventListener('scroll', updateStickyShadow, { passive: true, capture: true });
+      updateStickyShadow();
+    };
   
     let emkElementor = {
       onInit: function () {
@@ -124,19 +152,7 @@ import "./../scss/nav_menu.scss"
           });
 
           // Sticky header: show shadow only after scroll
-          if ($root.hasClass('is-sticky')) {
-            const scrollThreshold = 10;
-            const scrollNs = 'scroll.emkitStickyShadow.' + $scope.data('id');
-            const updateStickyShadow = function () {
-              if ($(window).scrollTop() > scrollThreshold) {
-                $root.addClass('is-scrolled');
-              } else {
-                $root.removeClass('is-scrolled');
-              }
-            };
-            $(window).off(scrollNs).on(scrollNs, updateStickyShadow);
-            updateStickyShadow();
-          }
+          bindStickyShadow($root, $scope.data('id'));
 
           $root.find('.cnw-nav .menu-item-has-children > a, .cnw-nav-mobile .menu-item-has-children > a')
           .off('click.emkitSubmenu')
@@ -167,6 +183,27 @@ import "./../scss/nav_menu.scss"
           });
       },
     };
-  
-    $window.on("elementor/frontend/init", emkElementor.onInit);
+
+    // Avoid race: live sites often fire elementor/frontend/init before this file binds.
+    let didInitHooks = false;
+    const boot = function () {
+      if (typeof elementorFrontend === 'undefined' || !elementorFrontend.hooks) {
+        return false;
+      }
+      if (!didInitHooks) {
+        emkElementor.onInit();
+        didInitHooks = true;
+      }
+      // Fallback for headers already in DOM (theme builder / cached markup).
+      $('.magic-header.is-sticky').each(function () {
+        bindStickyShadow($(this), 'fallback');
+      });
+      return true;
+    };
+
+    if (!boot()) {
+      $window.on('elementor/frontend/init', function () {
+        boot();
+      });
+    }
   })(jQuery, window);

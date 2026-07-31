@@ -190,7 +190,7 @@ class Load_Elementor
             'emkit-nav-menu' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/nav_menu.js',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/nav_menu.js'),
-                'deps'    => ['jquery']
+                'deps'    => ['jquery', 'elementor-frontend']
             ],
             'emkit-hero-slider' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/hero_slider.js',
