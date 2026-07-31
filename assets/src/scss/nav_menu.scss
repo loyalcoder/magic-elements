@@ -15,12 +15,12 @@
         }
     }
 }
-/* Shadow only after scroll (class toggled via JS) */
-.magic-header.is-sticky {
-    box-shadow: none;
+/* Shadow only after scroll (class toggled via JS). !important beats theme overrides on live. */
+.magic-header.is-sticky:not(.is-scrolled) {
+    box-shadow: none !important;
 }
 .magic-header.is-sticky.is-scrolled {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08) !important;
 }
 .magic-header.is-sticky {
     position: fixed;

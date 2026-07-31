@@ -457,6 +457,13 @@ class Nav_Menu extends Widget_Base
 				'condition' => [
 					'enable_sticky' => 'yes',
 				],
+				'fields_options' => [
+					'box_shadow' => [
+						'selectors' => [
+							'{{SELECTOR}}' => 'box-shadow: {{HORIZONTAL}}px {{VERTICAL}}px {{BLUR}}px {{SPREAD}}px {{COLOR}} !important;',
+						],
+					],
+				],
 			]
 		);
 		$this->add_group_control(
