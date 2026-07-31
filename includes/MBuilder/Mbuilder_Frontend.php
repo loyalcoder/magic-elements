@@ -72,8 +72,42 @@ class Mbuilder_Frontend {
      *
      * @return bool|void
      */
+    /**
+     * Skip theme builder swap while Elementor is editing/previewing templates.
+     */
+    protected function should_skip_builder_replacement(): bool {
+        if (is_singular('me_builder')) {
+            return true;
+        }
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only Elementor preview flag.
+        if (isset($_GET['elementor-preview']) || isset($_GET['elementor_library'])) {
+            return true;
+        }
+
+        if (!class_exists('\Elementor\Plugin')) {
+            return false;
+        }
+
+        $elementor = \Elementor\Plugin::$instance;
+
+        if (!empty($elementor->editor) && method_exists($elementor->editor, 'is_edit_mode') && $elementor->editor->is_edit_mode()) {
+            return true;
+        }
+
+        if (!empty($elementor->preview) && method_exists($elementor->preview, 'is_preview_mode') && $elementor->preview->is_preview_mode()) {
+            return true;
+        }
+
+        return false;
+    }
+
     public function replace_header()
     {
+        if ($this->should_skip_builder_replacement()) {
+            return false;
+        }
+
         $header_id = $this->get_active_id('header');
         
         if ( ! $header_id ) {
@@ -89,6 +123,10 @@ class Mbuilder_Frontend {
     }
     public function replace_footer()
     {
+        if ($this->should_skip_builder_replacement()) {
+            return false;
+        }
+
         $footer_id = $this->get_active_id('footer');
         
         if ($footer_id == '') {

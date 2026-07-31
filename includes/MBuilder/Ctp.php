@@ -13,6 +13,8 @@ class Ctp {
      */
     public function __construct() {
         add_action('init', [$this, 'register_post_type']);
+        add_action('init', [$this, 'maybe_flush_rewrite_rules'], 99);
+        add_action('elementor/init', [$this, 'register_elementor_cpt_support']);
     }
 
     /**
@@ -36,20 +38,49 @@ class Ctp {
         $args = [
             'labels'              => $labels,
             'public'              => true,
-            'show_ui'             => false,
+            'show_ui'             => true,
             'show_in_menu'        => false,
             'show_in_admin_bar'   => false,
             'show_in_nav_menus'   => false,
             'publicly_queryable'  => true,
-            'exclude_from_search' => false,
+            'exclude_from_search' => true,
             'has_archive'         => false,
             'query_var'           => true,
             'rewrite'             => ['slug' => 'me-builder'],
             'capability_type'     => 'post',
             'hierarchical'        => false,
-            'supports'            => ['title', 'editor', 'elementor'],
+            'show_in_rest'        => true,
+            'supports'            => ['title', 'editor', 'elementor', 'thumbnail'],
         ];
 
         register_post_type('me_builder', $args);
+    }
+
+    /**
+     * One-time rewrite flush after CPT changes (fixes Elementor preview 404).
+     */
+    public function maybe_flush_rewrite_rules(): void {
+        if (get_option('magic_elements_flush_rewrite') === MAGIC_ELEMENTS_VERSION) {
+            return;
+        }
+
+        flush_rewrite_rules(false);
+        update_option('magic_elements_flush_rewrite', MAGIC_ELEMENTS_VERSION);
+    }
+
+    /**
+     * Register me_builder with Elementor supported post types.
+     */
+    public function register_elementor_cpt_support(): void {
+        $cpt_support = get_option('elementor_cpt_support', ['page', 'post']);
+
+        if (!is_array($cpt_support)) {
+            $cpt_support = ['page', 'post'];
+        }
+
+        if (!in_array('me_builder', $cpt_support, true)) {
+            $cpt_support[] = 'me_builder';
+            update_option('elementor_cpt_support', $cpt_support);
+        }
     }
 }

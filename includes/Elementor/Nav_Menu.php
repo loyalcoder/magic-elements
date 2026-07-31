@@ -449,6 +449,17 @@ class Nav_Menu extends Widget_Base
 			]
 		);
 		$this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name'      => 'header_scroll_box_shadow',
+				'label'     => esc_html__( 'Scroll Box Shadow', 'magic-elements' ),
+				'selector'  => '{{WRAPPER}} .magic-header.is-scrolled',
+				'condition' => [
+					'enable_sticky' => 'yes',
+				],
+			]
+		);
+		$this->add_group_control(
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name' => 'header_border',
@@ -992,7 +1003,7 @@ class Nav_Menu extends Widget_Base
 		);
         $this->end_controls_section();
         //Search Style Section
-        $this->start_controls_section(
+		$this->start_controls_section(
 			'search_style_section',
 			[
 				'label' => esc_html__( 'Search Icon', 'magic-elements' ),
@@ -1002,12 +1013,46 @@ class Nav_Menu extends Widget_Base
                 ],
 			]
 		);
+		$this->add_control(
+			'search_icon_color',
+			[
+				'label'     => esc_html__( 'Icon Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .menu-search' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .menu-search svg' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .menu-search i' => 'color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_control(
+			'search_icon_hover_color',
+			[
+				'label'     => esc_html__( 'Icon Hover Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .menu-search:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .menu-search:hover svg' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .menu-search:hover i' => 'color: {{VALUE}};',
+				],
+			]
+		);
 		$this->add_group_control(
 			\Elementor\Group_Control_Background::get_type(),
 			[
 				'name' => 'menu_search_icon_background',
 				'types' => [ 'classic', 'gradient', 'video' ],
 				'selector' => '{{WRAPPER}} .menu-search',
+			]
+		);
+		$this->add_control(
+			'search_icon_hover_bg_color',
+			[
+				'label'     => esc_html__( 'Hover Background Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .menu-search:hover' => 'background-color: {{VALUE}};',
+				],
 			]
 		);
 		$this->add_group_control(

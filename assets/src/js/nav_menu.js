@@ -123,6 +123,21 @@ import "./../scss/nav_menu.scss"
             }
           });
 
+          // Sticky header: show shadow only after scroll
+          if ($root.hasClass('is-sticky')) {
+            const scrollThreshold = 10;
+            const scrollNs = 'scroll.emkitStickyShadow.' + $scope.data('id');
+            const updateStickyShadow = function () {
+              if ($(window).scrollTop() > scrollThreshold) {
+                $root.addClass('is-scrolled');
+              } else {
+                $root.removeClass('is-scrolled');
+              }
+            };
+            $(window).off(scrollNs).on(scrollNs, updateStickyShadow);
+            updateStickyShadow();
+          }
+
           $root.find('.cnw-nav .menu-item-has-children > a, .cnw-nav-mobile .menu-item-has-children > a')
           .off('click.emkitSubmenu')
           .on('click.emkitSubmenu', function (e) {
