@@ -482,18 +482,58 @@ class Nav_Menu extends Widget_Base
 			]
 		);
 		$this->add_control(
-			'apps_icon_link',
+			'apps_offcanvas_template',
 			[
-				'label'       => esc_html__( 'Apps Icon Link', 'magic-elements' ),
-				'type'        => \Elementor\Controls_Manager::URL,
-				'options'     => [ 'url', 'is_external', 'nofollow' ],
-				'default'     => [
-					'url'         => '#',
-					'is_external' => false,
-					'nofollow'    => false,
-				],
+				'label'       => esc_html__( 'Offcanvas Template', 'magic-elements' ),
+				'type'        => \Elementor\Controls_Manager::SELECT2,
 				'label_block' => true,
+				'options'     => $this->get_elementor_templates_options(),
+				'description' => esc_html__( 'Select an Elementor saved template. Design it separately in Elementor Templates.', 'magic-elements' ),
 				'condition'   => [
+					'show_apps_icon' => 'yes',
+				],
+			]
+		);
+		$this->add_control(
+			'apps_offcanvas_position',
+			[
+				'label'     => esc_html__( 'Offcanvas Position', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::CHOOSE,
+				'default'   => 'right',
+				'options'   => [
+					'left'   => [
+						'title' => esc_html__( 'Left', 'magic-elements' ),
+						'icon'  => 'eicon-h-align-left',
+					],
+					'right'  => [
+						'title' => esc_html__( 'Right', 'magic-elements' ),
+						'icon'  => 'eicon-h-align-right',
+					],
+					'top'    => [
+						'title' => esc_html__( 'Top', 'magic-elements' ),
+						'icon'  => 'eicon-v-align-top',
+					],
+					'bottom' => [
+						'title' => esc_html__( 'Bottom', 'magic-elements' ),
+						'icon'  => 'eicon-v-align-bottom',
+					],
+				],
+				'toggle'    => false,
+				'condition' => [
+					'show_apps_icon' => 'yes',
+				],
+			]
+		);
+		$this->add_control(
+			'apps_offcanvas_close_icon',
+			[
+				'label'     => esc_html__( 'Close Icon', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::ICONS,
+				'default'   => [
+					'value'   => 'fas fa-times',
+					'library' => 'fa-solid',
+				],
+				'condition' => [
 					'show_apps_icon' => 'yes',
 				],
 			]
@@ -2553,6 +2593,225 @@ class Nav_Menu extends Widget_Base
 		);
 		$this->end_controls_section();
 
+		// Layout Four — Apps Offcanvas Style
+		$this->start_controls_section(
+			'layout_four_apps_offcanvas_style_section',
+			[
+				'label'     => esc_html__( 'Apps Offcanvas', 'magic-elements' ),
+				'tab'       => \Elementor\Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'header_layout_type' => [ 'layout-four' ],
+					'show_apps_icon'     => 'yes',
+				],
+			]
+		);
+		$this->add_control(
+			'apps_offcanvas_overlay_color',
+			[
+				'label'     => esc_html__( 'Overlay Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => 'rgba(0,0,0,0.65)',
+				'selectors' => [
+					'{{WRAPPER}} .magic-apps-offcanvas__overlay' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name'     => 'apps_offcanvas_panel_background',
+				'types'    => [ 'classic', 'gradient' ],
+				'selector' => '{{WRAPPER}} .magic-apps-offcanvas__panel',
+				'fields_options' => [
+					'background' => [
+						'default' => 'classic',
+					],
+					'color' => [
+						'default' => '#0f0f0f',
+					],
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'apps_offcanvas_panel_padding',
+			[
+				'label'      => esc_html__( 'Content Padding', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem' ],
+				'default'    => [
+					'top'      => 40,
+					'right'    => 40,
+					'bottom'   => 40,
+					'left'     => 40,
+					'unit'     => 'px',
+					'isLinked' => true,
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .magic-apps-offcanvas__content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_control(
+			'apps_offcanvas_animation_duration',
+			[
+				'label'      => esc_html__( 'Animation Duration', 'magic-elements' ) . ' (ms)',
+				'type'       => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'range'      => [
+					'px' => [
+						'min'  => 150,
+						'max'  => 1200,
+						'step' => 50,
+					],
+				],
+				'default'    => [
+					'unit' => 'px',
+					'size' => 450,
+				],
+				'selectors'  => [
+					'{{WRAPPER}}.magic-apps-offcanvas, {{WRAPPER}} .magic-apps-offcanvas' => '--magic-apps-offcanvas-duration: {{SIZE}}ms;',
+				],
+			]
+		);
+		$this->add_control(
+			'apps_offcanvas_close_heading',
+			[
+				'label'     => esc_html__( 'Close Button', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+		$this->add_control(
+			'apps_offcanvas_close_color',
+			[
+				'label'     => esc_html__( 'Icon Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => '#ffffff',
+				'selectors' => [
+					'{{WRAPPER}} .magic-apps-offcanvas__close' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .magic-apps-offcanvas__close i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .magic-apps-offcanvas__close svg' => 'fill: {{VALUE}}; color: {{VALUE}};',
+					'{{WRAPPER}} .magic-apps-offcanvas__close svg [fill]:not([fill="none"])' => 'fill: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_control(
+			'apps_offcanvas_close_hover_color',
+			[
+				'label'     => esc_html__( 'Icon Hover Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .magic-apps-offcanvas__close:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .magic-apps-offcanvas__close:hover i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .magic-apps-offcanvas__close:hover svg' => 'fill: {{VALUE}}; color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_control(
+			'apps_offcanvas_close_bg',
+			[
+				'label'     => esc_html__( 'Background', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => 'rgba(255,255,255,0.1)',
+				'selectors' => [
+					'{{WRAPPER}} .magic-apps-offcanvas__close' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_control(
+			'apps_offcanvas_close_hover_bg',
+			[
+				'label'     => esc_html__( 'Hover Background', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .magic-apps-offcanvas__close:hover' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'apps_offcanvas_close_size',
+			[
+				'label'      => esc_html__( 'Button Size', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'range'      => [
+					'px' => [
+						'min' => 28,
+						'max' => 80,
+					],
+				],
+				'default'    => [
+					'unit' => 'px',
+					'size' => 48,
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .magic-apps-offcanvas__close' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'apps_offcanvas_close_icon_size',
+			[
+				'label'      => esc_html__( 'Icon Size', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em', 'rem' ],
+				'range'      => [
+					'px' => [
+						'min' => 10,
+						'max' => 40,
+					],
+				],
+				'default'    => [
+					'unit' => 'px',
+					'size' => 18,
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .magic-apps-offcanvas__close' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .magic-apps-offcanvas__close i' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .magic-apps-offcanvas__close svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'apps_offcanvas_close_radius',
+			[
+				'label'      => esc_html__( 'Border Radius', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'default'    => [
+					'top'      => 50,
+					'right'    => 50,
+					'bottom'   => 50,
+					'left'     => 50,
+					'unit'     => '%',
+					'isLinked' => true,
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .magic-apps-offcanvas__close' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'apps_offcanvas_close_offset',
+			[
+				'label'      => esc_html__( 'Close Position', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem' ],
+				'default'    => [
+					'top'      => 24,
+					'right'    => 24,
+					'bottom'   => '',
+					'left'     => '',
+					'unit'     => 'px',
+					'isLinked' => false,
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .magic-apps-offcanvas__close' => 'top: {{TOP}}{{UNIT}}; right: {{RIGHT}}{{UNIT}}; bottom: {{BOTTOM}}{{UNIT}}; left: {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->end_controls_section();
+
 		// Layout Four — Subscribe Button Style
 		$this->start_controls_section(
 			'layout_four_subscribe_style_section',
@@ -3005,6 +3264,40 @@ class Nav_Menu extends Widget_Base
 
         return $options;
     }
+
+	/**
+	 * Elementor Library templates for Apps offcanvas.
+	 *
+	 * @return array
+	 */
+	protected function get_elementor_templates_options() {
+		$options = [
+			'' => esc_html__( 'Select Template', 'magic-elements' ),
+		];
+
+		$templates = get_posts(
+			[
+				'post_type'              => 'elementor_library',
+				'post_status'            => 'publish',
+				'posts_per_page'         => -1,
+				'orderby'                => 'title',
+				'order'                  => 'ASC',
+				'no_found_rows'          => true,
+				'update_post_meta_cache' => false,
+				'update_post_term_cache' => false,
+			]
+		);
+
+		if ( empty( $templates ) || is_wp_error( $templates ) ) {
+			return $options;
+		}
+
+		foreach ( $templates as $template ) {
+			$options[ $template->ID ] = $template->post_title;
+		}
+
+		return $options;
+	}
 
 	/**
 	 * Render submenu indicator icon HTML.

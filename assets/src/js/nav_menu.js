@@ -162,6 +162,71 @@ import "./../scss/nav_menu.scss"
           // Sticky header: show shadow only after scroll
           bindStickyShadow($root, $scope.data('id'));
 
+          // Apps fullscreen offcanvas (Layout Four)
+          const $appsTrigger = $root.find('.open-apps-offcanvas');
+          let $appsOffcanvas = $root.find('.magic-apps-offcanvas').first();
+          if ($appsTrigger.length && $appsOffcanvas.length) {
+            const scopeId = $scope.data('id') || '';
+            const appsNs = 'emkitAppsOffcanvas.' + scopeId;
+
+            // Remove stale panels from previous editor re-renders.
+            $('.magic-apps-offcanvas[data-me-apps-scope="' + scopeId + '"]').not($appsOffcanvas).remove();
+
+            if (!$appsOffcanvas.data('meAppsMoved')) {
+              $appsOffcanvas
+                .addClass('elementor-element-' + scopeId)
+                .attr('data-me-apps-scope', scopeId)
+                .appendTo(document.body)
+                .data('meAppsMoved', true);
+            }
+
+            const openAppsOffcanvas = function () {
+              closeMobileMenu();
+              $appsOffcanvas = $('.magic-apps-offcanvas[data-me-apps-scope="' + scopeId + '"]').first();
+              $appsOffcanvas.prop('hidden', false);
+              // Force reflow so CSS transition runs after unhiding.
+              void $appsOffcanvas[0].offsetWidth;
+              $appsOffcanvas.addClass('is-open').attr('aria-hidden', 'false');
+              $appsTrigger.attr('aria-expanded', 'true');
+              document.body.classList.add('magic-apps-offcanvas-open');
+            };
+
+            const closeAppsOffcanvas = function () {
+              $appsOffcanvas = $('.magic-apps-offcanvas[data-me-apps-scope="' + scopeId + '"]').first();
+              $appsOffcanvas.removeClass('is-open').attr('aria-hidden', 'true');
+              $appsTrigger.attr('aria-expanded', 'false');
+              document.body.classList.remove('magic-apps-offcanvas-open');
+
+              const duration = parseFloat(getComputedStyle($appsOffcanvas[0]).getPropertyValue('--magic-apps-offcanvas-duration')) || 450;
+              window.setTimeout(function () {
+                if (!$appsOffcanvas.hasClass('is-open')) {
+                  $appsOffcanvas.prop('hidden', true);
+                }
+              }, duration);
+            };
+
+            $appsTrigger.off('click.' + appsNs).on('click.' + appsNs, function (event) {
+              event.preventDefault();
+              event.stopPropagation();
+              if ($appsOffcanvas.hasClass('is-open')) {
+                closeAppsOffcanvas();
+              } else {
+                openAppsOffcanvas();
+              }
+            });
+
+            $appsOffcanvas.off('click.' + appsNs, '[data-apps-offcanvas-close]').on('click.' + appsNs, '[data-apps-offcanvas-close]', function (event) {
+              event.preventDefault();
+              closeAppsOffcanvas();
+            });
+
+            $(document).off('keyup.' + appsNs).on('keyup.' + appsNs, function (event) {
+              if (event.key === 'Escape' && $appsOffcanvas.hasClass('is-open')) {
+                closeAppsOffcanvas();
+              }
+            });
+          }
+
           $root.find('.cnw-nav .menu-item-has-children > a, .cnw-nav-mobile .menu-item-has-children > a')
           .off('click.emkitSubmenu')
           .on('click.emkitSubmenu', function (e) {

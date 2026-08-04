@@ -283,11 +283,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<?php if ( 'yes' === $settings['show_apps_icon'] ) : ?>
 				<?php
-				if ( ! empty( $settings['apps_icon_link']['url'] ) ) {
-					$this->add_link_attributes( 'apps_icon_link', $settings['apps_icon_link'] );
+				$apps_offcanvas_id       = 'magic-apps-offcanvas-' . $this->get_id();
+				$apps_offcanvas_position = ! empty( $settings['apps_offcanvas_position'] ) ? $settings['apps_offcanvas_position'] : 'right';
+				$allowed_positions       = [ 'left', 'right', 'top', 'bottom' ];
+				if ( ! in_array( $apps_offcanvas_position, $allowed_positions, true ) ) {
+					$apps_offcanvas_position = 'right';
 				}
+				$apps_template_id = ! empty( $settings['apps_offcanvas_template'] ) ? absint( $settings['apps_offcanvas_template'] ) : 0;
 				?>
-				<a class="layout-four-action-icon layout-four-apps" <?php $this->print_render_attribute_string( 'apps_icon_link' ); ?> aria-label="<?php echo esc_attr__( 'Apps', 'magic-elements' ); ?>">
+				<button
+					type="button"
+					class="layout-four-action-icon layout-four-apps open-apps-offcanvas"
+					aria-label="<?php echo esc_attr__( 'Apps', 'magic-elements' ); ?>"
+					aria-controls="<?php echo esc_attr( $apps_offcanvas_id ); ?>"
+					aria-expanded="false"
+				>
 					<?php
 					$apps_icon = ! empty( $settings['apps_icon']['value'] )
 						? $settings['apps_icon']
@@ -297,7 +307,47 @@ if ( ! defined( 'ABSPATH' ) ) {
 						];
 					\Elementor\Icons_Manager::render_icon( $apps_icon, [ 'aria-hidden' => 'true' ] );
 					?>
-				</a>
+				</button>
+
+				<div
+					id="<?php echo esc_attr( $apps_offcanvas_id ); ?>"
+					class="magic-apps-offcanvas magic-apps-offcanvas--<?php echo esc_attr( $apps_offcanvas_position ); ?>"
+					data-position="<?php echo esc_attr( $apps_offcanvas_position ); ?>"
+					aria-hidden="true"
+					hidden
+				>
+					<div class="magic-apps-offcanvas__overlay" data-apps-offcanvas-close></div>
+					<div class="magic-apps-offcanvas__panel" role="dialog" aria-modal="true" aria-label="<?php echo esc_attr__( 'Apps', 'magic-elements' ); ?>">
+						<button
+							type="button"
+							class="magic-apps-offcanvas__close"
+							data-apps-offcanvas-close
+							aria-label="<?php echo esc_attr__( 'Close apps', 'magic-elements' ); ?>"
+						>
+							<?php
+							$apps_close_icon = ! empty( $settings['apps_offcanvas_close_icon']['value'] )
+								? $settings['apps_offcanvas_close_icon']
+								: [
+									'value'   => 'fas fa-times',
+									'library' => 'fa-solid',
+								];
+							\Elementor\Icons_Manager::render_icon( $apps_close_icon, [ 'aria-hidden' => 'true' ] );
+							?>
+						</button>
+						<div class="magic-apps-offcanvas__content">
+							<?php
+							if ( $apps_template_id && class_exists( '\Elementor\Plugin' ) ) {
+								// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor renders trusted template HTML.
+								echo \Elementor\Plugin::instance()->frontend->get_builder_content_for_display( $apps_template_id, true );
+							} elseif ( class_exists( '\Elementor\Plugin' ) && \Elementor\Plugin::$instance->editor && \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
+								echo '<div class="magic-apps-offcanvas__empty">';
+								echo esc_html__( 'Select an Elementor template for the Apps offcanvas.', 'magic-elements' );
+								echo '</div>';
+							}
+							?>
+						</div>
+					</div>
+				</div>
 			<?php endif; ?>
 
 			<?php include __DIR__ . '/mobile-menu.php'; ?>
