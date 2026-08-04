@@ -446,6 +446,23 @@ body.lightbox-open {
   padding: 15px;
   background: transparent;
   appearance: none;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+.magic-menu .menu-search i,
+.magic-menu .menu-search svg {
+  transition: color 0.3s ease, fill 0.3s ease, stroke 0.3s ease;
+}
+.magic-menu .menu-search svg,
+.magic-menu .menu-search svg path,
+.magic-menu .menu-search svg circle,
+.magic-menu .menu-search svg rect,
+.magic-menu .menu-search svg polygon,
+.magic-menu .menu-search svg ellipse,
+.magic-menu .menu-search svg [fill]:not([fill=none]) {
+  fill: currentColor;
+}
+.magic-menu .menu-search svg [stroke]:not([stroke=none]) {
+  stroke: currentColor;
 }
 
 .open_search {

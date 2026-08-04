@@ -92,6 +92,48 @@ $mobile_menu_close_icon = ! empty( $settings['mobile_menu_close_icon']['value'] 
 			}
 			?>
 		</nav>
+
+		<?php if ( 'layout-four' === $header_layout ) : ?>
+			<div class="mobile-menu-panel__layout-four-actions">
+				<?php if ( 'yes' === $settings['show_user_icon'] ) : ?>
+					<?php
+					if ( ! empty( $settings['user_icon_link']['url'] ) ) {
+						$this->add_link_attributes( 'mobile_user_icon_link', $settings['user_icon_link'] );
+					}
+					?>
+					<a class="mobile-layout-four-link mobile-layout-four-user" <?php $this->print_render_attribute_string( 'mobile_user_icon_link' ); ?>>
+						<span class="mobile-layout-four-link__icon">
+							<?php
+							$user_icon = ! empty( $settings['user_icon']['value'] )
+								? $settings['user_icon']
+								: [
+									'value'   => 'fas fa-user',
+									'library' => 'fa-solid',
+								];
+							\Elementor\Icons_Manager::render_icon( $user_icon, [ 'aria-hidden' => 'true' ] );
+							?>
+						</span>
+						<span class="mobile-layout-four-link__text"><?php echo esc_html__( 'Account', 'magic-elements' ); ?></span>
+					</a>
+				<?php endif; ?>
+
+				<?php if ( 'yes' === $settings['show_subscribe_button'] ) : ?>
+					<?php
+					if ( ! empty( $settings['subscribe_button_link']['url'] ) ) {
+						$this->add_link_attributes( 'mobile_subscribe_button_link', $settings['subscribe_button_link'] );
+					}
+					?>
+					<a class="mobile-layout-four-subscribe" <?php $this->print_render_attribute_string( 'mobile_subscribe_button_link' ); ?>>
+						<?php if ( ! empty( $settings['subscribe_button_icon']['value'] ) ) : ?>
+							<span class="mobile-layout-four-subscribe__icon">
+								<?php \Elementor\Icons_Manager::render_icon( $settings['subscribe_button_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+							</span>
+						<?php endif; ?>
+						<span class="mobile-layout-four-subscribe__text"><?php echo esc_html( $settings['subscribe_button_title'] ); ?></span>
+					</a>
+				<?php endif; ?>
+			</div>
+		<?php endif; ?>
 	</div>
 </div>
 

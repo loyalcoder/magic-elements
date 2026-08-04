@@ -137,6 +137,7 @@ class Nav_Menu extends Widget_Base
                     'layout-one' => esc_html__( 'Layout One', 'magic-elements' ),
                     'layout-two' => esc_html__( 'Layout Two', 'magic-elements' ),
                     'layout-three' => esc_html__( 'Layout Three', 'magic-elements' ),
+                    'layout-four' => esc_html__( 'Layout Four', 'magic-elements' ),
                 ],
             ]
         );
@@ -173,11 +174,11 @@ class Nav_Menu extends Widget_Base
         $this->add_control(
 			'menu_select',
 			[
-				'label' => esc_html__( 'Left Menu', 'magic-elements' ),
+				'label' => esc_html__( 'Primary Menu', 'magic-elements' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'options'=> $this->get_menus_options(),
 				'condition' => [
-                    'header_layout_type' => ['layout-one','layout-two','layout-three']
+                    'header_layout_type' => ['layout-one','layout-two','layout-three','layout-four']
                 ],
 			]
 		); 
@@ -203,10 +204,10 @@ class Nav_Menu extends Widget_Base
 				],
 				'recommended' => [
 					'fa-solid' => [
+						'plus',
 						'chevron-down',
 						'angle-down',
 						'caret-down',
-						'plus',
 					],
 				],
 			]
@@ -295,7 +296,7 @@ class Nav_Menu extends Widget_Base
 				'label' => esc_html__( 'Search Icon', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 				'condition' => [
-                    'header_layout_type' => ['layout-one']
+                    'header_layout_type' => ['layout-one', 'layout-four']
                 ],
 			]
 		);
@@ -334,6 +335,170 @@ class Nav_Menu extends Widget_Base
 			]
 		);
         $this->end_controls_section();
+
+		// Layout Four Actions
+		$this->start_controls_section(
+			'layout_four_actions_section',
+			[
+				'label'     => esc_html__( 'Header Actions', 'magic-elements' ),
+				'tab'       => \Elementor\Controls_Manager::TAB_CONTENT,
+				'condition' => [
+					'header_layout_type' => [ 'layout-four' ],
+				],
+			]
+		);
+		$this->add_control(
+			'show_actions_divider',
+			[
+				'label'        => esc_html__( 'Show Divider', 'magic-elements' ),
+				'type'         => \Elementor\Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Show', 'magic-elements' ),
+				'label_off'    => esc_html__( 'Hide', 'magic-elements' ),
+				'return_value' => 'yes',
+				'default'      => 'yes',
+			]
+		);
+		$this->add_control(
+			'show_user_icon',
+			[
+				'label'        => esc_html__( 'Show User Icon', 'magic-elements' ),
+				'type'         => \Elementor\Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Show', 'magic-elements' ),
+				'label_off'    => esc_html__( 'Hide', 'magic-elements' ),
+				'return_value' => 'yes',
+				'default'      => 'yes',
+			]
+		);
+		$this->add_control(
+			'user_icon',
+			[
+				'label'     => esc_html__( 'User Icon', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::ICONS,
+				'default'   => [
+					'value'   => 'fas fa-user',
+					'library' => 'fa-solid',
+				],
+				'condition' => [
+					'show_user_icon' => 'yes',
+				],
+			]
+		);
+		$this->add_control(
+			'user_icon_link',
+			[
+				'label'       => esc_html__( 'User Icon Link', 'magic-elements' ),
+				'type'        => \Elementor\Controls_Manager::URL,
+				'options'     => [ 'url', 'is_external', 'nofollow' ],
+				'default'     => [
+					'url'         => '#',
+					'is_external' => false,
+					'nofollow'    => false,
+				],
+				'label_block' => true,
+				'condition'   => [
+					'show_user_icon' => 'yes',
+				],
+			]
+		);
+		$this->add_control(
+			'show_subscribe_button',
+			[
+				'label'        => esc_html__( 'Show Subscribe Button', 'magic-elements' ),
+				'type'         => \Elementor\Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Show', 'magic-elements' ),
+				'label_off'    => esc_html__( 'Hide', 'magic-elements' ),
+				'return_value' => 'yes',
+				'default'      => 'yes',
+				'separator'    => 'before',
+			]
+		);
+		$this->add_control(
+			'subscribe_button_title',
+			[
+				'label'       => esc_html__( 'Button Text', 'magic-elements' ),
+				'type'        => \Elementor\Controls_Manager::TEXT,
+				'default'     => esc_html__( 'Subscribe', 'magic-elements' ),
+				'placeholder' => esc_html__( 'Type button text', 'magic-elements' ),
+				'condition'   => [
+					'show_subscribe_button' => 'yes',
+				],
+			]
+		);
+		$this->add_control(
+			'subscribe_button_icon',
+			[
+				'label'     => esc_html__( 'Button Icon', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::ICONS,
+				'default'   => [
+					'value'   => 'fas fa-crown',
+					'library' => 'fa-solid',
+				],
+				'condition' => [
+					'show_subscribe_button' => 'yes',
+				],
+			]
+		);
+		$this->add_control(
+			'subscribe_button_link',
+			[
+				'label'       => esc_html__( 'Button Link', 'magic-elements' ),
+				'type'        => \Elementor\Controls_Manager::URL,
+				'options'     => [ 'url', 'is_external', 'nofollow' ],
+				'default'     => [
+					'url'         => '#',
+					'is_external' => false,
+					'nofollow'    => false,
+				],
+				'label_block' => true,
+				'condition'   => [
+					'show_subscribe_button' => 'yes',
+				],
+			]
+		);
+		$this->add_control(
+			'show_apps_icon',
+			[
+				'label'        => esc_html__( 'Show Apps Icon', 'magic-elements' ),
+				'type'         => \Elementor\Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Show', 'magic-elements' ),
+				'label_off'    => esc_html__( 'Hide', 'magic-elements' ),
+				'return_value' => 'yes',
+				'default'      => 'yes',
+				'separator'    => 'before',
+			]
+		);
+		$this->add_control(
+			'apps_icon',
+			[
+				'label'     => esc_html__( 'Apps Icon', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::ICONS,
+				'default'   => [
+					'value'   => 'fas fa-th',
+					'library' => 'fa-solid',
+				],
+				'condition' => [
+					'show_apps_icon' => 'yes',
+				],
+			]
+		);
+		$this->add_control(
+			'apps_icon_link',
+			[
+				'label'       => esc_html__( 'Apps Icon Link', 'magic-elements' ),
+				'type'        => \Elementor\Controls_Manager::URL,
+				'options'     => [ 'url', 'is_external', 'nofollow' ],
+				'default'     => [
+					'url'         => '#',
+					'is_external' => false,
+					'nofollow'    => false,
+				],
+				'label_block' => true,
+				'condition'   => [
+					'show_apps_icon' => 'yes',
+				],
+			]
+		);
+		$this->end_controls_section();
 
 		// Mobile Menu
 		$this->start_controls_section(
@@ -400,7 +565,7 @@ class Nav_Menu extends Widget_Base
 				'label' => esc_html__( 'Search Bar', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 				'condition' => [
-                    'header_layout_type' => ['layout-one']
+                    'header_layout_type' => ['layout-one', 'layout-four']
                 ],
 			]
 		);
@@ -680,6 +845,148 @@ class Nav_Menu extends Widget_Base
 				'selectors' => [
 					'{{WRAPPER}} nav ul li > a:hover' => 'color: {{VALUE}}',
 					'{{WRAPPER}} nav ul li:hover > a' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_control(
+			'nav_menu_text_active_color',
+			[
+				'label'     => esc_html__( 'Item Active Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} nav ul li.current-menu-item > a' => 'color: {{VALUE}}',
+					'{{WRAPPER}} nav ul li.current-menu-ancestor > a' => 'color: {{VALUE}}',
+					'{{WRAPPER}} nav ul li.current_page_item > a' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_control(
+			'nav_menu_underline_heading',
+			[
+				'label'     => esc_html__( 'Hover Underline', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+				'condition' => [
+					'header_layout_type' => [ 'layout-four' ],
+				],
+			]
+		);
+		$this->add_control(
+			'nav_menu_active_underline_color',
+			[
+				'label'     => esc_html__( 'Underline Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => '#E50914',
+				'selectors' => [
+					'{{WRAPPER}} .magic-header-layout-four .nav-menu-center .cnw-nav > li.current-menu-item > a::after' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .magic-header-layout-four .nav-menu-center .cnw-nav > li.current-menu-ancestor > a::after' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .magic-header-layout-four .nav-menu-center .cnw-nav > li:hover > a::after' => 'background-color: {{VALUE}};',
+				],
+				'condition' => [
+					'header_layout_type' => [ 'layout-four' ],
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'nav_menu_underline_width',
+			[
+				'label'      => esc_html__( 'Underline Width', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range'      => [
+					'px' => [
+						'min' => 4,
+						'max' => 120,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 5,
+						'max' => 100,
+					],
+				],
+				'default'    => [
+					'unit' => 'px',
+					'size' => 18,
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .magic-header-layout-four .nav-menu-center .cnw-nav > li > a::after' => 'width: {{SIZE}}{{UNIT}};',
+				],
+				'condition'  => [
+					'header_layout_type' => [ 'layout-four' ],
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'nav_menu_underline_height',
+			[
+				'label'      => esc_html__( 'Underline Height', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'range'      => [
+					'px' => [
+						'min' => 1,
+						'max' => 12,
+						'step' => 1,
+					],
+				],
+				'default'    => [
+					'unit' => 'px',
+					'size' => 3,
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .magic-header-layout-four .nav-menu-center .cnw-nav > li > a::after' => 'height: {{SIZE}}{{UNIT}};',
+				],
+				'condition'  => [
+					'header_layout_type' => [ 'layout-four' ],
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'nav_menu_underline_offset',
+			[
+				'label'      => esc_html__( 'Underline Offset', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'range'      => [
+					'px' => [
+						'min' => -20,
+						'max' => 30,
+						'step' => 1,
+					],
+				],
+				'default'    => [
+					'unit' => 'px',
+					'size' => 0,
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .magic-header-layout-four .nav-menu-center .cnw-nav > li > a::after' => 'bottom: {{SIZE}}{{UNIT}};',
+				],
+				'condition'  => [
+					'header_layout_type' => [ 'layout-four' ],
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'nav_menu_underline_radius',
+			[
+				'label'      => esc_html__( 'Underline Radius', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range'      => [
+					'px' => [
+						'min' => 0,
+						'max' => 20,
+					],
+				],
+				'default'    => [
+					'unit' => 'px',
+					'size' => 2,
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .magic-header-layout-four .nav-menu-center .cnw-nav > li > a::after' => 'border-radius: {{SIZE}}{{UNIT}};',
+				],
+				'condition'  => [
+					'header_layout_type' => [ 'layout-four' ],
 				],
 			]
 		);
@@ -1016,7 +1323,7 @@ class Nav_Menu extends Widget_Base
 				'label' => esc_html__( 'Search Icon', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 				'condition' => [
-                    'header_layout_type' => ['layout-one']
+                    'header_layout_type' => ['layout-one', 'layout-four']
                 ],
 			]
 		);
@@ -1025,10 +1332,20 @@ class Nav_Menu extends Widget_Base
 			[
 				'label'     => esc_html__( 'Icon Color', 'magic-elements' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => '#ffffff',
 				'selectors' => [
 					'{{WRAPPER}} .menu-search' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .menu-search svg' => 'fill: {{VALUE}};',
 					'{{WRAPPER}} .menu-search i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .menu-search svg' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .menu-search svg :is(path, circle, rect, polygon, ellipse, g)' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .menu-search svg [fill]:not([fill="none"])' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .menu-search svg [stroke]:not([stroke="none"])' => 'stroke: {{VALUE}};',
+					'{{WRAPPER}} .magic-header-layout-four .menu-search.layout-four-action-icon' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .magic-header-layout-four .menu-search.layout-four-action-icon i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .magic-header-layout-four .menu-search.layout-four-action-icon svg' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .magic-header-layout-four .menu-search.layout-four-action-icon svg path' => 'fill: {{VALUE}}; stroke: {{VALUE}};',
+					'{{WRAPPER}} .magic-header-layout-four .menu-search.layout-four-action-icon svg [fill]:not([fill="none"])' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .magic-header-layout-four .menu-search.layout-four-action-icon svg [stroke]:not([stroke="none"])' => 'stroke: {{VALUE}};',
 				],
 			]
 		);
@@ -1039,8 +1356,17 @@ class Nav_Menu extends Widget_Base
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .menu-search:hover' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .menu-search:hover svg' => 'fill: {{VALUE}};',
 					'{{WRAPPER}} .menu-search:hover i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .menu-search:hover svg' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .menu-search:hover svg :is(path, circle, rect, polygon, ellipse, g)' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .menu-search:hover svg [fill]:not([fill="none"])' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .menu-search:hover svg [stroke]:not([stroke="none"])' => 'stroke: {{VALUE}};',
+					'{{WRAPPER}} .magic-header-layout-four .menu-search.layout-four-action-icon:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .magic-header-layout-four .menu-search.layout-four-action-icon:hover i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .magic-header-layout-four .menu-search.layout-four-action-icon:hover svg' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .magic-header-layout-four .menu-search.layout-four-action-icon:hover svg path' => 'fill: {{VALUE}}; stroke: {{VALUE}};',
+					'{{WRAPPER}} .magic-header-layout-four .menu-search.layout-four-action-icon:hover svg [fill]:not([fill="none"])' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .magic-header-layout-four .menu-search.layout-four-action-icon:hover svg [stroke]:not([stroke="none"])' => 'stroke: {{VALUE}};',
 				],
 			]
 		);
@@ -1185,7 +1511,11 @@ class Nav_Menu extends Widget_Base
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .mobile-menu-toggle' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .mobile-menu-toggle svg' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .mobile-menu-toggle i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .mobile-menu-toggle svg' => 'fill: {{VALUE}}; color: {{VALUE}};',
+					'{{WRAPPER}} .mobile-menu-toggle svg path' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .mobile-menu-toggle svg [fill]:not([fill="none"])' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .mobile-menu-toggle svg [stroke]:not([stroke="none"])' => 'stroke: {{VALUE}};',
 				],
 			]
 		);
@@ -1536,7 +1866,7 @@ class Nav_Menu extends Widget_Base
 				'label' => esc_html__( 'Search Bar', 'magic-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 				'condition' => [
-                    'header_layout_type' => ['layout-one']
+                    'header_layout_type' => ['layout-one', 'layout-four']
                 ],
 			]
 		);
@@ -1875,6 +2205,774 @@ class Nav_Menu extends Widget_Base
 			]
 		);
         $this->end_controls_section();
+
+		// Layout Four — Actions Style
+		$this->start_controls_section(
+			'layout_four_actions_style_section',
+			[
+				'label'     => esc_html__( 'Header Actions', 'magic-elements' ),
+				'tab'       => \Elementor\Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'header_layout_type' => [ 'layout-four' ],
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'layout_four_actions_gap',
+			[
+				'label'      => esc_html__( 'Items Gap', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em', 'rem' ],
+				'range'      => [
+					'px' => [
+						'min' => 0,
+						'max' => 60,
+					],
+				],
+				'default'    => [
+					'unit' => 'px',
+					'size' => 16,
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .layout-four-actions' => 'gap: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'layout_four_actions_group_gap',
+			[
+				'label'      => esc_html__( 'Search Group Gap', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em', 'rem' ],
+				'range'      => [
+					'px' => [
+						'min' => 0,
+						'max' => 60,
+					],
+				],
+				'default'    => [
+					'unit' => 'px',
+					'size' => 16,
+				],
+				'description' => esc_html__( 'Gap between Search, Divider and User icon.', 'magic-elements' ),
+				'selectors'  => [
+					'{{WRAPPER}} .layout-four-actions-group' => 'gap: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_control(
+			'layout_four_divider_heading',
+			[
+				'label'     => esc_html__( 'Divider', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+				'condition' => [
+					'show_actions_divider' => 'yes',
+				],
+			]
+		);
+		$this->add_control(
+			'layout_four_divider_color',
+			[
+				'label'     => esc_html__( 'Divider Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => 'rgba(255,255,255,0.25)',
+				'selectors' => [
+					'{{WRAPPER}} .layout-four-divider' => 'background-color: {{VALUE}};',
+				],
+				'condition' => [
+					'show_actions_divider' => 'yes',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'layout_four_divider_height',
+			[
+				'label'      => esc_html__( 'Divider Height', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'range'      => [
+					'px' => [
+						'min' => 8,
+						'max' => 60,
+					],
+				],
+				'default'    => [
+					'unit' => 'px',
+					'size' => 24,
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .layout-four-divider' => 'height: {{SIZE}}{{UNIT}};',
+				],
+				'condition'  => [
+					'show_actions_divider' => 'yes',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'layout_four_divider_width',
+			[
+				'label'      => esc_html__( 'Divider Width', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'range'      => [
+					'px' => [
+						'min' => 1,
+						'max' => 10,
+					],
+				],
+				'default'    => [
+					'unit' => 'px',
+					'size' => 1,
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .layout-four-divider' => 'width: {{SIZE}}{{UNIT}};',
+				],
+				'condition'  => [
+					'show_actions_divider' => 'yes',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'layout_four_divider_margin',
+			[
+				'label'      => esc_html__( 'Divider Margin', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', 'rem' ],
+				'selectors'  => [
+					'{{WRAPPER}} .layout-four-divider' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition'  => [
+					'show_actions_divider' => 'yes',
+				],
+			]
+		);
+
+		// User Icon
+		$this->add_control(
+			'layout_four_user_heading',
+			[
+				'label'     => esc_html__( 'User Icon', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+				'condition' => [
+					'show_user_icon' => 'yes',
+				],
+			]
+		);
+		$this->add_control(
+			'layout_four_user_icon_color',
+			[
+				'label'     => esc_html__( 'Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => '#ffffff',
+				'selectors' => [
+					'{{WRAPPER}} .layout-four-user' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .layout-four-user i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .layout-four-user svg' => 'fill: {{VALUE}}; color: {{VALUE}};',
+					'{{WRAPPER}} .layout-four-user svg [fill]:not([fill="none"])' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .layout-four-user svg [stroke]:not([stroke="none"])' => 'stroke: {{VALUE}};',
+				],
+				'condition' => [
+					'show_user_icon' => 'yes',
+				],
+			]
+		);
+		$this->add_control(
+			'layout_four_user_icon_hover_color',
+			[
+				'label'     => esc_html__( 'Hover Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .layout-four-user:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .layout-four-user:hover i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .layout-four-user:hover svg' => 'fill: {{VALUE}}; color: {{VALUE}};',
+					'{{WRAPPER}} .layout-four-user:hover svg [fill]:not([fill="none"])' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .layout-four-user:hover svg [stroke]:not([stroke="none"])' => 'stroke: {{VALUE}};',
+				],
+				'condition' => [
+					'show_user_icon' => 'yes',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'layout_four_user_icon_size',
+			[
+				'label'      => esc_html__( 'Size', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em', 'rem' ],
+				'range'      => [
+					'px' => [
+						'min' => 10,
+						'max' => 48,
+					],
+				],
+				'default'    => [
+					'unit' => 'px',
+					'size' => 18,
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .layout-four-user' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .layout-four-user i' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .layout-four-user svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+				],
+				'condition'  => [
+					'show_user_icon' => 'yes',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'layout_four_user_icon_padding',
+			[
+				'label'      => esc_html__( 'Padding', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', 'rem' ],
+				'selectors'  => [
+					'{{WRAPPER}} .layout-four-user' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition'  => [
+					'show_user_icon' => 'yes',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'layout_four_user_icon_margin',
+			[
+				'label'      => esc_html__( 'Margin', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', 'rem' ],
+				'selectors'  => [
+					'{{WRAPPER}} .layout-four-user' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition'  => [
+					'show_user_icon' => 'yes',
+				],
+			]
+		);
+
+		// Apps Icon
+		$this->add_control(
+			'layout_four_apps_heading',
+			[
+				'label'     => esc_html__( 'Apps Icon', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+				'condition' => [
+					'show_apps_icon' => 'yes',
+				],
+			]
+		);
+		$this->add_control(
+			'layout_four_apps_icon_color',
+			[
+				'label'     => esc_html__( 'Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => '#ffffff',
+				'selectors' => [
+					'{{WRAPPER}} .layout-four-apps' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .layout-four-apps i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .layout-four-apps svg' => 'fill: {{VALUE}}; color: {{VALUE}};',
+					'{{WRAPPER}} .layout-four-apps svg [fill]:not([fill="none"])' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .layout-four-apps svg [stroke]:not([stroke="none"])' => 'stroke: {{VALUE}};',
+				],
+				'condition' => [
+					'show_apps_icon' => 'yes',
+				],
+			]
+		);
+		$this->add_control(
+			'layout_four_apps_icon_hover_color',
+			[
+				'label'     => esc_html__( 'Hover Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .layout-four-apps:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .layout-four-apps:hover i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .layout-four-apps:hover svg' => 'fill: {{VALUE}}; color: {{VALUE}};',
+					'{{WRAPPER}} .layout-four-apps:hover svg [fill]:not([fill="none"])' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .layout-four-apps:hover svg [stroke]:not([stroke="none"])' => 'stroke: {{VALUE}};',
+				],
+				'condition' => [
+					'show_apps_icon' => 'yes',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'layout_four_apps_icon_size',
+			[
+				'label'      => esc_html__( 'Size', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em', 'rem' ],
+				'range'      => [
+					'px' => [
+						'min' => 10,
+						'max' => 48,
+					],
+				],
+				'default'    => [
+					'unit' => 'px',
+					'size' => 18,
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .layout-four-apps' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .layout-four-apps i' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .layout-four-apps svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+				],
+				'condition'  => [
+					'show_apps_icon' => 'yes',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'layout_four_apps_icon_padding',
+			[
+				'label'      => esc_html__( 'Padding', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', 'rem' ],
+				'selectors'  => [
+					'{{WRAPPER}} .layout-four-apps' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition'  => [
+					'show_apps_icon' => 'yes',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'layout_four_apps_icon_margin',
+			[
+				'label'      => esc_html__( 'Margin', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', 'rem' ],
+				'selectors'  => [
+					'{{WRAPPER}} .layout-four-apps' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition'  => [
+					'show_apps_icon' => 'yes',
+				],
+			]
+		);
+		$this->end_controls_section();
+
+		// Layout Four — Subscribe Button Style
+		$this->start_controls_section(
+			'layout_four_subscribe_style_section',
+			[
+				'label'     => esc_html__( 'Subscribe Button', 'magic-elements' ),
+				'tab'       => \Elementor\Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'header_layout_type'    => [ 'layout-four' ],
+					'show_subscribe_button' => 'yes',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name'     => 'subscribe_button_typography',
+				'selector' => '{{WRAPPER}} .layout-four-subscribe',
+			]
+		);
+		$this->start_controls_tabs( 'subscribe_button_tabs' );
+		$this->start_controls_tab(
+			'subscribe_button_normal_tab',
+			[
+				'label' => esc_html__( 'Normal', 'magic-elements' ),
+			]
+		);
+		$this->add_control(
+			'subscribe_button_color',
+			[
+				'label'     => esc_html__( 'Text Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => '#ffffff',
+				'selectors' => [
+					'{{WRAPPER}} .layout-four-subscribe' => 'color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_control(
+			'subscribe_button_icon_color',
+			[
+				'label'     => esc_html__( 'Icon Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => '#F5C518',
+				'selectors' => [
+					'{{WRAPPER}} .layout-four-subscribe__icon' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .layout-four-subscribe__icon i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .layout-four-subscribe__icon svg' => 'fill: {{VALUE}}; color: {{VALUE}};',
+					'{{WRAPPER}} .layout-four-subscribe__icon svg [fill]:not([fill="none"])' => 'fill: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name'     => 'subscribe_button_background',
+				'types'    => [ 'classic', 'gradient' ],
+				'selector' => '{{WRAPPER}} .layout-four-subscribe',
+				'fields_options' => [
+					'background' => [
+						'default' => 'classic',
+					],
+					'color' => [
+						'default' => '#E50914',
+					],
+				],
+			]
+		);
+		$this->end_controls_tab();
+		$this->start_controls_tab(
+			'subscribe_button_hover_tab',
+			[
+				'label' => esc_html__( 'Hover', 'magic-elements' ),
+			]
+		);
+		$this->add_control(
+			'subscribe_button_hover_color',
+			[
+				'label'     => esc_html__( 'Text Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .layout-four-subscribe:hover' => 'color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_control(
+			'subscribe_button_icon_hover_color',
+			[
+				'label'     => esc_html__( 'Icon Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .layout-four-subscribe:hover .layout-four-subscribe__icon' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .layout-four-subscribe:hover .layout-four-subscribe__icon i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .layout-four-subscribe:hover .layout-four-subscribe__icon svg' => 'fill: {{VALUE}}; color: {{VALUE}};',
+					'{{WRAPPER}} .layout-four-subscribe:hover .layout-four-subscribe__icon svg [fill]:not([fill="none"])' => 'fill: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name'     => 'subscribe_button_hover_background',
+				'types'    => [ 'classic', 'gradient' ],
+				'selector' => '{{WRAPPER}} .layout-four-subscribe:hover',
+			]
+		);
+		$this->end_controls_tab();
+		$this->end_controls_tabs();
+		$this->add_responsive_control(
+			'subscribe_button_icon_size',
+			[
+				'label'      => esc_html__( 'Icon Size', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em', 'rem' ],
+				'range'      => [
+					'px' => [
+						'min' => 8,
+						'max' => 40,
+					],
+				],
+				'default'    => [
+					'unit' => 'px',
+					'size' => 14,
+				],
+				'separator'  => 'before',
+				'selectors'  => [
+					'{{WRAPPER}} .layout-four-subscribe__icon' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .layout-four-subscribe__icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .layout-four-subscribe__icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'subscribe_button_icon_gap',
+			[
+				'label'      => esc_html__( 'Icon Gap', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em', 'rem' ],
+				'range'      => [
+					'px' => [
+						'min' => 0,
+						'max' => 30,
+					],
+				],
+				'default'    => [
+					'unit' => 'px',
+					'size' => 8,
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .layout-four-subscribe' => 'gap: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name'     => 'subscribe_button_border',
+				'selector' => '{{WRAPPER}} .layout-four-subscribe',
+			]
+		);
+		$this->add_responsive_control(
+			'subscribe_button_border_radius',
+			[
+				'label'      => esc_html__( 'Border Radius', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem' ],
+				'default'    => [
+					'top'      => 50,
+					'right'    => 50,
+					'bottom'   => 50,
+					'left'     => 50,
+					'unit'     => 'px',
+					'isLinked' => true,
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .layout-four-subscribe' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'subscribe_button_padding',
+			[
+				'label'      => esc_html__( 'Padding', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem' ],
+				'default'    => [
+					'top'      => 10,
+					'right'    => 20,
+					'bottom'   => 10,
+					'left'     => 20,
+					'unit'     => 'px',
+					'isLinked' => false,
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .layout-four-subscribe' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'subscribe_button_margin',
+			[
+				'label'      => esc_html__( 'Margin', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem' ],
+				'selectors'  => [
+					'{{WRAPPER}} .layout-four-subscribe' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name'     => 'subscribe_button_box_shadow',
+				'selector' => '{{WRAPPER}} .layout-four-subscribe',
+			]
+		);
+		$this->end_controls_section();
+
+		// Layout Four — Mobile Panel Extra Styles
+		$this->start_controls_section(
+			'layout_four_mobile_extra_style_section',
+			[
+				'label'     => esc_html__( 'Mobile Panel Extras', 'magic-elements' ),
+				'tab'       => \Elementor\Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'header_layout_type' => [ 'layout-four' ],
+				],
+			]
+		);
+		$this->add_control(
+			'layout_four_mobile_account_heading',
+			[
+				'label'     => esc_html__( 'Account Link', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::HEADING,
+				'condition' => [
+					'show_user_icon' => 'yes',
+				],
+			]
+		);
+		$this->add_control(
+			'layout_four_mobile_account_color',
+			[
+				'label'     => esc_html__( 'Text Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => '#ffffff',
+				'selectors' => [
+					'{{WRAPPER}} .mobile-layout-four-user' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .mobile-layout-four-user .mobile-layout-four-link__icon' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .mobile-layout-four-user .mobile-layout-four-link__icon svg' => 'fill: {{VALUE}}; color: {{VALUE}};',
+				],
+				'condition' => [
+					'show_user_icon' => 'yes',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name'      => 'layout_four_mobile_account_typography',
+				'selector'  => '{{WRAPPER}} .mobile-layout-four-user',
+				'condition' => [
+					'show_user_icon' => 'yes',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'layout_four_mobile_account_icon_size',
+			[
+				'label'      => esc_html__( 'Icon Size', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em', 'rem' ],
+				'range'      => [
+					'px' => [
+						'min' => 10,
+						'max' => 40,
+					],
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .mobile-layout-four-user .mobile-layout-four-link__icon' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .mobile-layout-four-user .mobile-layout-four-link__icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .mobile-layout-four-user .mobile-layout-four-link__icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+				],
+				'condition'  => [
+					'show_user_icon' => 'yes',
+				],
+			]
+		);
+		$this->add_control(
+			'layout_four_mobile_subscribe_heading',
+			[
+				'label'     => esc_html__( 'Subscribe Button', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+				'condition' => [
+					'show_subscribe_button' => 'yes',
+				],
+			]
+		);
+		$this->add_control(
+			'layout_four_mobile_subscribe_color',
+			[
+				'label'     => esc_html__( 'Text Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => '#ffffff',
+				'selectors' => [
+					'{{WRAPPER}} .mobile-layout-four-subscribe' => 'color: {{VALUE}};',
+				],
+				'condition' => [
+					'show_subscribe_button' => 'yes',
+				],
+			]
+		);
+		$this->add_control(
+			'layout_four_mobile_subscribe_icon_color',
+			[
+				'label'     => esc_html__( 'Icon Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => '#F5C518',
+				'selectors' => [
+					'{{WRAPPER}} .mobile-layout-four-subscribe__icon' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .mobile-layout-four-subscribe__icon i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .mobile-layout-four-subscribe__icon svg' => 'fill: {{VALUE}}; color: {{VALUE}};',
+				],
+				'condition' => [
+					'show_subscribe_button' => 'yes',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name'      => 'layout_four_mobile_subscribe_background',
+				'types'     => [ 'classic', 'gradient' ],
+				'selector'  => '{{WRAPPER}} .mobile-layout-four-subscribe',
+				'condition' => [
+					'show_subscribe_button' => 'yes',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name'      => 'layout_four_mobile_subscribe_typography',
+				'selector'  => '{{WRAPPER}} .mobile-layout-four-subscribe',
+				'condition' => [
+					'show_subscribe_button' => 'yes',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'layout_four_mobile_subscribe_padding',
+			[
+				'label'      => esc_html__( 'Padding', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', 'rem' ],
+				'selectors'  => [
+					'{{WRAPPER}} .mobile-layout-four-subscribe' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition'  => [
+					'show_subscribe_button' => 'yes',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'layout_four_mobile_subscribe_radius',
+			[
+				'label'      => esc_html__( 'Border Radius', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem' ],
+				'selectors'  => [
+					'{{WRAPPER}} .mobile-layout-four-subscribe' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition'  => [
+					'show_subscribe_button' => 'yes',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'layout_four_mobile_extras_gap',
+			[
+				'label'      => esc_html__( 'Extras Gap', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em', 'rem' ],
+				'range'      => [
+					'px' => [
+						'min' => 0,
+						'max' => 40,
+					],
+				],
+				'default'    => [
+					'unit' => 'px',
+					'size' => 12,
+				],
+				'separator'  => 'before',
+				'selectors'  => [
+					'{{WRAPPER}} .mobile-menu-panel__layout-four-actions' => 'gap: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_control(
+			'layout_four_mobile_extras_border_color',
+			[
+				'label'     => esc_html__( 'Top Border Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .mobile-menu-panel__layout-four-actions' => 'border-top-color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'layout_four_mobile_extras_padding',
+			[
+				'label'      => esc_html__( 'Extras Padding', 'magic-elements' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', 'rem' ],
+				'selectors'  => [
+					'{{WRAPPER}} .mobile-menu-panel__layout-four-actions' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->end_controls_section();
 
 
     }

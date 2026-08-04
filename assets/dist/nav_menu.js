@@ -61,14 +61,22 @@ __webpack_require__.r(__webpack_exports__);
       const $desktopSearchSlot = $root.find('[data-desktop-search-slot]');
       const $mobileSearchSlot = $root.find('[data-mobile-search-slot]');
       const $searchButton = $root.find('.menu-search.open_search').first();
+      const isLayoutFour = $root.hasClass('magic-header-layout-four');
       const moveSearchToMobile = function () {
-        if (!$searchButton.length || !$mobileSearchSlot.length) {
+        // Layout four keeps search in the header; do not move it beside the close button.
+        if (isLayoutFour || !$searchButton.length || !$mobileSearchSlot.length) {
           return;
         }
         $mobileSearchSlot.append($searchButton);
       };
       const moveSearchToDesktop = function () {
         if (!$searchButton.length || !$desktopSearchSlot.length) {
+          return;
+        }
+        // Prefer putting search back at the start of the actions group.
+        const $dividerOrUser = $desktopSearchSlot.children('.layout-four-divider, .layout-four-user, .search_block').first();
+        if ($dividerOrUser.length) {
+          $searchButton.insertBefore($dividerOrUser);
           return;
         }
         // Keep search before the mobile toggle inside desktop actions.
