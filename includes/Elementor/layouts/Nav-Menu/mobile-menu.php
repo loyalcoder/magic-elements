@@ -2,7 +2,13 @@
 /**
  * Mobile menu panel markup for Nav Menu widget.
  *
+ * Included from nav-menu.php layouts.
+ *
  * @package MagicElements
+ *
+ * @var array                             $settings      Widget settings.
+ * @var string                            $header_layout Active layout key.
+ * @var \MagicElements\Elementor\Nav_Menu $this          Current widget instance.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
