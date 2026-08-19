@@ -653,6 +653,28 @@ class Nav_Menu extends Widget_Base
 				'selector' => '{{WRAPPER}} .magic-header',
 			]
 		);
+		$this->add_control(
+			'header_sticky_background_heading',
+			[
+				'label'     => esc_html__( 'Sticky Background', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+				'condition' => [
+					'enable_sticky' => 'yes',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name'      => 'header_sticky_background',
+				'types'     => [ 'classic', 'gradient' ],
+				'selector'  => '{{WRAPPER}} .magic-header.is-sticky.is-scrolled',
+				'condition' => [
+					'enable_sticky' => 'yes',
+				],
+			]
+		);
 		$this->add_group_control(
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
@@ -1231,6 +1253,72 @@ class Nav_Menu extends Widget_Base
 				],
 			]
 		);
+		$this->add_control(
+			'dropdown_item_heading',
+			[
+				'label'     => esc_html__( 'Dropdown Items', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+		$this->start_controls_tabs( 'dropdown_item_style_tabs' );
+		$this->start_controls_tab(
+			'dropdown_item_tab_normal',
+			[
+				'label' => esc_html__( 'Normal', 'magic-elements' ),
+			]
+		);
+		$this->add_control(
+			'dropdown_item_color',
+			[
+				'label'     => esc_html__( 'Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .cnw-nav .sub-menu li > a' => 'color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_control(
+			'dropdown_item_bg_color',
+			[
+				'label'     => esc_html__( 'Background Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .cnw-nav .sub-menu li > a' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+		$this->end_controls_tab();
+		$this->start_controls_tab(
+			'dropdown_item_tab_hover',
+			[
+				'label' => esc_html__( 'Hover', 'magic-elements' ),
+			]
+		);
+		$this->add_control(
+			'dropdown_item_hover_color',
+			[
+				'label'     => esc_html__( 'Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .cnw-nav .sub-menu li > a:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .cnw-nav .sub-menu li:hover > a' => 'color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_control(
+			'dropdown_item_hover_bg_color',
+			[
+				'label'     => esc_html__( 'Background Color', 'magic-elements' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .cnw-nav .sub-menu li > a:hover' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .cnw-nav .sub-menu li:hover > a' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+		$this->end_controls_tab();
+		$this->end_controls_tabs();
         $this->end_controls_section();
 		//Layout-Three-call-us-Button Style Section
 		$this->start_controls_section(
