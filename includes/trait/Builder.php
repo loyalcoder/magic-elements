@@ -243,6 +243,31 @@ trait Builder {
         }
         return apply_filters('magic_elements_builder_post_types', $list);
     }
+
+    /**
+     * Get taxonomies for a post type (Selective Singular → Taxonomy scope).
+     *
+     * @param string $post_type Post type slug.
+     * @return array Associative array taxonomy_slug => label.
+     */
+    public function get_builder_taxonomies( $post_type ) {
+        if ( empty( $post_type ) ) {
+            return [];
+        }
+
+        $taxonomies = get_object_taxonomies( $post_type, 'objects' );
+        $list       = [];
+
+        foreach ( $taxonomies as $tax ) {
+            if ( empty( $tax->public ) ) {
+                continue;
+            }
+            $list[ $tax->name ] = $tax->labels->singular_name;
+        }
+
+        return apply_filters( 'magic_elements_builder_taxonomies', $list, $post_type );
+    }
+
     public function get_display_condition_list($formData) {
         $display_condition = [];
         if (isset($formData['me_builder_condition']) && is_array($formData['me_builder_condition'])) {

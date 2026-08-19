@@ -46,6 +46,14 @@ const baseConfig = {
         './assets/src/scss/nav_menu.scss',
         './assets/src/js/nav_menu.js',
     ],
+    magic_nav: [
+        './assets/src/scss/magic_nav.scss',
+        './assets/src/js/magic_nav.js',
+    ],
+    hero_slider: [
+        './assets/src/scss/hero_slider.scss',
+        './assets/src/js/hero_slider.js',
+    ],
     image_slider: [
         './assets/src/scss/image_slider.scss',
         './assets/src/js/image_slider.js',

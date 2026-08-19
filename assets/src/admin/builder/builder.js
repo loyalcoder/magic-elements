@@ -50,7 +50,10 @@ jQuery(function(){
 
     $(document).on('click', '.add-new-template-link, .magic-elements-preview-item .edit-link', function(e){
         e.preventDefault();
-        $('.magic-elements-addnew-popup').fadeIn();
+        var $popup = $('.magic-elements-addnew-popup');
+        $popup.fadeIn();
+        $popup.find('.magic-elements-addnew-content').addClass('loading');
+        $popup.find('.content-loader').html('');
         $.ajax({
             url: me_builder_ajax_object.ajax_url,
             type: 'POST',
@@ -62,16 +65,21 @@ jQuery(function(){
             },
             success: function(response){
                 if(response.success){                    
-                    $('.magic-elements-addnew-popup .content-loader').html(response.data.html);
-                    $('.magic-elements-addnew-popup .loading').removeClass('loading');
+                    $popup.find('.content-loader').html(response.data.html);
+                    $popup.find('.magic-elements-addnew-content').removeClass('loading');
                     // Initialize select2 and condition UI after content is loaded
                     setTimeout(function() {
-                        meBuilderInitConditionUI($('.magic-elements-addnew-popup'));
+                        meBuilderInitConditionUI($popup);
                     }, 100);
+                } else {
+                    var message = (response && response.data && response.data.message) ? response.data.message : 'Failed to load template form.';
+                    $popup.find('.content-loader').html('<p class="me-builder-error">' + message + '</p>');
+                    $popup.find('.magic-elements-addnew-content').removeClass('loading');
                 }
             },
-            error: function(error){
-                console.log(error);
+            error: function(){
+                $popup.find('.content-loader').html('<p class="me-builder-error">Failed to load template form.</p>');
+                $popup.find('.magic-elements-addnew-content').removeClass('loading');
             }
         });
     });

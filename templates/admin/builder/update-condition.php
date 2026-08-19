@@ -24,8 +24,8 @@ if ( ! empty( $condition ) ) {
     <div class="magic-elements-add-condition-content d-flex flex-wrap">
         <div class="condition-group">
             <select name="me_builder_condition[<?php echo esc_attr( $key ); ?>][display_type]" class="me-condition-display-type">
-                <option value="exclude" <?php selected( $display_type_value, 'exclude' ); ?>><?php echo esc_html__( 'Exclude', 'magic-elements' ); ?></option>
                 <option value="include" <?php selected( $display_type_value, 'include' ); ?>><?php echo esc_html__( 'Include', 'magic-elements' ); ?></option>
+                <option value="exclude" <?php selected( $display_type_value, 'exclude' ); ?>><?php echo esc_html__( 'Exclude', 'magic-elements' ); ?></option>
             </select>
         </div>
         <div class="condition-group">

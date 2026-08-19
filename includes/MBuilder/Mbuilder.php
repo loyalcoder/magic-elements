@@ -214,11 +214,12 @@ class MBuilder {
             $template_id = $this->update_builder_template($post_id, $template_title, $meta);
             $message = esc_html__('Template updated successfully', 'magic-elements');
         }else{
-            $template_id = $this->insert_builder_template($template_title, $type, $meta);
+            $template_id = $this->insert_builder_template($template_title, $template_type ? $template_type : $type, $meta);
             $message = esc_html__('Template created successfully', 'magic-elements');
         }
+        $edit_id = $post_id ? (int) $post_id : (int) $template_id;
         $edit_with_elementor = add_query_arg([
-            'post' => $post_id,
+            'post' => $edit_id,
             'action' => 'elementor'
         ], admin_url('post.php'));
         if($template_id != ''){
