@@ -763,6 +763,23 @@ class Nav_Menu extends Widget_Base
 				],
 			]
 		);
+		$this->add_control(
+			'header_overflow',
+			[
+				'label'   => esc_html__( 'Overflow', 'magic-elements' ),
+				'type'    => \Elementor\Controls_Manager::SELECT,
+				'default' => 'hidden',
+				'options' => [
+					'hidden'  => esc_html__( 'Hidden', 'magic-elements' ),
+					'visible' => esc_html__( 'Visible', 'magic-elements' ),
+					'auto'    => esc_html__( 'Auto', 'magic-elements' ),
+				],
+				'selectors' => [
+					'{{WRAPPER}}' => 'overflow: {{VALUE}};',
+					'{{WRAPPER}} .magic-header' => 'overflow: {{VALUE}};',
+				],
+			]
+		);
 		$this->add_responsive_control(
 			'header_padding',
 			[
@@ -2451,6 +2468,31 @@ class Nav_Menu extends Widget_Base
 				'description' => esc_html__( 'Gap between Search, Divider and User icon.', 'magic-elements' ),
 				'selectors'  => [
 					'{{WRAPPER}} .layout-four-actions-group' => 'gap: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'layout_four_subscribe_button_gap',
+			[
+				'label'       => esc_html__( 'Subscribe Button Gap', 'magic-elements' ),
+				'type'        => \Elementor\Controls_Manager::SLIDER,
+				'size_units'  => [ 'px', 'em', 'rem' ],
+				'range'       => [
+					'px' => [
+						'min' => 0,
+						'max' => 80,
+					],
+				],
+				'default'     => [
+					'unit' => 'px',
+					'size' => 16,
+				],
+				'description' => esc_html__( 'Gap between search/header actions and the Subscribe button.', 'magic-elements' ),
+				'condition'   => [
+					'show_subscribe_button' => 'yes',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .layout-four-actions-cluster' => 'gap: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);

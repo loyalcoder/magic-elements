@@ -216,6 +216,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</nav>
 
 		<div class="layout-four-actions magic-menu-actions">
+			<div class="layout-four-actions-cluster">
 			<div class="layout-four-actions-group" data-desktop-search-slot>
 				<?php if ( 'yes' === $settings['show_search'] ) : ?>
 					<button class="menu-search open_search layout-four-action-icon" type="button" aria-label="<?php echo esc_attr__( 'Search', 'magic-elements' ); ?>">
@@ -286,6 +287,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<span class="layout-four-subscribe__text"><?php echo esc_html( $settings['subscribe_button_title'] ); ?></span>
 				</a>
 			<?php endif; ?>
+			</div>
 
 			<?php if ( 'yes' === $settings['show_apps_icon'] ) : ?>
 				<?php

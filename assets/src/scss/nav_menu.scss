@@ -1,7 +1,12 @@
 //Sticky Header SCSS
+.elementor-widget-em_kit_nav_menu {
+    overflow: hidden;
+}
+
 .magic-header {
     position: relative;
     z-index: 2002;
+    overflow: hidden;
 
     &.is-sticky {
         position: sticky;
@@ -760,6 +765,13 @@ body.magic-mobile-menu-open {
         flex: 0 0 auto;
         margin-left: 0;
         z-index: 40;
+    }
+
+    .layout-four-actions-cluster {
+        display: inline-flex;
+        align-items: center;
+        gap: 16px;
+        flex: 0 0 auto;
     }
 
     .layout-four-actions-group {
