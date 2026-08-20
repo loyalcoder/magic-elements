@@ -762,6 +762,13 @@ body.magic-mobile-menu-open {
         z-index: 40;
     }
 
+    .layout-four-actions-cluster {
+        display: inline-flex;
+        align-items: center;
+        gap: 16px;
+        flex: 0 0 auto;
+    }
+
     .layout-four-actions-group {
         display: inline-flex;
         align-items: center;

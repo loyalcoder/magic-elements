@@ -2454,6 +2454,31 @@ class Nav_Menu extends Widget_Base
 				],
 			]
 		);
+		$this->add_responsive_control(
+			'layout_four_subscribe_button_gap',
+			[
+				'label'       => esc_html__( 'Subscribe Button Gap', 'magic-elements' ),
+				'type'        => \Elementor\Controls_Manager::SLIDER,
+				'size_units'  => [ 'px', 'em', 'rem' ],
+				'range'       => [
+					'px' => [
+						'min' => 0,
+						'max' => 80,
+					],
+				],
+				'default'     => [
+					'unit' => 'px',
+					'size' => 16,
+				],
+				'description' => esc_html__( 'Gap between search/header actions and the Subscribe button.', 'magic-elements' ),
+				'condition'   => [
+					'show_subscribe_button' => 'yes',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .layout-four-actions-cluster' => 'gap: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
 		$this->add_control(
 			'layout_four_divider_heading',
 			[
