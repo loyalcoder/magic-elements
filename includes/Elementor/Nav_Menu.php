@@ -763,6 +763,23 @@ class Nav_Menu extends Widget_Base
 				],
 			]
 		);
+		$this->add_control(
+			'header_overflow',
+			[
+				'label'   => esc_html__( 'Overflow', 'magic-elements' ),
+				'type'    => \Elementor\Controls_Manager::SELECT,
+				'default' => 'hidden',
+				'options' => [
+					'hidden'  => esc_html__( 'Hidden', 'magic-elements' ),
+					'visible' => esc_html__( 'Visible', 'magic-elements' ),
+					'auto'    => esc_html__( 'Auto', 'magic-elements' ),
+				],
+				'selectors' => [
+					'{{WRAPPER}}' => 'overflow: {{VALUE}};',
+					'{{WRAPPER}} .magic-header' => 'overflow: {{VALUE}};',
+				],
+			]
+		);
 		$this->add_responsive_control(
 			'header_padding',
 			[

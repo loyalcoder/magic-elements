@@ -1,7 +1,12 @@
 //Sticky Header SCSS
+.elementor-widget-em_kit_nav_menu {
+    overflow: hidden;
+}
+
 .magic-header {
     position: relative;
     z-index: 2002;
+    overflow: hidden;
 
     &.is-sticky {
         position: sticky;
