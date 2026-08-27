@@ -62,6 +62,10 @@ const baseConfig = {
         './assets/src/scss/image_slider.scss',
         './assets/src/js/image_slider.js',
     ],
+    team: [
+        './assets/src/scss/team.scss',
+        './assets/src/js/team.js',
+    ],
 
     // 2) SCSS ONLY (no JS file mentioned):
     flipcard: './assets/src/scss/flipcard.scss',

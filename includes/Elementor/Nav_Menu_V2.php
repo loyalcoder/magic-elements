@@ -916,7 +916,7 @@ class Nav_Menu_V2 extends Widget_Base
             Group_Control_Background::get_type(),
             [
                 'name'     => 'mega_bg',
-                'selector' => '{{WRAPPER}} .me-nav-v2--mega .magic-elements-mega-menu-content',
+                'selector' => '{{WRAPPER}} .me-nav-v2--mega .magic-elements-mega-menu-inner',
             ]
         );
 
@@ -927,7 +927,7 @@ class Nav_Menu_V2 extends Widget_Base
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em'],
                 'selectors'  => [
-                    '{{WRAPPER}} .me-nav-v2--mega .magic-elements-mega-menu-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .me-nav-v2--mega .magic-elements-mega-menu-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -936,7 +936,7 @@ class Nav_Menu_V2 extends Widget_Base
             Group_Control_Border::get_type(),
             [
                 'name'     => 'mega_border',
-                'selector' => '{{WRAPPER}} .me-nav-v2--mega .magic-elements-mega-menu-content',
+                'selector' => '{{WRAPPER}} .me-nav-v2--mega .magic-elements-mega-menu-inner',
             ]
         );
 
@@ -944,7 +944,7 @@ class Nav_Menu_V2 extends Widget_Base
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'mega_shadow',
-                'selector' => '{{WRAPPER}} .me-nav-v2--mega .magic-elements-mega-menu-content',
+                'selector' => '{{WRAPPER}} .me-nav-v2--mega .magic-elements-mega-menu-inner',
             ]
         );
 
@@ -990,7 +990,7 @@ class Nav_Menu_V2 extends Widget_Base
                     'px' => ['min' => 0, 'max' => 60],
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .me-nav-v2--mega .magic-elements-mega-menu-content' => 'top: calc(100% + {{SIZE}}{{UNIT}});',
+                    '{{WRAPPER}} .me-nav-v2--mega .magic-elements-mega-menu-content' => '--me-mega-offset: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );

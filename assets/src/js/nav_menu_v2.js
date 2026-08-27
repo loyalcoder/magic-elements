@@ -30,6 +30,7 @@ import "./../scss/nav_menu_v2.scss";
       MeNavV2.bindOffcanvas($root);
       MeNavV2.bindOffcanvasSubmenus($root);
       MeNavV2.bindDesktopSubmenus($root);
+      MeNavV2.bindMegaMenus($root);
     },
 
     bindSticky: function ($root) {
@@ -267,6 +268,15 @@ import "./../scss/nav_menu_v2.scss";
         if (!$panel.length) {
           return;
         }
+
+        // Ensure panel opens from the configured side.
+        const position =
+          $root.attr("data-offcanvas-position") ||
+          ($panel.hasClass("me-nav-v2__offcanvas--left") ? "left" : "right");
+        $panel
+          .removeClass("me-nav-v2__offcanvas--left me-nav-v2__offcanvas--right")
+          .addClass("me-nav-v2__offcanvas--" + position);
+
         $panel.addClass("is-open").attr("aria-hidden", "false");
         $overlay.prop("hidden", false).addClass("is-open");
         $("body").addClass("me-nav-v2-offcanvas-open");
@@ -345,9 +355,59 @@ import "./../scss/nav_menu_v2.scss";
             e.preventDefault();
             $root
               .find(".menu-item-has-children, .menu-item-has-mega")
-              .removeClass("is-touch-open");
-            $li.addClass("is-touch-open");
+              .removeClass("is-touch-open is-mega-open");
+            $li.addClass("is-touch-open is-mega-open");
           }
+        });
+    },
+
+    /**
+     * Keep mega menu open while moving mouse from item → panel.
+     * CSS :hover alone fails when there is an offset/gap.
+     */
+    bindMegaMenus: function ($root) {
+      if (!$root.hasClass("me-nav-v2--mega")) {
+        return;
+      }
+
+      const $items = $root.find(".me-nav-v2__desktop-nav .menu-item-has-mega");
+      if (!$items.length) {
+        return;
+      }
+
+      let closeTimer = null;
+
+      const openMega = function ($li) {
+        clearTimeout(closeTimer);
+        $items.not($li).removeClass("is-mega-open");
+        $li.addClass("is-mega-open");
+      };
+
+      const scheduleClose = function ($li) {
+        clearTimeout(closeTimer);
+        closeTimer = setTimeout(function () {
+          $li.removeClass("is-mega-open");
+        }, 220);
+      };
+
+      $items
+        .off("mouseenter.meNavV2Mega mouseleave.meNavV2Mega")
+        .on("mouseenter.meNavV2Mega", function () {
+          openMega($(this));
+        })
+        .on("mouseleave.meNavV2Mega", function () {
+          scheduleClose($(this));
+        });
+
+      // Also keep open while hovering the mega panel itself.
+      $items
+        .find("> .magic-elements-mega-menu-content")
+        .off("mouseenter.meNavV2MegaPanel mouseleave.meNavV2MegaPanel")
+        .on("mouseenter.meNavV2MegaPanel", function () {
+          openMega($(this).closest(".menu-item-has-mega"));
+        })
+        .on("mouseleave.meNavV2MegaPanel", function () {
+          scheduleClose($(this).closest(".menu-item-has-mega"));
         });
     },
   };

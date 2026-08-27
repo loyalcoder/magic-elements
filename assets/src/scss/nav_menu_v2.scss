@@ -59,8 +59,21 @@
     justify-self: end;
   }
 
+  // Mobile offcanvas icon direction (left / right).
   &--mobile-icon-left &__mobile-toggle {
     order: -1;
+  }
+
+  &--mobile-icon-right &__mobile-toggle {
+    order: 20;
+  }
+
+  &--center.me-nav-v2--mobile-icon-left &__mobile-toggle {
+    justify-self: start;
+  }
+
+  &--center.me-nav-v2--mobile-icon-right &__mobile-toggle {
+    justify-self: end;
   }
 
   &__logo {
@@ -198,37 +211,50 @@
   // Mega menu panel
   &--mega {
     .magic-elements-mega-menu-content {
+      --me-mega-offset: 0px;
       position: absolute;
-      top: calc(100% + 0px);
+      top: 100%;
       left: 0;
       z-index: 60;
-      background: #fff;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
-      opacity: 0;
       visibility: hidden;
       pointer-events: none;
-      transform: translateY(10px);
-      transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
-      padding: 24px;
       min-width: 320px;
+      // Visual gap without breaking hover path (shell does not animate).
+      border-top: var(--me-mega-offset) solid transparent;
 
-      // Keep the hover path connected while the panel animates into place.
+      // Keep pointer connected from menu item into the panel.
       &::before {
         content: '';
         position: absolute;
-        top: -10px;
+        top: calc(-1 * var(--me-mega-offset) - 8px);
         left: 0;
         right: 0;
-        height: 10px;
+        height: calc(var(--me-mega-offset) + 8px);
       }
     }
 
+    .magic-elements-mega-menu-inner {
+      background: #fff;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+      padding: 24px;
+      opacity: 0;
+      transform: translateY(14px);
+      transition:
+        opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+
     .menu-item-has-mega:hover > .magic-elements-mega-menu-content,
+    .menu-item-has-mega.is-mega-open > .magic-elements-mega-menu-content,
     .menu-item-has-mega.is-touch-open > .magic-elements-mega-menu-content {
-      opacity: 1;
       visibility: visible;
       pointer-events: auto;
-      transform: translateY(0);
+
+      .magic-elements-mega-menu-inner {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     &.me-nav-v2--mega-full {
@@ -410,22 +436,26 @@
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.18);
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, visibility 0.3s ease;
     visibility: hidden;
     pointer-events: none;
     overflow: hidden;
 
     &--right {
+      left: auto;
       right: 0;
       transform: translateX(105%);
     }
 
     &--left {
+      right: auto;
       left: 0;
       transform: translateX(-105%);
     }
 
-    &.is-open {
+    &.is-open,
+    &--right.is-open,
+    &--left.is-open {
       visibility: visible;
       pointer-events: auto;
       transform: translateX(0);
@@ -575,8 +605,17 @@
       box-shadow: none !important;
       width: 100% !important;
       margin: 0 !important;
-      padding: 12px 0 !important;
+      padding: 0 !important;
+      border-top: 0 !important;
       display: none;
+    }
+
+    .magic-elements-mega-menu-inner {
+      opacity: 1 !important;
+      transform: none !important;
+      box-shadow: none !important;
+      padding: 12px 0 !important;
+      background: transparent !important;
     }
 
     .menu-item-has-mega.is-open > .magic-elements-mega-menu-content {

@@ -534,7 +534,7 @@ class Mbuilder_Frontend {
             return $item_output;
         }
 
-        return $item_output . '<div class="magic-elements-mega-menu-content">' . $mega_content . '</div>';
+        return $item_output . '<div class="magic-elements-mega-menu-content"><div class="magic-elements-mega-menu-inner">' . $mega_content . '</div></div>';
     }
     protected function get_display_id($template_id, $include_list, $exclude_list, $current_page){
 

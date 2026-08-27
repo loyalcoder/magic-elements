@@ -142,6 +142,12 @@ if ($show_cart) {
         .elementor-element-<?php echo esc_attr($widget_id); ?> .me-nav-v2__desktop-offcanvas-toggle {
             display: none !important;
         }
+        .elementor-element-<?php echo esc_attr($widget_id); ?> .me-nav-v2--center .me-nav-v2__inner {
+            display: flex !important;
+            grid-template-columns: none !important;
+            justify-content: space-between;
+            align-items: center;
+        }
     }
     @media screen and (min-width: <?php echo esc_attr((string) ($breakpoint + 1)); ?>px) {
         .elementor-element-<?php echo esc_attr($widget_id); ?> .me-nav-v2__mobile-toggle {
@@ -154,19 +160,9 @@ if ($show_cart) {
     class="<?php echo esc_attr(implode(' ', $header_classes)); ?>"
     data-widget-id="<?php echo esc_attr($widget_id); ?>"
     data-sticky="<?php echo $enable_sticky ? 'yes' : 'no'; ?>"
+    data-offcanvas-position="<?php echo esc_attr($offcanvas_pos); ?>"
 >
     <div class="me-nav-v2__inner">
-        <?php if ('left' === $mobile_icon_pos) : ?>
-            <button
-                type="button"
-                class="me-nav-v2__action me-nav-v2__mobile-toggle"
-                data-me-offcanvas-open="#<?php echo esc_attr($offcanvas_id); ?>"
-                aria-label="<?php echo esc_attr__('Open menu', 'magic-elements'); ?>"
-            >
-                <?php \Elementor\Icons_Manager::render_icon($settings['offcanvas_icon'], ['aria-hidden' => 'true']); ?>
-            </button>
-        <?php endif; ?>
-
         <?php if ('center' === $menu_layout) : ?>
             <div class="me-nav-v2__side me-nav-v2__side--left">
                 <nav class="me-nav-v2__nav me-nav-v2__nav--left me-nav-v2__desktop-nav" aria-label="<?php echo esc_attr__('Left menu', 'magic-elements'); ?>">
@@ -237,18 +233,16 @@ if ($show_cart) {
                     <?php \Elementor\Icons_Manager::render_icon($settings['offcanvas_icon'], ['aria-hidden' => 'true']); ?>
                 </button>
             <?php endif; ?>
-
-            <?php if ('right' === $mobile_icon_pos) : ?>
-                <button
-                    type="button"
-                    class="me-nav-v2__action me-nav-v2__mobile-toggle"
-                    data-me-offcanvas-open="#<?php echo esc_attr($offcanvas_id); ?>"
-                    aria-label="<?php echo esc_attr__('Open menu', 'magic-elements'); ?>"
-                >
-                    <?php \Elementor\Icons_Manager::render_icon($settings['offcanvas_icon'], ['aria-hidden' => 'true']); ?>
-                </button>
-            <?php endif; ?>
         </div>
+
+        <button
+            type="button"
+            class="me-nav-v2__action me-nav-v2__mobile-toggle"
+            data-me-offcanvas-open="#<?php echo esc_attr($offcanvas_id); ?>"
+            aria-label="<?php echo esc_attr__('Open menu', 'magic-elements'); ?>"
+        >
+            <?php \Elementor\Icons_Manager::render_icon($settings['offcanvas_icon'], ['aria-hidden' => 'true']); ?>
+        </button>
     </div>
 
     <?php if ($show_search) : ?>

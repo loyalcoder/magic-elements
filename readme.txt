@@ -16,14 +16,15 @@ Enhance Elementor with advanced widgets, templates, and features for customizabl
 
 ### Features:
 - A collection of unique and powerful Elementor widgets.
-- Header & Footer Builder for full-site layout control.
+- Header, Footer & Mega Menu Builder for full-site layout control.
+- Attach Mega Menu templates to WordPress nav menu items.
 - Pre-designed templates to kickstart your designs.
 - Easy-to-use interface with seamless integration.
 - Fully responsive and optimized for performance.
 
 ### Elementor Widgets Included
 
-Magic Elements ships with a focused library of **28 Elementor widgets**, covering content, marketing, navigation, and layout use‑cases:
+Magic Elements ships with a focused library of **Elementor widgets**, covering content, marketing, navigation, and layout use-cases:
 
 - ✅ **Image** – Flexible image widget with full style controls.
 - ✅ **Button** – Modern buttons with icon, hover, and alignment options.
@@ -53,6 +54,7 @@ Magic Elements ships with a focused library of **28 Elementor widgets**, coverin
 - ✅ **Progress Bar** – Animated progress/skill bars with percentage.
 - ✅ **Multi Step** – Multi-step wizard/flow with steps, content, and completion popup.
 - ✅ **Nav Menu** – Custom header navigation menu with logo, search, and mega-menu ready structure.
+- ✅ **Nav Menu V2** – Advanced navigation with logo, AJAX search, cart, off-canvas, sticky header, and Mega Menu support.
 
 Elevate your Elementor experience and create visually stunning websites with ease.
 
@@ -99,8 +101,17 @@ You can reach out via our [support page](https://loyalcoder.com/support).
 == Changelog ==
 
 = 1.0.5 =
+* Added Mega Menu builder type (active/inactive, no display conditions).
+* Added Mega Menu template selection on WordPress nav menu items.
+* Improved Nav Menu V2 mobile off-canvas icon left/right positioning.
+* Improved Mega Menu hover behavior with slide + fade animation.
 * Improved header/footer builder condition priority (selective singular, include vs exclude, entire site).
+* WordPress coding standards cleanup for layout templates.
 * Internal code cleanup and cache handling for builder templates.
+* Tested up to WordPress 7.1.
+
+= 1.0.4 =
+* Previous stable release on WordPress.org.
 
 = 1.0.3 =
 * Added Header & Footer Builder to feature set.
@@ -108,10 +119,11 @@ You can reach out via our [support page](https://loyalcoder.com/support).
 
 = 1.0.0 =  
 * Initial release with core features.
+
 == Upgrade Notice ==
 
 = 1.0.5 =
-Improved builder template condition logic (selective singular and include/exclude priority). Tested with WordPress 6.9.
+Mega Menu builder, Nav Menu V2 improvements, and builder condition fixes. Tested with WordPress 7.1.
 
 = 1.0.3 =
 Header & Footer Builder, security and guideline compliance. Tested with WordPress 6.9.
