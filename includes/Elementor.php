@@ -25,6 +25,39 @@ class Load_Elementor
         add_action('elementor/widgets/widgets_registered', [$this, 'register_widgets']);
         add_action('elementor/editor/after_enqueue_scripts', [$this, 'custom_elementor_scripts']);
         add_action('wp_enqueue_scripts', [$this, 'style_register']);
+        add_action('admin_init', [$this, 'maybe_enable_new_widgets']);
+    }
+
+    /**
+     * One-time enable newly added widgets in saved option.
+     */
+    public function maybe_enable_new_widgets()
+    {
+        $seed_key = 'magic_elements_widgets_seed_v2';
+        if (get_option($seed_key)) {
+            return;
+        }
+
+        $enabled = get_option('magic_elements_enabled_widgets', []);
+        if (!is_array($enabled)) {
+            $enabled = [];
+        }
+
+        $new_widgets = ['magicnav'];
+        $changed     = false;
+
+        foreach ($new_widgets as $widget_key) {
+            if (!in_array($widget_key, $enabled, true)) {
+                $enabled[] = $widget_key;
+                $changed   = true;
+            }
+        }
+
+        if ($changed) {
+            update_option('magic_elements_enabled_widgets', $enabled);
+        }
+
+        update_option($seed_key, 1);
     }
 
 
@@ -190,7 +223,17 @@ class Load_Elementor
             'emkit-nav-menu' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/nav_menu.js',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/nav_menu.js'),
-                'deps'    => ['jquery']
+                'deps'    => ['jquery', 'elementor-frontend']
+            ],
+            'emkit-magic-nav' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/magic_nav.js',
+                'version' => file_exists(MAGIC_ELEMENTS_PATH . '/assets/dist/magic_nav.js') ? filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/magic_nav.js') : MAGIC_ELEMENTS_VERSION,
+                'deps'    => ['jquery', 'elementor-frontend']
+            ],
+            'emkit-hero-slider' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/hero_slider.js',
+                'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/hero_slider.js'),
+                'deps'    => ['jquery', 'slick']
             ],
             'emkit-nav-menu-v2' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/nav_menu_v2.js',
@@ -208,6 +251,7 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/js/youtube-feed.js',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/js/youtube-feed.js'),
             ],
+        
         ];
     }
     /**
@@ -334,6 +378,15 @@ class Load_Elementor
                     ? filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/nav_menu_v2.css')
                     : MAGIC_ELEMENTS_VERSION,
             ],
+            'emk-magic-nav' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/magic_nav.css',
+                'version' => file_exists(MAGIC_ELEMENTS_PATH . '/assets/dist/magic_nav.css') ? filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/magic_nav.css') : MAGIC_ELEMENTS_VERSION,
+            ],
+            'emk-hero-slider' => [
+                'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/hero_slider.css',
+                'version' => file_exists(MAGIC_ELEMENTS_PATH . '/assets/dist/hero_slider.css') ? filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/hero_slider.css') : MAGIC_ELEMENTS_VERSION,
+            ],
+            ],
             'emk-image-slider' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/image_slider.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/image_slider.css'),
@@ -383,8 +436,11 @@ class Load_Elementor
             'Multi_Step',
             'Nav_Menu',
             'Nav_Menu_V2',
+            'Magic_Nav',
+            'Hero_Slider',
             'YouTube_Feed',
             'Image_Slider',
+        
         ];
     }
     public static function defaultWidgets()
@@ -419,8 +475,11 @@ class Load_Elementor
             'multi_step',
             'navmenu',
             'navmenuv2',
+            'magicnav',
+            'heroslider',
             'youtubefeed',
             'imageslider',
+        
         ];
     }
     /**
