@@ -58,7 +58,6 @@ const baseConfig = {
         './assets/src/scss/hero_slider.scss',
         './assets/src/js/hero_slider.js',
     ],
-    ],
     image_slider: [
         './assets/src/scss/image_slider.scss',
         './assets/src/js/image_slider.js',

@@ -1,3 +1,8 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+?>
 <div class="multiple-button-wrapper">
     <?php 
     if ($settings['button_list']) {
@@ -21,7 +26,7 @@
             ?>
             <div class="bt-item">
                 <div class="btn-item-wrapper">
-                    <a <?php echo $this->get_render_attribute_string($link_key); ?>>
+                    <a <?php $this->print_render_attribute_string($link_key); ?>>
                         <span class="btn-icon">
                         <?php 
                         // Display icon if it exists

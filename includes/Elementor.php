@@ -386,7 +386,6 @@ class Load_Elementor
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/hero_slider.css',
                 'version' => file_exists(MAGIC_ELEMENTS_PATH . '/assets/dist/hero_slider.css') ? filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/hero_slider.css') : MAGIC_ELEMENTS_VERSION,
             ],
-            ],
             'emk-image-slider' => [
                 'src'     => MAGIC_ELEMENTS_ASSETS . '/dist/image_slider.css',
                 'version' => filemtime(MAGIC_ELEMENTS_PATH . '/assets/dist/image_slider.css'),

@@ -1,3 +1,114 @@
-.toggle-switch{position:relative;display:inline-flex;align-items:center;margin-right:10px;vertical-align:middle}.toggle-switch input{opacity:0;width:0;height:0;display:none}.toggle-slider{position:relative;display:inline-block;width:40px;height:22px;cursor:pointer;background-color:#ccc;transition:.4s;border-radius:22px;margin-right:10px}.toggle-slider:before{position:absolute;content:"";height:16px;width:16px;left:3px;bottom:3px;background-color:#fff;transition:.4s;border-radius:50%}input:checked+.toggle-slider{background-color:#2196f3}input:checked+.toggle-slider:before{transform:translateX(18px)}.widget-row{display:inline-block;margin-right:20px;margin-bottom:15px;padding:8px 10px;background:#f8f9fa;border-radius:20px;box-shadow:0 1px 3px rgba(0,0,0,.1)}.widget-label{font-size:13px;font-weight:500;cursor:pointer}.form-group{margin-top:20px}.bulk-actions{margin-bottom:20px}.bulk-action-button{background:#fff;border:1px solid #ddd;padding:5px 15px;border-radius:15px;cursor:pointer;margin-right:10px}.bulk-action-button:hover{background:#f8f9fa}.toast{position:fixed;top:50px;right:20px;padding:15px 25px;background:#4caf50;color:#fff;border-radius:5px;display:none;z-index:9999;animation:slideIn .5s,fadeOut .5s 2.5s}@keyframes slideIn{from{transform:translateX(100%)}to{transform:translateX(0)}}@keyframes fadeOut{from{opacity:1}to{opacity:0}}
+/*!**********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/admin/admin.scss ***!
+  \**********************************************************************************************************************/
+.toggle-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.toggle-slider {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+  cursor: pointer;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 22px;
+  margin-right: 10px;
+}
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+  background-color: #2196F3;
+}
+input:checked + .toggle-slider:before {
+  transform: translateX(18px);
+}
+
+.widget-row {
+  display: inline-block;
+  margin-right: 20px;
+  margin-bottom: 15px;
+  padding: 8px 10px;
+  background: #f8f9fa;
+  border-radius: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.widget-label {
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-top: 20px;
+}
+
+.bulk-actions {
+  margin-bottom: 20px;
+}
+
+.bulk-action-button {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 5px 15px;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.bulk-action-button:hover {
+  background: #f8f9fa;
+}
+
+.toast {
+  position: fixed;
+  top: 50px;
+  right: 20px;
+  padding: 15px 25px;
+  background: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  display: none;
+  z-index: 9999;
+  animation: slideIn 0.5s, fadeOut 0.5s 2.5s;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 
 /*# sourceMappingURL=admin.min.css.map*/

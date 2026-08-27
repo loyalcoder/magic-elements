@@ -11,7 +11,13 @@
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-    <?php wp_body_open(); ?>
+    <?php
+    if ( function_exists( 'wp_body_open' ) ) {
+        wp_body_open();
+    } else {
+        do_action( 'wp_body_open' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Core compatibility hook.
+    }
+    ?>
 <?php do_action('magic_builder_header_content', get_the_ID());  ?>
  <?php if (function_exists('astra_get_option')) : ?>
     <div id="content" class="site-content">

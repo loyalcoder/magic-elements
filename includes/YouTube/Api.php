@@ -378,7 +378,7 @@ class Api {
 	public static function clear_cache() {
 		global $wpdb;
 
-		$wpdb->query(
+		$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Purges this plugin's transient rows by prefix.
 			$wpdb->prepare(
 				"DELETE FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s",
 				$wpdb->esc_like( '_transient_myf_' ) . '%',

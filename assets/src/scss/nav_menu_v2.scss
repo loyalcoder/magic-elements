@@ -211,6 +211,16 @@
       transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
       padding: 24px;
       min-width: 320px;
+
+      // Keep the hover path connected while the panel animates into place.
+      &::before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: 0;
+        right: 0;
+        height: 10px;
+      }
     }
 
     .menu-item-has-mega:hover > .magic-elements-mega-menu-content,

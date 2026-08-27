@@ -71,15 +71,11 @@ class Nav_Menu_V2_Ajax
         }
 
         $post_types = [];
-        if (isset($_POST['post_types'])) {
-            $raw = wp_unslash($_POST['post_types']);
-            if (is_string($raw)) {
-                $decoded = json_decode($raw, true);
-                $raw     = is_array($decoded) ? $decoded : explode(',', $raw);
-            }
-            if (is_array($raw)) {
-                $post_types = array_values(array_filter(array_map('sanitize_key', $raw)));
-            }
+        if (isset($_POST['post_types']) && is_string($_POST['post_types'])) {
+            $raw     = sanitize_text_field(wp_unslash($_POST['post_types']));
+            $decoded = json_decode($raw, true);
+            $raw     = is_array($decoded) ? $decoded : explode(',', $raw);
+            $post_types = array_values(array_filter(array_map('sanitize_key', $raw)));
         }
 
         if (empty($post_types)) {

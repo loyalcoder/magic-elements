@@ -2,7 +2,7 @@
 Contributors: loyalcoder  
 Tags: elementor, elementor widgets, elementor templates, page builder, addons  
 Requires at least: 5.0  
-Tested up to: 6.9  
+Tested up to: 7.1
 Requires PHP: 7.0  
 Stable tag: 1.0.5  
 License: GPL v3 or later  
