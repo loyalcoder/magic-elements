@@ -3,6 +3,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Layout template variables from widget include scope.
+
 $id = 'em-multi-step-wizard-' . $this->get_id();
 $active_step = $settings['active_step'] - 1; // Convert to 0-based index
 

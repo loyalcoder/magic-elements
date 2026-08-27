@@ -2,6 +2,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
+
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Layout template variables from widget include scope.
 ?>
 <div class="multiple-button-wrapper">
     <?php 

@@ -14,6 +14,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Layout template variables from widget include scope.
 ?>
 <?php if ( 'layout-one' === $header_layout ) { ?>
 <header class="magic-header magic-header-layout-one <?php echo ( 'yes' === $settings['enable_sticky'] ) ? 'is-sticky' : ''; ?>">

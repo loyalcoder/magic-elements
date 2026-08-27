@@ -10,6 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Layout template variables from widget include scope.
+
 $menu_slug      = ! empty( $settings['menu_select'] ) ? $settings['menu_select'] : '';
 $layout         = ! empty( $settings['menu_layout'] ) ? $settings['menu_layout'] : 'horizontal';
 $hover_effect   = ! empty( $settings['hover_effect'] ) ? $settings['hover_effect'] : 'underline';

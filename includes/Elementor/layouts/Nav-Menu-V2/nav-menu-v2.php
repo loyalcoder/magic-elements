@@ -10,6 +10,8 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Layout template variables from widget include scope.
+
 $widget_id          = $this->get_id();
 $menu_layout        = !empty($settings['menu_layout']) ? $settings['menu_layout'] : 'default';
 $show_logo          = isset($settings['show_logo']) && 'yes' === $settings['show_logo'];

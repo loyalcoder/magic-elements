@@ -8,7 +8,7 @@
  * Author:            LoyalCoder
  * Author URI:        https://loyalcoders.com
  * Requires at least: 5.0
- * Tested up to:      6.9
+ * Tested up to:      7.1
  * Requires Plugins:  elementor
  * Requires PHP:      7.0
  * Text Domain:       magic-elements
