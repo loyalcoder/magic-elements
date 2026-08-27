@@ -46,6 +46,10 @@ const baseConfig = {
         './assets/src/scss/nav_menu.scss',
         './assets/src/js/nav_menu.js',
     ],
+    nav_menu_v2: [
+        './assets/src/scss/nav_menu_v2.scss',
+        './assets/src/js/nav_menu_v2.js',
+    ],
     image_slider: [
         './assets/src/scss/image_slider.scss',
         './assets/src/js/image_slider.js',
