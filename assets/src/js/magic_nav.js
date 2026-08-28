@@ -25,10 +25,33 @@ import "./../scss/magic_nav.scss";
       const ns = "emkitMagicNav." + scopeId;
       const breakpoint = parseInt($root.data("breakpoint"), 10) || 1023;
       const $toggle = $root.find(".magic-nav__toggle");
-      const $panel = $root.find(".magic-nav__panel");
-      const $backdrop = $root.find(".magic-nav__backdrop");
-      const $close = $root.find(".magic-nav__close");
+      let $panel = $root.find(".magic-nav__panel");
+      let $backdrop = $root.find(".magic-nav__backdrop");
+      let $close = $root.find(".magic-nav__close");
       const isVertical = $root.hasClass("magic-nav--vertical");
+      const $existingPortal = $(".magic-nav-portal[data-magic-nav-scope='" + scopeId + "']");
+
+      // Escape Elementor overflow/transform stacking so the panel overlays page content.
+      if ($panel.length) {
+        $existingPortal.remove();
+        const $portal = $("<div/>", {
+          class: [
+            "magic-nav-portal",
+            "elementor-element-" + scopeId,
+            $root.hasClass("magic-nav--panel-left") ? "magic-nav--panel-left" : "magic-nav--panel-right",
+          ].join(" "),
+          "data-magic-nav-scope": scopeId,
+        });
+        $portal.appendTo(document.body);
+        $portal.append($panel);
+        if ($backdrop.length) {
+          $portal.append($backdrop);
+        }
+      } else if ($existingPortal.length) {
+        $panel = $existingPortal.find(".magic-nav__panel");
+        $backdrop = $existingPortal.find(".magic-nav__backdrop");
+        $close = $existingPortal.find(".magic-nav__close");
+      }
 
       const isMobile = function () {
         return window.matchMedia("(max-width: " + breakpoint + "px)").matches;
@@ -86,7 +109,8 @@ import "./../scss/magic_nav.scss";
 
       // Submenu toggle: mobile panel always; vertical layout always; placeholder links on desktop.
       $root
-        .find(".magic-nav__menu .menu-item-has-children > a, .magic-nav__mobile-menu .menu-item-has-children > a")
+        .find(".magic-nav__menu .menu-item-has-children > a")
+        .add($panel.find(".magic-nav__mobile-menu .menu-item-has-children > a"))
         .off("click." + ns)
         .on("click." + ns, function (event) {
           const link = this;
