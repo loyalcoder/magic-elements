@@ -251,12 +251,14 @@
 		transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.35s ease;
 	}
 
-	&--panel-right .magic-nav__panel {
+	&--panel-right .magic-nav__panel,
+	&__panel--right {
 		right: 0;
 		transform: translateX(105%);
 	}
 
-	&--panel-left .magic-nav__panel {
+	&--panel-left .magic-nav__panel,
+	&__panel--left {
 		left: 0;
 		transform: translateX(-105%);
 	}
@@ -345,6 +347,15 @@
 			display: none !important;
 		}
 	}
+}
+
+.magic-nav-portal {
+	position: relative;
+	z-index: 100000;
+}
+
+.elementor-widget-em_kit_magic_nav {
+	overflow: visible;
 }
 
 body.magic-nav-open {
