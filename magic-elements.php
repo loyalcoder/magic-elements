@@ -8,7 +8,7 @@
  * Author:            LoyalCoder
  * Author URI:        https://loyalcoders.com
  * Requires at least: 5.0
- * Tested up to:      6.9
+ * Tested up to:      7.1
  * Requires Plugins:  elementor
  * Requires PHP:      7.0
  * Text Domain:       magic-elements
@@ -104,12 +104,33 @@ final class Magic_Elements
 
         new MagicElements\Assets();
         new MagicElements\Load_Elementor();
+        new MagicElements\Frontend\Nav_Menu_V2_Ajax();
         new MagicElements\MBuilder\Ctp();
         $builder_frontend = new MagicElements\MBuilder\Mbuilder_Frontend();
         $builder_frontend->init();
+        $this->ensure_nav_menu_v2_enabled();
         if (is_admin()) {
             new MagicElements\Admin();
             new MagicElements\YouTube\Settings();
+        }
+    }
+
+    /**
+     * Ensure Nav Menu V2 is enabled for existing installs.
+     *
+     * @return void
+     */
+    private function ensure_nav_menu_v2_enabled()
+    {
+        $enabled_widgets = get_option('magic_elements_enabled_widgets', []);
+
+        if (!is_array($enabled_widgets)) {
+            $enabled_widgets = MagicElements\Load_Elementor::defaultWidgets();
+        }
+
+        if (!in_array('navmenuv2', $enabled_widgets, true)) {
+            $enabled_widgets[] = 'navmenuv2';
+            update_option('magic_elements_enabled_widgets', $enabled_widgets);
         }
     }
 

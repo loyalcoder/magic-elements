@@ -15,6 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Layout template variables from widget include scope.
+
 $mobile_menu_id       = 'magic-mobile-menu-' . $this->get_id();
 $mobile_menu_label_id = 'magic-mobile-menu-label-' . $this->get_id();
 

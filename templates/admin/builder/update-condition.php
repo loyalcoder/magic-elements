@@ -53,10 +53,10 @@ if ( ! empty( $condition ) ) {
                     $pt_label = $pt_obj ? $pt_obj->labels->name : $post_type_value;
                     $all_text = sprintf(
                         /* translators: %s: post type label, e.g. Posts, Pages. */
-                        esc_html__( 'All %s', 'magic-elements' ),
-                        esc_html( $pt_label )
+                        __( 'All %s', 'magic-elements' ),
+                        $pt_label
                     );
-                    echo '<option value="__all__" selected>' . $all_text . '</option>';
+                    echo '<option value="__all__" selected>' . esc_html( $all_text ) . '</option>';
                 }
                 foreach ( $post_ids_value as $pid ) {
                     $pid = (int) $pid;

@@ -1,3 +1,10 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+  exit;
+}
+
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Layout template variables from widget include scope.
+?>
 <div class="me-team-wrapper">
   <div class="team-card">
     <div class="img-part">
@@ -36,7 +43,7 @@
                     $hover_animation = ' elementor-animation-' . $item['icon_hover_animation'];
                 }
                 ?>
-                <a <?php echo $this->get_render_attribute_string($link_key); ?> class="elementor-repeater-item-<?php echo esc_attr($item['_id']); ?><?php echo esc_attr($hover_animation); ?>">
+                <a <?php $this->print_render_attribute_string($link_key); ?> class="elementor-repeater-item-<?php echo esc_attr($item['_id']); ?><?php echo esc_attr($hover_animation); ?>">
                     <?php \Elementor\Icons_Manager::render_icon($item['social_icon'], ['aria-hidden' => 'true']); ?>
                 </a>
             <?php endforeach; ?>

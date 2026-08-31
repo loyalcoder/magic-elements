@@ -46,6 +46,10 @@ const baseConfig = {
         './assets/src/scss/nav_menu.scss',
         './assets/src/js/nav_menu.js',
     ],
+    nav_menu_v2: [
+        './assets/src/scss/nav_menu_v2.scss',
+        './assets/src/js/nav_menu_v2.js',
+    ],
     magic_nav: [
         './assets/src/scss/magic_nav.scss',
         './assets/src/js/magic_nav.js',
@@ -57,6 +61,10 @@ const baseConfig = {
     image_slider: [
         './assets/src/scss/image_slider.scss',
         './assets/src/js/image_slider.js',
+    ],
+    team: [
+        './assets/src/scss/team.scss',
+        './assets/src/js/team.js',
     ],
 
     // 2) SCSS ONLY (no JS file mentioned):

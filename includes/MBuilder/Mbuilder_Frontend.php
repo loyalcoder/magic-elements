@@ -443,6 +443,7 @@ class Mbuilder_Frontend {
         $selected_template = (int) get_post_meta($item_id, '_me_mega_menu_template_id', true);
         ?>
         <p class="description-wide me-mega-menu-field">
+            <?php wp_nonce_field('magic_elements_save_mega_menu', 'magic_elements_mega_menu_nonce'); ?>
             <label for="edit-menu-item-mega-template-<?php echo esc_attr((string) $item_id); ?>">
                 <?php echo esc_html__('Mega Menu Template', 'magic-elements'); ?><br>
                 <select id="edit-menu-item-mega-template-<?php echo esc_attr((string) $item_id); ?>" class="widefat code edit-menu-item-custom" name="menu-item-mega-template[<?php echo esc_attr((string) $item_id); ?>]">
@@ -471,9 +472,13 @@ class Mbuilder_Frontend {
             return;
         }
 
+        if (empty($_POST['magic_elements_mega_menu_nonce']) || !is_string($_POST['magic_elements_mega_menu_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['magic_elements_mega_menu_nonce'])), 'magic_elements_save_mega_menu')) {
+            return;
+        }
+
         $template_id = 0;
-        if (isset($_POST['menu-item-mega-template'][$menu_item_db_id])) {
-            $template_id = absint(wp_unslash($_POST['menu-item-mega-template'][$menu_item_db_id]));
+        if (isset($_POST['menu-item-mega-template'][$menu_item_db_id]) && is_scalar($_POST['menu-item-mega-template'][$menu_item_db_id])) {
+            $template_id = absint(sanitize_text_field(wp_unslash($_POST['menu-item-mega-template'][$menu_item_db_id])));
         }
 
         $valid_template_ids = array_map(
@@ -529,7 +534,7 @@ class Mbuilder_Frontend {
             return $item_output;
         }
 
-        return $item_output . '<div class="magic-elements-mega-menu-content">' . $mega_content . '</div>';
+        return $item_output . '<div class="magic-elements-mega-menu-content"><div class="magic-elements-mega-menu-inner">' . $mega_content . '</div></div>';
     }
     protected function get_display_id($template_id, $include_list, $exclude_list, $current_page){
 

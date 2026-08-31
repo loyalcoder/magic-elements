@@ -124,8 +124,9 @@ class Team extends Widget_Base
                 'type'    => \Elementor\Controls_Manager::SELECT,
                 'default' => 'style_one',
                 'options' => [
-                    'style_one' => esc_html__('Style One', 'magic-elements'),
-                    'style_two' => esc_html__('Style Two', 'magic-elements'),
+                    'style_one'   => esc_html__('Style One', 'magic-elements'),
+                    'style_two'   => esc_html__('Style Two', 'magic-elements'),
+                    'style_three' => esc_html__('Style Three', 'magic-elements'),
                 ],
             ]
         );
@@ -713,8 +714,9 @@ $this->end_controls_section();
                 'type'    => \Elementor\Controls_Manager::SELECT,
                 'default' => 'style_one',
                 'options' => [
-                    'style_one' => esc_html__('Style One', 'magic-elements'),
-                    'style_two' => esc_html__('Style Two', 'magic-elements'),
+                    'style_one'   => esc_html__('Style One', 'magic-elements'),
+                    'style_two'   => esc_html__('Style Two', 'magic-elements'),
+                    'style_three' => esc_html__('Style Three', 'magic-elements'),
                 ],
             ]
         );
@@ -1383,6 +1385,10 @@ $this->end_controls_section();
         switch ($layout_style) {
             case 'style_two': 
                 $file_path .= 'team_style_two.php';
+                break;
+
+            case 'style_three':
+                $file_path .= 'team_style_three.php';
                 break;
 
             case 'style_one': 

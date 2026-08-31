@@ -1,33 +1,3 @@
-/*!********************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/team.scss ***!
-  \********************************************************************************************************************/
-.team-card .img-part {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  z-index: 2;
-}
-.team-card .magic-team-social-icons {
-  display: flex;
-}
-.team-card .magic-team-social-icons a {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.team-card .style-two-img-part {
-  position: relative;
-  overflow: hidden;
-}
-.team-card .style-two-img-part .img-overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-}
-.team-card .style-two-img-part .icon-part {
-  position: absolute;
-}
+.team-card .img-part{display:flex;justify-content:center;position:relative;z-index:2}.team-card .magic-team-social-icons{display:flex}.team-card .magic-team-social-icons a{position:relative;display:flex;justify-content:center;align-items:center}.team-card .style-two-img-part{position:relative;overflow:hidden}.team-card .style-two-img-part .img-overlay{position:absolute;bottom:0;width:100%;height:100%}.team-card .style-two-img-part .icon-part{position:absolute}.me-team-style-three .team-card{display:flex;flex-direction:column;align-items:stretch;background:#fff;border:1px solid #e5e7eb;overflow:hidden;width:100%}.me-team-style-three .img-part{width:100%;margin:0;padding:0;line-height:0}.me-team-style-three .img-part img{display:block;width:100%;height:auto;object-fit:cover}.me-team-style-three .content-part{text-align:center;padding:22px 20px 8px}.me-team-style-three .team-title{margin:0 0 8px;padding:0;color:#111;font-size:22px;font-weight:700;line-height:1.35}.me-team-style-three .team-des{margin:0;padding:0;color:#8a8a8a;font-size:15px;font-weight:400;line-height:1.45}.me-team-style-three .icon-part{display:flex;justify-content:center;padding:16px 20px 24px}.me-team-style-three .magic-team-social-icons{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px}.me-team-style-three .magic-team-social-icons a{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background-color:#8e8e8e;color:#fff;text-decoration:none;transition:background-color .2s ease,transform .2s ease}.me-team-style-three .magic-team-social-icons a svg{width:16px;height:16px;fill:currentColor}.me-team-style-three .magic-team-social-icons a i{font-size:16px;line-height:1;color:inherit}.me-team-style-three .magic-team-social-icons a:hover{background-color:#6f6f6f;transform:translateY(-2px)}
 
 /*# sourceMappingURL=team.min.css.map*/
