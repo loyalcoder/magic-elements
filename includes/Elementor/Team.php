@@ -120,13 +120,13 @@ class Team extends Widget_Base
         $this->add_control(
             'team_card_layout_style',
             [
-                'label'   => esc_html__('Style', 'magic-elements'),
+                'label'   => esc_html__('Layout Style', 'magic-elements'),
                 'type'    => \Elementor\Controls_Manager::SELECT,
                 'default' => 'style_one',
                 'options' => [
                     'style_one'   => esc_html__('Style One', 'magic-elements'),
                     'style_two'   => esc_html__('Style Two', 'magic-elements'),
-                    'style_three' => esc_html__('Style Three', 'magic-elements'),
+                    'style_three' => esc_html__('Style Three (Profile Card)', 'magic-elements'),
                 ],
             ]
         );
@@ -705,19 +705,6 @@ $this->end_controls_section();
             [
                 'label' => esc_html__( 'Card Design', 'magic-elements' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
-            ]
-        );
-         $this->add_control(
-            'card_layout_styles',
-            [
-                'label'   => esc_html__('Style', 'magic-elements'),
-                'type'    => \Elementor\Controls_Manager::SELECT,
-                'default' => 'style_one',
-                'options' => [
-                    'style_one'   => esc_html__('Style One', 'magic-elements'),
-                    'style_two'   => esc_html__('Style Two', 'magic-elements'),
-                    'style_three' => esc_html__('Style Three', 'magic-elements'),
-                ],
             ]
         );
         $this->add_control(
