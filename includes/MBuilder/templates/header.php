@@ -18,7 +18,9 @@
         do_action( 'wp_body_open' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Core compatibility hook.
     }
     ?>
+<div class="me-builder-header">
 <?php do_action('magic_builder_header_content', get_the_ID());  ?>
+</div>
  <?php if (function_exists('astra_get_option')) : ?>
     <div id="content" class="site-content">
         <div class="ast-container">

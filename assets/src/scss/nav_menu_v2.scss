@@ -13,6 +13,9 @@
     width: 100%;
     z-index: 9999;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  &.is-sticky-enabled.is-sticky.is-sticky-animated {
     animation: meNavV2StickyFade 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -716,5 +719,11 @@ body.me-nav-v2-offcanvas-open {
   }
   to {
     transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .me-nav-v2.is-sticky-enabled.is-sticky.is-sticky-animated {
+    animation: none;
   }
 }

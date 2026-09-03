@@ -45,6 +45,8 @@ class Mbuilder_Frontend {
         add_action('get_header', [$this, 'replace_header']);
         // replace footer 
         add_action('get_footer', [$this, 'replace_footer']);
+        add_action('wp_enqueue_scripts', [$this, 'enqueue_builder_assets'], 20);
+        add_action('wp_head', [$this, 'print_nav_critical_css'], 7);
         add_action('magic_builder_header_content', [$this,'header_builder_put_content']);
         add_action('magic_builder_footer_content', [$this,'footer_builder_put_content']);
         // Clear cache on builder updates
@@ -140,6 +142,84 @@ class Mbuilder_Frontend {
         locate_template($templates, true);
         ob_get_clean();
     }
+
+    /**
+     * Load header/footer CSS in wp_head so nav is not unstyled while footer assets load.
+     *
+     * @return void
+     */
+    public function enqueue_builder_assets(): void
+    {
+        if ($this->should_skip_builder_replacement() || !class_exists('\Elementor\Plugin')) {
+            return;
+        }
+
+        $header_id = $this->get_active_id('header');
+        $footer_id = $this->get_active_id('footer');
+
+        if (!$header_id && !$footer_id) {
+            return;
+        }
+
+        \Elementor\Plugin::$instance->frontend->enqueue_styles();
+
+        foreach ([$header_id, $footer_id] as $document_id) {
+            $document_id = (int) $document_id;
+            if ($document_id > 0) {
+                $this->enqueue_elementor_document_css($document_id);
+            }
+        }
+
+        wp_enqueue_style('emk-nav-menu');
+        wp_enqueue_style('emk-nav-menu-v2');
+        wp_enqueue_style('emk-magic-nav');
+        wp_enqueue_style('elementor-icons');
+        wp_enqueue_style('elementor-icons-fa-solid');
+        wp_enqueue_style('elementor-icons-fa-regular');
+        wp_enqueue_style('elementor-icons-fa-brands');
+    }
+
+    /**
+     * Enqueue a published Elementor document stylesheet.
+     *
+     * @param int $post_id Template post ID.
+     * @return void
+     */
+    protected function enqueue_elementor_document_css(int $post_id): void
+    {
+        if (!class_exists('\Elementor\Core\Files\CSS\Post')) {
+            return;
+        }
+
+        $css_file = \Elementor\Core\Files\CSS\Post::create($post_id);
+        if ($css_file) {
+            $css_file->enqueue();
+        }
+    }
+
+    /**
+     * Tiny first-paint CSS so menus are not a stacked list before the stylesheet arrives.
+     *
+     * @return void
+     */
+    public function print_nav_critical_css(): void
+    {
+        if ($this->should_skip_builder_replacement()) {
+            return;
+        }
+
+        if (!$this->get_active_id('header')) {
+            return;
+        }
+
+        $css = '.me-builder-header .elementor-invisible{visibility:visible!important;opacity:1!important}'
+            . '.magic-nav__menu,.me-nav-v2__menu,.magic-menu .nav-menu-left>ul,.magic-menu .nav-menu-right>ul,.magic-menu .nav-menu-center>ul,.cnw-nav{display:flex;align-items:center;flex-wrap:wrap;list-style:none;margin:0;padding:0}'
+            . '.magic-nav__panel:not(.is-open),.magic-nav__backdrop:not(.is-open),.mobile-menu-panel:not(.is-open),.mobile-menu-backdrop:not(.is-open),.me-nav-v2__offcanvas:not(.is-open),.me-nav-v2__overlay:not(.is-open),.magic-elements-mega-menu-content{visibility:hidden}'
+            . '.magic-nav__toggle-wrap{display:none}';
+
+        echo '<style id="magic-elements-nav-critical">' . $css . '</style>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Hardcoded CSS.
+    }
+
     /**
      * Output header builder content
      *
@@ -152,8 +232,9 @@ class Mbuilder_Frontend {
             return false;
         }
         if (class_exists('\Elementor\Plugin')) {
+            // CSS is enqueued in wp_head via enqueue_builder_assets() to avoid FOUC.
             // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor get_builder_content_for_display() returns safe builder HTML.
-            echo \Elementor\Plugin::instance()->frontend->get_builder_content_for_display($active_header_id, true);
+            echo \Elementor\Plugin::instance()->frontend->get_builder_content_for_display($active_header_id, false);
         }
     }
     public function footer_builder_put_content()
@@ -639,18 +720,21 @@ class Mbuilder_Frontend {
         return false;
     }
     /**
-     * Get current page type
+     * Get current page context for builder display conditions.
      *
-     * @param object $obj Query object
-     * @return string|int|bool
+     * @return array{
+     *     type: string,
+     *     post_id: int|null,
+     *     post_type: string|null,
+     *     taxonomy: string|null,
+     *     term_id: int|null,
+     *     term_slug: string|null,
+     *     archive_pt: string|null,
+     *     terms?: array<int, array<string, mixed>>
+     * }
      */
-    /**
-     * Get current page identifier for condition matching (string or singular post ID).
-     *
-     * @param object $obj Queried object.
-     * @return string|int|false
-     */
-    public function get_current_page(){
+    public function get_current_page(): array
+    {
 
         global $post;
     

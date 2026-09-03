@@ -518,5 +518,10 @@ class Load_Elementor
             $version = isset($style['version']) ? $style['version'] : MAGIC_ELEMENTS_VERSION;
             wp_register_style($handle, $style['src'], $deps, $version);
         }
+
+        // Header nav CSS must be in <head>. Widget style_depends() enqueue too late (after header HTML).
+        wp_enqueue_style('emk-nav-menu');
+        wp_enqueue_style('emk-nav-menu-v2');
+        wp_enqueue_style('emk-magic-nav');
     }
 }
