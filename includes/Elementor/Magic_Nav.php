@@ -787,9 +787,9 @@ class Magic_Nav extends Widget_Base {
 					'px' => [ 'min' => 6, 'max' => 30 ],
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .magic-submenu-icon' => 'font-size: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .magic-submenu-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .magic-submenu-icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+					$this->mn_offcanvas_selector( '{{WRAPPER}} .magic-submenu-icon' ) => 'font-size: {{SIZE}}{{UNIT}};',
+					$this->mn_offcanvas_selector( '{{WRAPPER}} .magic-submenu-icon i' ) => 'font-size: {{SIZE}}{{UNIT}};',
+					$this->mn_offcanvas_selector( '{{WRAPPER}} .magic-submenu-icon svg' ) => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -800,9 +800,9 @@ class Magic_Nav extends Widget_Base {
 				'label'     => esc_html__( 'Icon Color', 'magic-elements' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .magic-submenu-icon' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .magic-submenu-icon i' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .magic-submenu-icon svg' => 'fill: {{VALUE}}; color: {{VALUE}};',
+					$this->mn_offcanvas_selector( '{{WRAPPER}} .magic-submenu-icon' ) => 'color: {{VALUE}};',
+					$this->mn_offcanvas_selector( '{{WRAPPER}} .magic-submenu-icon i' ) => 'color: {{VALUE}};',
+					$this->mn_offcanvas_selector( '{{WRAPPER}} .magic-submenu-icon svg' ) => 'fill: {{VALUE}}; color: {{VALUE}};',
 				],
 			]
 		);
@@ -830,7 +830,7 @@ class Magic_Nav extends Widget_Base {
 				],
 				'selectors'  => [
 					'{{WRAPPER}} .magic-nav__menu li.menu-item-has-children > a' => 'gap: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .magic-nav__mobile-menu li.menu-item-has-children > a' => 'gap: {{SIZE}}{{UNIT}};',
+					$this->mn_offcanvas_selector( '{{WRAPPER}} .magic-nav__mobile-menu li.menu-item-has-children > a' ) => 'gap: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -961,7 +961,7 @@ class Magic_Nav extends Widget_Base {
 					'size' => 320,
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .magic-nav__panel' => 'width: {{SIZE}}{{UNIT}};',
+					$this->mn_offcanvas_selector( '{{WRAPPER}} .magic-nav__panel' ) => 'width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -971,7 +971,7 @@ class Magic_Nav extends Widget_Base {
 			[
 				'name'     => 'mn_panel_bg',
 				'types'    => [ 'classic', 'gradient' ],
-				'selector' => '{{WRAPPER}} .magic-nav__panel',
+				'selector' => $this->mn_offcanvas_selector( '{{WRAPPER}} .magic-nav__panel' ),
 			]
 		);
 
@@ -982,7 +982,7 @@ class Magic_Nav extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', 'rem' ],
 				'selectors'  => [
-					'{{WRAPPER}} .magic-nav__panel' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					$this->mn_offcanvas_selector( '{{WRAPPER}} .magic-nav__panel' ) => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -994,7 +994,7 @@ class Magic_Nav extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => 'rgba(0,0,0,0.45)',
 				'selectors' => [
-					'{{WRAPPER}} .magic-nav__backdrop' => 'background-color: {{VALUE}};',
+					$this->mn_offcanvas_selector( '{{WRAPPER}} .magic-nav__backdrop' ) => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1014,8 +1014,8 @@ class Magic_Nav extends Widget_Base {
 				'label'     => esc_html__( 'Color', 'magic-elements' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .magic-nav__close' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .magic-nav__close svg' => 'fill: {{VALUE}}; color: {{VALUE}};',
+					$this->mn_offcanvas_selector( '{{WRAPPER}} .magic-nav__close' ) => 'color: {{VALUE}};',
+					$this->mn_offcanvas_selector( '{{WRAPPER}} .magic-nav__close svg' ) => 'fill: {{VALUE}}; color: {{VALUE}};',
 				],
 			]
 		);
@@ -1026,8 +1026,8 @@ class Magic_Nav extends Widget_Base {
 				'label'     => esc_html__( 'Hover Color', 'magic-elements' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .magic-nav__close:hover' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .magic-nav__close:hover svg' => 'fill: {{VALUE}}; color: {{VALUE}};',
+					$this->mn_offcanvas_selector( '{{WRAPPER}} .magic-nav__close:hover' ) => 'color: {{VALUE}};',
+					$this->mn_offcanvas_selector( '{{WRAPPER}} .magic-nav__close:hover svg' ) => 'fill: {{VALUE}}; color: {{VALUE}};',
 				],
 			]
 		);
@@ -1042,8 +1042,8 @@ class Magic_Nav extends Widget_Base {
 					'px' => [ 'min' => 12, 'max' => 40 ],
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .magic-nav__close' => 'font-size: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .magic-nav__close svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+					$this->mn_offcanvas_selector( '{{WRAPPER}} .magic-nav__close' ) => 'font-size: {{SIZE}}{{UNIT}};',
+					$this->mn_offcanvas_selector( '{{WRAPPER}} .magic-nav__close svg' ) => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -1061,7 +1061,7 @@ class Magic_Nav extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'mn_mobile_item_typography',
-				'selector' => '{{WRAPPER}} .magic-nav__mobile-menu > li > a',
+				'selector' => $this->mn_offcanvas_selector( '{{WRAPPER}} .magic-nav__mobile-menu > li > a' ),
 			]
 		);
 
@@ -1071,7 +1071,7 @@ class Magic_Nav extends Widget_Base {
 				'label'     => esc_html__( 'Color', 'magic-elements' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .magic-nav__mobile-menu > li > a' => 'color: {{VALUE}};',
+					$this->mn_offcanvas_selector( '{{WRAPPER}} .magic-nav__mobile-menu > li > a' ) => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -1082,7 +1082,7 @@ class Magic_Nav extends Widget_Base {
 				'label'     => esc_html__( 'Hover Color', 'magic-elements' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .magic-nav__mobile-menu > li > a:hover' => 'color: {{VALUE}};',
+					$this->mn_offcanvas_selector( '{{WRAPPER}} .magic-nav__mobile-menu > li > a:hover' ) => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -1093,7 +1093,7 @@ class Magic_Nav extends Widget_Base {
 				'label'     => esc_html__( 'Divider Color', 'magic-elements' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .magic-nav__mobile-menu > li > a' => 'border-bottom-color: {{VALUE}};',
+					$this->mn_offcanvas_selector( '{{WRAPPER}} .magic-nav__mobile-menu > li > a' ) => 'border-bottom-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1105,7 +1105,7 @@ class Magic_Nav extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em' ],
 				'selectors'  => [
-					'{{WRAPPER}} .magic-nav__mobile-menu > li > a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					$this->mn_offcanvas_selector( '{{WRAPPER}} .magic-nav__mobile-menu > li > a' ) => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1125,7 +1125,7 @@ class Magic_Nav extends Widget_Base {
 				'label'     => esc_html__( 'Color', 'magic-elements' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .magic-nav__mobile-menu .sub-menu a' => 'color: {{VALUE}};',
+					$this->mn_offcanvas_selector( '{{WRAPPER}} .magic-nav__mobile-menu .sub-menu a' ) => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -1134,7 +1134,7 @@ class Magic_Nav extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'mn_mobile_submenu_typography',
-				'selector' => '{{WRAPPER}} .magic-nav__mobile-menu .sub-menu a',
+				'selector' => $this->mn_offcanvas_selector( '{{WRAPPER}} .magic-nav__mobile-menu .sub-menu a' ),
 			]
 		);
 
@@ -1143,7 +1143,7 @@ class Magic_Nav extends Widget_Base {
 			[
 				'name'     => 'mn_mobile_submenu_bg',
 				'types'    => [ 'classic', 'gradient' ],
-				'selector' => '{{WRAPPER}} .magic-nav__mobile-menu .sub-menu',
+				'selector' => $this->mn_offcanvas_selector( '{{WRAPPER}} .magic-nav__mobile-menu .sub-menu' ),
 			]
 		);
 
@@ -1158,7 +1158,7 @@ class Magic_Nav extends Widget_Base {
 				],
 				'separator'  => 'before',
 				'selectors'  => [
-					'{{WRAPPER}} .magic-nav__panel-logo img' => 'width: {{SIZE}}{{UNIT}};',
+					$this->mn_offcanvas_selector( '{{WRAPPER}} .magic-nav__panel-logo img' ) => 'width: {{SIZE}}{{UNIT}};',
 				],
 				'condition'  => [
 					'mobile_menu_logo[url]!' => '',
@@ -1167,6 +1167,31 @@ class Magic_Nav extends Widget_Base {
 		);
 
 		$this->end_controls_section();
+	}
+
+	/**
+	 * Selectors that still match after the mobile panel is moved to document.body.
+	 *
+	 * @param string $selector Selector using {{WRAPPER}}.
+	 * @return string
+	 */
+	protected function mn_offcanvas_selector( $selector ) {
+		$parts    = array_map( 'trim', explode( ',', $selector ) );
+		$expanded = [];
+
+		foreach ( $parts as $part ) {
+			if ( '' === $part ) {
+				continue;
+			}
+
+			$expanded[] = $part;
+
+			if ( false !== strpos( $part, '{{WRAPPER}}' ) ) {
+				$expanded[] = str_replace( '{{WRAPPER}}', '.magic-nav-portal.elementor-element-{{ID}}', $part );
+			}
+		}
+
+		return implode( ', ', array_unique( $expanded ) );
 	}
 
 	/**

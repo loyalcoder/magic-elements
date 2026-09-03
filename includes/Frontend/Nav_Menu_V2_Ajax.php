@@ -38,7 +38,7 @@ class Nav_Menu_V2_Ajax
      * @param int      $depth   Depth.
      * @return string[]
      */
-    public function mega_menu_item_class($classes, $item, $args, $depth): array
+    public function mega_menu_item_class($classes, $item, $args, $depth = 0): array
     {
         if ((int) $depth > 0) {
             return $classes;
@@ -144,11 +144,16 @@ class Nav_Menu_V2_Ajax
      */
     public function cart_count_fragment($fragments): array
     {
-        if (!function_exists('WC') || !WC()->cart) {
+        if (!function_exists('WC')) {
             return $fragments;
         }
 
-        $count = (int) WC()->cart->get_cart_contents_count();
+        $woocommerce = \WC();
+        if (!$woocommerce || !$woocommerce->cart) {
+            return $fragments;
+        }
+
+        $count = (int) $woocommerce->cart->get_cart_contents_count();
         $fragments['span.me-nav-v2-cart-count'] = '<span class="me-nav-v2-cart-count"' . ($count < 1 ? ' style="display:none"' : '') . '>' . esc_html((string) $count) . '</span>';
 
         return $fragments;

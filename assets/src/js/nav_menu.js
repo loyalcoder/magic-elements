@@ -8,7 +8,7 @@ import "./../scss/nav_menu.scss"
     };
 
     const bindStickyShadow = function ($header, scopeId) {
-      if (!$header || !$header.length || !$header.hasClass('is-sticky')) {
+      if (!$header || !$header.length || !$header.hasClass('is-sticky-enabled')) {
         return;
       }
       if ($header.data('meStickyShadowBound')) {
@@ -30,6 +30,85 @@ import "./../scss/nav_menu.scss"
       document.addEventListener('scroll', updateStickyShadow, { passive: true, capture: true });
       updateStickyShadow();
     };
+
+    const bindStickyHeader = function ($header, scopeId) {
+      if (!$header || !$header.length || !$header.hasClass('is-sticky-enabled')) {
+        return;
+      }
+      if ($header.data('meStickyHeaderBound')) {
+        bindStickyShadow($header, scopeId);
+        return;
+      }
+      $header.data('meStickyHeaderBound', true);
+
+      const spacerClass = 'magic-header__sticky-spacer';
+      let $spacer = $header.next('.' + spacerClass);
+      if (!$spacer.length) {
+        $spacer = $('<div class="' + spacerClass + '" aria-hidden="true"></div>');
+        $header.after($spacer);
+      }
+
+      $header.parents('.elementor-widget-container, .elementor-element, .elementor-section, .e-con, .e-con-inner').css('overflow', 'visible');
+
+      let triggerOffset = 0;
+      let stickyReady = false;
+
+      const measureTrigger = function () {
+        const wasSticky = $header.hasClass('is-sticky');
+        if (wasSticky) {
+          $header.removeClass('is-sticky');
+          $spacer.css({ display: 'none', height: '0px' });
+        }
+        triggerOffset = Math.max(0, Math.floor($header.offset().top));
+        if (wasSticky) {
+          $header.addClass('is-sticky');
+        }
+      };
+
+      const syncSpacer = function () {
+        if ($header.hasClass('is-sticky')) {
+          $spacer.css({
+            display: 'block',
+            height: $header.outerHeight() + 'px',
+          });
+        } else {
+          $spacer.css({
+            display: 'none',
+            height: '0px',
+          });
+        }
+      };
+
+      const onScroll = function () {
+        const shouldStick = getScrollY() > triggerOffset;
+        const isSticky = $header.hasClass('is-sticky');
+        if (shouldStick !== isSticky) {
+          $header.toggleClass('is-sticky', shouldStick);
+          if (stickyReady && shouldStick) {
+            $header.addClass('is-sticky-animated');
+          }
+          if (!shouldStick) {
+            $header.removeClass('is-sticky-animated');
+          }
+          syncSpacer();
+        }
+        stickyReady = true;
+      };
+
+      measureTrigger();
+      onScroll();
+
+      const ns = (scopeId || $header[0].id || 'global');
+      $(window).off('scroll.emkitNavSticky.' + ns).on('scroll.emkitNavSticky.' + ns, onScroll);
+      $(window).off('resize.emkitNavSticky.' + ns).on('resize.emkitNavSticky.' + ns, function () {
+        measureTrigger();
+        onScroll();
+        syncSpacer();
+      });
+
+      bindStickyShadow($header, scopeId);
+    };
+
   
     let emkElementor = {
       onInit: function () {
@@ -159,8 +238,8 @@ import "./../scss/nav_menu.scss"
             }
           });
 
-          // Sticky header: show shadow only after scroll
-          bindStickyShadow($root, $scope.data('id'));
+          // Sticky header: stick after scroll, shadow only after scroll.
+          bindStickyHeader($root, $scope.data('id'));
 
           // Apps fullscreen offcanvas (Layout Four)
           const $appsTrigger = $root.find('.open-apps-offcanvas');
@@ -268,8 +347,8 @@ import "./../scss/nav_menu.scss"
         didInitHooks = true;
       }
       // Fallback for headers already in DOM (theme builder / cached markup).
-      $('.magic-header.is-sticky').each(function () {
-        bindStickyShadow($(this), 'fallback');
+      $('.magic-header.is-sticky-enabled').each(function () {
+        bindStickyHeader($(this), 'fallback');
       });
       return true;
     };

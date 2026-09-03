@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Layout template variables from widget include scope.
 ?>
 <?php if ( 'layout-one' === $header_layout ) { ?>
-<header class="magic-header magic-header-layout-one <?php echo ( 'yes' === $settings['enable_sticky'] ) ? 'is-sticky' : ''; ?>">
+<header class="magic-header magic-header-layout-one <?php echo ( 'yes' === $settings['enable_sticky'] ) ? 'is-sticky-enabled' : ''; ?>">
 	<div class="container magic-menu">
 		<div class="mid-point flex items-center justify-center">
 			<nav class="nav-menu-left">
@@ -92,7 +92,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</div>
 </header>
 <?php } elseif ( 'layout-two' === $header_layout ) { ?>
-<header class="magic-header magic-header-layout-two <?php echo ( 'yes' === $settings['enable_sticky'] ) ? 'is-sticky' : ''; ?>">
+<header class="magic-header magic-header-layout-two <?php echo ( 'yes' === $settings['enable_sticky'] ) ? 'is-sticky-enabled' : ''; ?>">
 	<div class="container magic-menu">
 		<div class="mid-point flex items-center justify-center">
 			<nav class="nav-menu-left">
@@ -147,7 +147,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</div>
 </header>
 <?php } elseif ( 'layout-three' === $header_layout ) { ?>
-<header class="magic-header magic-header-layout-three <?php echo ( 'yes' === $settings['enable_sticky'] ) ? 'is-sticky' : ''; ?>">
+<header class="magic-header magic-header-layout-three <?php echo ( 'yes' === $settings['enable_sticky'] ) ? 'is-sticky-enabled' : ''; ?>">
 	<div class="container magic-menu">
 		<div class="layout-three-left">
 			<?php if ( ! empty( $settings['logo']['url'] ) ) : ?>
@@ -193,7 +193,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</div>
 </header>
 <?php } elseif ( 'layout-four' === $header_layout ) { ?>
-<header class="magic-header magic-header-layout-four <?php echo ( 'yes' === $settings['enable_sticky'] ) ? 'is-sticky' : ''; ?>">
+<header class="magic-header magic-header-layout-four <?php echo ( 'yes' === $settings['enable_sticky'] ) ? 'is-sticky-enabled' : ''; ?>">
 	<div class="container magic-menu layout-four-menu">
 		<div class="layout-four-brand">
 			<?php if ( ! empty( $settings['logo']['url'] ) ) : ?>

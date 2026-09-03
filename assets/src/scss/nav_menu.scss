@@ -1,36 +1,43 @@
 //Sticky Header SCSS
 .elementor-widget-em_kit_nav_menu {
-    overflow: hidden;
+    overflow: visible;
 }
 
 .magic-header {
     position: relative;
     z-index: 2002;
-    overflow: hidden;
+    overflow: visible;
 
-    &.is-sticky {
-        position: sticky;
+    &.is-sticky-enabled.is-sticky {
+        position: fixed;
         top: 0;
         left: 0;
-        transition: all 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        width: 100%;
+        z-index: 2003;
 
         .magic-menu {
             padding: 12px 0;
         }
     }
+
+    &.is-sticky-enabled.is-sticky.is-sticky-animated {
+        animation: stickyFade 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 }
+
+.magic-header__sticky-spacer {
+    display: none;
+    width: 100%;
+    height: 0;
+    pointer-events: none;
+}
+
 /* Shadow only after scroll (class toggled via JS). !important beats theme overrides on live. */
-.magic-header.is-sticky:not(.is-scrolled) {
+.magic-header.is-sticky-enabled.is-sticky:not(.is-scrolled) {
     box-shadow: none !important;
 }
-.magic-header.is-sticky.is-scrolled {
+.magic-header.is-sticky-enabled.is-sticky.is-scrolled {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08) !important;
-}
-.magic-header.is-sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    animation: stickyFade 0.35s cubic-bezier(0.4,0,0.2,1);
 }
 
 @keyframes stickyFade {
@@ -39,6 +46,12 @@
     }
     to {
         transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .magic-header.is-sticky-enabled.is-sticky {
+        animation: none;
     }
 }
 

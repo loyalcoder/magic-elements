@@ -54,6 +54,7 @@ import "./../scss/nav_menu_v2.scss";
       $parents.css("overflow", "visible");
 
       let triggerOffset = 0;
+      let stickyReady = false;
 
       const measureTrigger = function () {
         // Measure natural position while not fixed.
@@ -87,12 +88,17 @@ import "./../scss/nav_menu_v2.scss";
         const shouldStick = window.scrollY > triggerOffset;
         const isSticky = $root.hasClass("is-sticky");
 
-        if (shouldStick === isSticky) {
-          return;
+        if (shouldStick !== isSticky) {
+          $root.toggleClass("is-sticky", shouldStick);
+          if (stickyReady && shouldStick) {
+            $root.addClass("is-sticky-animated");
+          }
+          if (!shouldStick) {
+            $root.removeClass("is-sticky-animated");
+          }
+          syncSpacer();
         }
-
-        $root.toggleClass("is-sticky", shouldStick);
-        syncSpacer();
+        stickyReady = true;
       };
 
       measureTrigger();
