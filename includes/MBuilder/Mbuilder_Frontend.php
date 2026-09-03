@@ -226,7 +226,8 @@ class Mbuilder_Frontend {
     }
 
     /**
-     * Load shared Elementor/plugin styles for active header/footer.
+     * Load Elementor + document CSS in <head> for active header/footer (and mega menus).
+     * Avoids invalid <style> tags inside body builder markup.
      *
      * @return void
      */
@@ -238,8 +239,9 @@ class Mbuilder_Frontend {
 
         $header_id = $this->get_active_id('header');
         $footer_id = $this->get_active_id('footer');
+        $mega_ids  = $this->get_active_mega_menu_template_ids();
 
-        if (!$header_id && !$footer_id) {
+        if (!$header_id && !$footer_id && empty($mega_ids)) {
             return;
         }
 
@@ -253,6 +255,62 @@ class Mbuilder_Frontend {
         wp_enqueue_style('emk-nav-menu');
         wp_enqueue_style('emk-nav-menu-v2');
         wp_enqueue_style('emk-magic-nav');
+
+        foreach (array_filter(array_merge([(int) $header_id, (int) $footer_id], $mega_ids)) as $document_id) {
+            $this->enqueue_elementor_document_css((int) $document_id);
+        }
+    }
+
+    /**
+     * Enqueue one Elementor document stylesheet for output in <head>.
+     *
+     * @param int $post_id Template post ID.
+     * @return void
+     */
+    protected function enqueue_elementor_document_css(int $post_id): void
+    {
+        if ($post_id <= 0 || !class_exists('\Elementor\Core\Files\CSS\Post')) {
+            return;
+        }
+
+        $css_file = \Elementor\Core\Files\CSS\Post::create($post_id);
+        if (!$css_file) {
+            return;
+        }
+
+        $meta   = method_exists($css_file, 'get_meta') ? $css_file->get_meta() : [];
+        $status = isset($meta['status']) ? (string) $meta['status'] : '';
+        $path   = method_exists($css_file, 'get_path') ? (string) $css_file->get_path() : '';
+
+        // Rebuild only when CSS cache is missing/empty (not on every page view).
+        if ($status === '' || $status === 'empty' || ($path !== '' && !is_readable($path) && $status === 'file')) {
+            $css_file->update();
+        }
+
+        $css_file->enqueue();
+    }
+
+    /**
+     * Published mega menu template IDs (for head CSS enqueue).
+     *
+     * @return array<int>
+     */
+    protected function get_active_mega_menu_template_ids(): array
+    {
+        $templates = $this->get_active_mega_menu_templates();
+        if (empty($templates) || !is_array($templates)) {
+            return [];
+        }
+
+        $ids = [];
+        foreach ($templates as $template) {
+            $id = isset($template['ID']) ? (int) $template['ID'] : 0;
+            if ($id > 0) {
+                $ids[] = $id;
+            }
+        }
+
+        return $ids;
     }
 
     /**
@@ -333,8 +391,7 @@ class Mbuilder_Frontend {
     }
 
     /**
-     * Render builder HTML with Elementor CSS printed inline.
-     * Dequeues the external post-*.css handle so the browser does not fetch a second stylesheet.
+     * Render builder HTML only. Document CSS is enqueued in <head> (valid HTML, no FOUC).
      *
      * @param int $post_id Template post ID.
      * @return string
@@ -344,10 +401,8 @@ class Mbuilder_Frontend {
             return '';
         }
 
-        $content = \Elementor\Plugin::instance()->frontend->get_builder_content_for_display( $post_id, true );
-
-        // with_css already inlined styles; drop the external file enqueue to avoid an extra HTTP request.
-        wp_dequeue_style( 'elementor-post-' . $post_id );
+        // with_css=false: do not dump <style> inside body/div (HTML validator error).
+        $content = \Elementor\Plugin::instance()->frontend->get_builder_content_for_display( $post_id, false );
 
         return is_string( $content ) ? $content : '';
     }
