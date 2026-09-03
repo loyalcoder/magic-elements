@@ -18,6 +18,8 @@ class Installer
     {
         $this->add_version();
         $this->register_elementor_cpt_support();
+        // Elementor may not be loaded during activation — regenerate CSS on next init.
+        update_option( 'magic_elements_needs_builder_css_regen', '1' );
         // CPT rewrite must be flushed so Elementor preview URLs resolve (avoid 404).
         flush_rewrite_rules();
     }

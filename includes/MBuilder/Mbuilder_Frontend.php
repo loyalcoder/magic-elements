@@ -22,6 +22,13 @@ class Mbuilder_Frontend {
     private static $_instance = null;
 
     /**
+     * Request-level cache for active header/footer IDs.
+     *
+     * @var array<string, int|false>
+     */
+    private $active_id_cache = [];
+
+    /**
      * Get singleton instance
      *
      * @return self
@@ -51,10 +58,70 @@ class Mbuilder_Frontend {
         add_action('magic_builder_footer_content', [$this,'footer_builder_put_content']);
         // Clear cache on builder updates
         add_action('save_post_me_builder', [$this, 'clear_builder_cache']);
+        add_action('init', [$this, 'maybe_regenerate_builder_css_after_activation'], 20);
         add_action('wp_nav_menu_item_custom_fields', [$this, 'add_mega_menu_nav_fields'], 10, 5);
         add_action('wp_update_nav_menu_item', [$this, 'save_mega_menu_nav_fields'], 10, 3);
         add_filter('wp_setup_nav_menu_item', [$this, 'setup_mega_menu_nav_item']);
         add_filter('walker_nav_menu_start_el', [$this, 'render_mega_menu_content'], 10, 4);
+    }
+
+    /**
+     * After plugin activation, rebuild Elementor CSS for all builder templates.
+     * Deferred to init so Elementor is loaded (not available during activation hook).
+     *
+     * @return void
+     */
+    public function maybe_regenerate_builder_css_after_activation(): void
+    {
+        if ( '1' !== (string) get_option( 'magic_elements_needs_builder_css_regen', '' ) ) {
+            return;
+        }
+
+        if ( ! class_exists( '\Elementor\Core\Files\CSS\Post' ) ) {
+            return;
+        }
+
+        self::regenerate_all_builder_css();
+        delete_option( 'magic_elements_needs_builder_css_regen' );
+    }
+
+    /**
+     * Regenerate Elementor CSS files for all published me_builder templates.
+     *
+     * @return void
+     */
+    public static function regenerate_all_builder_css(): void
+    {
+        if ( ! class_exists( '\Elementor\Core\Files\CSS\Post' ) ) {
+            return;
+        }
+
+        $template_ids = get_posts(
+            [
+                'post_type'              => 'me_builder',
+                'post_status'            => 'publish',
+                'posts_per_page'         => -1,
+                'fields'                 => 'ids',
+                'no_found_rows'          => true,
+                'update_post_meta_cache' => false,
+                'update_post_term_cache' => false,
+            ]
+        );
+
+        if ( empty( $template_ids ) || ! is_array( $template_ids ) ) {
+            return;
+        }
+
+        foreach ( $template_ids as $template_id ) {
+            $template_id = (int) $template_id;
+            if ( $template_id <= 0 ) {
+                continue;
+            }
+            $css_file = \Elementor\Core\Files\CSS\Post::create( $template_id );
+            if ( $css_file ) {
+                $css_file->update();
+            }
+        }
     }
 
     /**
@@ -64,8 +131,18 @@ class Mbuilder_Frontend {
      * @return void
      */
     public function clear_builder_cache($post_id) {
-        if (get_post_type($post_id) === 'me_builder') {
-            $this->delete_builder_cache();
+        if (get_post_type($post_id) !== 'me_builder') {
+            return;
+        }
+
+        $this->delete_builder_cache();
+
+        // Rebuild Elementor CSS for this template so frontend does not render unstyled.
+        if (class_exists('\Elementor\Core\Files\CSS\Post')) {
+            $css_file = \Elementor\Core\Files\CSS\Post::create((int) $post_id);
+            if ($css_file) {
+                $css_file->update();
+            }
         }
     }
 
@@ -131,12 +208,17 @@ class Mbuilder_Frontend {
 
         $footer_id = $this->get_active_id('footer');
         
-        if ($footer_id == '') {
+        if ( ! $footer_id ) {
             return false;
         }
+
+        // Used by footer.php to close Astra wrappers opened by the header builder.
+        $header_id = $this->get_active_id('header');
+
         include __DIR__. '/templates/footer.php';
         $templates   = [];
         $templates[] = 'footer.php';
+        // Keep wp_footer callbacks that already ran; only neutralize a second theme footer pass.
         remove_all_actions('wp_footer');
         ob_start();
         locate_template($templates, true);
@@ -144,7 +226,7 @@ class Mbuilder_Frontend {
     }
 
     /**
-     * Load header/footer CSS in wp_head so nav is not unstyled while footer assets load.
+     * Load shared Elementor/plugin styles for active header/footer.
      *
      * @return void
      */
@@ -163,42 +245,18 @@ class Mbuilder_Frontend {
 
         \Elementor\Plugin::$instance->frontend->enqueue_styles();
 
-        foreach ([$header_id, $footer_id] as $document_id) {
-            $document_id = (int) $document_id;
-            if ($document_id > 0) {
-                $this->enqueue_elementor_document_css($document_id);
-            }
-        }
-
-        wp_enqueue_style('emk-nav-menu');
-        wp_enqueue_style('emk-nav-menu-v2');
-        wp_enqueue_style('emk-magic-nav');
+        wp_enqueue_style('elementor-frontend');
         wp_enqueue_style('elementor-icons');
         wp_enqueue_style('elementor-icons-fa-solid');
         wp_enqueue_style('elementor-icons-fa-regular');
         wp_enqueue_style('elementor-icons-fa-brands');
+        wp_enqueue_style('emk-nav-menu');
+        wp_enqueue_style('emk-nav-menu-v2');
+        wp_enqueue_style('emk-magic-nav');
     }
 
     /**
-     * Enqueue a published Elementor document stylesheet.
-     *
-     * @param int $post_id Template post ID.
-     * @return void
-     */
-    protected function enqueue_elementor_document_css(int $post_id): void
-    {
-        if (!class_exists('\Elementor\Core\Files\CSS\Post')) {
-            return;
-        }
-
-        $css_file = \Elementor\Core\Files\CSS\Post::create($post_id);
-        if ($css_file) {
-            $css_file->enqueue();
-        }
-    }
-
-    /**
-     * Tiny first-paint CSS so menus are not a stacked list before the stylesheet arrives.
+     * Tiny first-paint CSS so menus / footer icon lists are not broken before stylesheets arrive.
      *
      * @return void
      */
@@ -208,16 +266,38 @@ class Mbuilder_Frontend {
             return;
         }
 
-        if (!$this->get_active_id('header')) {
+        $has_header = (bool) $this->get_active_id('header');
+        $has_footer = (bool) $this->get_active_id('footer');
+
+        if (!$has_header && !$has_footer) {
             return;
         }
 
-        $css = '.me-builder-header .elementor-invisible{visibility:visible!important;opacity:1!important}'
-            . '.magic-nav__menu,.me-nav-v2__menu,.magic-menu .nav-menu-left>ul,.magic-menu .nav-menu-right>ul,.magic-menu .nav-menu-center>ul,.cnw-nav{display:flex;align-items:center;flex-wrap:wrap;list-style:none;margin:0;padding:0}'
-            . '.magic-nav__panel:not(.is-open),.magic-nav__backdrop:not(.is-open),.mobile-menu-panel:not(.is-open),.mobile-menu-backdrop:not(.is-open),.me-nav-v2__offcanvas:not(.is-open),.me-nav-v2__overlay:not(.is-open),.magic-elements-mega-menu-content{visibility:hidden}'
-            . '.magic-nav__toggle-wrap{display:none}';
+        $css = '';
 
-        echo '<style id="magic-elements-nav-critical">' . $css . '</style>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Hardcoded CSS.
+        if ($has_header) {
+            $css .= '.me-builder-header .elementor-invisible{visibility:visible!important;opacity:1!important}'
+                . '.magic-nav__menu,.me-nav-v2__menu,.magic-menu .nav-menu-left>ul,.magic-menu .nav-menu-right>ul,.magic-menu .nav-menu-center>ul,.cnw-nav{display:flex;align-items:center;flex-wrap:wrap;list-style:none;margin:0;padding:0}'
+                . '.magic-nav__panel:not(.is-open),.magic-nav__backdrop:not(.is-open),.mobile-menu-panel:not(.is-open),.mobile-menu-backdrop:not(.is-open),.me-nav-v2__offcanvas:not(.is-open),.me-nav-v2__overlay:not(.is-open),.magic-elements-mega-menu-content{visibility:hidden}'
+                . '.magic-nav__toggle-wrap{display:none}';
+        }
+
+        if ($has_footer) {
+            // Prevent FOUC for Elementor icon-list / icon widgets in footer builder.
+            $css .= '.me-builder-footer .elementor-icon-list-items{list-style:none;margin:0;padding:0}'
+                . '.me-builder-footer .elementor-icon-list-item{display:flex;align-items:center;gap:8px;margin:0 0 8px}'
+                . '.me-builder-footer .elementor-icon-list-icon,'
+                . '.me-builder-footer .elementor-icon-list-icon i,'
+                . '.me-builder-footer .elementor-icon-list-icon svg{width:1em;height:1em;font-size:16px;line-height:1;flex:0 0 auto}'
+                . '.me-builder-footer .elementor-icon-list-icon svg{display:block;fill:currentColor}'
+                . '.me-builder-footer .elementor-widget-icon-list .elementor-icon-list-text{flex:1 1 auto}';
+        }
+
+        if ($css === '') {
+            return;
+        }
+
+        echo '<style id="magic-elements-builder-critical">' . $css . '</style>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Hardcoded CSS.
     }
 
     /**
@@ -228,26 +308,48 @@ class Mbuilder_Frontend {
     public function header_builder_put_content()
     {
         $active_header_id = $this->get_active_id('header');
-        if($active_header_id == ''){
+        if ( ! $active_header_id ) {
             return false;
         }
-        if (class_exists('\Elementor\Plugin')) {
-            // CSS is enqueued in wp_head via enqueue_builder_assets() to avoid FOUC.
+        if ( class_exists( '\Elementor\Plugin' ) ) {
             // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor get_builder_content_for_display() returns safe builder HTML.
-            echo \Elementor\Plugin::instance()->frontend->get_builder_content_for_display($active_header_id, false);
+            echo $this->render_builder_content( (int) $active_header_id );
         }
     }
+
     public function footer_builder_put_content()
     {
         $active_footer_id = $this->get_active_id('footer');
 
         if ( ! $active_footer_id ) {
             return false;
-        }        
-        if (class_exists('\Elementor\Plugin')) {
-            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor get_builder_content_for_display() returns safe builder HTML.
-            echo \Elementor\Plugin::instance()->frontend->get_builder_content_for_display($active_footer_id, false);
         }
+        if ( class_exists( '\Elementor\Plugin' ) ) {
+            echo '<div class="me-builder-footer">';
+            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor get_builder_content_for_display() returns safe builder HTML.
+            echo $this->render_builder_content( (int) $active_footer_id );
+            echo '</div>';
+        }
+    }
+
+    /**
+     * Render builder HTML with Elementor CSS printed inline.
+     * Dequeues the external post-*.css handle so the browser does not fetch a second stylesheet.
+     *
+     * @param int $post_id Template post ID.
+     * @return string
+     */
+    protected function render_builder_content( int $post_id ): string {
+        if ( $post_id <= 0 || ! class_exists( '\Elementor\Plugin' ) ) {
+            return '';
+        }
+
+        $content = \Elementor\Plugin::instance()->frontend->get_builder_content_for_display( $post_id, true );
+
+        // with_css already inlined styles; drop the external file enqueue to avoid an extra HTTP request.
+        wp_dequeue_style( 'elementor-post-' . $post_id );
+
+        return is_string( $content ) ? $content : '';
     }
     /**
      * Get active header/footer ID for current request (respects display conditions).
@@ -256,6 +358,11 @@ class Mbuilder_Frontend {
      * @return int|false Template post ID or false.
      */
     public function get_active_id($type = 'header'){
+        $type = (string) $type;
+        if (array_key_exists($type, $this->active_id_cache)) {
+            return $this->active_id_cache[$type];
+        }
+
         $args = [
             'post_type'      => 'me_builder',
             'post_status'    => 'publish',
@@ -279,6 +386,7 @@ class Mbuilder_Frontend {
         $result = $this->get_builder_templates($args);
 
         if ( empty( $result['templates'] ) || ! is_array( $result['templates'] ) ) {
+            $this->active_id_cache[ $type ] = false;
             return false;
         }
 
@@ -336,6 +444,7 @@ class Mbuilder_Frontend {
         }
 
         if ( empty( $candidates ) ) {
+            $this->active_id_cache[ $type ] = false;
             return false;
         }
 
@@ -349,7 +458,8 @@ class Mbuilder_Frontend {
             }
         );
 
-        return (int) $candidates[0]['id'];
+        $this->active_id_cache[ $type ] = (int) $candidates[0]['id'];
+        return $this->active_id_cache[ $type ];
     }
 
     /**
@@ -610,7 +720,7 @@ class Mbuilder_Frontend {
         if ($template_type !== 'mega_menu' || $template_status !== '1') {
             return $item_output;
         }
-        $mega_content = \Elementor\Plugin::instance()->frontend->get_builder_content_for_display($template_id, true);
+        $mega_content = $this->render_builder_content( $template_id );
         if (empty($mega_content)) {
             return $item_output;
         }
