@@ -76,6 +76,14 @@
     .nav-menu-right{
         z-index: 30;
     }
+    .mid-point{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
     .nav-menu-left,.nav-menu-right,.nav-menu-center{
         overflow: visible;
 
