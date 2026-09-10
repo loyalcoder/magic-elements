@@ -47,6 +47,8 @@ $mobile_menu_close_icon = ! empty( $settings['mobile_menu_close_icon']['value'] 
 <div
 	class="mobile-menu-panel"
 	id="<?php echo esc_attr( $mobile_menu_id ); ?>"
+	role="dialog"
+	aria-modal="true"
 	aria-labelledby="<?php echo esc_attr( $mobile_menu_label_id ); ?>"
 	aria-hidden="true"
 >
