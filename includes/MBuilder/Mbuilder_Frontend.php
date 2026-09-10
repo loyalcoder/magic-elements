@@ -320,24 +320,41 @@ class Mbuilder_Frontend {
      */
     public function print_nav_critical_css(): void
     {
-        if ($this->should_skip_builder_replacement()) {
+        if (is_admin() || $this->should_skip_builder_replacement()) {
             return;
         }
 
         $has_header = (bool) $this->get_active_id('header');
         $has_footer = (bool) $this->get_active_id('footer');
 
-        if (!$has_header && !$has_footer) {
-            return;
-        }
-
         $css = '';
 
+        // Always print nav rules: widget may sit in a page, not only the header builder.
+        $css .= '.elementor-widget-em_kit_nav_menu.elementor-invisible,'
+            . '.elementor-widget-em_kit_nav_menu_v2.elementor-invisible,'
+            . '.elementor-widget-em_kit_magic_nav.elementor-invisible,'
+            . '.me-builder-header .elementor-invisible{visibility:visible!important;opacity:1!important}'
+            . '.magic-header,.magic-menu,.magic-header .mid-point,.magic-header .layout-three-left,.magic-header .layout-four-menu,.me-nav-v2__inner,.magic-nav__desktop{display:flex;align-items:center;width:100%}'
+            . '.magic-menu,.magic-header .layout-four-menu{justify-content:space-between;gap:16px;flex-wrap:nowrap}'
+            . '.magic-header .mid-point{justify-content:center;flex:1 1 auto;min-width:0}'
+            . '.magic-menu-actions,.me-nav-v2__actions,.magic-header .layout-four-actions{display:inline-flex;align-items:center;gap:12px;flex-shrink:0}'
+            . '.magic-nav__menu,.me-nav-v2__menu,.magic-menu .nav-menu-left>ul,.magic-menu .nav-menu-right>ul,.magic-menu .nav-menu-center>ul,.cnw-nav{display:flex;align-items:center;flex-wrap:nowrap;list-style:none;margin:0;padding:0;gap:25px}'
+            . '.cnw-nav>li,.magic-nav__menu>li,.me-nav-v2__menu>li{position:relative;list-style:none;margin:0}'
+            . '.magic-header .cnw-nav>li>.sub-menu,.magic-nav .sub-menu,.me-nav-v2 .sub-menu{position:absolute;left:0;top:100%;min-width:180px;margin:0;padding:0;list-style:none;visibility:hidden;opacity:0;pointer-events:none;z-index:50}'
+            . '.magic-elements-mega-menu-content{position:absolute;visibility:hidden;pointer-events:none}'
+            . '.mobile-menu-panel,.mobile-menu-backdrop,.magic-nav__panel,.magic-nav__backdrop,.me-nav-v2__offcanvas,.me-nav-v2__overlay,.magic-apps-offcanvas,.search_block{position:fixed!important;z-index:10040}'
+            . '.mobile-menu-panel:not(.is-open),.mobile-menu-backdrop:not(.is-open),.magic-nav__panel:not(.is-open),.magic-nav__backdrop:not(.is-open),.me-nav-v2__offcanvas:not(.is-open),.me-nav-v2__overlay:not(.is-open),.magic-apps-offcanvas:not(.is-open),.search_block:not(.visible){inset:0;visibility:hidden!important;opacity:0;pointer-events:none!important;overflow:hidden}'
+            . '.mobile-menu-toggle,.magic-nav__toggle-wrap,.me-nav-v2__mobile-toggle{display:none}'
+            . '@media screen and (max-width:1023px){'
+            . '.magic-menu .nav-menu-left,.magic-menu .nav-menu-right,.magic-menu .nav-menu-center,.magic-nav--has-mobile .magic-nav__desktop{display:none!important}'
+            . '.mobile-menu-toggle,.magic-nav--has-mobile .magic-nav__toggle-wrap{display:inline-flex!important;align-items:center}'
+            . '}'
+            . '@media screen and (min-width:1024px){'
+            . '.mobile-menu-panel,.mobile-menu-backdrop,.mobile-menu-toggle{display:none!important}'
+            . '}';
+
         if ($has_header) {
-            $css .= '.me-builder-header .elementor-invisible{visibility:visible!important;opacity:1!important}'
-                . '.magic-nav__menu,.me-nav-v2__menu,.magic-menu .nav-menu-left>ul,.magic-menu .nav-menu-right>ul,.magic-menu .nav-menu-center>ul,.cnw-nav{display:flex;align-items:center;flex-wrap:wrap;list-style:none;margin:0;padding:0}'
-                . '.magic-nav__panel:not(.is-open),.magic-nav__backdrop:not(.is-open),.mobile-menu-panel:not(.is-open),.mobile-menu-backdrop:not(.is-open),.me-nav-v2__offcanvas:not(.is-open),.me-nav-v2__overlay:not(.is-open),.magic-elements-mega-menu-content{visibility:hidden}'
-                . '.magic-nav__toggle-wrap{display:none}';
+            $css .= '.me-builder-header{width:100%}';
         }
 
         if ($has_footer) {

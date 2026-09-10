@@ -24,7 +24,7 @@ class Load_Elementor
         add_action('elementor/elements/categories_registered', [$this, 'register_category']);
         add_action('elementor/widgets/widgets_registered', [$this, 'register_widgets']);
         add_action('elementor/editor/after_enqueue_scripts', [$this, 'custom_elementor_scripts']);
-        add_action('wp_enqueue_scripts', [$this, 'style_register']);
+        add_action('wp_enqueue_scripts', [$this, 'style_register'], 1);
         add_action('admin_init', [$this, 'maybe_enable_new_widgets']);
     }
 
