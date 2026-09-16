@@ -12,7 +12,7 @@
     "bundle:win": "del /s /q *.DS_Store && del /s /q .\\assets\\dist\\*.map && dir-archiver --src ./ --dest %USERPROFILE%\\Downloads\\magic-elements.zip --exclude .stylelintrc.json LICENSE .eslintrc .git .gitattributes .github .gitignore README.md node_modules .cursorrules .travis.yml phpcs.xml.dist readme.md yarn.lock tailwind-blocks.config.js tailwind.config.js agents.md bug.md package.json package-lock.json webpack.config.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "loyalcoders",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.26.10",

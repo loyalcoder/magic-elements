@@ -1,19 +1,29 @@
 //Sticky Header SCSS
 .elementor-widget-em_kit_nav_menu {
-    overflow: visible;
+    overflow: visible !important;
+    z-index: 10050;
+    position: relative;
+}
+
+/* Keep dropdowns above the next Elementor sections */
+.elementor-widget-em_kit_nav_menu .magic-header-layout-one,
+.elementor-widget-em_kit_nav_menu .magic-header-layout-two,
+.elementor-widget-em_kit_nav_menu .magic-header-layout-three {
+    overflow: visible !important;
+    z-index: 10050;
 }
 
 .magic-header {
     position: relative;
-    z-index: 2002;
-    overflow: visible;
+    z-index: 10050;
+    overflow: visible !important;
 
     &.is-sticky-enabled.is-sticky {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
-        z-index: 2003;
+        z-index: 10060;
 
         .magic-menu {
             padding: 12px 0;
@@ -286,7 +296,7 @@ nav {
                     transition: opacity .2s ease, visibility .2s ease;
                     box-shadow: 0 10px 25px rgba(0,0,0,.08);
                     display: block;
-                    z-index: 100;
+                    z-index: 10070;
 
                     // Invisible bridge so the pointer can reach the dropdown.
                     &::before {
@@ -347,7 +357,7 @@ nav {
                         transition: opacity .2s ease, visibility .2s ease;
                         box-shadow: 0 10px 25px rgba(0,0,0,.08);
                         display: block;
-                        z-index: 101;
+                        z-index: 10071;
 
                         &::before {
                             content: '';
@@ -896,16 +906,20 @@ body.magic-mobile-menu-open {
         align-items: center;
         justify-content: center;
         gap: 8px;
-        padding: 10px 20px;
-        border-radius: 50px;
-        background-color: #E50914;
+        min-height: 48px;
+        padding: 12px 28px;
+        border: 0;
+        border-radius: 9999px;
+        background-color: #DB0328;
         color: #fff;
+        font-family: inherit;
         font-size: 14px;
         font-weight: 600;
         line-height: 1;
         text-decoration: none;
         white-space: nowrap;
-        transition: background-color 0.25s ease, color 0.25s ease;
+        cursor: pointer;
+        transition: filter 0.2s ease, background-color 0.25s ease, color 0.25s ease;
 
         &__icon {
             display: inline-flex;
@@ -926,7 +940,17 @@ body.magic-mobile-menu-open {
 
         &:hover {
             color: #fff;
+            filter: brightness(1.06);
         }
+    }
+
+    .layout-four-user {
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+        font: inherit;
+        padding: 0;
+        appearance: none;
     }
 }
 
@@ -1119,11 +1143,18 @@ body.magic-apps-offcanvas-open {
     display: inline-flex;
     align-items: center;
     gap: 10px;
+    border: 0;
+    background: transparent;
     color: #ffffff;
     text-decoration: none;
+    font-family: inherit;
     font-size: 15px;
     font-weight: 500;
     line-height: 1.2;
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
+    appearance: none;
 
     &__icon {
         display: inline-flex;
@@ -1148,13 +1179,17 @@ body.magic-apps-offcanvas-open {
     justify-content: center;
     gap: 8px;
     padding: 12px 18px;
+    border: 0;
     border-radius: 50px;
-    background-color: #E50914;
+    background-color: #DB0328;
     color: #ffffff;
     text-decoration: none;
+    font-family: inherit;
     font-size: 14px;
     font-weight: 600;
     line-height: 1;
+    cursor: pointer;
+    appearance: none;
 
     &__icon {
         display: inline-flex;
@@ -1170,3 +1205,5 @@ body.magic-apps-offcanvas-open {
         }
     }
 }
+
+@import "auth_modal";

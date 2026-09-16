@@ -1,5 +1,5 @@
 === Magic Elements ===
-Contributors: loyalcoder  
+Contributors: loyalcoders  
 Tags: elementor, elementor widgets, elementor templates, page builder, addons  
 Requires at least: 5.0  
 Tested up to: 7.1
@@ -133,4 +133,4 @@ Initial release.
 
 == Credits ==
 
-Developed by [LoyalCoder](https://loyalcoder.com). Inspired by the needs of Elementor users worldwide.
+Developed by [loyalcoders](https://loyalcoders.com). Inspired by the needs of Elementor users worldwide.

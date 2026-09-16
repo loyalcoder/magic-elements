@@ -1,3 +1,5 @@
+@import "auth_modal";
+
 .me-nav-v2 {
   position: relative;
   z-index: 100;
@@ -699,6 +701,91 @@
 
 body.me-nav-v2-offcanvas-open {
   overflow: hidden;
+}
+
+.me-nav-v2__subscribe {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 12px 28px;
+  border: 0;
+  border-radius: 9999px;
+  background-color: #DB0328;
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  white-space: nowrap;
+  appearance: none;
+  transition: filter 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    color: #fff;
+    filter: brightness(1.06);
+  }
+
+  &-icon {
+    display: inline-flex;
+    color: #F5C518;
+    line-height: 1;
+
+    i,
+    svg {
+      display: block;
+      width: 1em;
+      height: 1em;
+      fill: currentColor;
+    }
+  }
+}
+
+.me-nav-v2__offcanvas-auth {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.me-nav-v2__offcanvas-account {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  appearance: none;
+
+  &-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+
+    i,
+    svg {
+      display: block;
+      width: 1em;
+      height: 1em;
+      font-size: 16px;
+      fill: currentColor;
+    }
+  }
+}
+
+.me-nav-v2__subscribe--offcanvas {
+  width: 100%;
 }
 
 // Center layout: keep actions from colliding on small widths.

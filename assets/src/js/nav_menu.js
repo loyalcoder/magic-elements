@@ -51,7 +51,13 @@ import "./../scss/nav_menu.scss"
       $header.parents('.elementor-widget-container, .elementor-element, .elementor-section, .e-con, .e-con-inner').css('overflow', 'visible');
 
       let triggerOffset = 0;
+      let overlaySticky = false;
       let stickyReady = false;
+
+      const adminBarOffset = function () {
+        const bar = document.getElementById('wpadminbar');
+        return bar ? Math.ceil(bar.offsetHeight) : 0;
+      };
 
       const measureTrigger = function () {
         const wasSticky = $header.hasClass('is-sticky');
@@ -60,13 +66,15 @@ import "./../scss/nav_menu.scss"
           $spacer.css({ display: 'none', height: '0px' });
         }
         triggerOffset = Math.max(0, Math.floor($header.offset().top));
+        // Header at page top: overlay heroes without sticky-spacer gap.
+        overlaySticky = triggerOffset <= adminBarOffset() + 4;
         if (wasSticky) {
           $header.addClass('is-sticky');
         }
       };
 
       const syncSpacer = function () {
-        if ($header.hasClass('is-sticky')) {
+        if ($header.hasClass('is-sticky') && !overlaySticky) {
           $spacer.css({
             display: 'block',
             height: $header.outerHeight() + 'px',
@@ -80,11 +88,11 @@ import "./../scss/nav_menu.scss"
       };
 
       const onScroll = function () {
-        const shouldStick = getScrollY() > triggerOffset;
+        const shouldStick = overlaySticky ? true : getScrollY() > triggerOffset;
         const isSticky = $header.hasClass('is-sticky');
         if (shouldStick !== isSticky) {
           $header.toggleClass('is-sticky', shouldStick);
-          if (stickyReady && shouldStick) {
+          if (stickyReady && shouldStick && !overlaySticky) {
             $header.addClass('is-sticky-animated');
           }
           if (!shouldStick) {
@@ -97,6 +105,7 @@ import "./../scss/nav_menu.scss"
 
       measureTrigger();
       onScroll();
+      syncSpacer();
 
       const ns = (scopeId || $header[0].id || 'global');
       $(window).off('scroll.emkitNavSticky.' + ns).on('scroll.emkitNavSticky.' + ns, onScroll);
@@ -134,6 +143,36 @@ import "./../scss/nav_menu.scss"
           const $mobileSearchSlot = $root.find('[data-mobile-search-slot]');
           const $searchButton = $root.find('.menu-search.open_search').first();
           const isLayoutFour = $root.hasClass('magic-header-layout-four');
+
+          // Prevent Elementor section/container overflow from clipping dropdowns
+          // (layouts one / two / three desktop submenus).
+          const unlockDropdownOverflow = function () {
+            $scope.css({ overflow: 'visible', zIndex: 10050 });
+            $root.css({ overflow: 'visible' });
+            $scope
+              .parents(
+                '.elementor-widget-container, .elementor-element, .elementor-section, .elementor-container, .elementor-column, .e-con, .e-con-inner'
+              )
+              .each(function () {
+                const $el = $(this);
+                $el.css('overflow', 'visible');
+                // Raise stacking so the header section sits above the next page sections.
+                if (
+                  $el.hasClass('elementor-section') ||
+                  $el.hasClass('elementor-top-section') ||
+                  $el.hasClass('e-con')
+                ) {
+                  const current = parseInt($el.css('z-index'), 10);
+                  if (!current || current < 10040) {
+                    $el.css('z-index', 10040);
+                  }
+                }
+              });
+          };
+          unlockDropdownOverflow();
+          $(window)
+            .off('resize.emkitNavOverflow.' + ($scope.data('id') || 'nav'))
+            .on('resize.emkitNavOverflow.' + ($scope.data('id') || 'nav'), unlockDropdownOverflow);
 
           const moveSearchToMobile = function () {
             // Layout four keeps search in the header; do not move it beside the close button.

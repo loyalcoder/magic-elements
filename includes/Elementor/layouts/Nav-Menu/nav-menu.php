@@ -255,12 +255,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<?php endif; ?>
 
 				<?php if ( 'yes' === $settings['show_user_icon'] ) : ?>
-					<?php
-					if ( ! empty( $settings['user_icon_link']['url'] ) ) {
-						$this->add_link_attributes( 'user_icon_link', $settings['user_icon_link'] );
-					}
-					?>
-					<a class="layout-four-action-icon layout-four-user" <?php $this->print_render_attribute_string( 'user_icon_link' ); ?> aria-label="<?php echo esc_attr__( 'Account', 'magic-elements' ); ?>">
+					<button
+						type="button"
+						class="layout-four-action-icon layout-four-user open-auth-modal"
+						data-auth-modal="<?php echo is_user_logged_in() ? 'account' : 'signin'; ?>"
+						aria-label="<?php echo esc_attr__( 'Account', 'magic-elements' ); ?>"
+						aria-haspopup="dialog"
+					>
 						<?php
 						$user_icon = ! empty( $settings['user_icon']['value'] )
 							? $settings['user_icon']
@@ -270,24 +271,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 							];
 						\Elementor\Icons_Manager::render_icon( $user_icon, [ 'aria-hidden' => 'true' ] );
 						?>
-					</a>
+					</button>
 				<?php endif; ?>
 			</div>
 
 			<?php if ( 'yes' === $settings['show_subscribe_button'] ) : ?>
-				<?php
-				if ( ! empty( $settings['subscribe_button_link']['url'] ) ) {
-					$this->add_link_attributes( 'subscribe_button_link', $settings['subscribe_button_link'] );
-				}
-				?>
-				<a class="layout-four-subscribe" <?php $this->print_render_attribute_string( 'subscribe_button_link' ); ?>>
+				<button
+					type="button"
+					class="layout-four-subscribe open-auth-modal"
+					data-auth-modal="<?php echo is_user_logged_in() ? 'account' : 'signup'; ?>"
+					aria-haspopup="dialog"
+				>
 					<?php if ( ! empty( $settings['subscribe_button_icon']['value'] ) ) : ?>
 						<span class="layout-four-subscribe__icon">
 							<?php \Elementor\Icons_Manager::render_icon( $settings['subscribe_button_icon'], [ 'aria-hidden' => 'true' ] ); ?>
 						</span>
 					<?php endif; ?>
 					<span class="layout-four-subscribe__text"><?php echo esc_html( $settings['subscribe_button_title'] ); ?></span>
-				</a>
+				</button>
 			<?php endif; ?>
 			</div>
 

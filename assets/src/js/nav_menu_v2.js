@@ -54,7 +54,13 @@ import "./../scss/nav_menu_v2.scss";
       $parents.css("overflow", "visible");
 
       let triggerOffset = 0;
+      let overlaySticky = false;
       let stickyReady = false;
+
+      const adminBarOffset = function () {
+        const bar = document.getElementById("wpadminbar");
+        return bar ? Math.ceil(bar.offsetHeight) : 0;
+      };
 
       const measureTrigger = function () {
         // Measure natural position while not fixed.
@@ -64,13 +70,16 @@ import "./../scss/nav_menu_v2.scss";
           $spacer.css({ display: "none", height: "0px" });
         }
         triggerOffset = Math.max(0, Math.floor($root.offset().top));
+        // Header starts at the top of the page: stick as overlay (no spacer gap above heroes).
+        overlaySticky = triggerOffset <= adminBarOffset() + 4;
         if (wasSticky) {
           $root.addClass("is-sticky");
         }
       };
 
       const syncSpacer = function () {
-        if ($root.hasClass("is-sticky")) {
+        // Overlay sticky sits over the banner — never reserve spacer height (avoids nav/banner gap).
+        if ($root.hasClass("is-sticky") && !overlaySticky) {
           $spacer.css({
             display: "block",
             height: $root.outerHeight() + "px",
@@ -84,13 +93,12 @@ import "./../scss/nav_menu_v2.scss";
       };
 
       const onScroll = function () {
-        // Stick only after the menu's original position has been scrolled past.
-        const shouldStick = window.scrollY > triggerOffset;
+        const shouldStick = overlaySticky ? true : window.scrollY > triggerOffset;
         const isSticky = $root.hasClass("is-sticky");
 
         if (shouldStick !== isSticky) {
           $root.toggleClass("is-sticky", shouldStick);
-          if (stickyReady && shouldStick) {
+          if (stickyReady && shouldStick && !overlaySticky) {
             $root.addClass("is-sticky-animated");
           }
           if (!shouldStick) {
@@ -103,6 +111,7 @@ import "./../scss/nav_menu_v2.scss";
 
       measureTrigger();
       onScroll();
+      syncSpacer();
 
       $(window)
         .off("scroll.meNavV2Sticky." + widgetId)

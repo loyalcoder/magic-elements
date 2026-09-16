@@ -332,6 +332,65 @@ class Nav_Menu_V2 extends Widget_Base
             ]
         );
 
+        $this->add_control(
+            'show_user_icon',
+            [
+                'label'        => esc_html__('User / Sign In', 'magic-elements'),
+                'type'         => Controls_Manager::SWITCHER,
+                'return_value' => 'yes',
+                'default'      => 'yes',
+                'separator'    => 'before',
+                'description'  => esc_html__('Opens the Sign In popup.', 'magic-elements'),
+            ]
+        );
+
+        $this->add_control(
+            'user_icon',
+            [
+                'label'     => esc_html__('User Icon', 'magic-elements'),
+                'type'      => Controls_Manager::ICONS,
+                'default'   => [
+                    'value'   => 'fas fa-user',
+                    'library' => 'fa-solid',
+                ],
+                'condition' => ['show_user_icon' => 'yes'],
+            ]
+        );
+
+        $this->add_control(
+            'show_subscribe_button',
+            [
+                'label'        => esc_html__('Subscribe / Sign Up', 'magic-elements'),
+                'type'         => Controls_Manager::SWITCHER,
+                'return_value' => 'yes',
+                'default'      => 'yes',
+                'description'  => esc_html__('Opens the Sign Up popup.', 'magic-elements'),
+            ]
+        );
+
+        $this->add_control(
+            'subscribe_button_title',
+            [
+                'label'     => esc_html__('Subscribe Text', 'magic-elements'),
+                'type'      => Controls_Manager::TEXT,
+                'default'   => esc_html__('Subscribe', 'magic-elements'),
+                'condition' => ['show_subscribe_button' => 'yes'],
+            ]
+        );
+
+        $this->add_control(
+            'subscribe_button_icon',
+            [
+                'label'     => esc_html__('Subscribe Icon', 'magic-elements'),
+                'type'      => Controls_Manager::ICONS,
+                'default'   => [
+                    'value'   => 'fas fa-crown',
+                    'library' => 'fa-solid',
+                ],
+                'condition' => ['show_subscribe_button' => 'yes'],
+            ]
+        );
+
         $this->end_controls_section();
     }
 
@@ -1065,6 +1124,41 @@ class Nav_Menu_V2 extends Widget_Base
                     '{{WRAPPER}} .me-nav-v2__action:hover' => 'color: {{VALUE}};',
                     '{{WRAPPER}} .me-nav-v2__action:hover svg' => 'fill: {{VALUE}};',
                 ],
+            ]
+        );
+
+        $this->add_control(
+            'subscribe_button_heading',
+            [
+                'label'     => esc_html__('Subscribe Button', 'magic-elements'),
+                'type'      => Controls_Manager::HEADING,
+                'separator' => 'before',
+                'condition' => ['show_subscribe_button' => 'yes'],
+            ]
+        );
+
+        $this->add_control(
+            'subscribe_button_color',
+            [
+                'label'     => esc_html__('Text Color', 'magic-elements'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .me-nav-v2__subscribe' => 'color: {{VALUE}};',
+                ],
+                'condition' => ['show_subscribe_button' => 'yes'],
+            ]
+        );
+
+        $this->add_control(
+            'subscribe_button_bg',
+            [
+                'label'     => esc_html__('Background', 'magic-elements'),
+                'type'      => Controls_Manager::COLOR,
+                'default'   => '#DB0328',
+                'selectors' => [
+                    '{{WRAPPER}} .me-nav-v2__subscribe' => 'background-color: {{VALUE}};',
+                ],
+                'condition' => ['show_subscribe_button' => 'yes'],
             ]
         );
 
