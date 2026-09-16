@@ -1,19 +1,29 @@
 //Sticky Header SCSS
 .elementor-widget-em_kit_nav_menu {
-    overflow: visible;
+    overflow: visible !important;
+    z-index: 10050;
+    position: relative;
+}
+
+/* Keep dropdowns above the next Elementor sections */
+.elementor-widget-em_kit_nav_menu .magic-header-layout-one,
+.elementor-widget-em_kit_nav_menu .magic-header-layout-two,
+.elementor-widget-em_kit_nav_menu .magic-header-layout-three {
+    overflow: visible !important;
+    z-index: 10050;
 }
 
 .magic-header {
     position: relative;
-    z-index: 2002;
-    overflow: visible;
+    z-index: 10050;
+    overflow: visible !important;
 
     &.is-sticky-enabled.is-sticky {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
-        z-index: 2003;
+        z-index: 10060;
 
         .magic-menu {
             padding: 12px 0;
@@ -286,7 +296,7 @@ nav {
                     transition: opacity .2s ease, visibility .2s ease;
                     box-shadow: 0 10px 25px rgba(0,0,0,.08);
                     display: block;
-                    z-index: 100;
+                    z-index: 10070;
 
                     // Invisible bridge so the pointer can reach the dropdown.
                     &::before {
@@ -347,7 +357,7 @@ nav {
                         transition: opacity .2s ease, visibility .2s ease;
                         box-shadow: 0 10px 25px rgba(0,0,0,.08);
                         display: block;
-                        z-index: 101;
+                        z-index: 10071;
 
                         &::before {
                             content: '';

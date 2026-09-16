@@ -756,7 +756,7 @@ class Nav_Menu extends Widget_Base
 			[
 				'label'   => esc_html__( 'Overflow', 'magic-elements' ),
 				'type'    => \Elementor\Controls_Manager::SELECT,
-				'default' => 'hidden',
+				'default' => 'visible',
 				'options' => [
 					'hidden'  => esc_html__( 'Hidden', 'magic-elements' ),
 					'visible' => esc_html__( 'Visible', 'magic-elements' ),
@@ -766,6 +766,7 @@ class Nav_Menu extends Widget_Base
 					'{{WRAPPER}}' => 'overflow: {{VALUE}};',
 					'{{WRAPPER}} .magic-header' => 'overflow: {{VALUE}};',
 				],
+				'description' => esc_html__( 'Use Visible so dropdown submenus are not clipped by the header section.', 'magic-elements' ),
 			]
 		);
 		$this->add_responsive_control(

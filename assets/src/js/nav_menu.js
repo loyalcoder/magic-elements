@@ -144,6 +144,36 @@ import "./../scss/nav_menu.scss"
           const $searchButton = $root.find('.menu-search.open_search').first();
           const isLayoutFour = $root.hasClass('magic-header-layout-four');
 
+          // Prevent Elementor section/container overflow from clipping dropdowns
+          // (layouts one / two / three desktop submenus).
+          const unlockDropdownOverflow = function () {
+            $scope.css({ overflow: 'visible', zIndex: 10050 });
+            $root.css({ overflow: 'visible' });
+            $scope
+              .parents(
+                '.elementor-widget-container, .elementor-element, .elementor-section, .elementor-container, .elementor-column, .e-con, .e-con-inner'
+              )
+              .each(function () {
+                const $el = $(this);
+                $el.css('overflow', 'visible');
+                // Raise stacking so the header section sits above the next page sections.
+                if (
+                  $el.hasClass('elementor-section') ||
+                  $el.hasClass('elementor-top-section') ||
+                  $el.hasClass('e-con')
+                ) {
+                  const current = parseInt($el.css('z-index'), 10);
+                  if (!current || current < 10040) {
+                    $el.css('z-index', 10040);
+                  }
+                }
+              });
+          };
+          unlockDropdownOverflow();
+          $(window)
+            .off('resize.emkitNavOverflow.' + ($scope.data('id') || 'nav'))
+            .on('resize.emkitNavOverflow.' + ($scope.data('id') || 'nav'), unlockDropdownOverflow);
+
           const moveSearchToMobile = function () {
             // Layout four keeps search in the header; do not move it beside the close button.
             if (isLayoutFour || !$searchButton.length || !$mobileSearchSlot.length) {
