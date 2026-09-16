@@ -18,7 +18,11 @@ $show_logo          = isset($settings['show_logo']) && 'yes' === $settings['show
 $show_search        = isset($settings['show_search']) && 'yes' === $settings['show_search'];
 $show_cart          = isset($settings['show_cart']) && 'yes' === $settings['show_cart'] && class_exists('WooCommerce') && function_exists('WC');
 $show_offcanvas     = isset($settings['show_offcanvas']) && 'yes' === $settings['show_offcanvas'];
+$show_user_icon     = isset($settings['show_user_icon']) && 'yes' === $settings['show_user_icon'];
+$show_subscribe     = isset($settings['show_subscribe_button']) && 'yes' === $settings['show_subscribe_button'];
 $enable_mega        = isset($settings['enable_mega_menu']) && 'yes' === $settings['enable_mega_menu'];
+$auth_panel_default = is_user_logged_in() ? 'account' : 'signin';
+$signup_panel       = is_user_logged_in() ? 'account' : 'signup';
 $enable_sticky      = isset($settings['enable_sticky']) && 'yes' === $settings['enable_sticky'];
 $mobile_icon_pos    = !empty($settings['mobile_icon_position']) ? $settings['mobile_icon_position'] : 'right';
 $offcanvas_pos      = !empty($settings['offcanvas_position']) ? $settings['offcanvas_position'] : 'right';
@@ -125,10 +129,18 @@ $render_menu = static function ($menu, $args) use ($dropdown_title_filter) {
 };
 
 $cart_count = 0;
-$cart_url   = '';
+$cart_url   = home_url('/');
 if ($show_cart) {
-    $cart_url   = function_exists('wc_get_cart_url') ? wc_get_cart_url() : home_url('/');
-    $cart_count = (WC()->cart) ? (int) WC()->cart->get_cart_contents_count() : 0;
+    if (function_exists('wc_get_cart_url')) {
+        $cart_url = (string) call_user_func('wc_get_cart_url');
+    }
+    // WooCommerce global helper — call_user_func avoids static-analysis false positives.
+    if (function_exists('WC')) {
+        $woocommerce = call_user_func('WC');
+        if (is_object($woocommerce) && !empty($woocommerce->cart)) {
+            $cart_count = (int) $woocommerce->cart->get_cart_contents_count();
+        }
+    }
 }
 ?>
 <style>
@@ -221,6 +233,44 @@ if ($show_cart) {
                         </span>
                     <?php endif; ?>
                 </a>
+            <?php endif; ?>
+
+            <?php if ($show_user_icon) : ?>
+                <button
+                    type="button"
+                    class="me-nav-v2__action me-nav-v2__user open-auth-modal"
+                    data-auth-modal="<?php echo esc_attr($auth_panel_default); ?>"
+                    aria-label="<?php echo esc_attr__('Account', 'magic-elements'); ?>"
+                    aria-haspopup="dialog"
+                >
+                    <?php
+                    $user_icon = !empty($settings['user_icon']['value'])
+                        ? $settings['user_icon']
+                        : [
+                            'value'   => 'fas fa-user',
+                            'library' => 'fa-solid',
+                        ];
+                    \Elementor\Icons_Manager::render_icon($user_icon, ['aria-hidden' => 'true']);
+                    ?>
+                </button>
+            <?php endif; ?>
+
+            <?php if ($show_subscribe) : ?>
+                <button
+                    type="button"
+                    class="me-nav-v2__subscribe open-auth-modal"
+                    data-auth-modal="<?php echo esc_attr($signup_panel); ?>"
+                    aria-haspopup="dialog"
+                >
+                    <?php if (!empty($settings['subscribe_button_icon']['value'])) : ?>
+                        <span class="me-nav-v2__subscribe-icon">
+                            <?php \Elementor\Icons_Manager::render_icon($settings['subscribe_button_icon'], ['aria-hidden' => 'true']); ?>
+                        </span>
+                    <?php endif; ?>
+                    <span class="me-nav-v2__subscribe-text">
+                        <?php echo esc_html(!empty($settings['subscribe_button_title']) ? $settings['subscribe_button_title'] : esc_html__('Subscribe', 'magic-elements')); ?>
+                    </span>
+                </button>
             <?php endif; ?>
 
             <?php if ($show_offcanvas) : ?>
@@ -345,6 +395,49 @@ $offcanvas_menu_html = trim((string) ob_get_clean());
                         <?php echo $offcanvas_menu_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                     <?php endif; ?>
                 </nav>
+            <?php endif; ?>
+
+            <?php if ($show_user_icon || $show_subscribe) : ?>
+                <div class="me-nav-v2__offcanvas-auth">
+                    <?php if ($show_user_icon) : ?>
+                        <button
+                            type="button"
+                            class="me-nav-v2__offcanvas-account open-auth-modal"
+                            data-auth-modal="<?php echo esc_attr($auth_panel_default); ?>"
+                            aria-haspopup="dialog"
+                        >
+                            <span class="me-nav-v2__offcanvas-account-icon">
+                                <?php
+                                $user_icon_oc = !empty($settings['user_icon']['value'])
+                                    ? $settings['user_icon']
+                                    : [
+                                        'value'   => 'fas fa-user',
+                                        'library' => 'fa-solid',
+                                    ];
+                                \Elementor\Icons_Manager::render_icon($user_icon_oc, ['aria-hidden' => 'true']);
+                                ?>
+                            </span>
+                            <span><?php echo esc_html__('Account', 'magic-elements'); ?></span>
+                        </button>
+                    <?php endif; ?>
+                    <?php if ($show_subscribe) : ?>
+                        <button
+                            type="button"
+                            class="me-nav-v2__subscribe me-nav-v2__subscribe--offcanvas open-auth-modal"
+                            data-auth-modal="<?php echo esc_attr($signup_panel); ?>"
+                            aria-haspopup="dialog"
+                        >
+                            <?php if (!empty($settings['subscribe_button_icon']['value'])) : ?>
+                                <span class="me-nav-v2__subscribe-icon">
+                                    <?php \Elementor\Icons_Manager::render_icon($settings['subscribe_button_icon'], ['aria-hidden' => 'true']); ?>
+                                </span>
+                            <?php endif; ?>
+                            <span class="me-nav-v2__subscribe-text">
+                                <?php echo esc_html(!empty($settings['subscribe_button_title']) ? $settings['subscribe_button_title'] : esc_html__('Subscribe', 'magic-elements')); ?>
+                            </span>
+                        </button>
+                    <?php endif; ?>
+                </div>
             <?php endif; ?>
         </div>
     </aside>

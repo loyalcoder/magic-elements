@@ -384,18 +384,12 @@ class Nav_Menu extends Widget_Base
 			]
 		);
 		$this->add_control(
-			'user_icon_link',
+			'user_icon_auth_note',
 			[
-				'label'       => esc_html__( 'User Icon Link', 'magic-elements' ),
-				'type'        => \Elementor\Controls_Manager::URL,
-				'options'     => [ 'url', 'is_external', 'nofollow' ],
-				'default'     => [
-					'url'         => '#',
-					'is_external' => false,
-					'nofollow'    => false,
-				],
-				'label_block' => true,
-				'condition'   => [
+				'type'            => \Elementor\Controls_Manager::RAW_HTML,
+				'raw'             => esc_html__( 'Clicking the user icon opens the Sign In popup.', 'magic-elements' ),
+				'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
+				'condition'       => [
 					'show_user_icon' => 'yes',
 				],
 			]
@@ -439,18 +433,12 @@ class Nav_Menu extends Widget_Base
 			]
 		);
 		$this->add_control(
-			'subscribe_button_link',
+			'subscribe_button_auth_note',
 			[
-				'label'       => esc_html__( 'Button Link', 'magic-elements' ),
-				'type'        => \Elementor\Controls_Manager::URL,
-				'options'     => [ 'url', 'is_external', 'nofollow' ],
-				'default'     => [
-					'url'         => '#',
-					'is_external' => false,
-					'nofollow'    => false,
-				],
-				'label_block' => true,
-				'condition'   => [
+				'type'            => \Elementor\Controls_Manager::RAW_HTML,
+				'raw'             => esc_html__( 'Clicking Subscribe opens the Sign Up popup.', 'magic-elements' ),
+				'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
+				'condition'       => [
 					'show_subscribe_button' => 'yes',
 				],
 			]
@@ -3070,7 +3058,7 @@ class Nav_Menu extends Widget_Base
 						'default' => 'classic',
 					],
 					'color' => [
-						'default' => '#E50914',
+						'default' => '#DB0328',
 					],
 				],
 			]
@@ -3548,6 +3536,7 @@ class Nav_Menu extends Widget_Base
     {
         $settings = $this->get_settings_for_display();
         $header_layout = $settings['header_layout_type'];
+
 		add_filter( 'nav_menu_item_title', [ $this, 'append_submenu_indicator' ], 10, 4 );
         include __DIR__ . '/layouts/Nav-Menu/nav-menu.php';
 		remove_filter( 'nav_menu_item_title', [ $this, 'append_submenu_indicator' ], 10 );

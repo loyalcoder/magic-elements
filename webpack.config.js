@@ -50,6 +50,9 @@ const baseConfig = {
         './assets/src/scss/nav_menu_v2.scss',
         './assets/src/js/nav_menu_v2.js',
     ],
+    auth_modal: [
+        './assets/src/js/auth_modal_global.js',
+    ],
     magic_nav: [
         './assets/src/scss/magic_nav.scss',
         './assets/src/js/magic_nav.js',

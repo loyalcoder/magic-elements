@@ -51,7 +51,13 @@ import "./../scss/nav_menu.scss"
       $header.parents('.elementor-widget-container, .elementor-element, .elementor-section, .e-con, .e-con-inner').css('overflow', 'visible');
 
       let triggerOffset = 0;
+      let overlaySticky = false;
       let stickyReady = false;
+
+      const adminBarOffset = function () {
+        const bar = document.getElementById('wpadminbar');
+        return bar ? Math.ceil(bar.offsetHeight) : 0;
+      };
 
       const measureTrigger = function () {
         const wasSticky = $header.hasClass('is-sticky');
@@ -60,13 +66,15 @@ import "./../scss/nav_menu.scss"
           $spacer.css({ display: 'none', height: '0px' });
         }
         triggerOffset = Math.max(0, Math.floor($header.offset().top));
+        // Header at page top: overlay heroes without sticky-spacer gap.
+        overlaySticky = triggerOffset <= adminBarOffset() + 4;
         if (wasSticky) {
           $header.addClass('is-sticky');
         }
       };
 
       const syncSpacer = function () {
-        if ($header.hasClass('is-sticky')) {
+        if ($header.hasClass('is-sticky') && !overlaySticky) {
           $spacer.css({
             display: 'block',
             height: $header.outerHeight() + 'px',
@@ -80,11 +88,11 @@ import "./../scss/nav_menu.scss"
       };
 
       const onScroll = function () {
-        const shouldStick = getScrollY() > triggerOffset;
+        const shouldStick = overlaySticky ? true : getScrollY() > triggerOffset;
         const isSticky = $header.hasClass('is-sticky');
         if (shouldStick !== isSticky) {
           $header.toggleClass('is-sticky', shouldStick);
-          if (stickyReady && shouldStick) {
+          if (stickyReady && shouldStick && !overlaySticky) {
             $header.addClass('is-sticky-animated');
           }
           if (!shouldStick) {
@@ -97,6 +105,7 @@ import "./../scss/nav_menu.scss"
 
       measureTrigger();
       onScroll();
+      syncSpacer();
 
       const ns = (scopeId || $header[0].id || 'global');
       $(window).off('scroll.emkitNavSticky.' + ns).on('scroll.emkitNavSticky.' + ns, onScroll);
