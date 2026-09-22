@@ -636,6 +636,8 @@ nav {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                width: 100%;
+                box-sizing: border-box;
                 padding: 12px 0;
                 text-decoration: none;
                 color: #121212;
@@ -643,6 +645,12 @@ nav {
             }
 
             &.menu-item-has-children {
+                > a {
+                    display: flex;
+                    width: 100%;
+                    box-sizing: border-box;
+                }
+
                 > a::after {
                     content: none;
                 }
@@ -657,38 +665,54 @@ nav {
                     width: 100%;
                     opacity: 1;
                     visibility: visible;
+                    pointer-events: auto;
                     transform: none;
                     box-shadow: none;
                     background: transparent;
-                    padding: 0 0 0 14px;
+                    padding: 0;
                     margin: 0;
                     display: none;
+                    box-sizing: border-box;
                 }
 
                 &.active > .sub-menu {
                     display: block;
+                    pointer-events: auto;
                 }
             }
         }
 
         .sub-menu {
             list-style: none;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
 
             li {
                 position: relative;
+                width: 100%;
 
                 > a {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
                     gap: 8px;
-                    padding: 10px 0;
+                    width: 100%;
+                    box-sizing: border-box;
+                    padding: 10px 0 10px 16px;
                     text-decoration: none;
                     white-space: normal;
                     color: #333;
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
                 }
 
                 &.menu-item-has-children {
+                    > a {
+                        display: flex;
+                        width: 100%;
+                    }
+
                     > a::after {
                         content: none;
                     }
@@ -706,18 +730,25 @@ nav {
                         width: 100%;
                         opacity: 1;
                         visibility: visible;
+                        pointer-events: auto;
                         transform: none;
                         box-shadow: none;
                         background: transparent;
-                        padding: 0 0 0 14px;
+                        padding: 0;
                         margin: 0;
                         display: none;
+                        box-sizing: border-box;
                     }
 
                     &.active > .sub-menu {
                         display: block;
+                        pointer-events: auto;
                     }
                 }
+            }
+
+            .sub-menu li > a {
+                padding-left: 28px;
             }
         }
     }
@@ -1185,6 +1216,7 @@ body.magic-apps-offcanvas-open {
 
         .mobile-menu-panel__nav .cnw-nav-mobile .sub-menu li > a {
             color: rgba(255, 255, 255, 0.75);
+            border-bottom-color: rgba(255, 255, 255, 0.08);
         }
 
         .mobile-menu-close {

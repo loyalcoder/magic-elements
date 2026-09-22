@@ -372,9 +372,7 @@ import "./../scss/nav_menu.scss"
             });
           }
 
-          $root.find('.cnw-nav .menu-item-has-children > a, .cnw-nav-mobile .menu-item-has-children > a')
-          .off('click.emkitSubmenu')
-          .on('click.emkitSubmenu', function (e) {
+          const onParentMenuClick = function (e) {
               const link = this;
               const parent = link.parentElement;
               const hasSubMenu = parent.querySelector(':scope > .sub-menu');
@@ -398,7 +396,18 @@ import "./../scss/nav_menu.scss"
                           }
                       });
               }
-          });
+          };
+
+          // Desktop items stay in the header. Mobile items live in the body
+          // portal, so they must be bound on $panel — $root.find() misses them.
+          $root
+            .find('.cnw-nav:not(.cnw-nav-mobile) .menu-item-has-children > a')
+            .off('click.emkitSubmenu')
+            .on('click.emkitSubmenu', onParentMenuClick);
+
+          $panel
+            .off('click.emkitSubmenu', '.menu-item-has-children > a')
+            .on('click.emkitSubmenu', '.menu-item-has-children > a', onParentMenuClick);
       },
     };
 

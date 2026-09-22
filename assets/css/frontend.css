@@ -466,6 +466,7 @@
 
 	.magic-header-layout-four .mobile-menu-panel__nav .cnw-nav-mobile .sub-menu li > a {
 		color: rgba(255, 255, 255, 0.75);
+		border-bottom-color: rgba(255, 255, 255, 0.08);
 	}
 
 	.magic-header-layout-four .mobile-menu-close {
