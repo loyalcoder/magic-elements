@@ -336,14 +336,65 @@
 	line-height: 1;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1024px) {
+	.me-builder-header .e-con,
+	.me-builder-header .e-con-inner,
+	.me-builder-header .elementor-section,
+	.me-builder-header .elementor-container,
+	.elementor-location-header .e-con,
+	.elementor-location-header .e-con-inner,
+	.elementor-widget-em_kit_nav_menu,
+	.elementor-widget-em_kit_nav_menu > .elementor-widget-container {
+		--padding-left: 0px;
+		--padding-right: 0px;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	.magic-header {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	.magic-header .container.magic-menu,
+	.magic-header .magic-menu,
+	.magic-header .layout-four-menu {
+		max-width: 100% !important;
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+		padding-left: 20px !important;
+		padding-right: 20px !important;
+		gap: 8px;
+		justify-content: space-between;
+		box-sizing: border-box;
+	}
+
+	.magic-header .mid-point,
+	.magic-header-layout-one .mid-point,
+	.magic-header-layout-two .mid-point,
+	.magic-header-layout-three .layout-three-left,
+	.magic-header-layout-four .layout-four-brand {
+		justify-content: flex-start !important;
+		flex: 0 1 auto !important;
+		margin-left: 0 !important;
+		width: auto !important;
+	}
+
+	.magic-header .menu-logo,
+	.magic-header .menu-logo-desktop-gap,
+	.magic-header-layout-one .menu-logo-desktop-gap,
+	.magic-header-layout-two .menu-logo-desktop-gap {
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+	}
+
 	.magic-header-layout-one .mid-point {
-		flex: 0 0 auto;
+		flex: 0 1 auto;
 		justify-content: flex-start;
 	}
 
 	.magic-header-layout-one .menu-logo-desktop-gap {
-		margin: 0;
+		margin: 0 !important;
 	}
 
 	.magic-header-layout-two .mid-point {
@@ -424,6 +475,65 @@
 	.magic-header-layout-four .mobile-menu-panel__actions {
 		display: none;
 	}
+}
+
+/* Elementor editor device preview (classes apply even if iframe width is desktop). */
+.elementor-device-mobile .me-builder-header .e-con,
+.elementor-device-tablet .me-builder-header .e-con,
+.elementor-device-mobile .me-builder-header .e-con-inner,
+.elementor-device-tablet .me-builder-header .e-con-inner,
+.elementor-device-mobile .elementor-widget-em_kit_nav_menu,
+.elementor-device-tablet .elementor-widget-em_kit_nav_menu,
+.elementor-device-mobile .elementor-widget-em_kit_nav_menu > .elementor-widget-container,
+.elementor-device-tablet .elementor-widget-em_kit_nav_menu > .elementor-widget-container {
+	--padding-left: 0px;
+	--padding-right: 0px;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+
+.elementor-device-mobile .magic-header,
+.elementor-device-tablet .magic-header {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+
+.elementor-device-mobile .magic-header .container.magic-menu,
+.elementor-device-tablet .magic-header .container.magic-menu,
+.elementor-device-mobile .magic-header .magic-menu,
+.elementor-device-tablet .magic-header .magic-menu,
+.elementor-device-mobile .magic-header .layout-four-menu,
+.elementor-device-tablet .magic-header .layout-four-menu {
+	max-width: 100% !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	padding-left: 20px !important;
+	padding-right: 20px !important;
+	gap: 8px;
+	justify-content: space-between;
+}
+
+.elementor-device-mobile .magic-header .mid-point,
+.elementor-device-tablet .magic-header .mid-point,
+.elementor-device-mobile .magic-header-layout-one .mid-point,
+.elementor-device-tablet .magic-header-layout-one .mid-point,
+.elementor-device-mobile .magic-header-layout-two .mid-point,
+.elementor-device-tablet .magic-header-layout-two .mid-point,
+.elementor-device-mobile .magic-header-layout-three .layout-three-left,
+.elementor-device-tablet .magic-header-layout-three .layout-three-left,
+.elementor-device-mobile .magic-header-layout-four .layout-four-brand,
+.elementor-device-tablet .magic-header-layout-four .layout-four-brand {
+	justify-content: flex-start !important;
+	flex: 0 1 auto !important;
+	margin-left: 0 !important;
+}
+
+.elementor-device-mobile .magic-header .menu-logo,
+.elementor-device-tablet .magic-header .menu-logo,
+.elementor-device-mobile .magic-header .menu-logo-desktop-gap,
+.elementor-device-tablet .magic-header .menu-logo-desktop-gap {
+	margin-left: 0 !important;
+	margin-right: 0 !important;
 }
 
 .mobile-menu-panel__layout-four-actions {
