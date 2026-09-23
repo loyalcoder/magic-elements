@@ -136,17 +136,44 @@ import "./../scss/nav_menu.scss"
             ? $scope.find('.magic-header').first()
             : $scope;
           const $toggle = $root.find('.mobile-menu-toggle');
-          const $panel = $root.find('.mobile-menu-panel');
-          const $backdrop = $root.find('.mobile-menu-backdrop');
-          const $close = $root.find('.mobile-menu-close');
+          const scopeId = $scope.data('id') || 'nav';
+          const $existingPortal = $(".magic-mobile-menu-portal[data-magic-mobile-scope='" + scopeId + "']");
+          let $panel = $root.find('.mobile-menu-panel');
+          let $backdrop = $root.find('.mobile-menu-backdrop');
+          let $close = $root.find('.mobile-menu-close');
           const $desktopSearchSlot = $root.find('[data-desktop-search-slot]');
-          const $mobileSearchSlot = $root.find('[data-mobile-search-slot]');
+          let $mobileSearchSlot = $root.find('[data-mobile-search-slot]');
           const $searchButton = $root.find('.menu-search.open_search').first();
           const isLayoutFour = $root.hasClass('magic-header-layout-four');
+
+          // Keep the off-canvas panel off the header flex row so it cannot
+          // push the toggle off-screen or create horizontal page scroll.
+          if ($panel.length) {
+            $existingPortal.remove();
+            const $portal = $('<div/>', {
+              class: 'magic-mobile-menu-portal elementor-element-' + scopeId,
+              'data-magic-mobile-scope': scopeId,
+            });
+            $portal.appendTo(document.body);
+            $portal.append($panel);
+            if ($backdrop.length) {
+              $portal.append($backdrop);
+            }
+          } else if ($existingPortal.length) {
+            $panel = $existingPortal.find('.mobile-menu-panel');
+            $backdrop = $existingPortal.find('.mobile-menu-backdrop');
+            $close = $existingPortal.find('.mobile-menu-close');
+            $mobileSearchSlot = $existingPortal.find('[data-mobile-search-slot]');
+          }
 
           // Prevent Elementor section/container overflow from clipping dropdowns
           // (layouts one / two / three desktop submenus).
           const unlockDropdownOverflow = function () {
+            // On mobile, keep overflow intact so the off-canvas panel cannot
+            // stretch the page and push the toggle off to the right.
+            if (window.matchMedia('(max-width: 1024px)').matches) {
+              return;
+            }
             $scope.css({ overflow: 'visible', zIndex: 10050 });
             $root.css({ overflow: 'visible' });
             $scope
@@ -345,9 +372,7 @@ import "./../scss/nav_menu.scss"
             });
           }
 
-          $root.find('.cnw-nav .menu-item-has-children > a, .cnw-nav-mobile .menu-item-has-children > a')
-          .off('click.emkitSubmenu')
-          .on('click.emkitSubmenu', function (e) {
+          const onParentMenuClick = function (e) {
               const link = this;
               const parent = link.parentElement;
               const hasSubMenu = parent.querySelector(':scope > .sub-menu');
@@ -359,7 +384,7 @@ import "./../scss/nav_menu.scss"
                   return;
               }
 
-              if (isPlaceholder || inMobilePanel || window.matchMedia('(max-width: 1023px)').matches) {
+              if (isPlaceholder || inMobilePanel || window.matchMedia('(max-width: 1024px)').matches) {
                   e.preventDefault();
                   parent.classList.toggle('active');
 
@@ -371,7 +396,18 @@ import "./../scss/nav_menu.scss"
                           }
                       });
               }
-          });
+          };
+
+          // Desktop items stay in the header. Mobile items live in the body
+          // portal, so they must be bound on $panel — $root.find() misses them.
+          $root
+            .find('.cnw-nav:not(.cnw-nav-mobile) .menu-item-has-children > a')
+            .off('click.emkitSubmenu')
+            .on('click.emkitSubmenu', onParentMenuClick);
+
+          $panel
+            .off('click.emkitSubmenu', '.menu-item-has-children > a')
+            .on('click.emkitSubmenu', '.menu-item-has-children > a', onParentMenuClick);
       },
     };
 

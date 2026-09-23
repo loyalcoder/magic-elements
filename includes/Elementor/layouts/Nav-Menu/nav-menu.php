@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php if ( 'layout-one' === $header_layout ) { ?>
 <header class="magic-header magic-header-layout-one <?php echo ( 'yes' === $settings['enable_sticky'] ) ? 'is-sticky-enabled' : ''; ?>">
 	<div class="container magic-menu">
-		<div class="mid-point flex items-center justify-center">
+		<div class="mid-point flex items-center">
 			<nav class="nav-menu-left">
 				<?php
 				if ( ! empty( $settings['menu_select'] ) ) {
@@ -94,7 +94,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php } elseif ( 'layout-two' === $header_layout ) { ?>
 <header class="magic-header magic-header-layout-two <?php echo ( 'yes' === $settings['enable_sticky'] ) ? 'is-sticky-enabled' : ''; ?>">
 	<div class="container magic-menu">
-		<div class="mid-point flex items-center justify-center">
+		<div class="mid-point flex items-center">
 			<nav class="nav-menu-left">
 				<?php
 				if ( ! empty( $settings['menu_select'] ) ) {
