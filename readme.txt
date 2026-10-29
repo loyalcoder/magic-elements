@@ -4,7 +4,7 @@ Tags: elementor, elementor widgets, elementor templates, page builder, addons
 Requires at least: 5.0  
 Tested up to: 7.1
 Requires PHP: 7.0  
-Stable tag: 1.0.5  
+Stable tag: 1.0.7  
 License: GPL v3 or later  
 License URI: https://www.gnu.org/licenses/gpl-3.0.html  
 
@@ -100,6 +100,15 @@ You can reach out via our [support page](https://loyalcoder.com/support).
 
 == Changelog ==
 
+= 1.0.7 =
+* Enable all Magic Elements widgets after the Kinder World demo import.
+* Correct the default keys for Page List, Icon Box, and Multi Step widgets.
+* Keep sticky navigation below the WordPress admin bar while logged in.
+
+= 1.0.6 =
+* Fixed the mobile menu heading level for accessible navigation dialogs.
+* Fixed redundant aria-hidden state on the hidden authentication modal.
+
 = 1.0.5 =
 * Added Mega Menu builder type (active/inactive, no display conditions).
 * Added Mega Menu template selection on WordPress nav menu items.
@@ -121,6 +130,12 @@ You can reach out via our [support page](https://loyalcoder.com/support).
 * Initial release with core features.
 
 == Upgrade Notice ==
+
+= 1.0.7 =
+Demo import and logged-in sticky navigation fixes.
+
+= 1.0.6 =
+Accessibility fixes for the mobile menu and authentication modal.
 
 = 1.0.5 =
 Mega Menu builder, Nav Menu V2 improvements, and builder condition fixes. Tested with WordPress 7.1.

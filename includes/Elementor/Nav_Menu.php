@@ -3536,7 +3536,12 @@ class Nav_Menu extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        $header_layout = $settings['header_layout_type'];
+        // Older demo headers were saved before the layout selector existed.
+        // Keep those widgets rendering with the original default layout.
+        $header_layout = isset( $settings['header_layout_type'] ) ? (string) $settings['header_layout_type'] : 'layout-one';
+        if ( ! in_array( $header_layout, [ 'layout-one', 'layout-two', 'layout-three', 'layout-four' ], true ) ) {
+            $header_layout = 'layout-one';
+        }
 
 		add_filter( 'nav_menu_item_title', [ $this, 'append_submenu_indicator' ], 10, 4 );
         include __DIR__ . '/layouts/Nav-Menu/nav-menu.php';

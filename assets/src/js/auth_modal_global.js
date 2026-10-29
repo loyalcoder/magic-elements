@@ -88,7 +88,7 @@ import "./../scss/_auth_modal.scss";
         ) || 280;
       window.setTimeout(function () {
         if (!$modal.hasClass("is-open")) {
-          $modal.prop("hidden", true);
+          $modal.prop("hidden", true).removeAttr("aria-hidden");
         }
       }, duration);
     };

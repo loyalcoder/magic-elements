@@ -9,7 +9,7 @@
 
   &.is-sticky-enabled.is-sticky {
     position: fixed;
-    top: 0;
+    top: var(--me-sticky-top, 0px);
     left: 0;
     right: 0;
     width: 100%;
