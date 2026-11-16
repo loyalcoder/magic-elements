@@ -59,6 +59,25 @@ import "./../scss/nav_menu.scss"
         return bar ? Math.ceil(bar.offsetHeight) : 0;
       };
 
+      const syncStickyTop = function () {
+        if (!$header.hasClass('is-sticky')) {
+          $header[0].style.removeProperty('--me-sticky-top');
+          return;
+        }
+
+        const bar = document.getElementById('wpadminbar');
+        let offset = 0;
+        if (bar && document.body.classList.contains('admin-bar')) {
+          const barRect = bar.getBoundingClientRect();
+          const barPosition = window.getComputedStyle(bar).position;
+          if ('fixed' === barPosition || barRect.bottom > 0) {
+            offset = Math.max(0, Math.ceil(barRect.bottom));
+          }
+        }
+
+        $header[0].style.setProperty('--me-sticky-top', offset + 'px');
+      };
+
       const measureTrigger = function () {
         const wasSticky = $header.hasClass('is-sticky');
         if (wasSticky) {
@@ -100,6 +119,7 @@ import "./../scss/nav_menu.scss"
           }
           syncSpacer();
         }
+        syncStickyTop();
         stickyReady = true;
       };
 

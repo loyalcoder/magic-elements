@@ -53,9 +53,9 @@ $mobile_menu_close_icon = ! empty( $settings['mobile_menu_close_icon']['value'] 
 	aria-hidden="true"
 >
 	<div class="mobile-menu-panel__header">
-		<h2 id="<?php echo esc_attr( $mobile_menu_label_id ); ?>" class="screen-reader-text">
+		<h1 id="<?php echo esc_attr( $mobile_menu_label_id ); ?>" class="screen-reader-text">
 			<?php echo esc_html__( 'Menu', 'magic-elements' ); ?>
-		</h2>
+		</h1>
 
 		<?php if ( ! empty( $settings['mobile_menu_logo']['url'] ) ) : ?>
 			<div class="mobile-menu-panel__logo">

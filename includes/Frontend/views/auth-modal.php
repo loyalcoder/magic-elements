@@ -22,7 +22,6 @@ $subscribe_title = !empty($subscribe_title) ? $subscribe_title : esc_html__('Sub
     id="<?php echo esc_attr($auth_modal_id); ?>"
     class="magic-auth-modal"
     data-me-auth-scope="<?php echo esc_attr($widget_id); ?>"
-    aria-hidden="true"
     hidden
 >
     <div class="magic-auth-modal__overlay" data-auth-modal-close></div>
